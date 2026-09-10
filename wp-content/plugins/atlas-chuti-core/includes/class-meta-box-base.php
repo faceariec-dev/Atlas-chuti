@@ -26,6 +26,11 @@ abstract class Atlas_Chuti_Meta_Box_Base {
 			return;
 		}
 		wp_enqueue_script( 'atlas-repeater', ATLAS_CHUTI_URL . 'admin/js/repeater.js', array(), ATLAS_CHUTI_VERSION, true );
+		wp_localize_script(
+			'atlas-repeater',
+			'AtlasRepeaterL10n',
+			array( 'remove' => __( '✕ odebrat', 'atlas-chuti' ) )
+		);
 		wp_enqueue_style( 'atlas-admin', ATLAS_CHUTI_URL . 'admin/css/admin.css', array(), ATLAS_CHUTI_VERSION );
 	}
 
@@ -75,12 +80,12 @@ abstract class Atlas_Chuti_Meta_Box_Base {
 				break;
 			case 'richtext':
 				printf( '<textarea id="%1$s" name="%2$s" rows="6">%3$s</textarea>', esc_attr( $id ), esc_attr( $name ), esc_textarea( $value ) );
-				echo '<p class="description">Základní HTML je povoleno (odstavce, tučné písmo, odkazy).</p>';
+				echo '<p class="description">' . esc_html__( 'Základní HTML je povoleno (odstavce, tučné písmo, odkazy).', 'atlas-chuti' ) . '</p>';
 				break;
 			case 'string_list':
 				$lines = is_array( $value ) ? implode( "\n", $value ) : '';
 				printf( '<textarea id="%1$s" name="%2$s" rows="4">%3$s</textarea>', esc_attr( $id ), esc_attr( $name ), esc_textarea( $lines ) );
-				echo '<p class="description">Jedna položka na řádek.</p>';
+				echo '<p class="description">' . esc_html__( 'Jedna položka na řádek.', 'atlas-chuti' ) . '</p>';
 				break;
 			case 'post_ref':
 				$this->render_post_ref_select( $id, $name, $field['ref_type'], (int) $value, false );
@@ -131,16 +136,15 @@ abstract class Atlas_Chuti_Meta_Box_Base {
 		$labels = array_map(
 			function ( $f ) {
 				$map = array(
-					'ingredient_id' => 'ID ingredience (volitelné)',
-					'name'          => 'Název',
-					'quantity'      => 'Množství',
-					'unit'          => 'Jednotka',
-					'note'          => 'Poznámka',
-					'group'         => 'Skupina',
-					'order'         => 'Pořadí',
-					'text'          => 'Text',
-					'note_'         => 'Poznámka',
-					'recipe_id'     => 'ID receptu (volitelné)',
+					'ingredient_id' => __( 'Klíč ingredience (volitelné)', 'atlas-chuti' ),
+					'name'          => __( 'Název', 'atlas-chuti' ),
+					'quantity'      => __( 'Množství', 'atlas-chuti' ),
+					'unit'          => __( 'Jednotka', 'atlas-chuti' ),
+					'note'          => __( 'Poznámka', 'atlas-chuti' ),
+					'group'         => __( 'Skupina', 'atlas-chuti' ),
+					'order'         => __( 'Pořadí', 'atlas-chuti' ),
+					'text'          => __( 'Text', 'atlas-chuti' ),
+					'recipe_id'     => __( 'Slug receptu (volitelné)', 'atlas-chuti' ),
 				);
 				return isset( $map[ $f ] ) ? $map[ $f ] : ucfirst( $f );
 			},
@@ -157,7 +161,7 @@ abstract class Atlas_Chuti_Meta_Box_Base {
 			esc_attr( $name ),
 			esc_attr( wp_json_encode( $value ) )
 		);
-		echo '<button type="button" class="button atlas-repeater-add">+ Přidat řádek</button>';
+		echo '<button type="button" class="button atlas-repeater-add">' . esc_html__( '+ Přidat řádek', 'atlas-chuti' ) . '</button>';
 		echo '</div>';
 	}
 

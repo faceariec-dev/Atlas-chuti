@@ -12,6 +12,8 @@ define( 'ATLAS_THEME_URL', get_template_directory_uri() );
  * theme only owns presentation.
  */
 function atlas_chuti_setup() {
+	load_theme_textdomain( 'atlas-chuti', ATLAS_THEME_DIR . '/languages' );
+
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
@@ -48,6 +50,23 @@ function atlas_chuti_enqueue_assets() {
 
 	if ( is_singular( 'atlas_recipe' ) || is_singular( 'atlas_country' ) || is_page_template( 'template-passport.php' ) || is_front_page() ) {
 		wp_enqueue_script( 'atlas-chuti-passport', ATLAS_THEME_URL . '/assets/js/passport.js', array(), ATLAS_THEME_VERSION, true );
+
+		// UI strings passport.js renders client-side (item 17 of the brief: JS text
+		// must be localization-ready too, never hardcoded Czech in the .js file itself).
+		wp_localize_script(
+			'atlas-chuti-passport',
+			'AtlasChutiL10n',
+			array(
+				'recipeMarkCooked'  => __( 'Uvařil/a jsem', 'atlas-chuti' ),
+				'recipeCooked'      => __( 'Uvařeno', 'atlas-chuti' ),
+				'countryMarkTasted' => __( 'Označit jako ochutnané', 'atlas-chuti' ),
+				'countryTasted'     => __( 'Ochutnáno', 'atlas-chuti' ),
+				'confirmClear'      => __( 'Opravdu chcete vymazat celý Kulinářský pas? Tuto akci nelze vrátit zpět.', 'atlas-chuti' ),
+				'noCookedRecipes'   => __( 'Zatím jste žádný recept neoznačili jako uvařený. Otevřete recept a klikněte na „Uvařil/a jsem“.', 'atlas-chuti' ),
+				/* translators: %d: number of countries the visitor has tasted so far */
+				'countsFormat'      => __( '%1$d / %2$d zemí', 'atlas-chuti' ),
+			)
+		);
 
 		if ( is_page_template( 'template-passport.php' ) || is_front_page() ) {
 			wp_localize_script( 'atlas-chuti-passport', 'AtlasChutiContinents', atlas_chuti_continent_totals() );

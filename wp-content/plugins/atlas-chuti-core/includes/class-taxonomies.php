@@ -134,28 +134,32 @@ class Atlas_Chuti_Taxonomies {
 			return;
 		}
 
-		$continents = array( 'Evropa', 'Asie', 'Afrika', 'Severní Amerika', 'Jižní Amerika', 'Oceánie' );
+		// Wrapped in __() on purpose, not just for consistency: a fresh WordPress instance
+		// installed with an English site locale (the future .com, per item 17 of the
+		// brief) and a matching .mo file would seed these terms in English straight
+		// from this same code — no separate "English seeding" branch needed.
+		$continents = array( __( 'Evropa', 'atlas-chuti' ), __( 'Asie', 'atlas-chuti' ), __( 'Afrika', 'atlas-chuti' ), __( 'Severní Amerika', 'atlas-chuti' ), __( 'Jižní Amerika', 'atlas-chuti' ), __( 'Oceánie', 'atlas-chuti' ) );
 		foreach ( $continents as $name ) {
 			if ( ! term_exists( $name, 'atlas_continent' ) ) {
 				wp_insert_term( $name, 'atlas_continent' );
 			}
 		}
 
-		$difficulties = array( 'Snadné', 'Střední', 'Náročné' );
+		$difficulties = array( __( 'Snadné', 'atlas-chuti' ), __( 'Střední', 'atlas-chuti' ), __( 'Náročné', 'atlas-chuti' ) );
 		foreach ( $difficulties as $name ) {
 			if ( ! term_exists( $name, 'atlas_difficulty' ) ) {
 				wp_insert_term( $name, 'atlas_difficulty' );
 			}
 		}
 
-		$diets = array( 'Vegetariánské', 'Veganské' );
+		$diets = array( __( 'Vegetariánské', 'atlas-chuti' ), __( 'Veganské', 'atlas-chuti' ) );
 		foreach ( $diets as $name ) {
 			if ( ! term_exists( $name, 'atlas_diet' ) ) {
 				wp_insert_term( $name, 'atlas_diet' );
 			}
 		}
 
-		$glossary_categories = array( 'Kuchařské techniky', 'Suroviny', 'Gastronomické pojmy', 'Nádobí a vybavení' );
+		$glossary_categories = array( __( 'Kuchařské techniky', 'atlas-chuti' ), __( 'Suroviny', 'atlas-chuti' ), __( 'Gastronomické pojmy', 'atlas-chuti' ), __( 'Nádobí a vybavení', 'atlas-chuti' ) );
 		foreach ( $glossary_categories as $name ) {
 			if ( ! term_exists( $name, 'atlas_glossary_category' ) ) {
 				wp_insert_term( $name, 'atlas_glossary_category' );

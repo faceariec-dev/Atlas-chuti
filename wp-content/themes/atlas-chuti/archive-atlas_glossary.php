@@ -33,17 +33,17 @@ if ( $active_letter ) {
 ?>
 
 <section class="container-narrow text-center" style="padding:64px var(--gutter) 32px;">
-	<h1>Kuchařský slovníček</h1>
-	<p style="font-size:16px;color:var(--text-body);">Techniky, suroviny a pojmy světové gastronomie na jednom místě.</p>
+	<h1><?php esc_html_e( 'Kuchařský slovníček', 'atlas-chuti' ); ?></h1>
+	<p style="font-size:16px;color:var(--text-body);"><?php esc_html_e( 'Techniky, suroviny a pojmy světové gastronomie na jednom místě.', 'atlas-chuti' ); ?></p>
 	<form class="search-box" style="max-width:520px;margin:0 auto;" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
 		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
-		<input type="search" name="s" placeholder="Hledat pojem…">
+		<input type="search" name="s" placeholder="<?php esc_attr_e( 'Hledat pojem…', 'atlas-chuti' ); ?>">
 	</form>
 </section>
 
 <?php if ( $categories && ! is_wp_error( $categories ) ) : ?>
 <section class="container glossary-category-bar" style="padding-bottom:20px;">
-	<a class="chip <?php echo ! $active_cat ? 'chip-static' : ''; ?>" href="<?php echo atlas_chuti_glossary_filter_url( array( 'kategorie' => false ) ); ?>">Vše</a>
+	<a class="chip <?php echo ! $active_cat ? 'chip-static' : ''; ?>" href="<?php echo atlas_chuti_glossary_filter_url( array( 'kategorie' => false ) ); ?>"><?php esc_html_e( 'Vše', 'atlas-chuti' ); ?></a>
 	<?php foreach ( $categories as $cat ) : ?>
 		<a class="chip <?php echo $active_cat === $cat->slug ? 'chip-static' : ''; ?>" href="<?php echo atlas_chuti_glossary_filter_url( array( 'kategorie' => $cat->slug ) ); ?>"><?php echo esc_html( $cat->name ); ?></a>
 	<?php endforeach; ?>
@@ -51,7 +51,7 @@ if ( $active_letter ) {
 <?php endif; ?>
 
 <section class="container glossary-alpha-bar" style="padding-bottom:12px;">
-	<a href="<?php echo atlas_chuti_glossary_filter_url( array( 'pismeno' => false ) ); ?>" style="<?php echo ! $active_letter ? 'font-weight:700;color:var(--accent);' : ''; ?>">Vše</a>
+	<a href="<?php echo atlas_chuti_glossary_filter_url( array( 'pismeno' => false ) ); ?>" style="<?php echo ! $active_letter ? 'font-weight:700;color:var(--accent);' : ''; ?>"><?php esc_html_e( 'Vše', 'atlas-chuti' ); ?></a>
 	<?php foreach ( str_split( 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' ) as $letter ) : ?>
 		<a href="<?php echo atlas_chuti_glossary_filter_url( array( 'pismeno' => $letter ) ); ?>" style="<?php echo $active_letter === $letter ? 'background:var(--bg-muted);color:var(--accent);' : ''; ?>"><?php echo esc_html( $letter ); ?></a>
 	<?php endforeach; ?>
@@ -65,7 +65,7 @@ if ( $active_letter ) {
 			<?php endforeach; ?>
 		</div>
 	<?php else : ?>
-		<p class="empty-state">Pro zvolený filtr jsme nenašli žádné pojmy.</p>
+		<p class="empty-state"><?php esc_html_e( 'Pro zvolený filtr jsme nenašli žádné pojmy.', 'atlas-chuti' ); ?></p>
 	<?php endif; ?>
 </section>
 

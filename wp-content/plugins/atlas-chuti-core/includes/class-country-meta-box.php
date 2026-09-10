@@ -30,16 +30,18 @@ class Atlas_Chuti_Country_Meta_Box extends Atlas_Chuti_Meta_Box_Base {
 	}
 
 	protected function render_extra_bottom( $post ) {
-		echo '<fieldset class="atlas-fieldset"><legend>Domovská stránka</legend>';
+		echo '<fieldset class="atlas-fieldset"><legend>' . esc_html__( 'Domovská stránka', 'atlas-chuti' ) . '</legend>';
 		printf(
-			'<label><input type="checkbox" name="atlas_featured_today" value="1" %s> Zobrazit v sekci „Dnes ochutnejte“</label><br>',
-			checked( get_post_meta( $post->ID, 'atlas_featured_today', true ), '1', false )
+			'<label><input type="checkbox" name="atlas_featured_today" value="1" %1$s> %2$s</label><br>',
+			checked( get_post_meta( $post->ID, 'atlas_featured_today', true ), '1', false ),
+			esc_html__( 'Zobrazit v sekci „Dnes ochutnejte“', 'atlas-chuti' )
 		);
 		printf(
-			'<label><input type="checkbox" name="atlas_featured_cuisine" value="1" %s> Zobrazit v sekci „Oblíbené kuchyně“</label>',
-			checked( get_post_meta( $post->ID, 'atlas_featured_cuisine', true ), '1', false )
+			'<label><input type="checkbox" name="atlas_featured_cuisine" value="1" %1$s> %2$s</label>',
+			checked( get_post_meta( $post->ID, 'atlas_featured_cuisine', true ), '1', false ),
+			esc_html__( 'Zobrazit v sekci „Oblíbené kuchyně“', 'atlas-chuti' )
 		);
-		echo '<p class="description">Pokud nic nevyberete, homepage automaticky zvolí rozumné výchozí položky.</p>';
+		echo '<p class="description">' . esc_html__( 'Pokud nic nevyberete, homepage automaticky zvolí rozumné výchozí položky.', 'atlas-chuti' ) . '</p>';
 		echo '</fieldset>';
 	}
 

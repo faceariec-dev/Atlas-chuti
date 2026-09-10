@@ -16,7 +16,7 @@ get_header();
 			<div class="entry-content"><?php the_content(); ?></div>
 		<?php endwhile; ?>
 	<?php else : ?>
-		<p class="empty-state">Zde zatím není žádný obsah.</p>
+		<p class="empty-state"><?php esc_html_e( 'Zde zatím není žádný obsah.', 'atlas-chuti' ); ?></p>
 	<?php endif; ?>
 </section>
 

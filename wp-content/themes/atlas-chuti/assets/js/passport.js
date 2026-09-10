@@ -98,6 +98,8 @@ window.AtlasPassport = ( function () {
 ( function () {
 	'use strict';
 
+	var L10N = window.AtlasChutiL10n || {};
+
 	function readJSON( el, attr ) {
 		try {
 			return JSON.parse( el.getAttribute( attr ) );
@@ -119,7 +121,7 @@ window.AtlasPassport = ( function () {
 			var cooked = AtlasPassport.isRecipeCooked( data.slug );
 			btn.classList.toggle( 'is-active', cooked );
 			btn.setAttribute( 'aria-pressed', cooked ? 'true' : 'false' );
-			btn.querySelector( '.label' ).textContent = cooked ? 'Uvařeno' : 'Uvařil/a jsem';
+			btn.querySelector( '.label' ).textContent = cooked ? L10N.recipeCooked : L10N.recipeMarkCooked;
 		};
 		btn.addEventListener( 'click', function () {
 			AtlasPassport.toggleRecipe( data );
@@ -141,7 +143,7 @@ window.AtlasPassport = ( function () {
 			var tasted = AtlasPassport.isCountryTasted( data.slug );
 			btn.classList.toggle( 'is-active', tasted );
 			btn.setAttribute( 'aria-pressed', tasted ? 'true' : 'false' );
-			btn.querySelector( '.label' ).textContent = tasted ? 'Ochutnáno' : 'Označit jako ochutnané';
+			btn.querySelector( '.label' ).textContent = tasted ? L10N.countryTasted : L10N.countryMarkTasted;
 		};
 		btn.addEventListener( 'click', function () {
 			AtlasPassport.toggleCountry( data );
@@ -163,7 +165,7 @@ window.AtlasPassport = ( function () {
 
 		var countEl = widget.querySelector( '[data-passport-count]' );
 		if ( countEl ) {
-			countEl.textContent = tastedCount + ' / ' + totalCountries + ' zemí';
+			countEl.textContent = ( L10N.countsFormat || '%1$d / %2$d' ).replace( '%1$d', tastedCount ).replace( '%2$d', totalCountries );
 		}
 
 		var flagsEl = widget.querySelector( '[data-passport-flags]' );
@@ -249,7 +251,7 @@ window.AtlasPassport = ( function () {
 			var cooked = AtlasPassport.getCookedRecipes();
 			var keys = Object.keys( cooked );
 			if ( ! keys.length ) {
-				cookedWrap.innerHTML = '<p class="passport-empty">Zatím jste žádný recept neoznačili jako uvařený. Otevřete recept a klikněte na „Uvařil/a jsem“.</p>';
+				cookedWrap.innerHTML = '<p class="passport-empty">' + L10N.noCookedRecipes + '</p>';
 			} else {
 				cookedWrap.innerHTML = '<div class="card-grid card-grid-4">' + keys.map( function ( k ) { return recipeCardHTML( cooked[ k ] ); } ).join( '' ) + '</div>';
 			}
@@ -262,7 +264,7 @@ window.AtlasPassport = ( function () {
 			return;
 		}
 		btn.addEventListener( 'click', function () {
-			if ( window.confirm( 'Opravdu chcete vymazat celý Kulinářský pas? Tuto akci nelze vrátit zpět.' ) ) {
+			if ( window.confirm( L10N.confirmClear ) ) {
 				AtlasPassport.clearAll();
 				renderPassportPage();
 				renderMiniWidget();

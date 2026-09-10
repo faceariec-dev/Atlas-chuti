@@ -17,7 +17,7 @@ $countries = get_posts(
 ?>
 
 <section class="container" style="padding:64px var(--gutter) 40px;">
-	<span style="font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;">Světadíl</span>
+	<span style="font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;"><?php esc_html_e( 'Světadíl', 'atlas-chuti' ); ?></span>
 	<h1 style="margin-top:8px;"><?php echo esc_html( $continent->name ); ?></h1>
 	<?php if ( $continent->description ) : ?>
 		<p style="font-size:17px;color:var(--text-body);max-width:680px;line-height:1.6;"><?php echo esc_html( $continent->description ); ?></p>
@@ -32,7 +32,7 @@ $countries = get_posts(
 			<?php endforeach; ?>
 		</div>
 	<?php else : ?>
-		<p class="empty-state">Pro tento světadíl zatím nemáme publikovaný obsah.</p>
+		<p class="empty-state"><?php esc_html_e( 'Pro tento světadíl zatím nemáme publikovaný obsah.', 'atlas-chuti' ); ?></p>
 	<?php endif; ?>
 </section>
 

@@ -67,19 +67,19 @@ while ( have_posts() ) :
 	<div class="container" style="padding-top:32px;">
 		<div class="meta-bar">
 			<div class="meta-bar-items">
-				<?php if ( $prep ) : ?><div class="meta-item"><div class="label">Příprava</div><div class="value"><?php echo esc_html( $prep ); ?></div></div><?php endif; ?>
-				<?php if ( $cook ) : ?><div class="meta-item"><div class="label">Vaření</div><div class="value"><?php echo esc_html( $cook ); ?></div></div><?php endif; ?>
-				<?php if ( $total ) : ?><div class="meta-item"><div class="label">Celkem</div><div class="value"><?php echo esc_html( $total ); ?></div></div><?php endif; ?>
-				<div class="meta-item"><div class="label">Porce</div><div class="value"><?php echo esc_html( $servings_default ); ?></div></div>
-				<?php if ( $diff_terms && ! is_wp_error( $diff_terms ) ) : ?><div class="meta-item"><div class="label">Obtížnost</div><div class="value"><?php echo esc_html( $diff_terms[0]->name ); ?></div></div><?php endif; ?>
+				<?php if ( $prep ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Příprava', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $prep ); ?></div></div><?php endif; ?>
+				<?php if ( $cook ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Vaření', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $cook ); ?></div></div><?php endif; ?>
+				<?php if ( $total ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Celkem', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $total ); ?></div></div><?php endif; ?>
+				<div class="meta-item"><div class="label"><?php esc_html_e( 'Porce', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $servings_default ); ?></div></div>
+				<?php if ( $diff_terms && ! is_wp_error( $diff_terms ) ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Obtížnost', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $diff_terms[0]->name ); ?></div></div><?php endif; ?>
 			</div>
-			<a href="#postup" class="btn btn-accent">Přejít na recept</a>
+			<a href="#postup" class="btn btn-accent"><?php esc_html_e( 'Přejít na recept', 'atlas-chuti' ); ?></a>
 		</div>
 	</div>
 
 	<?php if ( $about ) : ?>
 	<section class="container-narrow section">
-		<h2>O receptu</h2>
+		<h2><?php esc_html_e( 'O receptu', 'atlas-chuti' ); ?></h2>
 		<div><?php echo wp_kses_post( wpautop( $about ) ); ?></div>
 	</section>
 	<?php endif; ?>
@@ -87,7 +87,7 @@ while ( have_posts() ) :
 	<?php if ( $ingredients ) : ?>
 	<section class="container-medium section">
 		<div class="section-head">
-			<h2>Ingredience</h2>
+			<h2><?php esc_html_e( 'Ingredience', 'atlas-chuti' ); ?></h2>
 			<div class="pill-group" data-servings-switcher data-default="<?php echo esc_attr( $servings_default ); ?>">
 				<?php foreach ( $servings_options as $n ) : ?>
 					<button type="button" class="pill<?php echo $n === $servings_default ? ' is-active' : ''; ?>" data-servings="<?php echo esc_attr( $n ); ?>"><?php echo esc_html( $n ); ?></button>
@@ -114,7 +114,7 @@ while ( have_posts() ) :
 
 	<?php if ( $steps ) : ?>
 	<section id="postup" class="container-narrow section">
-		<h2>Postup</h2>
+		<h2><?php esc_html_e( 'Postup', 'atlas-chuti' ); ?></h2>
 		<div class="steps-list">
 			<?php foreach ( $steps as $i => $step ) : ?>
 				<div class="step-row">
@@ -128,7 +128,7 @@ while ( have_posts() ) :
 
 	<?php if ( $tips ) : ?>
 	<section class="container-narrow section">
-		<h2>Tipy</h2>
+		<h2><?php esc_html_e( 'Tipy', 'atlas-chuti' ); ?></h2>
 		<ul style="padding-left:20px;list-style:disc;display:flex;flex-direction:column;gap:10px;">
 			<?php foreach ( $tips as $tip ) : ?>
 				<li style="font-size:15px;color:var(--text-soft);line-height:1.6;"><?php echo esc_html( $tip ); ?></li>
@@ -140,7 +140,7 @@ while ( have_posts() ) :
 	<?php if ( $watch_out ) : ?>
 	<section class="container-narrow section">
 		<div class="callout">
-			<h3>Na co si dát pozor</h3>
+			<h3><?php esc_html_e( 'Na co si dát pozor', 'atlas-chuti' ); ?></h3>
 			<p><?php echo esc_html( $watch_out ); ?></p>
 		</div>
 	</section>
@@ -148,7 +148,7 @@ while ( have_posts() ) :
 
 	<?php if ( $variants ) : ?>
 	<section class="container-narrow section">
-		<h2>Varianty receptu</h2>
+		<h2><?php esc_html_e( 'Varianty receptu', 'atlas-chuti' ); ?></h2>
 		<div style="display:flex;flex-direction:column;gap:12px;">
 			<?php foreach ( $variants as $variant ) : ?>
 				<div class="variant-row"><strong><?php echo esc_html( $variant['name'] ); ?>:</strong> <?php echo esc_html( $variant['note'] ); ?></div>
@@ -159,14 +159,14 @@ while ( have_posts() ) :
 
 	<?php if ( $origin ) : ?>
 	<section class="container-narrow section">
-		<h2>Odkud recept pochází</h2>
+		<h2><?php esc_html_e( 'Odkud recept pochází', 'atlas-chuti' ); ?></h2>
 		<div><?php echo wp_kses_post( wpautop( $origin ) ); ?></div>
 	</section>
 	<?php endif; ?>
 
 	<?php if ( $glossary_ids ) : ?>
 	<section class="container section">
-		<h2>Pojmy, které se mohou hodit</h2>
+		<h2><?php esc_html_e( 'Pojmy, které se mohou hodit', 'atlas-chuti' ); ?></h2>
 		<div class="flex-wrap-gap">
 			<?php foreach ( (array) $glossary_ids as $gid ) : if ( 'publish' !== get_post_status( $gid ) ) { continue; } ?>
 				<a class="chip" href="<?php echo esc_url( get_permalink( $gid ) ); ?>"><?php echo esc_html( get_the_title( $gid ) ); ?></a>
@@ -190,7 +190,7 @@ while ( have_posts() ) :
 	if ( $more_recipes ) :
 		?>
 		<section class="container section">
-			<h2><?php echo $country ? 'Další recepty z ' . esc_html( get_the_title( $country ) ) : 'Další recepty'; ?></h2>
+			<h2><?php echo $country ? esc_html( sprintf( __( 'Další recepty z %s', 'atlas-chuti' ), get_the_title( $country ) ) ) : esc_html__( 'Další recepty', 'atlas-chuti' ); ?></h2>
 			<div class="card-grid card-grid-4">
 				<?php foreach ( $more_recipes as $r ) : ?>
 					<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => is_object( $r ) ? $r->ID : $r ) ); ?>
@@ -202,7 +202,7 @@ while ( have_posts() ) :
 	<section class="container section text-center">
 		<button type="button" class="btn btn-dark" data-passport-recipe-toggle data-recipe='<?php echo esc_attr( wp_json_encode( $passport_data ) ); ?>'>
 			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="4,13 9,18 20,6"></polyline></svg>
-			<span class="label">Uvařil/a jsem</span>
+			<span class="label"><?php esc_html_e( 'Uvařil/a jsem', 'atlas-chuti' ); ?></span>
 		</button>
 	</section>
 

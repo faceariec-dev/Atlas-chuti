@@ -6,11 +6,14 @@
   "type": "object",
   "required": ["title", "country", "excerpt", "servings_default", "prep_minutes", "ingredients", "steps"],
   "properties": {
-    "title": { "type": "string", "description": "Název receptu (český)." },
-    "slug": { "type": "string", "description": "URL slug. Pokud chybí, odvodí se z title. Používá se i pro detekci duplicit." },
+    "locale": { "type": "string", "description": "BCP 47 jazykový tag lokalizovaného obsahu (název, perex, kroky, tipy…). Pokud chybí, importer použije \"cs-CZ\". Jazykově neutrální pole (země, ingredience, časy, obtížnost…) na locale nezávisí.", "default": "cs-CZ" },
+    "translation_group": { "type": "string", "description": "Stabilní, jazykově nezávislý identifikátor sdílený všemi jazykovými verzemi TOHOTO receptu (ne jazykově nezávislý napříč recepty). Pokud chybí, importer jej odvodí ze slugu — což funguje jen dokud existuje jediná jazyková verze. Je to i klíč, přes který se recept dohledává v related_recipes/traditional_dishes.recipe_id, místo aby se spoléhalo na WordPress post ID nebo český slug." },
+    "translation_status": { "type": "string", "enum": ["none", "draft", "reviewed", "published"], "description": "Stav (budoucí) lokalizace vůči originálu. Pro obsah, který sám je originálem, nech \"published\" (výchozí)." },
+    "title": { "type": "string", "description": "Název receptu v jazyce daném polem locale." },
+    "slug": { "type": "string", "description": "URL slug pro TENTO jazyk. Každá jazyková verze může mít vlastní slug (viz item 17 zadání) — pro cross-referenci mezi jazyky použij translation_group, ne slug." },
     "original_title": { "type": "string", "description": "Originální/cizojazyčný název." },
-    "country": { "type": "string", "description": "Slug hlavní země (musí existovat mezi importovanými/existujícími zeměmi)." },
-    "related_countries": { "type": "array", "items": { "type": "string" }, "description": "Slugy dalších souvisejících zemí." },
+    "country": { "type": "string", "description": "Stabilní identita hlavní země: preferuj ISO 3166-1 kód (např. \"IT\"), slug je přijímán jako fallback jen dokud existuje jediná jazyková verze." },
+    "related_countries": { "type": "array", "items": { "type": "string" }, "description": "ISO kódy (preferováno) nebo slugy dalších souvisejících zemí." },
     "excerpt": { "type": "string", "description": "Krátký perex." },
     "photo_credit": { "type": "string", "description": "Zdroj/copyright fotografie (volitelné)." },
     "servings_default": { "type": "integer", "minimum": 1 },
@@ -28,7 +31,7 @@
         "type": "object",
         "required": ["name", "quantity"],
         "properties": {
-          "ingredient_id": { "type": "string", "description": "Slug normalizované ingredience (volitelné vazba na atlas_ingredient)." },
+          "ingredient_id": { "type": "string", "description": "Jazykově neutrální klíč normalizované ingredience (viz ingredient.schema.json#key, např. \"tomato\"), ne český slug. Volitelné, jen pro budoucí „Co mám doma?“ — quantity/unit/note/group jsou vlastní tomuto receptu, název ingredience v tomto jazyce dej do name." },
           "name": { "type": "string" },
           "quantity": { "type": "string", "description": "Číslo (\"400\"), zlomek (\"1/2\"), nebo text (\"podle chuti\", \"špetka\")." },
           "unit": { "type": "string", "description": "např. g, ml, ks, lžíce, lžička." },
@@ -59,8 +62,8 @@
       }
     },
     "origin_history": { "type": "string" },
-    "related_glossary": { "type": "array", "items": { "type": "string" }, "description": "Slugy pojmů ze slovníčku." },
-    "related_recipes": { "type": "array", "items": { "type": "string" }, "description": "Slugy dalších receptů." },
+    "related_glossary": { "type": "array", "items": { "type": "string" }, "description": "translation_group (preferováno) nebo slug pojmů ze slovníčku." },
+    "related_recipes": { "type": "array", "items": { "type": "string" }, "description": "translation_group (preferováno) nebo slug dalších receptů." },
     "seo_title": { "type": "string" },
     "meta_description": { "type": "string" },
     "status": { "type": "string", "enum": ["publish", "draft"], "default": "publish" }

@@ -5,11 +5,17 @@
   "type": "object",
   "required": ["title", "iso_code", "flag_emoji", "intro", "continent"],
   "properties": {
-    "title": { "type": "string", "description": "Zobrazovaný (český) název, použije se i jako post_title." },
-    "slug": { "type": "string" },
+    "locale": { "type": "string", "description": "BCP 47 jazykový tag lokalizovaného obsahu (title/intro/taste_intro/…). Chybí-li, importer použije \"cs-CZ\".", "default": "cs-CZ" },
+    "translation_status": { "type": "string", "enum": ["none", "draft", "reviewed", "published"], "description": "Stav (budoucí) lokalizace vůči originálu. Pro originál nech \"published\" (výchozí)." },
+    "title": { "type": "string", "description": "Zobrazovaný název v jazyce daném polem locale, použije se i jako post_title." },
+    "slug": { "type": "string", "description": "URL slug pro TENTO jazyk — nezávislý na slugu jiných jazykových verzí." },
     "name_cs": { "type": "string" },
     "name_en": { "type": "string" },
-    "iso_code": { "type": "string", "description": "ISO 3166-1 alpha-2, např. IT.", "pattern": "^[A-Z]{2,3}$" },
+    "iso_code": {
+      "type": "string",
+      "description": "Primární stabilní identita země (item 17 zadání) — ISO 3166-1 alpha-2, např. \"IT\". Stejný kód identifikuje tutéž zemi napříč jazykovými verzemi i WordPress instancemi; je to identifikátor, přes který se země dohledává v recipe.country, glossary.origin_country a related_countries — nikdy WordPress post ID.",
+      "pattern": "^[A-Z]{2,3}$"
+    },
     "flag_emoji": { "type": "string" },
     "continent": { "type": "string", "enum": ["Evropa", "Asie", "Afrika", "Severní Amerika", "Jižní Amerika", "Oceánie"] },
     "capital": { "type": "string" },
@@ -29,7 +35,7 @@
         "properties": {
           "name": { "type": "string" },
           "note": { "type": "string" },
-          "recipe_id": { "type": "string", "description": "Slug receptu, pokud existuje. Jinak se položka zobrazí bez odkazu." }
+          "recipe_id": { "type": "string", "description": "translation_group (preferováno) nebo slug receptu, pokud existuje. Jinak se položka zobrazí bez odkazu." }
         }
       }
     },
@@ -42,8 +48,8 @@
       }
     },
     "fun_facts": { "type": "array", "items": { "type": "string" } },
-    "related_glossary": { "type": "array", "items": { "type": "string" } },
-    "related_countries": { "type": "array", "items": { "type": "string" }, "description": "Doporučené podobné kuchyně (slugy)." },
+    "related_glossary": { "type": "array", "items": { "type": "string" }, "description": "translation_group (preferováno) nebo slug pojmů ze slovníčku." },
+    "related_countries": { "type": "array", "items": { "type": "string" }, "description": "Doporučené podobné kuchyně — ISO kódy (preferováno) nebo slugy." },
     "seo_title": { "type": "string" },
     "meta_description": { "type": "string" },
     "facts_source": { "type": "string" },

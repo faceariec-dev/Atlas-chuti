@@ -10,11 +10,11 @@ $active  = atlas_chuti_active_filters();
 ?>
 
 <section class="container-narrow" style="padding:64px var(--gutter) 20px;">
-	<h1>Recepty ze světa</h1>
-	<p style="font-size:16px;color:var(--text-body);">Procházejte recepty podle země, typu jídla, obtížnosti nebo času přípravy.</p>
+	<h1><?php esc_html_e( 'Recepty ze světa', 'atlas-chuti' ); ?></h1>
+	<p style="font-size:16px;color:var(--text-body);"><?php esc_html_e( 'Procházejte recepty podle země, typu jídla, obtížnosti nebo času přípravy.', 'atlas-chuti' ); ?></p>
 	<form class="search-box" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
 		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
-		<input type="search" name="s" placeholder="Hledat recept…">
+		<input type="search" name="s" placeholder="<?php esc_attr_e( 'Hledat recept…', 'atlas-chuti' ); ?>">
 	</form>
 </section>
 
@@ -23,38 +23,44 @@ $active  = atlas_chuti_active_filters();
 		<aside class="filter-panel">
 			<form data-filter-form action="<?php echo esc_url( get_post_type_archive_link( 'atlas_recipe' ) ); ?>" method="get">
 				<div class="filter-group">
-					<h4>Země</h4>
+					<h4><?php esc_html_e( 'Země', 'atlas-chuti' ); ?></h4>
 					<?php atlas_chuti_radio_group( 'zeme', $options['zeme'], $active['zeme'] ?? '' ); ?>
 				</div>
 				<div class="filter-group">
-					<h4>Světadíl</h4>
+					<h4><?php esc_html_e( 'Světadíl', 'atlas-chuti' ); ?></h4>
 					<?php atlas_chuti_radio_group( 'svetadil', $options['svetadil'], $active['svetadil'] ?? '' ); ?>
 				</div>
 				<div class="filter-group">
-					<h4>Typ jídla</h4>
+					<h4><?php esc_html_e( 'Typ jídla', 'atlas-chuti' ); ?></h4>
 					<?php atlas_chuti_radio_group( 'typ', $options['typ'], $active['typ'] ?? '' ); ?>
 				</div>
 				<div class="filter-group">
-					<h4>Obtížnost</h4>
+					<h4><?php esc_html_e( 'Obtížnost', 'atlas-chuti' ); ?></h4>
 					<?php atlas_chuti_radio_group( 'obtiznost', $options['obtiznost'], $active['obtiznost'] ?? '' ); ?>
 				</div>
 				<div class="filter-group">
-					<h4>Vhodné pro</h4>
+					<h4><?php esc_html_e( 'Vhodné pro', 'atlas-chuti' ); ?></h4>
 					<?php atlas_chuti_radio_group( 'dieta', $options['dieta'], $active['dieta'] ?? '' ); ?>
 				</div>
 				<div class="filter-group">
-					<h4>Čas přípravy</h4>
+					<h4><?php esc_html_e( 'Čas přípravy', 'atlas-chuti' ); ?></h4>
 					<?php
-					$cas = $active['cas'] ?? '';
-					foreach ( array( '' => 'Vše', 'do-30' => 'Do 30 min', 'do-60' => 'Do 60 min', 'do-90' => 'Do 90 min' ) as $val => $label ) {
+					$cas          = $active['cas'] ?? '';
+					$time_buckets = array(
+						''       => __( 'Vše', 'atlas-chuti' ),
+						'do-30'  => __( 'Do 30 min', 'atlas-chuti' ),
+						'do-60'  => __( 'Do 60 min', 'atlas-chuti' ),
+						'do-90'  => __( 'Do 90 min', 'atlas-chuti' ),
+					);
+					foreach ( $time_buckets as $val => $label ) {
 						printf( '<label><input type="radio" name="cas" value="%1$s" %2$s> %3$s</label>', esc_attr( $val ), checked( $val, $cas, false ), esc_html( $label ) );
 					}
 					?>
 				</div>
 				<div class="filter-actions">
-					<button type="submit" class="btn btn-accent">Použít filtry</button>
+					<button type="submit" class="btn btn-accent"><?php esc_html_e( 'Použít filtry', 'atlas-chuti' ); ?></button>
 					<?php if ( $active ) : ?>
-						<a class="btn btn-outline" href="<?php echo esc_url( get_post_type_archive_link( 'atlas_recipe' ) ); ?>">Zrušit</a>
+						<a class="btn btn-outline" href="<?php echo esc_url( get_post_type_archive_link( 'atlas_recipe' ) ); ?>"><?php esc_html_e( 'Zrušit', 'atlas-chuti' ); ?></a>
 					<?php endif; ?>
 				</div>
 			</form>
@@ -88,7 +94,7 @@ $active  = atlas_chuti_active_filters();
 					?>
 				</div>
 			<?php else : ?>
-				<p class="empty-state">Pro zvolené filtry jsme nenašli žádné recepty. Zkuste je zjednodušit.</p>
+				<p class="empty-state"><?php esc_html_e( 'Pro zvolené filtry jsme nenašli žádné recepty. Zkuste je zjednodušit.', 'atlas-chuti' ); ?></p>
 			<?php endif; ?>
 		</div>
 	</div>

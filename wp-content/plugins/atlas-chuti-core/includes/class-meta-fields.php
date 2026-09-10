@@ -19,99 +19,111 @@ class Atlas_Chuti_Meta_Fields {
 	 */
 	public static function recipe_fields() {
 		return array(
-			'original_title'   => array( 'type' => 'text', 'label' => 'Originální název', 'required' => false ),
-			'excerpt'          => array( 'type' => 'textarea', 'label' => 'Krátký perex', 'required' => true ),
-			'photo_credit'     => array( 'type' => 'text', 'label' => 'Zdroj / copyright fotografie', 'required' => false ),
-			'servings_default' => array( 'type' => 'int', 'label' => 'Výchozí počet porcí', 'required' => true, 'default' => 4 ),
-			'prep_minutes'     => array( 'type' => 'int', 'label' => 'Čas přípravy (min)', 'required' => true ),
-			'cook_minutes'     => array( 'type' => 'int', 'label' => 'Čas vaření (min)', 'required' => false, 'default' => 0 ),
-			'total_minutes'    => array( 'type' => 'int', 'label' => 'Celkový čas (min)', 'required' => false ),
-			'about'            => array( 'type' => 'richtext', 'label' => 'O receptu', 'required' => false ),
+			'original_title'   => array( 'type' => 'text', 'label' => __( 'Originální název', 'atlas-chuti' ), 'required' => false ),
+			'excerpt'          => array( 'type' => 'textarea', 'label' => __( 'Krátký perex', 'atlas-chuti' ), 'required' => true ),
+			'photo_credit'     => array( 'type' => 'text', 'label' => __( 'Zdroj / copyright fotografie', 'atlas-chuti' ), 'required' => false ),
+			'servings_default' => array( 'type' => 'int', 'label' => __( 'Výchozí počet porcí', 'atlas-chuti' ), 'required' => true, 'default' => 4 ),
+			'prep_minutes'     => array( 'type' => 'int', 'label' => __( 'Čas přípravy (min)', 'atlas-chuti' ), 'required' => true ),
+			'cook_minutes'     => array( 'type' => 'int', 'label' => __( 'Čas vaření (min)', 'atlas-chuti' ), 'required' => false, 'default' => 0 ),
+			'total_minutes'    => array( 'type' => 'int', 'label' => __( 'Celkový čas (min)', 'atlas-chuti' ), 'required' => false ),
+			'about'            => array( 'type' => 'richtext', 'label' => __( 'O receptu', 'atlas-chuti' ), 'required' => false ),
 			'ingredients'      => array(
 				'type'     => 'repeater',
-				'label'    => 'Ingredience',
+				'label' => __( 'Ingredience', 'atlas-chuti' ),
 				'required' => true,
 				'shape'    => array( 'ingredient_id', 'name', 'quantity', 'unit', 'note', 'group' ),
 			),
 			'steps'            => array(
 				'type'     => 'repeater',
-				'label'    => 'Postup',
+				'label' => __( 'Postup', 'atlas-chuti' ),
 				'required' => true,
 				'shape'    => array( 'order', 'text' ),
 			),
-			'tips'             => array( 'type' => 'string_list', 'label' => 'Tipy', 'required' => false ),
-			'watch_out'        => array( 'type' => 'textarea', 'label' => 'Na co si dát pozor', 'required' => false ),
+			'tips'             => array( 'type' => 'string_list', 'label' => __( 'Tipy', 'atlas-chuti' ), 'required' => false ),
+			'watch_out'        => array( 'type' => 'textarea', 'label' => __( 'Na co si dát pozor', 'atlas-chuti' ), 'required' => false ),
 			'variants'         => array(
 				'type'     => 'repeater',
-				'label'    => 'Varianty',
+				'label' => __( 'Varianty', 'atlas-chuti' ),
 				'required' => false,
 				'shape'    => array( 'name', 'note' ),
 			),
-			'origin_history'   => array( 'type' => 'richtext', 'label' => 'Původ / historie', 'required' => false ),
-			'related_glossary' => array( 'type' => 'post_ref_list', 'label' => 'Související pojmy', 'required' => false, 'ref_type' => 'atlas_glossary' ),
-			'related_recipes'  => array( 'type' => 'post_ref_list', 'label' => 'Související recepty', 'required' => false, 'ref_type' => 'atlas_recipe' ),
-			'seo_title'        => array( 'type' => 'text', 'label' => 'SEO title', 'required' => false ),
-			'meta_description' => array( 'type' => 'textarea', 'label' => 'Meta description', 'required' => false ),
+			'origin_history'   => array( 'type' => 'richtext', 'label' => __( 'Původ / historie', 'atlas-chuti' ), 'required' => false ),
+			'related_glossary' => array( 'type' => 'post_ref_list', 'label' => __( 'Související pojmy', 'atlas-chuti' ), 'required' => false, 'ref_type' => 'atlas_glossary' ),
+			'related_recipes'  => array( 'type' => 'post_ref_list', 'label' => __( 'Související recepty', 'atlas-chuti' ), 'required' => false, 'ref_type' => 'atlas_recipe' ),
+			'seo_title'        => array( 'type' => 'text', 'label' => __( 'SEO title', 'atlas-chuti' ), 'required' => false ),
+			'meta_description' => array( 'type' => 'textarea', 'label' => __( 'Meta description', 'atlas-chuti' ), 'required' => false ),
 		);
 	}
 
 	public static function country_fields() {
 		return array(
-			'name_cs'                => array( 'type' => 'text', 'label' => 'Český název', 'required' => true ),
-			'name_en'                => array( 'type' => 'text', 'label' => 'Anglický název', 'required' => false ),
-			'iso_code'               => array( 'type' => 'text', 'label' => 'ISO kód', 'required' => true ),
-			'flag_emoji'             => array( 'type' => 'text', 'label' => 'Vlajka (emoji)', 'required' => true ),
-			'capital'                => array( 'type' => 'text', 'label' => 'Hlavní město', 'required' => false ),
-			'languages'              => array( 'type' => 'string_list', 'label' => 'Jazyky', 'required' => false ),
-			'currency'               => array( 'type' => 'text', 'label' => 'Měna', 'required' => false ),
-			'area_km2'               => array( 'type' => 'int', 'label' => 'Rozloha (km²)', 'required' => false ),
-			'population'             => array( 'type' => 'int', 'label' => 'Počet obyvatel', 'required' => false ),
-			'population_year'        => array( 'type' => 'int', 'label' => 'Rok platnosti údaje o populaci', 'required' => false ),
-			'intro'                  => array( 'type' => 'richtext', 'label' => 'Krátký úvod', 'required' => true ),
-			'taste_intro'            => array( 'type' => 'richtext', 'label' => 'Jak chutná…', 'required' => false ),
-			'typical_ingredients'    => array( 'type' => 'string_list', 'label' => 'Typické suroviny', 'required' => false ),
+			'name_cs'                => array( 'type' => 'text', 'label' => __( 'Český název', 'atlas-chuti' ), 'required' => true ),
+			'name_en'                => array( 'type' => 'text', 'label' => __( 'Anglický název', 'atlas-chuti' ), 'required' => false ),
+			'iso_code'               => array( 'type' => 'text', 'label' => __( 'ISO kód', 'atlas-chuti' ), 'required' => true ),
+			'flag_emoji'             => array( 'type' => 'text', 'label' => __( 'Vlajka (emoji)', 'atlas-chuti' ), 'required' => true ),
+			'capital'                => array( 'type' => 'text', 'label' => __( 'Hlavní město', 'atlas-chuti' ), 'required' => false ),
+			'languages'              => array( 'type' => 'string_list', 'label' => __( 'Jazyky', 'atlas-chuti' ), 'required' => false ),
+			'currency'               => array( 'type' => 'text', 'label' => __( 'Měna', 'atlas-chuti' ), 'required' => false ),
+			'area_km2'               => array( 'type' => 'int', 'label' => __( 'Rozloha (km²)', 'atlas-chuti' ), 'required' => false ),
+			'population'             => array( 'type' => 'int', 'label' => __( 'Počet obyvatel', 'atlas-chuti' ), 'required' => false ),
+			'population_year'        => array( 'type' => 'int', 'label' => __( 'Rok platnosti údaje o populaci', 'atlas-chuti' ), 'required' => false ),
+			'intro'                  => array( 'type' => 'richtext', 'label' => __( 'Krátký úvod', 'atlas-chuti' ), 'required' => true ),
+			'taste_intro'            => array( 'type' => 'richtext', 'label' => __( 'Jak chutná…', 'atlas-chuti' ), 'required' => false ),
+			'typical_ingredients'    => array( 'type' => 'string_list', 'label' => __( 'Typické suroviny', 'atlas-chuti' ), 'required' => false ),
 			'traditional_dishes'     => array(
 				'type'     => 'repeater',
-				'label'    => 'Co se v zemi jí',
+				'label' => __( 'Co se v zemi jí', 'atlas-chuti' ),
 				'required' => false,
 				'shape'    => array( 'name', 'note', 'recipe_id' ),
 			),
 			'must_try'               => array(
 				'type'     => 'repeater',
-				'label'    => '5 jídel, která ochutnat',
+				'label' => __( '5 jídel, která ochutnat', 'atlas-chuti' ),
 				'required' => false,
 				'shape'    => array( 'name', 'note' ),
 			),
-			'fun_facts'              => array( 'type' => 'string_list', 'label' => 'Gastronomické zajímavosti', 'required' => false ),
-			'related_glossary'       => array( 'type' => 'post_ref_list', 'label' => 'Související pojmy', 'required' => false, 'ref_type' => 'atlas_glossary' ),
-			'related_countries'      => array( 'type' => 'post_ref_list', 'label' => 'Podobné kuchyně', 'required' => false, 'ref_type' => 'atlas_country' ),
-			'seo_title'              => array( 'type' => 'text', 'label' => 'SEO title', 'required' => false ),
-			'meta_description'      => array( 'type' => 'textarea', 'label' => 'Meta description', 'required' => false ),
-			'facts_source'           => array( 'type' => 'text', 'label' => 'Zdroj faktografických údajů', 'required' => false ),
-			'facts_updated'          => array( 'type' => 'date', 'label' => 'Datum poslední aktualizace', 'required' => false ),
+			'fun_facts'              => array( 'type' => 'string_list', 'label' => __( 'Gastronomické zajímavosti', 'atlas-chuti' ), 'required' => false ),
+			'related_glossary'       => array( 'type' => 'post_ref_list', 'label' => __( 'Související pojmy', 'atlas-chuti' ), 'required' => false, 'ref_type' => 'atlas_glossary' ),
+			'related_countries'      => array( 'type' => 'post_ref_list', 'label' => __( 'Podobné kuchyně', 'atlas-chuti' ), 'required' => false, 'ref_type' => 'atlas_country' ),
+			'seo_title'              => array( 'type' => 'text', 'label' => __( 'SEO title', 'atlas-chuti' ), 'required' => false ),
+			'meta_description'      => array( 'type' => 'textarea', 'label' => __( 'Meta description', 'atlas-chuti' ), 'required' => false ),
+			'facts_source'           => array( 'type' => 'text', 'label' => __( 'Zdroj faktografických údajů', 'atlas-chuti' ), 'required' => false ),
+			'facts_updated'          => array( 'type' => 'date', 'label' => __( 'Datum poslední aktualizace', 'atlas-chuti' ), 'required' => false ),
 		);
 	}
 
 	public static function glossary_fields() {
 		return array(
-			'short_definition'  => array( 'type' => 'textarea', 'label' => 'Stručná definice', 'required' => true ),
-			'detailed'          => array( 'type' => 'richtext', 'label' => 'Detailní vysvětlení', 'required' => false ),
-			'origin_country_id' => array( 'type' => 'post_ref', 'label' => 'Země / původ', 'required' => false, 'ref_type' => 'atlas_country' ),
-			'taste'             => array( 'type' => 'textarea', 'label' => 'Jak chutná', 'required' => false ),
-			'usage'             => array( 'type' => 'textarea', 'label' => 'Jak se používá', 'required' => false ),
-			'substitute'        => array( 'type' => 'textarea', 'label' => 'Čím nahradit', 'required' => false ),
-			'related_recipes'   => array( 'type' => 'post_ref_list', 'label' => 'Související recepty', 'required' => false, 'ref_type' => 'atlas_recipe' ),
-			'related_countries' => array( 'type' => 'post_ref_list', 'label' => 'Související země', 'required' => false, 'ref_type' => 'atlas_country' ),
-			'seo_title'         => array( 'type' => 'text', 'label' => 'SEO title', 'required' => false ),
-			'meta_description'  => array( 'type' => 'textarea', 'label' => 'Meta description', 'required' => false ),
+			'short_definition'  => array( 'type' => 'textarea', 'label' => __( 'Stručná definice', 'atlas-chuti' ), 'required' => true ),
+			'detailed'          => array( 'type' => 'richtext', 'label' => __( 'Detailní vysvětlení', 'atlas-chuti' ), 'required' => false ),
+			'origin_country_id' => array( 'type' => 'post_ref', 'label' => __( 'Země / původ', 'atlas-chuti' ), 'required' => false, 'ref_type' => 'atlas_country' ),
+			'taste'             => array( 'type' => 'textarea', 'label' => __( 'Jak chutná', 'atlas-chuti' ), 'required' => false ),
+			'usage'             => array( 'type' => 'textarea', 'label' => __( 'Jak se používá', 'atlas-chuti' ), 'required' => false ),
+			'substitute'        => array( 'type' => 'textarea', 'label' => __( 'Čím nahradit', 'atlas-chuti' ), 'required' => false ),
+			'related_recipes'   => array( 'type' => 'post_ref_list', 'label' => __( 'Související recepty', 'atlas-chuti' ), 'required' => false, 'ref_type' => 'atlas_recipe' ),
+			'related_countries' => array( 'type' => 'post_ref_list', 'label' => __( 'Související země', 'atlas-chuti' ), 'required' => false, 'ref_type' => 'atlas_country' ),
+			'seo_title'         => array( 'type' => 'text', 'label' => __( 'SEO title', 'atlas-chuti' ), 'required' => false ),
+			'meta_description'  => array( 'type' => 'textarea', 'label' => __( 'Meta description', 'atlas-chuti' ), 'required' => false ),
 		);
 	}
 
 	public static function ingredient_fields() {
 		return array(
-			'aliases'      => array( 'type' => 'string_list', 'label' => 'Alternativní názvy (rajče, rajčata, rajčat…)', 'required' => false ),
-			'default_unit' => array( 'type' => 'text', 'label' => 'Výchozí jednotka', 'required' => false ),
+			'key'          => array( 'type' => 'text', 'label' => __( 'Jazykově neutrální klíč (např. "tomato")', 'atlas-chuti' ), 'required' => false ),
+			'aliases'      => array( 'type' => 'string_list', 'label' => __( 'Alternativní názvy (rajče, rajčata, rajčat…)', 'atlas-chuti' ), 'required' => false ),
+			'default_unit' => array( 'type' => 'text', 'label' => __( 'Výchozí jednotka', 'atlas-chuti' ), 'required' => false ),
 		);
+	}
+
+	/**
+	 * Meta keys shared by every locale-bearing entity (recipe/country/glossary) for
+	 * language readiness (item 17 of the brief). Not rendered by the generic meta box
+	 * loop — Czech is the only active locale today so there's nothing useful to edit —
+	 * but the importer reads/writes them and class-i18n.php backfills sane defaults on
+	 * every save, so the contract always holds.
+	 */
+	public static function i18n_field_keys() {
+		return array( 'locale', 'translation_group', 'translation_status' );
 	}
 
 	public static function fields_for( $post_type ) {

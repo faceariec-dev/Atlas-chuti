@@ -14,24 +14,24 @@ $all_countries   = get_posts( array( 'post_type' => 'atlas_country', 'posts_per_
 ?>
 
 <section class="container-medium text-center" style="padding:64px var(--gutter) 32px;">
-	<h1>Země světa</h1>
+	<h1><?php esc_html_e( 'Země světa', 'atlas-chuti' ); ?></h1>
 	<?php the_content(); ?>
 	<form class="search-box" style="max-width:520px;margin:24px auto 0;" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
 		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
-		<input type="search" name="s" placeholder="Hledat zemi…">
+		<input type="search" name="s" placeholder="<?php esc_attr_e( 'Hledat zemi…', 'atlas-chuti' ); ?>">
 	</form>
 </section>
 
 <?php if ( $continents && ! is_wp_error( $continents ) ) : ?>
 <section class="container section">
-	<h2>Šest světadílů</h2>
+	<h2><?php esc_html_e( 'Šest světadílů', 'atlas-chuti' ); ?></h2>
 	<div class="card-grid card-grid-6" style="margin-top:20px;">
 		<?php foreach ( $continents as $continent ) :
 			$count = ( new WP_Query( array( 'post_type' => 'atlas_country', 'tax_query' => array( array( 'taxonomy' => 'atlas_continent', 'terms' => $continent->term_id ) ), 'fields' => 'ids', 'posts_per_page' => -1 ) ) )->found_posts;
 			?>
 			<a class="continent-tile" href="<?php echo esc_url( get_term_link( $continent ) ); ?>" style="<?php echo 0 === $count ? 'opacity:0.5;' : ''; ?>">
 				<div class="placeholder-media"></div>
-				<span><?php echo esc_html( $continent->name ); ?><br><small style="font-weight:400;opacity:0.85;"><?php echo esc_html( atlas_chuti_czech_plural( $count, 'země', 'země', 'zemí' ) ); ?></small></span>
+				<span><?php echo esc_html( $continent->name ); ?><br><small style="font-weight:400;opacity:0.85;"><?php echo esc_html( atlas_chuti_czech_plural( $count, __( 'země', 'atlas-chuti' ), __( 'země', 'atlas-chuti' ), __( 'zemí', 'atlas-chuti' ) ) ); ?></small></span>
 			</a>
 		<?php endforeach; ?>
 	</div>
@@ -40,9 +40,9 @@ $all_countries   = get_posts( array( 'post_type' => 'atlas_country', 'posts_per_
 
 <section class="container section">
 	<div class="section-head">
-		<h2>Všechny dostupné země</h2>
+		<h2><?php esc_html_e( 'Všechny dostupné země', 'atlas-chuti' ); ?></h2>
 		<?php if ( ! $show_all && count( $all_countries ) > 8 ) : ?>
-			<a class="more-link" href="<?php echo esc_url( add_query_arg( 'vse', '1' ) ); ?>">Zobrazit všechny (<?php echo count( $all_countries ); ?>) →</a>
+			<a class="more-link" href="<?php echo esc_url( add_query_arg( 'vse', '1' ) ); ?>"><?php echo esc_html( sprintf( __( 'Zobrazit všechny (%d) →', 'atlas-chuti' ), count( $all_countries ) ) ); ?></a>
 		<?php endif; ?>
 	</div>
 	<?php if ( $all_countries ) : ?>
@@ -52,7 +52,7 @@ $all_countries   = get_posts( array( 'post_type' => 'atlas_country', 'posts_per_
 			<?php endforeach; ?>
 		</div>
 	<?php else : ?>
-		<p class="empty-state">Zatím zde není publikovaná žádná země.</p>
+		<p class="empty-state"><?php esc_html_e( 'Zatím zde není publikovaná žádná země.', 'atlas-chuti' ); ?></p>
 	<?php endif; ?>
 </section>
 

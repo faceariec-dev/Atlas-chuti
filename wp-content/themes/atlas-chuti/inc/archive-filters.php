@@ -92,7 +92,7 @@ function atlas_chuti_radio_group( $name, $terms, $active_slug ) {
 	if ( ! $terms || is_wp_error( $terms ) ) {
 		return;
 	}
-	printf( '<label><input type="radio" name="%1$s" value="" %2$s> Vše</label>', esc_attr( $name ), checked( '', $active_slug, false ) );
+	printf( '<label><input type="radio" name="%1$s" value="" %2$s> %3$s</label>', esc_attr( $name ), checked( '', $active_slug, false ), esc_html__( 'Vše', 'atlas-chuti' ) );
 	foreach ( $terms as $term ) {
 		printf(
 			'<label><input type="radio" name="%1$s" value="%2$s" %3$s> %4$s</label>',

@@ -12,12 +12,12 @@ while ( have_posts() ) :
 
 	$facts = array_filter(
 		array(
-			'Hlavní město' => get_post_meta( $post_id, 'atlas_capital', true ),
-			'Světadíl'     => $continent_name,
-			'Jazyk'        => implode( ', ', (array) get_post_meta( $post_id, 'atlas_languages', true ) ),
-			'Měna'         => get_post_meta( $post_id, 'atlas_currency', true ),
-			'Populace'     => get_post_meta( $post_id, 'atlas_population', true ) ? number_format_i18n( get_post_meta( $post_id, 'atlas_population', true ) ) : '',
-			'Rozloha'      => get_post_meta( $post_id, 'atlas_area_km2', true ) ? number_format_i18n( get_post_meta( $post_id, 'atlas_area_km2', true ) ) . ' km²' : '',
+			__( 'Hlavní město', 'atlas-chuti' ) => get_post_meta( $post_id, 'atlas_capital', true ),
+			__( 'Světadíl', 'atlas-chuti' )     => $continent_name,
+			__( 'Jazyk', 'atlas-chuti' )        => implode( ', ', (array) get_post_meta( $post_id, 'atlas_languages', true ) ),
+			__( 'Měna', 'atlas-chuti' )         => get_post_meta( $post_id, 'atlas_currency', true ),
+			__( 'Populace', 'atlas-chuti' )     => get_post_meta( $post_id, 'atlas_population', true ) ? number_format_i18n( get_post_meta( $post_id, 'atlas_population', true ) ) : '',
+			__( 'Rozloha', 'atlas-chuti' )      => get_post_meta( $post_id, 'atlas_area_km2', true ) ? number_format_i18n( get_post_meta( $post_id, 'atlas_area_km2', true ) ) . ' km²' : '',
 		)
 	);
 
@@ -60,14 +60,14 @@ while ( have_posts() ) :
 		<div style="margin-top:20px;">
 			<button type="button" class="btn btn-outline" data-passport-country-toggle data-country='<?php echo esc_attr( wp_json_encode( $passport_data ) ); ?>'>
 				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle></svg>
-				<span class="label">Označit jako ochutnané</span>
+				<span class="label"><?php esc_html_e( 'Označit jako ochutnané', 'atlas-chuti' ); ?></span>
 			</button>
 		</div>
 	</section>
 
 	<?php if ( $intro || $taste_intro ) : ?>
 	<section class="container-medium section">
-		<h2>Jak chutná <?php echo esc_html( get_the_title() ); ?></h2>
+		<h2><?php echo esc_html( sprintf( __( 'Jak chutná %s', 'atlas-chuti' ), get_the_title() ) ); ?></h2>
 		<?php if ( $intro ) : ?><div><?php echo wp_kses_post( wpautop( $intro ) ); ?></div><?php endif; ?>
 		<?php if ( $taste_intro ) : ?><div><?php echo wp_kses_post( wpautop( $taste_intro ) ); ?></div><?php endif; ?>
 	</section>
@@ -75,7 +75,7 @@ while ( have_posts() ) :
 
 	<?php if ( $ingredients ) : ?>
 	<section class="container section">
-		<h2>Typické suroviny</h2>
+		<h2><?php esc_html_e( 'Typické suroviny', 'atlas-chuti' ); ?></h2>
 		<div class="ingredient-chips">
 			<?php foreach ( (array) $ingredients as $ing ) : ?>
 				<span class="chip chip-static">🌿 <?php echo esc_html( $ing ); ?></span>
@@ -86,7 +86,7 @@ while ( have_posts() ) :
 
 	<?php if ( $dishes ) : ?>
 	<section class="container section">
-		<h2>Co se v <?php echo esc_html( get_the_title() ); ?> jí</h2>
+		<h2><?php echo esc_html( sprintf( __( 'Co se v %s jí', 'atlas-chuti' ), get_the_title() ) ); ?></h2>
 		<div class="card-grid card-grid-3">
 			<?php foreach ( (array) $dishes as $dish ) : $has_recipe = ! empty( $dish['recipe_id'] ) && 'publish' === get_post_status( $dish['recipe_id'] ); ?>
 				<?php if ( $has_recipe ) : ?>
@@ -102,7 +102,7 @@ while ( have_posts() ) :
 	<?php if ( $must_try ) : ?>
 	<section class="container section">
 		<div class="dark-panel">
-			<h2>5 jídel, která byste měli v <?php echo esc_html( get_the_title() ); ?> ochutnat</h2>
+			<h2><?php echo esc_html( sprintf( __( '5 jídel, která byste měli v %s ochutnat', 'atlas-chuti' ), get_the_title() ) ); ?></h2>
 			<div class="must-try-grid">
 				<?php foreach ( (array) $must_try as $i => $item ) : ?>
 					<div class="must-try-item">
@@ -118,7 +118,7 @@ while ( have_posts() ) :
 
 	<?php if ( $fun_facts ) : ?>
 	<section class="container section">
-		<h2>Zajímavosti o <?php echo esc_html( get_the_title() ); ?> kuchyni</h2>
+		<h2><?php echo esc_html( sprintf( __( 'Zajímavosti o %s kuchyni', 'atlas-chuti' ), get_the_title() ) ); ?></h2>
 		<div class="fun-facts-grid">
 			<?php foreach ( (array) $fun_facts as $fact ) : ?>
 				<div class="fun-fact"><?php echo esc_html( $fact ); ?></div>
@@ -129,7 +129,7 @@ while ( have_posts() ) :
 
 	<?php if ( $recipes ) : ?>
 	<section class="container section">
-		<h2><?php echo esc_html( get_the_title() ); ?> recepty</h2>
+		<h2><?php echo esc_html( sprintf( __( '%s recepty', 'atlas-chuti' ), get_the_title() ) ); ?></h2>
 		<div class="card-grid card-grid-4">
 			<?php foreach ( $recipes as $r ) : ?>
 				<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => $r->ID ) ); ?>
@@ -140,7 +140,7 @@ while ( have_posts() ) :
 
 	<?php if ( $glossary_ids ) : ?>
 	<section class="container section">
-		<h2>Z kuchařského slovníčku</h2>
+		<h2><?php esc_html_e( 'Z kuchařského slovníčku', 'atlas-chuti' ); ?></h2>
 		<div class="flex-wrap-gap">
 			<?php foreach ( (array) $glossary_ids as $gid ) : if ( 'publish' !== get_post_status( $gid ) ) { continue; } ?>
 				<a class="chip" href="<?php echo esc_url( get_permalink( $gid ) ); ?>"><?php echo esc_html( get_the_title( $gid ) ); ?></a>
@@ -152,7 +152,7 @@ while ( have_posts() ) :
 	<?php if ( $related_ids ) : ?>
 	<section class="container section">
 		<div class="discover-panel" style="flex-direction:column;align-items:stretch;">
-			<h3>Chutná vám <?php echo esc_html( get_the_title() ); ?>? Objevte i další kuchyně.</h3>
+			<h3><?php echo esc_html( sprintf( __( 'Chutná vám %s? Objevte i další kuchyně.', 'atlas-chuti' ), get_the_title() ) ); ?></h3>
 			<div class="card-grid card-grid-3" style="margin-top:20px;">
 				<?php foreach ( (array) $related_ids as $rid ) : if ( 'publish' !== get_post_status( $rid ) ) { continue; } ?>
 					<?php get_template_part( 'template-parts/country-card', null, array( 'post_id' => $rid ) ); ?>

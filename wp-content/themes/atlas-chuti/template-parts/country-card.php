@@ -18,6 +18,6 @@ $count       = atlas_chuti_count_recipes_for_country( $post_id );
 			<h3 class="card-title" style="margin:0;"><?php echo esc_html( get_the_title( $post_id ) ); ?></h3>
 		</div>
 		<p class="card-desc"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $description ), 18 ) ); ?></p>
-		<span class="card-count"><?php echo esc_html( atlas_chuti_czech_plural( $count, 'recept', 'recepty', 'receptů' ) ); ?></span>
+		<span class="card-count"><?php echo esc_html( atlas_chuti_czech_plural( $count, __( 'recept', 'atlas-chuti' ), __( 'recepty', 'atlas-chuti' ), __( 'receptů', 'atlas-chuti' ) ) ); ?></span>
 	</div>
 </a>

@@ -1,8 +1,11 @@
 {
+  "locale": "cs-CZ",
+  "translation_group": "spaghetti-carbonara",
+  "translation_status": "published",
   "title": "Spaghetti Carbonara",
   "slug": "spaghetti-carbonara",
   "original_title": "Spaghetti alla Carbonara",
-  "country": "italie",
+  "country": "IT",
   "related_countries": [],
   "excerpt": "Římská klasika ze čtyř surovin: vejce, guanciale, pecorino a pepř. Žádná smetana, žádné zkratky.",
   "photo_credit": "",
@@ -15,12 +18,12 @@
   "diet": [],
   "about": "Carbonara je jedním z nejvíce nepochopených receptů italské kuchyně. Kouzlo je v emulzi vajec a sýra, která díky teplu z těstovin zhoustne do hebké omáčky – bez jediné kapky smetany.",
   "ingredients": [
-    { "ingredient_id": "spagety", "name": "Spaghetti", "quantity": "400", "unit": "g", "note": "", "group": "Hlavní" },
+    { "ingredient_id": "pasta_spaghetti", "name": "Spaghetti", "quantity": "400", "unit": "g", "note": "", "group": "Hlavní" },
     { "ingredient_id": "guanciale", "name": "Guanciale", "quantity": "150", "unit": "g", "note": "", "group": "Hlavní" },
-    { "ingredient_id": "vejce", "name": "Vejce", "quantity": "4", "unit": "ks", "note": "", "group": "Hlavní" },
-    { "ingredient_id": "pecorino", "name": "Pecorino Romano", "quantity": "80", "unit": "g", "note": "nastrouhaný", "group": "Hlavní" },
-    { "ingredient_id": "cerny-pepr", "name": "Černý pepř", "quantity": "podle chuti", "unit": "", "note": "čerstvě mletý", "group": "Hlavní" },
-    { "ingredient_id": "sul", "name": "Sůl", "quantity": "podle chuti", "unit": "", "note": "na vodu", "group": "Hlavní" }
+    { "ingredient_id": "egg", "name": "Vejce", "quantity": "4", "unit": "ks", "note": "", "group": "Hlavní" },
+    { "ingredient_id": "pecorino_romano", "name": "Pecorino Romano", "quantity": "80", "unit": "g", "note": "nastrouhaný", "group": "Hlavní" },
+    { "ingredient_id": "black_pepper", "name": "Černý pepř", "quantity": "podle chuti", "unit": "", "note": "čerstvě mletý", "group": "Hlavní" },
+    { "ingredient_id": "salt", "name": "Sůl", "quantity": "podle chuti", "unit": "", "note": "na vodu", "group": "Hlavní" }
   ],
   "steps": [
     { "order": 1, "text": "Uvařte spaghetti v hodně osolené vodě do stavu al dente. Odložte si šálek vody z vaření." },

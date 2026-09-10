@@ -65,7 +65,7 @@ Vlastní obsahové typy (registruje `atlas-chuti-core`):
 | `atlas_recipe`    | Recept                                             | ano (`/recepty/…`) |
 | `atlas_country`   | Země / gastronomická destinace                     | ano (`/zeme/…`) |
 | `atlas_glossary`  | Pojem kuchařského slovníčku                        | ano (`/slovnicek/…`) |
-| `atlas_ingredient`| Normalizovaná ingredience ("rajče"="rajčata")      | ne (interní) |
+| `atlas_ingredient`| Normalizovaná ingredience ("rajče"="rajčata"), identita = jazykově neutrální `atlas_key` (např. `tomato`), ne slug | ne (interní) |
 
 Taxonomie:
 
@@ -111,8 +111,10 @@ Zpracování:
 1. Validace povinných polí (chybějící pole = chyba u toho řádku, zbytek
    dávky pokračuje dál).
 2. Vazby mezi entitami (země receptu, související recepty/pojmy…) se zadávají
-   **slugem**, ne číselným ID — stabilní napříč re-importy a stejný formát,
-   jaký bude jednou generovat AI.
+   **stabilním jazykově nezávislým klíčem** — ISO kódem u zemí, `translation_group`
+   u receptů/slovníčku, `key` u ingrediencí — nikdy číselným WordPress ID. Slug je
+   přijímán jako fallback jen dokud existuje jediná jazyková verze (viz "Příprava
+   na anglickou verzi" níže). Stejný formát bude jednou používat i AI.
 3. Dvouprůchodové zpracování: nejdřív se založí/aktualizují všechny entity,
    pak se ve druhém průchodu dopočítají vzájemné vazby (funguje i pro
    dopředné odkazy v rámci jednoho souboru).
@@ -135,6 +137,56 @@ wp atlas import sample-data/batch-import-sample.json
 
 Prvních 50 produkčních receptů je záměrně samostatný následující krok, ne
 součást tohoto importu.
+
+## Příprava na anglickou verzi (language-ready, bod 17 zadání)
+
+Aktivní je zatím pouze čeština — žádné anglické stránky, žádný `/en/`, žádný
+WPML/Polylang. Předpokládaný budoucí model je ale **samostatná anglická `.com`
+instance** (vlastní WordPress, vlastní WordPress ID, případně vlastní
+fotografie a SEO texty), používající stejný theme, stejný `atlas-chuti-core`
+plugin a stejné JSON schema. Proto:
+
+- **Kód → data → lokalizovaný obsah je oddělené.** Datový model (typy entit,
+  meta pole, taxonomie) je jazykově neutrální; teprve konkrétní hodnoty
+  (název, perex, kroky, SEO texty…) jsou v jednom jazyce.
+- **Stabilní identita nezávisí na jazyce ani na WordPress ID:**
+  - Země: ISO 3166-1 kód (`atlas_iso_code`), např. `IT`. Český název "Itálie"
+    a anglický "Italy" budou dvě různé stránky se stejným ISO kódem.
+  - Recepty a slovníček: `atlas_translation_group` — stabilní klíč sdílený
+    všemi jazykovými verzemi téhož obsahu (chybí-li při importu, odvodí se
+    ze slugu, což funguje jen dokud existuje jediný jazyk).
+  - Ingredience: `atlas_key` — jazykově neutrální klíč (např. `tomato`), ne
+    český slug (`rajce`). "Rajče"/"rajčata"/"rajčat" jsou aliasy JEDNÉ entity;
+    anglická verze bude mít `{"key": "tomato", "name": "Tomato", "locale":
+    "en"}` se stejným klíčem.
+  - Tuto logiku (`find_country_by_iso`, `find_by_translation_group`,
+    `find_ingredient_by_key`) implementuje `includes/class-i18n.php`; JSON
+    importer (`class-json-importer.php`) ji používá pro veškeré vazby mezi
+    entitami místo číselného post ID.
+- **`atlas_locale`** (výchozí `cs-CZ`) a **`atlas_translation_status`**
+  (`none`/`draft`/`reviewed`/`published`) se ukládají na každý recept, zemi a
+  pojem — i bez explicitního zadání v JSON (doplní je `class-i18n.php` při
+  každém uložení). Připraveno na to, že budoucí AI nebude recept jen doslovně
+  překládat, ale vytvoří lokalizovanou verzi se svým vlastním stavem
+  překladu.
+- **URL/slugy jsou nezávislé na jazyce.** `/recepty/`, `/zeme/`,
+  `/slovnicek/` jsou dnešní české cesty; anglická instance může mít
+  `/recipes/`, `/countries/`, `/glossary/` bez jakékoli změny datového
+  modelu — slug je vlastnost jedné jazykové verze, ne identita obsahu.
+- **`__()`/`_e()`/`esc_html__()`/`esc_attr__()`** se používají důsledně v
+  celém theme i pluginu (text domain `atlas-chuti`, `Domain Path: /languages`
+  v `style.css` i v `atlas-chuti-core.php`) — připraveno na `.po`/`.mo`
+  překlad, aniž by se dnes cokoliv měnilo na chování webu. Texty vykreslované
+  JavaScriptem (`passport.js`, admin `repeater.js`) dostávají řetězce přes
+  `wp_localize_script()`, ne natvrdo v `.js` souboru.
+- **Kulinářský pas** (`localStorage`) ukládá při označení země primárně její
+  název a vlajku (zobrazovací data pro aktuální jazyk) — díky `atlas_iso_code`
+  na straně WordPressu je ale kdykoliv možné tato lokální data napárovat na
+  ISO kód a v budoucnu je sesynchronizovat mezi jazykovými verzemi účtu.
+- **SEO** (`class-seo.php`) dnes nevkládá `hreflang` ani odkazy na
+  neexistující `.com` — jakmile bude anglická verze reálně spuštěná, canonical
+  URL a `hreflang="cs"`/`hreflang="en"` lze doplnit bez zásahu do datového
+  modelu.
 
 ## Kulinářský pas
 

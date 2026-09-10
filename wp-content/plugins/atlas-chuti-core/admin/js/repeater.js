@@ -51,7 +51,7 @@
 		var removeBtn = document.createElement( 'button' );
 		removeBtn.type = 'button';
 		removeBtn.className = 'button-link atlas-repeater-remove';
-		removeBtn.textContent = '✕ odebrat';
+		removeBtn.textContent = ( window.AtlasRepeaterL10n && window.AtlasRepeaterL10n.remove ) || '✕ odebrat';
 		removeBtn.addEventListener( 'click', function () {
 			row.remove();
 			sync( repeater );

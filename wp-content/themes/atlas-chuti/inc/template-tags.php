@@ -68,7 +68,7 @@ function atlas_chuti_breadcrumbs() {
 	if ( count( $items ) < 2 ) {
 		return;
 	}
-	echo '<nav class="breadcrumbs" aria-label="Drobečková navigace">';
+	echo '<nav class="breadcrumbs" aria-label="' . esc_attr__( 'Drobečková navigace', 'atlas-chuti' ) . '">';
 	foreach ( $items as $i => $item ) {
 		if ( $i > 0 ) {
 			echo '<span aria-hidden="true">/</span>';
@@ -99,10 +99,10 @@ function atlas_chuti_primary_nav() {
 		return;
 	}
 	$fallback = array(
-		'Země'                 => home_url( '/zeme/' ),
-		'Recepty'              => get_post_type_archive_link( 'atlas_recipe' ),
-		'Kuchařský slovníček'  => get_post_type_archive_link( 'atlas_glossary' ),
-		'Kulinářský pas'       => home_url( '/kulinarsky-pas/' ),
+		__( 'Země', 'atlas-chuti' )                => home_url( '/zeme/' ),
+		__( 'Recepty', 'atlas-chuti' )              => get_post_type_archive_link( 'atlas_recipe' ),
+		__( 'Kuchařský slovníček', 'atlas-chuti' )  => get_post_type_archive_link( 'atlas_glossary' ),
+		__( 'Kulinářský pas', 'atlas-chuti' )       => home_url( '/kulinarsky-pas/' ),
 	);
 	foreach ( $fallback as $label => $url ) {
 		printf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $label ) );
@@ -123,7 +123,8 @@ function atlas_chuti_footer_nav( $location, $fallback_items ) {
 	}
 	foreach ( $fallback_items as $label => $url ) {
 		if ( null === $url ) {
-			printf( '<span class="soon">%s (brzy)</span>', esc_html( $label ) );
+			/* translators: %s: feature name not built yet, e.g. "Kulinářské cesty" */
+			printf( '<span class="soon">%s</span>', esc_html( sprintf( __( '%s (brzy)', 'atlas-chuti' ), $label ) ) );
 		} else {
 			printf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $label ) );
 		}

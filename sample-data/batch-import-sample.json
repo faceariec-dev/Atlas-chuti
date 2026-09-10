@@ -1,75 +1,225 @@
 {
   "ingredients": [
-    { "title": "Rajče", "slug": "rajce", "aliases": ["rajčata", "rajčat", "rajčete"], "default_unit": "ks" },
-    { "title": "Spaghetti", "slug": "spagety", "aliases": ["špagety"], "default_unit": "g" },
-    { "title": "Sójová omáčka", "slug": "sojova-omacka", "aliases": ["sojovka"], "default_unit": "lžíce" }
+    {
+      "key": "tomato",
+      "locale": "cs-CZ",
+      "title": "Rajče",
+      "slug": "rajce",
+      "aliases": [
+        "rajčata",
+        "rajčat",
+        "rajčete"
+      ],
+      "default_unit": "ks"
+    },
+    {
+      "key": "pasta_spaghetti",
+      "locale": "cs-CZ",
+      "title": "Spaghetti",
+      "slug": "spagety",
+      "aliases": [
+        "špagety"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "key": "soy_sauce",
+      "locale": "cs-CZ",
+      "title": "Sójová omáčka",
+      "slug": "sojova-omacka",
+      "aliases": [
+        "sojovka"
+      ],
+      "default_unit": "lžíce"
+    }
   ],
   "countries": [
     {
-      "title": "Itálie", "slug": "italie", "name_cs": "Itálie", "name_en": "Italy",
-      "iso_code": "IT", "flag_emoji": "🇮🇹", "continent": "Evropa",
-      "capital": "Řím", "languages": ["Italština"], "currency": "Euro (€)",
-      "area_km2": 301340, "population": 59000000, "population_year": 2024,
+      "translation_status": "published",
+      "locale": "cs-CZ",
+      "title": "Itálie",
+      "slug": "italie",
+      "name_cs": "Itálie",
+      "name_en": "Italy",
+      "iso_code": "IT",
+      "flag_emoji": "🇮🇹",
+      "continent": "Evropa",
+      "capital": "Řím",
+      "languages": [
+        "Italština"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 301340,
+      "population": 59000000,
+      "population_year": 2024,
       "intro": "Italská kuchyně stojí na jednoduchosti a kvalitě surovin, ne na složitosti postupu.",
       "taste_intro": "Málo ingrediencí, ale ty nejlepší, jaké lze sehnat – zralá rajčata, dobrý olivový olej, čerstvé bylinky.",
-      "typical_ingredients": ["Rajčata", "Olivový olej", "Bazalka", "Parmezán", "Těstoviny", "Rýže"],
+      "typical_ingredients": [
+        "Rajčata",
+        "Olivový olej",
+        "Bazalka",
+        "Parmezán",
+        "Těstoviny",
+        "Rýže"
+      ],
       "traditional_dishes": [
-        { "name": "Pizza", "note": "Tenké těsto pečené na vysokou teplotu.", "recipe_id": "" },
-        { "name": "Carbonara", "note": "Vejce, guanciale a pecorino.", "recipe_id": "spaghetti-carbonara" }
+        {
+          "name": "Pizza",
+          "note": "Tenké těsto pečené na vysokou teplotu.",
+          "recipe_id": ""
+        },
+        {
+          "name": "Carbonara",
+          "note": "Vejce, guanciale a pecorino.",
+          "recipe_id": "spaghetti-carbonara"
+        }
       ],
       "must_try": [
-        { "name": "Pizza Napoletana", "note": "Tenké těsto, San Marzano rajčata, mozzarella di bufala." },
-        { "name": "Carbonara", "note": "Vejce, guanciale a pecorino – bez smetany." }
+        {
+          "name": "Pizza Napoletana",
+          "note": "Tenké těsto, San Marzano rajčata, mozzarella di bufala."
+        },
+        {
+          "name": "Carbonara",
+          "note": "Vejce, guanciale a pecorino – bez smetany."
+        }
       ],
-      "fun_facts": ["Al dente doslova znamená „na skus“ – těstoviny se nikdy nerozvařují."],
-      "related_glossary": ["al-dente", "soffritto"],
-      "related_countries": ["japonsko", "thajsko"],
+      "fun_facts": [
+        "Al dente doslova znamená „na skus“ – těstoviny se nikdy nerozvařují."
+      ],
+      "related_glossary": [
+        "al-dente",
+        "soffritto"
+      ],
+      "related_countries": [
+        "JP",
+        "TH"
+      ],
       "seo_title": "Itálie – italská kuchyně, recepty a tradiční jídla | Atlas chutí",
       "meta_description": "Poznejte italskou kuchyni: typické suroviny, tradiční jídla a ověřené recepty.",
       "status": "publish"
     },
     {
-      "title": "Japonsko", "slug": "japonsko", "name_cs": "Japonsko", "name_en": "Japan",
-      "iso_code": "JP", "flag_emoji": "🇯🇵", "continent": "Asie",
-      "capital": "Tokio", "languages": ["Japonština"], "currency": "Jen (¥)",
-      "area_km2": 377975, "population": 123000000, "population_year": 2024,
+      "translation_status": "published",
+      "locale": "cs-CZ",
+      "title": "Japonsko",
+      "slug": "japonsko",
+      "name_cs": "Japonsko",
+      "name_en": "Japan",
+      "iso_code": "JP",
+      "flag_emoji": "🇯🇵",
+      "continent": "Asie",
+      "capital": "Tokio",
+      "languages": [
+        "Japonština"
+      ],
+      "currency": "Jen (¥)",
+      "area_km2": 377975,
+      "population": 123000000,
+      "population_year": 2024,
       "intro": "Přesnost, sezónnost a čistá chuť syrových i fermentovaných surovin.",
       "taste_intro": "Umami, jemné slané tóny dashi a rovnováha mezi syrovým a vařeným.",
-      "typical_ingredients": ["Sójová omáčka", "Miso", "Rýže", "Dashi", "Wasabi", "Nori"],
+      "typical_ingredients": [
+        "Sójová omáčka",
+        "Miso",
+        "Rýže",
+        "Dashi",
+        "Wasabi",
+        "Nori"
+      ],
       "traditional_dishes": [
-        { "name": "Ramen", "note": "Nudlová polévka s bohatým vývarem.", "recipe_id": "miso-ramen" },
-        { "name": "Sushi", "note": "Octová rýže s rybou nebo zeleninou.", "recipe_id": "" }
+        {
+          "name": "Ramen",
+          "note": "Nudlová polévka s bohatým vývarem.",
+          "recipe_id": "miso-ramen"
+        },
+        {
+          "name": "Sushi",
+          "note": "Octová rýže s rybou nebo zeleninou.",
+          "recipe_id": ""
+        }
       ],
       "must_try": [
-        { "name": "Ramen", "note": "Hluboký vývar a domácí nudle." },
-        { "name": "Sushi", "note": "Čerstvá ryba a octová rýže." }
+        {
+          "name": "Ramen",
+          "note": "Hluboký vývar a domácí nudle."
+        },
+        {
+          "name": "Sushi",
+          "note": "Čerstvá ryba a octová rýže."
+        }
       ],
-      "fun_facts": ["Dashi je základem naprosté většiny japonských vývarů a polévek."],
-      "related_glossary": ["miso", "dashi"],
-      "related_countries": ["thajsko"],
+      "fun_facts": [
+        "Dashi je základem naprosté většiny japonských vývarů a polévek."
+      ],
+      "related_glossary": [
+        "miso",
+        "dashi"
+      ],
+      "related_countries": [
+        "TH"
+      ],
       "seo_title": "Japonsko – japonská kuchyně, recepty a tradiční jídla | Atlas chutí",
       "meta_description": "Poznejte japonskou kuchyni: typické suroviny, tradiční jídla a ověřené recepty.",
       "status": "publish"
     },
     {
-      "title": "Thajsko", "slug": "thajsko", "name_cs": "Thajsko", "name_en": "Thailand",
-      "iso_code": "TH", "flag_emoji": "🇹🇭", "continent": "Asie",
-      "capital": "Bangkok", "languages": ["Thajština"], "currency": "Baht (฿)",
-      "area_km2": 513120, "population": 71000000, "population_year": 2024,
+      "translation_status": "published",
+      "locale": "cs-CZ",
+      "title": "Thajsko",
+      "slug": "thajsko",
+      "name_cs": "Thajsko",
+      "name_en": "Thailand",
+      "iso_code": "TH",
+      "flag_emoji": "🇹🇭",
+      "continent": "Asie",
+      "capital": "Bangkok",
+      "languages": [
+        "Thajština"
+      ],
+      "currency": "Baht (฿)",
+      "area_km2": 513120,
+      "population": 71000000,
+      "population_year": 2024,
       "intro": "Aromatická kuchyně kombinující sladké, kyselé, slané a pálivé chutě.",
       "taste_intro": "Rovnováha čtyř základních chutí v jednom soustu, hodně bylinek a čerstvého chilli.",
-      "typical_ingredients": ["Rybí omáčka", "Kokosové mléko", "Citronová tráva", "Rýžové nudle", "Chilli", "Limetka"],
+      "typical_ingredients": [
+        "Rybí omáčka",
+        "Kokosové mléko",
+        "Citronová tráva",
+        "Rýžové nudle",
+        "Chilli",
+        "Limetka"
+      ],
       "traditional_dishes": [
-        { "name": "Pad Thai", "note": "Smažené rýžové nudle s tamarindovou omáčkou.", "recipe_id": "pad-thai" },
-        { "name": "Tom Yum", "note": "Pálivo-kyselá polévka s citronovou trávou.", "recipe_id": "" }
+        {
+          "name": "Pad Thai",
+          "note": "Smažené rýžové nudle s tamarindovou omáčkou.",
+          "recipe_id": "pad-thai"
+        },
+        {
+          "name": "Tom Yum",
+          "note": "Pálivo-kyselá polévka s citronovou trávou.",
+          "recipe_id": ""
+        }
       ],
       "must_try": [
-        { "name": "Pad Thai", "note": "Sladko-kyselo-slaná klasika ulic Bangkoku." },
-        { "name": "Tom Yum Goong", "note": "Pálivá polévka s krevetami a citronovou trávou." }
+        {
+          "name": "Pad Thai",
+          "note": "Sladko-kyselo-slaná klasika ulic Bangkoku."
+        },
+        {
+          "name": "Tom Yum Goong",
+          "note": "Pálivá polévka s krevetami a citronovou trávou."
+        }
       ],
-      "fun_facts": ["Thajská kuchyně staví na rovnováze sladké, kyselé, slané a pálivé chuti v jednom jídle."],
+      "fun_facts": [
+        "Thajská kuchyně staví na rovnováze sladké, kyselé, slané a pálivé chuti v jednom jídle."
+      ],
       "related_glossary": [],
-      "related_countries": ["japonsko"],
+      "related_countries": [
+        "JP"
+      ],
       "seo_title": "Thajsko – thajská kuchyně, recepty a tradiční jídla | Atlas chutí",
       "meta_description": "Poznejte thajskou kuchyni: typické suroviny, tradiční jídla a ověřené recepty.",
       "status": "publish"
@@ -77,128 +227,407 @@
   ],
   "glossary": [
     {
-      "title": "Al dente", "slug": "al-dente", "category": "Kuchařské techniky",
+      "title": "Al dente",
+      "slug": "al-dente",
+      "category": "Kuchařské techniky",
       "short_definition": "Stupeň uvaření těstovin či rýže „na skus“, kdy si zachovávají mírný odpor.",
       "detailed": "Al dente doslova znamená „na zub“. Ochutnávejte cca minutu před uplynutím doby uvedené na obalu.",
-      "origin_country": "italie", "related_recipes": ["spaghetti-carbonara"], "related_countries": ["italie"],
-      "status": "publish"
+      "origin_country": "IT",
+      "related_recipes": [
+        "spaghetti-carbonara"
+      ],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish",
+      "locale": "cs-CZ",
+      "translation_group": "al-dente",
+      "translation_status": "published"
     },
     {
-      "title": "Soffritto", "slug": "soffritto", "category": "Kuchařské techniky",
+      "title": "Soffritto",
+      "slug": "soffritto",
+      "category": "Kuchařské techniky",
       "short_definition": "Základ italských jídel z pomalu restované cibule, mrkve a celeru.",
       "detailed": "Trojice zeleniny nakrájená najemno a pomalu restovaná na oleji nebo másle, dokud nezesklovatí – základ mnoha italských omáček a vývarů.",
-      "origin_country": "italie", "related_recipes": [], "related_countries": ["italie"],
-      "status": "publish"
+      "origin_country": "IT",
+      "related_recipes": [],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish",
+      "locale": "cs-CZ",
+      "translation_group": "soffritto",
+      "translation_status": "published"
     },
     {
-      "title": "Miso", "slug": "miso", "category": "Suroviny",
+      "title": "Miso",
+      "slug": "miso",
+      "category": "Suroviny",
       "short_definition": "Fermentovaná sójová pasta tvořící základ japonské kuchyně.",
       "detailed": "Vzniká fermentací sójových bobů (často s rýží nebo ječmenem) pomocí kultury kódži. Používá se do polévek, marinád a dresinků.",
-      "origin_country": "japonsko", "taste": "Slané, umami, mírně sladké až zemité podle typu.",
+      "origin_country": "JP",
+      "taste": "Slané, umami, mírně sladké až zemité podle typu.",
       "usage": "Základ polévky miso širu, marinád na ryby a maso, dochucovadlo dresinků.",
-      "related_recipes": ["miso-ramen"], "related_countries": ["japonsko"],
-      "status": "publish"
+      "related_recipes": [
+        "miso-ramen"
+      ],
+      "related_countries": [
+        "JP"
+      ],
+      "status": "publish",
+      "locale": "cs-CZ",
+      "translation_group": "miso",
+      "translation_status": "published"
     },
     {
-      "title": "Dashi", "slug": "dashi", "category": "Suroviny",
+      "title": "Dashi",
+      "slug": "dashi",
+      "category": "Suroviny",
       "short_definition": "Japonský vývar z kombu řasy a sušených ryb bonito.",
       "detailed": "Základní stavební kámen japonské kuchyně – čirý, jemně kouřový a umami vývar používaný v polévkách, omáčkách a dušených jídlech.",
-      "origin_country": "japonsko", "related_recipes": ["miso-ramen"], "related_countries": ["japonsko"],
-      "status": "publish"
+      "origin_country": "JP",
+      "related_recipes": [
+        "miso-ramen"
+      ],
+      "related_countries": [
+        "JP"
+      ],
+      "status": "publish",
+      "locale": "cs-CZ",
+      "translation_group": "dashi",
+      "translation_status": "published"
     }
   ],
   "recipes": [
     {
-      "title": "Spaghetti Carbonara", "slug": "spaghetti-carbonara", "original_title": "Spaghetti alla Carbonara",
-      "country": "italie", "related_countries": [],
+      "title": "Spaghetti Carbonara",
+      "slug": "spaghetti-carbonara",
+      "original_title": "Spaghetti alla Carbonara",
+      "country": "IT",
+      "related_countries": [],
       "excerpt": "Římská klasika ze čtyř surovin: vejce, guanciale, pecorino a pepř.",
-      "servings_default": 4, "prep_minutes": 10, "cook_minutes": 15, "total_minutes": 25,
-      "difficulty": "Snadné", "meal_type": ["Hlavní jídlo"], "diet": [],
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "cook_minutes": 15,
+      "total_minutes": 25,
+      "difficulty": "Snadné",
+      "meal_type": [
+        "Hlavní jídlo"
+      ],
+      "diet": [],
       "about": "Kouzlo carbonary je v emulzi vajec a sýra, která díky teplu z těstovin zhoustne do hebké omáčky – bez smetany.",
       "ingredients": [
-        { "ingredient_id": "spagety", "name": "Spaghetti", "quantity": "400", "unit": "g", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Guanciale", "quantity": "150", "unit": "g", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Vejce", "quantity": "4", "unit": "ks", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Pecorino Romano", "quantity": "80", "unit": "g", "note": "nastrouhaný", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Černý pepř", "quantity": "podle chuti", "unit": "", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Sůl", "quantity": "podle chuti", "unit": "", "note": "na vodu", "group": "Hlavní" }
+        {
+          "ingredient_id": "pasta_spaghetti",
+          "name": "Spaghetti",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Guanciale",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Vejce",
+          "quantity": "4",
+          "unit": "ks",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Pecorino Romano",
+          "quantity": "80",
+          "unit": "g",
+          "note": "nastrouhaný",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Černý pepř",
+          "quantity": "podle chuti",
+          "unit": "",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Sůl",
+          "quantity": "podle chuti",
+          "unit": "",
+          "note": "na vodu",
+          "group": "Hlavní"
+        }
       ],
       "steps": [
-        { "order": 1, "text": "Uvařte spaghetti v hodně osolené vodě al dente. Odložte šálek vody z vaření." },
-        { "order": 2, "text": "Guanciale nakrájejte na kostičky a zvolna opékejte, dokud nezesklovatí." },
-        { "order": 3, "text": "Rozšlehejte vejce s nastrouhaným pecorinem a pepřem." },
-        { "order": 4, "text": "Uvařené těstoviny smíchejte s guanciale mimo plamen." },
-        { "order": 5, "text": "Vmíchejte vaječnou směs a trochu vody z vaření do hebké omáčky." },
-        { "order": 6, "text": "Podávejte ihned s dalším pecorinem a pepřem." }
+        {
+          "order": 1,
+          "text": "Uvařte spaghetti v hodně osolené vodě al dente. Odložte šálek vody z vaření."
+        },
+        {
+          "order": 2,
+          "text": "Guanciale nakrájejte na kostičky a zvolna opékejte, dokud nezesklovatí."
+        },
+        {
+          "order": 3,
+          "text": "Rozšlehejte vejce s nastrouhaným pecorinem a pepřem."
+        },
+        {
+          "order": 4,
+          "text": "Uvařené těstoviny smíchejte s guanciale mimo plamen."
+        },
+        {
+          "order": 5,
+          "text": "Vmíchejte vaječnou směs a trochu vody z vaření do hebké omáčky."
+        },
+        {
+          "order": 6,
+          "text": "Podávejte ihned s dalším pecorinem a pepřem."
+        }
       ],
-      "tips": ["Vejce míchejte vždy mimo plamen, jinak se srazí."],
+      "tips": [
+        "Vejce míchejte vždy mimo plamen, jinak se srazí."
+      ],
       "watch_out": "Tradiční carbonara neobsahuje smetanu.",
-      "variants": [{ "name": "S pancettou", "note": "Dostupnější varianta s podobným výsledkem." }],
+      "variants": [
+        {
+          "name": "S pancettou",
+          "note": "Dostupnější varianta s podobným výsledkem."
+        }
+      ],
       "origin_history": "Carbonara se v dnešní podobě prosadila v Římě v polovině 20. století.",
-      "related_glossary": ["al-dente"], "related_recipes": [],
+      "related_glossary": [
+        "al-dente"
+      ],
+      "related_recipes": [],
       "seo_title": "Spaghetti Carbonara – klasický italský recept | Atlas chutí",
       "meta_description": "Autentická římská Carbonara ze čtyř surovin. Krok za krokem.",
-      "status": "publish"
+      "status": "publish",
+      "locale": "cs-CZ",
+      "translation_group": "spaghetti-carbonara",
+      "translation_status": "published"
     },
     {
-      "title": "Miso ramen s vepřovým bůčkem", "slug": "miso-ramen", "original_title": "Miso rāmen",
-      "country": "japonsko", "related_countries": [],
+      "title": "Miso ramen s vepřovým bůčkem",
+      "slug": "miso-ramen",
+      "original_title": "Miso rāmen",
+      "country": "JP",
+      "related_countries": [],
       "excerpt": "Hluboký vývar, měkký bůček a domácí nudle – vydatná miska teplé útěchy.",
-      "servings_default": 2, "prep_minutes": 30, "cook_minutes": 180, "total_minutes": 210,
-      "difficulty": "Náročné", "meal_type": ["Polévka", "Hlavní jídlo"], "diet": [],
+      "servings_default": 2,
+      "prep_minutes": 30,
+      "cook_minutes": 180,
+      "total_minutes": 210,
+      "difficulty": "Náročné",
+      "meal_type": [
+        "Polévka",
+        "Hlavní jídlo"
+      ],
+      "diet": [],
       "about": "Ramen shoyu i miso stojí na dlouho vařeném vývaru a vyvážené dochucovací omáčce (tare).",
       "ingredients": [
-        { "ingredient_id": "", "name": "Vepřový bůček", "quantity": "400", "unit": "g", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Miso pasta", "quantity": "3", "unit": "lžíce", "note": "", "group": "Vývar" },
-        { "ingredient_id": "sojova-omacka", "name": "Sójová omáčka", "quantity": "2", "unit": "lžíce", "note": "", "group": "Vývar" },
-        { "ingredient_id": "", "name": "Vývar dashi", "quantity": "1", "unit": "l", "note": "", "group": "Vývar" },
-        { "ingredient_id": "", "name": "Ramen nudle", "quantity": "2", "unit": "porce", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Vejce natvrdo", "quantity": "2", "unit": "ks", "note": "marinovaná", "group": "Na dozdobení" }
+        {
+          "ingredient_id": "",
+          "name": "Vepřový bůček",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Miso pasta",
+          "quantity": "3",
+          "unit": "lžíce",
+          "note": "",
+          "group": "Vývar"
+        },
+        {
+          "ingredient_id": "soy_sauce",
+          "name": "Sójová omáčka",
+          "quantity": "2",
+          "unit": "lžíce",
+          "note": "",
+          "group": "Vývar"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Vývar dashi",
+          "quantity": "1",
+          "unit": "l",
+          "note": "",
+          "group": "Vývar"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Ramen nudle",
+          "quantity": "2",
+          "unit": "porce",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Vejce natvrdo",
+          "quantity": "2",
+          "unit": "ks",
+          "note": "marinovaná",
+          "group": "Na dozdobení"
+        }
       ],
       "steps": [
-        { "order": 1, "text": "Bůček pomalu duste v troubě, dokud nezměkne." },
-        { "order": 2, "text": "Připravte dashi vývar a rozmíchejte v něm miso pastu a sójovou omáčku." },
-        { "order": 3, "text": "Uvařte ramen nudle podle návodu na obalu." },
-        { "order": 4, "text": "Sestavte misku: vývar, nudle, plátky bůčku a vejce." }
+        {
+          "order": 1,
+          "text": "Bůček pomalu duste v troubě, dokud nezměkne."
+        },
+        {
+          "order": 2,
+          "text": "Připravte dashi vývar a rozmíchejte v něm miso pastu a sójovou omáčku."
+        },
+        {
+          "order": 3,
+          "text": "Uvařte ramen nudle podle návodu na obalu."
+        },
+        {
+          "order": 4,
+          "text": "Sestavte misku: vývar, nudle, plátky bůčku a vejce."
+        }
       ],
-      "tips": ["Miso pastu vždy rozmíchávejte v teplém, nikoli vroucím vývaru, ať si zachová aroma."],
+      "tips": [
+        "Miso pastu vždy rozmíchávejte v teplém, nikoli vroucím vývaru, ať si zachová aroma."
+      ],
       "watch_out": "Vývar nesmí prudce vřít poté, co do něj přidáte miso – ztratí jemné aroma.",
-      "variants": [{ "name": "Shoyu verze", "note": "Nahraďte miso pastu sójovou omáčkou (tare)." }],
+      "variants": [
+        {
+          "name": "Shoyu verze",
+          "note": "Nahraďte miso pastu sójovou omáčkou (tare)."
+        }
+      ],
       "origin_history": "Ramen vznikl v Japonsku na základě čínských pšeničných nudlí a postupně se rozvětvil do regionálních stylů.",
-      "related_glossary": ["miso", "dashi"], "related_recipes": [],
+      "related_glossary": [
+        "miso",
+        "dashi"
+      ],
+      "related_recipes": [],
       "seo_title": "Miso ramen s vepřovým bůčkem – recept | Atlas chutí",
       "meta_description": "Domácí miso ramen s vepřovým bůčkem a hlubokým vývarem.",
-      "status": "publish"
+      "status": "publish",
+      "locale": "cs-CZ",
+      "translation_group": "miso-ramen",
+      "translation_status": "published"
     },
     {
-      "title": "Pad Thai", "slug": "pad-thai", "original_title": "ผัดไทย",
-      "country": "thajsko", "related_countries": [],
+      "title": "Pad Thai",
+      "slug": "pad-thai",
+      "original_title": "ผัดไทย",
+      "country": "TH",
+      "related_countries": [],
       "excerpt": "Smažené rýžové nudle s krevetami, tamarindovou omáčkou a praženými arašídy.",
-      "servings_default": 2, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
-      "difficulty": "Střední", "meal_type": ["Hlavní jídlo"], "diet": [],
+      "servings_default": 2,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "Střední",
+      "meal_type": [
+        "Hlavní jídlo"
+      ],
+      "diet": [],
       "about": "Pad Thai je vyvážená hra sladké, kyselé, slané a mírně pálivé chuti servírovaná horká přímo z woku.",
       "ingredients": [
-        { "ingredient_id": "", "name": "Rýžové nudle", "quantity": "200", "unit": "g", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Krevety", "quantity": "200", "unit": "g", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Tamarindová pasta", "quantity": "2", "unit": "lžíce", "note": "", "group": "Omáčka" },
-        { "ingredient_id": "", "name": "Rybí omáčka", "quantity": "2", "unit": "lžíce", "note": "", "group": "Omáčka" },
-        { "ingredient_id": "", "name": "Vejce", "quantity": "2", "unit": "ks", "note": "", "group": "Hlavní" },
-        { "ingredient_id": "", "name": "Arašídy", "quantity": "1/2", "unit": "hrnku", "note": "pražené, drcené", "group": "Na dozdobení" }
+        {
+          "ingredient_id": "",
+          "name": "Rýžové nudle",
+          "quantity": "200",
+          "unit": "g",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Krevety",
+          "quantity": "200",
+          "unit": "g",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Tamarindová pasta",
+          "quantity": "2",
+          "unit": "lžíce",
+          "note": "",
+          "group": "Omáčka"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Rybí omáčka",
+          "quantity": "2",
+          "unit": "lžíce",
+          "note": "",
+          "group": "Omáčka"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Vejce",
+          "quantity": "2",
+          "unit": "ks",
+          "note": "",
+          "group": "Hlavní"
+        },
+        {
+          "ingredient_id": "",
+          "name": "Arašídy",
+          "quantity": "1/2",
+          "unit": "hrnku",
+          "note": "pražené, drcené",
+          "group": "Na dozdobení"
+        }
       ],
       "steps": [
-        { "order": 1, "text": "Rýžové nudle namočte podle návodu na obalu." },
-        { "order": 2, "text": "Ve woku orestujte krevety, poté přidejte rozšlehané vejce." },
-        { "order": 3, "text": "Přidejte nudle a omáčku z tamarindové pasty a rybí omáčky, rychle protřepejte." },
-        { "order": 4, "text": "Podávejte s drcenými arašídy a klínkem limetky." }
+        {
+          "order": 1,
+          "text": "Rýžové nudle namočte podle návodu na obalu."
+        },
+        {
+          "order": 2,
+          "text": "Ve woku orestujte krevety, poté přidejte rozšlehané vejce."
+        },
+        {
+          "order": 3,
+          "text": "Přidejte nudle a omáčku z tamarindové pasty a rybí omáčky, rychle protřepejte."
+        },
+        {
+          "order": 4,
+          "text": "Podávejte s drcenými arašídy a klínkem limetky."
+        }
       ],
-      "tips": ["Vše připravte předem – smažení ve woku trvá jen pár minut."],
+      "tips": [
+        "Vše připravte předem – smažení ve woku trvá jen pár minut."
+      ],
       "watch_out": "",
-      "variants": [{ "name": "Vegetariánská verze", "note": "Krevety nahraďte tofu, rybí omáčku sójovou." }],
+      "variants": [
+        {
+          "name": "Vegetariánská verze",
+          "note": "Krevety nahraďte tofu, rybí omáčku sójovou."
+        }
+      ],
       "origin_history": "Pad Thai se rozšířil jako národní jídlo v polovině 20. století v rámci kampaně na podporu thajské rýžové kuchyně.",
-      "related_glossary": [], "related_recipes": [],
+      "related_glossary": [],
+      "related_recipes": [],
       "seo_title": "Pad Thai – tradiční thajský recept | Atlas chutí",
       "meta_description": "Autentický Pad Thai s krevetami, tamarindovou omáčkou a arašídy.",
-      "status": "publish"
+      "status": "publish",
+      "locale": "cs-CZ",
+      "translation_group": "pad-thai",
+      "translation_status": "published"
     }
   ]
 }

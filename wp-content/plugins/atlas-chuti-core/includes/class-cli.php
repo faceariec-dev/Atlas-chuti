@@ -30,13 +30,15 @@ class Atlas_Chuti_CLI {
 	public function import( $args, $assoc_args ) {
 		list( $file ) = $args;
 		if ( ! file_exists( $file ) ) {
-			WP_CLI::error( "Soubor nenalezen: $file" );
+			/* translators: %s: file path */
+			WP_CLI::error( sprintf( __( 'Soubor nenalezen: %s', 'atlas-chuti' ), $file ) );
 		}
 
 		$json = file_get_contents( $file );
 		$data = json_decode( $json, true );
 		if ( null === $data ) {
-			WP_CLI::error( 'Neplatný JSON: ' . json_last_error_msg() );
+			/* translators: %s: JSON parser error message */
+			WP_CLI::error( sprintf( __( 'Neplatný JSON: %s', 'atlas-chuti' ), json_last_error_msg() ) );
 		}
 
 		$dry_run  = isset( $assoc_args['dry-run'] );
@@ -53,7 +55,7 @@ class Atlas_Chuti_CLI {
 			}
 		}
 
-		WP_CLI::success( $dry_run ? 'Dry-run dokončen.' : 'Import dokončen.' );
+		WP_CLI::success( $dry_run ? __( 'Dry-run dokončen.', 'atlas-chuti' ) : __( 'Import dokončen.', 'atlas-chuti' ) );
 	}
 }
 

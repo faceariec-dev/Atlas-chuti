@@ -45,8 +45,8 @@ class Atlas_Chuti_Recipe_Meta_Box extends Atlas_Chuti_Meta_Box_Base {
 		$primary_term_id = (int) get_post_meta( $post->ID, '_atlas_recipe_primary_country_term_id', true );
 		$current_terms   = wp_get_post_terms( $post->ID, 'atlas_country_tax', array( 'fields' => 'ids' ) );
 
-		echo '<fieldset class="atlas-fieldset"><legend>Země / kuchyně</legend>';
-		echo '<div class="atlas-field"><label>Hlavní země *</label><select name="atlas_country_primary">';
+		echo '<fieldset class="atlas-fieldset"><legend>' . esc_html__( 'Země / kuchyně', 'atlas-chuti' ) . '</legend>';
+		echo '<div class="atlas-field"><label>' . esc_html__( 'Hlavní země', 'atlas-chuti' ) . ' *</label><select name="atlas_country_primary">';
 		echo '<option value="">—</option>';
 		foreach ( $countries as $c ) {
 			$term_id = Atlas_Chuti_Country_Sync::get_term_id_for_country_post( $c->ID );
@@ -59,7 +59,7 @@ class Atlas_Chuti_Recipe_Meta_Box extends Atlas_Chuti_Meta_Box_Base {
 		}
 		echo '</select></div>';
 
-		echo '<div class="atlas-field"><label>Další související země</label><div>';
+		echo '<div class="atlas-field"><label>' . esc_html__( 'Další související země', 'atlas-chuti' ) . '</label><div>';
 		foreach ( $countries as $c ) {
 			$term_id = Atlas_Chuti_Country_Sync::get_term_id_for_country_post( $c->ID );
 			if ( $term_id === $primary_term_id ) {
@@ -75,12 +75,13 @@ class Atlas_Chuti_Recipe_Meta_Box extends Atlas_Chuti_Meta_Box_Base {
 		echo '</div></div>';
 		echo '</fieldset>';
 
-		echo '<fieldset class="atlas-fieldset"><legend>Domovská stránka</legend>';
+		echo '<fieldset class="atlas-fieldset"><legend>' . esc_html__( 'Domovská stránka', 'atlas-chuti' ) . '</legend>';
 		printf(
-			'<label><input type="checkbox" name="atlas_featured_cook_today" value="1" %s> Zobrazit v sekci „Co dnes uvařit?“</label>',
-			checked( get_post_meta( $post->ID, 'atlas_featured_cook_today', true ), '1', false )
+			'<label><input type="checkbox" name="atlas_featured_cook_today" value="1" %1$s> %2$s</label>',
+			checked( get_post_meta( $post->ID, 'atlas_featured_cook_today', true ), '1', false ),
+			esc_html__( 'Zobrazit v sekci „Co dnes uvařit?“', 'atlas-chuti' )
 		);
-		echo '<p class="description">Pokud nic nevyberete, homepage automaticky zvolí recept.</p>';
+		echo '<p class="description">' . esc_html__( 'Pokud nic nevyberete, homepage automaticky zvolí recept.', 'atlas-chuti' ) . '</p>';
 		echo '</fieldset>';
 	}
 
