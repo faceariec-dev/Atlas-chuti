@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://atlaschuti.cz/schema/country.schema.json",
+  "title": "Atlas chutí – Země",
+  "type": "object",
+  "required": ["title", "iso_code", "flag_emoji", "intro", "continent"],
+  "properties": {
+    "title": { "type": "string", "description": "Zobrazovaný (český) název, použije se i jako post_title." },
+    "slug": { "type": "string" },
+    "name_cs": { "type": "string" },
+    "name_en": { "type": "string" },
+    "iso_code": { "type": "string", "description": "ISO 3166-1 alpha-2, např. IT.", "pattern": "^[A-Z]{2,3}$" },
+    "flag_emoji": { "type": "string" },
+    "continent": { "type": "string", "enum": ["Evropa", "Asie", "Afrika", "Severní Amerika", "Jižní Amerika", "Oceánie"] },
+    "capital": { "type": "string" },
+    "languages": { "type": "array", "items": { "type": "string" } },
+    "currency": { "type": "string" },
+    "area_km2": { "type": "integer" },
+    "population": { "type": "integer" },
+    "population_year": { "type": "integer" },
+    "intro": { "type": "string", "description": "Krátký redakční úvod." },
+    "taste_intro": { "type": "string", "description": "„Jak chutná…“." },
+    "typical_ingredients": { "type": "array", "items": { "type": "string" }, "description": "Textové chips, bez fotografií (viz item 11 zadání)." },
+    "traditional_dishes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "note": { "type": "string" },
+          "recipe_id": { "type": "string", "description": "Slug receptu, pokud existuje. Jinak se položka zobrazí bez odkazu." }
+        }
+      }
+    },
+    "must_try": {
+      "type": "array",
+      "description": "5 jídel, která byste měli ochutnat.",
+      "items": {
+        "type": "object",
+        "properties": { "name": { "type": "string" }, "note": { "type": "string" } }
+      }
+    },
+    "fun_facts": { "type": "array", "items": { "type": "string" } },
+    "related_glossary": { "type": "array", "items": { "type": "string" } },
+    "related_countries": { "type": "array", "items": { "type": "string" }, "description": "Doporučené podobné kuchyně (slugy)." },
+    "seo_title": { "type": "string" },
+    "meta_description": { "type": "string" },
+    "facts_source": { "type": "string" },
+    "facts_updated": { "type": "string", "format": "date" },
+    "featured_image_alt": { "type": "string" },
+    "status": { "type": "string", "enum": ["publish", "draft"], "default": "publish" }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://atlaschuti.cz/schema/glossary.schema.json",
+  "title": "Atlas chutí – Slovníček",
+  "type": "object",
+  "required": ["title", "category", "short_definition"],
+  "properties": {
+    "title": { "type": "string" },
+    "slug": { "type": "string" },
+    "category": { "type": "string", "enum": ["Kuchařské techniky", "Suroviny", "Gastronomické pojmy", "Nádobí a vybavení"] },
+    "short_definition": { "type": "string" },
+    "detailed": { "type": "string" },
+    "origin_country": { "type": "string", "description": "Slug země původu (volitelné)." },
+    "taste": { "type": "string" },
+    "usage": { "type": "string" },
+    "substitute": { "type": "string" },
+    "related_recipes": { "type": "array", "items": { "type": "string" } },
+    "related_countries": { "type": "array", "items": { "type": "string" } },
+    "seo_title": { "type": "string" },
+    "meta_description": { "type": "string" },
+    "status": { "type": "string", "enum": ["publish", "draft"], "default": "publish" }
+  }
+}

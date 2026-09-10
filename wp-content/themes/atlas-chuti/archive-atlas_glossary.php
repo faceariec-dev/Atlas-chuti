@@ -1,0 +1,72 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+get_header();
+
+$categories   = get_terms( array( 'taxonomy' => 'atlas_glossary_category', 'hide_empty' => true ) );
+$active_cat   = isset( $_GET['kategorie'] ) ? sanitize_title( wp_unslash( $_GET['kategorie'] ) ) : '';
+$active_letter = isset( $_GET['pismeno'] ) ? strtoupper( sanitize_text_field( wp_unslash( $_GET['pismeno'] ) ) ) : '';
+
+$args = array(
+	'post_type'      => 'atlas_glossary',
+	'posts_per_page' => -1,
+	'orderby'        => 'title',
+	'order'          => 'ASC',
+);
+if ( $active_cat ) {
+	$args['tax_query'] = array( array( 'taxonomy' => 'atlas_glossary_category', 'field' => 'slug', 'terms' => $active_cat ) );
+}
+
+$query = new WP_Query( $args );
+$terms = $query->posts;
+
+if ( $active_letter ) {
+	$terms = array_filter(
+		$terms,
+		function ( $p ) use ( $active_letter ) {
+			return 0 === stripos( $p->post_title, $active_letter );
+		}
+	);
+}
+
+?>
+
+<section class="container-narrow text-center" style="padding:64px var(--gutter) 32px;">
+	<h1>Kuchařský slovníček</h1>
+	<p style="font-size:16px;color:var(--text-body);">Techniky, suroviny a pojmy světové gastronomie na jednom místě.</p>
+	<form class="search-box" style="max-width:520px;margin:0 auto;" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+		<input type="search" name="s" placeholder="Hledat pojem…">
+	</form>
+</section>
+
+<?php if ( $categories && ! is_wp_error( $categories ) ) : ?>
+<section class="container glossary-category-bar" style="padding-bottom:20px;">
+	<a class="chip <?php echo ! $active_cat ? 'chip-static' : ''; ?>" href="<?php echo atlas_chuti_glossary_filter_url( array( 'kategorie' => false ) ); ?>">Vše</a>
+	<?php foreach ( $categories as $cat ) : ?>
+		<a class="chip <?php echo $active_cat === $cat->slug ? 'chip-static' : ''; ?>" href="<?php echo atlas_chuti_glossary_filter_url( array( 'kategorie' => $cat->slug ) ); ?>"><?php echo esc_html( $cat->name ); ?></a>
+	<?php endforeach; ?>
+</section>
+<?php endif; ?>
+
+<section class="container glossary-alpha-bar" style="padding-bottom:12px;">
+	<a href="<?php echo atlas_chuti_glossary_filter_url( array( 'pismeno' => false ) ); ?>" style="<?php echo ! $active_letter ? 'font-weight:700;color:var(--accent);' : ''; ?>">Vše</a>
+	<?php foreach ( str_split( 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' ) as $letter ) : ?>
+		<a href="<?php echo atlas_chuti_glossary_filter_url( array( 'pismeno' => $letter ) ); ?>" style="<?php echo $active_letter === $letter ? 'background:var(--bg-muted);color:var(--accent);' : ''; ?>"><?php echo esc_html( $letter ); ?></a>
+	<?php endforeach; ?>
+</section>
+
+<section class="container section" style="padding-top:24px;">
+	<?php if ( $terms ) : ?>
+		<div class="card-grid card-grid-3">
+			<?php foreach ( $terms as $term_post ) : ?>
+				<?php get_template_part( 'template-parts/glossary-card', null, array( 'post_id' => $term_post->ID ) ); ?>
+			<?php endforeach; ?>
+		</div>
+	<?php else : ?>
+		<p class="empty-state">Pro zvolený filtr jsme nenašli žádné pojmy.</p>
+	<?php endif; ?>
+</section>
+
+<?php get_footer(); ?>

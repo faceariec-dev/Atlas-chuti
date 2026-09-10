@@ -1,0 +1,211 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+get_header();
+
+while ( have_posts() ) :
+	the_post();
+	$post_id       = get_the_ID();
+	$country       = atlas_chuti_get_recipe_primary_country( $post_id );
+	$related_terms = wp_get_post_terms( $post_id, 'atlas_country_tax' );
+
+	$excerpt      = get_post_meta( $post_id, 'atlas_excerpt', true );
+	$about        = get_post_meta( $post_id, 'atlas_about', true );
+	$ingredients  = Atlas_Chuti_Servings::get_scalable_ingredients( $post_id );
+	$steps        = get_post_meta( $post_id, 'atlas_steps', true );
+	$tips         = get_post_meta( $post_id, 'atlas_tips', true );
+	$watch_out    = get_post_meta( $post_id, 'atlas_watch_out', true );
+	$variants     = get_post_meta( $post_id, 'atlas_variants', true );
+	$origin       = get_post_meta( $post_id, 'atlas_origin_history', true );
+	$glossary_ids = get_post_meta( $post_id, 'atlas_related_glossary', true );
+	$recipe_ids   = get_post_meta( $post_id, 'atlas_related_recipes', true );
+
+	$servings_default = (int) get_post_meta( $post_id, 'atlas_servings_default', true ) ?: 4;
+	$servings_options  = array( 2, 4, 6, 8 );
+	if ( ! in_array( $servings_default, $servings_options, true ) ) {
+		$servings_options[] = $servings_default;
+		sort( $servings_options );
+	}
+
+	$prep  = atlas_chuti_format_time( get_post_meta( $post_id, 'atlas_prep_minutes', true ) );
+	$cook  = atlas_chuti_format_time( get_post_meta( $post_id, 'atlas_cook_minutes', true ) );
+	$total = atlas_chuti_format_time( get_post_meta( $post_id, 'atlas_total_minutes', true ) );
+	$diff_terms = get_the_terms( $post_id, 'atlas_difficulty' );
+
+	$passport_data = array(
+		'slug'       => get_post_field( 'post_name', $post_id ),
+		'title'      => get_the_title(),
+		'country'    => $country ? get_the_title( $country ) : '',
+		'flag'       => $country ? atlas_chuti_flag( $country->ID ) : '',
+		'time'       => $total,
+		'difficulty' => $diff_terms && ! is_wp_error( $diff_terms ) ? $diff_terms[0]->name : '',
+		'image'      => has_post_thumbnail( $post_id ) ? get_the_post_thumbnail_url( $post_id, 'atlas-card' ) : '',
+		'url'        => get_permalink(),
+	);
+	?>
+
+	<article class="container-medium section">
+		<div class="card-eyebrow" style="margin-bottom:14px;">
+			<?php if ( $country ) : ?>
+				<span style="font-size:19px;"><?php echo esc_html( atlas_chuti_flag( $country->ID ) ); ?></span>
+				<span style="font-weight:500;"><a href="<?php echo esc_url( get_permalink( $country ) ); ?>" style="color:inherit;"><?php echo esc_html( get_the_title( $country ) ); ?></a></span>
+			<?php endif; ?>
+		</div>
+		<h1 style="font-size:clamp(32px,5vw,52px);"><?php the_title(); ?></h1>
+		<?php if ( $excerpt ) : ?><p style="font-size:17px;color:var(--text-body);max-width:680px;line-height:1.6;"><?php echo esc_html( $excerpt ); ?></p><?php endif; ?>
+	</article>
+
+	<?php if ( has_post_thumbnail() ) : ?>
+		<div class="container">
+			<div style="border-radius:20px;overflow:hidden;aspect-ratio:16/8;">
+				<?php the_post_thumbnail( 'atlas-hero', array( 'style' => 'width:100%;height:100%;object-fit:cover;' ) ); ?>
+			</div>
+		</div>
+	<?php endif; ?>
+
+	<div class="container" style="padding-top:32px;">
+		<div class="meta-bar">
+			<div class="meta-bar-items">
+				<?php if ( $prep ) : ?><div class="meta-item"><div class="label">Příprava</div><div class="value"><?php echo esc_html( $prep ); ?></div></div><?php endif; ?>
+				<?php if ( $cook ) : ?><div class="meta-item"><div class="label">Vaření</div><div class="value"><?php echo esc_html( $cook ); ?></div></div><?php endif; ?>
+				<?php if ( $total ) : ?><div class="meta-item"><div class="label">Celkem</div><div class="value"><?php echo esc_html( $total ); ?></div></div><?php endif; ?>
+				<div class="meta-item"><div class="label">Porce</div><div class="value"><?php echo esc_html( $servings_default ); ?></div></div>
+				<?php if ( $diff_terms && ! is_wp_error( $diff_terms ) ) : ?><div class="meta-item"><div class="label">Obtížnost</div><div class="value"><?php echo esc_html( $diff_terms[0]->name ); ?></div></div><?php endif; ?>
+			</div>
+			<a href="#postup" class="btn btn-accent">Přejít na recept</a>
+		</div>
+	</div>
+
+	<?php if ( $about ) : ?>
+	<section class="container-narrow section">
+		<h2>O receptu</h2>
+		<div><?php echo wp_kses_post( wpautop( $about ) ); ?></div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $ingredients ) : ?>
+	<section class="container-medium section">
+		<div class="section-head">
+			<h2>Ingredience</h2>
+			<div class="pill-group" data-servings-switcher data-default="<?php echo esc_attr( $servings_default ); ?>">
+				<?php foreach ( $servings_options as $n ) : ?>
+					<button type="button" class="pill<?php echo $n === $servings_default ? ' is-active' : ''; ?>" data-servings="<?php echo esc_attr( $n ); ?>"><?php echo esc_html( $n ); ?></button>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<div class="ingredient-list" data-ingredient-list data-ingredients='<?php echo esc_attr( wp_json_encode( $ingredients ) ); ?>'>
+			<?php
+			$prev_group = null;
+			foreach ( $ingredients as $i => $ing ) :
+				if ( ! empty( $ing['group'] ) && $ing['group'] !== $prev_group ) :
+					echo '<div class="group-label">' . esc_html( $ing['group'] ) . '</div>';
+					$prev_group = $ing['group'];
+				endif;
+				?>
+				<div class="ingredient-row" data-index="<?php echo esc_attr( $i ); ?>">
+					<span class="name"><?php echo esc_html( $ing['name'] ); ?><?php echo $ing['note'] ? ' <span style="color:var(--text-faint);">(' . esc_html( $ing['note'] ) . ')</span>' : ''; ?></span>
+					<span class="amount"><?php echo esc_html( trim( $ing['quantity'] . ' ' . $ing['unit'] ) ); ?></span>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $steps ) : ?>
+	<section id="postup" class="container-narrow section">
+		<h2>Postup</h2>
+		<div class="steps-list">
+			<?php foreach ( $steps as $i => $step ) : ?>
+				<div class="step-row">
+					<span class="step-num"><?php echo esc_html( $i + 1 ); ?></span>
+					<p class="step-text"><?php echo esc_html( $step['text'] ); ?></p>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $tips ) : ?>
+	<section class="container-narrow section">
+		<h2>Tipy</h2>
+		<ul style="padding-left:20px;list-style:disc;display:flex;flex-direction:column;gap:10px;">
+			<?php foreach ( $tips as $tip ) : ?>
+				<li style="font-size:15px;color:var(--text-soft);line-height:1.6;"><?php echo esc_html( $tip ); ?></li>
+			<?php endforeach; ?>
+		</ul>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $watch_out ) : ?>
+	<section class="container-narrow section">
+		<div class="callout">
+			<h3>Na co si dát pozor</h3>
+			<p><?php echo esc_html( $watch_out ); ?></p>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $variants ) : ?>
+	<section class="container-narrow section">
+		<h2>Varianty receptu</h2>
+		<div style="display:flex;flex-direction:column;gap:12px;">
+			<?php foreach ( $variants as $variant ) : ?>
+				<div class="variant-row"><strong><?php echo esc_html( $variant['name'] ); ?>:</strong> <?php echo esc_html( $variant['note'] ); ?></div>
+			<?php endforeach; ?>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $origin ) : ?>
+	<section class="container-narrow section">
+		<h2>Odkud recept pochází</h2>
+		<div><?php echo wp_kses_post( wpautop( $origin ) ); ?></div>
+	</section>
+	<?php endif; ?>
+
+	<?php if ( $glossary_ids ) : ?>
+	<section class="container section">
+		<h2>Pojmy, které se mohou hodit</h2>
+		<div class="flex-wrap-gap">
+			<?php foreach ( (array) $glossary_ids as $gid ) : if ( 'publish' !== get_post_status( $gid ) ) { continue; } ?>
+				<a class="chip" href="<?php echo esc_url( get_permalink( $gid ) ); ?>"><?php echo esc_html( get_the_title( $gid ) ); ?></a>
+			<?php endforeach; ?>
+		</div>
+	</section>
+	<?php endif; ?>
+
+	<?php
+	$more_recipes = ! empty( $recipe_ids ) ? array_filter( array_map( 'get_post', (array) $recipe_ids ) ) : array();
+	if ( empty( $more_recipes ) && $related_terms && ! is_wp_error( $related_terms ) ) {
+		$more_recipes = get_posts(
+			array(
+				'post_type'      => 'atlas_recipe',
+				'posts_per_page' => 4,
+				'post__not_in'   => array( $post_id ),
+				'tax_query'      => array( array( 'taxonomy' => 'atlas_country_tax', 'field' => 'term_id', 'terms' => wp_list_pluck( $related_terms, 'term_id' ) ) ),
+			)
+		);
+	}
+	if ( $more_recipes ) :
+		?>
+		<section class="container section">
+			<h2><?php echo $country ? 'Další recepty z ' . esc_html( get_the_title( $country ) ) : 'Další recepty'; ?></h2>
+			<div class="card-grid card-grid-4">
+				<?php foreach ( $more_recipes as $r ) : ?>
+					<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => is_object( $r ) ? $r->ID : $r ) ); ?>
+				<?php endforeach; ?>
+			</div>
+		</section>
+	<?php endif; ?>
+
+	<section class="container section text-center">
+		<button type="button" class="btn btn-dark" data-passport-recipe-toggle data-recipe='<?php echo esc_attr( wp_json_encode( $passport_data ) ); ?>'>
+			<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="4,13 9,18 20,6"></polyline></svg>
+			<span class="label">Uvařil/a jsem</span>
+		</button>
+	</section>
+
+<?php endwhile; ?>
+
+<?php get_footer(); ?>

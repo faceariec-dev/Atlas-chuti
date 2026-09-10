@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://atlaschuti.cz/schema/ingredient.schema.json",
+  "title": "Atlas chutí – Normalizovaná ingredience",
+  "description": "Slovník kanonických ingrediencí, aby 'rajče', 'rajčata' a 'rajčat' vznikly jako jedna entita (příprava na funkci „Co mám doma?“).",
+  "type": "object",
+  "required": ["title"],
+  "properties": {
+    "title": { "type": "string", "description": "Kanonický název, např. \"Rajče\"." },
+    "slug": { "type": "string" },
+    "aliases": { "type": "array", "items": { "type": "string" }, "description": "Skloňované/alternativní tvary." },
+    "default_unit": { "type": "string" }
+  }
+}

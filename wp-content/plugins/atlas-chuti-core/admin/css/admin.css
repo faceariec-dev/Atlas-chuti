@@ -1,0 +1,25 @@
+.atlas-field { margin-bottom: 16px; }
+.atlas-field label { display: block; font-weight: 600; margin-bottom: 4px; }
+.atlas-field input[type="text"],
+.atlas-field input[type="number"],
+.atlas-field input[type="date"],
+.atlas-field textarea,
+.atlas-field select { width: 100%; max-width: 640px; }
+.atlas-field textarea { min-height: 80px; }
+.atlas-field .description { color: #666; font-size: 12px; margin-top: 4px; }
+.atlas-fieldset { border: 1px solid #dcdcde; border-radius: 4px; padding: 16px; margin-bottom: 20px; background: #fff; }
+.atlas-fieldset legend { font-weight: 600; padding: 0 6px; }
+
+.atlas-repeater-rows { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+.atlas-repeater-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; border: 1px solid #dcdcde; border-radius: 4px; padding: 10px; background: #f6f7f7; }
+.atlas-repeater-field { display: flex; flex-direction: column; font-size: 11px; color: #555; gap: 2px; flex: 1 1 140px; }
+.atlas-repeater-field input, .atlas-repeater-field textarea { font-size: 13px; }
+.atlas-repeater-remove { color: #b32d2e; align-self: flex-end; }
+.atlas-repeater-add { margin-top: 4px; }
+
+.atlas-import-report { background: #fff; border: 1px solid #dcdcde; border-radius: 4px; padding: 16px; margin-top: 20px; }
+.atlas-import-report table { width: 100%; border-collapse: collapse; }
+.atlas-import-report th, .atlas-import-report td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #eee; font-size: 13px; }
+.atlas-import-status-ok { color: #1e7a34; font-weight: 600; }
+.atlas-import-status-skip { color: #996800; font-weight: 600; }
+.atlas-import-status-error { color: #b32d2e; font-weight: 600; }

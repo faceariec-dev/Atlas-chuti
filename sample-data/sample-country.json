@@ -1,0 +1,37 @@
+{
+  "title": "Itálie",
+  "slug": "italie",
+  "name_cs": "Itálie",
+  "name_en": "Italy",
+  "iso_code": "IT",
+  "flag_emoji": "🇮🇹",
+  "continent": "Evropa",
+  "capital": "Řím",
+  "languages": ["Italština"],
+  "currency": "Euro (€)",
+  "area_km2": 301340,
+  "population": 59000000,
+  "population_year": 2024,
+  "intro": "Italská kuchyně stojí na jednoduchosti a kvalitě surovin, ne na složitosti postupu.",
+  "taste_intro": "Málo ingrediencí, ale ty nejlepší, jaké lze sehnat – zralá rajčata, dobrý olivový olej, čerstvé bylinky.",
+  "typical_ingredients": ["Rajčata", "Olivový olej", "Bazalka", "Parmezán", "Těstoviny", "Rýže"],
+  "traditional_dishes": [
+    { "name": "Pizza", "note": "Tenké těsto pečené na vysokou teplotu.", "recipe_id": "" },
+    { "name": "Carbonara", "note": "Vejce, guanciale a pecorino.", "recipe_id": "spaghetti-carbonara" },
+    { "name": "Risotto", "note": "Krémová rýže dušená ve vývaru.", "recipe_id": "" }
+  ],
+  "must_try": [
+    { "name": "Pizza Napoletana", "note": "Tenké těsto, San Marzano rajčata, mozzarella di bufala." },
+    { "name": "Carbonara", "note": "Vejce, guanciale a pecorino – bez smetany." },
+    { "name": "Tiramisu", "note": "Vrstvy mascarpone, kávy a piškotů." }
+  ],
+  "fun_facts": [
+    "Skutečná neapolská pizza smí mít podle tradice pouze pár povolených ingrediencí.",
+    "Al dente doslova znamená „na skus“ – těstoviny se nikdy nerozvařují."
+  ],
+  "related_glossary": ["al-dente", "soffritto"],
+  "related_countries": [],
+  "seo_title": "Itálie – italská kuchyně, recepty a tradiční jídla | Atlas chutí",
+  "meta_description": "Poznejte italskou kuchyni: typické suroviny, tradiční jídla a ověřené recepty od Atlasu chutí.",
+  "status": "publish"
+}

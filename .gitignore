@@ -1,0 +1,41 @@
+# WordPress core (this repo only holds the custom theme/plugin, not WP itself)
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/xmlrpc.php
+/index.php
+/wp-config.php
+/.htaccess
+/license.txt
+/readme.html
+
+# Uploads, cache, logs — never belong in git
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/backup*/
+*.log
+debug.log
+
+# Other (non atlas-chuti) plugins/themes/mu-plugins some installs might add locally
+/wp-content/plugins/*
+!/wp-content/plugins/atlas-chuti-core/
+/wp-content/themes/*
+!/wp-content/themes/atlas-chuti/
+/wp-content/mu-plugins/
+
+# Secrets / environment
+.env
+.env.*
+*.pem
+*.key
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Dependency directories (if local asset tooling is ever added)
+node_modules/
+vendor/

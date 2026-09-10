@@ -1,0 +1,71 @@
+<?php
+/**
+ * Plugin Name: Atlas chutí – Core
+ * Description: Datový model, obsahové typy, JSON importér a základní funkce projektu Atlas chutí. Nezávislé na konkrétním theme.
+ * Version: 1.0.0
+ * Author: Atlas chutí
+ * License: GPL-2.0-or-later
+ * Text Domain: atlas-chuti
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+define( 'ATLAS_CHUTI_VERSION', '1.0.0' );
+define( 'ATLAS_CHUTI_DIR', plugin_dir_path( __FILE__ ) );
+define( 'ATLAS_CHUTI_URL', plugin_dir_url( __FILE__ ) );
+
+require_once ATLAS_CHUTI_DIR . 'includes/class-post-types.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-taxonomies.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-country-sync.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-meta-fields.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-meta-box-base.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-recipe-meta-box.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-country-meta-box.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-glossary-meta-box.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-ingredient-meta-box.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-servings.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-search.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-seo.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-json-importer.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-admin.php';
+require_once ATLAS_CHUTI_DIR . 'includes/functions.php';
+
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+	require_once ATLAS_CHUTI_DIR . 'includes/class-cli.php';
+}
+
+/**
+ * Bootstraps all plugin modules on `plugins_loaded` so load order never matters.
+ */
+function atlas_chuti_core_init() {
+	Atlas_Chuti_Post_Types::instance();
+	Atlas_Chuti_Taxonomies::instance();
+	Atlas_Chuti_Country_Sync::instance();
+	Atlas_Chuti_Recipe_Meta_Box::instance();
+	Atlas_Chuti_Country_Meta_Box::instance();
+	Atlas_Chuti_Glossary_Meta_Box::instance();
+	Atlas_Chuti_Ingredient_Meta_Box::instance();
+	Atlas_Chuti_Servings::instance();
+	Atlas_Chuti_Search::instance();
+	Atlas_Chuti_SEO::instance();
+	Atlas_Chuti_JSON_Importer::instance();
+	Atlas_Chuti_Admin::instance();
+}
+add_action( 'plugins_loaded', 'atlas_chuti_core_init' );
+
+/**
+ * Flush rewrite rules once on activation/deactivation so CPT/taxonomy permalinks work immediately.
+ */
+function atlas_chuti_core_activate() {
+	Atlas_Chuti_Post_Types::instance()->register();
+	Atlas_Chuti_Taxonomies::instance()->register();
+	flush_rewrite_rules();
+}
+register_activation_hook( __FILE__, 'atlas_chuti_core_activate' );
+
+function atlas_chuti_core_deactivate() {
+	flush_rewrite_rules();
+}
+register_deactivation_hook( __FILE__, 'atlas_chuti_core_deactivate' );

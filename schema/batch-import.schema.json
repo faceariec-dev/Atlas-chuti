@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://atlaschuti.cz/schema/batch-import.schema.json",
+  "title": "Atlas chutí – Dávkový import",
+  "description": "Formát souboru pro Atlas chutí → Import obsahu (wp-admin) i pro `wp atlas import`. Všechny klíče jsou volitelné, ale alespoň jeden musí být přítomen. Zpracovává se v pořadí ingredients → countries → glossary → recipes a poté druhý průchod, který podle slugů doplní vzájemné vazby.",
+  "type": "object",
+  "minProperties": 1,
+  "properties": {
+    "ingredients": { "type": "array", "items": { "$ref": "ingredient.schema.json" } },
+    "countries": { "type": "array", "items": { "$ref": "country.schema.json" } },
+    "glossary": { "type": "array", "items": { "$ref": "glossary.schema.json" } },
+    "recipes": { "type": "array", "items": { "$ref": "recipe.schema.json" } }
+  }
+}
