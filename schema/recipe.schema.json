@@ -20,9 +20,9 @@
     "prep_minutes": { "type": "integer", "minimum": 0 },
     "cook_minutes": { "type": "integer", "minimum": 0 },
     "total_minutes": { "type": "integer", "minimum": 0, "description": "Pokud chybí, dopočítá se jako prep_minutes + cook_minutes." },
-    "difficulty": { "type": "string", "enum": ["Snadné", "Střední", "Náročné"] },
-    "meal_type": { "type": "array", "items": { "type": "string" }, "description": "Např. [\"Hlavní jídlo\"]." },
-    "diet": { "type": "array", "items": { "type": "string", "enum": ["Vegetariánské", "Veganské"] } },
+    "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"], "description": "Stabilní klíč, ne české jméno — např. \"easy\", ne \"Snadné\" (viz Atlas_Chuti_Taxonomy_Labels)." },
+    "meal_type": { "type": "array", "items": { "type": "string" }, "description": "Otevřený slovník stabilních klíčů, např. [\"main-course\"]. Doporučené startovní klíče: breakfast, appetizer, soup, main-course, side-dish, salad, dessert, bakery, sauce, beverage — nový klíč se importem bez problému vytvoří." },
+    "diet": { "type": "array", "items": { "type": "string" }, "description": "Otevřený slovník stabilních klíčů, např. [\"vegetarian\"]. Doporučené startovní klíče: vegetarian, vegan." },
     "about": { "type": "string", "description": "Krátký úvod „O receptu“. Základní HTML povoleno." },
     "ingredients": {
       "type": "array",

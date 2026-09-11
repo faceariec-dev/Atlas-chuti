@@ -159,47 +159,43 @@ class Atlas_Chuti_Taxonomies {
 	}
 
 	/**
-	 * Fixed vocabularies (6 continents, 3 difficulty levels, glossary categories) only
-	 * need to be created once; everything else (meal types, diet, countries) is open-ended
-	 * and grows through the JSON importer or admin UI.
+	 * Fixed vocabularies (6 continents, 3 difficulty levels, 4 glossary categories)
+	 * only need to be created once; everything else (meal types, diet, countries) is
+	 * open-ended and grows through the JSON importer or admin UI.
+	 *
+	 * Seeded by STABLE KEY (slug) now, not by Czech name (item 14/15/18/19 of this
+	 * phase's brief) — "europe"/"easy"/"technique", never "Evropa"/"Snadné"/
+	 * "Kuchařské techniky" as the term's identity. That's what makes it safe to add
+	 * English to this SAME WordPress instance later: the stable slug is shared by
+	 * both locales' content (a recipe in either language tags into the very same
+	 * "easy" term), while the term's `name` — the only thing an old-style seed-by-name
+	 * flag could really distinguish — stays whatever the seeding locale wrote, with
+	 * Atlas_Chuti_Taxonomy_Labels resolving the OTHER locale's label at display time
+	 * instead of requiring a duplicate term. There is no "fresh English WordPress
+	 * install" scenario to design for — atlaschuti.com is a locale on this same
+	 * install, not a second WordPress instance.
 	 */
 	private function maybe_seed_default_terms() {
-		if ( get_option( 'atlas_chuti_default_terms_seeded' ) ) {
+		if ( get_option( 'atlas_chuti_default_terms_seeded_v2' ) ) {
 			return;
 		}
 
-		// Wrapped in __() on purpose, not just for consistency: a fresh WordPress instance
-		// installed with an English site locale (the future .com, per item 17 of the
-		// brief) and a matching .mo file would seed these terms in English straight
-		// from this same code — no separate "English seeding" branch needed.
-		$continents = array( __( 'Evropa', 'atlas-chuti' ), __( 'Asie', 'atlas-chuti' ), __( 'Afrika', 'atlas-chuti' ), __( 'Severní Amerika', 'atlas-chuti' ), __( 'Jižní Amerika', 'atlas-chuti' ), __( 'Oceánie', 'atlas-chuti' ) );
-		foreach ( $continents as $name ) {
-			if ( ! term_exists( $name, 'atlas_continent' ) ) {
-				wp_insert_term( $name, 'atlas_continent' );
-			}
+		foreach ( array( 'atlas_continent', 'atlas_difficulty', 'atlas_diet', 'atlas_meal_type', 'atlas_glossary_category' ) as $taxonomy ) {
+			$this->seed_terms_from_labels( $taxonomy );
 		}
 
-		$difficulties = array( __( 'Snadné', 'atlas-chuti' ), __( 'Střední', 'atlas-chuti' ), __( 'Náročné', 'atlas-chuti' ) );
-		foreach ( $difficulties as $name ) {
-			if ( ! term_exists( $name, 'atlas_difficulty' ) ) {
-				wp_insert_term( $name, 'atlas_difficulty' );
+		update_option( 'atlas_chuti_default_terms_seeded_v2', 1 );
+	}
+
+	private function seed_terms_from_labels( $taxonomy ) {
+		foreach ( Atlas_Chuti_Taxonomy_Labels::keys( $taxonomy ) as $key ) {
+			if ( ! get_term_by( 'slug', $key, $taxonomy ) ) {
+				wp_insert_term(
+					Atlas_Chuti_Taxonomy_Labels::label( $taxonomy, $key, Atlas_Chuti_I18N::DEFAULT_LOCALE ),
+					$taxonomy,
+					array( 'slug' => $key )
+				);
 			}
 		}
-
-		$diets = array( __( 'Vegetariánské', 'atlas-chuti' ), __( 'Veganské', 'atlas-chuti' ) );
-		foreach ( $diets as $name ) {
-			if ( ! term_exists( $name, 'atlas_diet' ) ) {
-				wp_insert_term( $name, 'atlas_diet' );
-			}
-		}
-
-		$glossary_categories = array( __( 'Kuchařské techniky', 'atlas-chuti' ), __( 'Suroviny', 'atlas-chuti' ), __( 'Gastronomické pojmy', 'atlas-chuti' ), __( 'Nádobí a vybavení', 'atlas-chuti' ) );
-		foreach ( $glossary_categories as $name ) {
-			if ( ! term_exists( $name, 'atlas_glossary_category' ) ) {
-				wp_insert_term( $name, 'atlas_glossary_category' );
-			}
-		}
-
-		update_option( 'atlas_chuti_default_terms_seeded', 1 );
 	}
 }

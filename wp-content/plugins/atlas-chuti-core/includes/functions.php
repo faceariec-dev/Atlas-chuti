@@ -47,6 +47,36 @@ function atlas_chuti_placeholder_image( $context = 'recipe' ) {
 }
 
 /**
+ * Central map of "system" page paths — country archive, culinary passport, legal
+ * pages… (item 20 of this phase's brief). Today every path is the current Czech one
+ * (`/zeme/`, `/kulinarsky-pas/`…) via `home_url()`, same as before; the point isn't a
+ * behavior change now, it's that hardcoding `home_url('/zeme/')` in a dozen templates
+ * is exactly the kind of "unnecessary architectural dependence on Czech paths" that
+ * would make a future `atlaschuti.com/countries/` mean editing every one of them.
+ * With the paths centralized here (and filterable via `atlas_chuti_system_paths`), a
+ * future locale-aware routing layer only has to change one place. English rewrites
+ * are NOT activated by this — it stays a plain path lookup until they are.
+ */
+function atlas_chuti_system_url( $key ) {
+	$paths = apply_filters(
+		'atlas_chuti_system_paths',
+		array(
+			'countries'          => '/zeme/',
+			'passport'           => '/kulinarsky-pas/',
+			'about'              => '/o-projektu/',
+			'editorial_process'  => '/jak-vznika-obsah/',
+			'editorial_policy'   => '/redakcni-zasady/',
+			'contact'            => '/kontakt/',
+			'advertising'        => '/inzerce/',
+			'privacy'            => '/ochrana-osobnich-udaju/',
+			'cookies'            => '/cookies/',
+			'terms'              => '/podminky-pouzivani/',
+		)
+	);
+	return home_url( $paths[ $key ] ?? '/' );
+}
+
+/**
  * Breadcrumb trail as [['label' => ..., 'url' => ...], ...]. Used both by the
  * theme's breadcrumb template part and by the BreadcrumbList schema output.
  */
@@ -61,7 +91,7 @@ function atlas_chuti_get_breadcrumbs() {
 		}
 		$crumbs[] = array( 'label' => get_the_title(), 'url' => get_permalink() );
 	} elseif ( is_singular( 'atlas_country' ) ) {
-		$crumbs[] = array( 'label' => __( 'Země', 'atlas-chuti' ), 'url' => home_url( '/zeme/' ) );
+		$crumbs[] = array( 'label' => __( 'Země', 'atlas-chuti' ), 'url' => atlas_chuti_system_url( 'countries' ) );
 		$crumbs[] = array( 'label' => get_the_title(), 'url' => get_permalink() );
 	} elseif ( is_singular( 'atlas_glossary' ) ) {
 		$crumbs[] = array( 'label' => __( 'Kuchařský slovníček', 'atlas-chuti' ), 'url' => get_post_type_archive_link( 'atlas_glossary' ) );
@@ -71,7 +101,7 @@ function atlas_chuti_get_breadcrumbs() {
 	} elseif ( is_post_type_archive( 'atlas_glossary' ) ) {
 		$crumbs[] = array( 'label' => __( 'Kuchařský slovníček', 'atlas-chuti' ), 'url' => get_post_type_archive_link( 'atlas_glossary' ) );
 	} elseif ( is_tax( 'atlas_continent' ) ) {
-		$crumbs[] = array( 'label' => __( 'Země', 'atlas-chuti' ), 'url' => home_url( '/zeme/' ) );
+		$crumbs[] = array( 'label' => __( 'Země', 'atlas-chuti' ), 'url' => atlas_chuti_system_url( 'countries' ) );
 		$crumbs[] = array( 'label' => single_term_title( '', false ), 'url' => get_term_link( get_queried_object() ) );
 	} elseif ( is_page() ) {
 		$crumbs[] = array( 'label' => get_the_title(), 'url' => get_permalink() );

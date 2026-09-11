@@ -27,8 +27,13 @@ class Atlas_Chuti_JSON_Importer {
 	const BATCH_TRANSIENT_PREFIX = 'atlas_chuti_import_batch_';
 	const REPORT_TRANSIENT_PREFIX = 'atlas_chuti_last_import_report_';
 
-	const VALID_CONTINENTS  = array( 'Evropa', 'Asie', 'Afrika', 'Severní Amerika', 'Jižní Amerika', 'Oceánie' );
-	const VALID_DIFFICULTY  = array( 'Snadné', 'Střední', 'Náročné' );
+	// Stable-key closed vocabularies (item 14/15/18 of this phase's brief) — the
+	// import contract now speaks the same language-neutral keys the taxonomies are
+	// seeded with (see class-taxonomy-labels.php), never Czech display text. meal_type
+	// and diet stay open vocabularies and are NOT validated against a closed list.
+	const VALID_CONTINENTS  = array( 'europe', 'asia', 'africa', 'north-america', 'south-america', 'oceania' );
+	const VALID_DIFFICULTY  = array( 'easy', 'medium', 'hard' );
+	const VALID_GLOSSARY_CATEGORY = array( 'technique', 'ingredient', 'gastronomy', 'equipment' );
 	const VALID_STATUS      = array( 'publish', 'draft' );
 	const VALID_TRANSLATION_STATUS = array( 'none', 'draft', 'reviewed', 'published' );
 
@@ -413,13 +418,27 @@ class Atlas_Chuti_JSON_Importer {
 	// Shared helpers
 	// ---------------------------------------------------------------------
 
-	private function find_existing( $post_type, $slug, $extra_meta_match = array() ) {
-		$posts = get_posts( array( 'post_type' => $post_type, 'name' => $slug, 'post_status' => array( 'publish', 'draft' ), 'posts_per_page' => 1 ) );
+	/**
+	 * Slug-based duplicate fallback, scoped to one locale (item 2 of this phase's
+	 * brief): a post with a given slug is looked up only among posts already in that
+	 * locale, so an English import can never accidentally match/overwrite a Czech
+	 * post just because a slug happened to coincide.
+	 */
+	private function find_existing( $post_type, $slug, $locale, $extra_meta_match = array() ) {
+		$posts = get_posts(
+			array(
+				'post_type'      => $post_type,
+				'name'           => $slug,
+				'post_status'    => array( 'publish', 'draft' ),
+				'posts_per_page' => 1,
+				'meta_query'     => array( array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ) ),
+			)
+		);
 		if ( $posts ) {
 			return $posts[0];
 		}
 		if ( $extra_meta_match ) {
-			$meta_query = array();
+			$meta_query = array( array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ) );
 			foreach ( $extra_meta_match as $key => $value ) {
 				$meta_query[] = array( 'key' => $key, 'value' => $value );
 			}
@@ -429,6 +448,84 @@ class Atlas_Chuti_JSON_Importer {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * The locale to use for THIS import item (item 2/3 of this phase's brief):
+	 * whatever the JSON explicitly says, else cs-CZ. Computed once per item and
+	 * threaded into every lookup/resolution call for that item — never resolved
+	 * implicitly from the current request (an admin import can create English
+	 * content while the site itself is still cs-CZ-only).
+	 */
+	private function resolve_item_locale( $item ) {
+		if ( ! empty( $item['locale'] ) && $this->is_valid_locale( $item['locale'] ) ) {
+			return $item['locale'];
+		}
+		return Atlas_Chuti_I18N::DEFAULT_LOCALE;
+	}
+
+	/**
+	 * Resolves a taxonomy term by its stable-key slug, creating it (with the correct
+	 * locale-appropriate label from Atlas_Chuti_Taxonomy_Labels) if it doesn't exist
+	 * yet — used instead of wp_set_post_terms()'s name-based matching, which would
+	 * otherwise create a NEW term for every distinct locale's text (item 14-18).
+	 */
+	private function resolve_or_create_term_by_key( $taxonomy, $key, $locale ) {
+		$key = sanitize_title( $key );
+		if ( '' === $key ) {
+			return 0;
+		}
+		$term = get_term_by( 'slug', $key, $taxonomy );
+		if ( $term && ! is_wp_error( $term ) ) {
+			return $term->term_id;
+		}
+		$label    = Atlas_Chuti_Taxonomy_Labels::label( $taxonomy, $key, $locale );
+		$inserted = wp_insert_term( $label ?: $key, $taxonomy, array( 'slug' => $key ) );
+		return is_wp_error( $inserted ) ? 0 : $inserted['term_id'];
+	}
+
+	/**
+	 * Auto-creates a dictionary entry for an ingredient the recipe references but that
+	 * doesn't exist yet — "variant A" of item 12 of this phase's brief: whenever a
+	 * recipe row supplies BOTH ingredient_key and display_name, that's treated as
+	 * enough to safely create the canonical entry, so a future AI-produced recipe can
+	 * introduce a new ingredient without a separate manual step. Never creates a
+	 * second canonical entry for a key that already exists in this locale — the
+	 * lookup right before creating is the guard. Returns null (and writes nothing) in
+	 * dry-run mode; the caller reports the "will be created" note separately.
+	 */
+	private function ensure_ingredient_exists( $ingredient_key, $display_name, $locale, $dry_run ) {
+		$key  = sanitize_title( $ingredient_key );
+		$name = trim( (string) $display_name );
+		if ( '' === $key || '' === $name ) {
+			return null;
+		}
+		$existing = Atlas_Chuti_I18N::find_ingredient_by_key( $key, $locale );
+		if ( $existing ) {
+			return $existing;
+		}
+		if ( $dry_run ) {
+			return null;
+		}
+		$post_id = wp_insert_post(
+			array(
+				'post_type'   => 'atlas_ingredient',
+				'post_title'  => sanitize_text_field( $name ),
+				'post_name'   => $key,
+				'post_status' => 'publish',
+				'meta_input'  => array(
+					'atlas_ingredient_key' => $key,
+					'atlas_locale'         => $locale,
+				),
+			),
+			true
+		);
+		if ( is_wp_error( $post_id ) ) {
+			return null;
+		}
+		update_post_meta( $post_id, 'atlas_aliases', array() );
+		update_post_meta( $post_id, 'atlas_default_unit', '' );
+		return get_post( $post_id );
 	}
 
 	/**
@@ -445,12 +542,14 @@ class Atlas_Chuti_JSON_Importer {
 	/**
 	 * Recipe duplicate detection, in the order item 12 asks for: (1) stable content
 	 * key, (2) normalized title + main country, (3) original title + main country,
-	 * (4) slug. Scoping (2)/(3) to the same country is the fix for "same dish name
-	 * in a different country must not overwrite the wrong recipe".
+	 * (4) slug — every step scoped to $locale (item 2 of this phase's brief), so an
+	 * English import can never match/overwrite the Czech version of the same recipe.
+	 * Scoping (2)/(3) to the same country is the fix for "same dish name in a
+	 * different country must not overwrite the wrong recipe".
 	 */
-	private function find_existing_recipe( $item, $slug, $stable_key, $primary_country_post_id ) {
+	private function find_existing_recipe( $item, $slug, $stable_key, $primary_country_post_id, $locale ) {
 		if ( $stable_key ) {
-			$post = Atlas_Chuti_I18N::find_by_translation_group( 'atlas_recipe', $stable_key );
+			$post = Atlas_Chuti_I18N::find_by_translation_group( 'atlas_recipe', $stable_key, $locale );
 			if ( $post ) {
 				return $post;
 			}
@@ -465,6 +564,7 @@ class Atlas_Chuti_JSON_Importer {
 						'posts_per_page' => -1,
 						'post_status'    => array( 'publish', 'draft' ),
 						'tax_query'      => array( array( 'taxonomy' => 'atlas_country_tax', 'field' => 'term_id', 'terms' => $country_term_id ) ),
+						'meta_query'     => array( array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ) ),
 					)
 				);
 				$normalized_title = $this->normalize_title( $item['title'] ?? '' );
@@ -485,7 +585,7 @@ class Atlas_Chuti_JSON_Importer {
 			}
 		}
 
-		return $this->find_existing( 'atlas_recipe', $slug );
+		return $this->find_existing( 'atlas_recipe', $slug, $locale );
 	}
 
 	private function row( $title, $status, $css, $message = '' ) {
@@ -537,28 +637,33 @@ class Atlas_Chuti_JSON_Importer {
 
 	/**
 	 * Resolves a cross-reference purely from the database: stable key first (ISO
-	 * code / translation_group / ingredient_key), slug as a convenience fallback.
-	 * Stateless on purpose — see the class docblock.
+	 * code / translation_group / ingredient_key), slug as a convenience fallback —
+	 * both scoped to $locale (item 2/3 of this phase's brief), so a reference inside
+	 * a cs-CZ item always resolves to the cs-CZ variant of the target, and an en item
+	 * to the en variant. Stateless on purpose — see the class docblock.
 	 */
-	private function resolve_reference( $post_type, $ref ) {
+	private function resolve_reference( $post_type, $ref, $locale ) {
 		$ref = trim( (string) $ref );
 		if ( '' === $ref ) {
 			return 0;
 		}
 
 		if ( 'atlas_country' === $post_type ) {
-			$post = Atlas_Chuti_I18N::find_country_by_iso( $ref );
+			$post = Atlas_Chuti_I18N::find_country_by_iso( $ref, $locale );
 		} elseif ( 'atlas_ingredient' === $post_type ) {
-			$post = Atlas_Chuti_I18N::find_ingredient_by_key( sanitize_title( $ref ) );
+			$post = Atlas_Chuti_I18N::find_ingredient_by_key( sanitize_title( $ref ), $locale );
 		} else {
-			$post = Atlas_Chuti_I18N::find_by_translation_group( $post_type, sanitize_title( $ref ) );
+			$post = Atlas_Chuti_I18N::find_by_translation_group( $post_type, sanitize_title( $ref ), $locale );
 		}
 		if ( $post ) {
 			return $post->ID;
 		}
 
 		$post = get_page_by_path( sanitize_title( $ref ), OBJECT, $post_type );
-		return $post ? $post->ID : 0;
+		if ( $post && $locale === Atlas_Chuti_I18N::get_locale( $post->ID ) ) {
+			return $post->ID;
+		}
+		return 0;
 	}
 
 	private function validate_required( $item, $required_keys ) {
@@ -580,14 +685,20 @@ class Atlas_Chuti_JSON_Importer {
 			return $this->row( $title ?: $this->label_untitled(), $this->label_error(), 'error', $this->label_missing_fields( $errors ) );
 		}
 
+		$locale     = $this->resolve_item_locale( $item );
 		$slug       = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $title );
 		$stable_key = $this->stable_key_for( 'atlas_ingredient', $item, $slug );
-		$existing   = ( $stable_key ? Atlas_Chuti_I18N::find_ingredient_by_key( $stable_key ) : null ) ?: $this->find_existing( 'atlas_ingredient', $slug );
+		$existing   = ( $stable_key ? Atlas_Chuti_I18N::find_ingredient_by_key( $stable_key, $locale ) : null ) ?: $this->find_existing( 'atlas_ingredient', $slug, $locale );
 
 		if ( $dry_run ) {
 			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok' );
 		}
 
+		// atlas_ingredient_key/atlas_locale go through `meta_input` so they're already
+		// visible to class-ingredient-sync.php's save_post hook (priority 20, fires
+		// before this method's own update_post_meta() calls below would otherwise
+		// reach it) — the canonical atlas_ingredient_tax term is matched/created by
+		// the correct key from the very first save, not a later re-save.
 		$post_id = wp_insert_post(
 			array(
 				'ID'          => $existing ? $existing->ID : 0,
@@ -595,6 +706,10 @@ class Atlas_Chuti_JSON_Importer {
 				'post_title'  => $title,
 				'post_name'   => $slug,
 				'post_status' => 'publish',
+				'meta_input'  => array(
+					'atlas_ingredient_key' => $stable_key ?: $slug,
+					'atlas_locale'         => $locale,
+				),
 			),
 			true
 		);
@@ -604,7 +719,6 @@ class Atlas_Chuti_JSON_Importer {
 
 		update_post_meta( $post_id, 'atlas_aliases', Atlas_Chuti_Meta_Fields::sanitize( 'string_list', $item['aliases'] ?? array() ) );
 		update_post_meta( $post_id, 'atlas_default_unit', sanitize_text_field( $item['default_unit'] ?? '' ) );
-		update_post_meta( $post_id, 'atlas_ingredient_key', $stable_key ?: $slug );
 		$this->apply_i18n_meta( $post_id, $item );
 
 		return $this->row( $title, $this->status_done( $existing ), 'ok' );
@@ -621,6 +735,8 @@ class Atlas_Chuti_JSON_Importer {
 			$errors[] = __( 'iso_code (očekáván ISO 3166-1 kód, např. IT)', 'atlas-chuti' );
 		}
 		if ( ! empty( $item['continent'] ) && ! in_array( $item['continent'], self::VALID_CONTINENTS, true ) ) {
+			// Stable keys now (item 14 of this phase's brief), not Czech names — e.g.
+			// "europe", not "Evropa".
 			$errors[] = sprintf( __( 'continent (%s)', 'atlas-chuti' ), implode( '/', self::VALID_CONTINENTS ) );
 		}
 		if ( isset( $item['status'] ) && ! in_array( $item['status'], self::VALID_STATUS, true ) ) {
@@ -649,17 +765,22 @@ class Atlas_Chuti_JSON_Importer {
 			return $this->row( $title ?: $this->label_untitled(), $this->label_error(), 'error', $this->label_missing_fields( $errors ) );
 		}
 
+		$locale     = $this->resolve_item_locale( $item );
 		$slug       = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $title );
 		$stable_key = $this->stable_key_for( 'atlas_country', $item, $slug );
-		// ISO code is this entity's real identity (item 14) — what a re-import, or a
-		// future domain-per-language site, recognizes "this is the same country" by.
-		$existing = Atlas_Chuti_I18N::find_country_by_iso( $stable_key ) ?: $this->find_existing( 'atlas_country', $slug );
+		// ISO code is this entity's real identity (item 14), scoped to $locale (item 2)
+		// — what a re-import recognizes "this is the same country, same language" by.
+		$existing = Atlas_Chuti_I18N::find_country_by_iso( $stable_key, $locale ) ?: $this->find_existing( 'atlas_country', $slug, $locale );
 
 		if ( $dry_run ) {
 			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok' );
 		}
 
-		// Step 1: create/update the profile itself (title/slug/status only).
+		// Step 1: create/update the profile itself (title/slug/status), with iso_code
+		// and locale set via `meta_input` — applied BEFORE save_post fires, so
+		// class-country-sync.php's hook sees the real ISO code (and can find/create the
+		// right canonical atlas_country_tax term by it) on this very first save,
+		// instead of a stale/empty value from a hook-ordering race.
 		$post_id = wp_insert_post(
 			array(
 				'ID'          => $existing ? $existing->ID : 0,
@@ -667,6 +788,10 @@ class Atlas_Chuti_JSON_Importer {
 				'post_title'  => $title,
 				'post_name'   => $slug,
 				'post_status' => $item['status'] ?? 'publish',
+				'meta_input'  => array(
+					'atlas_iso_code' => strtoupper( $item['iso_code'] ),
+					'atlas_locale'   => $locale,
+				),
 			),
 			true
 		);
@@ -674,10 +799,14 @@ class Atlas_Chuti_JSON_Importer {
 			return $this->row( $title, $this->label_error(), 'error', $post_id->get_error_message() );
 		}
 
-		// Step 2: assign the continent BEFORE anything reads it (item 2 of this phase's
-		// brief — this used to happen after other saves and after the taxonomy sync hook
-		// had already fired once, which is exactly the bug being fixed here).
-		wp_set_post_terms( $post_id, array( sanitize_text_field( $item['continent'] ) ), 'atlas_continent', false );
+		// Step 2: assign the continent BEFORE anything reads it (this used to happen
+		// after other saves and after the taxonomy sync hook had already fired once,
+		// which is exactly the bug this fixes). Resolved by stable key (item 14), not
+		// by Czech name — the SAME "europe" term serves every locale's Italy.
+		$continent_term_id = $this->resolve_or_create_term_by_key( 'atlas_continent', $item['continent'], $locale );
+		if ( $continent_term_id ) {
+			wp_set_post_terms( $post_id, array( $continent_term_id ), 'atlas_continent', false );
+		}
 
 		// Step 3: save the rest of the metadata.
 		$fields = Atlas_Chuti_Meta_Fields::country_fields();
@@ -687,13 +816,13 @@ class Atlas_Chuti_JSON_Importer {
 			}
 			if ( array_key_exists( $key, $item ) ) {
 				$shape = $field['shape'] ?? array();
-				update_post_meta( $post_id, Atlas_Chuti_Meta_Fields::meta_key( $key ), Atlas_Chuti_Meta_Fields::sanitize( $field['type'], $item[ $key ], $shape ) );
+				$types = $field['types'] ?? array();
+				update_post_meta( $post_id, Atlas_Chuti_Meta_Fields::meta_key( $key ), Atlas_Chuti_Meta_Fields::sanitize( $field['type'], $item[ $key ], $shape, $types ) );
 			}
 		}
 		if ( isset( $item['featured_image_alt'] ) && has_post_thumbnail( $post_id ) ) {
 			update_post_meta( get_post_thumbnail_id( $post_id ), '_wp_attachment_image_alt', sanitize_text_field( $item['featured_image_alt'] ) );
 		}
-		update_post_meta( $post_id, 'atlas_iso_code', strtoupper( $item['iso_code'] ) );
 		$this->apply_i18n_meta( $post_id, $item );
 
 		// Step 4: only now, with metadata final, (re-)run the country↔taxonomy sync and
@@ -721,16 +850,21 @@ class Atlas_Chuti_JSON_Importer {
 		if ( ! empty( $item['locale'] ) && ! $this->is_valid_locale( $item['locale'] ) ) {
 			$errors[] = __( 'locale (očekáván BCP 47 tag, např. cs-CZ)', 'atlas-chuti' );
 		}
+		if ( ! empty( $item['category'] ) && ! in_array( $item['category'], self::VALID_GLOSSARY_CATEGORY, true ) ) {
+			// Stable keys now (item 18) — e.g. "technique", not "Kuchařské techniky".
+			$errors[] = sprintf( __( 'category (%s)', 'atlas-chuti' ), implode( '/', self::VALID_GLOSSARY_CATEGORY ) );
+		}
 		if ( $errors ) {
 			return $this->row( $title ?: $this->label_untitled(), $this->label_error(), 'error', $this->label_missing_fields( $errors ) );
 		}
 
+		$locale     = $this->resolve_item_locale( $item );
 		$slug       = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $title );
 		$stable_key = $this->stable_key_for( 'atlas_glossary', $item, $slug );
-		$existing   = ( $stable_key ? Atlas_Chuti_I18N::find_by_translation_group( 'atlas_glossary', $stable_key ) : null ) ?: $this->find_existing( 'atlas_glossary', $slug );
+		$existing   = ( $stable_key ? Atlas_Chuti_I18N::find_by_translation_group( 'atlas_glossary', $stable_key, $locale ) : null ) ?: $this->find_existing( 'atlas_glossary', $slug, $locale );
 
 		if ( $dry_run ) {
-			$warnings = $this->warnings_for_glossary_refs( $item );
+			$warnings = $this->warnings_for_glossary_refs( $item, $locale );
 			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok', $warnings );
 		}
 
@@ -741,6 +875,10 @@ class Atlas_Chuti_JSON_Importer {
 				'post_title'  => $title,
 				'post_name'   => $slug,
 				'post_status' => $item['status'] ?? 'publish',
+				'meta_input'  => array(
+					'atlas_locale'            => $locale,
+					'atlas_translation_group' => ! empty( $item['translation_group'] ) ? sanitize_title( $item['translation_group'] ) : $slug,
+				),
 			),
 			true
 		);
@@ -758,16 +896,19 @@ class Atlas_Chuti_JSON_Importer {
 			}
 		}
 		if ( isset( $item['category'] ) ) {
-			wp_set_post_terms( $post_id, array( sanitize_text_field( $item['category'] ) ), 'atlas_glossary_category', false );
+			$category_term_id = $this->resolve_or_create_term_by_key( 'atlas_glossary_category', $item['category'], $locale );
+			if ( $category_term_id ) {
+				wp_set_post_terms( $post_id, array( $category_term_id ), 'atlas_glossary_category', false );
+			}
 		}
 		$this->apply_i18n_meta( $post_id, $item );
 
 		return $this->row( $title, $this->status_done( $existing ), 'ok' );
 	}
 
-	private function warnings_for_glossary_refs( $item ) {
+	private function warnings_for_glossary_refs( $item, $locale ) {
 		$notes = array();
-		if ( ! empty( $item['origin_country'] ) && ! $this->resolve_reference( 'atlas_country', $item['origin_country'] ) ) {
+		if ( ! empty( $item['origin_country'] ) && ! $this->resolve_reference( 'atlas_country', $item['origin_country'], $locale ) ) {
 			/* translators: %s: the unresolved origin_country reference from the JSON */
 			$notes[] = sprintf( __( 'origin_country "%s" nenalezena (bude uložena bez vazby)', 'atlas-chuti' ), $item['origin_country'] );
 		}
@@ -782,7 +923,7 @@ class Atlas_Chuti_JSON_Importer {
 	 * critically — that the main country actually resolves, so a recipe can never
 	 * silently finish pointing at nothing (item 10, last paragraph).
 	 */
-	private function validate_recipe( $item ) {
+	private function validate_recipe( $item, $locale ) {
 		$errors = $this->validate_required( $item, array( 'title', 'country', 'excerpt', 'servings_default', 'prep_minutes', 'ingredients', 'steps' ) );
 
 		if ( isset( $item['servings_default'] ) && ( ! is_numeric( $item['servings_default'] ) || (int) $item['servings_default'] <= 0 ) ) {
@@ -798,6 +939,7 @@ class Atlas_Chuti_JSON_Importer {
 			$errors[] = __( 'status (publish/draft)', 'atlas-chuti' );
 		}
 		if ( ! empty( $item['difficulty'] ) && ! in_array( $item['difficulty'], self::VALID_DIFFICULTY, true ) ) {
+			// Stable keys now (item 15) — e.g. "easy", not "Snadné".
 			$errors[] = sprintf( __( 'difficulty (%s)', 'atlas-chuti' ), implode( '/', self::VALID_DIFFICULTY ) );
 		}
 		if ( ! empty( $item['locale'] ) && ! $this->is_valid_locale( $item['locale'] ) ) {
@@ -833,19 +975,19 @@ class Atlas_Chuti_JSON_Importer {
 		// never silently pass through — the recipe simply isn't created (see
 		// import_recipe()) and this shows up as a hard error in both dry-run and the
 		// live report, never as a quietly orphaned recipe.
-		if ( ! empty( $item['country'] ) && ! $this->resolve_reference( 'atlas_country', $item['country'] ) ) {
+		if ( ! empty( $item['country'] ) && ! $this->resolve_reference( 'atlas_country', $item['country'], $locale ) ) {
 			/* translators: %s: the unresolved country reference from the JSON */
-			$errors[] = sprintf( __( 'country "%s" neexistuje (nejdřív naimportujte danou zemi)', 'atlas-chuti' ), $item['country'] );
+			$errors[] = sprintf( __( 'country "%s" neexistuje (nejdřív naimportujte danou zemi v tomto jazyce)', 'atlas-chuti' ), $item['country'] );
 		}
 
 		return $errors;
 	}
 
-	private function warnings_for_recipe_refs( $item ) {
+	private function warnings_for_recipe_refs( $item, $locale ) {
 		$notes = array();
 		foreach ( array( 'related_recipes' => 'atlas_recipe', 'related_glossary' => 'atlas_glossary', 'related_countries' => 'atlas_country' ) as $field => $post_type ) {
 			foreach ( (array) ( $item[ $field ] ?? array() ) as $ref ) {
-				if ( ! $this->resolve_reference( $post_type, $ref ) ) {
+				if ( ! $this->resolve_reference( $post_type, $ref, $locale ) ) {
 					/* translators: %1$s: field name (e.g. related_recipes), %2$s: the unresolved reference value */
 					$notes[] = sprintf( __( '%1$s "%2$s" nenalezen(a)', 'atlas-chuti' ), $field, $ref );
 				}
@@ -857,22 +999,43 @@ class Atlas_Chuti_JSON_Importer {
 				/* translators: %s: the unrecognized unit text */
 				$notes[] = sprintf( __( 'neznámá jednotka "%s" (bude uložena jako text)', 'atlas-chuti' ), $unit );
 			}
+
+			// item 11/12 of this phase's brief: ingredient_key is practically mandatory
+			// for production content (search/multilingual linking depend on it); a
+			// missing key is a warning, not a hard error, so hand-entered content can
+			// still be saved. A key + display_name pair that isn't in the dictionary
+			// yet will be auto-created (variant A) — flagged here so a dry-run shows it.
+			$key  = trim( (string) ( $row['ingredient_key'] ?? '' ) );
+			$name = trim( (string) ( $row['display_name'] ?? '' ) );
+			if ( '' === $key ) {
+				/* translators: %s: the ingredient's display_name */
+				$notes[] = sprintf( __( 'ingredience "%s" nemá ingredient_key (vyhledávání podle ingredience a vícejazyčné propojení bude omezené)', 'atlas-chuti' ), $name ?: '?' );
+			} elseif ( ! Atlas_Chuti_I18N::find_ingredient_by_key( sanitize_title( $key ), $locale ) ) {
+				if ( $name ) {
+					/* translators: %1$s: display_name, %2$s: ingredient_key */
+					$notes[] = sprintf( __( 'ingredience "%1$s" (%2$s) ve slovníčku zatím neexistuje – bude automaticky vytvořena', 'atlas-chuti' ), $name, $key );
+				} else {
+					/* translators: %s: ingredient_key */
+					$notes[] = sprintf( __( 'ingredient_key "%s" nemá display_name, nelze automaticky vytvořit slovníkový záznam', 'atlas-chuti' ), $key );
+				}
+			}
 		}
 		return implode( '; ', $notes );
 	}
 
 	private function import_recipe( $item, $dry_run ) {
 		$title  = isset( $item['title'] ) ? sanitize_text_field( $item['title'] ) : '';
-		$errors = $this->validate_recipe( $item );
+		$locale = $this->resolve_item_locale( $item );
+		$errors = $this->validate_recipe( $item, $locale );
 		if ( $errors ) {
 			return $this->row( $title ?: $this->label_untitled(), $this->label_error(), 'error', $this->label_missing_fields( $errors ) );
 		}
 
 		$slug                  = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $title );
 		$stable_key            = $this->stable_key_for( 'atlas_recipe', $item, $slug );
-		$primary_country_post  = $this->resolve_reference( 'atlas_country', $item['country'] );
-		$existing              = $this->find_existing_recipe( $item, $slug, $stable_key, $primary_country_post );
-		$warnings              = $this->warnings_for_recipe_refs( $item );
+		$primary_country_post  = $this->resolve_reference( 'atlas_country', $item['country'], $locale );
+		$existing              = $this->find_existing_recipe( $item, $slug, $stable_key, $primary_country_post, $locale );
+		$warnings              = $this->warnings_for_recipe_refs( $item, $locale );
 
 		if ( $dry_run ) {
 			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok', $warnings );
@@ -885,6 +1048,10 @@ class Atlas_Chuti_JSON_Importer {
 				'post_title'  => $title,
 				'post_name'   => $slug,
 				'post_status' => $item['status'] ?? 'publish',
+				'meta_input'  => array(
+					'atlas_locale'            => $locale,
+					'atlas_translation_group' => $stable_key ?: $slug,
+				),
 			),
 			true
 		);
@@ -899,18 +1066,27 @@ class Atlas_Chuti_JSON_Importer {
 			}
 			if ( array_key_exists( $key, $item ) ) {
 				$shape = $field['shape'] ?? array();
-				update_post_meta( $post_id, Atlas_Chuti_Meta_Fields::meta_key( $key ), Atlas_Chuti_Meta_Fields::sanitize( $field['type'], $item[ $key ], $shape ) );
+				$types = $field['types'] ?? array();
+				update_post_meta( $post_id, Atlas_Chuti_Meta_Fields::meta_key( $key ), Atlas_Chuti_Meta_Fields::sanitize( $field['type'], $item[ $key ], $shape, $types ) );
 			}
 		}
 
+		// Taxonomy values resolve by stable key (item 15-17), not by Czech name — the
+		// SAME "easy"/"main-course" term serves every locale's recipes. meal_type/diet
+		// stay open vocabularies: any new key is simply created.
 		if ( ! empty( $item['meal_type'] ) ) {
-			wp_set_post_terms( $post_id, array_map( 'sanitize_text_field', (array) $item['meal_type'] ), 'atlas_meal_type', false );
+			$term_ids = array_filter( array_map( fn( $k ) => $this->resolve_or_create_term_by_key( 'atlas_meal_type', $k, $locale ), (array) $item['meal_type'] ) );
+			wp_set_post_terms( $post_id, array_values( $term_ids ), 'atlas_meal_type', false );
 		}
 		if ( ! empty( $item['difficulty'] ) ) {
-			wp_set_post_terms( $post_id, array( sanitize_text_field( $item['difficulty'] ) ), 'atlas_difficulty', false );
+			$term_id = $this->resolve_or_create_term_by_key( 'atlas_difficulty', $item['difficulty'], $locale );
+			if ( $term_id ) {
+				wp_set_post_terms( $post_id, array( $term_id ), 'atlas_difficulty', false );
+			}
 		}
 		if ( ! empty( $item['diet'] ) ) {
-			wp_set_post_terms( $post_id, array_map( 'sanitize_text_field', (array) $item['diet'] ), 'atlas_diet', false );
+			$term_ids = array_filter( array_map( fn( $k ) => $this->resolve_or_create_term_by_key( 'atlas_diet', $k, $locale ), (array) $item['diet'] ) );
+			wp_set_post_terms( $post_id, array_values( $term_ids ), 'atlas_diet', false );
 		}
 		$this->apply_i18n_meta( $post_id, $item );
 
@@ -924,9 +1100,21 @@ class Atlas_Chuti_JSON_Importer {
 			}
 		}
 
-		// Ingredient search index (item 17): tag this recipe with every ingredient it
-		// contains that resolves to the normalized dictionary.
-		Atlas_Chuti_Ingredient_Sync::tag_recipe( $post_id, Atlas_Chuti_Meta_Fields::sanitize( 'repeater', $item['ingredients'], $fields['ingredients']['shape'] ) );
+		// Auto-create any ingredient dictionary entries this recipe references but
+		// that don't exist yet (item 12, "variant A") — before tagging, so the entry
+		// just created is immediately resolvable by the tag_recipe() call below.
+		foreach ( (array) $item['ingredients'] as $row ) {
+			$key  = trim( (string) ( $row['ingredient_key'] ?? '' ) );
+			$name = trim( (string) ( $row['display_name'] ?? '' ) );
+			if ( $key && $name ) {
+				$this->ensure_ingredient_exists( $key, $name, $locale, false );
+			}
+		}
+
+		// Ingredient search index (item 17/21): tag this recipe with every ingredient
+		// it contains that resolves to the normalized dictionary, in THIS recipe's locale.
+		$sanitized_ingredients = Atlas_Chuti_Meta_Fields::sanitize( 'repeater', $item['ingredients'], $fields['ingredients']['shape'], $fields['ingredients']['types'] ?? array() );
+		Atlas_Chuti_Ingredient_Sync::tag_recipe( $post_id, $sanitized_ingredients, $locale );
 
 		return $this->row( $title, $this->status_done( $existing ), 'ok', $warnings );
 	}
@@ -934,16 +1122,18 @@ class Atlas_Chuti_JSON_Importer {
 	// -- Pass 2: reference resolution ------------------------------------------
 
 	private function resolve_country_refs( $item ) {
-		$post_id = $this->resolve_reference( 'atlas_country', $item['iso_code'] ?? ( $item['slug'] ?? $item['title'] ?? '' ) );
-		if ( ! $post_id ) {
+		$locale  = $this->resolve_item_locale( $item );
+		$post    = Atlas_Chuti_I18N::find_country_by_iso( $item['iso_code'] ?? '', $locale ) ?: $this->find_existing( 'atlas_country', sanitize_title( $item['slug'] ?? $item['title'] ?? '' ), $locale );
+		if ( ! $post ) {
 			return;
 		}
+		$post_id = $post->ID;
 		if ( ! empty( $item['related_countries'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s ), (array) $item['related_countries'] ) );
+			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s, $locale ), (array) $item['related_countries'] ) );
 			update_post_meta( $post_id, 'atlas_related_countries', array_values( $ids ) );
 		}
 		if ( ! empty( $item['related_glossary'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_glossary', $s ), (array) $item['related_glossary'] ) );
+			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_glossary', $s, $locale ), (array) $item['related_glossary'] ) );
 			update_post_meta( $post_id, 'atlas_related_glossary', array_values( $ids ) );
 		}
 		if ( ! empty( $item['traditional_dishes'] ) ) {
@@ -951,7 +1141,7 @@ class Atlas_Chuti_JSON_Importer {
 			if ( is_array( $dishes ) ) {
 				foreach ( $dishes as $i => $dish ) {
 					if ( ! empty( $dish['recipe_id'] ) ) {
-						$dishes[ $i ]['recipe_id'] = (string) $this->resolve_reference( 'atlas_recipe', $dish['recipe_id'] );
+						$dishes[ $i ]['recipe_id'] = (string) $this->resolve_reference( 'atlas_recipe', $dish['recipe_id'], $locale );
 					}
 				}
 				update_post_meta( $post_id, 'atlas_traditional_dishes', $dishes );
@@ -960,23 +1150,24 @@ class Atlas_Chuti_JSON_Importer {
 	}
 
 	private function resolve_glossary_refs( $item ) {
+		$locale     = $this->resolve_item_locale( $item );
 		$stable_key = $this->stable_key_for( 'atlas_glossary', $item, sanitize_title( $item['slug'] ?? $item['title'] ?? '' ) );
-		$post       = ( $stable_key ? Atlas_Chuti_I18N::find_by_translation_group( 'atlas_glossary', $stable_key ) : null )
-			?: $this->find_existing( 'atlas_glossary', sanitize_title( $item['slug'] ?? $item['title'] ?? '' ) );
+		$post       = ( $stable_key ? Atlas_Chuti_I18N::find_by_translation_group( 'atlas_glossary', $stable_key, $locale ) : null )
+			?: $this->find_existing( 'atlas_glossary', sanitize_title( $item['slug'] ?? $item['title'] ?? '' ), $locale );
 		if ( ! $post ) {
 			return;
 		}
 		$post_id = $post->ID;
 
 		if ( ! empty( $item['origin_country'] ) ) {
-			update_post_meta( $post_id, 'atlas_origin_country_id', $this->resolve_reference( 'atlas_country', $item['origin_country'] ) );
+			update_post_meta( $post_id, 'atlas_origin_country_id', $this->resolve_reference( 'atlas_country', $item['origin_country'], $locale ) );
 		}
 		if ( ! empty( $item['related_recipes'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_recipe', $s ), (array) $item['related_recipes'] ) );
+			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_recipe', $s, $locale ), (array) $item['related_recipes'] ) );
 			update_post_meta( $post_id, 'atlas_related_recipes', array_values( $ids ) );
 		}
 		if ( ! empty( $item['related_countries'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s ), (array) $item['related_countries'] ) );
+			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s, $locale ), (array) $item['related_countries'] ) );
 			update_post_meta( $post_id, 'atlas_related_countries', array_values( $ids ) );
 			$terms = array_filter( array_map( fn( $id ) => Atlas_Chuti_Country_Sync::get_term_id_for_country_post( $id ), $ids ) );
 			if ( $terms ) {
@@ -986,26 +1177,27 @@ class Atlas_Chuti_JSON_Importer {
 	}
 
 	private function resolve_recipe_refs( $item ) {
+		$locale     = $this->resolve_item_locale( $item );
 		$slug       = sanitize_title( $item['slug'] ?? $item['title'] ?? '' );
 		$stable_key = $this->stable_key_for( 'atlas_recipe', $item, $slug );
-		$post       = ( $stable_key ? Atlas_Chuti_I18N::find_by_translation_group( 'atlas_recipe', $stable_key ) : null ) ?: $this->find_existing( 'atlas_recipe', $slug );
+		$post       = ( $stable_key ? Atlas_Chuti_I18N::find_by_translation_group( 'atlas_recipe', $stable_key, $locale ) : null ) ?: $this->find_existing( 'atlas_recipe', $slug, $locale );
 		if ( ! $post ) {
 			return;
 		}
 		$post_id = $post->ID;
 
-		$related_country_posts = ! empty( $item['related_countries'] ) ? array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s ), (array) $item['related_countries'] ) : array();
+		$related_country_posts = ! empty( $item['related_countries'] ) ? array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s, $locale ), (array) $item['related_countries'] ) : array();
 		$related_terms         = array_filter( array_map( fn( $id ) => Atlas_Chuti_Country_Sync::get_term_id_for_country_post( $id ), array_filter( $related_country_posts ) ) );
 		if ( $related_terms ) {
 			wp_set_post_terms( $post_id, $related_terms, 'atlas_country_tax', true );
 		}
 
 		if ( ! empty( $item['related_recipes'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_recipe', $s ), (array) $item['related_recipes'] ) );
+			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_recipe', $s, $locale ), (array) $item['related_recipes'] ) );
 			update_post_meta( $post_id, 'atlas_related_recipes', array_values( $ids ) );
 		}
 		if ( ! empty( $item['related_glossary'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_glossary', $s ), (array) $item['related_glossary'] ) );
+			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_glossary', $s, $locale ), (array) $item['related_glossary'] ) );
 			update_post_meta( $post_id, 'atlas_related_glossary', array_values( $ids ) );
 		}
 

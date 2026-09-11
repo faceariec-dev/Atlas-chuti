@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
 				<input type="search" name="s" placeholder="<?php esc_attr_e( 'Hledat…', 'atlas-chuti' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>">
 			</form>
-			<a class="passport-icon" href="<?php echo esc_url( home_url( '/kulinarsky-pas/' ) ); ?>" title="<?php esc_attr_e( 'Kulinářský pas', 'atlas-chuti' ); ?>">
+			<a class="passport-icon" href="<?php echo esc_url( atlas_chuti_system_url( 'passport' ) ); ?>" title="<?php esc_attr_e( 'Kulinářský pas', 'atlas-chuti' ); ?>">
 				<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="oklch(58% 0.13 38)" stroke-width="1.8"><circle cx="12" cy="12" r="9"></circle><polygon points="15,9 13,13 9,15 11,11" fill="oklch(58% 0.13 38)" stroke="none"></polygon></svg>
 			</a>
 			<button class="nav-toggle" aria-expanded="false" aria-label="<?php esc_attr_e( 'Otevřít menu', 'atlas-chuti' ); ?>"><span></span></button>

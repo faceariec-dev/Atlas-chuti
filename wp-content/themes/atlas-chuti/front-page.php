@@ -44,7 +44,7 @@ $total_countries = atlas_chuti_total_countries();
 <section class="section container">
 	<div class="section-head">
 		<h2><?php esc_html_e( 'Dnes ochutnejte', 'atlas-chuti' ); ?></h2>
-		<a class="more-link" href="<?php echo esc_url( home_url( '/zeme/' ) ); ?>"><?php esc_html_e( 'Všechny země →', 'atlas-chuti' ); ?></a>
+		<a class="more-link" href="<?php echo esc_url( atlas_chuti_system_url( 'countries' ) ); ?>"><?php esc_html_e( 'Všechny země →', 'atlas-chuti' ); ?></a>
 	</div>
 	<div class="card-grid card-grid-3">
 		<?php foreach ( $today_countries as $country ) : ?>
@@ -127,7 +127,7 @@ $total_countries = atlas_chuti_total_countries();
 			</span>
 		</div>
 		<div class="passport-flags" data-passport-flags style="margin-bottom:26px;"></div>
-		<a class="btn btn-accent" href="<?php echo esc_url( home_url( '/kulinarsky-pas/' ) ); ?>"><?php esc_html_e( 'Otevřít můj kulinářský pas', 'atlas-chuti' ); ?></a>
+		<a class="btn btn-accent" href="<?php echo esc_url( atlas_chuti_system_url( 'passport' ) ); ?>"><?php esc_html_e( 'Otevřít můj kulinářský pas', 'atlas-chuti' ); ?></a>
 	</div>
 </section>
 

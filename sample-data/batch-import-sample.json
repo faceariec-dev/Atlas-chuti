@@ -13,7 +13,7 @@
       "default_unit": "ks"
     },
     {
-      "ingredient_key": "pasta_spaghetti",
+      "ingredient_key": "pasta-spaghetti",
       "locale": "cs-CZ",
       "title": "Spaghetti",
       "slug": "spagety",
@@ -23,7 +23,74 @@
       "default_unit": "g"
     },
     {
-      "ingredient_key": "soy_sauce",
+      "ingredient_key": "guanciale",
+      "locale": "cs-CZ",
+      "title": "Guanciale",
+      "slug": "guanciale",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "egg",
+      "locale": "cs-CZ",
+      "title": "Vejce",
+      "slug": "vejce",
+      "aliases": [
+        "vajíčko",
+        "vajíčka"
+      ],
+      "default_unit": "ks"
+    },
+    {
+      "ingredient_key": "pecorino-romano",
+      "locale": "cs-CZ",
+      "title": "Pecorino Romano",
+      "slug": "pecorino-romano",
+      "aliases": [
+        "pecorino"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "black-pepper",
+      "locale": "cs-CZ",
+      "title": "Černý pepř",
+      "slug": "cerny-pepr",
+      "aliases": [
+        "pepř"
+      ],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "salt",
+      "locale": "cs-CZ",
+      "title": "Sůl",
+      "slug": "sul",
+      "aliases": [],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "pork-belly",
+      "locale": "cs-CZ",
+      "title": "Vepřový bůček",
+      "slug": "veprovy-bucek",
+      "aliases": [
+        "bůček"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "miso-paste",
+      "locale": "cs-CZ",
+      "title": "Miso pasta",
+      "slug": "miso-pasta",
+      "aliases": [
+        "miso"
+      ],
+      "default_unit": "lžíce"
+    },
+    {
+      "ingredient_key": "soy-sauce",
       "locale": "cs-CZ",
       "title": "Sójová omáčka",
       "slug": "sojova-omacka",
@@ -31,6 +98,69 @@
         "sojovka"
       ],
       "default_unit": "lžíce"
+    },
+    {
+      "ingredient_key": "dashi",
+      "locale": "cs-CZ",
+      "title": "Vývar dashi",
+      "slug": "dashi",
+      "aliases": [
+        "dashi vývar"
+      ],
+      "default_unit": "l"
+    },
+    {
+      "ingredient_key": "ramen-noodles",
+      "locale": "cs-CZ",
+      "title": "Ramen nudle",
+      "slug": "ramen-nudle",
+      "aliases": [],
+      "default_unit": "porce"
+    },
+    {
+      "ingredient_key": "rice-noodles",
+      "locale": "cs-CZ",
+      "title": "Rýžové nudle",
+      "slug": "ryzove-nudle",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "shrimp",
+      "locale": "cs-CZ",
+      "title": "Krevety",
+      "slug": "krevety",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "tamarind-paste",
+      "locale": "cs-CZ",
+      "title": "Tamarindová pasta",
+      "slug": "tamarindova-pasta",
+      "aliases": [
+        "tamarind"
+      ],
+      "default_unit": "lžíce"
+    },
+    {
+      "ingredient_key": "fish-sauce",
+      "locale": "cs-CZ",
+      "title": "Rybí omáčka",
+      "slug": "rybi-omacka",
+      "aliases": [],
+      "default_unit": "lžíce"
+    },
+    {
+      "ingredient_key": "peanut",
+      "locale": "cs-CZ",
+      "title": "Arašídy",
+      "slug": "arasidy",
+      "aliases": [
+        "burák",
+        "buráky"
+      ],
+      "default_unit": "hrnku"
     }
   ],
   "countries": [
@@ -43,7 +173,7 @@
       "name_en": "Italy",
       "iso_code": "IT",
       "flag_emoji": "🇮🇹",
-      "continent": "Evropa",
+      "continent": "europe",
       "capital": "Řím",
       "languages": [
         "Italština"
@@ -108,7 +238,7 @@
       "name_en": "Japan",
       "iso_code": "JP",
       "flag_emoji": "🇯🇵",
-      "continent": "Asie",
+      "continent": "asia",
       "capital": "Tokio",
       "languages": [
         "Japonština"
@@ -172,7 +302,7 @@
       "name_en": "Thailand",
       "iso_code": "TH",
       "flag_emoji": "🇹🇭",
-      "continent": "Asie",
+      "continent": "asia",
       "capital": "Bangkok",
       "languages": [
         "Thajština"
@@ -229,7 +359,7 @@
     {
       "title": "Al dente",
       "slug": "al-dente",
-      "category": "Kuchařské techniky",
+      "category": "technique",
       "short_definition": "Stupeň uvaření těstovin či rýže „na skus“, kdy si zachovávají mírný odpor.",
       "detailed": "Al dente doslova znamená „na zub“. Ochutnávejte cca minutu před uplynutím doby uvedené na obalu.",
       "origin_country": "IT",
@@ -247,7 +377,7 @@
     {
       "title": "Soffritto",
       "slug": "soffritto",
-      "category": "Kuchařské techniky",
+      "category": "technique",
       "short_definition": "Základ italských jídel z pomalu restované cibule, mrkve a celeru.",
       "detailed": "Trojice zeleniny nakrájená najemno a pomalu restovaná na oleji nebo másle, dokud nezesklovatí – základ mnoha italských omáček a vývarů.",
       "origin_country": "IT",
@@ -263,7 +393,7 @@
     {
       "title": "Miso",
       "slug": "miso",
-      "category": "Suroviny",
+      "category": "ingredient",
       "short_definition": "Fermentovaná sójová pasta tvořící základ japonské kuchyně.",
       "detailed": "Vzniká fermentací sójových bobů (často s rýží nebo ječmenem) pomocí kultury kódži. Používá se do polévek, marinád a dresinků.",
       "origin_country": "JP",
@@ -283,7 +413,7 @@
     {
       "title": "Dashi",
       "slug": "dashi",
-      "category": "Suroviny",
+      "category": "ingredient",
       "short_definition": "Japonský vývar z kombu řasy a sušených ryb bonito.",
       "detailed": "Základní stavební kámen japonské kuchyně – čirý, jemně kouřový a umami vývar používaný v polévkách, omáčkách a dušených jídlech.",
       "origin_country": "JP",
@@ -311,9 +441,9 @@
       "prep_minutes": 10,
       "cook_minutes": 15,
       "total_minutes": 25,
-      "difficulty": "Snadné",
+      "difficulty": "easy",
       "meal_type": [
-        "Hlavní jídlo"
+        "main-course"
       ],
       "diet": [],
       "about": "Kouzlo carbonary je v emulzi vajec a sýra, která díky teplu z těstovin zhoustne do hebké omáčky – bez smetany.",
@@ -323,7 +453,7 @@
           "unit": "g",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "pasta_spaghetti",
+          "ingredient_key": "pasta-spaghetti",
           "display_name": "Spaghetti"
         },
         {
@@ -331,7 +461,7 @@
           "unit": "g",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "guanciale",
           "display_name": "Guanciale"
         },
         {
@@ -339,7 +469,7 @@
           "unit": "ks",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "egg",
           "display_name": "Vejce"
         },
         {
@@ -347,7 +477,7 @@
           "unit": "g",
           "note": "nastrouhaný",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "pecorino-romano",
           "display_name": "Pecorino Romano"
         },
         {
@@ -355,7 +485,7 @@
           "unit": "",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "black-pepper",
           "display_name": "Černý pepř"
         },
         {
@@ -363,7 +493,7 @@
           "unit": "",
           "note": "na vodu",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "salt",
           "display_name": "Sůl"
         }
       ],
@@ -426,10 +556,10 @@
       "prep_minutes": 30,
       "cook_minutes": 180,
       "total_minutes": 210,
-      "difficulty": "Náročné",
+      "difficulty": "hard",
       "meal_type": [
-        "Polévka",
-        "Hlavní jídlo"
+        "soup",
+        "main-course"
       ],
       "diet": [],
       "about": "Ramen shoyu i miso stojí na dlouho vařeném vývaru a vyvážené dochucovací omáčce (tare).",
@@ -439,7 +569,7 @@
           "unit": "g",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "pork-belly",
           "display_name": "Vepřový bůček"
         },
         {
@@ -447,7 +577,7 @@
           "unit": "lžíce",
           "note": "",
           "group": "Vývar",
-          "ingredient_key": "",
+          "ingredient_key": "miso-paste",
           "display_name": "Miso pasta"
         },
         {
@@ -455,7 +585,7 @@
           "unit": "lžíce",
           "note": "",
           "group": "Vývar",
-          "ingredient_key": "soy_sauce",
+          "ingredient_key": "soy-sauce",
           "display_name": "Sójová omáčka"
         },
         {
@@ -463,7 +593,7 @@
           "unit": "l",
           "note": "",
           "group": "Vývar",
-          "ingredient_key": "",
+          "ingredient_key": "dashi",
           "display_name": "Vývar dashi"
         },
         {
@@ -471,7 +601,7 @@
           "unit": "porce",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "ramen-noodles",
           "display_name": "Ramen nudle"
         },
         {
@@ -479,7 +609,7 @@
           "unit": "ks",
           "note": "marinovaná",
           "group": "Na dozdobení",
-          "ingredient_key": "",
+          "ingredient_key": "egg",
           "display_name": "Vejce natvrdo"
         }
       ],
@@ -535,9 +665,9 @@
       "prep_minutes": 20,
       "cook_minutes": 15,
       "total_minutes": 35,
-      "difficulty": "Střední",
+      "difficulty": "medium",
       "meal_type": [
-        "Hlavní jídlo"
+        "main-course"
       ],
       "diet": [],
       "about": "Pad Thai je vyvážená hra sladké, kyselé, slané a mírně pálivé chuti servírovaná horká přímo z woku.",
@@ -547,7 +677,7 @@
           "unit": "g",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "rice-noodles",
           "display_name": "Rýžové nudle"
         },
         {
@@ -555,7 +685,7 @@
           "unit": "g",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "shrimp",
           "display_name": "Krevety"
         },
         {
@@ -563,7 +693,7 @@
           "unit": "lžíce",
           "note": "",
           "group": "Omáčka",
-          "ingredient_key": "",
+          "ingredient_key": "tamarind-paste",
           "display_name": "Tamarindová pasta"
         },
         {
@@ -571,7 +701,7 @@
           "unit": "lžíce",
           "note": "",
           "group": "Omáčka",
-          "ingredient_key": "",
+          "ingredient_key": "fish-sauce",
           "display_name": "Rybí omáčka"
         },
         {
@@ -579,7 +709,7 @@
           "unit": "ks",
           "note": "",
           "group": "Hlavní",
-          "ingredient_key": "",
+          "ingredient_key": "egg",
           "display_name": "Vejce"
         },
         {
@@ -587,7 +717,7 @@
           "unit": "hrnku",
           "note": "pražené, drcené",
           "group": "Na dozdobení",
-          "ingredient_key": "",
+          "ingredient_key": "peanut",
           "display_name": "Arašídy"
         }
       ],

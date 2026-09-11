@@ -184,9 +184,11 @@ class Atlas_Chuti_Register_Meta {
 				);
 			case 'repeater':
 				$shape      = $field['shape'] ?? array();
+				$types      = $field['types'] ?? array();
 				$properties = array();
 				foreach ( $shape as $shape_key ) {
-					$properties[ $shape_key ] = array( 'type' => 'string' );
+					$sub_type                 = 'bool' === ( $types[ $shape_key ] ?? '' ) ? 'boolean' : 'string';
+					$properties[ $shape_key ] = array( 'type' => $sub_type );
 				}
 				return $common + array(
 					'type'         => 'array',

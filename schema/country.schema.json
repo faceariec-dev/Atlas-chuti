@@ -17,7 +17,7 @@
       "pattern": "^[A-Z]{2,3}$"
     },
     "flag_emoji": { "type": "string" },
-    "continent": { "type": "string", "enum": ["Evropa", "Asie", "Afrika", "Severní Amerika", "Jižní Amerika", "Oceánie"] },
+    "continent": { "type": "string", "enum": ["europe", "asia", "africa", "north-america", "south-america", "oceania"], "description": "Stabilní jazykově neutrální klíč, ne české jméno (viz Atlas_Chuti_Taxonomy_Labels) — např. \"europe\", ne \"Evropa\". Lokalizovaný název se dohledá při zobrazení." },
     "capital": { "type": "string" },
     "languages": { "type": "array", "items": { "type": "string" } },
     "currency": { "type": "string" },

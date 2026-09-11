@@ -132,7 +132,7 @@ function atlas_chuti_random_country_redirect() {
 	}
 	$ids = get_posts( array( 'post_type' => 'atlas_country', 'posts_per_page' => -1, 'fields' => 'ids' ) );
 	if ( ! $ids ) {
-		wp_safe_redirect( home_url( '/zeme/' ) );
+		wp_safe_redirect( atlas_chuti_system_url( 'countries' ) );
 		exit;
 	}
 	wp_safe_redirect( get_permalink( $ids[ array_rand( $ids ) ] ) );

@@ -1,0 +1,87 @@
+{
+  "_comment": "INTERNAL TEST DATA ONLY (item 26 of this phase's brief). Verifies the locale-aware identity model — find_country_by_iso(), find_ingredient_by_key(), find_by_translation_group() all now taking a locale, canonical atlas_country_tax/atlas_ingredient_tax terms shared across locale variants — WITHOUT activating any English frontend. Import this only into a local/test environment to run the checklist in item 27 (e.g. `wp atlas import sample-data/multilingual-test-dataset.json --dry-run` then without --dry-run), then discard/reset the test install. This is NOT production content: the English text here is placeholder test copy, not a real translation, and must never be published on atlaschuti.cz. English stays disabled on the actual site regardless of this file's contents — importing it does not turn on any EN routes, switcher, or public page.",
+  "ingredients": [
+    {
+      "ingredient_key": "tomato",
+      "locale": "cs-CZ",
+      "title": "Rajče",
+      "slug": "rajce",
+      "aliases": ["rajčata", "rajčat", "rajčete"],
+      "default_unit": "ks"
+    },
+    {
+      "ingredient_key": "tomato",
+      "locale": "en",
+      "title": "Tomato",
+      "slug": "tomato",
+      "aliases": ["tomatoes"],
+      "default_unit": "pcs"
+    }
+  ],
+  "countries": [
+    {
+      "locale": "cs-CZ",
+      "translation_status": "published",
+      "title": "Itálie",
+      "slug": "italie",
+      "iso_code": "IT",
+      "flag_emoji": "🇮🇹",
+      "continent": "europe",
+      "intro": "Italská kuchyně stojí na jednoduchosti a kvalitě surovin, ne na složitosti postupu.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Italy",
+      "slug": "italy",
+      "iso_code": "IT",
+      "flag_emoji": "🇮🇹",
+      "continent": "europe",
+      "intro": "Italian cuisine is built on simplicity and the quality of its ingredients, not on complicated technique.",
+      "status": "publish"
+    }
+  ],
+  "recipes": [
+    {
+      "locale": "cs-CZ",
+      "translation_group": "spaghetti-carbonara",
+      "translation_status": "published",
+      "title": "Spaghetti Carbonara",
+      "slug": "spaghetti-carbonara",
+      "country": "IT",
+      "excerpt": "Římská klasika ze čtyř surovin: vejce, guanciale, pecorino a pepř.",
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "difficulty": "easy",
+      "meal_type": ["main-course"],
+      "ingredients": [
+        { "ingredient_key": "tomato", "display_name": "Rajče", "quantity": "2", "unit": "ks" }
+      ],
+      "steps": [
+        { "order": 1, "text": "Uvařte těstoviny v osolené vodě." }
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_group": "spaghetti-carbonara",
+      "translation_status": "published",
+      "title": "Spaghetti Carbonara",
+      "slug": "spaghetti-carbonara-en",
+      "country": "IT",
+      "excerpt": "A Roman classic made from four ingredients: egg, guanciale, pecorino and pepper.",
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "difficulty": "easy",
+      "meal_type": ["main-course"],
+      "ingredients": [
+        { "ingredient_key": "tomato", "display_name": "Tomato", "quantity": "2", "unit": "pcs" }
+      ],
+      "steps": [
+        { "order": 1, "text": "Cook the pasta in salted water." }
+      ],
+      "status": "publish"
+    }
+  ]
+}

@@ -192,7 +192,8 @@ abstract class Atlas_Chuti_Meta_Box_Base {
 			}
 
 			$shape = isset( $field['shape'] ) ? $field['shape'] : array();
-			$clean = Atlas_Chuti_Meta_Fields::sanitize( $field['type'], $raw, $shape );
+			$types = isset( $field['types'] ) ? $field['types'] : array();
+			$clean = Atlas_Chuti_Meta_Fields::sanitize( $field['type'], $raw, $shape, $types );
 			update_post_meta( $post_id, $meta_key, $clean );
 		}
 

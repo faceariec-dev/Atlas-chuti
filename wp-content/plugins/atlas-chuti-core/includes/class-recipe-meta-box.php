@@ -32,6 +32,10 @@ class Atlas_Chuti_Recipe_Meta_Box extends Atlas_Chuti_Meta_Box_Base {
 	}
 
 	protected function render_extra_top( $post ) {
+		// Scoped to the current locale (item 6/8 of this phase's brief): once a second
+		// locale exists, atlas_country_tax terms are shared across locale variants, so
+		// listing every locale's country posts here would show duplicate term_id
+		// options (one per locale variant of the same country).
 		$countries = get_posts(
 			array(
 				'post_type'      => 'atlas_country',
@@ -39,6 +43,7 @@ class Atlas_Chuti_Recipe_Meta_Box extends Atlas_Chuti_Meta_Box_Base {
 				'orderby'        => 'title',
 				'order'          => 'ASC',
 				'post_status'    => array( 'publish', 'draft' ),
+				'meta_query'     => array( array( 'key' => 'atlas_locale', 'value' => Atlas_Chuti_I18N::current_locale(), 'compare' => '=' ) ),
 			)
 		);
 

@@ -17,7 +17,9 @@ define( 'ATLAS_CHUTI_VERSION', '1.0.0' );
 define( 'ATLAS_CHUTI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ATLAS_CHUTI_URL', plugin_dir_url( __FILE__ ) );
 
+require_once ATLAS_CHUTI_DIR . 'includes/class-polylang-bridge.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-i18n.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-taxonomy-labels.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-units.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-post-types.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-taxonomies.php';

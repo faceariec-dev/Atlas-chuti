@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				atlas_chuti_footer_nav(
 					'footer-discover',
 					array(
-						__( 'Země světa', 'atlas-chuti' )          => home_url( '/zeme/' ),
+						__( 'Země světa', 'atlas-chuti' )          => atlas_chuti_system_url( 'countries' ),
 						__( 'Recepty', 'atlas-chuti' )             => get_post_type_archive_link( 'atlas_recipe' ),
 						__( 'Kuchařský slovníček', 'atlas-chuti' ) => get_post_type_archive_link( 'atlas_glossary' ),
 					)
@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				atlas_chuti_footer_nav(
 					'footer-tools',
 					array(
-						__( 'Kulinářský pas', 'atlas-chuti' )   => home_url( '/kulinarsky-pas/' ),
+						__( 'Kulinářský pas', 'atlas-chuti' )   => atlas_chuti_system_url( 'passport' ),
 						__( 'Kulinářské cesty', 'atlas-chuti' ) => null,
 						__( 'Co mám doma?', 'atlas-chuti' )     => null,
 					)
@@ -48,11 +48,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				atlas_chuti_footer_nav(
 					'footer-about',
 					array(
-						__( 'O projektu', 'atlas-chuti' )              => home_url( '/o-projektu/' ),
-						__( 'Jak vzniká obsah', 'atlas-chuti' )        => home_url( '/jak-vznika-obsah/' ),
-						__( 'Redakční zásady a zdroje', 'atlas-chuti' ) => home_url( '/redakcni-zasady/' ),
-						__( 'Kontakt', 'atlas-chuti' )                 => home_url( '/kontakt/' ),
-						__( 'Inzerce / Spolupráce', 'atlas-chuti' )    => home_url( '/inzerce/' ),
+						__( 'O projektu', 'atlas-chuti' )              => atlas_chuti_system_url( 'about' ),
+						__( 'Jak vzniká obsah', 'atlas-chuti' )        => atlas_chuti_system_url( 'editorial_process' ),
+						__( 'Redakční zásady a zdroje', 'atlas-chuti' ) => atlas_chuti_system_url( 'editorial_policy' ),
+						__( 'Kontakt', 'atlas-chuti' )                 => atlas_chuti_system_url( 'contact' ),
+						__( 'Inzerce / Spolupráce', 'atlas-chuti' )    => atlas_chuti_system_url( 'advertising' ),
 					)
 				);
 				?>
@@ -63,9 +63,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				atlas_chuti_footer_nav(
 					'footer-legal',
 					array(
-						__( 'Ochrana osobních údajů', 'atlas-chuti' ) => home_url( '/ochrana-osobnich-udaju/' ),
-						__( 'Cookies', 'atlas-chuti' )                 => home_url( '/cookies/' ),
-						__( 'Podmínky používání', 'atlas-chuti' )      => home_url( '/podminky-pouzivani/' ),
+						__( 'Ochrana osobních údajů', 'atlas-chuti' ) => atlas_chuti_system_url( 'privacy' ),
+						__( 'Cookies', 'atlas-chuti' )                 => atlas_chuti_system_url( 'cookies' ),
+						__( 'Podmínky používání', 'atlas-chuti' )      => atlas_chuti_system_url( 'terms' ),
 					)
 				);
 				?>

@@ -99,10 +99,10 @@ function atlas_chuti_primary_nav() {
 		return;
 	}
 	$fallback = array(
-		__( 'Země', 'atlas-chuti' )                => home_url( '/zeme/' ),
+		__( 'Země', 'atlas-chuti' )                => atlas_chuti_system_url( 'countries' ),
 		__( 'Recepty', 'atlas-chuti' )              => get_post_type_archive_link( 'atlas_recipe' ),
 		__( 'Kuchařský slovníček', 'atlas-chuti' )  => get_post_type_archive_link( 'atlas_glossary' ),
-		__( 'Kulinářský pas', 'atlas-chuti' )       => home_url( '/kulinarsky-pas/' ),
+		__( 'Kulinářský pas', 'atlas-chuti' )       => atlas_chuti_system_url( 'passport' ),
 	);
 	foreach ( $fallback as $label => $url ) {
 		printf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $label ) );

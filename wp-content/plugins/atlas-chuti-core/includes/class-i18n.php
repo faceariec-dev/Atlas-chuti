@@ -4,11 +4,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Language-readiness layer (item 17 of the brief). Only Czech (cs-CZ) is active today,
- * but every locale-bearing entity (recipe, country, glossary, ingredient) always
- * carries three extra bits of identity so a future English `.com` instance — a
- * *separate* WordPress install with its own post IDs — can still recognize "this is
- * the same thing":
+ * Language-readiness layer, now hardened into the real multilingual data model this
+ * phase's brief asks for: JEDEN WordPress, JEDNA databáze, JEDEN theme, JEDEN core
+ * plugin. atlaschuti.cz (cs-CZ) is active today; atlaschuti.com (en) is a future
+ * locale served from the SAME install, the same post types, the same database — not
+ * a second WordPress instance. Once a second locale exists, one atlas_country/
+ * atlas_recipe/atlas_glossary/atlas_ingredient "thing" (e.g. "Italy") is represented
+ * by TWO separate posts in this one database — IT+cs-CZ and IT+en — so a stable key
+ * alone (ISO code / translation_group / ingredient_key) is no longer a unique post
+ * identity. Every lookup below therefore takes identity + locale together.
  *
  *   - atlas_locale             e.g. "cs-CZ" (defaults here; never assume Czech forever)
  *   - atlas_translation_group  a stable, language-independent identity shared by every
@@ -19,16 +23,17 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Relations between entities (recipe→country, related_recipes, related_glossary,
  * ingredient references) must therefore never be resolved by WordPress post ID or by
  * a locale-specific slug alone:
- *   - countries resolve by ISO 3166-1 code (`atlas_iso_code`) — already the primary key
- *     item 10 of the original brief put on every country.
- *   - recipes/glossary resolve by `atlas_translation_group` (slug is only a fallback,
- *     for convenience, while just one locale exists).
- *   - ingredients resolve by their language-neutral `atlas_ingredient_key` (e.g.
- *     "tomato"), never by the Czech slug ("rajce"/"rajcata"/"rajcat" must all be
- *     *aliases* of one key).
+ *   - countries resolve by ISO 3166-1 code (`atlas_iso_code`) + locale.
+ *   - recipes/glossary resolve by `atlas_translation_group` + locale (slug is only a
+ *     convenience fallback).
+ *   - ingredients resolve by their language-neutral `atlas_ingredient_key` + locale
+ *     (e.g. "tomato"), never by the Czech slug ("rajce"/"rajcata"/"rajcat" must all be
+ *     *aliases* of one key, in one locale).
  *
- * No WPML/Polylang dependency, no `/en/` routes, no hreflang — those switch on only
- * once a second locale is actually running (see class-seo.php).
+ * No hard WPML/Polylang dependency, no `/en/` routes, no hreflang — those switch on
+ * only once a second locale is actually active (see class-seo.php). Polylang, if and
+ * when installed, plugs in through class-polylang-bridge.php without any of this
+ * changing shape.
  */
 class Atlas_Chuti_I18N {
 
@@ -50,6 +55,11 @@ class Atlas_Chuti_I18N {
 		foreach ( self::LOCALIZED_POST_TYPES as $post_type ) {
 			add_action( 'save_post_' . $post_type, array( $this, 'ensure_i18n_meta' ), 30, 2 );
 		}
+		// Priority 20 (after class-search.php's restrict_search_post_types(), which runs
+		// at the default 10 and is what gives a search query its atlas_* post_type in
+		// the first place) so a search query gets scoped too, not just direct archive/
+		// single-purpose queries.
+		add_action( 'pre_get_posts', array( $this, 'scope_query_to_locale' ), 20 );
 	}
 
 	public function load_textdomain() {
@@ -57,9 +67,37 @@ class Atlas_Chuti_I18N {
 	}
 
 	/**
+	 * Single source of truth for "what locale is this request in" (item 5 of this
+	 * phase's brief). Today this is always cs-CZ. When Polylang (or any other
+	 * multilingual plugin wired through a bridge) is active, it takes over here — see
+	 * class-polylang-bridge.php — without any caller of current_locale() needing to
+	 * change. Nothing else in the codebase should invent its own way of asking "what
+	 * language is this".
+	 */
+	public static function current_locale() {
+		if ( class_exists( 'Atlas_Chuti_Polylang_Bridge' ) && Atlas_Chuti_Polylang_Bridge::is_active() ) {
+			$locale = Atlas_Chuti_Polylang_Bridge::current_locale();
+			if ( $locale ) {
+				return $locale;
+			}
+		}
+		/**
+		 * Filters the locale used to scope front-end queries and admin lookups when no
+		 * multilingual plugin is active. Lets a future non-Polylang setup (or tests)
+		 * override the default without editing this file.
+		 */
+		return apply_filters( 'atlas_chuti_current_locale', self::DEFAULT_LOCALE );
+	}
+
+	/**
 	 * Backfills atlas_locale/atlas_translation_group/atlas_translation_status on every
 	 * save (admin edit or importer) so the contract holds even for content nobody
 	 * explicitly set these fields on. Never overwrites a value that's already there.
+	 * The importer additionally sets atlas_locale/atlas_ingredient_key/atlas_iso_code
+	 * via `meta_input` at wp_insert_post() time (see class-json-importer.php) so they
+	 * are already visible to OTHER save_post hooks (class-country-sync.php,
+	 * class-ingredient-sync.php) that run before this one — this hook is the backfill
+	 * for content that skipped that path (admin UI, older data).
 	 */
 	public function ensure_i18n_meta( $post_id, $post ) {
 		if ( wp_is_post_autosave( $post_id ) || wp_is_post_revision( $post_id ) ) {
@@ -96,64 +134,124 @@ class Atlas_Chuti_I18N {
 	}
 
 	/**
-	 * Resolves a country by its stable identity: ISO 3166-1 alpha-2/3 code. This is
-	 * the identifier recipe/glossary imports should reference, not a Czech slug.
+	 * Resolves a country by its stable identity — ISO 3166-1 alpha-2/3 code — WITHIN
+	 * one locale. Once a second locale exists, "IT" alone is ambiguous (it names two
+	 * posts: cs-CZ Itálie and en Italy); $locale disambiguates which post is meant.
+	 * Defaults to the current request's locale so callers never resolve blind.
 	 */
-	public static function find_country_by_iso( $iso_code ) {
+	public static function find_country_by_iso( $iso_code, $locale = null ) {
 		if ( ! $iso_code ) {
 			return null;
 		}
-		$posts = get_posts(
+		$locale = $locale ?: self::current_locale();
+		$posts  = get_posts(
 			array(
 				'post_type'      => 'atlas_country',
 				'posts_per_page' => 1,
 				'post_status'    => array( 'publish', 'draft' ),
-				'meta_query'     => array( array( 'key' => 'atlas_iso_code', 'value' => strtoupper( $iso_code ), 'compare' => '=' ) ),
+				'meta_query'     => array(
+					array( 'key' => 'atlas_iso_code', 'value' => strtoupper( $iso_code ), 'compare' => '=' ),
+					array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ),
+				),
 			)
 		);
 		return $posts ? $posts[0] : null;
 	}
 
 	/**
-	 * Resolves a recipe/glossary entry by its language-independent translation_group
-	 * (optionally scoped to one locale — irrelevant today, but this is the lookup a
-	 * future multi-locale-in-one-instance setup, or a cross-instance sync job, would use).
+	 * Resolves a recipe/glossary entry by its language-independent translation_group,
+	 * scoped to one locale (defaults to the current request's locale — never resolve
+	 * without one, per item 3 of this phase's brief).
 	 */
 	public static function find_by_translation_group( $post_type, $group, $locale = null ) {
 		if ( ! $group ) {
 			return null;
 		}
-		$meta_query = array( array( 'key' => 'atlas_translation_group', 'value' => $group, 'compare' => '=' ) );
-		if ( $locale ) {
-			$meta_query[] = array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' );
-		}
-		$posts = get_posts(
+		$locale = $locale ?: self::current_locale();
+		$posts  = get_posts(
 			array(
 				'post_type'      => $post_type,
 				'posts_per_page' => 1,
 				'post_status'    => array( 'publish', 'draft' ),
-				'meta_query'     => $meta_query,
+				'meta_query'     => array(
+					array( 'key' => 'atlas_translation_group', 'value' => $group, 'compare' => '=' ),
+					array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ),
+				),
 			)
 		);
 		return $posts ? $posts[0] : null;
 	}
 
 	/**
-	 * Resolves a normalized ingredient by its language-neutral key ("tomato"), never by
-	 * the localized slug ("rajce").
+	 * Resolves a normalized ingredient by its language-neutral key ("tomato"), scoped
+	 * to one locale, never by the localized slug ("rajce").
 	 */
-	public static function find_ingredient_by_key( $key ) {
+	public static function find_ingredient_by_key( $key, $locale = null ) {
 		if ( ! $key ) {
 			return null;
 		}
-		$posts = get_posts(
+		$locale = $locale ?: self::current_locale();
+		$posts  = get_posts(
 			array(
 				'post_type'      => 'atlas_ingredient',
 				'posts_per_page' => 1,
 				'post_status'    => array( 'publish', 'draft' ),
-				'meta_query'     => array( array( 'key' => 'atlas_ingredient_key', 'value' => $key, 'compare' => '=' ) ),
+				'meta_query'     => array(
+					array( 'key' => 'atlas_ingredient_key', 'value' => $key, 'compare' => '=' ),
+					array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ),
+				),
 			)
 		);
 		return $posts ? $posts[0] : null;
+	}
+
+	/**
+	 * Central locale scoping (item 6 of this phase's brief): every front-end query for
+	 * a locale-bearing post type is automatically restricted to the current locale, so
+	 * once a second locale is active, cs-CZ pages never show en content and vice versa
+	 * — without editing every individual query site in the theme. A query that already
+	 * carries its own atlas_locale meta_query clause (the JSON importer's explicit,
+	 * locale-threaded lookups) is left untouched so this never fights an intentional
+	 * cross-locale or admin lookup.
+	 */
+	public function scope_query_to_locale( $query ) {
+		if ( is_admin() ) {
+			return;
+		}
+
+		$post_type = $query->get( 'post_type' );
+		if ( ! $post_type || 'any' === $post_type ) {
+			return;
+		}
+		$post_types = (array) $post_type;
+		$localized  = array_intersect( $post_types, self::LOCALIZED_POST_TYPES );
+		if ( count( $localized ) !== count( $post_types ) ) {
+			// Mixed with a non-localized post type (or querying something else entirely) —
+			// leave alone rather than guess.
+			return;
+		}
+
+		$meta_query = (array) $query->get( 'meta_query' );
+		if ( $this->meta_query_has_locale_clause( $meta_query ) ) {
+			return;
+		}
+
+		$meta_query[] = array( 'key' => 'atlas_locale', 'value' => self::current_locale(), 'compare' => '=' );
+		$query->set( 'meta_query', $meta_query );
+	}
+
+	private function meta_query_has_locale_clause( $meta_query ) {
+		foreach ( $meta_query as $clause ) {
+			if ( ! is_array( $clause ) ) {
+				continue;
+			}
+			if ( isset( $clause['key'] ) && 'atlas_locale' === $clause['key'] ) {
+				return true;
+			}
+			if ( $this->meta_query_has_locale_clause( $clause ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

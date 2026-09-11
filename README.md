@@ -72,12 +72,30 @@ Taxonomie — **veřejná je jen** `atlas_continent` (vlastní landing page,
 `tax_query` filtrování a vyhledávání, ne jako indexovatelné stránky duplikující
 `/zeme/{slug}/` nebo archiv `/recepty/?obtiznost=…`:
 
-- `atlas_country_tax` — "zrcadlo" CPT `atlas_country` (stejný slug), navěšeno
-  na recepty/slovníček. Spravuje se automaticky při uložení Země
-  (`class-country-sync.php`) — v adminu se needituje přímo.
+- `atlas_country_tax` — "zrcadlo" CPT `atlas_country`, navěšeno na
+  recepty/slovníček. Spravuje se automaticky při uložení Země
+  (`class-country-sync.php`) — v adminu se needituje přímo. **Jeden
+  kanonický term na ISO kód**, ne na příspěvek: až vedle `IT+cs-CZ`
+  (Itálie) vznikne i `IT+en` (Italy) ve STEJNÉ databázi, obě jazykové verze
+  sdílejí tentýž term (term meta `iso_code`), takže recept zůstává
+  filtrovatelný podle "Itálie"/"Italy" jako jednoho konceptu bez ohledu na
+  jazyk. Term meta `locale_post_map` (`{"cs-CZ": 123, "en": 456}`) drží,
+  který příspěvek term zastupuje v kterém jazyce
+  (`Atlas_Chuti_Country_Sync::get_country_post_for_term( $term_id, $locale )`).
 - `atlas_ingredient_tax` — obdobné zrcadlo CPT `atlas_ingredient`, navěšeno na
   recepty (`class-ingredient-sync.php`) — pohání vyhledávání podle suroviny.
-- `atlas_meal_type`, `atlas_difficulty`, `atlas_diet`, `atlas_glossary_category`.
+  Stejný princip: jeden kanonický term na `ingredient_key`, sdílený napříč
+  jazykovými verzemi ingredience.
+- `atlas_meal_type`, `atlas_difficulty`, `atlas_diet`, `atlas_glossary_category`
+  — identita termu je stabilní anglický klíč (slug), ne české jméno: `easy`,
+  ne `Snadné`; `technique`, ne `Kuchařské techniky`. `atlas_continent` stejně
+  (`europe`, ne `Evropa`). Term `name` zůstává dnešní český popisek;
+  `includes/class-taxonomy-labels.php` drží mapu klíč→popisek pro obě
+  jazykové verze, takže budoucí anglická stránka umí zobrazit "Easy" pro
+  tentýž term, aniž by vznikal druhý duplicitní term. `atlas_difficulty` a
+  `atlas_glossary_category` jsou uzavřené slovníky (3, resp. 4 hodnoty);
+  `atlas_meal_type`/`atlas_diet` zůstávají otevřené — nový klíč z importu se
+  prostě vytvoří.
 
 Regiony uvnitř zemí (Itálie → Toskánsko) nejsou zatím obsahově vyplněné, ale
 jde o obyčejné WordPress taxonomie, takže přidat podtaxonomii "region" později
@@ -102,16 +120,36 @@ polí nikdy nemůže rozbít vazbu Itálie → Evropa → Spaghetti Carbonara, a
 se kontinent země později v adminu změní (`resync_recipes_for_country_term()`
 tehdy přetáhne správný kontinent na všechny recepty té země).
 
-### Stabilní identita (bod 13/14 zadání)
+### Stabilní identita = klíč + jazyk (poslední stabilizační fáze)
 
-WordPress post ID není nikdy jediný identifikátor v JSON datech:
+WordPress post ID není nikdy jediný identifikátor v JSON datech — a od
+poslední stabilizační fáze platí navíc: **samotný stabilní klíč sám o sobě
+už taky není jedinečná identita příspěvku.** Jde o JEDNU databázi — až bude
+`IT+en` (Italy) existovat vedle `IT+cs-CZ` (Itálie), půjde o DVA různé
+příspěvky ve stejné tabulce `wp_posts`. Identita příspěvku je proto vždy
+dvojice **(stabilní klíč, `atlas_locale`)**:
 
-- **Země** — ISO 3166-1 kód (`atlas_iso_code`), např. `IT`. `country_key`.
+- **Země** — ISO 3166-1 kód (`atlas_iso_code`), např. `IT`, + locale.
+  `Atlas_Chuti_I18N::find_country_by_iso( 'IT', 'cs-CZ' )` vrátí Itálii,
+  `find_country_by_iso( 'IT', 'en' )` vrátí Italy — dva různé příspěvky.
 - **Recept/slovníček** — `atlas_translation_group` (`recipe_key`), stabilní
-  napříč jazyky; odvodí se ze slugu, pokud není zadán.
+  napříč jazyky, + locale (`find_by_translation_group( $post_type, $group,
+  $locale )`); odvodí se ze slugu, pokud není zadán.
 - **Ingredience** — `atlas_ingredient_key` (`ingredient_key`), např.
-  `tomato` — nikdy český slug. "Rajče"/"rajčata"/"rajčat" jsou aliasy JEDNÉ
-  entity (`Atlas_Chuti_I18N::find_ingredient_by_key()`).
+  `tomato`, + locale — nikdy český slug. "Rajče"/"rajčata"/"rajčat" jsou
+  aliasy JEDNÉ entity V ČEŠTINĚ (`find_ingredient_by_key( 'tomato', 'cs-CZ'
+  )`); anglická entita `tomato`+`en` ("Tomato") je samostatný příspěvek se
+  svými vlastními aliasy.
+
+Locale se pro danou JSON položku spočítá jednou (`$item['locale']`, chybí-li
+→ `cs-CZ`) a předává se do každého vyhledání/rozřešení reference —
+`class-json-importer.php` nikdy nehledá "naslepo". Díky tomu import
+`{ "locale": "en", "iso_code": "IT", "title": "Italy" }` NIKDY neaktualizuje
+českou Itálii, ale založí/aktualizuje anglickou variantu — a opakovaný
+import stejných českých dat pořád jen aktualizuje týž český příspěvek
+(žádná duplicita). `Atlas_Chuti_I18N::current_locale()` je jediné místo,
+které řekne "v jakém jazyce běží tento request" (dnes vždy `cs-CZ`); jakýkoli
+budoucí vícejazyčný plugin se napojí tam, ne na desítky míst v kódu.
 
 ### Ingredience, jednotky a přepočet porcí
 
@@ -232,34 +270,67 @@ textové chips bez fotografií (žádných šest zbytečných obrázků na zemi)
 Recept/země bez vlastní fotky zobrazí jednotný placeholder; fotografie se
 nyní nahrávají ručně přes Media Library — žádné AI generování obrázků.
 
-## Multilingual příprava (bod 22 zadání — DŮLEŽITÁ ZMĚNA)
+## Multilingual architektura
 
-Budoucí anglická verze **nebude samostatná WordPress instalace**. Cílový
-model je jeden WordPress, jedna databáze, jedna administrace, jeden theme,
-jeden core plugin — ale dvě domény podle jazyka:
+Budoucí anglická verze **nebude samostatná WordPress instalace.** Cílový a
+dnes už datově hotový model:
 
 ```
-atlaschuti.cz   → čeština (aktivní dnes)
-atlaschuti.com  → angličtina (později)
+JEDEN WordPress
+JEDNA databáze
+JEDEN theme
+JEDEN core plugin
+
+atlaschuti.cz   → cs-CZ (aktivní dnes)
+atlaschuti.com  → en (později, ve STEJNÉ instalaci)
 ```
 
 Angličtina se dnes NEZAPÍNÁ — žádný `/en/`, žádný přepínač jazyka, žádný
-`hreflang`, žádná anglická stránka. Datový model je ale na to připravený beze
-změny, až přijde čas:
+`hreflang`, žádná anglická stránka, žádné anglické produkční recepty. Datový
+model, importer i frontendové dotazy jsou ale na to připravené beze změny
+architektury, až přijde čas:
 
-- **Lokalizovaný obsah** (název, slug, perex, postup, tipy, historie, SEO
-  title, meta description, ALT text) vs. **sdílená/přenosná data**
-  (`recipe_key`, země, ingredience, množství, časy, porce, dietní
-  vlastnosti) — přesně rozlišení, které Polylang i podobné pluginy
-  očekávají, aniž by na ně dnes byla tvrdá závislost.
-- `atlas_locale` (výchozí `cs-CZ`) a `atlas_translation_status`
-  (`none`/`draft`/`reviewed`/`published`) na každém receptu/zemi/pojmu —
-  `class-i18n.php` je doplní i bez explicitního zadání v JSON.
-- `atlas_translation_group` v JSON kontraktu přesně podle bodu 25 zadání:
-  `{ "locale": "cs-CZ", "translation_group": "recipe-spaghetti-carbonara" }`
-  — англická verze později použije `"locale": "en"` (nebo `en-US`/`en-GB`).
+- **Identita = stabilní klíč + jazyk**, ne klíč samotný — viz sekce výše.
+  Nutné, protože jedna databáze bude jednou držet dva příspěvky pro "totéž"
+  (`IT`+`cs-CZ` a `IT`+`en`), takže samotné `IT` už nestačí.
+- **`Atlas_Chuti_I18N::current_locale()`** — jediné místo v kódu, které říká
+  "jaký je aktuální jazyk požadavku" (dnes vždy `cs-CZ`, filtrovatelné přes
+  `atlas_chuti_current_locale`). Nic jiného v theme ani pluginu si jazyk
+  nezjišťuje jinak.
+- **Centrální locale filtrování** (`class-i18n.php`, `pre_get_posts` na
+  frontendu) — každý dotaz na `atlas_recipe`/`atlas_country`/
+  `atlas_glossary`/`atlas_ingredient` se automaticky omezí na aktuální
+  jazyk, pokud si dotaz locale nezadal sám (importer to dělá explicitně).
+  Homepage sekce, archivy, related recepty, vyhledávání (`class-search.php`,
+  včetně aliasů ingrediencí) — jedno místo, ne desítky upravovaných šablon.
+- **Sdílené technické taxonomie** — `atlas_country_tax`/`atlas_ingredient_tax`
+  mají jeden kanonický term na ISO/`ingredient_key` napříč jazyky (term meta
+  `locale_post_map`); `atlas_continent`/`atlas_difficulty`/`atlas_diet`/
+  `atlas_meal_type`/`atlas_glossary_category` mají identitu ve stabilním
+  anglickém slugu, populárně dostupnou přes `class-taxonomy-labels.php`. Viz
+  sekce "Datový model" výše.
+- **Kulinářský pas zůstává jazykově nezávislý** — `localStorage` ukládá ISO
+  kód země a `recipe_key`, nikdy lokalizovaný slug; `atlas_chuti_total_countries()`
+  a `atlas_chuti_continent_totals()` počítají **unikátní ISO kódy**, ne počet
+  příspěvků, takže přidání anglické Itálie časem neposune "12 / 195 zemí" na
+  "12 / 196".
+- **`class-polylang-bridge.php`** — volitelný, plně neaktivní bez Polylang
+  (`function_exists()` guardy všude). Pokud a až bude Polylang nainstalován,
+  propojí `current_locale()` s reálným jazykem návštěvníka a umí označit
+  jazyk příspěvku / propojit překlady podle `translation_group`/ISO/
+  `ingredient_key` — bez toho zůstává web funkčně identický jako dnes.
+  Doména na jazyk (`atlaschuti.com` → `en`) se nastavuje v administraci až
+  při skutečném zapnutí angličtiny, nikdy natvrdo v kódu.
+- `atlas_translation_group` v JSON kontraktu: `{ "locale": "cs-CZ",
+  "translation_group": "spaghetti-carbonara" }` — anglická verze později
+  použije `"locale": "en"` (nebo `en-US`/`en-GB`) se stejným
+  `translation_group`, ale VLASTNÍM slugem (dva příspěvky nemůžou sdílet
+  slug ve stejném post type).
 - URL/slugy jsou nezávislé na jazyce — `/recepty/` dnes, `/recipes/` později
-  na `.com`, bez zásahu do datového modelu (item 26 zadání).
+  na `.com`, bez zásahu do datového modelu. Systémové stránky (`/zeme/`,
+  `/kulinarsky-pas/`, právní stránky…) se linkují přes
+  `atlas_chuti_system_url( $key )` (`includes/functions.php`), ne přes
+  desítky roztroušených `home_url('/zeme/')` volání.
 - `__()`/`_e()`/`_x()`/`esc_html__()`/`esc_attr__()` důsledně v celém theme i
   pluginu (text domain `atlas-chuti`, `Domain Path: /languages`), připraveno
   na `.po`/`.mo` překlad. JS texty (`passport.js`, admin `repeater.js`,
@@ -267,6 +338,11 @@ změny, až přijde čas:
 - `class-seo.php` dnes nevkládá `hreflang` ani odkazy na neexistující
   `.com` — až bude anglická verze reálně spuštěná, `hreflang="cs"`/`"en"` a
   odpovídající canonical URL lze doplnit bez zásahu do datového modelu.
+
+`sample-data/multilingual-test-dataset.json` je interní testovací dataset
+(ne pro produkci/publikaci) ověřující přesně tohle: `IT`+`cs-CZ` vs.
+`IT`+`en`, `spaghetti-carbonara`+`cs-CZ` vs. +`en`, `tomato`+`cs-CZ` vs.
++`en` — import anglické varianty nikdy nepřepíše/nezdvojí českou.
 
 ## SEO
 

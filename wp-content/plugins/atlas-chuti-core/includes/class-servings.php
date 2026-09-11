@@ -35,13 +35,16 @@ class Atlas_Chuti_Servings {
 			$quantity = isset( $ingredient['quantity'] ) ? trim( (string) $ingredient['quantity'] ) : '';
 			$parsed   = self::parse_quantity( $quantity );
 
-			// `scalable` may be set explicitly on the row (e.g. imported as "false" to
-			// force-exclude something that happens to parse as numeric); otherwise it's
-			// auto-detected from the quantity text, per item 5 of this phase's brief.
-			$explicit_scalable = isset( $ingredient['scalable'] ) ? trim( (string) $ingredient['scalable'] ) : '';
-			if ( 'true' === $explicit_scalable ) {
+			// `scalable` may be set explicitly on the row (e.g. `false` to force-exclude
+			// something that happens to parse as numeric); otherwise it's auto-detected
+			// from the quantity text. This is a real tri-state boolean coming out of
+			// Atlas_Chuti_Meta_Fields::sanitize()'s 'bool' handling — true/false/null —
+			// never a stringified "1"/"" that would make an explicit `false` silently
+			// behave like "unset" (the bug item 13 of this phase's brief fixes).
+			$explicit_scalable = array_key_exists( 'scalable', $ingredient ) ? $ingredient['scalable'] : null;
+			if ( true === $explicit_scalable ) {
 				$scalable = true;
-			} elseif ( 'false' === $explicit_scalable ) {
+			} elseif ( false === $explicit_scalable ) {
 				$scalable = false;
 				$parsed   = null;
 			} else {

@@ -10,7 +10,7 @@
     "translation_status": { "type": "string", "enum": ["none", "draft", "reviewed", "published"], "description": "Stav (budoucí) lokalizace vůči originálu. Pro originál nech \"published\" (výchozí)." },
     "title": { "type": "string", "description": "Název v jazyce daném polem locale." },
     "slug": { "type": "string", "description": "URL slug pro TENTO jazyk." },
-    "category": { "type": "string", "enum": ["Kuchařské techniky", "Suroviny", "Gastronomické pojmy", "Nádobí a vybavení"] },
+    "category": { "type": "string", "enum": ["technique", "ingredient", "gastronomy", "equipment"], "description": "Stabilní klíč, ne české jméno — např. \"technique\", ne \"Kuchařské techniky\" (viz Atlas_Chuti_Taxonomy_Labels)." },
     "short_definition": { "type": "string" },
     "detailed": { "type": "string" },
     "origin_country": { "type": "string", "description": "Stabilní identita země původu (volitelné): preferuj ISO 3166-1 kód, slug je fallback." },

@@ -34,8 +34,12 @@ class Atlas_Chuti_Meta_Fields {
 				// display_name/quantity/unit/note/group are locale-specific authored text;
 				// ingredient_key is the stable, language-independent identity (item 4/5 of
 				// this phase's brief); scalable optionally overrides auto-detection from
-				// quantity (Atlas_Chuti_Servings::parse_quantity()) for edge cases.
+				// quantity (Atlas_Chuti_Servings::parse_quantity()) for edge cases — it must
+				// stay a real tri-state boolean (true/false/unset), not a stringified "1"/"",
+				// or an explicit `scalable: false` from JSON silently stops working (item 13
+				// of this phase's brief). See sanitize()'s 'bool' handling below.
 				'shape'    => array( 'ingredient_key', 'display_name', 'quantity', 'unit', 'note', 'group', 'scalable' ),
+				'types'    => array( 'scalable' => 'bool' ),
 			),
 			'steps'            => array(
 				'type'     => 'repeater',
@@ -148,8 +152,12 @@ class Atlas_Chuti_Meta_Fields {
 	/**
 	 * Sanitizes one value according to its declared type. Repeaters/string lists arrive
 	 * as arrays (already decoded from JSON, either from the importer or the repeater UI).
+	 * $shape may be a flat list of field names (all sanitized as text, the historical
+	 * default) or carry a parallel $types map (passed as the 4th arg, see fields_for()'s
+	 * 'types' key) naming a non-default type — currently only 'bool' — for fields that
+	 * need it, e.g. ingredients[].scalable.
 	 */
-	public static function sanitize( $type, $value, $shape = array() ) {
+	public static function sanitize( $type, $value, $shape = array(), $types = array() ) {
 		switch ( $type ) {
 			case 'int':
 				return is_numeric( $value ) ? (int) $value : 0;
@@ -186,7 +194,8 @@ class Atlas_Chuti_Meta_Fields {
 					}
 					$clean_row = array();
 					foreach ( $shape as $field ) {
-						$clean_row[ $field ] = isset( $row[ $field ] ) ? ( is_scalar( $row[ $field ] ) ? sanitize_text_field( (string) $row[ $field ] ) : '' ) : '';
+						$field_type          = $types[ $field ] ?? 'text';
+						$clean_row[ $field ] = self::sanitize_repeater_field( $field_type, $row[ $field ] ?? null );
 					}
 					$clean[] = $clean_row;
 				}
@@ -194,6 +203,30 @@ class Atlas_Chuti_Meta_Fields {
 			default:
 				return $value;
 		}
+	}
+
+	/**
+	 * One repeater sub-field. 'bool' is a real tri-state: true/false when the value
+	 * unambiguously says so (a real bool, or "true"/"false"/"1"/"0"/"yes"/"no" text —
+	 * the admin UI and hand-written JSON both submit text), null when absent/blank/
+	 * unrecognized so callers (Atlas_Chuti_Servings) can tell "not specified" from
+	 * "explicitly false" and fall back to auto-detection only in the former case.
+	 */
+	private static function sanitize_repeater_field( $field_type, $raw ) {
+		if ( 'bool' === $field_type ) {
+			if ( is_bool( $raw ) ) {
+				return $raw;
+			}
+			$raw = is_scalar( $raw ) ? strtolower( trim( (string) $raw ) ) : '';
+			if ( in_array( $raw, array( 'true', '1', 'yes' ), true ) ) {
+				return true;
+			}
+			if ( in_array( $raw, array( 'false', '0', 'no' ), true ) ) {
+				return false;
+			}
+			return null;
+		}
+		return is_scalar( $raw ) ? sanitize_text_field( (string) $raw ) : '';
 	}
 
 	public static function meta_key( $field_key ) {
