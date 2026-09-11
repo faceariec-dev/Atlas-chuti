@@ -4,14 +4,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Normalized units (item 6 of this phase's brief). Ingredient rows keep their
- * free-text, author-facing `unit` (e.g. "lžíce") exactly as before — nothing about
- * today's display changes. What's new is `unit_key`: a canonical, language-neutral
- * key auto-derived from that text, validated against a known set. It's what makes
- * "budoucí lokalizace/převod jednotek" possible later without touching stored
- * content — today we only *read* unit_key for validation warnings and to offer a
- * localized label(); nothing consumes it for conversion yet, and none is required
- * (US units, unit conversion — out of scope now, just not blocked).
+ * Normalized units. The single canonical registry every other piece of the unit
+ * model builds on — the JSON importer (validation/warnings), the recipe meta field
+ * shape, the servings calculator, and the frontend all resolve units through this
+ * class, never by matching Czech text ad hoc.
+ *
+ * A recipe's `unit` field stores the CANONICAL key (e.g. "cup", "g", "tbsp"), not a
+ * Czech-declined word — "hrnek"/"hrnku"/"hrnky"/"hrnků" must never appear as
+ * separate technical identifiers, only as recognized input aliases that normalize()
+ * folds into the one canonical "cup". label() resolves the canonical key to a
+ * locale-appropriate display string at render time (Atlas_Chuti_Servings uses it for
+ * the recipe page) — cs-CZ today, en later once a second locale exists — so the
+ * canonical key never needs to change for that. Older content authored with plain
+ * Czech text in `unit` still works: normalize() recognizes it as an alias and maps
+ * it to the same canonical key, so nothing already imported needs to be rewritten.
  */
 class Atlas_Chuti_Units {
 
@@ -27,6 +33,8 @@ class Atlas_Chuti_Units {
 			'pcs'      => array( 'cs-CZ' => 'ks', 'en' => 'pcs' ),
 			'tbsp'     => array( 'cs-CZ' => 'lžíce', 'en' => 'tbsp' ),
 			'tsp'      => array( 'cs-CZ' => 'lžička', 'en' => 'tsp' ),
+			'cup'      => array( 'cs-CZ' => 'hrnek', 'en' => 'cup' ),
+			'clove'    => array( 'cs-CZ' => 'stroužek', 'en' => 'clove' ),
 			'pinch'    => array( 'cs-CZ' => 'špetka', 'en' => 'pinch' ),
 			'to_taste' => array( 'cs-CZ' => 'podle chuti', 'en' => 'to taste' ),
 		);
@@ -45,6 +53,11 @@ class Atlas_Chuti_Units {
 			'pcs'      => array( 'ks', 'kus', 'kusy', 'kusů', 'pcs', 'pc' ),
 			'tbsp'     => array( 'lžíce', 'lžíci', 'lžic', 'polévková lžíce', 'tbsp' ),
 			'tsp'      => array( 'lžička', 'lžičky', 'lžiček', 'čajová lžička', 'tsp' ),
+			// Every Czech declined form of "hrnek" folds into the ONE canonical key
+			// "cup" — none of "hrnek"/"hrnku"/"hrnky"/"hrnků" is ever itself a
+			// canonical identifier, only an input alias normalized away on import.
+			'cup'      => array( 'hrnek', 'hrnku', 'hrnky', 'hrnků', 'cup', 'cups' ),
+			'clove'    => array( 'stroužek', 'stroužky', 'stroužků', 'clove', 'cloves' ),
 			'pinch'    => array( 'špetka', 'špetku', 'špetky' ),
 			'to_taste' => array( 'podle chuti', 'dle chuti' ),
 		);

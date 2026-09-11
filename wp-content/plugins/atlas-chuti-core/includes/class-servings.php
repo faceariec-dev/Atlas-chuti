@@ -51,14 +51,23 @@ class Atlas_Chuti_Servings {
 				$scalable = null !== $parsed;
 			}
 
-			$unit = isset( $ingredient['unit'] ) ? $ingredient['unit'] : '';
+			$unit     = isset( $ingredient['unit'] ) ? $ingredient['unit'] : '';
+			$unit_key = Atlas_Chuti_Units::normalize( $unit );
+
+			// The recipe page always shows the LOCALIZED display label for a
+			// recognized unit — e.g. stored canonical "cup" renders as "hrnek" in
+			// cs-CZ today (and "cup" once an en locale is active) — never the raw
+			// canonical key itself. Anything Atlas_Chuti_Units doesn't recognize
+			// (unit_key null) falls back to showing exactly what was authored, so a
+			// one-off free-text unit never disappears or breaks.
+			$unit_display = $unit_key ? Atlas_Chuti_Units::label( $unit_key, Atlas_Chuti_I18N::current_locale() ) : $unit;
 
 			$out[] = array(
 				'ingredient_key' => isset( $ingredient['ingredient_key'] ) ? $ingredient['ingredient_key'] : '',
 				'display_name'   => isset( $ingredient['display_name'] ) ? $ingredient['display_name'] : '',
 				'quantity'       => $quantity,
-				'unit'           => $unit,
-				'unit_key'       => Atlas_Chuti_Units::normalize( $unit ),
+				'unit'           => $unit_display,
+				'unit_key'       => $unit_key,
 				'note'           => isset( $ingredient['note'] ) ? $ingredient['note'] : '',
 				'group'          => isset( $ingredient['group'] ) ? $ingredient['group'] : '',
 				'scalable'       => $scalable,

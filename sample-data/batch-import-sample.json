@@ -115,7 +115,7 @@
       "title": "Ramen nudle",
       "slug": "ramen-nudle",
       "aliases": [],
-      "default_unit": "porce"
+      "default_unit": "g"
     },
     {
       "ingredient_key": "rice-noodles",
@@ -160,7 +160,7 @@
         "burák",
         "buráky"
       ],
-      "default_unit": "hrnku"
+      "default_unit": "cup"
     }
   ],
   "countries": [
@@ -597,8 +597,8 @@
           "display_name": "Vývar dashi"
         },
         {
-          "quantity": "2",
-          "unit": "porce",
+          "quantity": "300",
+          "unit": "g",
           "note": "",
           "group": "Hlavní",
           "ingredient_key": "ramen-noodles",
@@ -714,7 +714,7 @@
         },
         {
           "quantity": "1/2",
-          "unit": "hrnku",
+          "unit": "cup",
           "note": "pražené, drcené",
           "group": "Na dozdobení",
           "ingredient_key": "peanut",
