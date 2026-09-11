@@ -346,12 +346,46 @@ architektury, až přijde čas:
 
 ## SEO
 
-`class-seo.php` doplňuje meta description, canonical, OpenGraph a
-strukturovaná data (WebSite, Recipe, BreadcrumbList) sestavená výhradně ze
-skutečných polí receptu/země. Pokud je aktivní Yoast, RankMath nebo SEOPress,
-vlastní výstup se automaticky vypne. Technické taxonomie nejsou publicly
-queryable, takže nevznikají duplicitní indexovatelné archivy typu
-`/kuchyne/italie/` vedle `/zeme/italie/`.
+`class-seo.php` doplňuje **skutečný HTML `<title>`** (přes
+`document_title_parts` — ne zastaralé `wp_title()`; když `atlas_seo_title`
+není vyplněný, použije se běžný WordPress title beze změny), meta
+description (s fallbackem přes existující obsah, vždy zbavenou HTML i
+shortcodes), canonical, `robots`, OpenGraph a strukturovaná data (WebSite,
+Recipe, BreadcrumbList) sestavená výhradně ze skutečných polí receptu/země —
+žádná fake ratings/reviews/nutrition/calories. Pokud je aktivní Yoast,
+RankMath nebo SEOPress, vlastní výstup se automaticky vypne (`class-seo.php`
+zůstává jinak aktivní i bez SEO pluginu); lze ho i ručně vypnout přes
+`add_filter( 'atlas_chuti_disable_builtin_seo', '__return_true' )`, kdyby se
+projekt někdy přesunul na plnohodnotný SEO plugin. Technické taxonomie
+nejsou publicly queryable, takže nevznikají duplicitní indexovatelné
+archivy typu `/kuchyne/italie/` vedle `/zeme/italie/`, ani ve veřejném XML
+sitemapu (`/wp-sitemap.xml` — vestavěný WordPress Core sitemap, žádný
+vlastní systém; `class-seo.php` jen explicitně potvrzuje přes
+`wp_sitemaps_post_types`/`wp_sitemaps_taxonomies`, že do něj vstupují
+publikované recepty/země/pojmy slovníčku a veřejný `atlas_continent`, ne
+interní `atlas_ingredient` ani technické taxonomie).
+
+**Recipe schema** teď navíc obsahuje `author` (autor příspěvku ve
+WordPressu), `datePublished`/`dateModified`, `recipeCategory` (z reálného
+`atlas_meal_type`) a `recipeCuisine` (lokalizovaný název země pro aktuální
+locale — dohledaný přes příslušný `atlas_country` příspěvek, ne přes
+technický název sdíleného taxonomy termu). `image` nabízí až tři reálně
+existující velikosti stejné fotky — 16:9 (`atlas-hero`), 4:3 (`atlas-card`),
+1:1 (`atlas-square`) — každou jen pokud pro ni WordPress skutečně vygeneroval
+soubor.
+
+**Filtrované archivy receptů** (`?zeme=`, `?svetadil=`, `?typ=`,
+`?obtiznost=`, `?dieta=`, `?cas=`) dostanou `noindex,follow` a canonical na
+základní `/recepty/` — filtrování zůstává pro návštěvníky plně funkční,
+jen se (zatím) nemá masově indexovat každá kombinace. Interní vyhledávání
+(`/?s=…`) je vždy `noindex,follow`. Základní archivy (`/recepty/`,
+`/slovnicek/`, kontinent, homepage) mají self-canonical včetně stránkování.
+
+**Angličtina/hreflang**: dokud není aktivní, `class-seo.php` nevkládá žádný
+`hreflang`, žádnou `.com` URL ani přepínač jazyka — jen zachovává
+multilingual/Polylang bridge připravený z předchozí fáze (viz sekce
+"Multilingual architektura"). `hreflang` se doplní, až bude anglická verze
+reálně propojená přes `translation_group`/ISO/`ingredient_key`.
 
 ## Nasazení na sdílený hosting (např. FORPSI Easy Linux)
 
@@ -365,6 +399,67 @@ queryable, takže nevznikají duplicitní indexovatelné archivy typu
    `wp-content/themes/atlas-chuti/assets/fonts/README.md`.
 6. Nastavte zálohování databáze a `wp-content/uploads` na úrovni hostingu
    (mimo git, viz `.gitignore`).
+
+## First deployment to FORPSI
+
+Repozitář je **privátní** a obsahuje jen `wp-content/themes/atlas-chuti/` a
+`wp-content/plugins/atlas-chuti-core/` — WordPress core, databáze, uploads,
+`wp-config.php`, cache a žádné secrets do gitu nepatří (viz `.gitignore`).
+Nasazení jede přes `.github/workflows/deploy.yml`, ruční
+[`workflow_dispatch`](https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow) —
+**ne** automaticky při push do `main` (to zapneme až po pár ověřených
+ručních spuštěních). Workflow nejdřív zkontroluje PHP i JS syntax v theme a
+pluginu; při jakékoli chybě se deploy vůbec nespustí. Nasazuje se výhradně
+přes `rsync` nad SSH, a to jen dovnitř přesně
+`wp-content/themes/atlas-chuti/` a `wp-content/plugins/atlas-chuti-core/` na
+serveru — nikdy se nesahá na `wp-content/uploads`, WordPress core, jiné
+pluginy/themes, `wp-config.php`, `.htaccess` ani databázi.
+
+Postup prvního nasazení:
+
+1. Na FORPSI přes Softaculous (nebo ručně) nainstalujte čistý WordPress.
+2. Ve WordPress administraci (Nastavení → Čtení) hned zapněte **"Zakázat
+   prohledávání webu vyhledávači"** — zůstane zapnuté po celou dobu vývoje a
+   testování (viz sekce "Indexace" níže).
+3. Na FORPSI aktivujte SSH přístup k hostingu (v administraci hostingu).
+4. Ověřte přístup přes SFTP/SSH (libovolný klient, nebo `sftp -P 2222
+   uzivatel@host`) a zjistěte přesnou cestu k webrootu (typicky
+   `/<domena>/home/www`).
+5. Vytvořte **privátní** GitHub repozitář a nahrajte do něj tento obsah
+   (`wp-content/themes/atlas-chuti`, `wp-content/plugins/atlas-chuti-core`,
+   `schema`, `sample-data`, `.github`, `README.md`, `.gitignore` — nikdy
+   WordPress core/uploads/`wp-config.php`).
+6. V repozitáři nastavte GitHub Secrets (Settings → Secrets and variables →
+   Actions): `FORPSI_HOST`, `FORPSI_USER`, `FORPSI_PORT` (dnes `2222`),
+   `FORPSI_SSH_PRIVATE_KEY` (samostatný deployment klíč, ne osobní), a
+   `FORPSI_WEBROOT` (cesta zjištěná v kroku 4, např.
+   `/atlaschuti.cz/home/www`) — **žádná z těchto hodnot není a nesmí být
+   natvrdo v repozitáři nebo ve workflow souboru**.
+7. Spusťte ruční deployment: GitHub → Actions → **Deploy Atlas chutí to
+   FORPSI** → Run workflow.
+8. Ve WordPressu aktivujte plugin **Atlas chutí – Core** a theme **Atlas
+   chutí**.
+9. Nastavení → Trvalé odkazy → jednou uložit (bez toho nefungují CPT
+   rewrite pravidla).
+10. Spusťte **Atlas chutí → Nastavení stránek** (vytvoří chybějící
+    systémové stránky, viz sekce "Instalace" výše).
+11. Naimportujte **pouze testovací data** (viz "Testovací data" níže) —
+    `sample-data/batch-import-sample.json`, ideálně přes `wp atlas import`,
+    nebo přes **Atlas chutí → Import obsahu** v adminu.
+12. Zkontrolujte frontend (homepage, recept, země, slovníček, filtry,
+    vyhledávání, Kulinářský pas).
+13. Zkontrolujte zobrazení na mobilu.
+14. Zkontrolujte Recipe schema (Google Rich Results Test nebo Schema
+    Markup Validator na URL testovacího receptu).
+15. Zkontrolujte SEO metadata (`<title>`, meta description, canonical,
+    OpenGraph — zobrazení zdrojového kódu stránky).
+16. Indexaci nechte **stále vypnutou** (krok 2) — teprve po úspěšném
+    ověření všeho výše jdeme na produkční obsah.
+
+Teprve po tomto ověření pokračujeme: 3 testovací recepty na živém serveru →
+kontrola → master dataset zemí → 50 produkčních receptů + slovníček (viz
+"Co nyní neměnit" / cílový stav v poslední fázi zadání — tahle fáze to ještě
+negeneruje).
 
 ## Budoucí OpenAI integrace (textová, bez obrázků)
 

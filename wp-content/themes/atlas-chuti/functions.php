@@ -30,10 +30,15 @@ function atlas_chuti_setup() {
 		)
 	);
 
-	// Card (4:3), tall card (5:4), hero (16:8). Cropped so a mixed photo library still lines up in grids.
+	// Card (4:3), tall card (5:4), hero (16:9), square (1:1). Cropped so a mixed
+	// photo library still lines up in grids. atlas-square exists mainly so Recipe
+	// structured data (class-seo.php) can offer a real 1:1 image variant alongside
+	// the 16:9/4:3 ones Google's Recipe rich results look for — not used in any
+	// grid layout today.
 	add_image_size( 'atlas-card', 640, 480, true );
 	add_image_size( 'atlas-card-tall', 640, 512, true );
 	add_image_size( 'atlas-hero', 1600, 900, true );
+	add_image_size( 'atlas-square', 1200, 1200, true );
 }
 add_action( 'after_setup_theme', 'atlas_chuti_setup' );
 

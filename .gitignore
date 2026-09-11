@@ -24,11 +24,15 @@ debug.log
 !/wp-content/themes/atlas-chuti/
 /wp-content/mu-plugins/
 
-# Secrets / environment
+# Secrets / environment / database dumps — none of this belongs in a repo that
+# gets deployed straight to production (item 20 of the FORPSI deployment brief)
 .env
 .env.*
 *.pem
 *.key
+*.sql
+*.sql.gz
+*secret*
 
 # OS / editor cruft
 .DS_Store

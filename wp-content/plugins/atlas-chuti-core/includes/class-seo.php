@@ -4,12 +4,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Technical SEO baseline: meta description, canonical, OpenGraph, WebSite/Recipe/
- * BreadcrumbList structured data — built only from real structured fields, never
- * invented. Stays out of the way if a full SEO plugin (Yoast, RankMath, SEOPress...)
- * is active, per item 25 of the brief ("kompatibilní s běžným SEO pluginem").
+ * Technical SEO baseline: document title, meta description, canonical, robots,
+ * OpenGraph, WebSite/Recipe/BreadcrumbList structured data — built only from real
+ * structured fields, never invented. Stays out of the way if a full SEO plugin
+ * (Yoast, RankMath, SEOPress...) is active, or if `atlas_chuti_disable_builtin_seo`
+ * is filtered true (a safe manual off-switch for later, without uninstalling
+ * anything). Sitemap filters register independently of that switch — they're just a
+ * defensive confirmation of the post type/taxonomy `public` flags already set
+ * elsewhere, not something a real SEO plugin would need turned off.
  */
 class Atlas_Chuti_SEO {
+
+	/**
+	 * Recipe archive filter query vars (see theme's inc/archive-filters.php). Kept
+	 * here as plain query var names — not a call into theme code — so this class
+	 * stays correct under any theme built on the same data model, per this plugin's
+	 * "theme-independent" design.
+	 */
+	const RECIPE_FILTER_QUERY_VARS = array( 'zeme', 'svetadil', 'typ', 'obtiznost', 'dieta', 'cas' );
 
 	private static $instance = null;
 
@@ -21,15 +33,56 @@ class Atlas_Chuti_SEO {
 	}
 
 	private function __construct() {
+		add_filter( 'wp_sitemaps_post_types', array( $this, 'filter_sitemap_post_types' ) );
+		add_filter( 'wp_sitemaps_taxonomies', array( $this, 'filter_sitemap_taxonomies' ) );
+
 		if ( $this->seo_plugin_active() ) {
 			return;
 		}
+		add_filter( 'document_title_parts', array( $this, 'filter_document_title_parts' ) );
 		add_action( 'wp_head', array( $this, 'output_meta' ), 1 );
 		add_action( 'wp_head', array( $this, 'output_schema' ), 5 );
 	}
 
 	private function seo_plugin_active() {
+		if ( apply_filters( 'atlas_chuti_disable_builtin_seo', false ) ) {
+			return true;
+		}
 		return defined( 'WPSEO_VERSION' ) || defined( 'RANK_MATH_VERSION' ) || defined( 'WPSEO_FILE' ) || class_exists( 'SEOPress' );
+	}
+
+	// ---------------------------------------------------------------------
+	// Document <title>
+	// ---------------------------------------------------------------------
+
+	/**
+	 * The correct hook for overriding the real HTML <title> (item 1): `wp_title()` is
+	 * legacy and many themes don't even call it (this one uses `add_theme_support(
+	 * 'title-tag' )`, which renders via `wp_get_document_title()` → this filter).
+	 * Falls through to WordPress's normal title when no custom `atlas_seo_title` is
+	 * set, so nothing changes for the vast majority of pages.
+	 */
+	public function filter_document_title_parts( $parts ) {
+		if ( is_singular( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary' ) ) ) {
+			$custom = get_post_meta( get_the_ID(), 'atlas_seo_title', true );
+			if ( $custom ) {
+				$parts['title'] = $custom;
+			}
+		}
+		return $parts;
+	}
+
+	// ---------------------------------------------------------------------
+	// <meta> description / canonical / robots / OpenGraph
+	// ---------------------------------------------------------------------
+
+	/**
+	 * Never returns raw HTML/shortcodes — strip_shortcodes() first (so a stray
+	 * `[gallery]` never leaks into a meta description), then wp_strip_all_tags(), per
+	 * item 10 of this phase's brief.
+	 */
+	private function clean_text( $text ) {
+		return trim( wp_strip_all_tags( strip_shortcodes( (string) $text ) ) );
 	}
 
 	private function get_meta_description() {
@@ -37,22 +90,22 @@ class Atlas_Chuti_SEO {
 			$post_id = get_the_ID();
 			$custom  = get_post_meta( $post_id, 'atlas_meta_description', true );
 			if ( $custom ) {
-				return $custom;
+				return $this->clean_text( $custom );
 			}
 			$excerpt = get_post_meta( $post_id, 'atlas_excerpt', true );
 			if ( $excerpt ) {
-				return wp_strip_all_tags( $excerpt );
+				return $this->clean_text( $excerpt );
 			}
 			$intro = get_post_meta( $post_id, 'atlas_intro', true );
 			if ( $intro ) {
-				return wp_trim_words( wp_strip_all_tags( $intro ), 30 );
+				return wp_trim_words( $this->clean_text( $intro ), 30 );
 			}
 			$short = get_post_meta( $post_id, 'atlas_short_definition', true );
 			if ( $short ) {
-				return wp_strip_all_tags( $short );
+				return $this->clean_text( $short );
 			}
 		}
-		return get_bloginfo( 'description' );
+		return $this->clean_text( get_bloginfo( 'description' ) );
 	}
 
 	private function get_seo_title() {
@@ -65,12 +118,90 @@ class Atlas_Chuti_SEO {
 		return wp_get_document_title();
 	}
 
+	/**
+	 * Whether the CURRENT request is the recipe archive with at least one filter
+	 * query var set (item 5 of this phase's brief) — /recepty/?obtiznost=easy etc.
+	 * The filtering itself stays fully functional for visitors; this only affects
+	 * indexing signals.
+	 */
+	private function has_active_recipe_filters() {
+		foreach ( self::RECIPE_FILTER_QUERY_VARS as $var ) {
+			if ( '' !== (string) get_query_var( $var ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Canonical URL for the current request, built only from real public routes
+	 * (item 4) — never invented, never pointing at a technical/internal URL. Base
+	 * archives self-canonicalize (including their own pagination); a filtered recipe
+	 * archive collapses to the unfiltered base archive (item 5), since we don't want
+	 * every filter combination treated as its own canonical page yet.
+	 */
+	private function get_canonical_url() {
+		if ( is_singular() ) {
+			return get_permalink();
+		}
+
+		if ( is_post_type_archive( 'atlas_recipe' ) && $this->has_active_recipe_filters() ) {
+			return get_post_type_archive_link( 'atlas_recipe' );
+		}
+
+		if ( is_post_type_archive( 'atlas_recipe' ) || is_post_type_archive( 'atlas_glossary' )
+			|| is_tax( 'atlas_continent' ) || is_search() || is_home() || is_front_page() ) {
+			$paged = max( (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
+			if ( $paged > 1 ) {
+				// get_pagenum_link() is aware of the current archive/search/home
+				// context on its own — it's the same helper paginate_links() uses.
+				return get_pagenum_link( $paged, false );
+			}
+			if ( is_post_type_archive( 'atlas_recipe' ) ) {
+				return get_post_type_archive_link( 'atlas_recipe' );
+			}
+			if ( is_post_type_archive( 'atlas_glossary' ) ) {
+				return get_post_type_archive_link( 'atlas_glossary' );
+			}
+			if ( is_tax( 'atlas_continent' ) ) {
+				$link = get_term_link( get_queried_object() );
+				return is_wp_error( $link ) ? '' : $link;
+			}
+			if ( is_search() ) {
+				return get_search_link( get_search_query() );
+			}
+			return home_url( '/' );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Robots directive for pages we don't want indexed YET but that must stay
+	 * perfectly crawlable/functional for visitors and for link equity (item 5/6):
+	 * search results (near-duplicate by nature) and a recipe archive with an active
+	 * filter (an unbounded combination of query params we're not ready to index).
+	 */
+	private function get_robots_directive() {
+		if ( is_search() ) {
+			return 'noindex,follow';
+		}
+		if ( is_post_type_archive( 'atlas_recipe' ) && $this->has_active_recipe_filters() ) {
+			return 'noindex,follow';
+		}
+		return '';
+	}
+
 	public function output_meta() {
-		$description = wp_strip_all_tags( $this->get_meta_description() );
+		$description = $this->get_meta_description();
 		$title       = $this->get_seo_title();
-		$canonical   = is_singular() ? get_permalink() : ( is_home() || is_front_page() ? home_url( '/' ) : '' );
+		$canonical   = $this->get_canonical_url();
+		$robots      = $this->get_robots_directive();
 
 		printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
+		if ( $robots ) {
+			printf( '<meta name="robots" content="%s">' . "\n", esc_attr( $robots ) );
+		}
 		if ( $canonical ) {
 			printf( '<link rel="canonical" href="%s">' . "\n", esc_url( $canonical ) );
 		}
@@ -83,9 +214,16 @@ class Atlas_Chuti_SEO {
 			printf( '<meta property="og:url" content="%s">' . "\n", esc_url( $canonical ) );
 		}
 		if ( is_singular() && has_post_thumbnail() ) {
-			printf( '<meta property="og:image" content="%s">' . "\n", esc_url( get_the_post_thumbnail_url( get_the_ID(), 'large' ) ) );
+			// og:image only when a real photo exists (item 11) — never an empty/fake
+			// image URL. atlas-hero (16:9) matches the aspect ratio social platforms
+			// expect, and is guaranteed registered (see atlas_chuti_setup()).
+			printf( '<meta property="og:image" content="%s">' . "\n", esc_url( get_the_post_thumbnail_url( get_the_ID(), 'atlas-hero' ) ) );
 		}
 	}
+
+	// ---------------------------------------------------------------------
+	// Structured data
+	// ---------------------------------------------------------------------
 
 	public function output_schema() {
 		$graphs = array();
@@ -124,6 +262,11 @@ class Atlas_Chuti_SEO {
 		) . '</script>' . "\n";
 	}
 
+	/**
+	 * Recipe JSON-LD built only from fields we actually store (item 2 of this
+	 * phase's brief) — deliberately no ratings/reviews/nutrition/calories, since we
+	 * have none of that data and won't fabricate it.
+	 */
 	private function recipe_schema( $post_id ) {
 		$ingredients = get_post_meta( $post_id, 'atlas_ingredients', true );
 		$steps       = get_post_meta( $post_id, 'atlas_steps', true );
@@ -134,13 +277,29 @@ class Atlas_Chuti_SEO {
 		$schema = array(
 			'@type'       => 'Recipe',
 			'name'        => get_the_title( $post_id ),
-			'description' => wp_strip_all_tags( get_post_meta( $post_id, 'atlas_excerpt', true ) ),
+			'description' => $this->clean_text( get_post_meta( $post_id, 'atlas_excerpt', true ) ),
 			'url'         => get_permalink( $post_id ),
 		);
 
-		if ( has_post_thumbnail( $post_id ) ) {
-			$schema['image'] = array( get_the_post_thumbnail_url( $post_id, 'large' ) );
+		$this->add_recipe_images( $schema, $post_id );
+
+		$author_id = (int) get_post_field( 'post_author', $post_id );
+		if ( $author_id ) {
+			$author_name = get_the_author_meta( 'display_name', $author_id );
+			if ( $author_name ) {
+				$schema['author'] = array( '@type' => 'Person', 'name' => $author_name );
+			}
 		}
+
+		$published = get_the_date( 'c', $post_id );
+		if ( $published ) {
+			$schema['datePublished'] = $published;
+		}
+		$modified = get_the_modified_date( 'c', $post_id );
+		if ( $modified ) {
+			$schema['dateModified'] = $modified;
+		}
+
 		if ( $prep ) {
 			$schema['prepTime'] = 'PT' . $prep . 'M';
 		}
@@ -157,11 +316,15 @@ class Atlas_Chuti_SEO {
 		}
 
 		if ( is_array( $ingredients ) && $ingredients ) {
-			$schema['recipeIngredient'] = array_map(
-				function ( $i ) {
-					return trim( ( isset( $i['quantity'] ) ? $i['quantity'] . ' ' . $i['unit'] . ' ' : '' ) . ( isset( $i['name'] ) ? $i['name'] : '' ) );
-				},
-				$ingredients
+			$schema['recipeIngredient'] = array_values(
+				array_filter(
+					array_map(
+						function ( $i ) {
+							return trim( ( isset( $i['quantity'] ) ? $i['quantity'] . ' ' . ( $i['unit'] ?? '' ) . ' ' : '' ) . ( $i['display_name'] ?? '' ) );
+						},
+						$ingredients
+					)
+				)
 			);
 		}
 
@@ -177,12 +340,72 @@ class Atlas_Chuti_SEO {
 			);
 		}
 
-		$countries = wp_get_post_terms( $post_id, 'atlas_country_tax' );
-		if ( ! empty( $countries ) && ! is_wp_error( $countries ) ) {
-			$schema['recipeCuisine'] = wp_list_pluck( $countries, 'name' );
-		}
+		$this->add_recipe_category( $schema, $post_id );
+		$this->add_recipe_cuisine( $schema, $post_id );
 
 		return $schema;
+	}
+
+	/**
+	 * Multiple real, already-existing image variants of the SAME featured photo
+	 * (item 3): 16:9 (atlas-hero), 4:3 (atlas-card), 1:1 (atlas-square). Each is only
+	 * included if WordPress actually generated that size for this attachment —
+	 * wp_get_attachment_image_src() returns false otherwise, so this never emits a
+	 * broken/fake URL.
+	 */
+	private function add_recipe_images( &$schema, $post_id ) {
+		if ( ! has_post_thumbnail( $post_id ) ) {
+			return;
+		}
+		$thumbnail_id = get_post_thumbnail_id( $post_id );
+		$images       = array();
+		foreach ( array( 'atlas-hero', 'atlas-card', 'atlas-square' ) as $size ) {
+			$src = wp_get_attachment_image_src( $thumbnail_id, $size );
+			if ( $src ) {
+				$images[] = $src[0];
+			}
+		}
+		if ( $images ) {
+			$schema['image'] = array_values( array_unique( $images ) );
+		}
+	}
+
+	/**
+	 * recipeCategory from the recipe's actual atlas_meal_type term(s) (item 2) — not
+	 * invented, and never omitted-but-empty: the key is simply absent when the
+	 * recipe has no meal type set.
+	 */
+	private function add_recipe_category( &$schema, $post_id ) {
+		$terms = wp_get_post_terms( $post_id, 'atlas_meal_type' );
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+			$schema['recipeCategory'] = implode( ', ', wp_list_pluck( $terms, 'name' ) );
+		}
+	}
+
+	/**
+	 * recipeCuisine using the tagged country's LOCALIZED display name for the
+	 * current locale (item 2) — resolved via the country post itself
+	 * (Atlas_Chuti_Country_Sync::get_country_post_for_term()), not the shared
+	 * atlas_country_tax term's technical slug/name, which only reliably reflects
+	 * cs-CZ today and will be shared across locale variants once English exists.
+	 */
+	private function add_recipe_cuisine( &$schema, $post_id ) {
+		$terms = wp_get_post_terms( $post_id, 'atlas_country_tax' );
+		if ( empty( $terms ) || is_wp_error( $terms ) ) {
+			return;
+		}
+		$locale   = Atlas_Chuti_I18N::current_locale();
+		$cuisines = array();
+		foreach ( $terms as $term ) {
+			$country_post_id = Atlas_Chuti_Country_Sync::get_country_post_for_term( $term->term_id, $locale );
+			if ( $country_post_id ) {
+				$cuisines[] = get_the_title( $country_post_id );
+			}
+		}
+		$cuisines = array_values( array_unique( array_filter( $cuisines ) ) );
+		if ( $cuisines ) {
+			$schema['recipeCuisine'] = $cuisines;
+		}
 	}
 
 	private function breadcrumb_schema() {
@@ -206,5 +429,31 @@ class Atlas_Chuti_SEO {
 			'@type'           => 'BreadcrumbList',
 			'itemListElement' => $list,
 		);
+	}
+
+	// ---------------------------------------------------------------------
+	// XML sitemap (WordPress core, wp-sitemap.xml) — item 7
+	// ---------------------------------------------------------------------
+
+	/**
+	 * atlas_recipe/atlas_country/atlas_glossary are `public => true` and already
+	 * included by WordPress core's default sitemap logic; atlas_ingredient
+	 * (`public => false`, the internal dictionary) is already excluded by it. This
+	 * filter is a defensive, explicit confirmation of that — not a workaround.
+	 */
+	public function filter_sitemap_post_types( $post_types ) {
+		unset( $post_types['atlas_ingredient'] );
+		return $post_types;
+	}
+
+	/**
+	 * Only the public atlas_continent taxonomy belongs in the sitemap. Every
+	 * technical taxonomy (atlas_country_tax, atlas_ingredient_tax, atlas_meal_type,
+	 * atlas_difficulty, atlas_diet, atlas_glossary_category) is already
+	 * `public => false` and excluded by WordPress core by default; this filter just
+	 * makes that explicit rather than relying only on the taxonomy registration args.
+	 */
+	public function filter_sitemap_taxonomies( $taxonomies ) {
+		return array_intersect_key( $taxonomies, array( 'atlas_continent' => true ) );
 	}
 }

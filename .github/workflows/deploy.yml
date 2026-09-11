@@ -1,0 +1,151 @@
+name: Deploy Atlas chutí to FORPSI
+
+# Manual only, on purpose (item 19/28 of this project's deployment brief): no
+# automatic production deploy on every push to main. Once a few manual runs have
+# been verified against the live FORPSI site, this can be widened to a `push`
+# trigger — not before.
+on:
+  workflow_dispatch: {}
+
+# Never let two deploys race against the same webroot.
+concurrency:
+  group: deploy-atlas-chuti-forpsi
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate PHP/JS before touching production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: none
+          coverage: none
+
+      - name: PHP syntax check — theme
+        run: |
+          set -euo pipefail
+          find wp-content/themes/atlas-chuti -name '*.php' -print0 \
+            | xargs -0 -n1 -I{} php -l {}
+
+      - name: PHP syntax check — core plugin
+        run: |
+          set -euo pipefail
+          find wp-content/plugins/atlas-chuti-core -name '*.php' -print0 \
+            | xargs -0 -n1 -I{} php -l {}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: JS syntax check
+        run: |
+          set -euo pipefail
+          find wp-content/themes/atlas-chuti wp-content/plugins/atlas-chuti-core \
+            -name '*.js' -print0 \
+            | xargs -0 -n1 -I{} node --check {}
+
+  deploy:
+    name: Deploy theme + core plugin over SSH
+    needs: validate
+    runs-on: ubuntu-latest
+    # Only reached if `validate` succeeded — a failed syntax check stops the
+    # deploy before anything touches the production server (item 17).
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Guard required secrets are present
+        env:
+          FORPSI_HOST: ${{ secrets.FORPSI_HOST }}
+          FORPSI_USER: ${{ secrets.FORPSI_USER }}
+          FORPSI_WEBROOT: ${{ secrets.FORPSI_WEBROOT }}
+          FORPSI_SSH_PRIVATE_KEY: ${{ secrets.FORPSI_SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          missing=()
+          [ -z "${FORPSI_HOST}" ] && missing+=("FORPSI_HOST")
+          [ -z "${FORPSI_USER}" ] && missing+=("FORPSI_USER")
+          [ -z "${FORPSI_WEBROOT}" ] && missing+=("FORPSI_WEBROOT")
+          [ -z "${FORPSI_SSH_PRIVATE_KEY}" ] && missing+=("FORPSI_SSH_PRIVATE_KEY")
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "::error::Missing required secret(s): ${missing[*]}. Set them under Settings → Secrets and variables → Actions before running this workflow."
+            exit 1
+          fi
+          # A webroot of "/" (or empty, already caught above) would make the later
+          # rsync targets resolve outside wp-content entirely — refuse to proceed.
+          if [ "${FORPSI_WEBROOT}" = "/" ]; then
+            echo "::error::FORPSI_WEBROOT must not be '/'. It should point at the WordPress install root, e.g. /atlaschuti.cz/home/www"
+            exit 1
+          fi
+
+      - name: Start ssh-agent with the deployment key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          # A key dedicated to this deployment (item 16) — never the same key used
+          # for anything else, never written to the repo, never echoed to the log.
+          ssh-private-key: ${{ secrets.FORPSI_SSH_PRIVATE_KEY }}
+
+      - name: Trust the FORPSI host key
+        env:
+          FORPSI_HOST: ${{ secrets.FORPSI_HOST }}
+          FORPSI_PORT: ${{ secrets.FORPSI_PORT || '2222' }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          ssh-keyscan -p "${FORPSI_PORT}" -H "${FORPSI_HOST}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy theme (wp-content/themes/atlas-chuti)
+        env:
+          FORPSI_HOST: ${{ secrets.FORPSI_HOST }}
+          FORPSI_USER: ${{ secrets.FORPSI_USER }}
+          FORPSI_PORT: ${{ secrets.FORPSI_PORT || '2222' }}
+          FORPSI_WEBROOT: ${{ secrets.FORPSI_WEBROOT }}
+        run: |
+          set -euo pipefail
+          target="${FORPSI_WEBROOT%/}/wp-content/themes/atlas-chuti/"
+          # Sanity-check the computed target before any --delete-capable sync ever
+          # runs against it (item 18): it must end in exactly this theme's own
+          # directory, never resolve to wp-content/ itself or higher.
+          case "$target" in
+            */wp-content/themes/atlas-chuti/) ;;
+            *) echo "::error::Unexpected theme deploy target: $target"; exit 1 ;;
+          esac
+          echo "Deploying theme to $target"
+          rsync -az --delete \
+            -e "ssh -p ${FORPSI_PORT} -o StrictHostKeyChecking=yes" \
+            --exclude ".git/" \
+            wp-content/themes/atlas-chuti/ \
+            "${FORPSI_USER}@${FORPSI_HOST}:${target}"
+
+      - name: Deploy core plugin (wp-content/plugins/atlas-chuti-core)
+        env:
+          FORPSI_HOST: ${{ secrets.FORPSI_HOST }}
+          FORPSI_USER: ${{ secrets.FORPSI_USER }}
+          FORPSI_PORT: ${{ secrets.FORPSI_PORT || '2222' }}
+          FORPSI_WEBROOT: ${{ secrets.FORPSI_WEBROOT }}
+        run: |
+          set -euo pipefail
+          target="${FORPSI_WEBROOT%/}/wp-content/plugins/atlas-chuti-core/"
+          case "$target" in
+            */wp-content/plugins/atlas-chuti-core/) ;;
+            *) echo "::error::Unexpected plugin deploy target: $target"; exit 1 ;;
+          esac
+          echo "Deploying core plugin to $target"
+          rsync -az --delete \
+            -e "ssh -p ${FORPSI_PORT} -o StrictHostKeyChecking=yes" \
+            --exclude ".git/" \
+            wp-content/plugins/atlas-chuti-core/ \
+            "${FORPSI_USER}@${FORPSI_HOST}:${target}"
+
+      - name: Done
+        run: |
+          echo "Theme and core plugin deployed. Nothing else on the server was touched:"
+          echo "  - wp-content/uploads, WordPress core, wp-config.php, .htaccess, the database and any other plugin/theme are untouched by this workflow."
