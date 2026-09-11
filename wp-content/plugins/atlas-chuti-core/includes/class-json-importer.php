@@ -295,11 +295,12 @@ class Atlas_Chuti_JSON_Importer {
 	 * methods as the batched path, so behavior is identical either way.
 	 */
 	public function run_import_sync( $data, $dry_run ) {
-		$groups = array( 'ingredients' => array(), 'countries' => array(), 'glossary' => array(), 'recipes' => array() );
+		$planned = $this->build_planned_index( $data );
+		$groups  = array( 'ingredients' => array(), 'countries' => array(), 'glossary' => array(), 'recipes' => array() );
 		foreach ( array( 'ingredients', 'countries', 'glossary', 'recipes' ) as $group ) {
 			if ( ! empty( $data[ $group ] ) && is_array( $data[ $group ] ) ) {
 				foreach ( $data[ $group ] as $item ) {
-					$groups[ $group ][] = $this->import_one( $this->singular( $group ), $item, $dry_run );
+					$groups[ $group ][] = $this->import_one( $this->singular( $group ), $item, $dry_run, $planned );
 				}
 			}
 		}
@@ -364,6 +365,12 @@ class Atlas_Chuti_JSON_Importer {
 			@set_time_limit( 60 );
 		}
 
+		// Recomputed fresh every step from the batch's own stored payload (item:
+		// "planned batch index") — cheap (pure validation, no DB queries) and always
+		// in sync with the full batch, regardless of which 8-item slice this
+		// particular request is processing.
+		$planned = $this->build_planned_index( $session['data'] );
+
 		$end = min( $session['cursor'] + self::BATCH_SIZE, count( $session['tasks'] ) );
 		for ( $i = $session['cursor']; $i < $end; $i++ ) {
 			$task = $session['tasks'][ $i ];
@@ -372,7 +379,7 @@ class Atlas_Chuti_JSON_Importer {
 				continue;
 			}
 			if ( 'create' === $task['op'] ) {
-				$session['results'][ $task['group'] ][] = $this->import_one( $task['entity'], $item, false );
+				$session['results'][ $task['group'] ][] = $this->import_one( $task['entity'], $item, false, $planned );
 			} else {
 				$this->resolve_one( $task['entity'], $item );
 			}
@@ -386,16 +393,16 @@ class Atlas_Chuti_JSON_Importer {
 		delete_transient( self::BATCH_TRANSIENT_PREFIX . get_current_user_id() );
 	}
 
-	private function import_one( $entity, $item, $dry_run ) {
+	private function import_one( $entity, $item, $dry_run, $planned = array() ) {
 		switch ( $entity ) {
 			case 'ingredient':
 				return $this->import_ingredient( $item, $dry_run );
 			case 'country':
 				return $this->import_country( $item, $dry_run );
 			case 'glossary':
-				return $this->import_glossary( $item, $dry_run );
+				return $this->import_glossary( $item, $dry_run, $planned );
 			case 'recipe':
-				return $this->import_recipe( $item, $dry_run );
+				return $this->import_recipe( $item, $dry_run, $planned );
 		}
 		return $this->row( $this->label_untitled(), $this->label_error(), 'error', 'Unknown entity type.' );
 	}
@@ -666,6 +673,127 @@ class Atlas_Chuti_JSON_Importer {
 		return 0;
 	}
 
+	/**
+	 * Pre-scans the WHOLE batch payload for items that are individually valid — and
+	 * will therefore exist by the time a dependent item in the SAME batch is
+	 * processed, once creation actually runs in dependency order (ingredients →
+	 * countries → glossary → recipes, see build_task_queue()/run_import_sync()).
+	 *
+	 * This is what dry-run was missing: resolve_reference() only ever asks the
+	 * database, so a recipe referencing a country defined earlier in the very same
+	 * JSON file always failed validation in dry-run (nothing is ever written in
+	 * dry-run) even though the live import would create the country first and the
+	 * recipe would resolve it fine. reference_is_valid() below checks this index as
+	 * a fallback when the database lookup comes up empty, in BOTH dry-run and live —
+	 * in live import the fallback is normally a no-op (the referenced item's create
+	 * step already ran and committed by the time a dependent item is validated), so
+	 * this doesn't change live behavior, only fixes dry-run's blind spot.
+	 *
+	 * An item that fails ITS OWN validation is never added — a broken country object
+	 * must never make a recipe that points at it look valid.
+	 */
+	private function build_planned_index( $data ) {
+		$planned = array( 'country' => array(), 'ingredient' => array(), 'glossary' => array(), 'recipe' => array() );
+
+		foreach ( (array) ( $data['countries'] ?? array() ) as $item ) {
+			if ( ! is_array( $item ) || $this->validate_country( $item ) ) {
+				continue;
+			}
+			$locale = $this->resolve_item_locale( $item );
+			$key    = strtoupper( trim( (string) $item['iso_code'] ) );
+			if ( $key ) {
+				$planned['country'][ $this->planned_key( $locale, $key ) ] = true;
+			}
+		}
+
+		foreach ( (array) ( $data['ingredients'] ?? array() ) as $item ) {
+			if ( ! is_array( $item ) || $this->validate_required( $item, array( 'title' ) ) ) {
+				continue;
+			}
+			$locale = $this->resolve_item_locale( $item );
+			$slug   = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $item['title'] );
+			$key    = $this->stable_key_for( 'atlas_ingredient', $item, $slug );
+			if ( $key ) {
+				$planned['ingredient'][ $this->planned_key( $locale, $key ) ] = true;
+			}
+		}
+
+		foreach ( (array) ( $data['glossary'] ?? array() ) as $item ) {
+			if ( ! is_array( $item ) ) {
+				continue;
+			}
+			$errors = $this->validate_required( $item, array( 'title', 'category', 'short_definition' ) );
+			if ( ! empty( $item['category'] ) && ! in_array( $item['category'], self::VALID_GLOSSARY_CATEGORY, true ) ) {
+				$errors[] = 'category';
+			}
+			if ( $errors ) {
+				continue;
+			}
+			$locale = $this->resolve_item_locale( $item );
+			$slug   = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $item['title'] ?? '' );
+			$key    = $this->stable_key_for( 'atlas_glossary', $item, $slug );
+			if ( $key ) {
+				$planned['glossary'][ $this->planned_key( $locale, $key ) ] = true;
+			}
+		}
+
+		foreach ( (array) ( $data['recipes'] ?? array() ) as $item ) {
+			if ( ! is_array( $item ) ) {
+				continue;
+			}
+			// Deliberately just the base required-field shape here, NOT the full
+			// validate_recipe() (which itself checks country resolution against this
+			// very index) — avoids a circular dependency while still keeping an
+			// obviously broken/incomplete recipe object out of the index.
+			if ( $this->validate_required( $item, array( 'title', 'country', 'excerpt', 'servings_default', 'prep_minutes', 'ingredients', 'steps' ) ) ) {
+				continue;
+			}
+			$locale = $this->resolve_item_locale( $item );
+			$slug   = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $item['title'] ?? '' );
+			$key    = $this->stable_key_for( 'atlas_recipe', $item, $slug );
+			if ( $key ) {
+				$planned['recipe'][ $this->planned_key( $locale, $key ) ] = true;
+			}
+		}
+
+		return $planned;
+	}
+
+	private function planned_key( $locale, $stable_key ) {
+		return $locale . '|' . $stable_key;
+	}
+
+	/**
+	 * Whether a cross-reference resolves — either to a real database post (same
+	 * locale-aware lookup as resolve_reference()) OR to an item that's valid and
+	 * present in the SAME batch (the "planned batch index" built by
+	 * build_planned_index()). Use this everywhere a reference is only being CHECKED
+	 * (validation, dry-run warnings); use resolve_reference() itself only where the
+	 * real post ID is needed to store a relationship — by the time that runs (live
+	 * import's second pass, or live tagging after ordered creation), the referenced
+	 * item has always already been created for real.
+	 */
+	private function reference_is_valid( $post_type, $ref, $locale, $planned ) {
+		if ( $this->resolve_reference( $post_type, $ref, $locale ) ) {
+			return true;
+		}
+		if ( ! $planned ) {
+			return false;
+		}
+		$kind_by_post_type = array(
+			'atlas_country'    => 'country',
+			'atlas_ingredient' => 'ingredient',
+			'atlas_glossary'   => 'glossary',
+			'atlas_recipe'     => 'recipe',
+		);
+		$kind = $kind_by_post_type[ $post_type ] ?? null;
+		if ( ! $kind ) {
+			return false;
+		}
+		$key = 'atlas_country' === $post_type ? strtoupper( trim( (string) $ref ) ) : sanitize_title( $ref );
+		return isset( $planned[ $kind ][ $this->planned_key( $locale, $key ) ] );
+	}
+
 	private function validate_required( $item, $required_keys ) {
 		$missing = array();
 		foreach ( $required_keys as $key ) {
@@ -841,7 +969,7 @@ class Atlas_Chuti_JSON_Importer {
 
 	// -- Glossary ----------------------------------------------------------
 
-	private function import_glossary( $item, $dry_run ) {
+	private function import_glossary( $item, $dry_run, $planned = array() ) {
 		$title  = isset( $item['title'] ) ? sanitize_text_field( $item['title'] ) : '';
 		$errors = $this->validate_required( $item, array( 'title', 'category', 'short_definition' ) );
 		if ( isset( $item['status'] ) && ! in_array( $item['status'], self::VALID_STATUS, true ) ) {
@@ -864,7 +992,7 @@ class Atlas_Chuti_JSON_Importer {
 		$existing   = ( $stable_key ? Atlas_Chuti_I18N::find_by_translation_group( 'atlas_glossary', $stable_key, $locale ) : null ) ?: $this->find_existing( 'atlas_glossary', $slug, $locale );
 
 		if ( $dry_run ) {
-			$warnings = $this->warnings_for_glossary_refs( $item, $locale );
+			$warnings = $this->warnings_for_glossary_refs( $item, $locale, $planned );
 			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok', $warnings );
 		}
 
@@ -906,9 +1034,9 @@ class Atlas_Chuti_JSON_Importer {
 		return $this->row( $title, $this->status_done( $existing ), 'ok' );
 	}
 
-	private function warnings_for_glossary_refs( $item, $locale ) {
+	private function warnings_for_glossary_refs( $item, $locale, $planned = array() ) {
 		$notes = array();
-		if ( ! empty( $item['origin_country'] ) && ! $this->resolve_reference( 'atlas_country', $item['origin_country'], $locale ) ) {
+		if ( ! empty( $item['origin_country'] ) && ! $this->reference_is_valid( 'atlas_country', $item['origin_country'], $locale, $planned ) ) {
 			/* translators: %s: the unresolved origin_country reference from the JSON */
 			$notes[] = sprintf( __( 'origin_country "%s" nenalezena (bude uložena bez vazby)', 'atlas-chuti' ), $item['origin_country'] );
 		}
@@ -923,7 +1051,7 @@ class Atlas_Chuti_JSON_Importer {
 	 * critically — that the main country actually resolves, so a recipe can never
 	 * silently finish pointing at nothing (item 10, last paragraph).
 	 */
-	private function validate_recipe( $item, $locale ) {
+	private function validate_recipe( $item, $locale, $planned = array() ) {
 		$errors = $this->validate_required( $item, array( 'title', 'country', 'excerpt', 'servings_default', 'prep_minutes', 'ingredients', 'steps' ) );
 
 		if ( isset( $item['servings_default'] ) && ( ! is_numeric( $item['servings_default'] ) || (int) $item['servings_default'] <= 0 ) ) {
@@ -974,8 +1102,10 @@ class Atlas_Chuti_JSON_Importer {
 		// The check item 10 calls out explicitly: an unresolvable main country must
 		// never silently pass through — the recipe simply isn't created (see
 		// import_recipe()) and this shows up as a hard error in both dry-run and the
-		// live report, never as a quietly orphaned recipe.
-		if ( ! empty( $item['country'] ) && ! $this->resolve_reference( 'atlas_country', $item['country'], $locale ) ) {
+		// live report, never as a quietly orphaned recipe. reference_is_valid() also
+		// accepts a country defined earlier in this SAME batch (the planned batch
+		// index) — that's what makes a country + a recipe for it work in one dry-run.
+		if ( ! empty( $item['country'] ) && ! $this->reference_is_valid( 'atlas_country', $item['country'], $locale, $planned ) ) {
 			/* translators: %s: the unresolved country reference from the JSON */
 			$errors[] = sprintf( __( 'country "%s" neexistuje (nejdřív naimportujte danou zemi v tomto jazyce)', 'atlas-chuti' ), $item['country'] );
 		}
@@ -983,11 +1113,11 @@ class Atlas_Chuti_JSON_Importer {
 		return $errors;
 	}
 
-	private function warnings_for_recipe_refs( $item, $locale ) {
+	private function warnings_for_recipe_refs( $item, $locale, $planned = array() ) {
 		$notes = array();
 		foreach ( array( 'related_recipes' => 'atlas_recipe', 'related_glossary' => 'atlas_glossary', 'related_countries' => 'atlas_country' ) as $field => $post_type ) {
 			foreach ( (array) ( $item[ $field ] ?? array() ) as $ref ) {
-				if ( ! $this->resolve_reference( $post_type, $ref, $locale ) ) {
+				if ( ! $this->reference_is_valid( $post_type, $ref, $locale, $planned ) ) {
 					/* translators: %1$s: field name (e.g. related_recipes), %2$s: the unresolved reference value */
 					$notes[] = sprintf( __( '%1$s "%2$s" nenalezen(a)', 'atlas-chuti' ), $field, $ref );
 				}
@@ -1004,13 +1134,14 @@ class Atlas_Chuti_JSON_Importer {
 			// for production content (search/multilingual linking depend on it); a
 			// missing key is a warning, not a hard error, so hand-entered content can
 			// still be saved. A key + display_name pair that isn't in the dictionary
-			// yet will be auto-created (variant A) — flagged here so a dry-run shows it.
+			// yet — and isn't in the batch's own `ingredients` array either — will be
+			// auto-created (variant A); flagged here so a dry-run shows it.
 			$key  = trim( (string) ( $row['ingredient_key'] ?? '' ) );
 			$name = trim( (string) ( $row['display_name'] ?? '' ) );
 			if ( '' === $key ) {
 				/* translators: %s: the ingredient's display_name */
 				$notes[] = sprintf( __( 'ingredience "%s" nemá ingredient_key (vyhledávání podle ingredience a vícejazyčné propojení bude omezené)', 'atlas-chuti' ), $name ?: '?' );
-			} elseif ( ! Atlas_Chuti_I18N::find_ingredient_by_key( sanitize_title( $key ), $locale ) ) {
+			} elseif ( ! $this->reference_is_valid( 'atlas_ingredient', $key, $locale, $planned ) ) {
 				if ( $name ) {
 					/* translators: %1$s: display_name, %2$s: ingredient_key */
 					$notes[] = sprintf( __( 'ingredience "%1$s" (%2$s) ve slovníčku zatím neexistuje – bude automaticky vytvořena', 'atlas-chuti' ), $name, $key );
@@ -1023,19 +1154,24 @@ class Atlas_Chuti_JSON_Importer {
 		return implode( '; ', $notes );
 	}
 
-	private function import_recipe( $item, $dry_run ) {
+	private function import_recipe( $item, $dry_run, $planned = array() ) {
 		$title  = isset( $item['title'] ) ? sanitize_text_field( $item['title'] ) : '';
 		$locale = $this->resolve_item_locale( $item );
-		$errors = $this->validate_recipe( $item, $locale );
+		$errors = $this->validate_recipe( $item, $locale, $planned );
 		if ( $errors ) {
 			return $this->row( $title ?: $this->label_untitled(), $this->label_error(), 'error', $this->label_missing_fields( $errors ) );
 		}
 
 		$slug                  = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $title );
 		$stable_key            = $this->stable_key_for( 'atlas_recipe', $item, $slug );
+		// resolve_reference() here (not reference_is_valid()) is correct even in
+		// dry-run: validate_recipe() above already confirmed the country is either a
+		// real post or a planned one, and $primary_country_post is only used for a
+		// real WordPress term lookup below — 0 ("not a real post yet", the planned-
+		// only case in dry-run/out-of-order live calls) simply skips that lookup.
 		$primary_country_post  = $this->resolve_reference( 'atlas_country', $item['country'], $locale );
 		$existing              = $this->find_existing_recipe( $item, $slug, $stable_key, $primary_country_post, $locale );
-		$warnings              = $this->warnings_for_recipe_refs( $item, $locale );
+		$warnings              = $this->warnings_for_recipe_refs( $item, $locale, $planned );
 
 		if ( $dry_run ) {
 			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok', $warnings );
