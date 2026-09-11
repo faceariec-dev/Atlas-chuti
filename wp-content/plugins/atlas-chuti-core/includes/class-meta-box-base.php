@@ -136,15 +136,16 @@ abstract class Atlas_Chuti_Meta_Box_Base {
 		$labels = array_map(
 			function ( $f ) {
 				$map = array(
-					'ingredient_id' => __( 'Klíč ingredience (volitelné)', 'atlas-chuti' ),
-					'name'          => __( 'Název', 'atlas-chuti' ),
-					'quantity'      => __( 'Množství', 'atlas-chuti' ),
-					'unit'          => __( 'Jednotka', 'atlas-chuti' ),
-					'note'          => __( 'Poznámka', 'atlas-chuti' ),
-					'group'         => __( 'Skupina', 'atlas-chuti' ),
-					'order'         => __( 'Pořadí', 'atlas-chuti' ),
-					'text'          => __( 'Text', 'atlas-chuti' ),
-					'recipe_id'     => __( 'Slug receptu (volitelné)', 'atlas-chuti' ),
+					'ingredient_key' => __( 'Klíč ingredience (volitelné, např. "tomato")', 'atlas-chuti' ),
+					'display_name'   => __( 'Název', 'atlas-chuti' ),
+					'quantity'       => __( 'Množství', 'atlas-chuti' ),
+					'unit'           => __( 'Jednotka', 'atlas-chuti' ),
+					'note'           => __( 'Poznámka', 'atlas-chuti' ),
+					'group'          => __( 'Skupina', 'atlas-chuti' ),
+					'scalable'       => __( 'Škálovatelné? (true/false, prázdné = automaticky)', 'atlas-chuti' ),
+					'order'          => __( 'Pořadí', 'atlas-chuti' ),
+					'text'           => __( 'Text', 'atlas-chuti' ),
+					'recipe_id'      => __( 'Slug receptu (volitelné)', 'atlas-chuti' ),
 				);
 				return isset( $map[ $f ] ) ? $map[ $f ] : ucfirst( $f );
 			},

@@ -76,11 +76,39 @@ class Atlas_Chuti_Search {
 				array_merge( $meta_keys, array( $post_type, $like, $like, $like, $per_type ) )
 			);
 			$ids = $wpdb->get_col( $sql );
+
+			if ( 'atlas_recipe' === $post_type ) {
+				$ids = array_unique( array_merge( $ids, $this->recipe_ids_by_ingredient( $term, $per_type ) ) );
+			}
+
 			if ( $ids ) {
-				$results[ $post_type ] = array_map( 'get_post', $ids );
+				$results[ $post_type ] = array_map( 'get_post', array_slice( $ids, 0, $per_type ) );
 			}
 		}
 
 		return $results;
+	}
+
+	/**
+	 * Widens a keyword search to every recipe containing a matching normalized
+	 * ingredient — e.g. "kuře" finds recipes tagged with the "chicken" ingredient,
+	 * even though "kuře" never appears in the recipe's own title/content (item 17 of
+	 * this phase's brief). See class-ingredient-sync.php for how the tagging works;
+	 * this is a single indexed tax_query, so it stays fast at any recipe count.
+	 */
+	private function recipe_ids_by_ingredient( $term, $limit ) {
+		$term_ids = Atlas_Chuti_Ingredient_Sync::find_matching_term_ids( $term );
+		if ( ! $term_ids ) {
+			return array();
+		}
+		return get_posts(
+			array(
+				'post_type'      => 'atlas_recipe',
+				'post_status'    => 'publish',
+				'posts_per_page' => $limit,
+				'fields'         => 'ids',
+				'tax_query'      => array( array( 'taxonomy' => 'atlas_ingredient_tax', 'field' => 'term_id', 'terms' => $term_ids ) ),
+			)
+		);
 	}
 }

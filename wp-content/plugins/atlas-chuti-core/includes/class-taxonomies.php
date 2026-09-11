@@ -40,84 +40,118 @@ class Atlas_Chuti_Taxonomies {
 			)
 		);
 
+		// Technical taxonomies (item 16 of this phase's brief): they exist purely to make
+		// tax_query filtering/search fast (see class-country-sync.php, class-ingredient-sync.php,
+		// inc/archive-filters.php). None of them has a real landing page, so none of them
+		// gets a public, indexable archive URL — that would just be duplicate content
+		// competing with /zeme/{slug}/, and /recepty/?obtiznost=... already covers filtering.
+		// atlas_continent is the one exception: it has its own quality landing page
+		// (taxonomy-atlas_continent.php) and stays public.
+		$technical_taxonomy_args = array(
+			'public'             => false,
+			'publicly_queryable' => false,
+			'show_in_nav_menus'  => false,
+			'rewrite'            => false,
+			'show_in_rest'       => true,
+			'show_admin_column'  => true,
+		);
+
 		register_taxonomy(
 			'atlas_country_tax',
 			array( 'atlas_recipe', 'atlas_glossary' ),
-			array(
-				'labels'            => array(
-					'name'          => __( 'Země (štítek)', 'atlas-chuti' ),
-					'singular_name' => __( 'Země', 'atlas-chuti' ),
-				),
-				'hierarchical'      => false,
-				'public'            => true,
-				'show_ui'           => false, // Managed automatically from the Země CPT, see class-country-sync.php.
-				'show_in_rest'      => true,
-				'show_admin_column' => true,
-				'rewrite'           => array( 'slug' => 'kuchyne', 'with_front' => false ),
+			array_merge(
+				$technical_taxonomy_args,
+				array(
+					'labels'       => array(
+						'name'          => __( 'Země (štítek)', 'atlas-chuti' ),
+						'singular_name' => __( 'Země', 'atlas-chuti' ),
+					),
+					'hierarchical' => false,
+					'show_ui'      => false, // Managed automatically from the Země CPT, see class-country-sync.php.
+				)
+			)
+		);
+
+		register_taxonomy(
+			'atlas_ingredient_tax',
+			array( 'atlas_recipe' ),
+			array_merge(
+				$technical_taxonomy_args,
+				array(
+					'labels'       => array(
+						'name'          => __( 'Ingredience (štítek)', 'atlas-chuti' ),
+						'singular_name' => __( 'Ingredience', 'atlas-chuti' ),
+					),
+					'hierarchical' => false,
+					'show_ui'      => false, // Managed automatically from the Ingredience CPT, see class-ingredient-sync.php.
+				)
 			)
 		);
 
 		register_taxonomy(
 			'atlas_meal_type',
 			array( 'atlas_recipe' ),
-			array(
-				'labels'            => array(
-					'name'          => __( 'Typ jídla', 'atlas-chuti' ),
-					'singular_name' => __( 'Typ jídla', 'atlas-chuti' ),
-				),
-				'hierarchical'      => false,
-				'public'            => true,
-				'show_in_rest'      => true,
-				'show_admin_column' => true,
-				'rewrite'           => array( 'slug' => 'typ-jidla', 'with_front' => false ),
+			array_merge(
+				$technical_taxonomy_args,
+				array(
+					'labels'       => array(
+						'name'          => __( 'Typ jídla', 'atlas-chuti' ),
+						'singular_name' => __( 'Typ jídla', 'atlas-chuti' ),
+					),
+					'hierarchical' => false,
+					'show_ui'      => true,
+				)
 			)
 		);
 
 		register_taxonomy(
 			'atlas_difficulty',
 			array( 'atlas_recipe' ),
-			array(
-				'labels'            => array(
-					'name'          => __( 'Obtížnost', 'atlas-chuti' ),
-					'singular_name' => __( 'Obtížnost', 'atlas-chuti' ),
-				),
-				'hierarchical'      => false,
-				'public'            => true,
-				'show_in_rest'      => true,
-				'show_admin_column' => true,
-				'rewrite'           => array( 'slug' => 'obtiznost', 'with_front' => false ),
+			array_merge(
+				$technical_taxonomy_args,
+				array(
+					'labels'       => array(
+						'name'          => __( 'Obtížnost', 'atlas-chuti' ),
+						'singular_name' => __( 'Obtížnost', 'atlas-chuti' ),
+					),
+					'hierarchical' => false,
+					'show_ui'      => true,
+				)
 			)
 		);
 
 		register_taxonomy(
 			'atlas_diet',
 			array( 'atlas_recipe' ),
-			array(
-				'labels'            => array(
-					'name'          => __( 'Vhodné pro', 'atlas-chuti' ),
-					'singular_name' => __( 'Dieta', 'atlas-chuti' ),
-				),
-				'hierarchical'      => false,
-				'public'            => true,
-				'show_in_rest'      => true,
-				'show_admin_column' => true,
-				'rewrite'           => array( 'slug' => 'dieta', 'with_front' => false ),
+			array_merge(
+				$technical_taxonomy_args,
+				array(
+					'labels'       => array(
+						'name'          => __( 'Vhodné pro', 'atlas-chuti' ),
+						'singular_name' => __( 'Dieta', 'atlas-chuti' ),
+					),
+					'hierarchical' => false,
+					'show_ui'      => true,
+				)
 			)
 		);
 
+		// Same principle as above: archive-atlas_glossary.php already filters by category
+		// via ?kategorie=, so a separate public taxonomy archive would only be duplicate
+		// content with no dedicated landing page of its own.
 		register_taxonomy(
 			'atlas_glossary_category',
 			array( 'atlas_glossary' ),
-			array(
-				'labels'            => array(
-					'name'          => __( 'Kategorie slovníčku', 'atlas-chuti' ),
-					'singular_name' => __( 'Kategorie', 'atlas-chuti' ),
-				),
-				'hierarchical'      => true,
-				'public'            => true,
-				'show_in_rest'      => true,
-				'show_admin_column' => true,
-				'rewrite'           => array( 'slug' => 'slovnicek-kategorie', 'with_front' => false ),
+			array_merge(
+				$technical_taxonomy_args,
+				array(
+					'labels'       => array(
+						'name'          => __( 'Kategorie slovníčku', 'atlas-chuti' ),
+						'singular_name' => __( 'Kategorie', 'atlas-chuti' ),
+					),
+					'hierarchical' => true,
+					'show_ui'      => true,
+				)
 			)
 		);
 

@@ -1,7 +1,7 @@
 {
   "ingredients": [
     {
-      "key": "tomato",
+      "ingredient_key": "tomato",
       "locale": "cs-CZ",
       "title": "Rajče",
       "slug": "rajce",
@@ -13,7 +13,7 @@
       "default_unit": "ks"
     },
     {
-      "key": "pasta_spaghetti",
+      "ingredient_key": "pasta_spaghetti",
       "locale": "cs-CZ",
       "title": "Spaghetti",
       "slug": "spagety",
@@ -23,7 +23,7 @@
       "default_unit": "g"
     },
     {
-      "key": "soy_sauce",
+      "ingredient_key": "soy_sauce",
       "locale": "cs-CZ",
       "title": "Sójová omáčka",
       "slug": "sojova-omacka",
@@ -319,52 +319,52 @@
       "about": "Kouzlo carbonary je v emulzi vajec a sýra, která díky teplu z těstovin zhoustne do hebké omáčky – bez smetany.",
       "ingredients": [
         {
-          "ingredient_id": "pasta_spaghetti",
-          "name": "Spaghetti",
           "quantity": "400",
           "unit": "g",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "pasta_spaghetti",
+          "display_name": "Spaghetti"
         },
         {
-          "ingredient_id": "",
-          "name": "Guanciale",
           "quantity": "150",
           "unit": "g",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Guanciale"
         },
         {
-          "ingredient_id": "",
-          "name": "Vejce",
           "quantity": "4",
           "unit": "ks",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Vejce"
         },
         {
-          "ingredient_id": "",
-          "name": "Pecorino Romano",
           "quantity": "80",
           "unit": "g",
           "note": "nastrouhaný",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Pecorino Romano"
         },
         {
-          "ingredient_id": "",
-          "name": "Černý pepř",
           "quantity": "podle chuti",
           "unit": "",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Černý pepř"
         },
         {
-          "ingredient_id": "",
-          "name": "Sůl",
           "quantity": "podle chuti",
           "unit": "",
           "note": "na vodu",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Sůl"
         }
       ],
       "steps": [
@@ -435,52 +435,52 @@
       "about": "Ramen shoyu i miso stojí na dlouho vařeném vývaru a vyvážené dochucovací omáčce (tare).",
       "ingredients": [
         {
-          "ingredient_id": "",
-          "name": "Vepřový bůček",
           "quantity": "400",
           "unit": "g",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Vepřový bůček"
         },
         {
-          "ingredient_id": "",
-          "name": "Miso pasta",
           "quantity": "3",
           "unit": "lžíce",
           "note": "",
-          "group": "Vývar"
+          "group": "Vývar",
+          "ingredient_key": "",
+          "display_name": "Miso pasta"
         },
         {
-          "ingredient_id": "soy_sauce",
-          "name": "Sójová omáčka",
           "quantity": "2",
           "unit": "lžíce",
           "note": "",
-          "group": "Vývar"
+          "group": "Vývar",
+          "ingredient_key": "soy_sauce",
+          "display_name": "Sójová omáčka"
         },
         {
-          "ingredient_id": "",
-          "name": "Vývar dashi",
           "quantity": "1",
           "unit": "l",
           "note": "",
-          "group": "Vývar"
+          "group": "Vývar",
+          "ingredient_key": "",
+          "display_name": "Vývar dashi"
         },
         {
-          "ingredient_id": "",
-          "name": "Ramen nudle",
           "quantity": "2",
           "unit": "porce",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Ramen nudle"
         },
         {
-          "ingredient_id": "",
-          "name": "Vejce natvrdo",
           "quantity": "2",
           "unit": "ks",
           "note": "marinovaná",
-          "group": "Na dozdobení"
+          "group": "Na dozdobení",
+          "ingredient_key": "",
+          "display_name": "Vejce natvrdo"
         }
       ],
       "steps": [
@@ -543,52 +543,52 @@
       "about": "Pad Thai je vyvážená hra sladké, kyselé, slané a mírně pálivé chuti servírovaná horká přímo z woku.",
       "ingredients": [
         {
-          "ingredient_id": "",
-          "name": "Rýžové nudle",
           "quantity": "200",
           "unit": "g",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Rýžové nudle"
         },
         {
-          "ingredient_id": "",
-          "name": "Krevety",
           "quantity": "200",
           "unit": "g",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Krevety"
         },
         {
-          "ingredient_id": "",
-          "name": "Tamarindová pasta",
           "quantity": "2",
           "unit": "lžíce",
           "note": "",
-          "group": "Omáčka"
+          "group": "Omáčka",
+          "ingredient_key": "",
+          "display_name": "Tamarindová pasta"
         },
         {
-          "ingredient_id": "",
-          "name": "Rybí omáčka",
           "quantity": "2",
           "unit": "lžíce",
           "note": "",
-          "group": "Omáčka"
+          "group": "Omáčka",
+          "ingredient_key": "",
+          "display_name": "Rybí omáčka"
         },
         {
-          "ingredient_id": "",
-          "name": "Vejce",
           "quantity": "2",
           "unit": "ks",
           "note": "",
-          "group": "Hlavní"
+          "group": "Hlavní",
+          "ingredient_key": "",
+          "display_name": "Vejce"
         },
         {
-          "ingredient_id": "",
-          "name": "Arašídy",
           "quantity": "1/2",
           "unit": "hrnku",
           "note": "pražené, drcené",
-          "group": "Na dozdobení"
+          "group": "Na dozdobení",
+          "ingredient_key": "",
+          "display_name": "Arašídy"
         }
       ],
       "steps": [

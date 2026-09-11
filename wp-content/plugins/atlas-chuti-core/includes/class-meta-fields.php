@@ -31,7 +31,11 @@ class Atlas_Chuti_Meta_Fields {
 				'type'     => 'repeater',
 				'label' => __( 'Ingredience', 'atlas-chuti' ),
 				'required' => true,
-				'shape'    => array( 'ingredient_id', 'name', 'quantity', 'unit', 'note', 'group' ),
+				// display_name/quantity/unit/note/group are locale-specific authored text;
+				// ingredient_key is the stable, language-independent identity (item 4/5 of
+				// this phase's brief); scalable optionally overrides auto-detection from
+				// quantity (Atlas_Chuti_Servings::parse_quantity()) for edge cases.
+				'shape'    => array( 'ingredient_key', 'display_name', 'quantity', 'unit', 'note', 'group', 'scalable' ),
 			),
 			'steps'            => array(
 				'type'     => 'repeater',
@@ -109,9 +113,9 @@ class Atlas_Chuti_Meta_Fields {
 
 	public static function ingredient_fields() {
 		return array(
-			'key'          => array( 'type' => 'text', 'label' => __( 'Jazykově neutrální klíč (např. "tomato")', 'atlas-chuti' ), 'required' => false ),
-			'aliases'      => array( 'type' => 'string_list', 'label' => __( 'Alternativní názvy (rajče, rajčata, rajčat…)', 'atlas-chuti' ), 'required' => false ),
-			'default_unit' => array( 'type' => 'text', 'label' => __( 'Výchozí jednotka', 'atlas-chuti' ), 'required' => false ),
+			'ingredient_key' => array( 'type' => 'text', 'label' => __( 'Jazykově neutrální klíč (např. "tomato")', 'atlas-chuti' ), 'required' => false ),
+			'aliases'        => array( 'type' => 'string_list', 'label' => __( 'Alternativní názvy (rajče, rajčata, rajčat…)', 'atlas-chuti' ), 'required' => false ),
+			'default_unit'   => array( 'type' => 'text', 'label' => __( 'Výchozí jednotka', 'atlas-chuti' ), 'required' => false ),
 		);
 	}
 

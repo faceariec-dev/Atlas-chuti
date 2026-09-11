@@ -119,6 +119,8 @@ require ATLAS_THEME_DIR . '/inc/template-tags.php';
 require ATLAS_THEME_DIR . '/inc/passport-support.php';
 require ATLAS_THEME_DIR . '/inc/archive-filters.php';
 require ATLAS_THEME_DIR . '/inc/homepage.php';
+require ATLAS_THEME_DIR . '/inc/customizer.php';
+require ATLAS_THEME_DIR . '/inc/continent-image.php';
 
 /**
  * "Kam dnes za chutí?" (item 18) — picks one random published country and redirects

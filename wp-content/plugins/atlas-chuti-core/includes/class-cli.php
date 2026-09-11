@@ -43,11 +43,7 @@ class Atlas_Chuti_CLI {
 
 		$dry_run  = isset( $assoc_args['dry-run'] );
 		$importer = Atlas_Chuti_JSON_Importer::instance();
-
-		// run_import() is private; use reflection so CLI and admin UI share one implementation.
-		$method = new ReflectionMethod( $importer, 'run_import' );
-		$method->setAccessible( true );
-		$report = $method->invoke( $importer, $data, $dry_run );
+		$report   = $importer->run_import_sync( $data, $dry_run );
 
 		foreach ( $report['groups'] as $type => $rows ) {
 			foreach ( $rows as $row ) {

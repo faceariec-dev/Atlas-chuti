@@ -30,7 +30,7 @@ $all_countries   = get_posts( array( 'post_type' => 'atlas_country', 'posts_per_
 			$count = ( new WP_Query( array( 'post_type' => 'atlas_country', 'tax_query' => array( array( 'taxonomy' => 'atlas_continent', 'terms' => $continent->term_id ) ), 'fields' => 'ids', 'posts_per_page' => -1 ) ) )->found_posts;
 			?>
 			<a class="continent-tile" href="<?php echo esc_url( get_term_link( $continent ) ); ?>" style="<?php echo 0 === $count ? 'opacity:0.5;' : ''; ?>">
-				<div class="placeholder-media"></div>
+				<?php echo atlas_chuti_continent_image_html( $continent->term_id ); ?>
 				<span><?php echo esc_html( $continent->name ); ?><br><small style="font-weight:400;opacity:0.85;"><?php echo esc_html( atlas_chuti_czech_plural( $count, __( 'země', 'atlas-chuti' ), __( 'země', 'atlas-chuti' ), __( 'zemí', 'atlas-chuti' ) ) ); ?></small></span>
 			</a>
 		<?php endforeach; ?>

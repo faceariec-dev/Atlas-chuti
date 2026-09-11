@@ -66,11 +66,10 @@ class Atlas_Chuti_Country_Sync {
 		update_post_meta( $post_id, '_atlas_country_term_id', $term_id );
 		update_term_meta( $term_id, 'country_post_id', $post_id );
 
-		// Mirror the country's continent onto its own taxonomy term so recipe lookups are one query.
-		$continent_terms = wp_get_post_terms( $post_id, 'atlas_continent', array( 'fields' => 'ids' ) );
-		if ( ! empty( $continent_terms ) && ! is_wp_error( $continent_terms ) ) {
-			update_term_meta( $term_id, 'continent_term_id', $continent_terms[0] );
-		}
+		// Deliberately NOT caching the continent here (a term meta cache would only be
+		// correct if this hook ran strictly after the continent taxonomy was assigned,
+		// which the JSON importer previously violated — see get_continent_ids_for_country_term()
+		// below, which always resolves live from the Country CPT's own taxonomy instead).
 	}
 
 	public function remove_term_on_delete( $post_id ) {
@@ -86,6 +85,9 @@ class Atlas_Chuti_Country_Sync {
 	/**
 	 * When a recipe gets country term(s) assigned, copy each country's continent onto the
 	 * recipe so `taxonomy-atlas_continent.php` / recipe archive filters work directly.
+	 * Resolves each country's continent LIVE (from the Country CPT's own atlas_continent
+	 * terms) rather than from a cache, so this is correct no matter what order the
+	 * importer or an editor happened to save fields in — item 2 of this phase's brief.
 	 */
 	public function sync_recipe_continent( $object_id, $terms, $tt_ids, $taxonomy, $append, $old_tt_ids ) {
 		if ( 'atlas_country_tax' !== $taxonomy || 'atlas_recipe' !== get_post_type( $object_id ) ) {
@@ -96,14 +98,51 @@ class Atlas_Chuti_Country_Sync {
 		$continent_ids     = array();
 
 		foreach ( $country_term_ids as $country_term_id ) {
-			$continent_id = get_term_meta( $country_term_id, 'continent_term_id', true );
-			if ( $continent_id ) {
-				$continent_ids[] = (int) $continent_id;
-			}
+			$continent_ids = array_merge( $continent_ids, self::get_continent_ids_for_country_term( $country_term_id ) );
 		}
 
 		$continent_ids = array_unique( $continent_ids );
 		wp_set_post_terms( $object_id, $continent_ids, 'atlas_continent', false );
+	}
+
+	/**
+	 * Live lookup: which atlas_continent term IDs apply to a given atlas_country_tax term,
+	 * resolved via the underlying Země CPT post's own continent assignment (single source
+	 * of truth — never cached, so there is no ordering dependency to get wrong).
+	 */
+	public static function get_continent_ids_for_country_term( $country_term_id ) {
+		$country_post_id = self::get_country_post_for_term( $country_term_id );
+		if ( ! $country_post_id ) {
+			return array();
+		}
+		$continent_ids = wp_get_post_terms( $country_post_id, 'atlas_continent', array( 'fields' => 'ids' ) );
+		return is_wp_error( $continent_ids ) ? array() : array_map( 'intval', $continent_ids );
+	}
+
+	/**
+	 * Re-runs continent propagation for every recipe currently tagged with this country
+	 * term. Called explicitly by the JSON importer/admin save once a country's continent
+	 * is known to be final, and safe to call any time (e.g. after an editor changes a
+	 * country's continent later) since it always reads the live continent, never a cache.
+	 */
+	public static function resync_recipes_for_country_term( $country_term_id ) {
+		$recipe_ids = get_posts(
+			array(
+				'post_type'      => 'atlas_recipe',
+				'posts_per_page' => -1,
+				'fields'         => 'ids',
+				'post_status'    => array( 'publish', 'draft' ),
+				'tax_query'      => array( array( 'taxonomy' => 'atlas_country_tax', 'field' => 'term_id', 'terms' => $country_term_id ) ),
+			)
+		);
+		foreach ( $recipe_ids as $recipe_id ) {
+			$country_term_ids = wp_get_post_terms( $recipe_id, 'atlas_country_tax', array( 'fields' => 'ids' ) );
+			$continent_ids    = array();
+			foreach ( $country_term_ids as $tid ) {
+				$continent_ids = array_merge( $continent_ids, self::get_continent_ids_for_country_term( $tid ) );
+			}
+			wp_set_post_terms( $recipe_id, array_unique( $continent_ids ), 'atlas_continent', false );
+		}
 	}
 
 	/**

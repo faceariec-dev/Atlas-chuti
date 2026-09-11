@@ -3,25 +3,29 @@
 Vlastní WordPress projekt "Atlas chutí" postavený od nuly: moderní kulinářský
 atlas kombinující profily zemí, strukturované recepty, kuchařský slovníček a
 "Kulinářský pas". Žádný page builder, žádná placená závislost, běží na běžném
-sdíleném PHP hostingu.
+sdíleném PHP hostingu (např. FORPSI Easy).
 
 Vizuální reference: `atlas_chuti_claude_design.zip` (Claude Design export) —
 theme z něj přebírá barevnou paletu (teplé světlé pozadí, terakotový akcent),
 typografii (Newsreader + Work Sans) a charakter karet/zaoblení, ale je to čistý
 WordPress theme + plugin, ne export designu.
 
-## Struktura repozitáře
+## Architektura
 
 ```
 wp-content/
-  themes/atlas-chuti/        Frontend: šablony, CSS, JS. Bez datové logiky.
-  plugins/atlas-chuti-core/  Datový model: CPT, taxonomie, meta pole, JSON import, SEO.
+  themes/atlas-chuti/        Frontend: šablony, CSS, JS, responzivita, komponenty.
+  plugins/atlas-chuti-core/  Datový model: CPT, taxonomie, meta pole, vazby,
+                              import, Kulinářský pas, budoucí integrační rozhraní.
 schema/                      JSON Schema pro import (recipe/country/glossary/ingredient).
-sample-data/                 Ukázková a testovací data (Itálie/Japonsko/Thajsko + 3 recepty).
+sample-data/                 Ukázková a testovací data.
 ```
 
-Datový model je v pluginu, ne v theme — theme lze v budoucnu vyměnit beze
-ztráty obsahu (viz zadání, bod 3 a 7).
+Theme řeší výhradně prezentaci; **datový model je celý v pluginu** a theme na
+něj jen čte přes hotové funkce (`atlas_chuti_*`, `Atlas_Chuti_*`) — theme lze
+v budoucnu vyměnit beze ztráty obsahu. Žádný Elementor, ACF Pro, Next.js jako
+runtime, povinný Node server, Redis, Docker ani VPS — jen WordPress, PHP,
+MySQL/MariaDB a nezbytný vanilla JS.
 
 ## Požadavky
 
@@ -30,207 +34,285 @@ ztráty obsahu (viz zadání, bod 3 a 7).
 - MySQL/MariaDB
 - WP-CLI (volitelné, pro `wp atlas import`)
 
-Žádný Node.js/Next.js/Docker/Redis/VPS není na produkci potřeba.
-
 ## Instalace
 
 1. Zkopírujte `wp-content/themes/atlas-chuti` a
    `wp-content/plugins/atlas-chuti-core` do odpovídajících složek běžné
-   instalace WordPressu (nebo tento repozitář rovnou naklonujte jako
-   `wp-content`, pokud si tak hosting nastavíte).
+   instalace WordPressu.
 2. V administraci aktivujte plugin **Atlas chutí – Core**
-   (Pluginy → Aktivovat). Tím se zaregistrují obsahové typy, taxonomie a
-   výchozí termy (6 světadílů, 3 úrovně obtížnosti, 2 diety, 4 kategorie
-   slovníčku).
+   (Pluginy → Aktivovat). Zaregistrují se obsahové typy, taxonomie, výchozí
+   termy (6 světadílů, 3 úrovně obtížnosti, 2 diety, 4 kategorie slovníčku) a
+   všechna meta pole přes `register_post_meta()`.
 3. Aktivujte theme **Atlas chutí** (Vzhled → Motivy).
-4. V Nastavení → Trvalé odkazy klikněte "Uložit změny" (přegeneruje
-   přepisovací pravidla pro `/recepty/`, `/zeme/`, `/slovnicek/`).
-5. Vytvořte dvě stránky a přiřaďte jim šablony:
-   - stránka se slugem **zeme** → šablona "Země (landing)"
-   - stránka se slugem **kulinarsky-pas** → šablona "Kulinářský pas"
-   (Volitelně i další obecné stránky z bodu 21 zadání — O projektu, Kontakt,
-   Redakční zásady, Ochrana osobních údajů, Cookies, Podmínky používání,
-   Inzerce — všechny fungují s výchozí šablonou `page.php`.)
+4. V Nastavení → Trvalé odkazy klikněte "Uložit změny".
+5. Otevřete **Atlas chutí → Nastavení stránek** a klikněte "Vytvořit chybějící
+   stránky" — vytvoří (jako koncepty) Zemi, Kulinářský pas a základní obecné
+   stránky se správnými slugy/šablonami; opakované spuštění nic
+   nezduplikuje. Recepty a Slovníček jsou CPT archivy, žádnou stránku
+   nepotřebují — nástroj to jen potvrdí.
 6. V Vzhled → Menu vytvořte hlavní menu (Země / Recepty / Kuchařský
-   slovníček / Kulinářský pas) a přiřaďte ho pozici "Hlavní menu". Pokud menu
-   nevytvoříte, header použije stejné čtyři odkazy automaticky.
-7. Nahrajte testovací data (viz níže).
+   slovníček / Kulinářský pas) a přiřaďte pozici "Hlavní menu". Bez menu
+   header použije stejné čtyři odkazy automaticky.
+7. Volitelně: Vzhled → Přizpůsobit → **Atlas chutí – Homepage** pro hero
+   fotografii, a Příspěvky → Světadíly pro fotografii každého světadílu.
+8. Nahrajte testovací data (viz níže).
 
 ## Datový model
 
-Vlastní obsahové typy (registruje `atlas-chuti-core`):
+| CPT               | Účel                                               | Veřejné |
+|-------------------|-----------------------------------------------------|---------|
+| `atlas_recipe`    | Recept                                              | ano (`/recepty/…`) |
+| `atlas_country`   | Země / gastronomická destinace                      | ano (`/zeme/…`) |
+| `atlas_glossary`  | Pojem kuchařského slovníčku                         | ano (`/slovnicek/…`) |
+| `atlas_ingredient`| Normalizovaná ingredience ("rajče"="rajčata"), identita = `atlas_ingredient_key` (např. `tomato`), ne slug | ne (interní) |
 
-| CPT               | Účel                                              | Veřejné |
-|-------------------|----------------------------------------------------|---------|
-| `atlas_recipe`    | Recept                                             | ano (`/recepty/…`) |
-| `atlas_country`   | Země / gastronomická destinace                     | ano (`/zeme/…`) |
-| `atlas_glossary`  | Pojem kuchařského slovníčku                        | ano (`/slovnicek/…`) |
-| `atlas_ingredient`| Normalizovaná ingredience ("rajče"="rajčata"), identita = jazykově neutrální `atlas_key` (např. `tomato`), ne slug | ne (interní) |
+Taxonomie — **veřejná je jen** `atlas_continent` (vlastní landing page,
+`taxonomy-atlas_continent.php`). Všechny ostatní jsou technické
+(`public: false`, žádný vlastní rewrite/archiv) — existují jen kvůli rychlému
+`tax_query` filtrování a vyhledávání, ne jako indexovatelné stránky duplikující
+`/zeme/{slug}/` nebo archiv `/recepty/?obtiznost=…`:
 
-Taxonomie:
-
-- `atlas_continent` — 6 světadílů, na `atlas_country` i `atlas_recipe`
-  (u receptu se automaticky dopočítá podle jeho země).
 - `atlas_country_tax` — "zrcadlo" CPT `atlas_country` (stejný slug), navěšeno
-  na recepty a slovníček kvůli rychlému a URL-friendly filtrování. Spravuje
-  se automaticky při uložení Země (`class-country-sync.php`) — v adminu se
-  needituje přímo.
-- `atlas_meal_type`, `atlas_difficulty`, `atlas_diet` — na receptu.
-- `atlas_glossary_category` — na slovníčku.
+  na recepty/slovníček. Spravuje se automaticky při uložení Země
+  (`class-country-sync.php`) — v adminu se needituje přímo.
+- `atlas_ingredient_tax` — obdobné zrcadlo CPT `atlas_ingredient`, navěšeno na
+  recepty (`class-ingredient-sync.php`) — pohání vyhledávání podle suroviny.
+- `atlas_meal_type`, `atlas_difficulty`, `atlas_diet`, `atlas_glossary_category`.
+
+Regiony uvnitř zemí (Itálie → Toskánsko) nejsou zatím obsahově vyplněné, ale
+jde o obyčejné WordPress taxonomie, takže přidat podtaxonomii "region" později
+nevyžaduje změnu schématu.
 
 Všechna vlastní pole (perex, ingredience, postup, fakta o zemi…) jsou
-definovaná na jednom místě: `includes/class-meta-fields.php`. Tenhle soubor
-používají zároveň admin formuláře, JSON import i validace — jde o jediný
-zdroj pravdy pro datový model (viz zadání, bod 27/29: dnešní import = zítřejší
-formát pro AI).
+definovaná na jednom místě — `includes/class-meta-fields.php` — a
+zaregistrovaná přes `register_post_meta()`
+(`includes/class-register-meta.php`, typ/sanitizace/`auth_callback`/
+`show_in_rest`). Admin formuláře, JSON importer i REST API tak vždy čtou/píšou
+stejný kontrakt; totéž bude jednou používat OpenAI modul.
 
-Regiony uvnitř zemí (Itálie → Toskánsko) nejsou v první fázi obsahově
-vyplněné, ale `atlas_continent`/`atlas_country_tax` jsou obyčejné WordPress
-taxonomie, takže přidat hierarchický podtaxonomický term nebo novou taxonomii
-"region" později nevyžaduje změnu schématu.
+### Synchronizace Země → Světadíl
 
-### Ingredience a přepočet porcí
+Při uložení země (import i admin) se nejdřív vytvoří/aktualizuje profil,
+teprve pak se přiřadí světadíl a uloží zbylá metadata, a až nakonec proběhne
+explicitní synchronizace s `atlas_country_tax` (`import_country()` v
+`class-json-importer.php`, kroky 1–4 přímo okomentované v kódu). Kontinent se
+navíc na recept **nikdy nečte z cache** — `Atlas_Chuti_Country_Sync::get_continent_ids_for_country_term()`
+si ho pokaždé zjistí přímo z CPT příspěvku dané země, takže pořadí uložení
+polí nikdy nemůže rozbít vazbu Itálie → Evropa → Spaghetti Carbonara, ani když
+se kontinent země později v adminu změní (`resync_recipes_for_country_term()`
+tehdy přetáhne správný kontinent na všechny recepty té země).
 
-Ingredience se ukládají strukturovaně (`ingredient_id`, `name`, `quantity`,
-`unit`, `note`, `group`), ne jako volný text. `quantity` může být číslo,
-desetinné číslo, jednoduchý zlomek ("1/2", "1 1/2") nebo text ("podle chuti",
-"špetka") — `Atlas_Chuti_Servings::parse_quantity()` pozná, co je
-matematicky přepočitatelné, a přepínač porcí (2|4|6|8, JS bez reloadu)
-přepočítává jen tyto položky.
+### Stabilní identita (bod 13/14 zadání)
+
+WordPress post ID není nikdy jediný identifikátor v JSON datech:
+
+- **Země** — ISO 3166-1 kód (`atlas_iso_code`), např. `IT`. `country_key`.
+- **Recept/slovníček** — `atlas_translation_group` (`recipe_key`), stabilní
+  napříč jazyky; odvodí se ze slugu, pokud není zadán.
+- **Ingredience** — `atlas_ingredient_key` (`ingredient_key`), např.
+  `tomato` — nikdy český slug. "Rajče"/"rajčata"/"rajčat" jsou aliasy JEDNÉ
+  entity (`Atlas_Chuti_I18N::find_ingredient_by_key()`).
+
+### Ingredience, jednotky a přepočet porcí
+
+Ingredience se ukládají strukturovaně:
+
+```json
+{
+  "ingredient_key": "spaghetti",
+  "display_name": "Spaghetti",
+  "quantity": 400,
+  "unit": "g",
+  "note": "",
+  "group": "Hlavní",
+  "scalable": true
+}
+```
+
+`quantity` přijímá číslo, zlomek ("1/2", "1 1/2") i text ("podle chuti",
+"špetka") — `Atlas_Chuti_Servings::parse_quantity()` pozná, co je matematicky
+přepočitatelné. `scalable` je volitelný ruční override (např. vynutit
+"nepřepočítávat", i kdyby množství vypadalo jako číslo). Přepínač porcí
+(2|4|6|8, `assets/js/servings.js`) přepočítá jen škálovatelné položky a bez
+reloadu aktualizuje množství, aktivní volbu i údaj "Porce" v informačním
+panelu; tlačítko "Přejít na recept" vede na sekci Ingredience, ne rovnou na
+Postup.
+
+Jednotky nejsou jen volný text — `Atlas_Chuti_Units` (`class-units.php`)
+normalizuje běžný český zápis ("g", "ks", "lžíce"…) na jazykově neutrální
+klíč (`g`, `pcs`, `tbsp`…) s popiskem pro cs/en, aniž by bylo nutné měnit už
+napsaná data. Nic to dnes nepřepočítává (žádné US jednotky) — jen to
+neblokuje budoucnost.
+
+Postup je pole kroků `{ "order": 1, "text": "…" }`, ne jeden WYSIWYG text;
+datový model (repeater shape) lze později rozšířit o obrázek/čas/časovač
+kroku beze změny existujících dat.
+
+## Vyhledávání podle ingredience
+
+Hledání na homepage ("Hledat recept, zemi, jídlo nebo surovinu…") najde
+recept i podle normalizované ingredience, ne jen podle názvu/textu — dotaz
+"kuře" najde recept obsahující ingredienci "chicken", protože "kuře" je
+uložené jako alias této ingredience. Mechanismus (`class-ingredient-sync.php`)
+zrcadlí ingredience do skryté taxonomie `atlas_ingredient_tax` na receptech
+(stejný vzor jako země), takže samotné hledání je jeden indexovaný
+`tax_query` — škáluje na tisíce receptů, protože prohledávaný LIKE dotaz běží
+jen nad malým slovníkem ingrediencí, ne nad každým receptem.
 
 ## Import obsahu (JSON)
 
-**Atlas chutí → Import obsahu** v administraci (nebo `wp atlas import
-soubor.json`) přijímá jeden JSON soubor s libovolnou kombinací klíčů
-`ingredients`, `countries`, `glossary`, `recipes` — viz `/schema` (JSON
-Schema, draft-07, s popisky u každého pole) a `/sample-data` (funkční
-ukázky).
+**Atlas chutí → Import obsahu** (nebo `wp atlas import soubor.json`)
+přijímá jeden JSON soubor s libovolnou kombinací klíčů `ingredients`,
+`countries`, `glossary`, `recipes` — viz `/schema` (JSON Schema, draft-07) a
+`/sample-data`.
 
-Zpracování:
+**Validace** (`class-json-importer.php`, `validate_recipe()`/
+`validate_country()`) před zápisem kontroluje: povinná pole, typy hodnot
+(kladné porce, nezáporné časy), validní `status`/`locale`/světadíl/obtížnost,
+strukturu každé ingredience i kroku, a hlavně — že hlavní země receptu
+skutečně existuje. Pokud ne, recept se **vůbec nevytvoří** a chyba je vidět
+v reportu (dry-run i ostrý import), místo aby tiše vznikl osiřelý recept bez
+země.
 
-1. Validace povinných polí (chybějící pole = chyba u toho řádku, zbytek
-   dávky pokračuje dál).
-2. Vazby mezi entitami (země receptu, související recepty/pojmy…) se zadávají
-   **stabilním jazykově nezávislým klíčem** — ISO kódem u zemí, `translation_group`
-   u receptů/slovníčku, `key` u ingrediencí — nikdy číselným WordPress ID. Slug je
-   přijímán jako fallback jen dokud existuje jediná jazyková verze (viz "Příprava
-   na anglickou verzi" níže). Stejný formát bude jednou používat i AI.
-3. Dvouprůchodové zpracování: nejdřív se založí/aktualizují všechny entity,
-   pak se ve druhém průchodu dopočítají vzájemné vazby (funguje i pro
-   dopředné odkazy v rámci jednoho souboru).
-4. Kontrola duplicit podle slugu (recept navíc podle originálního názvu +
-   země) — nalezená shoda se aktualizuje (upsert), nevytváří duplicitní
-   příspěvek.
-5. **Zkontrolovat (dry-run)** spustí totéž bez zápisu do databáze a ukáže
-   náhled výsledku.
-6. Import nikdy nevytváří hotové HTML stránky — vždy jen strukturovaná
-   WordPress data (CPT + meta + taxonomie).
+**Duplicity** (jen recepty, protože "stejný název jídla v jiné zemi" je
+skutečné riziko) se kontrolují v tomto pořadí: (1) stabilní `translation_group`,
+(2) normalizovaný název + hlavní země, (3) originální název + hlavní země,
+(4) slug — všechno kromě (1) je navíc svázané se stejnou zemí, takže italské
+a japonské "Curry" nikdy neaktualizují jedno druhé.
+
+**Dávkové zpracování** (bod 11 zadání): ostrý import (ne dry-run) neběží jako
+jeden dlouhý request. Postaví se plochá fronta úkolů (nejdřív vytvořit
+všechny položky, pak dořešit vzájemné vazby) a zpracovává se po 8 položkách
+na jeden HTTP request přes vlastní stránku s auto-refreshem — 50 receptů tak
+bezpečně proběhne i na běžném shared hostingu s krátkým `max_execution_time`,
+stránku lze zavřít a vrátit se k ní, import pokračuje tam, kde skončil
+(`atlas_chuti_import_batch_*` transient). `wp atlas import` (CLI) dávkování
+nepotřebuje a běží vše v jednom volání.
+
+Vazby mezi entitami (země receptu, související recepty/pojmy…) se zadávají
+stabilním klíčem — ISO kódem, `translation_group`, `ingredient_key` — nikdy
+číselným WordPress ID; slug je přijímán jako fallback jen dokud existuje
+jediná jazyková verze.
 
 Testovací data pro ověření datového modelu: `sample-data/batch-import-sample.json`
 obsahuje Itálii, Japonsko a Thajsko, po jednom receptu z každé (Spaghetti
-Carbonara, Miso ramen, Pad Thai) a pár pojmů do slovníčku — přesně rozsah
-popsaný v bodě 28 zadání. Nahrajte ho v administraci, nebo:
+Carbonara, Miso ramen, Pad Thai) a pár pojmů do slovníčku:
 
 ```
 wp atlas import sample-data/batch-import-sample.json
 ```
 
-Prvních 50 produkčních receptů je záměrně samostatný následující krok, ne
-součást tohoto importu.
-
-## Příprava na anglickou verzi (language-ready, bod 17 zadání)
-
-Aktivní je zatím pouze čeština — žádné anglické stránky, žádný `/en/`, žádný
-WPML/Polylang. Předpokládaný budoucí model je ale **samostatná anglická `.com`
-instance** (vlastní WordPress, vlastní WordPress ID, případně vlastní
-fotografie a SEO texty), používající stejný theme, stejný `atlas-chuti-core`
-plugin a stejné JSON schema. Proto:
-
-- **Kód → data → lokalizovaný obsah je oddělené.** Datový model (typy entit,
-  meta pole, taxonomie) je jazykově neutrální; teprve konkrétní hodnoty
-  (název, perex, kroky, SEO texty…) jsou v jednom jazyce.
-- **Stabilní identita nezávisí na jazyce ani na WordPress ID:**
-  - Země: ISO 3166-1 kód (`atlas_iso_code`), např. `IT`. Český název "Itálie"
-    a anglický "Italy" budou dvě různé stránky se stejným ISO kódem.
-  - Recepty a slovníček: `atlas_translation_group` — stabilní klíč sdílený
-    všemi jazykovými verzemi téhož obsahu (chybí-li při importu, odvodí se
-    ze slugu, což funguje jen dokud existuje jediný jazyk).
-  - Ingredience: `atlas_key` — jazykově neutrální klíč (např. `tomato`), ne
-    český slug (`rajce`). "Rajče"/"rajčata"/"rajčat" jsou aliasy JEDNÉ entity;
-    anglická verze bude mít `{"key": "tomato", "name": "Tomato", "locale":
-    "en"}` se stejným klíčem.
-  - Tuto logiku (`find_country_by_iso`, `find_by_translation_group`,
-    `find_ingredient_by_key`) implementuje `includes/class-i18n.php`; JSON
-    importer (`class-json-importer.php`) ji používá pro veškeré vazby mezi
-    entitami místo číselného post ID.
-- **`atlas_locale`** (výchozí `cs-CZ`) a **`atlas_translation_status`**
-  (`none`/`draft`/`reviewed`/`published`) se ukládají na každý recept, zemi a
-  pojem — i bez explicitního zadání v JSON (doplní je `class-i18n.php` při
-  každém uložení). Připraveno na to, že budoucí AI nebude recept jen doslovně
-  překládat, ale vytvoří lokalizovanou verzi se svým vlastním stavem
-  překladu.
-- **URL/slugy jsou nezávislé na jazyce.** `/recepty/`, `/zeme/`,
-  `/slovnicek/` jsou dnešní české cesty; anglická instance může mít
-  `/recipes/`, `/countries/`, `/glossary/` bez jakékoli změny datového
-  modelu — slug je vlastnost jedné jazykové verze, ne identita obsahu.
-- **`__()`/`_e()`/`esc_html__()`/`esc_attr__()`** se používají důsledně v
-  celém theme i pluginu (text domain `atlas-chuti`, `Domain Path: /languages`
-  v `style.css` i v `atlas-chuti-core.php`) — připraveno na `.po`/`.mo`
-  překlad, aniž by se dnes cokoliv měnilo na chování webu. Texty vykreslované
-  JavaScriptem (`passport.js`, admin `repeater.js`) dostávají řetězce přes
-  `wp_localize_script()`, ne natvrdo v `.js` souboru.
-- **Kulinářský pas** (`localStorage`) ukládá při označení země primárně její
-  název a vlajku (zobrazovací data pro aktuální jazyk) — díky `atlas_iso_code`
-  na straně WordPressu je ale kdykoliv možné tato lokální data napárovat na
-  ISO kód a v budoucnu je sesynchronizovat mezi jazykovými verzemi účtu.
-- **SEO** (`class-seo.php`) dnes nevkládá `hreflang` ani odkazy na
-  neexistující `.com` — jakmile bude anglická verze reálně spuštěná, canonical
-  URL a `hreflang="cs"`/`hreflang="en"` lze doplnit bez zásahu do datového
-  modelu.
+`sample-data/countries-master-minimal-sample.json` navíc ukazuje vzor pro
+bod 15 zadání — zemi lze naimportovat i jen s faktografickými poli (ISO,
+název, světadíl, hlavní město…) bez hotového gastronomického profilu; taková
+země existuje v databázi jako koncept a počítá se do jmenovatele Kulinářského
+pasu, ale nemá zatím veřejnou stránku. Import celého ~195zemního datasetu a
+prvních 50 produkčních receptů je záměrně samostatný následující krok.
 
 ## Kulinářský pas
 
-V1 bez registrace — vše v `localStorage` prohlížeče
-(`wp-content/themes/atlas-chuti/assets/js/passport.js`, objekt
-`window.AtlasPassport`). Recept/země ukládá kompletní zobrazovací data (ne
-jen ID), takže stránka pasu nepotřebuje žádný další dotaz do WordPressu.
-Až přibude uživatelský účet, stačí v `passport.js` nahradit `load()`/`save()`
-voláním na REST endpoint — zbytek webu (tlačítka na receptu/zemi, homepage
-widget, stránka pasu) zůstává beze změny.
+Bez registrace — vše v `localStorage` (`assets/js/passport.js`,
+`window.AtlasPassport`). Ukládá se ale podle **stabilních identifikátorů**,
+ne českých názvů: země podle ISO kódu, recepty podle `recipe_key`
+(`atlas_translation_group`) — takže lokální data zůstanou smysluplná, i když
+se stránka jednou přesune na jiný slug nebo jazyk.
+
+Jmenovatel "12 / 195 zemí" vychází z master datasetu (`atlas_chuti_total_countries()`
+počítá `atlas_country` v obou stavech, publish i draft), ne jen z počtu
+veřejně publikovaných gastronomických profilů — takže dovezení kompletního
+seznamu zemí bez okamžitého psaní 195 článků čítač neposune špatným směrem.
+
+## Homepage a fotografie
+
+Hero fotografie homepage a fotografie jednotlivých světadílů se nastavují
+přes WordPress (Přizpůsobit → Atlas chutí – Homepage; Příspěvky → Světadíly →
+upravit term), nejsou hardcoded — bez nastavení web dál vypadá dobře
+(gradient pozadí / elegantní placeholder). Typické suroviny země zůstávají
+textové chips bez fotografií (žádných šest zbytečných obrázků na zemi).
+Recept/země bez vlastní fotky zobrazí jednotný placeholder; fotografie se
+nyní nahrávají ručně přes Media Library — žádné AI generování obrázků.
+
+## Multilingual příprava (bod 22 zadání — DŮLEŽITÁ ZMĚNA)
+
+Budoucí anglická verze **nebude samostatná WordPress instalace**. Cílový
+model je jeden WordPress, jedna databáze, jedna administrace, jeden theme,
+jeden core plugin — ale dvě domény podle jazyka:
+
+```
+atlaschuti.cz   → čeština (aktivní dnes)
+atlaschuti.com  → angličtina (později)
+```
+
+Angličtina se dnes NEZAPÍNÁ — žádný `/en/`, žádný přepínač jazyka, žádný
+`hreflang`, žádná anglická stránka. Datový model je ale na to připravený beze
+změny, až přijde čas:
+
+- **Lokalizovaný obsah** (název, slug, perex, postup, tipy, historie, SEO
+  title, meta description, ALT text) vs. **sdílená/přenosná data**
+  (`recipe_key`, země, ingredience, množství, časy, porce, dietní
+  vlastnosti) — přesně rozlišení, které Polylang i podobné pluginy
+  očekávají, aniž by na ně dnes byla tvrdá závislost.
+- `atlas_locale` (výchozí `cs-CZ`) a `atlas_translation_status`
+  (`none`/`draft`/`reviewed`/`published`) na každém receptu/zemi/pojmu —
+  `class-i18n.php` je doplní i bez explicitního zadání v JSON.
+- `atlas_translation_group` v JSON kontraktu přesně podle bodu 25 zadání:
+  `{ "locale": "cs-CZ", "translation_group": "recipe-spaghetti-carbonara" }`
+  — англická verze později použije `"locale": "en"` (nebo `en-US`/`en-GB`).
+- URL/slugy jsou nezávislé na jazyce — `/recepty/` dnes, `/recipes/` později
+  na `.com`, bez zásahu do datového modelu (item 26 zadání).
+- `__()`/`_e()`/`_x()`/`esc_html__()`/`esc_attr__()` důsledně v celém theme i
+  pluginu (text domain `atlas-chuti`, `Domain Path: /languages`), připraveno
+  na `.po`/`.mo` překlad. JS texty (`passport.js`, admin `repeater.js`,
+  `continent-image.js`) jdou přes `wp_localize_script()`, ne natvrdo v `.js`.
+- `class-seo.php` dnes nevkládá `hreflang` ani odkazy na neexistující
+  `.com` — až bude anglická verze reálně spuštěná, `hreflang="cs"`/`"en"` a
+  odpovídající canonical URL lze doplnit bez zásahu do datového modelu.
 
 ## SEO
 
 `class-seo.php` doplňuje meta description, canonical, OpenGraph a
 strukturovaná data (WebSite, Recipe, BreadcrumbList) sestavená výhradně ze
-skutečných polí receptu/země — nic se nevymýšlí. Pokud je aktivní Yoast,
-RankMath nebo SEOPress, vlastní výstup se automaticky vypne, aby nedocházelo
-k duplicitě.
+skutečných polí receptu/země. Pokud je aktivní Yoast, RankMath nebo SEOPress,
+vlastní výstup se automaticky vypne. Technické taxonomie nejsou publicly
+queryable, takže nevznikají duplicitní indexovatelné archivy typu
+`/kuchyne/italie/` vedle `/zeme/italie/`.
 
 ## Nasazení na sdílený hosting (např. FORPSI Easy Linux)
 
-1. Standardní instalace WordPressu (přes rychlou instalaci hostingu, nebo
-   ručním nahráním WP core přes FTP/SFTP).
+1. Standardní instalace WordPressu (rychlá instalace hostingu, nebo ruční
+   nahrání WP core přes FTP/SFTP).
 2. Do `wp-content/themes/` a `wp-content/plugins/` nahrajte obsah tohoto
    repozitáře stejnojmenně.
 3. Aktivujte plugin, theme, uložte trvalé odkazy — viz Instalace výše.
-4. Nahrajte fotografie přes Media Library (bod 24 zadání — bez AI generování
-   obrázků v této fázi; recept/země bez fotky zobrazí jednotný placeholder).
+4. Nahrajte fotografie přes Media Library.
 5. Volitelně self-hostujte fonty místo Google Fonts CDN — návod v
    `wp-content/themes/atlas-chuti/assets/fonts/README.md`.
 6. Nastavte zálohování databáze a `wp-content/uploads` na úrovni hostingu
    (mimo git, viz `.gitignore`).
 
-## Budoucí AI integrace
+## Budoucí OpenAI integrace (textová, bez obrázků)
 
-Zatím nezapojeno (bod 29 zadání). Až přibude, bude to samostatný modul
-(např. `atlas-chuti-ai`), který bude generovat přesně ten samý strukturovaný
-JSON, jaký dnes přijímá `Atlas chutí → Import obsahu` — `atlas-chuti-core` na
-OpenAI nijak přímo nezávisí.
+Zatím nezapojeno — žádné volání OpenAI/DeepL API v tomto kódu. Budoucí modul
+(např. `atlas-chuti-ai`, samostatný od `atlas-chuti-core`) bude sloužit pro
+generování/kontrolu receptu a SEO dat, případně anglickou lokalizaci, a bude
+produkovat přesně ten samý JSON kontrakt, jaký dnes přijímá
+**Atlas chutí → Import obsahu**. Předpokládaný budoucí workflow:
+
+```
+OpenAI vytvoří recept (JSON)
+→ levnější model provede kontrolu
+→ recept se uloží jako koncept (status: "draft" — importer to už umí)
+→ ručně se doplní fotografie přes Media Library
+→ publikace
+```
+
+Automatické publikování zatím není součástí návrhu.
 
 ## Vývoj
 
-- `wp atlas import <soubor.json> [--dry-run]` — CLI import (sdílí kód s
-  administrací).
+- `wp atlas import <soubor.json> [--dry-run]` — CLI import (sdílí
+  `run_import_sync()` s administrací; dávkování z webového adminu tu není
+  potřeba, protože WP-CLI nemá `max_execution_time`).
 - Kódovací standardy: WordPress Coding Standards, nonces + capability checks
   na všech uloženích, sanitizace vstupu / escapování výstupu, žádné
   hardcoded přihlašovací údaje v repozitáři.

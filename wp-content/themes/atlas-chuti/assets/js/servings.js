@@ -62,6 +62,11 @@
 			btn.classList.add( 'is-active' );
 			var target = parseFloat( btn.getAttribute( 'data-servings' ) );
 			apply( list, target / defaultServings );
+
+			var display = document.querySelector( '[data-servings-display]' );
+			if ( display ) {
+				display.textContent = target;
+			}
 		} );
 	} );
 } )();

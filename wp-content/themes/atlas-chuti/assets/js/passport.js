@@ -36,13 +36,14 @@ window.AtlasPassport = ( function () {
 	}
 
 	function toggleRecipe( data ) {
+		var key = data.recipe_key || data.slug;
 		var all = load( KEY_RECIPES );
 		var nowCooked;
-		if ( all[ data.slug ] ) {
-			delete all[ data.slug ];
+		if ( all[ key ] ) {
+			delete all[ key ];
 			nowCooked = false;
 		} else {
-			all[ data.slug ] = data;
+			all[ key ] = data;
 			nowCooked = true;
 		}
 		save( KEY_RECIPES, all );
@@ -50,25 +51,26 @@ window.AtlasPassport = ( function () {
 	}
 
 	function toggleCountry( data ) {
+		var key = data.iso || data.slug;
 		var all = load( KEY_COUNTRIES );
 		var nowTasted;
-		if ( all[ data.slug ] ) {
-			delete all[ data.slug ];
+		if ( all[ key ] ) {
+			delete all[ key ];
 			nowTasted = false;
 		} else {
-			all[ data.slug ] = data;
+			all[ key ] = data;
 			nowTasted = true;
 		}
 		save( KEY_COUNTRIES, all );
 		return nowTasted;
 	}
 
-	function isRecipeCooked( slug ) {
-		return !! load( KEY_RECIPES )[ slug ];
+	function isRecipeCooked( key ) {
+		return !! load( KEY_RECIPES )[ key ];
 	}
 
-	function isCountryTasted( slug ) {
-		return !! load( KEY_COUNTRIES )[ slug ];
+	function isCountryTasted( key ) {
+		return !! load( KEY_COUNTRIES )[ key ];
 	}
 
 	function getCookedRecipes() {
@@ -118,7 +120,7 @@ window.AtlasPassport = ( function () {
 			return;
 		}
 		var render = function () {
-			var cooked = AtlasPassport.isRecipeCooked( data.slug );
+			var cooked = AtlasPassport.isRecipeCooked( data.recipe_key || data.slug );
 			btn.classList.toggle( 'is-active', cooked );
 			btn.setAttribute( 'aria-pressed', cooked ? 'true' : 'false' );
 			btn.querySelector( '.label' ).textContent = cooked ? L10N.recipeCooked : L10N.recipeMarkCooked;
@@ -140,7 +142,7 @@ window.AtlasPassport = ( function () {
 			return;
 		}
 		var render = function () {
-			var tasted = AtlasPassport.isCountryTasted( data.slug );
+			var tasted = AtlasPassport.isCountryTasted( data.iso || data.slug );
 			btn.classList.toggle( 'is-active', tasted );
 			btn.setAttribute( 'aria-pressed', tasted ? 'true' : 'false' );
 			btn.querySelector( '.label' ).textContent = tasted ? L10N.countryTasted : L10N.countryMarkTasted;
@@ -176,7 +178,7 @@ window.AtlasPassport = ( function () {
 			flagsEl.innerHTML = allCountries
 				.slice( 0, 16 )
 				.map( function ( c ) {
-					var isTasted = !! tasted[ c.slug ];
+					var isTasted = !! tasted[ c.iso ];
 					return '<span style="opacity:' + ( isTasted ? 1 : 0.3 ) + ';filter:' + ( isTasted ? 'none' : 'grayscale(1)' ) + ';">' + c.flag + '</span>';
 				} )
 				.join( '' );
@@ -224,11 +226,11 @@ window.AtlasPassport = ( function () {
 		if ( continentsWrap ) {
 			continentsWrap.innerHTML = AtlasChutiContinents.map( function ( c ) {
 				var localTasted = c.countries.filter( function ( country ) {
-					return !! tastedCountries[ country.slug ];
+					return !! tastedCountries[ country.iso ];
 				} ).length;
 				var flags = c.countries
 					.map( function ( country ) {
-						var isTasted = !! tastedCountries[ country.slug ];
+						var isTasted = !! tastedCountries[ country.iso ];
 						return '<span style="opacity:' + ( isTasted ? 1 : 0.3 ) + ';filter:' + ( isTasted ? 'none' : 'grayscale(1)' ) + ';">' + country.flag + '</span>';
 					} )
 					.join( '' );

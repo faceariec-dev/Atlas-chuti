@@ -1,0 +1,207 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Central register_post_meta() for every field in Atlas_Chuti_Meta_Fields, plus the
+ * language-readiness fields (item 3 of this phase's brief). One place, one contract:
+ * the JSON importer, the admin meta boxes and a future OpenAI module all read/write
+ * the exact same registered meta keys — nothing here is importer-specific.
+ *
+ * show_in_rest is enabled everywhere so the REST API (used by wp-admin's own screens,
+ * and later by any AI integration) sees the real data shape instead of opaque values.
+ * The data itself is not otherwise made public through this — capability checks for
+ * editing are unchanged (auth_callback still requires edit_posts).
+ */
+class Atlas_Chuti_Register_Meta {
+
+	private static $instance = null;
+
+	public static function instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	private function __construct() {
+		add_action( 'init', array( $this, 'register' ), 20 );
+	}
+
+	public function register() {
+		$this->register_fields_for( 'atlas_recipe', Atlas_Chuti_Meta_Fields::recipe_fields() );
+		$this->register_fields_for( 'atlas_country', Atlas_Chuti_Meta_Fields::country_fields() );
+		$this->register_fields_for( 'atlas_glossary', Atlas_Chuti_Meta_Fields::glossary_fields() );
+		$this->register_fields_for( 'atlas_ingredient', Atlas_Chuti_Meta_Fields::ingredient_fields() );
+
+		foreach ( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary' ) as $post_type ) {
+			$this->register_i18n_fields( $post_type );
+		}
+
+		// Internal linkage fields the importer/meta boxes write directly (not part of
+		// the field registry because they're relationships, not authored content).
+		register_post_meta(
+			'atlas_recipe',
+			'_atlas_recipe_primary_country_term_id',
+			array(
+				'type'              => 'integer',
+				'single'            => true,
+				'sanitize_callback' => 'absint',
+				'auth_callback'     => array( $this, 'auth_edit_posts' ),
+				'show_in_rest'      => false,
+			)
+		);
+		register_post_meta(
+			'atlas_country',
+			'_atlas_country_term_id',
+			array(
+				'type'              => 'integer',
+				'single'            => true,
+				'sanitize_callback' => 'absint',
+				'auth_callback'     => array( $this, 'auth_edit_posts' ),
+				'show_in_rest'      => false,
+			)
+		);
+	}
+
+	public function auth_edit_posts() {
+		return current_user_can( 'edit_posts' );
+	}
+
+	private function register_i18n_fields( $post_type ) {
+		register_post_meta(
+			$post_type,
+			'atlas_locale',
+			array(
+				'type'              => 'string',
+				'description'       => 'BCP 47 locale of this content, e.g. cs-CZ.',
+				'single'            => true,
+				'default'           => Atlas_Chuti_I18N::DEFAULT_LOCALE,
+				'sanitize_callback' => 'sanitize_text_field',
+				'auth_callback'     => array( $this, 'auth_edit_posts' ),
+				'show_in_rest'      => true,
+			)
+		);
+		register_post_meta(
+			$post_type,
+			'atlas_translation_group',
+			array(
+				'type'              => 'string',
+				'description'       => 'Stable, language-independent identity shared by every locale of this content.',
+				'single'            => true,
+				'sanitize_callback' => 'sanitize_title',
+				'auth_callback'     => array( $this, 'auth_edit_posts' ),
+				'show_in_rest'      => true,
+			)
+		);
+		register_post_meta(
+			$post_type,
+			'atlas_translation_status',
+			array(
+				'type'              => 'string',
+				'description'       => 'none|draft|reviewed|published',
+				'single'            => true,
+				'default'           => 'published',
+				'sanitize_callback' => 'sanitize_key',
+				'auth_callback'     => array( $this, 'auth_edit_posts' ),
+				'show_in_rest'      => true,
+			)
+		);
+	}
+
+	private function register_fields_for( $post_type, $fields ) {
+		foreach ( $fields as $key => $field ) {
+			$meta_key = Atlas_Chuti_Meta_Fields::meta_key( $key );
+			$args     = $this->args_for_field( $field );
+			register_post_meta( $post_type, $meta_key, $args );
+		}
+	}
+
+	/**
+	 * Maps one Atlas_Chuti_Meta_Fields field definition to register_post_meta() args.
+	 */
+	private function args_for_field( $field ) {
+		$common = array(
+			'single'            => true,
+			'auth_callback'     => array( $this, 'auth_edit_posts' ),
+			'show_in_rest'      => true,
+		);
+
+		switch ( $field['type'] ) {
+			case 'int':
+				return $common + array(
+					'type'              => 'integer',
+					'sanitize_callback' => 'absint',
+				);
+			case 'url':
+				return $common + array(
+					'type'              => 'string',
+					'sanitize_callback' => 'esc_url_raw',
+				);
+			case 'date':
+				return $common + array(
+					'type'              => 'string',
+					'sanitize_callback' => function ( $value ) {
+						return preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) $value ) ? $value : '';
+					},
+				);
+			case 'richtext':
+				return $common + array(
+					'type'              => 'string',
+					'sanitize_callback' => 'wp_kses_post',
+				);
+			case 'text':
+			case 'textarea':
+				return $common + array(
+					'type'              => 'string',
+					'sanitize_callback' => 'sanitize_textarea_field',
+				);
+			case 'post_ref':
+				return $common + array(
+					'type'              => 'integer',
+					'sanitize_callback' => 'absint',
+				);
+			case 'string_list':
+				return $common + array(
+					'type'         => 'array',
+					'show_in_rest' => array(
+						'schema' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'string' ),
+						),
+					),
+				);
+			case 'post_ref_list':
+				return $common + array(
+					'type'         => 'array',
+					'show_in_rest' => array(
+						'schema' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'integer' ),
+						),
+					),
+				);
+			case 'repeater':
+				$shape      = $field['shape'] ?? array();
+				$properties = array();
+				foreach ( $shape as $shape_key ) {
+					$properties[ $shape_key ] = array( 'type' => 'string' );
+				}
+				return $common + array(
+					'type'         => 'array',
+					'show_in_rest' => array(
+						'schema' => array(
+							'type'  => 'array',
+							'items' => array(
+								'type'       => 'object',
+								'properties' => $properties,
+							),
+						),
+					),
+				);
+			default:
+				return $common + array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' );
+		}
+	}
+}

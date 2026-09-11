@@ -31,7 +31,11 @@ while ( have_posts() ) :
 	$related_ids  = get_post_meta( $post_id, 'atlas_related_countries', true );
 	$recipes      = atlas_chuti_get_recipes_for_country( $post_id, 4 );
 
+	// Keyed by ISO code, not slug — a stable, language-independent identifier
+	// (item 18 of this phase's brief), so the passport still makes sense once an
+	// English version of this same country exists at a different slug.
 	$passport_data = array(
+		'iso'       => get_post_meta( $post_id, 'atlas_iso_code', true ),
 		'slug'      => get_post_field( 'post_name', $post_id ),
 		'name'      => get_the_title(),
 		'flag'      => atlas_chuti_flag( $post_id ),

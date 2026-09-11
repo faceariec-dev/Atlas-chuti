@@ -23,8 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  *     item 10 of the original brief put on every country.
  *   - recipes/glossary resolve by `atlas_translation_group` (slug is only a fallback,
  *     for convenience, while just one locale exists).
- *   - ingredients resolve by their language-neutral `atlas_key` (e.g. "tomato"), never
- *     by the Czech slug ("rajce"/"rajcata"/"rajcat" must all be *aliases* of one key).
+ *   - ingredients resolve by their language-neutral `atlas_ingredient_key` (e.g.
+ *     "tomato"), never by the Czech slug ("rajce"/"rajcata"/"rajcat" must all be
+ *     *aliases* of one key).
  *
  * No WPML/Polylang dependency, no `/en/` routes, no hreflang — those switch on only
  * once a second locale is actually running (see class-seo.php).
@@ -74,8 +75,8 @@ class Atlas_Chuti_I18N {
 		if ( 'atlas_ingredient' !== $post->post_type && '' === get_post_meta( $post_id, 'atlas_translation_status', true ) ) {
 			update_post_meta( $post_id, 'atlas_translation_status', 'published' );
 		}
-		if ( 'atlas_ingredient' === $post->post_type && '' === get_post_meta( $post_id, 'atlas_key', true ) && $post->post_name ) {
-			update_post_meta( $post_id, 'atlas_key', $post->post_name );
+		if ( 'atlas_ingredient' === $post->post_type && '' === get_post_meta( $post_id, 'atlas_ingredient_key', true ) && $post->post_name ) {
+			update_post_meta( $post_id, 'atlas_ingredient_key', $post->post_name );
 		}
 	}
 
@@ -150,7 +151,7 @@ class Atlas_Chuti_I18N {
 				'post_type'      => 'atlas_ingredient',
 				'posts_per_page' => 1,
 				'post_status'    => array( 'publish', 'draft' ),
-				'meta_query'     => array( array( 'key' => 'atlas_key', 'value' => $key, 'compare' => '=' ) ),
+				'meta_query'     => array( array( 'key' => 'atlas_ingredient_key', 'value' => $key, 'compare' => '=' ) ),
 			)
 		);
 		return $posts ? $posts[0] : null;

@@ -14,24 +14,86 @@
   "cook_minutes": 15,
   "total_minutes": 25,
   "difficulty": "Snadné",
-  "meal_type": ["Hlavní jídlo"],
+  "meal_type": [
+    "Hlavní jídlo"
+  ],
   "diet": [],
   "about": "Carbonara je jedním z nejvíce nepochopených receptů italské kuchyně. Kouzlo je v emulzi vajec a sýra, která díky teplu z těstovin zhoustne do hebké omáčky – bez jediné kapky smetany.",
   "ingredients": [
-    { "ingredient_id": "pasta_spaghetti", "name": "Spaghetti", "quantity": "400", "unit": "g", "note": "", "group": "Hlavní" },
-    { "ingredient_id": "guanciale", "name": "Guanciale", "quantity": "150", "unit": "g", "note": "", "group": "Hlavní" },
-    { "ingredient_id": "egg", "name": "Vejce", "quantity": "4", "unit": "ks", "note": "", "group": "Hlavní" },
-    { "ingredient_id": "pecorino_romano", "name": "Pecorino Romano", "quantity": "80", "unit": "g", "note": "nastrouhaný", "group": "Hlavní" },
-    { "ingredient_id": "black_pepper", "name": "Černý pepř", "quantity": "podle chuti", "unit": "", "note": "čerstvě mletý", "group": "Hlavní" },
-    { "ingredient_id": "salt", "name": "Sůl", "quantity": "podle chuti", "unit": "", "note": "na vodu", "group": "Hlavní" }
+    {
+      "quantity": "400",
+      "unit": "g",
+      "note": "",
+      "group": "Hlavní",
+      "ingredient_key": "pasta_spaghetti",
+      "display_name": "Spaghetti"
+    },
+    {
+      "quantity": "150",
+      "unit": "g",
+      "note": "",
+      "group": "Hlavní",
+      "ingredient_key": "guanciale",
+      "display_name": "Guanciale"
+    },
+    {
+      "quantity": "4",
+      "unit": "ks",
+      "note": "",
+      "group": "Hlavní",
+      "ingredient_key": "egg",
+      "display_name": "Vejce"
+    },
+    {
+      "quantity": "80",
+      "unit": "g",
+      "note": "nastrouhaný",
+      "group": "Hlavní",
+      "ingredient_key": "pecorino_romano",
+      "display_name": "Pecorino Romano"
+    },
+    {
+      "quantity": "podle chuti",
+      "unit": "",
+      "note": "čerstvě mletý",
+      "group": "Hlavní",
+      "ingredient_key": "black_pepper",
+      "display_name": "Černý pepř"
+    },
+    {
+      "quantity": "podle chuti",
+      "unit": "",
+      "note": "na vodu",
+      "group": "Hlavní",
+      "ingredient_key": "salt",
+      "display_name": "Sůl"
+    }
   ],
   "steps": [
-    { "order": 1, "text": "Uvařte spaghetti v hodně osolené vodě do stavu al dente. Odložte si šálek vody z vaření." },
-    { "order": 2, "text": "Guanciale nakrájejte na kostičky a zvolna opékejte na pánvi, dokud nezesklovatí a nepustí tuk." },
-    { "order": 3, "text": "V misce rozšlehejte vejce s najemno strouhaným pecorinem a hodně čerstvě mletého pepře." },
-    { "order": 4, "text": "Uvařené těstoviny přidejte k guanciale, pánev odstavte z plamene." },
-    { "order": 5, "text": "Vmíchejte vaječnou směs a trochu vody z vaření, rychle promíchejte do hebké omáčky." },
-    { "order": 6, "text": "Podávejte hned, s dalším pecorinem a pepřem navrch." }
+    {
+      "order": 1,
+      "text": "Uvařte spaghetti v hodně osolené vodě do stavu al dente. Odložte si šálek vody z vaření."
+    },
+    {
+      "order": 2,
+      "text": "Guanciale nakrájejte na kostičky a zvolna opékejte na pánvi, dokud nezesklovatí a nepustí tuk."
+    },
+    {
+      "order": 3,
+      "text": "V misce rozšlehejte vejce s najemno strouhaným pecorinem a hodně čerstvě mletého pepře."
+    },
+    {
+      "order": 4,
+      "text": "Uvařené těstoviny přidejte k guanciale, pánev odstavte z plamene."
+    },
+    {
+      "order": 5,
+      "text": "Vmíchejte vaječnou směs a trochu vody z vaření, rychle promíchejte do hebké omáčky."
+    },
+    {
+      "order": 6,
+      "text": "Podávejte hned, s dalším pecorinem a pepřem navrch."
+    }
   ],
   "tips": [
     "Vejce vždy míchejte mimo plamen, jinak se srazí.",
@@ -39,11 +101,19 @@
   ],
   "watch_out": "Tradiční carbonara neobsahuje smetanu. Hustotu dává výhradně emulze vajec, sýra a škrobové vody z vaření.",
   "variants": [
-    { "name": "S pancettou", "note": "Méně tradiční, ale dostupnější varianta s podobným výsledkem." },
-    { "name": "Bez masa", "note": "Guanciale lze vynechat, chuť dodá extra pecorino a černý pepř." }
+    {
+      "name": "S pancettou",
+      "note": "Méně tradiční, ale dostupnější varianta s podobným výsledkem."
+    },
+    {
+      "name": "Bez masa",
+      "note": "Guanciale lze vynechat, chuť dodá extra pecorino a černý pepř."
+    }
   ],
   "origin_history": "Carbonara se v dnešní podobě prosadila v Římě v polovině 20. století, pravděpodobně z jídla uhlířů (carbonari).",
-  "related_glossary": ["al-dente"],
+  "related_glossary": [
+    "al-dente"
+  ],
   "related_recipes": [],
   "seo_title": "Spaghetti Carbonara – klasický italský recept | Atlas chutí",
   "meta_description": "Autentická římská Carbonara ze čtyř surovin: vejce, guanciale, pecorino a pepř. Krok za krokem.",

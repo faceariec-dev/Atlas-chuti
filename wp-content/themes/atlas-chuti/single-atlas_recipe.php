@@ -33,7 +33,10 @@ while ( have_posts() ) :
 	$total = atlas_chuti_format_time( get_post_meta( $post_id, 'atlas_total_minutes', true ) );
 	$diff_terms = get_the_terms( $post_id, 'atlas_difficulty' );
 
+	// Keyed by recipe_key (atlas_translation_group), not slug — a stable,
+	// language-independent identifier (item 18 of this phase's brief).
 	$passport_data = array(
+		'recipe_key' => get_post_meta( $post_id, 'atlas_translation_group', true ) ?: get_post_field( 'post_name', $post_id ),
 		'slug'       => get_post_field( 'post_name', $post_id ),
 		'title'      => get_the_title(),
 		'country'    => $country ? get_the_title( $country ) : '',
@@ -70,10 +73,10 @@ while ( have_posts() ) :
 				<?php if ( $prep ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Příprava', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $prep ); ?></div></div><?php endif; ?>
 				<?php if ( $cook ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Vaření', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $cook ); ?></div></div><?php endif; ?>
 				<?php if ( $total ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Celkem', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $total ); ?></div></div><?php endif; ?>
-				<div class="meta-item"><div class="label"><?php esc_html_e( 'Porce', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $servings_default ); ?></div></div>
+				<div class="meta-item"><div class="label"><?php esc_html_e( 'Porce', 'atlas-chuti' ); ?></div><div class="value" data-servings-display><?php echo esc_html( $servings_default ); ?></div></div>
 				<?php if ( $diff_terms && ! is_wp_error( $diff_terms ) ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Obtížnost', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $diff_terms[0]->name ); ?></div></div><?php endif; ?>
 			</div>
-			<a href="#postup" class="btn btn-accent"><?php esc_html_e( 'Přejít na recept', 'atlas-chuti' ); ?></a>
+			<a href="#ingredience" class="btn btn-accent"><?php esc_html_e( 'Přejít na recept', 'atlas-chuti' ); ?></a>
 		</div>
 	</div>
 
@@ -85,7 +88,7 @@ while ( have_posts() ) :
 	<?php endif; ?>
 
 	<?php if ( $ingredients ) : ?>
-	<section class="container-medium section">
+	<section id="ingredience" class="container-medium section">
 		<div class="section-head">
 			<h2><?php esc_html_e( 'Ingredience', 'atlas-chuti' ); ?></h2>
 			<div class="pill-group" data-servings-switcher data-default="<?php echo esc_attr( $servings_default ); ?>">
@@ -104,7 +107,7 @@ while ( have_posts() ) :
 				endif;
 				?>
 				<div class="ingredient-row" data-index="<?php echo esc_attr( $i ); ?>">
-					<span class="name"><?php echo esc_html( $ing['name'] ); ?><?php echo $ing['note'] ? ' <span style="color:var(--text-faint);">(' . esc_html( $ing['note'] ) . ')</span>' : ''; ?></span>
+					<span class="name"><?php echo esc_html( $ing['display_name'] ); ?><?php echo $ing['note'] ? ' <span style="color:var(--text-faint);">(' . esc_html( $ing['note'] ) . ')</span>' : ''; ?></span>
 					<span class="amount"><?php echo esc_html( trim( $ing['quantity'] . ' ' . $ing['unit'] ) ); ?></span>
 				</div>
 			<?php endforeach; ?>

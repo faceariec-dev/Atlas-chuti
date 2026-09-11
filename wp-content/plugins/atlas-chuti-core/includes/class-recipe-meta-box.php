@@ -107,5 +107,9 @@ class Atlas_Chuti_Recipe_Meta_Box extends Atlas_Chuti_Meta_Box_Base {
 			$cook = (int) get_post_meta( $post_id, 'atlas_cook_minutes', true );
 			update_post_meta( $post_id, 'atlas_total_minutes', $prep + $cook );
 		}
+
+		// Keep the ingredient search index in sync for recipes saved by hand too, not
+		// only imports (item 17 of this phase's brief).
+		Atlas_Chuti_Ingredient_Sync::tag_recipe( $post_id, get_post_meta( $post_id, 'atlas_ingredients', true ) );
 	}
 }

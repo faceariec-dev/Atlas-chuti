@@ -2,18 +2,18 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://atlaschuti.cz/schema/ingredient.schema.json",
   "title": "Atlas chutí – Normalizovaná ingredience",
-  "description": "Slovník kanonických ingrediencí, aby 'rajče', 'rajčata' a 'rajčat' vznikly jako jedna entita (příprava na funkci „Co mám doma?“). Item 17 zadání: identita ingredience NESMÍ být definována pouze českým slugem — proto pole `key`.",
+  "description": "Slovník kanonických ingrediencí, aby 'rajče', 'rajčata' a 'rajčat' vznikly jako jedna entita (příprava na funkci „Co mám doma?“ a na vyhledávání podle ingredience). Item 4/13 zadání: identita ingredience NESMÍ být definována pouze českým slugem — proto pole `ingredient_key`.",
   "type": "object",
   "required": ["title"],
   "properties": {
-    "key": {
+    "ingredient_key": {
       "type": "string",
-      "description": "Primární, jazykově neutrální identita (item 17 zadání), např. \"tomato\". Anglická verze téže ingredience bude mít stejný key a locale \"en\": { \"key\": \"tomato\", \"name\": \"Tomato\", \"locale\": \"en\" }. Chybí-li, importer jej odvodí ze slugu — což funguje jen dokud existuje jediná jazyková verze."
+      "description": "Primární, jazykově neutrální identita (item 4/13 zadání), např. \"tomato\". Anglická verze téže ingredience bude mít stejný ingredient_key a locale \"en\": { \"ingredient_key\": \"tomato\", \"title\": \"Tomato\", \"locale\": \"en\" }. Chybí-li, importer jej odvodí ze slugu — což funguje jen dokud existuje jediná jazyková verze."
     },
     "locale": { "type": "string", "description": "BCP 47 jazykový tag pole title/aliases. Chybí-li, importer použije \"cs-CZ\".", "default": "cs-CZ" },
     "title": { "type": "string", "description": "Kanonický zobrazovaný název V TOMTO JAZYCE, např. \"Rajče\" (cs) / \"Tomato\" (en)." },
-    "slug": { "type": "string", "description": "URL/interní slug pro tento jazyk. Není to identita ingredience — tou je key." },
+    "slug": { "type": "string", "description": "URL/interní slug pro tento jazyk. Není to identita ingredience — tou je ingredient_key." },
     "aliases": { "type": "array", "items": { "type": "string" }, "description": "Skloňované/alternativní tvary V TOMTO JAZYCE (\"rajčata\", \"rajčat\"…)." },
-    "default_unit": { "type": "string" }
+    "default_unit": { "type": "string", "description": "Volný text, normalizuje se interně přes Atlas_Chuti_Units (item 6 zadání)." }
   }
 }

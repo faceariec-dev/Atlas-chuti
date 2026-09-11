@@ -29,14 +29,15 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["name", "quantity"],
+        "required": ["display_name", "quantity"],
         "properties": {
-          "ingredient_id": { "type": "string", "description": "Jazykově neutrální klíč normalizované ingredience (viz ingredient.schema.json#key, např. \"tomato\"), ne český slug. Volitelné, jen pro budoucí „Co mám doma?“ — quantity/unit/note/group jsou vlastní tomuto receptu, název ingredience v tomto jazyce dej do name." },
-          "name": { "type": "string" },
-          "quantity": { "type": "string", "description": "Číslo (\"400\"), zlomek (\"1/2\"), nebo text (\"podle chuti\", \"špetka\")." },
-          "unit": { "type": "string", "description": "např. g, ml, ks, lžíce, lžička." },
+          "ingredient_key": { "type": "string", "description": "Jazykově neutrální klíč normalizované ingredience (viz ingredient.schema.json#ingredient_key, např. \"tomato\"), ne český slug. Volitelné, používá se pro vyhledávání podle ingredience (item 17) a budoucí „Co mám doma?“. Zdroj pravdy pro spárování — display_name/quantity/unit/note/group jsou vlastní tomuto receptu a tomuto jazyku." },
+          "display_name": { "type": "string", "description": "Zobrazovaný název V TOMTO receptu a jazyce, např. \"Spaghetti\"." },
+          "quantity": { "type": ["number", "string"], "description": "Číslo (400 nebo \"400\"), zlomek (\"1/2\"), nebo text (\"podle chuti\", \"špetka\")." },
+          "unit": { "type": "string", "description": "Volný text (\"g\", \"lžíce\"…), normalizuje se interně přes Atlas_Chuti_Units — viz item 6 zadání. Nemusí být vyplněno (např. \"2 vejce\")." },
           "note": { "type": "string" },
-          "group": { "type": "string", "description": "např. \"Hlavní\", \"Na dozdobení\"." }
+          "group": { "type": "string", "description": "např. \"Hlavní\", \"Na dozdobení\"." },
+          "scalable": { "type": "boolean", "description": "Volitelný ruční override automatické detekce (Atlas_Chuti_Servings::parse_quantity) — např. vynutit false u něčeho, co by se jinak spočítalo jako číslo, ale přepočítávat se nemá." }
         }
       }
     },

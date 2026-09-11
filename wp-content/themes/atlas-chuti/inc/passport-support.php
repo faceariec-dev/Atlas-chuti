@@ -4,10 +4,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * The Kulinářský pas (item 14) is v1 localStorage-only — no accounts. This just
- * supplies the one number/list PHP alone knows: how many countries are actually
- * published on the site right now, broken down by continent, so progress never
- * shows a fabricated denominator (e.g. a hardcoded "195 countries").
+ * The Kulinářský pas (item 14/18 of this phase's brief) is v1 localStorage-only — no
+ * accounts. This supplies the numbers PHP alone knows, from one master source of
+ * truth: every atlas_country post, published OR draft. A country can exist in the
+ * master dataset (ISO, name, continent — see item 15) before its gastro article is
+ * finished; the passport's "12 / 195 zemí" denominator must count all of them, not
+ * just the ones with a public page, or importing the full country list without
+ * writing every article first would make the counter go backwards.
  */
 function atlas_chuti_continent_totals() {
 	$continents = get_terms( array( 'taxonomy' => 'atlas_continent', 'hide_empty' => false ) );
@@ -18,7 +21,7 @@ function atlas_chuti_continent_totals() {
 			array(
 				'post_type'      => 'atlas_country',
 				'posts_per_page' => -1,
-				'post_status'    => 'publish',
+				'post_status'    => array( 'publish', 'draft' ),
 				'fields'         => 'ids',
 				'tax_query'      => array( array( 'taxonomy' => 'atlas_continent', 'field' => 'term_id', 'terms' => $continent->term_id ) ),
 			)
@@ -26,18 +29,22 @@ function atlas_chuti_continent_totals() {
 
 		$flags = array();
 		foreach ( $countries as $country_id ) {
-			$term_id = Atlas_Chuti_Country_Sync::get_term_id_for_country_post( $country_id );
+			$iso = get_post_meta( $country_id, 'atlas_iso_code', true );
+			if ( ! $iso ) {
+				continue; // Not a real master-dataset entry without a stable ISO identity.
+			}
 			$flags[] = array(
-				'slug'  => get_post_field( 'post_name', $country_id ),
-				'flag'  => get_post_meta( $country_id, 'atlas_flag_emoji', true ),
-				'name'  => get_the_title( $country_id ),
+				'iso'  => $iso,
+				'slug' => 'publish' === get_post_status( $country_id ) ? get_post_field( 'post_name', $country_id ) : '',
+				'flag' => get_post_meta( $country_id, 'atlas_flag_emoji', true ),
+				'name' => get_the_title( $country_id ),
 			);
 		}
 
 		$out[] = array(
-			'slug'  => $continent->slug,
-			'name'  => $continent->name,
-			'total' => count( $countries ),
+			'slug'      => $continent->slug,
+			'name'      => $continent->name,
+			'total'     => count( $flags ),
 			'countries' => $flags,
 		);
 	}
@@ -46,9 +53,10 @@ function atlas_chuti_continent_totals() {
 }
 
 /**
- * Total published countries across all continents — used for the homepage's short
- * "X / Y zemí" teaser.
+ * Total countries known to the master dataset (publish + draft) — used for the
+ * homepage's short "X / Y zemí" teaser. See the docblock above for why draft counts.
  */
 function atlas_chuti_total_countries() {
-	return (int) wp_count_posts( 'atlas_country' )->publish;
+	$counts = wp_count_posts( 'atlas_country' );
+	return (int) ( $counts->publish ?? 0 ) + (int) ( $counts->draft ?? 0 );
 }

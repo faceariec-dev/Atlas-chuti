@@ -14,6 +14,10 @@ $total_countries = atlas_chuti_total_countries();
 ?>
 
 <section class="hero">
+	<?php $hero_image = atlas_chuti_hero_image_html(); ?>
+	<?php if ( $hero_image ) : ?>
+		<div class="hero-bg"><?php echo $hero_image; ?></div>
+	<?php endif; ?>
 	<h1><?php esc_html_e( 'Ochutnejte svět', 'atlas-chuti' ); ?></h1>
 	<p><?php esc_html_e( 'Objevujte tradiční jídla, recepty a kuchyně ze všech koutů planety.', 'atlas-chuti' ); ?></p>
 	<form class="search-box" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
@@ -28,7 +32,7 @@ $total_countries = atlas_chuti_total_countries();
 	<div class="card-grid card-grid-6">
 		<?php foreach ( $continents as $continent ) : ?>
 			<a class="continent-tile" href="<?php echo esc_url( get_term_link( $continent ) ); ?>">
-				<div class="placeholder-media"></div>
+				<?php echo atlas_chuti_continent_image_html( $continent->term_id ); ?>
 				<span><?php echo esc_html( $continent->name ); ?></span>
 			</a>
 		<?php endforeach; ?>

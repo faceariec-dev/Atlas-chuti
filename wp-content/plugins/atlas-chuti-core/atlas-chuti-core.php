@@ -18,10 +18,13 @@ define( 'ATLAS_CHUTI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ATLAS_CHUTI_URL', plugin_dir_url( __FILE__ ) );
 
 require_once ATLAS_CHUTI_DIR . 'includes/class-i18n.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-units.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-post-types.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-taxonomies.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-country-sync.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-ingredient-sync.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-meta-fields.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-register-meta.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-meta-box-base.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-recipe-meta-box.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-country-meta-box.php';
@@ -32,6 +35,8 @@ require_once ATLAS_CHUTI_DIR . 'includes/class-search.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-seo.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-json-importer.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-admin.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-continent-image.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-page-setup.php';
 require_once ATLAS_CHUTI_DIR . 'includes/functions.php';
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -45,7 +50,9 @@ function atlas_chuti_core_init() {
 	Atlas_Chuti_I18N::instance();
 	Atlas_Chuti_Post_Types::instance();
 	Atlas_Chuti_Taxonomies::instance();
+	Atlas_Chuti_Register_Meta::instance();
 	Atlas_Chuti_Country_Sync::instance();
+	Atlas_Chuti_Ingredient_Sync::instance();
 	Atlas_Chuti_Recipe_Meta_Box::instance();
 	Atlas_Chuti_Country_Meta_Box::instance();
 	Atlas_Chuti_Glossary_Meta_Box::instance();
@@ -55,6 +62,8 @@ function atlas_chuti_core_init() {
 	Atlas_Chuti_SEO::instance();
 	Atlas_Chuti_JSON_Importer::instance();
 	Atlas_Chuti_Admin::instance();
+	Atlas_Chuti_Continent_Image::instance();
+	Atlas_Chuti_Page_Setup::instance();
 }
 add_action( 'plugins_loaded', 'atlas_chuti_core_init' );
 

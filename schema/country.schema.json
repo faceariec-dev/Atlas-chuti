@@ -3,7 +3,7 @@
   "$id": "https://atlaschuti.cz/schema/country.schema.json",
   "title": "Atlas chutí – Země",
   "type": "object",
-  "required": ["title", "iso_code", "flag_emoji", "intro", "continent"],
+  "required": ["title", "iso_code", "flag_emoji", "continent"],
   "properties": {
     "locale": { "type": "string", "description": "BCP 47 jazykový tag lokalizovaného obsahu (title/intro/taste_intro/…). Chybí-li, importer použije \"cs-CZ\".", "default": "cs-CZ" },
     "translation_status": { "type": "string", "enum": ["none", "draft", "reviewed", "published"], "description": "Stav (budoucí) lokalizace vůči originálu. Pro originál nech \"published\" (výchozí)." },
@@ -24,7 +24,7 @@
     "area_km2": { "type": "integer" },
     "population": { "type": "integer" },
     "population_year": { "type": "integer" },
-    "intro": { "type": "string", "description": "Krátký redakční úvod." },
+    "intro": { "type": "string", "description": "Krátký redakční úvod. Volitelné (item 15 zadání) — země může existovat v master datasetu jen s faktografickými poli, bez dokončeného gastronomického profilu; taková země obvykle má status \"draft\"." },
     "taste_intro": { "type": "string", "description": "„Jak chutná…“." },
     "typical_ingredients": { "type": "array", "items": { "type": "string" }, "description": "Textové chips, bez fotografií (viz item 11 zadání)." },
     "traditional_dishes": {

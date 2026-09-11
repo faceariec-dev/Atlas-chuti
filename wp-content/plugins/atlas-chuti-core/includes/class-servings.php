@@ -35,15 +35,31 @@ class Atlas_Chuti_Servings {
 			$quantity = isset( $ingredient['quantity'] ) ? trim( (string) $ingredient['quantity'] ) : '';
 			$parsed   = self::parse_quantity( $quantity );
 
+			// `scalable` may be set explicitly on the row (e.g. imported as "false" to
+			// force-exclude something that happens to parse as numeric); otherwise it's
+			// auto-detected from the quantity text, per item 5 of this phase's brief.
+			$explicit_scalable = isset( $ingredient['scalable'] ) ? trim( (string) $ingredient['scalable'] ) : '';
+			if ( 'true' === $explicit_scalable ) {
+				$scalable = true;
+			} elseif ( 'false' === $explicit_scalable ) {
+				$scalable = false;
+				$parsed   = null;
+			} else {
+				$scalable = null !== $parsed;
+			}
+
+			$unit = isset( $ingredient['unit'] ) ? $ingredient['unit'] : '';
+
 			$out[] = array(
-				'ingredient_id' => isset( $ingredient['ingredient_id'] ) ? $ingredient['ingredient_id'] : '',
-				'name'          => isset( $ingredient['name'] ) ? $ingredient['name'] : '',
-				'quantity'      => $quantity,
-				'unit'          => isset( $ingredient['unit'] ) ? $ingredient['unit'] : '',
-				'note'          => isset( $ingredient['note'] ) ? $ingredient['note'] : '',
-				'group'         => isset( $ingredient['group'] ) ? $ingredient['group'] : '',
-				'scalable'      => null !== $parsed,
-				'base_amount'   => $parsed,
+				'ingredient_key' => isset( $ingredient['ingredient_key'] ) ? $ingredient['ingredient_key'] : '',
+				'display_name'   => isset( $ingredient['display_name'] ) ? $ingredient['display_name'] : '',
+				'quantity'       => $quantity,
+				'unit'           => $unit,
+				'unit_key'       => Atlas_Chuti_Units::normalize( $unit ),
+				'note'           => isset( $ingredient['note'] ) ? $ingredient['note'] : '',
+				'group'          => isset( $ingredient['group'] ) ? $ingredient['group'] : '',
+				'scalable'       => $scalable,
+				'base_amount'    => $parsed,
 			);
 		}
 		return $out;

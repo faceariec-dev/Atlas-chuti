@@ -1,0 +1,40 @@
+{
+  "_comment": "Item 15 of this phase's brief: a country can exist in the master dataset with only factual data, before its gastronomic profile is written. `intro` (and every other editorial field) is intentionally omitted here — the importer no longer requires it. These import as drafts (no finished public page yet) but already count toward the Kulinářský pas denominator and can be referenced by recipes/glossary. This is a small pattern sample, not the full ~195-country dataset — that's the next phase's job.",
+  "countries": [
+    {
+      "title": "Německo", "slug": "nemecko", "name_cs": "Německo", "name_en": "Germany",
+      "iso_code": "DE", "flag_emoji": "🇩🇪", "continent": "Evropa",
+      "capital": "Berlín", "languages": ["Němčina"], "currency": "Euro (€)",
+      "area_km2": 357588, "population": 84000000, "population_year": 2024,
+      "status": "draft"
+    },
+    {
+      "title": "Francie", "slug": "francie", "name_cs": "Francie", "name_en": "France",
+      "iso_code": "FR", "flag_emoji": "🇫🇷", "continent": "Evropa",
+      "capital": "Paříž", "languages": ["Francouzština"], "currency": "Euro (€)",
+      "area_km2": 551695, "population": 68000000, "population_year": 2024,
+      "status": "draft"
+    },
+    {
+      "title": "Mexiko", "slug": "mexiko", "name_cs": "Mexiko", "name_en": "Mexico",
+      "iso_code": "MX", "flag_emoji": "🇲🇽", "continent": "Severní Amerika",
+      "capital": "Ciudad de México", "languages": ["Španělština"], "currency": "Mexické peso",
+      "area_km2": 1964375, "population": 129000000, "population_year": 2024,
+      "status": "draft"
+    },
+    {
+      "title": "Brazílie", "slug": "brazilie", "name_cs": "Brazílie", "name_en": "Brazil",
+      "iso_code": "BR", "flag_emoji": "🇧🇷", "continent": "Jižní Amerika",
+      "capital": "Brasília", "languages": ["Portugalština"], "currency": "Brazilský real",
+      "area_km2": 8515767, "population": 216000000, "population_year": 2024,
+      "status": "draft"
+    },
+    {
+      "title": "Egypt", "slug": "egypt", "name_cs": "Egypt", "name_en": "Egypt",
+      "iso_code": "EG", "flag_emoji": "🇪🇬", "continent": "Afrika",
+      "capital": "Káhira", "languages": ["Arabština"], "currency": "Egyptská libra",
+      "area_km2": 1002450, "population": 112000000, "population_year": 2024,
+      "status": "draft"
+    }
+  ]
+}
