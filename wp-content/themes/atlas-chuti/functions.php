@@ -85,7 +85,7 @@ function atlas_chuti_enqueue_assets() {
 add_action( 'wp_enqueue_scripts', 'atlas_chuti_enqueue_assets' );
 
 /**
- * Self-hosts Newsreader/Work Sans when the woff2 files are present under
+ * Self-hosts Newsreader/Manrope when the woff2 files are present under
  * assets/fonts (see assets/fonts/README.md), otherwise falls back to the Google
  * Fonts CDN so the site still looks right out of the box. Self-hosting avoids the
  * extra external request per item 5 of the brief.
@@ -98,7 +98,7 @@ function atlas_chuti_enqueue_fonts() {
 	}
 	wp_enqueue_style(
 		'atlas-chuti-fonts',
-		'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Work+Sans:wght@400;500;600;700&display=swap',
+		'https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Manrope:wght@400;500;600;700&display=swap',
 		array(),
 		null
 	);
