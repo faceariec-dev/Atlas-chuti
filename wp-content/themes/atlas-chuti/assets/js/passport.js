@@ -189,7 +189,7 @@ window.AtlasPassport = ( function () {
 		var img = r.image ? '<img src="' + r.image + '" alt="" loading="lazy">' : '<div class="placeholder-media"><span>' + r.title + '</span></div>';
 		return (
 			'<div style="position:relative;">' +
-			'<a class="card" href="' + ( r.url || '#' ) + '">' +
+			'<a class="recipe-card" href="' + ( r.url || '#' ) + '">' +
 			'<div class="card-media">' + img + '</div>' +
 			'<div class="card-body">' +
 			'<div class="card-eyebrow"><span>' + ( r.flag || '' ) + '</span><span>' + ( r.country || '' ) + '</span></div>' +

@@ -14,9 +14,9 @@ $labels  = array(
 $total = count( $results['atlas_recipe'] ) + count( $results['atlas_country'] ) + count( $results['atlas_glossary'] );
 ?>
 
-<section class="container-medium" style="padding:56px var(--gutter) 24px;">
+<section class="container-medium" style="padding:var(--space-14) var(--gutter) var(--space-5);">
 	<h1><?php esc_html_e( 'Výsledky hledání', 'atlas-chuti' ); ?></h1>
-	<p style="color:var(--text-body);">
+	<p style="color:var(--color-text);font-size:17px;">
 		<?php
 		if ( $query ) {
 			/* translators: %1$s: search query, %2$s: result count phrase, e.g. "3 výsledky" */

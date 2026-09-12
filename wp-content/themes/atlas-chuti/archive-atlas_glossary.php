@@ -32,17 +32,18 @@ if ( $active_letter ) {
 
 ?>
 
-<section class="container-narrow text-center" style="padding:64px var(--gutter) 32px;">
+<section class="container-narrow text-center bg-blue-tint" style="padding:var(--space-14) var(--gutter) var(--space-8);">
+	<span class="kicker is-blue"><?php esc_html_e( 'Rozumějte kuchyni', 'atlas-chuti' ); ?></span>
 	<h1><?php esc_html_e( 'Kuchařský slovníček', 'atlas-chuti' ); ?></h1>
-	<p style="font-size:16px;color:var(--text-body);"><?php esc_html_e( 'Techniky, suroviny a pojmy světové gastronomie na jednom místě.', 'atlas-chuti' ); ?></p>
-	<form class="search-box" style="max-width:520px;margin:0 auto;" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
+	<p class="lede" style="margin-inline:auto;"><?php esc_html_e( 'Techniky, suroviny a pojmy světové gastronomie na jednom místě.', 'atlas-chuti' ); ?></p>
+	<form class="search-box" style="max-width:520px;margin:var(--space-5) auto 0;" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
 		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
 		<input type="search" name="s" placeholder="<?php esc_attr_e( 'Hledat pojem…', 'atlas-chuti' ); ?>">
 	</form>
 </section>
 
 <?php if ( $categories && ! is_wp_error( $categories ) ) : ?>
-<section class="container glossary-category-bar" style="padding-bottom:20px;">
+<section class="container glossary-category-bar" style="padding:var(--space-8) var(--gutter) var(--space-5);">
 	<a class="chip <?php echo ! $active_cat ? 'chip-static' : ''; ?>" href="<?php echo atlas_chuti_glossary_filter_url( array( 'kategorie' => false ) ); ?>"><?php esc_html_e( 'Vše', 'atlas-chuti' ); ?></a>
 	<?php foreach ( $categories as $cat ) : ?>
 		<a class="chip <?php echo $active_cat === $cat->slug ? 'chip-static' : ''; ?>" href="<?php echo atlas_chuti_glossary_filter_url( array( 'kategorie' => $cat->slug ) ); ?>"><?php echo esc_html( $cat->name ); ?></a>

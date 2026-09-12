@@ -10,6 +10,7 @@ while ( have_posts() ) :
 	$country       = atlas_chuti_get_recipe_primary_country( $post_id );
 	$related_terms = wp_get_post_terms( $post_id, 'atlas_country_tax' );
 
+	$original_title = get_post_meta( $post_id, 'atlas_original_title', true );
 	$excerpt      = get_post_meta( $post_id, 'atlas_excerpt', true );
 	$about        = get_post_meta( $post_id, 'atlas_about', true );
 	$ingredients  = Atlas_Chuti_Servings::get_scalable_ingredients( $post_id );
@@ -48,26 +49,25 @@ while ( have_posts() ) :
 	);
 	?>
 
-	<article class="container-medium section">
-		<div class="card-eyebrow" style="margin-bottom:14px;">
-			<?php if ( $country ) : ?>
-				<span style="font-size:19px;"><?php echo esc_html( atlas_chuti_flag( $country->ID ) ); ?></span>
-				<span style="font-weight:500;"><a href="<?php echo esc_url( get_permalink( $country ) ); ?>" style="color:inherit;"><?php echo esc_html( get_the_title( $country ) ); ?></a></span>
-			<?php endif; ?>
-		</div>
-		<h1 style="font-size:clamp(32px,5vw,52px);"><?php the_title(); ?></h1>
-		<?php if ( $excerpt ) : ?><p style="font-size:17px;color:var(--text-body);max-width:680px;line-height:1.6;"><?php echo esc_html( $excerpt ); ?></p><?php endif; ?>
-	</article>
-
-	<?php if ( has_post_thumbnail() ) : ?>
-		<div class="container">
-			<div style="border-radius:20px;overflow:hidden;aspect-ratio:16/8;">
-				<?php the_post_thumbnail( 'atlas-hero', array( 'style' => 'width:100%;height:100%;object-fit:cover;' ) ); ?>
+	<section class="container section" style="padding-top:var(--space-10);padding-bottom:var(--space-10);">
+		<div class="hero-grid hero-grid-4060">
+			<div class="hero-copy" style="align-items:flex-start;gap:var(--space-3);">
+				<?php if ( $country ) : ?>
+					<a href="<?php echo esc_url( get_permalink( $country ) ); ?>" class="kicker" style="color:inherit;text-decoration:none;">
+						<span style="font-size:15px;margin-right:6px;"><?php echo esc_html( atlas_chuti_flag( $country->ID ) ); ?></span><?php echo esc_html( get_the_title( $country ) ); ?>
+					</a>
+				<?php endif; ?>
+				<h1 style="margin:0;"><?php the_title(); ?></h1>
+				<?php if ( $original_title ) : ?><p style="margin:0;color:var(--color-muted);font-style:italic;"><?php echo esc_html( $original_title ); ?></p><?php endif; ?>
+				<?php if ( $excerpt ) : ?><p class="lede" style="max-width:none;"><?php echo esc_html( $excerpt ); ?></p><?php endif; ?>
+			</div>
+			<div class="hero-media" style="aspect-ratio:4/3;">
+				<?php echo atlas_chuti_media( $post_id, 'atlas-hero' ); ?>
 			</div>
 		</div>
-	<?php endif; ?>
+	</section>
 
-	<div class="container" style="padding-top:32px;">
+	<div class="container">
 		<div class="meta-bar">
 			<div class="meta-bar-items">
 				<?php if ( $prep ) : ?><div class="meta-item"><div class="label"><?php esc_html_e( 'Příprava', 'atlas-chuti' ); ?></div><div class="value"><?php echo esc_html( $prep ); ?></div></div><?php endif; ?>
@@ -87,83 +87,99 @@ while ( have_posts() ) :
 	</section>
 	<?php endif; ?>
 
-	<?php if ( $ingredients ) : ?>
-	<section id="ingredience" class="container-medium section">
-		<div class="section-head">
-			<h2><?php esc_html_e( 'Ingredience', 'atlas-chuti' ); ?></h2>
-			<div class="pill-group" data-servings-switcher data-default="<?php echo esc_attr( $servings_default ); ?>">
-				<?php foreach ( $servings_options as $n ) : ?>
-					<button type="button" class="pill<?php echo $n === $servings_default ? ' is-active' : ''; ?>" data-servings="<?php echo esc_attr( $n ); ?>"><?php echo esc_html( $n ); ?></button>
-				<?php endforeach; ?>
+	<?php if ( $ingredients || $steps ) : ?>
+	<section id="ingredience" class="container section">
+		<div class="recipe-body-grid">
+			<?php if ( $ingredients ) : ?>
+			<div class="ingredient-panel">
+				<div class="section-head" style="margin-bottom:var(--space-5);">
+					<h2 style="font-size:var(--fs-h3);margin:0;"><?php esc_html_e( 'Ingredience', 'atlas-chuti' ); ?></h2>
+					<div class="pill-group" data-servings-switcher data-default="<?php echo esc_attr( $servings_default ); ?>">
+						<?php foreach ( $servings_options as $n ) : ?>
+							<button type="button" class="pill<?php echo $n === $servings_default ? ' is-active' : ''; ?>" data-servings="<?php echo esc_attr( $n ); ?>"><?php echo esc_html( $n ); ?></button>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<div class="ingredient-list" data-ingredient-list data-ingredients='<?php echo esc_attr( wp_json_encode( $ingredients ) ); ?>'>
+					<?php
+					$prev_group = null;
+					foreach ( $ingredients as $i => $ing ) :
+						if ( ! empty( $ing['group'] ) && $ing['group'] !== $prev_group ) :
+							echo '<div class="group-label">' . esc_html( $ing['group'] ) . '</div>';
+							$prev_group = $ing['group'];
+						endif;
+						?>
+						<div class="ingredient-row" data-index="<?php echo esc_attr( $i ); ?>">
+							<span class="name"><?php echo esc_html( $ing['display_name'] ); ?><?php echo $ing['note'] ? ' <span style="color:var(--color-muted);">(' . esc_html( $ing['note'] ) . ')</span>' : ''; ?></span>
+							<span class="amount"><?php echo esc_html( trim( $ing['quantity'] . ' ' . $ing['unit'] ) ); ?></span>
+						</div>
+					<?php endforeach; ?>
+				</div>
 			</div>
-		</div>
-		<div class="ingredient-list" data-ingredient-list data-ingredients='<?php echo esc_attr( wp_json_encode( $ingredients ) ); ?>'>
-			<?php
-			$prev_group = null;
-			foreach ( $ingredients as $i => $ing ) :
-				if ( ! empty( $ing['group'] ) && $ing['group'] !== $prev_group ) :
-					echo '<div class="group-label">' . esc_html( $ing['group'] ) . '</div>';
-					$prev_group = $ing['group'];
-				endif;
-				?>
-				<div class="ingredient-row" data-index="<?php echo esc_attr( $i ); ?>">
-					<span class="name"><?php echo esc_html( $ing['display_name'] ); ?><?php echo $ing['note'] ? ' <span style="color:var(--text-faint);">(' . esc_html( $ing['note'] ) . ')</span>' : ''; ?></span>
-					<span class="amount"><?php echo esc_html( trim( $ing['quantity'] . ' ' . $ing['unit'] ) ); ?></span>
-				</div>
-			<?php endforeach; ?>
-		</div>
-	</section>
-	<?php endif; ?>
+			<?php else : ?>
+			<div></div>
+			<?php endif; ?>
 
-	<?php if ( $steps ) : ?>
-	<section id="postup" class="container-narrow section">
-		<h2><?php esc_html_e( 'Postup', 'atlas-chuti' ); ?></h2>
-		<div class="steps-list">
-			<?php foreach ( $steps as $i => $step ) : ?>
-				<div class="step-row">
-					<span class="step-num"><?php echo esc_html( $i + 1 ); ?></span>
-					<p class="step-text"><?php echo esc_html( $step['text'] ); ?></p>
+			<?php if ( $steps ) : ?>
+			<div id="postup">
+				<h2 style="font-size:var(--fs-h3);"><?php esc_html_e( 'Postup', 'atlas-chuti' ); ?></h2>
+				<div class="steps-list">
+					<?php foreach ( $steps as $i => $step ) : ?>
+						<div class="step-row">
+							<span class="step-num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
+							<p class="step-text"><?php echo esc_html( $step['text'] ); ?></p>
+						</div>
+					<?php endforeach; ?>
 				</div>
-			<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
 		</div>
 	</section>
 	<?php endif; ?>
 
 	<?php if ( $tips ) : ?>
-	<section class="container-narrow section">
-		<h2><?php esc_html_e( 'Tipy', 'atlas-chuti' ); ?></h2>
-		<ul style="padding-left:20px;list-style:disc;display:flex;flex-direction:column;gap:10px;">
-			<?php foreach ( $tips as $tip ) : ?>
-				<li style="font-size:15px;color:var(--text-soft);line-height:1.6;"><?php echo esc_html( $tip ); ?></li>
-			<?php endforeach; ?>
-		</ul>
+	<section class="section bg-sage-tint">
+		<div class="container-narrow">
+			<h2><?php esc_html_e( 'Tipy', 'atlas-chuti' ); ?></h2>
+			<ul style="padding-left:20px;list-style:disc;display:flex;flex-direction:column;gap:10px;">
+				<?php foreach ( $tips as $tip ) : ?>
+					<li style="font-size:15px;color:var(--color-text);line-height:1.6;"><?php echo esc_html( $tip ); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
 	</section>
 	<?php endif; ?>
 
 	<?php if ( $watch_out ) : ?>
-	<section class="container-narrow section">
-		<div class="callout">
-			<h3><?php esc_html_e( 'Na co si dát pozor', 'atlas-chuti' ); ?></h3>
-			<p><?php echo esc_html( $watch_out ); ?></p>
+	<section class="section bg-saffron-tint">
+		<div class="container-narrow">
+			<div class="callout">
+				<h3><?php esc_html_e( 'Na co si dát pozor', 'atlas-chuti' ); ?></h3>
+				<p><?php echo esc_html( $watch_out ); ?></p>
+			</div>
 		</div>
 	</section>
 	<?php endif; ?>
 
 	<?php if ( $variants ) : ?>
-	<section class="container-narrow section">
-		<h2><?php esc_html_e( 'Varianty receptu', 'atlas-chuti' ); ?></h2>
-		<div style="display:flex;flex-direction:column;gap:12px;">
-			<?php foreach ( $variants as $variant ) : ?>
-				<div class="variant-row"><strong><?php echo esc_html( $variant['name'] ); ?>:</strong> <?php echo esc_html( $variant['note'] ); ?></div>
-			<?php endforeach; ?>
+	<section class="section">
+		<div class="container-narrow">
+			<h2><?php esc_html_e( 'Varianty receptu', 'atlas-chuti' ); ?></h2>
+			<div>
+				<?php foreach ( $variants as $variant ) : ?>
+					<div class="variant-row"><strong><?php echo esc_html( $variant['name'] ); ?>:</strong> <?php echo esc_html( $variant['note'] ); ?></div>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</section>
 	<?php endif; ?>
 
 	<?php if ( $origin ) : ?>
-	<section class="container-narrow section">
-		<h2><?php esc_html_e( 'Odkud recept pochází', 'atlas-chuti' ); ?></h2>
-		<div><?php echo wp_kses_post( wpautop( $origin ) ); ?></div>
+	<section class="section bg-blue-tint">
+		<div class="container-narrow">
+			<h2><?php esc_html_e( 'Odkud recept pochází', 'atlas-chuti' ); ?></h2>
+			<div><?php echo wp_kses_post( wpautop( $origin ) ); ?></div>
+		</div>
 	</section>
 	<?php endif; ?>
 
@@ -184,7 +200,7 @@ while ( have_posts() ) :
 		$more_recipes = get_posts(
 			array(
 				'post_type'      => 'atlas_recipe',
-				'posts_per_page' => 4,
+				'posts_per_page' => 3,
 				'post__not_in'   => array( $post_id ),
 				'tax_query'      => array( array( 'taxonomy' => 'atlas_country_tax', 'field' => 'term_id', 'terms' => wp_list_pluck( $related_terms, 'term_id' ) ) ),
 			)
@@ -192,12 +208,14 @@ while ( have_posts() ) :
 	}
 	if ( $more_recipes ) :
 		?>
-		<section class="container section">
-			<h2><?php echo $country ? esc_html( sprintf( __( 'Další recepty z %s', 'atlas-chuti' ), get_the_title( $country ) ) ) : esc_html__( 'Další recepty', 'atlas-chuti' ); ?></h2>
-			<div class="card-grid card-grid-4">
-				<?php foreach ( $more_recipes as $r ) : ?>
-					<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => is_object( $r ) ? $r->ID : $r ) ); ?>
-				<?php endforeach; ?>
+		<section class="section bg-cream">
+			<div class="container">
+				<h2><?php echo $country ? esc_html( sprintf( __( 'Další recepty z %s', 'atlas-chuti' ), get_the_title( $country ) ) ) : esc_html__( 'Další recepty', 'atlas-chuti' ); ?></h2>
+				<div class="card-grid card-grid-3">
+					<?php foreach ( $more_recipes as $r ) : ?>
+						<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => is_object( $r ) ? $r->ID : $r ) ); ?>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</section>
 	<?php endif; ?>

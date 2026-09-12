@@ -9,9 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<section class="container" style="padding:64px var(--gutter) 0;" data-passport-page>
+<section class="container" style="padding:var(--space-14) var(--gutter) 0;" data-passport-page>
+	<span class="kicker" style="color:var(--color-ink);"><?php esc_html_e( 'Kulinářský pas', 'atlas-chuti' ); ?></span>
 	<h1><?php esc_html_e( 'Můj kulinářský pas', 'atlas-chuti' ); ?></h1>
-	<p style="font-size:16px;color:var(--text-body);margin-bottom:32px;"><?php esc_html_e( 'Elegantní přehled vašich gastronomických objevů.', 'atlas-chuti' ); ?></p>
+	<p class="lede" style="max-width:none;margin-bottom:var(--space-8);"><?php esc_html_e( 'Elegantní přehled vašich gastronomických objevů.', 'atlas-chuti' ); ?></p>
 
 	<div class="passport-hero">
 		<div style="flex-shrink:0;">
@@ -24,17 +25,17 @@ get_header();
 	</div>
 </section>
 
-<section class="container section" style="padding-top:48px;">
-	<h2><?php esc_html_e( 'Podle světadílů', 'atlas-chuti' ); ?></h2>
-	<div style="display:flex;flex-direction:column;gap:14px;margin-top:24px;" data-continent-list></div>
-</section>
-
 <section class="container section">
-	<h2><?php esc_html_e( 'Uvařené recepty', 'atlas-chuti' ); ?></h2>
-	<div style="margin-top:24px;" data-cooked-list></div>
+	<h2><?php esc_html_e( 'Podle světadílů', 'atlas-chuti' ); ?></h2>
+	<div style="display:flex;flex-direction:column;gap:var(--space-4);margin-top:var(--space-6);" data-continent-list></div>
 </section>
 
-<section class="container passport-clear" style="padding-bottom:80px;">
+<section class="container section" style="padding-top:0;">
+	<h2><?php esc_html_e( 'Uvařené recepty', 'atlas-chuti' ); ?></h2>
+	<div style="margin-top:var(--space-6);" data-cooked-list></div>
+</section>
+
+<section class="container passport-clear" style="padding-bottom:var(--space-24);">
 	<button type="button" class="btn btn-outline" data-passport-clear><?php esc_html_e( 'Vymazat můj Kulinářský pas', 'atlas-chuti' ); ?></button>
 </section>
 

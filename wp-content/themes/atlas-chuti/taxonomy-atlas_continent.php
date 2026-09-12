@@ -4,8 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header();
 
-$continent = get_queried_object();
-$countries = get_posts(
+$continent     = get_queried_object();
+$attachment_id = (int) get_term_meta( $continent->term_id, 'thumbnail_id', true );
+$countries     = get_posts(
 	array(
 		'post_type'      => 'atlas_country',
 		'posts_per_page' => -1,
@@ -16,13 +17,24 @@ $countries = get_posts(
 );
 ?>
 
-<section class="container" style="padding:64px var(--gutter) 40px;">
-	<span style="font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;"><?php esc_html_e( 'Světadíl', 'atlas-chuti' ); ?></span>
-	<h1 style="margin-top:8px;"><?php echo esc_html( $continent->name ); ?></h1>
-	<?php if ( $continent->description ) : ?>
-		<p style="font-size:17px;color:var(--text-body);max-width:680px;line-height:1.6;"><?php echo esc_html( $continent->description ); ?></p>
-	<?php endif; ?>
-</section>
+<?php if ( $attachment_id ) : ?>
+	<section class="page-hero-photo">
+		<?php echo wp_get_attachment_image( $attachment_id, 'atlas-hero', false, array( 'loading' => 'eager' ) ); ?>
+		<div class="page-hero-photo-inner">
+			<span class="eyebrow"><?php esc_html_e( 'Světadíl', 'atlas-chuti' ); ?></span>
+			<h1><?php echo esc_html( $continent->name ); ?></h1>
+			<?php if ( $continent->description ) : ?><p class="lede"><?php echo esc_html( $continent->description ); ?></p><?php endif; ?>
+		</div>
+	</section>
+<?php else : ?>
+	<section class="container bg-cream" style="padding:var(--space-14) var(--gutter) var(--space-10);">
+		<span class="kicker"><?php esc_html_e( 'Světadíl', 'atlas-chuti' ); ?></span>
+		<h1 style="margin-top:8px;"><?php echo esc_html( $continent->name ); ?></h1>
+		<?php if ( $continent->description ) : ?>
+			<p style="font-size:17px;color:var(--color-text);max-width:680px;line-height:1.6;"><?php echo esc_html( $continent->description ); ?></p>
+		<?php endif; ?>
+	</section>
+<?php endif; ?>
 
 <section class="container section">
 	<?php if ( $countries ) : ?>

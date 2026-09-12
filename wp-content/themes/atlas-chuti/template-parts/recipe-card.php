@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $post_id = $args['post_id'];
 $country = atlas_chuti_get_recipe_primary_country( $post_id );
 ?>
-<a class="card" href="<?php echo esc_url( get_permalink( $post_id ) ); ?>">
+<a class="recipe-card" href="<?php echo esc_url( get_permalink( $post_id ) ); ?>">
 	<div class="card-media"><?php echo atlas_chuti_media( $post_id, 'atlas-card' ); ?></div>
 	<div class="card-body">
 		<?php if ( $country ) : ?>

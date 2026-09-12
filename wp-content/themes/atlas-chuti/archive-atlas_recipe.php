@@ -9,16 +9,17 @@ $active  = atlas_chuti_active_filters();
 
 ?>
 
-<section class="container-narrow" style="padding:64px var(--gutter) 20px;">
+<section class="container-narrow" style="padding:var(--space-14) var(--gutter) var(--space-5);">
+	<span class="kicker"><?php esc_html_e( 'Recepty', 'atlas-chuti' ); ?></span>
 	<h1><?php esc_html_e( 'Recepty ze světa', 'atlas-chuti' ); ?></h1>
-	<p style="font-size:16px;color:var(--text-body);"><?php esc_html_e( 'Procházejte recepty podle země, typu jídla, obtížnosti nebo času přípravy.', 'atlas-chuti' ); ?></p>
+	<p class="lede" style="max-width:none;"><?php esc_html_e( 'Procházejte recepty podle země, typu jídla, obtížnosti nebo času přípravy.', 'atlas-chuti' ); ?></p>
 	<form class="search-box" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get">
-		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+		<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
 		<input type="search" name="s" placeholder="<?php esc_attr_e( 'Hledat recept…', 'atlas-chuti' ); ?>">
 	</form>
 </section>
 
-<section class="container section" style="padding-top:24px;">
+<section class="container section" style="padding-top:var(--space-6);">
 	<div class="archive-layout">
 		<aside class="filter-panel">
 			<form data-filter-form action="<?php echo esc_url( get_post_type_archive_link( 'atlas_recipe' ) ); ?>" method="get">
