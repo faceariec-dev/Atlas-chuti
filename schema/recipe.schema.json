@@ -23,6 +23,7 @@
     "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"], "description": "Stabilní klíč, ne české jméno — např. \"easy\", ne \"Snadné\" (viz Atlas_Chuti_Taxonomy_Labels)." },
     "meal_type": { "type": "array", "items": { "type": "string" }, "description": "Otevřený slovník stabilních klíčů, např. [\"main-course\"]. Doporučené startovní klíče: breakfast, appetizer, soup, main-course, side-dish, salad, dessert, bakery, sauce, beverage — nový klíč se importem bez problému vytvoří." },
     "diet": { "type": "array", "items": { "type": "string" }, "description": "Otevřený slovník stabilních klíčů, např. [\"vegetarian\"]. Doporučené startovní klíče: vegetarian, vegan." },
+    "tags": { "type": "array", "items": { "type": "string" }, "description": "UZAVŘENÝ katalog veřejných štítků (stabilní key, ne český text) — viz Atlas_Chuti_Taxonomy_Labels::LABELS['atlas_recipe_tag']. Na rozdíl od meal_type/diet výše importer NIKDY nevytvoří neznámý klíč automaticky — neznámý tag je chyba validace. Pole je volitelné; když chybí, štítky recept prostě nemá. Pořadí není významové." },
     "about": { "type": "string", "description": "Krátký úvod „O receptu“. Základní HTML povoleno." },
     "ingredients": {
       "type": "array",

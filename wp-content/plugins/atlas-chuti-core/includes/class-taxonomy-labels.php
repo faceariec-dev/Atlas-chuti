@@ -16,6 +16,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  * meal_type and diet stay open vocabularies (new values are expected to show up
  * through real content, not a fixed list) — this class documents the suggested
  * starter keys for them too, but importer validation never rejects an unknown one.
+ *
+ * atlas_recipe_tag (KROK 3, items 5-7) is different again: it's a CLOSED, curated
+ * catalog — the array below IS the whole tag vocabulary, not just a starter set.
+ * Growing it later means adding a key here (which Atlas_Chuti_Taxonomies::
+ * maybe_seed_default_terms() then creates as a real term the next time it runs);
+ * the importer (Atlas_Chuti_JSON_Importer::resolve_known_tag_term()) only ever
+ * looks a tag up, it never creates one on the fly. Concepts that already have a
+ * first-class field/taxonomy of their own are deliberately NOT duplicated here —
+ * see the taxonomy map in docs/implementation-reports/
+ * step-03-recipe-data-model-importer.md (section C): no country/cuisine tag
+ * (country relation already exists), no difficulty tag (atlas_difficulty already
+ * exists), no meal-type-shaped tag (atlas_meal_type already exists), no
+ * "under 30 min"/"quick" time tag (prep_minutes/total_minutes are already
+ * structured data a template can threshold directly, per item 5 of the brief).
  */
 class Atlas_Chuti_Taxonomy_Labels {
 
@@ -54,6 +68,47 @@ class Atlas_Chuti_Taxonomy_Labels {
 			'ingredient' => array( 'cs-CZ' => 'Suroviny', 'en' => 'Ingredients' ),
 			'gastronomy' => array( 'cs-CZ' => 'Gastronomické pojmy', 'en' => 'Gastronomy terms' ),
 			'equipment'  => array( 'cs-CZ' => 'Nádobí a vybavení', 'en' => 'Equipment' ),
+		),
+
+		// Controlled public recipe tag catalog (KROK 3, item 7) — closed, see the class
+		// docblock above. Grouped by concept only as a reading aid; the taxonomy itself
+		// is flat/non-hierarchical.
+		'atlas_recipe_tag'       => array(
+			// Time / practicality — excludes "under 30 min"/"quick"-shaped tags on
+			// purpose: prep_minutes/total_minutes are already structured fields a
+			// template can threshold directly (item 5 of the brief). Hyphenated keys
+			// (not underscored, despite the brief's own illustrative examples), to
+			// match this codebase's existing term-key convention (main-course,
+			// side-dish, north-america, …) — WordPress's real wp_insert_term()/
+			// sanitize_title() would collapse an underscored key to hyphens anyway
+			// (term slugs are always hyphen-normalized), so authoring them as hyphens
+			// from the start avoids a needless double-notation for the same identity.
+			'one-pot'          => array( 'cs-CZ' => 'Jedna nádoba', 'en' => 'One pot' ),
+			'make-ahead'       => array( 'cs-CZ' => 'Lze připravit dopředu', 'en' => 'Make ahead' ),
+			'freezer-friendly' => array( 'cs-CZ' => 'Vhodné na zamrazení', 'en' => 'Freezer friendly' ),
+			// Character
+			'traditional'      => array( 'cs-CZ' => 'Tradiční', 'en' => 'Traditional' ),
+			'budget'           => array( 'cs-CZ' => 'Úsporné', 'en' => 'Budget-friendly' ),
+			'family'           => array( 'cs-CZ' => 'Rodinné', 'en' => 'Family' ),
+			'comfort-food'     => array( 'cs-CZ' => 'Jídlo pro pohodu', 'en' => 'Comfort food' ),
+			'street-food'      => array( 'cs-CZ' => 'Pouliční jídlo', 'en' => 'Street food' ),
+			// Occasion
+			'christmas'        => array( 'cs-CZ' => 'Vánoce', 'en' => 'Christmas' ),
+			'easter'           => array( 'cs-CZ' => 'Velikonoce', 'en' => 'Easter' ),
+			'grilling'         => array( 'cs-CZ' => 'Grilování', 'en' => 'Grilling' ),
+			'celebration'      => array( 'cs-CZ' => 'Oslava', 'en' => 'Celebration' ),
+			'picnic'           => array( 'cs-CZ' => 'Piknik', 'en' => 'Picnic' ),
+			// Season
+			'spring'           => array( 'cs-CZ' => 'Jaro', 'en' => 'Spring' ),
+			'summer'           => array( 'cs-CZ' => 'Léto', 'en' => 'Summer' ),
+			'autumn'           => array( 'cs-CZ' => 'Podzim', 'en' => 'Autumn' ),
+			'winter'           => array( 'cs-CZ' => 'Zima', 'en' => 'Winter' ),
+			// Technique / form
+			'no-bake'          => array( 'cs-CZ' => 'Bez pečení', 'en' => 'No bake' ),
+			'baked'            => array( 'cs-CZ' => 'Pečené', 'en' => 'Baked' ),
+			'grilled'          => array( 'cs-CZ' => 'Grilované', 'en' => 'Grilled' ),
+			'slow-cooked'      => array( 'cs-CZ' => 'Dlouhé vaření', 'en' => 'Slow cooked' ),
+			'fermented'        => array( 'cs-CZ' => 'Kvašené', 'en' => 'Fermented' ),
 		),
 	);
 

@@ -136,6 +136,45 @@ class Atlas_Chuti_Taxonomies {
 			)
 		);
 
+		// Controlled public recipe tags (KROK 3, items 5-9): a CLOSED, editorially curated
+		// catalog — unlike atlas_meal_type/atlas_diet above, the importer never
+		// auto-creates a new term here (see Atlas_Chuti_JSON_Importer::
+		// resolve_known_tag_term()); an unknown tag key is a hard validation error. The
+		// starter catalog itself lives in Atlas_Chuti_Taxonomy_Labels (seeded below by
+		// maybe_seed_default_terms(), same mechanism as atlas_difficulty/atlas_diet/
+		// atlas_meal_type), so growing the catalog later means editing one array, not
+		// writing migration code. `capabilities` restricts creating/renaming/deleting
+		// terms to administrators — assigning EXISTING tags to a recipe stays open to
+		// anyone who can edit recipes — so even the wp-admin "add new tag" UI can't grow
+		// an uncontrolled tag cloud the way the default WordPress Tags box would.
+		// public=>false / rewrite=>false for now, same as meal_type/difficulty/diet
+		// above: no public archive template exists yet for any of these technical
+		// taxonomies, so turning one on here would need real frontend/SEO work (thin
+		// archive pages, indexing strategy) that is out of this step's data-model scope
+		// — see docs/implementation-reports/step-03-recipe-data-model-importer.md,
+		// section H, for the deferred plan.
+		register_taxonomy(
+			'atlas_recipe_tag',
+			array( 'atlas_recipe' ),
+			array_merge(
+				$technical_taxonomy_args,
+				array(
+					'labels'       => array(
+						'name'          => __( 'Štítky', 'atlas-chuti' ),
+						'singular_name' => __( 'Štítek', 'atlas-chuti' ),
+					),
+					'hierarchical' => false,
+					'show_ui'      => true,
+					'capabilities' => array(
+						'manage_terms' => 'manage_options',
+						'edit_terms'   => 'manage_options',
+						'delete_terms' => 'manage_options',
+						'assign_terms' => 'edit_posts',
+					),
+				)
+			)
+		);
+
 		// Same principle as above: archive-atlas_glossary.php already filters by category
 		// via ?kategorie=, so a separate public taxonomy archive would only be duplicate
 		// content with no dedicated landing page of its own.
@@ -176,15 +215,22 @@ class Atlas_Chuti_Taxonomies {
 	 * install, not a second WordPress instance.
 	 */
 	private function maybe_seed_default_terms() {
-		if ( get_option( 'atlas_chuti_default_terms_seeded_v2' ) ) {
+		// Bumped to _v3 (KROK 3, item 6-7): adding atlas_recipe_tag to the loop below
+		// wouldn't reach any install that already ran the _v2 seed — this option name
+		// is the existing, established way this codebase forces a one-time reseed pass
+		// when the seed SET changes. seed_terms_from_labels() itself is idempotent (it
+		// skips any key that already has a term), so re-running it for continent/
+		// difficulty/diet/meal_type/glossary_category here is a safe no-op — only the
+		// new atlas_recipe_tag keys actually get created.
+		if ( get_option( 'atlas_chuti_default_terms_seeded_v3' ) ) {
 			return;
 		}
 
-		foreach ( array( 'atlas_continent', 'atlas_difficulty', 'atlas_diet', 'atlas_meal_type', 'atlas_glossary_category' ) as $taxonomy ) {
+		foreach ( array( 'atlas_continent', 'atlas_difficulty', 'atlas_diet', 'atlas_meal_type', 'atlas_recipe_tag', 'atlas_glossary_category' ) as $taxonomy ) {
 			$this->seed_terms_from_labels( $taxonomy );
 		}
 
-		update_option( 'atlas_chuti_default_terms_seeded_v2', 1 );
+		update_option( 'atlas_chuti_default_terms_seeded_v3', 1 );
 	}
 
 	private function seed_terms_from_labels( $taxonomy ) {

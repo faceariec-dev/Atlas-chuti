@@ -1,0 +1,29 @@
+{
+  "countries": [
+    {
+      "title": "Legacyland",
+      "iso_code": "LG",
+      "flag_emoji": "🏴",
+      "continent": "europe",
+      "intro": "A fixture-only country used to prove pre-KROK-3 batch shapes still import."
+    }
+  ],
+  "recipes": [
+    {
+      "title": "Legacy Bread",
+      "slug": "legacy-bread",
+      "country": "LG",
+      "excerpt": "A minimal, pre-KROK-3-shaped recipe: no translation_group, no tags, no meal_type/diet/difficulty at all.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "ingredients": [
+        { "display_name": "Flour", "quantity": "500", "unit": "g" },
+        { "display_name": "Water", "quantity": "300", "unit": "ml" }
+      ],
+      "steps": [
+        { "order": 1, "text": "Mix flour and water." },
+        { "order": 2, "text": "Bake." }
+      ]
+    }
+  ]
+}

@@ -1400,7 +1400,71 @@ class Atlas_Chuti_JSON_Importer {
 			$errors[] = sprintf( __( 'country "%s" neexistuje (nejdřív naimportujte danou zemi v tomto jazyce)', 'atlas-chuti' ), $item['country'] );
 		}
 
+		// KROK 3, items 5/8: unlike meal_type/difficulty/diet just above (open
+		// vocabularies the importer happily grows), a controlled tag is deliberately
+		// NEVER looked up against the planned-batch index and NEVER auto-created — it
+		// must already exist as a real atlas_recipe_tag term (seeded from
+		// Atlas_Chuti_Taxonomy_Labels, or added by an admin) before any recipe can
+		// reference it. An unknown key is a hard error, not a warning, exactly as the
+		// brief asks ("neznámý tag key = jasná validační chyba").
+		if ( array_key_exists( 'tags', $item ) ) {
+			foreach ( (array) $item['tags'] as $tag_key ) {
+				$tag_key = sanitize_title( $tag_key );
+				if ( '' === $tag_key ) {
+					continue;
+				}
+				if ( ! get_term_by( 'slug', $tag_key, 'atlas_recipe_tag' ) ) {
+					/* translators: %s: the unrecognized tag key from the JSON */
+					$errors[] = sprintf( __( 'tag "%s" není v řízeném katalogu štítků', 'atlas-chuti' ), $tag_key );
+				}
+			}
+		}
+
 		return $errors;
+	}
+
+	/**
+	 * Resolves a controlled tag key to its existing atlas_recipe_tag term, or 0 when
+	 * the key isn't in the catalog — never creates one (see validate_recipe()'s
+	 * docblock comment above and item 8 of KROK 3's brief). By the time this runs in
+	 * the live write path, validate_recipe() has already turned an unknown key into a
+	 * hard error, so this is only ever asked about keys already confirmed to exist.
+	 */
+	private function resolve_known_tag_term( $key ) {
+		$key = sanitize_title( $key );
+		if ( '' === $key ) {
+			return 0;
+		}
+		$term = get_term_by( 'slug', $key, 'atlas_recipe_tag' );
+		return ( $term && ! is_wp_error( $term ) ) ? (int) $term->term_id : 0;
+	}
+
+	/**
+	 * Content-quality checks (KROK 3, items 3/21) — technically valid data that's
+	 * worth an editor's attention, but never a reason to block the import or to mark
+	 * an otherwise-identical recipe as changed: this string is purely informational
+	 * and is never fed into post_matches_item()/$unchanged (see import_recipe()).
+	 */
+	private function quality_warnings_for_recipe( $item ) {
+		$notes = array();
+
+		if ( empty( $item['translation_group'] ) ) {
+			$notes[] = __( 'chybí translation_group (recipe_key) – identita se prozatím odvozuje ze slugu, což je méně stabilní při přejmenování', 'atlas-chuti' );
+		}
+
+		if ( isset( $item['excerpt'] ) ) {
+			$text = trim( wp_strip_all_tags( (string) $item['excerpt'] ) );
+			// \s+/u (not str_word_count(), which mis-splits accented Czech text) — a
+			// soft, advisory word count only; see item 3 of the brief for the ideal
+			// 70-110 word target and the 50-140 acceptable band this warns outside of.
+			$word_count = '' === $text ? 0 : count( preg_split( '/\s+/u', $text ) );
+			if ( $word_count > 0 && ( $word_count < 50 || $word_count > 140 ) ) {
+				/* translators: %d: word count of the editorial excerpt/perex */
+				$notes[] = sprintf( __( 'perex má %d slov (doporučeno cca 70–110)', 'atlas-chuti' ), $word_count );
+			}
+		}
+
+		return implode( '; ', $notes );
 	}
 
 	private function warnings_for_recipe_refs( $item, $locale, $planned = array() ) {
@@ -1461,7 +1525,15 @@ class Atlas_Chuti_JSON_Importer {
 		// only case in dry-run/out-of-order live calls) simply skips that lookup.
 		$primary_country_post  = $this->resolve_reference( 'atlas_country', $item['country'], $locale );
 		$existing              = $this->find_existing_recipe( $item, $slug, $stable_key, $primary_country_post, $locale );
-		$warnings              = $this->warnings_for_recipe_refs( $item, $locale, $planned );
+		$warnings              = implode(
+			'; ',
+			array_filter(
+				array(
+					$this->warnings_for_recipe_refs( $item, $locale, $planned ),
+					$this->quality_warnings_for_recipe( $item ),
+				)
+			)
+		);
 
 		$unchanged = false;
 		if ( $existing ) {
@@ -1489,6 +1561,15 @@ class Atlas_Chuti_JSON_Importer {
 			}
 			if ( ! empty( $item['diet'] ) ) {
 				$taxonomy_plan['atlas_diet'] = (array) $item['diet'];
+			}
+			// array_key_exists, not !empty (unlike the three above): item 12 of the
+			// brief requires that an explicit `"tags": []` — removing every tag — is
+			// correctly detected as a change, not silently ignored because an empty
+			// array is falsy. term_keys_differ() (used by post_matches_item() below)
+			// already sanitizes+sorts both sides, so "same tags, different order" still
+			// correctly compares as unchanged (item 8).
+			if ( array_key_exists( 'tags', $item ) ) {
+				$taxonomy_plan['atlas_recipe_tag'] = (array) $item['tags'];
 			}
 			$unchanged = $this->post_matches_item(
 				$existing->ID,
@@ -1562,6 +1643,15 @@ class Atlas_Chuti_JSON_Importer {
 		if ( ! empty( $item['diet'] ) ) {
 			$term_ids = array_filter( array_map( fn( $k ) => $this->resolve_or_create_term_by_key( 'atlas_diet', $k, $locale ), (array) $item['diet'] ) );
 			wp_set_post_terms( $post_id, array_values( $term_ids ), 'atlas_diet', false );
+		}
+		// Controlled tags (KROK 3, item 8): resolve_known_tag_term() never creates a
+		// term, so a key validate_recipe() couldn't resolve simply drops out here —
+		// that item already failed validation and this code is unreachable for it.
+		// array_key_exists (not !empty), matching the taxonomy_plan guard above: an
+		// explicit empty `tags` array really does clear every tag on this recipe.
+		if ( array_key_exists( 'tags', $item ) ) {
+			$tag_ids = array_values( array_unique( array_filter( array_map( fn( $k ) => $this->resolve_known_tag_term( $k ), (array) $item['tags'] ) ) ) );
+			wp_set_post_terms( $post_id, $tag_ids, 'atlas_recipe_tag', false );
 		}
 		$this->apply_i18n_meta( $post_id, $item );
 
