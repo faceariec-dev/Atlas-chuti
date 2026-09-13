@@ -1,0 +1,386 @@
+{
+  "glossary": [
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "al-dente",
+      "title": "Al dente", "slug": "al-dente", "category": "technique",
+      "short_definition": "Stupeň uvaření těstovin či rýže „na skus“, kdy si zachovávají mírný odpor.",
+      "detailed": "Al dente doslova znamená „na zub“. Ochutnávejte cca minutu před uplynutím doby uvedené na obalu – těstoviny by měly klást lehký odpor, ne být měkké až k rozpadu.",
+      "origin_country": "IT",
+      "related_recipes": ["spaghetti-carbonara", "risotto-alla-milanese"],
+      "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "soffritto",
+      "title": "Soffritto", "slug": "soffritto", "category": "technique",
+      "short_definition": "Základ italských jídel z pomalu restované cibule, mrkve a celeru.",
+      "detailed": "Trojice zeleniny nakrájená najemno a pomalu restovaná na oleji nebo másle, dokud nezesklovatí – základ mnoha italských omáček, rizot a vývarů.",
+      "origin_country": "IT",
+      "related_recipes": ["risotto-alla-milanese", "lasagne-alla-bolognese"],
+      "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "blanching",
+      "title": "Blanšírování", "slug": "blansirovani", "category": "technique",
+      "short_definition": "Krátké spaření zeleniny nebo ovoce ve vroucí vodě a rychlé zchlazení v ledové lázni.",
+      "detailed": "Zelenina se krátce povaří, aby si zachovala barvu a křupavost, a hned se přesune do ledové vody, čímž se zastaví další vaření. Používá se i na loupání rajčat.",
+      "usage": "Rajčata, mandle, zelené fazolky, brokolice před dalším zpracováním.",
+      "related_recipes": [], "related_countries": [], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "poaching",
+      "title": "Pošírování", "slug": "posirovani", "category": "technique",
+      "short_definition": "Jemné vaření v horké, ale nevroucí tekutině, obvykle vodě, vývaru nebo mléce.",
+      "detailed": "Teplota se drží těsně pod bodem varu, takže se surovina – nejčastěji ryba, vejce nebo ovoce – uvaří šetrně a nerozpadá se.",
+      "usage": "Ztracené vejce, ryba ve vývaru, hruška v koření a víně.",
+      "related_recipes": ["fiskesuppe"], "related_countries": ["NO"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "confit",
+      "title": "Konfitování", "slug": "konfitovani", "category": "technique",
+      "short_definition": "Pomalé vaření suroviny ponořené v tuku nebo oleji při nízké teplotě.",
+      "detailed": "Původně způsob konzervace masa (nejčastěji kachního) ve vlastním tuku, dnes se technika používá i na zeleninu nebo česnek konfitovaný v olivovém oleji.",
+      "origin_country": "FR",
+      "related_recipes": [], "related_countries": ["FR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "reduction",
+      "title": "Redukce", "slug": "redukce", "category": "technique",
+      "short_definition": "Zahušťování omáčky nebo vývaru odpařováním tekutiny na mírném ohni.",
+      "detailed": "Delším varem se odpaří část vody, chuť se zkoncentruje a omáčka zhoustne bez nutnosti přidávat jíšku nebo škrob.",
+      "related_recipes": ["boeuf-bourguignon", "coq-au-vin"], "related_countries": ["FR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "sauteing",
+      "title": "Restování", "slug": "restovani", "category": "technique",
+      "short_definition": "Rychlá úprava na tuku na vysoké teplotě za stálého míchání nebo protřepávání.",
+      "detailed": "Suroviny se opékají na malém množství tuku na silně rozehřáté pánvi tak, aby zůstaly šťavnaté uvnitř a lehce zezlátly na povrchu.",
+      "related_recipes": [], "related_countries": [], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "gratin",
+      "title": "Gratinování", "slug": "gratinovani", "category": "technique",
+      "short_definition": "Zapékání pod grilem nebo v troubě do zlatava křupavé kůrky.",
+      "detailed": "Pokrm posypaný sýrem, strouhankou nebo bešamelem se dopéká pod vrchním ohřevem, dokud se na povrchu nevytvoří křupavá kůrčička.",
+      "origin_country": "FR",
+      "related_recipes": ["moussaka"], "related_countries": ["FR", "GR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "flambe",
+      "title": "Flambování", "slug": "flambovani", "category": "technique",
+      "short_definition": "Zapálení alkoholu přidaného do horkého jídla, aby se spálil líh a zůstala jen chuť.",
+      "detailed": "Alkohol (koňak, rum, víno) se přidá do rozehřáté pánve a opatrně zapálí – plamen rychle odhoří a jídlu zůstane koncentrovaná chuť bez ostrého alkoholového nádechu.",
+      "origin_country": "FR",
+      "related_recipes": [], "related_countries": ["FR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "emulsion",
+      "title": "Emulze", "slug": "emulze", "category": "technique",
+      "short_definition": "Spojení dvou jinak nemísitelných tekutin, například oleje a vody, do jednolité hladké směsi.",
+      "detailed": "Vzniká rozptýlením jedné tekutiny v druhé pomocí prudkého šlehání, často za pomoci vaječného žloutku jako emulgátoru – typický příklad je majonéza nebo omáčka u carbonary.",
+      "related_recipes": ["spaghetti-carbonara"], "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "julienne",
+      "title": "Julienne", "slug": "julienne", "category": "technique",
+      "short_definition": "Krájení zeleniny na tenké, stejnoměrně dlouhé nudličky.",
+      "detailed": "Zelenina se nakrájí na tenké plátky a ty pak na tenké nudličky o délce několika centimetrů – používá se hlavně na dekoraci a rychlé restování.",
+      "related_recipes": [], "related_countries": [], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "grilling",
+      "title": "Grilování", "slug": "grilovani", "category": "technique",
+      "short_definition": "Úprava masa nebo zeleniny přímo nad žhavým dřevěným uhlím nebo na rozpáleném roštu.",
+      "detailed": "Vysoká přímá teplota dá jídlu charakteristickou opečenou kůrčičku a kouřovou chuť – klíčová technika balkánské i řecké kuchyně.",
+      "related_recipes": ["cevapi", "souvlaki", "pljeskavica"], "related_countries": ["RS", "GR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "braising",
+      "title": "Dušení", "slug": "duseni", "category": "technique",
+      "short_definition": "Pomalá tepelná úprava masa nebo zeleniny v malém množství tekutiny pod pokličkou.",
+      "detailed": "Surovina se nejdřív orestuje dozlatova a pak se dlouho, na mírném ohni, doměkčuje v tekutině – vývaru, víně nebo pivu. Ideální technika pro tužší kusy masa.",
+      "related_recipes": ["sauerbraten", "bigos", "pasticada"], "related_countries": ["DE", "PL", "HR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "marinating",
+      "title": "Marinování", "slug": "marinovani", "category": "technique",
+      "short_definition": "Naložení masa nebo zeleniny do kořeněné tekutiny před tepelnou úpravou.",
+      "detailed": "Marináda (obvykle na bázi octa, vína nebo jogurtu) maso změkčuje a dodává mu chuť už před vařením – u některých receptů trvá i několik dní.",
+      "related_recipes": ["svickova", "sauerbraten"], "related_countries": ["CZ", "DE"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "proofing",
+      "title": "Kynutí těsta", "slug": "kynuti-testa", "category": "technique",
+      "short_definition": "Odpočinutí kynutého těsta v teple, dokud kvasnice nenafouknou svůj objem.",
+      "detailed": "Kvasnice nebo kvásek uvolňují oxid uhličitý, který těsto nadýchá. Těsto se nechává kynout na teplém místě přikryté utěrkou, obvykle jednou i dvakrát.",
+      "related_recipes": ["buchty", "potica", "kanelbullar"], "related_countries": ["CZ", "SI", "SE"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "roux",
+      "title": "Jíška", "slug": "jiska", "category": "technique",
+      "short_definition": "Zahušťovadlo z mouky opražené na tuku, základ mnoha středoevropských omáček a polévek.",
+      "detailed": "Mouka se za stálého míchání opraží na másle nebo sádle dosucha nebo dozlatova a poté se zalije tekutinou – čím tmavší jíška, tím výraznější, ořechová chuť.",
+      "related_recipes": ["svickova", "kulajda"], "related_countries": ["CZ"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "pancetta",
+      "title": "Pancetta", "slug": "pancetta", "category": "ingredient",
+      "short_definition": "Italská nesolená slanina naložená v soli a koření, sušená za studena.",
+      "detailed": "Na rozdíl od anglické slaniny se pancetta neudí, jen se solí a koření a nechává zrát. Prodává se v plátku i srolovaná.",
+      "origin_country": "IT", "substitute": "Uzená slanina nebo pancetta v nouzi nahradí guanciale, chuť je ale méně výrazná.",
+      "related_recipes": ["spaghetti-carbonara"], "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "parmigiano-reggiano",
+      "title": "Parmigiano Reggiano", "slug": "parmigiano-reggiano", "category": "ingredient",
+      "short_definition": "Tvrdý zrající sýr z kravského mléka, chráněný italský produkt s dlouhou tradicí.",
+      "detailed": "Zraje minimálně 12 měsíců, často mnohem déle, a smí se tak nazývat jen sýr vyrobený v přesně vymezené oblasti severní Itálie.",
+      "origin_country": "IT",
+      "related_recipes": ["risotto-alla-milanese", "lasagne-alla-bolognese"], "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "arborio-rice",
+      "title": "Rýže Arborio", "slug": "ryze-arborio", "category": "ingredient",
+      "short_definition": "Kulatozrnná italská rýže s vysokým obsahem škrobu, základ rizota.",
+      "detailed": "Při vaření uvolňuje škrob, díky kterému rizoto zhoustne do krémové konzistence, aniž by se přidávala smetana.",
+      "origin_country": "IT",
+      "related_recipes": ["risotto-alla-milanese"], "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "chorizo",
+      "title": "Chorizo", "slug": "chorizo", "category": "ingredient",
+      "short_definition": "Španělská uzená klobása kořeněná paprikou, syrová i sušená verze.",
+      "detailed": "Charakteristickou červenou barvu a kouřovou chuť dává klobáse mletá uzená paprika (pimentón). Používá se syrová do vaření i jako sušený nářez.",
+      "origin_country": "ES",
+      "related_recipes": ["paella-valenciana"], "related_countries": ["ES"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "jamon-serrano",
+      "title": "Jamón serrano", "slug": "jamon-serrano", "category": "ingredient",
+      "short_definition": "Španělská sušená šunka zrající v horských oblastech, krájená na tenké plátky.",
+      "detailed": "Vepřová kýta se nejprve solí, poté měsíce až roky zraje v suchém horském vzduchu. Podává se syrová, tence krájená.",
+      "origin_country": "ES",
+      "related_recipes": [], "related_countries": ["ES"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "bacalhau",
+      "title": "Bacalhau (sušená treska)", "slug": "bacalhau", "category": "ingredient",
+      "short_definition": "Solí konzervovaná a sušená treska, základ portugalské kuchyně.",
+      "detailed": "Před vařením se musí i několik dní odmáčet ve studené vodě, aby se zbavila přebytečné soli. V Portugalsku na ni existují stovky receptů.",
+      "origin_country": "PT",
+      "related_recipes": ["bacalhau-a-bras"], "related_countries": ["PT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "feta",
+      "title": "Feta", "slug": "feta", "category": "ingredient",
+      "short_definition": "Slaný řecký sýr z ovčího nebo kozího mléka, zrající ve slaném nálevu.",
+      "detailed": "Feta smí podle evropského chráněného označení původu pocházet jen z Řecka. Drobí se, ale nerozteče se – proto se výborně hodí do salátů i na pečení.",
+      "origin_country": "GR",
+      "related_recipes": ["spanakopita", "horiatiki"], "related_countries": ["GR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "bryndza",
+      "title": "Bryndza", "slug": "bryndza", "category": "ingredient",
+      "short_definition": "Slovenský slaný sýr z ovčího mléka s výraznou, nakyslou chutí.",
+      "detailed": "Vyrábí se z ovčího hrudkového sýra rozetřeného se solí do měkké pomazánkové konzistence. Základ bryndzových halušek i pirohů.",
+      "origin_country": "SK",
+      "related_recipes": ["bryndzove-halusky", "pirohy-bryndza"], "related_countries": ["SK"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "creme-fraiche",
+      "title": "Crème fraîche", "slug": "creme-fraiche", "category": "ingredient",
+      "short_definition": "Zakysaná smetana s vyšším obsahem tuku a jemně nakyslou chutí.",
+      "detailed": "Na rozdíl od klasické zakysané smetany snese vyšší teplotu bez sražení, takže se dobře hodí do horkých omáček.",
+      "origin_country": "FR", "substitute": "Hustá zakysaná smetana s vyšším podílem tuku.",
+      "related_recipes": [], "related_countries": ["FR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "dijon-mustard",
+      "title": "Dijonská hořčice", "slug": "dijonska-horcice", "category": "ingredient",
+      "short_definition": "Jemná francouzská hořčice z hořčičných semínek a bílého vína, bez octa.",
+      "detailed": "Vyrábí se z černé nebo hnědé hořčice a bílého vína nebo moštu, díky čemuž je jemnější a méně kyselá než klasická octová hořčice.",
+      "origin_country": "FR",
+      "related_recipes": [], "related_countries": ["FR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "polenta",
+      "title": "Polenta", "slug": "polenta", "category": "ingredient",
+      "short_definition": "Kukuřičná kaše vařená z hrubé kukuřičné mouky, italská obdoba rumunské mămăligy.",
+      "detailed": "Vaří se pomalým vmícháváním kukuřičné mouky do vroucí osolené vody nebo vývaru, dokud nezhoustne. Podává se hladká i zatuhlá, grilovaná.",
+      "origin_country": "IT",
+      "related_recipes": ["mamaliga"], "related_countries": ["IT", "RO"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "saffron",
+      "title": "Šafrán", "slug": "safran", "category": "ingredient",
+      "short_definition": "Nejdražší koření na světě, sušené blizny šafránu setého, sytě žluté barvy.",
+      "detailed": "Na jeden gram šafránu je potřeba ručně sesbírat blizny z desítek květů. Dává rýži i omáčkám charakteristickou zlatou barvu a jemně hořkou chuť.",
+      "related_recipes": ["paella-valenciana", "risotto-alla-milanese"], "related_countries": ["ES", "IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "capers",
+      "title": "Kapary", "slug": "kapary", "category": "ingredient",
+      "short_definition": "Naložené poupata keře kaparovníku, slaně kyselá chuť do omáček a salátů.",
+      "detailed": "Sbírají se ještě jako uzavřená poupata a nakládají do octa nebo soli. Malá dávka dodá jídlu výraznou slanou kyselost.",
+      "related_recipes": [], "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "prosciutto",
+      "title": "Prosciutto", "slug": "prosciutto", "category": "ingredient",
+      "short_definition": "Italská sušená šunka, nejznámější je parmská (prosciutto di Parma).",
+      "detailed": "Vepřová kýta se solí a nechává zrát nejméně rok. Podává se syrová, tence krájená, často s melounem nebo fíky.",
+      "origin_country": "IT",
+      "related_recipes": [], "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "paprika-spice",
+      "title": "Mletá paprika", "slug": "mleta-paprika", "category": "ingredient",
+      "short_definition": "Sušená a mletá paprika, základní koření maďarské kuchyně – sladká i pálivá.",
+      "detailed": "Nejkvalitnější mletá paprika pochází z okolí měst Kalocsa a Szeged. Přidává se vždy až po sundání pánve z plamene, jinak lehce zhořkne.",
+      "origin_country": "HU",
+      "related_recipes": ["gulyas", "paprikas-csirke"], "related_countries": ["HU"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "olive-oil",
+      "title": "Olivový olej", "slug": "olivovy-olej", "category": "ingredient",
+      "short_definition": "Základní tuk středomořské kuchyně, lisovaný ze zralých plodů olivovníku.",
+      "detailed": "Nejkvalitnější je extra panenský olivový olej z prvního za studena lisování – má nejvýraznější chuť a nejnižší kyselost.",
+      "related_recipes": ["gazpacho", "horiatiki"], "related_countries": ["IT", "ES", "GR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "bulgarian-yogurt",
+      "title": "Bulharský jogurt", "slug": "bulharsky-jogurt", "category": "ingredient",
+      "short_definition": "Husté kysané mléko s výraznou nakyslou chutí, spojené s bakterií Lactobacillus bulgaricus.",
+      "detailed": "Bakterie mléčného kvašení použitá při jeho výrobě je pojmenovaná přímo po Bulharsku, kde ji na počátku 20. století popsal bulharský mikrobiolog.",
+      "origin_country": "BG",
+      "related_recipes": ["tarator"], "related_countries": ["BG"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "antipasto",
+      "title": "Antipasto", "slug": "antipasto", "category": "gastronomy",
+      "short_definition": "Italský studený předkrm podávaný před hlavním chodem – uzeniny, sýry, zelenina.",
+      "detailed": "Doslova „před jídlem“. Typicky talíř s prosciuttem, olivami, marinovanou zeleninou a kouskem sýra k rozjezdu chuti k jídlu.",
+      "origin_country": "IT",
+      "related_recipes": [], "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "aperitivo",
+      "title": "Aperitivo", "slug": "aperitivo", "category": "gastronomy",
+      "short_definition": "Italský rituál předvečerního drinku s drobným občerstvením před večeří.",
+      "detailed": "Obvykle mezi 18. a 20. hodinou, kdy si Italové dají lehký alkoholický nápoj (třeba Aperol Spritz) a drobné pochutiny, aby si probudili chuť k jídlu.",
+      "origin_country": "IT",
+      "related_recipes": [], "related_countries": ["IT"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "digestif",
+      "title": "Digestiv", "slug": "digestiv", "category": "gastronomy",
+      "short_definition": "Alkoholický nápoj podávaný po jídle, který má údajně napomoci trávení.",
+      "detailed": "Obvykle silnější destilát – bylinný likér, brandy nebo grappa – podávaný v malé sklence na závěr hostiny.",
+      "related_recipes": [], "related_countries": [], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "tapas",
+      "title": "Tapas", "slug": "tapas", "category": "gastronomy",
+      "short_definition": "Malé španělské pokrmy určené ke sdílení, obvykle podávané k vínu nebo pivu.",
+      "detailed": "Od jednoduchých oliv po propracované teplé pokrmy – tapas se objednává víc druhů najednou a sdílí u stolu mezi všemi.",
+      "origin_country": "ES",
+      "related_recipes": ["tortilla-espanola", "patatas-bravas", "croquetas-de-jamon"], "related_countries": ["ES"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "meze",
+      "title": "Meze", "slug": "meze", "category": "gastronomy",
+      "short_definition": "Sdílená tabule drobných studených i teplých předkrmů typická pro Řecko a Balkán.",
+      "detailed": "Podobně jako tapas jde o způsob stolování – na stůl přichází naráz více malých mís, ze kterých si všichni nabírají společně.",
+      "origin_country": "GR",
+      "related_recipes": ["tzatziki"], "related_countries": ["GR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "terroir",
+      "title": "Terroir", "slug": "terroir", "category": "gastronomy",
+      "short_definition": "Souhrn půdy, podnebí a tradice daného místa, který otiskuje charakteristickou chuť do vína i jídla.",
+      "detailed": "Pojem z francouzského vinařství, dnes se používá i pro suroviny obecně – stejná odrůda vypěstovaná jinde chutná jinak.",
+      "origin_country": "FR",
+      "related_recipes": [], "related_countries": ["FR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "pdo-pgi",
+      "title": "Chráněné označení původu (CHOP/CHZO)", "slug": "chranene-oznaceni-puvodu", "category": "gastronomy",
+      "short_definition": "Systém EU, který chrání název potraviny vázaný na konkrétní region a tradiční postup výroby.",
+      "detailed": "Označuje se zkratkami CHOP (chráněné označení původu) a CHZO (chráněné zeměpisné označení) – například Parmigiano Reggiano nebo kranjská klobása smí nést svůj název jen při dodržení dané receptury a místa výroby.",
+      "related_recipes": ["kranjska-klobasa"], "related_countries": [], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "fika",
+      "title": "Fika", "slug": "fika", "category": "gastronomy",
+      "short_definition": "Švédský rituál odpolední přestávky na kávu a sladké pečivo, obvykle se skořicovou houskou.",
+      "detailed": "Fika není jen svačina, ale i společenská pauza – ve švédských firmách bývá i pevně zavedená v rozvrhu dne.",
+      "origin_country": "SE",
+      "related_recipes": ["kanelbullar"], "related_countries": ["SE"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "mise-en-place",
+      "title": "Mise en place", "slug": "mise-en-place", "category": "gastronomy",
+      "short_definition": "Příprava a rozvážení všech surovin a nástrojů předem, ještě než se začne vařit.",
+      "detailed": "Doslova „dát na místo“. Základní pravidlo profesionálních kuchyní – všechno nakrájené, odměřené a připravené v miskách, aby samotné vaření probíhalo plynule.",
+      "origin_country": "FR",
+      "related_recipes": [], "related_countries": ["FR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "degustation",
+      "title": "Degustace", "slug": "degustace", "category": "gastronomy",
+      "short_definition": "Ochutnávka většího počtu menších porcí jídla nebo vína za účelem posouzení chuti.",
+      "detailed": "V restauracích se degustační menu skládá z několika malých chodů tak, aby host ochutnal co nejširší škálu chutí kuchyně.",
+      "related_recipes": [], "related_countries": [], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "smorgasbord",
+      "title": "Švédský stůl (smörgåsbord)", "slug": "svedsky-stul", "category": "gastronomy",
+      "short_definition": "Švédský způsob stolování formou bohatého studeného i teplého bufetu.",
+      "detailed": "Tradičně se jí v pevném pořadí – od ryb přes studená masa až po teplé pokrmy a sýry na závěr.",
+      "origin_country": "SE",
+      "related_recipes": ["gravlax"], "related_countries": ["SE"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "paellera",
+      "title": "Paellera", "slug": "paellera", "category": "equipment",
+      "short_definition": "Široká, mělká pánev se dvěma uchy, ve které se tradičně vaří paella.",
+      "detailed": "Velký průměr a malá hloubka zajišťují, že se rýže vaří v tenké vrstvě a na dně vznikne oblíbená křupavá vrstva socarrat.",
+      "origin_country": "ES",
+      "related_recipes": ["paella-valenciana"], "related_countries": ["ES"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "mandoline",
+      "title": "Mandolína", "slug": "mandolina", "category": "equipment",
+      "short_definition": "Kuchyňský krájecí strojek na tenké a stejnoměrné plátky nebo nudličky zeleniny.",
+      "detailed": "Umožňuje rychle a stejnoměrně nakrájet zeleninu na tenké plátky, což ruční nůž jen těžko zvládne se stejnou přesností.",
+      "related_recipes": [], "related_countries": [], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "mortar-and-pestle",
+      "title": "Hmoždíř", "slug": "hmozdir", "category": "equipment",
+      "short_definition": "Miska s paličkou na drcení koření, česneku nebo bylinek.",
+      "detailed": "Drcení místo krájení uvolní z ingrediencí více silic a chuti – tradičně se v hmoždíři připravuje třeba tzatziki nebo pesto.",
+      "related_recipes": ["tzatziki"], "related_countries": ["GR"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "dutch-oven",
+      "title": "Litinový hrnec (dutch oven)", "slug": "litinovy-hrnec", "category": "equipment",
+      "short_definition": "Těžký litinový hrnec s poklicí, ideální na dlouhé dušení na sporáku i v troubě.",
+      "detailed": "Silné stěny drží stálou teplotu i při dlouhém dušení, takže jídlo neuhoří a rovnoměrně změkne.",
+      "related_recipes": ["irish-stew", "dublin-coddle"], "related_countries": ["IE"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "kitchen-thermometer",
+      "title": "Kuchyňský teploměr", "slug": "kuchynsky-teplomer", "category": "equipment",
+      "short_definition": "Nástroj na měření vnitřní teploty masa, aby se trefila přesná propečenost.",
+      "detailed": "Zvlášť u velkých kusů masa jako hovězí Wellington je vpichový teploměr jediný spolehlivý způsob, jak trefit požadovanou propečenost.",
+      "related_recipes": ["beef-wellington"], "related_countries": ["GB"], "status": "publish"
+    },
+    {
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "springform-pan",
+      "title": "Dortová forma s odnímatelným dnem", "slug": "dortova-forma-odnimatelne-dno", "category": "equipment",
+      "short_definition": "Kulatá pečicí forma s bočním zámkem, která jde po upečení rozepnout a snadno vyjmout dort.",
+      "detailed": "Nepostradatelná u vlhkých nebo vrstvených dortů typu Sachertorte nebo Dobos torta, které by se z klasické formy jen těžko vyklápěly celé.",
+      "related_recipes": ["sachertorte", "dobos-torta"], "related_countries": ["AT", "HU"], "status": "publish"
+    }
+  ]
+}
