@@ -35,6 +35,7 @@ require_once ATLAS_CHUTI_DIR . 'includes/class-ingredient-meta-box.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-servings.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-search.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-seo.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-qrcode.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-json-importer.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-admin.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-continent-image.php';

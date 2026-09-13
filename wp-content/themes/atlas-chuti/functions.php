@@ -51,6 +51,18 @@ function atlas_chuti_enqueue_assets() {
 
 	if ( is_singular( 'atlas_recipe' ) ) {
 		wp_enqueue_script( 'atlas-chuti-servings', ATLAS_THEME_URL . '/assets/js/servings.js', array(), ATLAS_THEME_VERSION, true );
+
+		// A separate localized object (not AtlasChutiL10n) so this never collides with
+		// the passport.js localization also enqueued on this template (item 7 of KROK 2).
+		wp_enqueue_script( 'atlas-chuti-recipe-actions', ATLAS_THEME_URL . '/assets/js/recipe-actions.js', array(), ATLAS_THEME_VERSION, true );
+		wp_localize_script(
+			'atlas-chuti-recipe-actions',
+			'AtlasChutiShareL10n',
+			array(
+				'shareLinkCopied' => __( 'Odkaz zkopírován', 'atlas-chuti' ),
+				'shareCopyPrompt' => __( 'Zkopírujte odkaz:', 'atlas-chuti' ),
+			)
+		);
 	}
 
 	if ( is_singular( 'atlas_recipe' ) || is_singular( 'atlas_country' ) || is_page_template( 'template-passport.php' ) || is_front_page() ) {

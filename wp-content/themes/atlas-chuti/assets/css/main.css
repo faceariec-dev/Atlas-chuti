@@ -562,18 +562,20 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 
 .ingredient-panel { background: var(--bg-cream); border-radius: var(--radius-lg); padding: var(--space-6); position: sticky; top: 96px; }
 @media (max-width: 900px) { .ingredient-panel { position: static; } }
-.ingredient-list { display: flex; flex-direction: column; }
+/* ul/ol here (KROK 2, item 9/10 — real list semantics; markup unchanged otherwise
+   so servings.js's [data-ingredient-list]/[data-index]/.amount contract still holds). */
+.ingredient-list, .steps-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .ingredient-row { display: flex; justify-content: space-between; gap: 16px; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); font-size: 15px; }
 .ingredient-row:last-child { border-bottom: none; }
 .ingredient-row .name { color: var(--color-text); }
 .ingredient-row .amount { color: var(--color-ink); font-weight: 600; white-space: nowrap; }
-.ingredient-row .group-label { padding: var(--space-4) 0 var(--space-1); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-terracotta); font-weight: 700; }
-.ingredient-row .group-label:first-child { padding-top: 0; }
+.ingredient-list .group-label { padding: var(--space-4) 0 var(--space-1); font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-terracotta); font-weight: 700; }
+.ingredient-list .group-label:first-child { padding-top: 0; }
 
-.steps-list { display: flex; flex-direction: column; gap: var(--space-8); }
+.steps-list { gap: var(--space-8); }
 .step-row { display: flex; gap: var(--space-5); }
 .step-num { flex-shrink: 0; font-family: var(--font-display); font-size: 30px; font-weight: 600; color: var(--color-terracotta); line-height: 1.3; min-width: 46px; }
-.step-text { font-size: 16px; color: var(--color-text); line-height: 1.65; margin: 6px 0 0; }
+.step-text { font-size: 16px; color: var(--color-text); line-height: 1.65; margin: 6px 0 0; max-width: 62ch; }
 
 .callout { border-radius: var(--radius-md); padding: var(--space-6) var(--space-8); border-left: 3px solid var(--color-terracotta); }
 .callout h3 { font-size: 19px; margin: 0 0 8px; }
@@ -582,6 +584,99 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 .variant-row { display: flex; gap: 10px; font-size: 15px; color: var(--color-text); line-height: 1.55; padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
 .variant-row:last-child { border-bottom: none; }
 .variant-row strong { color: var(--color-ink); }
+
+/* Recipe intro (KROK 2, item 4) — title → original title → country/cuisine meta →
+   perex → photo, always in this order in the markup; CSS only ever changes spacing,
+   never reorders these (no visual-order tricks that would desync from reading/DOM
+   order for keyboard or screen-reader users). */
+.recipe-intro { padding-top: var(--space-10); padding-bottom: var(--space-8); display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+.recipe-intro h1 { margin: 0; max-width: var(--container-text); }
+.recipe-original-title { margin: 0; color: var(--color-muted); font-style: italic; font-size: 18px; }
+.recipe-origin-meta { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--color-ink); }
+.recipe-origin-meta a { color: inherit; }
+.recipe-origin-meta a:hover { color: var(--color-terracotta); }
+.recipe-perex { font-size: 19px; color: var(--color-text); max-width: var(--container-text); margin: 0; }
+.recipe-hero-media { width: 100%; border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16/9; background: linear-gradient(150deg, var(--bg-terracotta), var(--bg-saffron)); margin-top: var(--space-2); }
+.recipe-hero-media img, .recipe-hero-media .fallback-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.recipe-hero-media .placeholder-media { border-radius: var(--radius-lg); }
+.recipe-photo-credit { font-size: 12px; color: var(--color-muted); margin: 6px 0 0; }
+@media (max-width: 767px) {
+	.recipe-intro { padding-top: var(--space-6); gap: var(--space-3); }
+	.recipe-perex { font-size: 17px; }
+}
+
+/* Action bar (KROK 2, item 7) — Tisk + Sdílet are really wired up (recipe-actions.js);
+   Uvařil/a jsem is the pre-existing, already-functional passport.js toggle, just
+   restyled to match; Oblíbené/Ohodnotit/Komentáře reuse the same "brzy" inert
+   pattern as the primary nav's not-yet-built sections (nav .is-soon) rather than
+   pretending to be clickable. */
+.recipe-action-bar { display: flex; flex-wrap: wrap; gap: var(--space-3); padding: var(--space-5) 0 var(--space-8); }
+.recipe-action-btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: var(--radius-sm); border: 1.5px solid var(--color-border); background: var(--color-white); color: var(--color-ink); font-size: 14px; font-weight: 600; font-family: inherit; text-decoration: none; transition: border-color 0.15s var(--ease), color 0.15s var(--ease), background-color 0.15s var(--ease); }
+.recipe-action-btn:hover { border-color: var(--color-terracotta); color: var(--color-terracotta); }
+.recipe-action-btn.is-active { background: var(--color-ink); color: #fff; border-color: var(--color-ink); }
+.recipe-action-btn.is-active:hover { color: #fff; }
+.recipe-action-btn.is-soon { color: var(--color-muted); cursor: default; background: var(--bg-cream); }
+.recipe-action-btn.is-soon:hover { border-color: var(--color-border); color: var(--color-muted); }
+.recipe-action-btn .soon-tag { margin-left: 2px; }
+@media (max-width: 480px) {
+	.recipe-action-bar { gap: 8px; }
+	.recipe-action-btn { padding: 0 14px; font-size: 13px; }
+}
+
+/* Recipe 2/3 main + 1/3 sidebar layout (KROK 2, item 2). At the 1220px container
+   width this yields a ~796px main column, inside the 780-820px target, without a
+   separate max-width override; collapses at the same 1099px breakpoint the rest of
+   the site uses for its other major two-column layouts (hero-grid, continent-grid). */
+.recipe-layout { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-10); align-items: start; }
+.recipe-main { min-width: 0; }
+.recipe-sidebar { display: flex; flex-direction: column; gap: var(--space-6); }
+@media (max-width: 1099px) {
+	.recipe-layout { grid-template-columns: 1fr; }
+	.recipe-sidebar { order: 3; }
+}
+
+.sidebar-recipe-list { display: flex; flex-direction: column; gap: var(--space-4); }
+.sidebar-recipe-item { display: flex; gap: var(--space-3); text-decoration: none; color: inherit; }
+.sidebar-recipe-media { width: 64px; height: 64px; flex-shrink: 0; border-radius: var(--radius-sm); overflow: hidden; }
+.sidebar-recipe-media img, .sidebar-recipe-media .fallback-photo, .sidebar-recipe-media .placeholder-media { width: 100%; height: 100%; object-fit: cover; font-size: 10px; }
+.sidebar-recipe-body h3 { font-size: 14px; margin: 0 0 4px; line-height: 1.35; }
+.sidebar-recipe-item:hover h4 { color: var(--color-terracotta); }
+.sidebar-recipe-meta { font-size: 12px; color: var(--color-muted); }
+
+.sidebar-featured-card { display: block; text-decoration: none; color: inherit; }
+.sidebar-featured-card .card-media { aspect-ratio: 4/3; border-radius: var(--radius-md); margin-bottom: var(--space-3); }
+.sidebar-featured-card h3 { font-size: 16px; margin: 0; }
+.sidebar-featured-card:hover h4 { color: var(--color-terracotta); }
+
+/* Print (KROK 2, item 8) — scoped to body.single-atlas_recipe so no other
+   template's print output changes; @media print didn't exist anywhere before this.
+   Most required content (title, original title, perex, metadata, ingredients,
+   steps, tips) is already in the DOM and simply stays visible once the surrounding
+   chrome is hidden; only the source line + full URL + QR are print-exclusive,
+   added once in the template and toggled on here. */
+.print-only { display: none; }
+@media print {
+	body.single-atlas_recipe .site-header,
+	body.single-atlas_recipe .breadcrumbs,
+	body.single-atlas_recipe .site-footer,
+	body.single-atlas_recipe .recipe-action-bar,
+	body.single-atlas_recipe .recipe-sidebar,
+	body.single-atlas_recipe .recipe-related-section,
+	body.single-atlas_recipe .recipe-community-hook,
+	body.single-atlas_recipe .skip-link,
+	body.single-atlas_recipe .no-print {
+		display: none !important;
+	}
+	body.single-atlas_recipe { background: #fff; }
+	body.single-atlas_recipe .print-only { display: block; }
+	body.single-atlas_recipe .recipe-layout { display: block; }
+	body.single-atlas_recipe .container,
+	body.single-atlas_recipe .container-narrow { max-width: none; padding: 0; }
+	body.single-atlas_recipe .ingredient-panel { position: static; background: none; padding: 0; }
+	body.single-atlas_recipe a { color: #000; text-decoration: none; }
+	body.single-atlas_recipe .recipe-print-footer { margin-top: 24px; padding-top: 16px; border-top: 1px solid #000; display: flex; align-items: center; gap: 16px; }
+	body.single-atlas_recipe .recipe-print-url { font-size: 12px; word-break: break-all; }
+}
 
 /* Facts strip (country) ---------------------------------------------------------------- */
 .facts-grid { display: flex; flex-wrap: wrap; padding: var(--space-6) 0; }

@@ -10,19 +10,44 @@ if ( ! defined( 'ABSPATH' ) ) {
  * $fallback_continent for the continent-specific chain); when neither exists,
  * the original generic placeholder block (item 24 of the brief — never a
  * broken image). A real featured image always wins over any fallback.
+ *
+ * $eager (KROK 2, item 5): the recipe hero photo is very often the LCP element,
+ * so its caller can opt out of the default lazy-loading — everything else keeps
+ * behaving exactly as before (default false, so every existing call site is
+ * unaffected).
  */
-function atlas_chuti_media( $post_id, $size = 'atlas-card', $placeholder_label = '', $fallback_context = '', $fallback_continent = '' ) {
+function atlas_chuti_media( $post_id, $size = 'atlas-card', $placeholder_label = '', $fallback_context = '', $fallback_continent = '', $eager = false ) {
 	if ( has_post_thumbnail( $post_id ) ) {
-		return get_the_post_thumbnail( $post_id, $size, array( 'loading' => 'lazy' ) );
+		$attrs = $eager
+			? array( 'loading' => 'eager', 'fetchpriority' => 'high' )
+			: array( 'loading' => 'lazy' );
+		return get_the_post_thumbnail( $post_id, $size, $attrs );
 	}
 	if ( $fallback_context ) {
-		$fallback = atlas_chuti_fallback_image_html( $fallback_context, $fallback_continent, get_the_title( $post_id ) );
+		$extra_attrs = $eager ? array( 'loading' => 'eager', 'fetchpriority' => 'high' ) : array();
+		$fallback    = atlas_chuti_fallback_image_html( $fallback_context, $fallback_continent, get_the_title( $post_id ), $extra_attrs );
 		if ( $fallback ) {
 			return $fallback;
 		}
 	}
 	$label = $placeholder_label ?: get_the_title( $post_id );
 	return '<div class="placeholder-media"><span>' . esc_html( $label ) . '</span></div>';
+}
+
+/**
+ * Renders whatever is hooked to $hook_name inside a `<div class="$wrapper_class">`,
+ * or nothing at all when the hook has no callbacks (KROK 2, items 12/13.3/13.5 — ad
+ * slot, tag system, community features: prepared extension points, never an empty
+ * visible box, since nothing is hooked yet in this step).
+ */
+function atlas_chuti_hook_slot( $hook_name, $wrapper_class, ...$args ) {
+	ob_start();
+	do_action( $hook_name, ...$args );
+	$html = trim( ob_get_clean() );
+	if ( '' === $html ) {
+		return;
+	}
+	echo '<div class="' . esc_attr( $wrapper_class ) . '">' . $html . '</div>';
 }
 
 /**
