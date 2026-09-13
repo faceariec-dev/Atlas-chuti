@@ -43,13 +43,18 @@ function atlas_chuti_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'atlas_chuti_customize_register' );
 
 /**
- * Returns the hero <img> markup, or an empty string when no image is set — callers
- * (front-page.php) must handle the empty case gracefully, never assume a photo exists.
+ * Returns the hero <img> markup: the real photo when one is set, else the
+ * illustrative homepage-hero fallback (inc/fallback-images.php), else an empty
+ * string — front-page.php's own placeholder-media branch is the final fallback,
+ * so an empty return here can never mean a broken image or an empty box. Eager/
+ * high-priority in both the real and fallback case: this is the above-the-fold
+ * LCP element, never lazy-loaded.
  */
 function atlas_chuti_hero_image_html() {
 	$attachment_id = get_theme_mod( 'atlas_hero_image_id' );
-	if ( ! $attachment_id ) {
-		return '';
+	$attrs         = array( 'class' => 'hero-photo', 'loading' => 'eager', 'fetchpriority' => 'high' );
+	if ( $attachment_id ) {
+		return wp_get_attachment_image( $attachment_id, 'atlas-hero', false, $attrs );
 	}
-	return wp_get_attachment_image( $attachment_id, 'atlas-hero', false, array( 'class' => 'hero-photo', 'loading' => 'eager', 'fetchpriority' => 'high' ) );
+	return atlas_chuti_fallback_image_html( 'homepage-hero', '', __( 'Atlas chutí', 'atlas-chuti' ), $attrs );
 }

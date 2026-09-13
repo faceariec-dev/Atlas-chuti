@@ -4,12 +4,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Returns a featured-image <img> tag, or an elegant placeholder block when the
- * post has none yet (item 24 of the brief — never a broken image).
+ * Returns a featured-image <img> tag; when the post has none yet, an
+ * illustrative fallback image for $fallback_context (see
+ * inc/fallback-images.php — 'recipe' or 'country', 'country' optionally with
+ * $fallback_continent for the continent-specific chain); when neither exists,
+ * the original generic placeholder block (item 24 of the brief — never a
+ * broken image). A real featured image always wins over any fallback.
  */
-function atlas_chuti_media( $post_id, $size = 'atlas-card', $placeholder_label = '' ) {
+function atlas_chuti_media( $post_id, $size = 'atlas-card', $placeholder_label = '', $fallback_context = '', $fallback_continent = '' ) {
 	if ( has_post_thumbnail( $post_id ) ) {
 		return get_the_post_thumbnail( $post_id, $size, array( 'loading' => 'lazy' ) );
+	}
+	if ( $fallback_context ) {
+		$fallback = atlas_chuti_fallback_image_html( $fallback_context, $fallback_continent, get_the_title( $post_id ) );
+		if ( $fallback ) {
+			return $fallback;
+		}
 	}
 	$label = $placeholder_label ?: get_the_title( $post_id );
 	return '<div class="placeholder-media"><span>' . esc_html( $label ) . '</span></div>';

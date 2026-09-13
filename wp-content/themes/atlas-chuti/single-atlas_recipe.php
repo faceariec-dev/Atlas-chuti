@@ -62,7 +62,7 @@ while ( have_posts() ) :
 				<?php if ( $excerpt ) : ?><p class="lede" style="max-width:none;"><?php echo esc_html( $excerpt ); ?></p><?php endif; ?>
 			</div>
 			<div class="hero-media" style="aspect-ratio:4/3;">
-				<?php echo atlas_chuti_media( $post_id, 'atlas-hero' ); ?>
+				<?php echo atlas_chuti_media( $post_id, 'atlas-hero', '', 'recipe' ); ?>
 			</div>
 		</div>
 	</section>

@@ -284,8 +284,11 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
    border-radius, no drop-shadow by default (only a lift on hover). */
 .card { display: flex; flex-direction: column; text-decoration: none; color: inherit; background: var(--color-white); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border); height: 100%; transition: border-color 0.15s var(--ease), transform 0.15s var(--ease); }
 .card:hover { border-color: var(--color-sage); transform: translateY(-2px); }
-.card-media { width: 100%; aspect-ratio: 4/3; background: var(--bg-sage) center/cover no-repeat; position: relative; }
+.card-media { width: 100%; aspect-ratio: 4/3; background: var(--bg-sage) center/cover no-repeat; position: relative; overflow: hidden; }
 .card-media.is-tall { aspect-ratio: 5/4; }
+/* Real featured-image / fallback-image <img> fills the card, cropped to its
+   aspect-ratio box — otherwise it would just flow in at its natural size. */
+.card-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .card-body { padding: var(--space-4) var(--space-5) var(--space-5); display: flex; flex-direction: column; gap: 7px; }
 .card-eyebrow { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--color-muted); font-weight: 500; }
 .card-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; margin: 0; color: var(--color-ink); line-height: 1.25; }
@@ -365,7 +368,8 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 
 /* Featured recipe banner (home) — editorial, not "just another card". ------------ */
 .featured-banner { display: grid; grid-template-columns: 2fr 1fr; border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; }
-.featured-banner-media { min-height: 420px; background: var(--bg-sage) center/cover no-repeat; }
+.featured-banner-media { min-height: 420px; background: var(--bg-sage) center/cover no-repeat; overflow: hidden; }
+.featured-banner-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .featured-banner-body { padding: var(--space-10); display: flex; flex-direction: column; justify-content: center; gap: var(--space-3); }
 .featured-banner-body h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.15; margin: 0; }
 .featured-banner-body p { color: var(--color-text); margin: 0; }

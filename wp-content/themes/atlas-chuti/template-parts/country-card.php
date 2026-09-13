@@ -9,9 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 $post_id     = $args['post_id'];
 $description = get_post_meta( $post_id, 'atlas_intro', true );
 $count       = atlas_chuti_count_recipes_for_country( $post_id );
+$continent   = get_the_terms( $post_id, 'atlas_continent' );
+$continent_slug = ( $continent && ! is_wp_error( $continent ) ) ? $continent[0]->slug : '';
 ?>
 <a class="card" href="<?php echo esc_url( get_permalink( $post_id ) ); ?>">
-	<div class="card-media is-tall"><?php echo atlas_chuti_media( $post_id, 'atlas-card-tall' ); ?></div>
+	<div class="card-media is-tall"><?php echo atlas_chuti_media( $post_id, 'atlas-card-tall', '', 'country', $continent_slug ); ?></div>
 	<div class="card-body">
 		<div class="card-eyebrow" style="gap:9px;">
 			<span style="font-size:20px;"><?php echo esc_html( atlas_chuti_flag( $post_id ) ); ?></span>

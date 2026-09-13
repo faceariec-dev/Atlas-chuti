@@ -61,7 +61,7 @@ $hero_image      = atlas_chuti_hero_image_html();
 <section class="section bg-saffron-tint">
 	<div class="container">
 		<a class="featured-banner" href="<?php echo esc_url( get_permalink( $featured_recipe ) ); ?>">
-			<div class="featured-banner-media"><?php echo atlas_chuti_media( $featured_recipe->ID, 'atlas-hero' ); ?></div>
+			<div class="featured-banner-media"><?php echo atlas_chuti_media( $featured_recipe->ID, 'atlas-hero', '', 'recipe' ); ?></div>
 			<div class="featured-banner-body">
 				<span class="kicker is-saffron"><?php esc_html_e( 'Dnes ochutnejte', 'atlas-chuti' ); ?></span>
 				<?php if ( $fr_country ) : ?>

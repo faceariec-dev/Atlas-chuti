@@ -9,6 +9,7 @@ while ( have_posts() ) :
 	$post_id     = get_the_ID();
 	$continent   = get_the_terms( $post_id, 'atlas_continent' );
 	$continent_name = $continent && ! is_wp_error( $continent ) ? $continent[0]->name : '';
+	$continent_slug = $continent && ! is_wp_error( $continent ) ? $continent[0]->slug : '';
 
 	$facts = array_filter(
 		array(
@@ -58,7 +59,7 @@ while ( have_posts() ) :
 				</button>
 			</div>
 			<div class="hero-media" style="aspect-ratio:4/3;">
-				<?php echo atlas_chuti_media( $post_id, 'atlas-hero', get_the_title() ); ?>
+				<?php echo atlas_chuti_media( $post_id, 'atlas-hero', get_the_title(), 'country', $continent_slug ); ?>
 			</div>
 		</div>
 	</section>

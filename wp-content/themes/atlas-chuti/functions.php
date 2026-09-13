@@ -120,6 +120,7 @@ add_filter( 'wp_lazy_loading_enabled', '__return_true' );
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
+require ATLAS_THEME_DIR . '/inc/fallback-images.php';
 require ATLAS_THEME_DIR . '/inc/template-tags.php';
 require ATLAS_THEME_DIR . '/inc/passport-support.php';
 require ATLAS_THEME_DIR . '/inc/archive-filters.php';

@@ -612,11 +612,27 @@ class Atlas_Chuti_JSON_Importer {
 		return sprintf( __( 'Chybí povinná pole: %s', 'atlas-chuti' ), implode( ', ', $missing ) );
 	}
 
-	private function status_would( $existing ) {
+	private function label_unchanged() {
+		return __( 'beze změny', 'atlas-chuti' );
+	}
+
+	/**
+	 * $existing: found post (or null/false). $unchanged: only meaningful when
+	 * $existing is truthy — true when post_matches_item()/ingredient_matches_item()
+	 * determined the importer-owned data is identical, so dry-run can report
+	 * "beze změny" instead of the ambiguous "bude aktualizováno" (Goal A).
+	 */
+	private function status_would( $existing, $unchanged = false ) {
+		if ( $existing && $unchanged ) {
+			return $this->label_unchanged();
+		}
 		return $existing ? __( 'bude aktualizováno', 'atlas-chuti' ) : __( 'bude vytvořeno', 'atlas-chuti' );
 	}
 
-	private function status_done( $existing ) {
+	private function status_done( $existing, $unchanged = false ) {
+		if ( $existing && $unchanged ) {
+			return $this->label_unchanged();
+		}
 		return $existing ? __( 'aktualizováno', 'atlas-chuti' ) : __( 'vytvořeno', 'atlas-chuti' );
 	}
 
@@ -794,6 +810,209 @@ class Atlas_Chuti_JSON_Importer {
 		return isset( $planned[ $kind ][ $this->planned_key( $locale, $key ) ] );
 	}
 
+	// ---------------------------------------------------------------------
+	// Idempotence: "would this write actually change anything?" (Goal A)
+	// ---------------------------------------------------------------------
+
+	/**
+	 * Whether a taxonomy's CURRENT term slugs on $post_id differ from the slugs this
+	 * import would assign. Order never matters for a taxonomy assignment (it's a
+	 * set, not an authored sequence — item A3's "stabilní pořadí tam, kde pořadí
+	 * nemá význam"), so both sides are sorted before comparing.
+	 */
+	private function term_keys_differ( $post_id, $taxonomy, array $incoming_keys ) {
+		$incoming = array_values( array_unique( array_map( 'sanitize_title', $incoming_keys ) ) );
+		sort( $incoming );
+		$current = wp_get_post_terms( $post_id, $taxonomy, array( 'fields' => 'slugs' ) );
+		if ( is_wp_error( $current ) ) {
+			$current = array();
+		}
+		sort( $current );
+		return $incoming !== $current;
+	}
+
+	/**
+	 * Same idea as term_keys_differ() but by term ID — used where the target term is
+	 * already resolved to a real term ID (e.g. atlas_country_tax on a recipe, resolved
+	 * via Country_Sync::get_term_id_for_country_post()) rather than an importer-owned
+	 * slug key, so there's nothing to sanitize_title() on the incoming side.
+	 */
+	private function term_ids_differ( $post_id, $taxonomy, array $incoming_ids ) {
+		$incoming = array_values( array_unique( array_map( 'intval', $incoming_ids ) ) );
+		sort( $incoming );
+		$current = wp_get_post_terms( $post_id, $taxonomy, array( 'fields' => 'ids' ) );
+		if ( is_wp_error( $current ) ) {
+			$current = array();
+		}
+		$current = array_map( 'intval', $current );
+		sort( $current );
+		return $incoming !== $current;
+	}
+
+	/**
+	 * Whether writing $value to $meta_key on $post_id would actually change it —
+	 * pass 2's own lightweight idempotence guard (item A3) for the relation fields
+	 * pass 1 can't diff yet (see post_matches_item()'s docblock). Post IDs are
+	 * order-insensitive here (they're a resolved set, not an authored sequence), so
+	 * both sides are sorted before comparing when $value is a list.
+	 */
+	private function meta_differs( $post_id, $meta_key, $value ) {
+		$current = get_post_meta( $post_id, $meta_key, true );
+		if ( is_array( $value ) && is_array( $current ) ) {
+			$a = $value;
+			$b = $current;
+			sort( $a );
+			sort( $b );
+			return $a != $b; // phpcs:ignore WordPress.PHP.StrictComparisons -- loose compare mirrors post_matches_item()'s field diff.
+		}
+		return $value != $current; // phpcs:ignore WordPress.PHP.StrictComparisons -- loose compare mirrors post_matches_item()'s field diff.
+	}
+
+	/**
+	 * The centralized comparison this phase's brief asks for (item A10): true when
+	 * re-importing $item would leave $post_id exactly as it already is. Used by BOTH
+	 * dry-run and the live import (item A5/C4 — one comparison, not two rulebooks
+	 * that could drift), and only ever asked about fields this importer actually
+	 * owns:
+	 *   - title / slug / status,
+	 *   - $extra_meta — identity meta this entity's write path always/conditionally
+	 *     sets (atlas_iso_code, atlas_locale, atlas_translation_group, …), passed in
+	 *     by the caller already computed exactly as its own write path would compute
+	 *     it, so diff and write can never disagree about what the "right" value is,
+	 *   - every $fields entry EXCEPT post_ref/post_ref_list (those are relation
+	 *     fields resolved only in pass 2 — see resolve_*_refs()'s own idempotence
+	 *     guards below — comparing them here would need the exact same resolution
+	 *     pass-1 doesn't have all the data for yet, e.g. a forward reference to a
+	 *     recipe later in the same batch),
+	 *   - $taxonomy_plan — taxonomies THIS entity's pass-1 write resolves, e.g.
+	 *     atlas_continent for a country.
+	 * A JSON key the item doesn't include is never compared (array_key_exists()
+	 * guard) — exactly mirroring the write loop's own guard, so "not part of this
+	 * import" means "ignore it" on both the read and the write side (item A4):
+	 * never a reason to report a change, never a reason to touch it.
+	 *
+	 * Every field value is normalized through the SAME
+	 * Atlas_Chuti_Meta_Fields::sanitize() the write path itself calls before
+	 * storing it — one normalization rule per field type, not a second, parallel
+	 * comparison rulebook (item A3: trims, canonical bool/unit handling, etc. all
+	 * come from that single place).
+	 */
+	private function post_matches_item( $post_id, $title, $slug, $status, $item, $fields, $extra_meta = array(), $taxonomy_plan = array() ) {
+		if ( get_post_field( 'post_title', $post_id ) !== $title ) {
+			return false;
+		}
+		if ( get_post_field( 'post_name', $post_id ) !== $slug ) {
+			return false;
+		}
+		if ( get_post_status( $post_id ) !== $status ) {
+			return false;
+		}
+
+		foreach ( $extra_meta as $meta_key => $incoming_value ) {
+			if ( (string) get_post_meta( $post_id, $meta_key, true ) !== (string) $incoming_value ) {
+				return false;
+			}
+		}
+
+		foreach ( $fields as $key => $field ) {
+			if ( in_array( $field['type'], array( 'post_ref', 'post_ref_list' ), true ) ) {
+				continue;
+			}
+			if ( ! array_key_exists( $key, $item ) ) {
+				continue;
+			}
+			$shape    = $field['shape'] ?? array();
+			$types    = $field['types'] ?? array();
+			$incoming = Atlas_Chuti_Meta_Fields::sanitize( $field['type'], $item[ $key ], $shape, $types );
+			$current  = Atlas_Chuti_Meta_Fields::sanitize( $field['type'], get_post_meta( $post_id, Atlas_Chuti_Meta_Fields::meta_key( $key ), true ), $shape, $types );
+			if ( $incoming != $current ) { // phpcs:ignore WordPress.PHP.StrictComparisons -- deliberate loose compare: order-insensitive for associative sub-shapes, still positional (so order-sensitive) for plain indexed lists like steps/ingredients — see the class docblock above.
+				return false;
+			}
+		}
+
+		foreach ( $taxonomy_plan as $taxonomy => $incoming_keys ) {
+			if ( $this->term_keys_differ( $post_id, $taxonomy, $incoming_keys ) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Ingredient-specific version of the same idea: ingredients don't go through the
+	 * generic Meta_Fields loop when writing (aliases/default_unit are written by
+	 * hand in import_ingredient()), so their comparison mirrors that by hand too —
+	 * still normalized through the exact same sanitize() call the write path uses.
+	 */
+	private function ingredient_matches_item( $post_id, $item, $title, $slug, $ingredient_key ) {
+		if ( get_post_field( 'post_title', $post_id ) !== $title ) {
+			return false;
+		}
+		if ( get_post_field( 'post_name', $post_id ) !== $slug ) {
+			return false;
+		}
+		if ( (string) get_post_meta( $post_id, 'atlas_ingredient_key', true ) !== (string) $ingredient_key ) {
+			return false;
+		}
+
+		$incoming_aliases = Atlas_Chuti_Meta_Fields::sanitize( 'string_list', $item['aliases'] ?? array() );
+		$current_aliases  = Atlas_Chuti_Meta_Fields::sanitize( 'string_list', get_post_meta( $post_id, 'atlas_aliases', true ) );
+		sort( $incoming_aliases );
+		sort( $current_aliases );
+		if ( $incoming_aliases !== $current_aliases ) {
+			return false;
+		}
+
+		$incoming_unit = sanitize_text_field( (string) ( $item['default_unit'] ?? '' ) );
+		$current_unit  = sanitize_text_field( (string) get_post_meta( $post_id, 'atlas_default_unit', true ) );
+		return $incoming_unit === $current_unit;
+	}
+
+	/**
+	 * The atlas_translation_group/atlas_translation_status extra_meta pair shared by
+	 * country/glossary/recipe, computed the same way apply_i18n_meta() itself would
+	 * write them — translation_status only when the item actually supplies a valid
+	 * one (apply_i18n_meta()'s own guard), translation_group defaulting per-caller
+	 * (each of import_country()/import_glossary()/import_recipe() passes its own
+	 * default, matching what its own wp_insert_post() meta_input already computes).
+	 */
+	/**
+	 * traditional_dishes[].recipe_id is a soft reference resolved only in pass 2
+	 * (resolve_country_refs()) — the raw JSON value is a slug like
+	 * "spaghetti-carbonara", but once resolved the stored meta holds the real
+	 * numeric post ID. Comparing that sub-field directly (as the generic
+	 * post_matches_item() field loop would) means an already-resolved country
+	 * NEVER matches its own unresolved JSON again — a false "changed" on every
+	 * re-import. So `traditional_dishes` is excluded from country_fields()'s
+	 * generic loop (see import_country()) and compared here instead, on name/note
+	 * only — recipe_id resolution correctness is resolve_country_refs()'s own job
+	 * (it has its own idempotence guard).
+	 */
+	private function traditional_dishes_differ( $post_id, $incoming_dishes ) {
+		$shape = array( 'name', 'note', 'recipe_id' );
+		$strip = function ( $rows ) {
+			return array_map(
+				function ( $row ) {
+					unset( $row['recipe_id'] );
+					return $row;
+				},
+				$rows
+			);
+		};
+		$incoming = $strip( Atlas_Chuti_Meta_Fields::sanitize( 'repeater', $incoming_dishes, $shape ) );
+		$current  = $strip( Atlas_Chuti_Meta_Fields::sanitize( 'repeater', get_post_meta( $post_id, 'atlas_traditional_dishes', true ), $shape ) );
+		return $incoming != $current; // phpcs:ignore WordPress.PHP.StrictComparisons -- see post_matches_item()'s docblock.
+	}
+
+	private function i18n_extra_meta( $item, $translation_group ) {
+		$extra = array( 'atlas_translation_group' => $translation_group );
+		if ( ! empty( $item['translation_status'] ) && in_array( $item['translation_status'], self::VALID_TRANSLATION_STATUS, true ) ) {
+			$extra['atlas_translation_status'] = $item['translation_status'];
+		}
+		return $extra;
+	}
+
 	private function validate_required( $item, $required_keys ) {
 		$missing = array();
 		foreach ( $required_keys as $key ) {
@@ -817,9 +1036,14 @@ class Atlas_Chuti_JSON_Importer {
 		$slug       = isset( $item['slug'] ) ? sanitize_title( $item['slug'] ) : sanitize_title( $title );
 		$stable_key = $this->stable_key_for( 'atlas_ingredient', $item, $slug );
 		$existing   = ( $stable_key ? Atlas_Chuti_I18N::find_ingredient_by_key( $stable_key, $locale ) : null ) ?: $this->find_existing( 'atlas_ingredient', $slug, $locale );
+		$unchanged  = $existing && $this->ingredient_matches_item( $existing->ID, $item, $title, $slug, $stable_key ?: $slug );
 
 		if ( $dry_run ) {
-			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok' );
+			return $this->row( $title, $this->status_would( $existing, $unchanged ), $existing ? 'skip' : 'ok' );
+		}
+
+		if ( $unchanged ) {
+			return $this->row( $title, $this->status_done( $existing, true ), 'ok' );
 		}
 
 		// atlas_ingredient_key/atlas_locale go through `meta_input` so they're already
@@ -900,8 +1124,50 @@ class Atlas_Chuti_JSON_Importer {
 		// — what a re-import recognizes "this is the same country, same language" by.
 		$existing = Atlas_Chuti_I18N::find_country_by_iso( $stable_key, $locale ) ?: $this->find_existing( 'atlas_country', $slug, $locale );
 
+		$unchanged = false;
+		if ( $existing ) {
+			// Mirrors apply_i18n_meta()'s OWN conditional guards exactly (unlike
+			// glossary/recipe, country only writes translation_group/status when the
+			// item actually supplies them) — see i18n_extra_meta()'s docblock.
+			$extra_meta = array(
+				'atlas_iso_code' => strtoupper( $item['iso_code'] ),
+				'atlas_locale'   => $locale,
+			);
+			if ( ! empty( $item['translation_group'] ) ) {
+				$extra_meta['atlas_translation_group'] = sanitize_title( $item['translation_group'] );
+			}
+			if ( ! empty( $item['translation_status'] ) && in_array( $item['translation_status'], self::VALID_TRANSLATION_STATUS, true ) ) {
+				$extra_meta['atlas_translation_status'] = $item['translation_status'];
+			}
+			$taxonomy_plan = array();
+			if ( ! empty( $item['continent'] ) ) {
+				$taxonomy_plan['atlas_continent'] = array( $item['continent'] );
+			}
+			// traditional_dishes is excluded here — see traditional_dishes_differ()'s
+			// docblock — and checked separately below instead.
+			$diffable_fields = Atlas_Chuti_Meta_Fields::country_fields();
+			unset( $diffable_fields['traditional_dishes'] );
+			$unchanged = $this->post_matches_item(
+				$existing->ID,
+				$title,
+				$slug,
+				$item['status'] ?? 'publish',
+				$item,
+				$diffable_fields,
+				$extra_meta,
+				$taxonomy_plan
+			);
+			if ( $unchanged && array_key_exists( 'traditional_dishes', $item ) && $this->traditional_dishes_differ( $existing->ID, $item['traditional_dishes'] ) ) {
+				$unchanged = false;
+			}
+		}
+
 		if ( $dry_run ) {
-			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok' );
+			return $this->row( $title, $this->status_would( $existing, $unchanged ), $existing ? 'skip' : 'ok' );
+		}
+
+		if ( $unchanged ) {
+			return $this->row( $title, $this->status_done( $existing, true ), 'ok' );
 		}
 
 		// Step 1: create/update the profile itself (title/slug/status), with iso_code
@@ -991,9 +1257,33 @@ class Atlas_Chuti_JSON_Importer {
 		$stable_key = $this->stable_key_for( 'atlas_glossary', $item, $slug );
 		$existing   = ( $stable_key ? Atlas_Chuti_I18N::find_by_translation_group( 'atlas_glossary', $stable_key, $locale ) : null ) ?: $this->find_existing( 'atlas_glossary', $slug, $locale );
 
+		$unchanged = false;
+		if ( $existing ) {
+			$extra_meta    = array( 'atlas_locale' => $locale );
+			$extra_meta   += $this->i18n_extra_meta( $item, ! empty( $item['translation_group'] ) ? sanitize_title( $item['translation_group'] ) : $slug );
+			$taxonomy_plan = array();
+			if ( isset( $item['category'] ) ) {
+				$taxonomy_plan['atlas_glossary_category'] = array( $item['category'] );
+			}
+			$unchanged = $this->post_matches_item(
+				$existing->ID,
+				$title,
+				$slug,
+				$item['status'] ?? 'publish',
+				$item,
+				Atlas_Chuti_Meta_Fields::glossary_fields(),
+				$extra_meta,
+				$taxonomy_plan
+			);
+		}
+
 		if ( $dry_run ) {
 			$warnings = $this->warnings_for_glossary_refs( $item, $locale, $planned );
-			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok', $warnings );
+			return $this->row( $title, $this->status_would( $existing, $unchanged ), $existing ? 'skip' : 'ok', $warnings );
+		}
+
+		if ( $unchanged ) {
+			return $this->row( $title, $this->status_done( $existing, true ), 'ok' );
 		}
 
 		$post_id = wp_insert_post(
@@ -1173,8 +1463,57 @@ class Atlas_Chuti_JSON_Importer {
 		$existing              = $this->find_existing_recipe( $item, $slug, $stable_key, $primary_country_post, $locale );
 		$warnings              = $this->warnings_for_recipe_refs( $item, $locale, $planned );
 
+		$unchanged = false;
+		if ( $existing ) {
+			$extra_meta = array(
+				'atlas_locale'            => $locale,
+				'atlas_translation_group' => $stable_key ?: $slug,
+			);
+			if ( ! empty( $item['translation_status'] ) && in_array( $item['translation_status'], self::VALID_TRANSLATION_STATUS, true ) ) {
+				$extra_meta['atlas_translation_status'] = $item['translation_status'];
+			}
+			// primary_country_post is only ever 0 here for a country that's merely
+			// PLANNED (later in this same batch) — a genuinely out-of-order live call.
+			// Real, already-existing recipes always have a real country by the time
+			// live import_recipe() runs (pass 1 processes countries before recipes).
+			$country_term_id = $primary_country_post ? Atlas_Chuti_Country_Sync::get_term_id_for_country_post( $primary_country_post ) : 0;
+			if ( $country_term_id ) {
+				$extra_meta['_atlas_recipe_primary_country_term_id'] = $country_term_id;
+			}
+			$taxonomy_plan = array();
+			if ( ! empty( $item['meal_type'] ) ) {
+				$taxonomy_plan['atlas_meal_type'] = (array) $item['meal_type'];
+			}
+			if ( ! empty( $item['difficulty'] ) ) {
+				$taxonomy_plan['atlas_difficulty'] = array( $item['difficulty'] );
+			}
+			if ( ! empty( $item['diet'] ) ) {
+				$taxonomy_plan['atlas_diet'] = (array) $item['diet'];
+			}
+			$unchanged = $this->post_matches_item(
+				$existing->ID,
+				$title,
+				$slug,
+				$item['status'] ?? 'publish',
+				$item,
+				Atlas_Chuti_Meta_Fields::recipe_fields(),
+				$extra_meta,
+				$taxonomy_plan
+			);
+			// atlas_country_tax is resolved to a real term ID rather than an
+			// importer-owned key (see term_ids_differ()'s docblock), so it can't go
+			// through $taxonomy_plan above — checked separately here.
+			if ( $unchanged && $country_term_id && $this->term_ids_differ( $existing->ID, 'atlas_country_tax', array( $country_term_id ) ) ) {
+				$unchanged = false;
+			}
+		}
+
 		if ( $dry_run ) {
-			return $this->row( $title, $this->status_would( $existing ), $existing ? 'skip' : 'ok', $warnings );
+			return $this->row( $title, $this->status_would( $existing, $unchanged ), $existing ? 'skip' : 'ok', $warnings );
+		}
+
+		if ( $unchanged ) {
+			return $this->row( $title, $this->status_done( $existing, true ), 'ok', $warnings );
 		}
 
 		$post_id = wp_insert_post(
@@ -1265,22 +1604,35 @@ class Atlas_Chuti_JSON_Importer {
 		}
 		$post_id = $post->ID;
 		if ( ! empty( $item['related_countries'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s, $locale ), (array) $item['related_countries'] ) );
-			update_post_meta( $post_id, 'atlas_related_countries', array_values( $ids ) );
+			$ids = array_values( array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s, $locale ), (array) $item['related_countries'] ) ) );
+			if ( $this->meta_differs( $post_id, 'atlas_related_countries', $ids ) ) {
+				update_post_meta( $post_id, 'atlas_related_countries', $ids );
+			}
 		}
 		if ( ! empty( $item['related_glossary'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_glossary', $s, $locale ), (array) $item['related_glossary'] ) );
-			update_post_meta( $post_id, 'atlas_related_glossary', array_values( $ids ) );
+			$ids = array_values( array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_glossary', $s, $locale ), (array) $item['related_glossary'] ) ) );
+			if ( $this->meta_differs( $post_id, 'atlas_related_glossary', $ids ) ) {
+				update_post_meta( $post_id, 'atlas_related_glossary', $ids );
+			}
 		}
 		if ( ! empty( $item['traditional_dishes'] ) ) {
-			$dishes = get_post_meta( $post_id, 'atlas_traditional_dishes', true );
-			if ( is_array( $dishes ) ) {
-				foreach ( $dishes as $i => $dish ) {
-					if ( ! empty( $dish['recipe_id'] ) ) {
-						$dishes[ $i ]['recipe_id'] = (string) $this->resolve_reference( 'atlas_recipe', $dish['recipe_id'], $locale );
-					}
-				}
-				update_post_meta( $post_id, 'atlas_traditional_dishes', $dishes );
+			// Resolved FRESH from $item (the JSON source of truth) every time, never
+			// from the currently-stored meta: with idempotent pass 1 now skipping the
+			// field-loop rewrite for an unchanged country (see import_country()), the
+			// stored value may already hold a REAL resolved recipe_id (a post ID) from
+			// an earlier run rather than the original slug reference — re-resolving
+			// THAT as if it were still a slug would silently zero it out. Re-deriving
+			// from $item every time is self-healing regardless of what pass 1 did.
+			$shape    = array( 'name', 'note', 'recipe_id' );
+			$resolved = Atlas_Chuti_Meta_Fields::sanitize( 'repeater', $item['traditional_dishes'], $shape );
+			foreach ( $resolved as $i => $dish ) {
+				$resolved[ $i ]['recipe_id'] = ! empty( $dish['recipe_id'] ) ? (string) $this->resolve_reference( 'atlas_recipe', $dish['recipe_id'], $locale ) : '';
+			}
+			$current = get_post_meta( $post_id, 'atlas_traditional_dishes', true );
+			// Order IS meaningful here (item A3 — an authored list), so no sort()
+			// before comparing: a reordering must still count as a real change.
+			if ( ! is_array( $current ) || $resolved != $current ) { // phpcs:ignore WordPress.PHP.StrictComparisons -- deliberate loose/order-sensitive compare, see comment above.
+				update_post_meta( $post_id, 'atlas_traditional_dishes', $resolved );
 			}
 		}
 	}
@@ -1296,17 +1648,31 @@ class Atlas_Chuti_JSON_Importer {
 		$post_id = $post->ID;
 
 		if ( ! empty( $item['origin_country'] ) ) {
-			update_post_meta( $post_id, 'atlas_origin_country_id', $this->resolve_reference( 'atlas_country', $item['origin_country'], $locale ) );
+			$origin_id = $this->resolve_reference( 'atlas_country', $item['origin_country'], $locale );
+			if ( $this->meta_differs( $post_id, 'atlas_origin_country_id', $origin_id ) ) {
+				update_post_meta( $post_id, 'atlas_origin_country_id', $origin_id );
+			}
 		}
 		if ( ! empty( $item['related_recipes'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_recipe', $s, $locale ), (array) $item['related_recipes'] ) );
-			update_post_meta( $post_id, 'atlas_related_recipes', array_values( $ids ) );
+			$ids = array_values( array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_recipe', $s, $locale ), (array) $item['related_recipes'] ) ) );
+			if ( $this->meta_differs( $post_id, 'atlas_related_recipes', $ids ) ) {
+				update_post_meta( $post_id, 'atlas_related_recipes', $ids );
+			}
 		}
 		if ( ! empty( $item['related_countries'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s, $locale ), (array) $item['related_countries'] ) );
-			update_post_meta( $post_id, 'atlas_related_countries', array_values( $ids ) );
+			$ids = array_values( array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s, $locale ), (array) $item['related_countries'] ) ) );
+			if ( $this->meta_differs( $post_id, 'atlas_related_countries', $ids ) ) {
+				update_post_meta( $post_id, 'atlas_related_countries', $ids );
+			}
 			$terms = array_filter( array_map( fn( $id ) => Atlas_Chuti_Country_Sync::get_term_id_for_country_post( $id ), $ids ) );
-			if ( $terms ) {
+			// `true` = append, so a set-difference check (not full equality) is the
+			// correct idempotence guard: only call when this import would actually
+			// ADD a term the post doesn't already carry.
+			$current_terms = wp_get_post_terms( $post_id, 'atlas_country_tax', array( 'fields' => 'ids' ) );
+			if ( is_wp_error( $current_terms ) ) {
+				$current_terms = array();
+			}
+			if ( $terms && array_diff( $terms, $current_terms ) ) {
 				wp_set_post_terms( $post_id, $terms, 'atlas_country_tax', true );
 			}
 		}
@@ -1325,23 +1691,37 @@ class Atlas_Chuti_JSON_Importer {
 		$related_country_posts = ! empty( $item['related_countries'] ) ? array_map( fn( $s ) => $this->resolve_reference( 'atlas_country', $s, $locale ), (array) $item['related_countries'] ) : array();
 		$related_terms         = array_filter( array_map( fn( $id ) => Atlas_Chuti_Country_Sync::get_term_id_for_country_post( $id ), array_filter( $related_country_posts ) ) );
 		if ( $related_terms ) {
-			wp_set_post_terms( $post_id, $related_terms, 'atlas_country_tax', true );
+			// `true` = append, so only call when it would actually add a new term.
+			$current_terms = wp_get_post_terms( $post_id, 'atlas_country_tax', array( 'fields' => 'ids' ) );
+			if ( is_wp_error( $current_terms ) ) {
+				$current_terms = array();
+			}
+			if ( array_diff( $related_terms, $current_terms ) ) {
+				wp_set_post_terms( $post_id, $related_terms, 'atlas_country_tax', true );
+			}
 		}
 
 		if ( ! empty( $item['related_recipes'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_recipe', $s, $locale ), (array) $item['related_recipes'] ) );
-			update_post_meta( $post_id, 'atlas_related_recipes', array_values( $ids ) );
+			$ids = array_values( array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_recipe', $s, $locale ), (array) $item['related_recipes'] ) ) );
+			if ( $this->meta_differs( $post_id, 'atlas_related_recipes', $ids ) ) {
+				update_post_meta( $post_id, 'atlas_related_recipes', $ids );
+			}
 		}
 		if ( ! empty( $item['related_glossary'] ) ) {
-			$ids = array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_glossary', $s, $locale ), (array) $item['related_glossary'] ) );
-			update_post_meta( $post_id, 'atlas_related_glossary', array_values( $ids ) );
+			$ids = array_values( array_filter( array_map( fn( $s ) => $this->resolve_reference( 'atlas_glossary', $s, $locale ), (array) $item['related_glossary'] ) ) );
+			if ( $this->meta_differs( $post_id, 'atlas_related_glossary', $ids ) ) {
+				update_post_meta( $post_id, 'atlas_related_glossary', $ids );
+			}
 		}
 
 		$total = get_post_meta( $post_id, 'atlas_total_minutes', true );
 		if ( '' === $total || 0 === (int) $total ) {
 			$prep = (int) get_post_meta( $post_id, 'atlas_prep_minutes', true );
 			$cook = (int) get_post_meta( $post_id, 'atlas_cook_minutes', true );
-			update_post_meta( $post_id, 'atlas_total_minutes', $prep + $cook );
+			$new_total = $prep + $cook;
+			if ( $new_total !== (int) $total ) {
+				update_post_meta( $post_id, 'atlas_total_minutes', $new_total );
+			}
 		}
 	}
 }

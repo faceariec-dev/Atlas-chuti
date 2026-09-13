@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-hidden="true" focusable="false">
+	<defs>
+		<linearGradient id="g-africa" x1="0%" y1="0%" x2="100%" y2="100%">
+			<stop offset="0%" stop-color="#FBF8F3"/>
+			<stop offset="100%" stop-color="#EFF5F6"/>
+		</linearGradient>
+	</defs>
+	<rect width="800" height="600" fill="url(#g-africa)"/>	<circle cx="80" cy="520" r="170" fill="none" stroke="#5D8390" stroke-width="2" opacity="0.1"/>
+	<circle cx="740" cy="70" r="120" fill="none" stroke="#5D8390" stroke-width="2" opacity="0.1"/>	<g fill="none" stroke="#4C6F57" stroke-width="6" stroke-linecap="round" opacity="0.35">
+		<circle cx="400" cy="300" r="170"/>
+		<ellipse cx="400" cy="300" rx="72" ry="170"/>
+		<path d="M232,240 Q400,290 568,240" />
+		<path d="M232,360 Q400,310 568,360" />
+	</g>
+	<circle cx="400" cy="340" r="55" fill="#C9962D" opacity="0.55"/>
+	<circle cx="400" cy="340" r="9" fill="#C9962D"/>
+</svg>
