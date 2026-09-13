@@ -227,9 +227,32 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 .main-nav a.is-current { color: var(--color-terracotta); }
 .main-nav a.is-current::after { transform: scaleX(1); }
 
+/* Mega menu (Recepty quick access / Více) — click or focus always works; hover is
+   an added convenience on devices that actually have one, never the only way in
+   (item 12 of the redesign brief: no hover-only control). */
+.nav-item.has-mega { position: relative; display: flex; align-items: center; }
+.nav-mega-toggle { display: flex; align-items: center; gap: 5px; background: none; border: none; font-family: inherit; color: var(--color-ink); font-size: 15px; font-weight: 600; padding: 6px 0; }
+.nav-mega-toggle::after { content: ''; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid currentColor; transition: transform 0.15s var(--ease); }
+.nav-mega-toggle[aria-expanded="true"]::after { transform: rotate(180deg); }
+.nav-mega { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: 14px; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lifted); padding: var(--space-3); display: flex; flex-direction: column; min-width: 220px; z-index: 60; }
+.nav-mega a { padding: 10px 14px; border-radius: var(--radius-sm); font-size: 14px; font-weight: 600; color: var(--color-ink); white-space: nowrap; }
+.nav-mega a::after { display: none; }
+.nav-mega a:hover, .nav-mega a:focus-visible { background: var(--bg-cream); color: var(--color-terracotta); }
+@media (hover: hover) and (min-width: 901px) {
+	.nav-item.has-mega:hover .nav-mega[hidden] { display: flex; }
+}
+
+.nav-link.is-soon { display: flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; color: var(--color-muted); cursor: default; padding: 6px 0; }
+.soon-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-muted); background: var(--bg-sage); border-radius: 999px; padding: 2px 8px; }
+
 .header-tools { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
 .header-search { width: 230px; height: 44px; padding: 4px 4px 4px 16px; }
 .header-search .btn { display: none; }
+.header-account, .header-login { font-size: 14px; font-weight: 600; white-space: nowrap; }
+.header-account { color: var(--color-ink); }
+.header-account.is-soon { color: var(--color-muted); cursor: default; }
+.header-login { color: var(--color-terracotta); }
+.header-login:hover { color: var(--color-terracotta-dark); }
 .passport-icon { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-sage); flex-shrink: 0; }
 .passport-icon:hover { background: var(--bg-terracotta); }
 .nav-toggle { display: none; background: none; border: none; padding: 10px; width: 44px; height: 44px; align-items: center; justify-content: center; }
@@ -240,13 +263,26 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 .nav-toggle[aria-expanded="true"] span::before { transform: translateY(7px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-7px) rotate(-45deg); }
 
+.mobile-nav-extra { display: none; }
+
 @media (max-width: 900px) {
 	.main-nav { position: fixed; inset: 73px 0 0 0; background: #fff; flex-direction: column; align-items: stretch; padding: var(--space-6) var(--gutter); gap: 0; transform: translateX(100%); transition: transform 0.25s var(--ease); overflow-y: auto; z-index: 49; }
 	.main-nav.is-open { transform: translateX(0); }
 	.main-nav a { font-size: 19px; padding: 16px 0; border-bottom: 1px solid var(--color-border); }
 	.main-nav a::after { display: none; }
-	.header-search { display: none; }
+	.header-search, .header-account, .header-login { display: none; }
 	.nav-toggle { display: flex; }
+
+	/* Mobile menu items become a stacked accordion, not a floating dropdown —
+	   the mega menu panel opens inline instead of positioned absolutely. */
+	.nav-item.has-mega { flex-direction: column; align-items: stretch; border-bottom: 1px solid var(--color-border); }
+	.nav-mega-toggle { width: 100%; justify-content: space-between; padding: 16px 0; font-size: 19px; }
+	.nav-mega { position: static; transform: none; margin-top: 0; box-shadow: none; border: none; border-radius: 0; padding: 0 0 var(--space-3) var(--space-3); background: transparent; }
+	.nav-link.is-soon { padding: 16px 0; font-size: 19px; border-bottom: 1px solid var(--color-border); }
+
+	.mobile-nav-extra { display: flex; flex-direction: column; gap: var(--space-4); order: -1; padding-bottom: var(--space-6); margin-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+	.mobile-nav-account { display: flex; align-items: center; gap: var(--space-5); }
+	.mobile-nav-account .header-account, .mobile-nav-account .header-login { display: inline; font-size: 15px; }
 }
 
 /* Footer ---------------------------------------------------------------------- */
@@ -340,6 +376,114 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 	.hero-copy .lede { max-width: none; }
 }
 
+/* Homepage — compact top line (KROK 1, item 6.1) ---------------------------------
+   Replaces the previous full-screen static hero: brand/slogan + search stay
+   present for SEO's single H1 and quick search access, but take up only a thin
+   strip so real editorial content starts on the first screen. */
+.home-topline { padding: var(--space-8) 0 var(--space-6); }
+.home-topline-title { font-size: clamp(1.5rem, 3vw, 2.1rem); max-width: 760px; margin: 0 0 var(--space-5); }
+.home-topline .search-box { max-width: 480px; }
+@media (max-width: 767px) {
+	.home-topline { padding: var(--space-6) 0 var(--space-5); }
+}
+
+/* Lead grid (6.1) — one dominant story (~63%) beside 2-3 smaller/secondary items
+   (~37%), deliberately mixing an image item with text-only items so the block
+   itself already breaks the "row of identical cards" pattern. */
+.lead-grid { display: grid; grid-template-columns: 1.75fr 1fr; gap: var(--space-8); align-items: start; }
+.lead-story { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+.lead-story-media { border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 16/10; background: var(--bg-sage); }
+.lead-story-media img, .lead-story-media .fallback-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lead-story-body { padding-top: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
+.lead-story-title { font-size: clamp(1.75rem, 3.4vw, 2.5rem); margin: 0; }
+.lead-story:hover .lead-story-title { color: var(--color-terracotta); }
+.lead-story-excerpt { color: var(--color-text); font-size: 16px; margin: 0; max-width: 640px; }
+
+.lead-secondary { display: flex; flex-direction: column; gap: var(--space-6); }
+.lead-secondary-item { display: flex; text-decoration: none; color: inherit; }
+.lead-secondary-item h3 { margin: 0; }
+.lead-secondary-item:hover h3 { color: var(--color-terracotta); }
+.lead-secondary-item.is-media { gap: var(--space-4); }
+.lead-secondary-item.is-media .lead-secondary-media { width: 112px; flex-shrink: 0; border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/3; }
+.lead-secondary-item.is-media .lead-secondary-media img, .lead-secondary-item.is-media .lead-secondary-media .fallback-photo { width: 100%; height: 100%; object-fit: cover; }
+.lead-secondary-item.is-media h3 { font-size: 16px; margin-top: 6px; }
+.lead-secondary-item.is-text { flex-direction: column; gap: 6px; padding-top: var(--space-4); border-top: 1px solid var(--color-border); }
+.lead-secondary-item.is-text:first-child { padding-top: 0; border-top: none; }
+.lead-secondary-item.is-text h3 { font-size: 17px; }
+@media (max-width: 1099px) {
+	.lead-grid { grid-template-columns: 1fr; }
+}
+
+/* Trending strip (6.2) — a compact editorial text-link row, never another row of
+   cards. */
+.trending-strip { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-6); padding: var(--space-5) 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+.trending-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-muted); flex-shrink: 0; }
+.trending-links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); }
+.trending-links a { font-size: 14px; font-weight: 600; color: var(--color-ink); }
+.trending-links a:hover { color: var(--color-terracotta); }
+
+/* Quick picks (6.3) — a navigational module, not a recommendation engine: real
+   filtered archive links only. */
+.quick-picks { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-4); }
+.quick-pick { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: var(--color-white); border: 1.5px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-5) var(--space-3); text-align: center; font-weight: 600; color: var(--color-ink); font-size: 14px; min-height: 96px; text-decoration: none; transition: border-color 0.15s var(--ease), color 0.15s var(--ease); }
+.quick-pick:hover { border-color: var(--color-terracotta); color: var(--color-terracotta); }
+.quick-pick-icon { font-size: 26px; line-height: 1; }
+
+/* World cuisine feature (6.5) — one dominant country/recipe beside a short list of
+   smaller recipes each from a different country (never six identical tiles). */
+.world-feature { display: grid; grid-template-columns: 1.6fr 1fr; gap: var(--space-8); margin-bottom: var(--space-8); }
+.world-feature-main { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+.world-feature-main .card-media { aspect-ratio: 16/10; border-radius: var(--radius-lg); }
+.world-feature-main h3 { margin: var(--space-4) 0 6px; }
+.world-feature-main p { color: var(--color-text); margin: 0; }
+.world-feature-list { display: flex; flex-direction: column; gap: var(--space-4); }
+.world-feature-item { display: flex; gap: var(--space-4); text-decoration: none; color: inherit; padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+.world-feature-item:last-child { border-bottom: none; padding-bottom: 0; }
+.world-feature-item-media { width: 96px; flex-shrink: 0; border-radius: var(--radius-sm); overflow: hidden; aspect-ratio: 4/3; }
+.world-feature-item-media img, .world-feature-item-media .fallback-photo { width: 100%; height: 100%; object-fit: cover; }
+.world-feature-item h4 { font-size: 15px; margin: 4px 0 0; }
+.world-continent-teaser { margin-top: var(--space-10); }
+@media (max-width: 900px) {
+	.world-feature { grid-template-columns: 1fr; }
+}
+
+/* Real recipe feed + sidebar (6.6/6.7) — thumbnail + title + excerpt + metadata,
+   not another card grid; sidebar carries real secondary content (glossary), never
+   invented ratings. */
+.feed-layout { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-10); align-items: start; }
+.feed-list { display: flex; flex-direction: column; }
+.feed-item { display: flex; gap: var(--space-5); padding: var(--space-6) 0; border-bottom: 1px solid var(--color-border); text-decoration: none; color: inherit; }
+.feed-item:first-child { padding-top: 0; }
+.feed-item:last-child { border-bottom: none; }
+.feed-item-media { width: 160px; flex-shrink: 0; border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 4/3; }
+.feed-item-media img, .feed-item-media .fallback-photo { width: 100%; height: 100%; object-fit: cover; }
+.feed-item-body { display: flex; flex-direction: column; gap: 4px; }
+.feed-item-body h3 { font-size: 19px; margin: 2px 0 0; }
+.feed-item-excerpt { font-size: 14px; color: var(--color-muted); margin: 0; }
+.feed-item:hover h3 { color: var(--color-terracotta); }
+.feed-sidebar-block { background: var(--bg-cream); border-radius: var(--radius-lg); padding: var(--space-6); position: sticky; top: 96px; }
+.feed-sidebar-title { font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-muted); margin: 0 0 var(--space-4); font-family: var(--font-body); font-weight: 700; }
+@media (max-width: 900px) {
+	.feed-layout { grid-template-columns: 1fr; }
+	.feed-sidebar-block { position: static; }
+}
+@media (max-width: 480px) {
+	.feed-item-media { width: 110px; }
+}
+
+/* Magazín preview (6.8) — deliberately not the recipe-card pattern (16:9, no
+   eyebrow/flag/meta line) so it reads as editorial content, not another recipe. */
+.magazine-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+.magazine-item { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+.magazine-item-media { aspect-ratio: 16/9; border-radius: var(--radius-md); overflow: hidden; margin-bottom: var(--space-3); }
+.magazine-item-media img { width: 100%; height: 100%; object-fit: cover; }
+.magazine-item h3 { font-size: 18px; margin: 0 0 4px; }
+.magazine-item:hover h3 { color: var(--color-terracotta); }
+.magazine-item p { font-size: 14px; color: var(--color-muted); margin: 0; }
+@media (max-width: 767px) {
+	.magazine-strip { grid-template-columns: 1fr; }
+}
+
 .page-hero { padding: var(--space-14) 0 var(--space-8); max-width: var(--container); margin: 0 auto; }
 .page-hero-photo { position: relative; height: 440px; display: flex; align-items: flex-end; overflow: hidden; }
 .page-hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -367,11 +511,13 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 .continent-tile span { position: absolute; bottom: var(--space-4); left: var(--space-4); right: var(--space-4); color: #fff; font-family: var(--font-display); font-size: 20px; font-weight: 600; z-index: 1; }
 
 /* Featured recipe banner (home) — editorial, not "just another card". ------------ */
-.featured-banner { display: grid; grid-template-columns: 2fr 1fr; border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; }
-.featured-banner-media { min-height: 420px; background: var(--bg-sage) center/cover no-repeat; overflow: hidden; }
+.featured-banner { display: grid; grid-template-columns: 2fr 1fr; border-radius: var(--radius-lg); overflow: hidden; }
+.featured-banner-media { display: block; min-height: 420px; background: var(--bg-sage) center/cover no-repeat; overflow: hidden; }
 .featured-banner-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .featured-banner-body { padding: var(--space-10); display: flex; flex-direction: column; justify-content: center; gap: var(--space-3); }
-.featured-banner-body h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.15; margin: 0; }
+.featured-banner-body h2, .featured-banner-body h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.15; margin: 0; }
+.featured-banner-body h2 a { color: inherit; text-decoration: none; }
+.featured-banner-body h2 a:hover { color: var(--color-terracotta); }
 .featured-banner-body p { color: var(--color-text); margin: 0; }
 @media (max-width: 900px) {
 	.featured-banner { grid-template-columns: 1fr; }
