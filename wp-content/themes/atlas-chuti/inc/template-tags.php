@@ -93,25 +93,23 @@ function atlas_chuti_breadcrumbs() {
 }
 
 /**
- * Pulls the main WordPress menu into the header, falling back to the portal-shaped
- * navigation (KROK 1, item 5 of the brief) if no menu has been assigned yet: Recepty
- * (with a quick-access mega menu), Země, then Magazín/Tipy a triky/Diskuze — future
- * sections not built yet in this step, shown as inert "brzy" placeholders rather
- * than broken links — and a "Více" group for Kuchařský slovníček + Kulinářský pas.
+ * Renders the ONE primary navigation (KROK 1, item 5 of the brief, opravný prompt):
+ * Recepty (quick-access mega menu), Země, then Magazín/Tipy a triky/Diskuze — future
+ * sections not built yet, shown as inert "brzy" placeholders rather than broken
+ * links — and a "Více" group for Kuchařský slovníček + Kulinářský pas.
+ *
+ * This fixed portal structure ALWAYS renders, on every request, on both desktop and
+ * mobile (the same markup this function outputs is what both breakpoints style via
+ * CSS — there is no separate mobile code path). It is never conditional on, and
+ * never replaced by, a custom WordPress menu: an earlier version of this function
+ * swapped the ENTIRE nav for a bare wp_nav_menu() call the moment an admin assigned
+ * a menu to the "primary" location, silently dropping the Recepty mega menu, the
+ * "brzy" placeholders and the Více group. That is fixed here — a custom "primary"
+ * menu, if assigned, is instead appended as additional top-level links AFTER this
+ * fixed structure, so it can extend the nav but can never deactivate or bypass it.
+ * One render path, not two parallel nav systems.
  */
 function atlas_chuti_primary_nav() {
-	if ( has_nav_menu( 'primary' ) ) {
-		wp_nav_menu(
-			array(
-				'theme_location' => 'primary',
-				'container'      => false,
-				'items_wrap'     => '%3$s',
-				'walker'         => new Atlas_Chuti_Nav_Walker(),
-			)
-		);
-		return;
-	}
-
 	echo '<div class="nav-item has-mega">';
 	printf(
 		'<button type="button" class="nav-link nav-mega-toggle" aria-expanded="false" aria-controls="nav-mega-recepty">%s</button>',
@@ -142,6 +140,21 @@ function atlas_chuti_primary_nav() {
 	printf( '<a href="%s">%s</a>', esc_url( get_post_type_archive_link( 'atlas_glossary' ) ), esc_html__( 'Kuchařský slovníček', 'atlas-chuti' ) );
 	printf( '<a href="%s">%s</a>', esc_url( atlas_chuti_system_url( 'passport' ) ), esc_html__( 'Kulinářský pas', 'atlas-chuti' ) );
 	echo '</div></div>';
+
+	// Additive only (see docblock): a custom WP "primary" menu extends the fixed
+	// portal nav above, it never replaces it. Same walker/markup as the rest of
+	// the nav, so it's styled identically and works in the same mega-menu-free,
+	// flat <a> shape on both desktop and the off-canvas mobile panel.
+	if ( has_nav_menu( 'primary' ) ) {
+		wp_nav_menu(
+			array(
+				'theme_location' => 'primary',
+				'container'      => false,
+				'items_wrap'     => '%3$s',
+				'walker'         => new Atlas_Chuti_Nav_Walker(),
+			)
+		);
+	}
 }
 
 /**
