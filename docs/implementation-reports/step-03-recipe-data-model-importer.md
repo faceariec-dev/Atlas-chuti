@@ -149,10 +149,11 @@ omylem napsal podtržítko, import neselže.
   - `resolve_known_tag_term()`: nová metoda — vyhledá term podle klíče, **nikdy
     nevytváří**. Použita v live-write cestě i (nepřímo, přes `validate_recipe()`)
     ve validaci.
-  - `quality_warnings_for_recipe()`: nová metoda — WARNING (ne error) pro chybějící
-    `translation_group` (recipe_key) a pro perex mimo 50–140 slov (ideál 70–110, viz
-    sekce 3 zadání). Nikdy neovlivňuje `$unchanged`/status — čistě informační text
-    připojený k `ok`/`skip` řádku.
+  - `quality_warnings_for_recipe()`: nová metoda — WARNING (ne error) pro perex mimo
+    50–140 slov (ideál 70–110, viz sekce 3 zadání) a pro chybějící/legacy
+    `translation_group` (viz sekce L — **`recipe_key` samotný je od opravného kroku
+    hard error, ne warning**). Nikdy neovlivňuje `$unchanged`/status — čistě
+    informační text připojený k `ok`/`skip` řádku.
   - `import_recipe()`: `$taxonomy_plan['atlas_recipe_tag']` (pro idempotence-check) a
     samotný zápis termů — oba gatované `array_key_exists('tags', $item)`, ne
     `!empty()` jako u meal_type/difficulty/diet, protože explicitní `"tags": []`
@@ -195,7 +196,8 @@ JSON souborů nezávislým Python skriptem a přímým voláním
 |---|---|
 | Počet receptů | 100 |
 | Mají `about` | **100/100** |
-| Mají `translation_group` | **100/100** — nová quality-warning „chybí recipe_key" se u tohoto batche neuplatní |
+| Mají `translation_group` | **100/100**, všech 100 unikátních (žádná kolize) |
+| Mají dedikovaný `recipe_key` | **0/100** — pole je nové (viz sekce L); import projde přes zdokumentovaný `translation_group` fallback s warningem |
 | Perex (`excerpt`) délka (slov) | min 9, max 20, průměr 13,2 |
 | Perex v ideálním pásmu 70–110 slov | **0/100** |
 | Perex pod 50 slov (nová quality warning by se spustila) | **100/100** |
@@ -209,19 +211,27 @@ JSON souborů nezávislým Python skriptem a přímým voláním
 | `diet` hodnoty použité | `vegetarian` |
 | `glossary` kategorie použité | `technique`, `ingredient`, `gastronomy`, `equipment` — všechny v uzavřeném seznamu |
 
-**Co batch už splňuje**: kompletní `about`, kompletní `translation_group`
-(recipe_key), 100 % pokrytí `ingredient_key`, 100 % rozpoznatelné jednotky, validní
-ISO kódy, žádné hodnoty mimo uzavřené taxonomie.
+**Co batch už splňuje**: kompletní `about`, kompletní a unikátní `translation_group`
+(použitelné jako `recipe_key` fallback — viz sekce L), 100 % pokrytí
+`ingredient_key`, 100 % rozpoznatelné jednotky, validní ISO kódy, žádné hodnoty mimo
+uzavřené taxonomie. Ověřeno i proti nové `is_valid_stable_key()` validaci: všech 100
+hodnot `translation_group` má bezpečný technický formát (viz sekce L) — batch tedy
+projde i opraveným importerem, byť zatím jen přes fallback cestu (s warningem).
 
 **Co bude potřeba doplnit před ostrým importem** (bez zásahu v tomto kroku):
-1. **Perex** — žádný ze 100 receptů nedosahuje cílových 70–110 slov (současný
+1. **`recipe_key`** — batch zatím nemá dedikované pole `recipe_key`, jen
+   `translation_group` (fallback funguje, ale s warningem u každého receptu).
+   Doplnění je mechanické — všech 100 existujících `translation_group` hodnot je
+   již ve validním formátu, takže půjde jen o zkopírování/přejmenování pole, ne o
+   novou redakční práci.
+2. **Perex** — žádný ze 100 receptů nedosahuje cílových 70–110 slov (současný
    průměr 13,2); před ostrým importem je bude třeba redakčně rozšířit. Importer to
    nezablokuje (hard-required je jen neprázdný perex), ale nový quality-warning
    kanál to nyní u každého z nich viditelně nahlásí.
-2. **Tagy** — batch zatím `tags` vůbec nepoužívá; přiřazení štítků ze schváleného
+3. **Tagy** — batch zatím `tags` vůbec nepoužívá; přiřazení štítků ze schváleného
    katalogu (sekce D) je čistě redakční práce nad hotovým obsahem, ne technická
    překážka — pole je nepovinné, takže import projde i bez nich.
-3. Mimo to je batch technicky plně kompatibilní se změnami tohoto kroku beze
+4. Mimo to je batch technicky plně kompatibilní se změnami tohoto kroku beze
    zásahu.
 
 ## H. SEO / structured data / GEO-AIO
@@ -272,11 +282,13 @@ plugin třídám (ne proti reimplementaci jejich logiky):
    databází. `php tests/harness-step-03.php` (`HARNESS_DEBUG=1` pro detailní výpisy):
 
    ```
-   --- 37 checks, 0 failing ---
+   --- 58 checks, 0 failing ---
    ```
 
-   Pokrývá všech 21 scénářů ze zadání + 3 navíc (empty-tags-clear-all,
-   quality-warning-never-forces-update dvakrát):
+   Pokrývá všech 21 scénářů z původního zadání + 3 navíc (empty-tags-clear-all,
+   quality-warning-never-forces-update dvakrát) + všech 7 nových scénářů z
+   opravného kroku (sekce L, TEST 1–7) + 2 doplňkové (duplicate-recipe_key-b i
+   duplicate-nikdy-napříč-locale):
 
    | # | Scénář | Výsledek |
    |---|---|---|
@@ -299,23 +311,46 @@ plugin třídám (ne proti reimplementaci jejich logiky):
    | 17 | identický import nepřepisuje taxonomy relationships | PASS |
    | 18 | identický import nepřepisuje metadata | PASS |
    | 19 | identický import nevytváří duplicates | PASS |
-   | 20 | starší validní fixture bez tagů se nerozbije | PASS |
+   | 20 | starší fixture (`translation_group`, bez `recipe_key`) se nerozbije — importuje se přes fallback + warning | PASS |
    | 21 | dry-run nikdy nezapisuje | PASS |
 
    Fixture pro scénář 20: `tests/fixtures/step-03-legacy-recipe.json` (samostatný
-   testovací soubor, žádná produkční data nebyla měněna).
+   testovací soubor, žádná produkční data nebyla měněna; upraven v opravném kroku —
+   viz sekce L).
+
+   **Opravný krok — `recipe_key` hardening (sekce L), TEST 1–7 ze zadání opravy:**
+
+   | TEST | Scénář | Výsledek |
+   |---|---|---|
+   | 1 | chybějící `recipe_key` (a žádný `translation_group` fallback) → chyba | PASS |
+   | 2 | prázdný/whitespace-only `recipe_key` → chyba | PASS |
+   | 3 | neplatný formát `recipe_key` (mezery, velká písmena, diakritika, zdvojené/okrajové pomlčky — 6 variant) → chyba | PASS |
+   | 4 | duplicitní `recipe_key` ve stejném batchi (2 různé recepty) → chyba pro OBA | PASS |
+   | 4b | stejný `recipe_key` napříč DVĚMA různými locale → NENÍ duplicita (multilingual-test-dataset.json vzor) | PASS |
+   | 5 | změna title při stejném `recipe_key` → aktualizováno, ne nový recept | PASS |
+   | 6 | identický recept + stejný `recipe_key` → beze změny, `post_modified` beze změny | PASS |
+   | 7 | validní `recipe_key`, chybějící `translation_group` → warning, ne chyba | PASS |
 4. **Read-only audit produkčního batche** (sekce G) — nezávislý Python skript nad
    JSON soubory + přímé volání `Atlas_Chuti_Units::normalize()`; batch nebyl
    importován ani zapsán.
 
 ## J. Změněné soubory
 
+**Původní Step 3:**
 - `wp-content/plugins/atlas-chuti-core/includes/class-taxonomies.php`
 - `wp-content/plugins/atlas-chuti-core/includes/class-taxonomy-labels.php`
 - `wp-content/plugins/atlas-chuti-core/includes/class-json-importer.php`
 - `schema/recipe.schema.json`
 - `tests/harness-step-03.php` (nový)
 - `tests/fixtures/step-03-legacy-recipe.json` (nový)
+- `docs/implementation-reports/step-03-recipe-data-model-importer.md` (tento report)
+
+**Opravný krok (`Step 3 fix: enforce recipe key identity`) — viz sekce L:**
+- `wp-content/plugins/atlas-chuti-core/includes/class-json-importer.php` (další úprava)
+- `schema/recipe.schema.json` (přidáno pole `recipe_key`)
+- `tests/harness-step-03.php` (rozšířen o TEST 1–7)
+- `tests/fixtures/step-03-legacy-recipe.json` (doplněn `translation_group`, aby
+  reprezentoval správný "legacy fallback" scénář pod novými pravidly)
 - `docs/implementation-reports/step-03-recipe-data-model-importer.md` (tento report)
 
 ## K. Co bylo záměrně odloženo
@@ -330,6 +365,108 @@ video model — beze změny, schéma jim nebrání v budoucím doplnění. Veře
 Hromadné přidání perexů/štítků do produkčního batche — záměrně neprovedeno (mimo
 rozsah, viz sekce G).
 
-## L. Manuální kroky
+## L. Oprava: `recipe_key` jako hard requirement (`Step 3 fix: enforce recipe key identity`)
+
+Po dokončení a pushnutí Step 3 přišla oprava: report výše původně řadil chybějící
+`recipe_key`/`translation_group` mezi **quality warnings**. To bylo u `recipe_key`
+špatně — je to stabilní technická identita receptu, na kterou naváže Kulinářský pas,
+budoucí CZ/EN, Oblíbené/Uvařeno a další relation vrstvy, a nesmí být degradována na
+volitelnou kontrolu kvality. Tato sekce popisuje opravu.
+
+### Stabilní identita receptu
+
+- **`recipe_key`** je od této opravy **hard required identita** pro každý
+  importovaný recept — nikoli jen doporučené pole.
+  - **Chybějící** `recipe_key` (a žádný platný `translation_group` fallback,
+    viz níže) → **ERROR**, recept se neimportuje.
+  - **Prázdný/whitespace-only** `recipe_key` → **ERROR**.
+  - **Neplatný formát** → **ERROR**. Validní formát: jazykově neutrální technický
+    slug, `^[a-z0-9]+([_-][a-z0-9]+)*$` — malá písmena/číslice ve
+    slovech oddělených `_` nebo `-`, bez mezer, diakritiky, velkých písmen,
+    zdvojených nebo okrajových oddělovačů. Přijímá OBĚ oddělovací konvence
+    (`spaghetti_carbonara` i `svickova-na-smetane`), protože reálný produkční
+    batch už dnes používá obě (viz sekce G) a obě jsou to, co by
+    `sanitize_title()` stejně vyrobilo.
+  - **Duplicitní `recipe_key`** ve STEJNÉM batchi a STEJNÉM jazyce (`locale`) →
+    **ERROR pro OBA/všechny** kolidující recepty — `build_planned_index()` nyní
+    počítá, kolikrát se který `(locale, recipe_key)` pár v batchi objeví, a
+    `validate_recipe()` odmítne každý recept, jehož klíč se opakuje. Stejný
+    `recipe_key` u DVOU RŮZNÝCH `locale` hodnot **není** kolize — to je přesně
+    budoucí multilingual vzor (`sample-data/multilingual-test-dataset.json` už
+    dnes obsahuje cs-CZ i en verzi téhož receptu se stejným klíčem) a musí dál
+    fungovat i po Kroku 4.
+  - **Kolize s existující databází** (stejný `recipe_key` jako už importovaný
+    recept) → beze změny existující logiky: `stable_key_for()` teď pro
+    `atlas_recipe` interně volá novou `resolve_recipe_key()` místo přímého čtení
+    `translation_group`, takže `find_existing_recipe()`/idempotence beze změny
+    správně najdou a AKTUALIZUJÍ existující post, nikdy nevytvoří duplicitu.
+  - **`title`/`original_title`/`slug` nejsou a nikdy nebyly identita** — potvrzeno
+    beze změny (žádný z nich se v `stable_key_for()`/`find_existing_recipe()`
+    nepoužívá jako primární klíč). **Změna `title` při stejném `recipe_key` →
+    UPDATE, nikdy nový recept** — ověřeno end-to-end (TEST 5/6, sekce I).
+  - `recipe_key` se **nikdy tiše needovozuje** z title/slug v cestě zápisu —
+    `resolve_recipe_key()` čte jen `recipe_key` nebo (jako zdokumentovaný,
+    vždy-viditelný fallback, viz níže) `translation_group`; `stable_key_for()`
+    má sice pořád `?: $slug` jako úplně poslední pojistku, ale k ní se reálně
+    dostane jen `build_planned_index()`'s lehčí pre-check pro položku, která už
+    stejně skončí chybou ve `validate_recipe()` — živá zápisová cesta
+    (`import_recipe()`) se sem s prázdným/neplatným klíčem nikdy nedostane.
+
+### Translation group
+
+- **`translation_group`** zůstává, jak zadání opravy žádá, na úrovni **WARNING**:
+  - Pokud `recipe_key` chybí, ale `translation_group` je vyplněný a validní,
+    importer ho použije JAKO fallback identitu — recept se importuje, ale
+    s viditelným warningem ("recipe_key chybí, dočasně použit fallback z
+    translation_group"). Toto je přesně mechanismus, který drží zpětnou
+    kompatibilitu s existujícím produkčním batchem (100/100 receptů má
+    `translation_group`, 0/100 má `recipe_key`, viz sekce G) i se všemi
+    sample-data soubory, aniž by je bylo nutné cokoliv v tomto kroku přepisovat.
+  - Pokud `recipe_key` je vyplněný a validní, ale `translation_group` chybí →
+    samostatný WARNING ("chybí translation_group... bude potřeba pro budoucí
+    CZ/EN provázání"), recept se importuje bez problému (TEST 7).
+  - Ani jeden z těchto warningů nikdy neovlivňuje `$unchanged`/status —
+    beze změny oproti původní architektuře (sekce F).
+  - Plná multilingul role `translation_group` (sdílení napříč jazykovými
+    verzemi) zůstává úkolem Kroku 4 — Polylang nebyl instalován, žádné
+    CZ/EN překlady nebyly vytvořeny.
+- **Žádný nový meta klíč**: `recipe_key` (ať zadaný přímo, nebo odvozený
+  z `translation_group` fallbacku) se ukládá do STEJNÉHO `atlas_translation_group`
+  post meta, jaké už čte `single-atlas_recipe.php`/`passport.js` (Kulinářský pas) —
+  **žádná šablona ani JS soubor nebyl změněn**, přesně jak oprava vyžaduje.
+  Opravena byla jen jedna latentní chyba objevená při implementaci:
+  `apply_i18n_meta()` by jinak mohla přepsat správně vyřešenou hodnotu zpět na
+  syrový (a případně jiný) `$item['translation_group']` — `import_recipe()` teď
+  před tímto voláním nastaví lokální kopii `$item['translation_group']` na už
+  vyřešený `$stable_key`, takže obě zápisová místa vždy souhlasí.
+
+### Quality warnings
+
+- Perex mimo doporučený rozsah (ideál 70–110, warning mimo 50–140 slov) zůstává
+  beze změny **WARNING**, nikdy ERROR — obsahová kvalita perexů nebyla touto
+  opravou nijak měněna.
+- Warning **nikdy** nemění idempotence verdikt (`$unchanged`/`beze změny` vs.
+  `aktualizováno`) — ověřeno explicitně (viz "Extra" testy v sekci I): identický
+  recept se stejným krátkým perexem se reimportuje jako `beze změny` a warning se
+  přesto zobrazí znovu.
+
+### Testy a regrese
+
+Rozšířený `tests/harness-step-03.php` — **58/58 kontrol prochází** (37 původních +
+21 nových/opravných), viz plná tabulka v sekci I. Explicitně ověřeno, že žádná
+z původních Step 3 kontrol (řízené tagy, unknown-tag error, order-insensitive
+porovnání tagů, normalizace duplicitních tagů, přidání/odebrání tagu, same-batch
+ingredience, unknown-ingredient warning, validní/neplatné country ISO, true
+idempotence, legacy fixture, read-only audit batche) touto opravou nepřestala
+fungovat.
+
+### Produkční batch
+
+Beze změny — `git diff --stat -- production-data/` je prázdný. Ověřeno navíc:
+všech 100 hodnot `translation_group` v batchi je unikátních a odpovídá novému
+`is_valid_stable_key()` formátu, takže by batch prošel i opraveným importerem
+(přes fallback + warning) beze změny — viz aktualizovaná sekce G.
+
+## M. Manuální kroky
 
 Žádné.

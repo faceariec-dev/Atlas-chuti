@@ -12,8 +12,9 @@
     {
       "title": "Legacy Bread",
       "slug": "legacy-bread",
+      "translation_group": "legacy-bread",
       "country": "LG",
-      "excerpt": "A minimal, pre-KROK-3-shaped recipe: no translation_group, no tags, no meal_type/diet/difficulty at all.",
+      "excerpt": "A pre-recipe_key-fix-shaped recipe: identity given via the OLD translation_group field name (no recipe_key), no tags, no meal_type/diet/difficulty at all.",
       "servings_default": 4,
       "prep_minutes": 20,
       "ingredients": [

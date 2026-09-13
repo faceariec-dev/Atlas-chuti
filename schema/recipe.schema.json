@@ -5,9 +5,14 @@
   "description": "Jeden recept pro JSON importér (wp-content/plugins/atlas-chuti-core). Stejný formát bude v budoucnu generovat i AI modul.",
   "type": "object",
   "required": ["title", "country", "excerpt", "servings_default", "prep_minutes", "ingredients", "steps"],
+  "anyOf": [
+    { "required": ["recipe_key"] },
+    { "required": ["translation_group"] }
+  ],
   "properties": {
     "locale": { "type": "string", "description": "BCP 47 jazykový tag lokalizovaného obsahu (název, perex, kroky, tipy…). Pokud chybí, importer použije \"cs-CZ\". Jazykově neutrální pole (země, ingredience, časy, obtížnost…) na locale nezávisí.", "default": "cs-CZ" },
-    "translation_group": { "type": "string", "description": "Stabilní, jazykově nezávislý identifikátor sdílený všemi jazykovými verzemi TOHOTO receptu (ne jazykově nezávislý napříč recepty). Pokud chybí, importer jej odvodí ze slugu — což funguje jen dokud existuje jediná jazyková verze. Je to i klíč, přes který se recept dohledává v related_recipes/traditional_dishes.recipe_id, místo aby se spoléhalo na WordPress post ID nebo český slug." },
+    "recipe_key": { "type": "string", "pattern": "^[a-z0-9]+([_-][a-z0-9]+)*$", "description": "STABILNÍ TECHNICKÁ IDENTITA receptu — hard required (Step 3 fix). Jazykově neutrální technický slug, např. \"spaghetti_carbonara\" nebo \"svickova-na-smetane\" — NIKDY se automaticky neodvozuje z title/original_title/slug (redakční text se může kdykoliv změnit, identita ne). Chybějící/prázdný/neplatný formát/duplicitní recipe_key v rámci jednoho jazyka a batche = chyba importu. Na tento klíč naváže Kulinářský pas, Uvařeno, Oblíbené a budoucí CZ/EN provázání (Krok 4). Ukládá se do stejného pole jako translation_group níže — žádný nový meta klíč." },
+    "translation_group": { "type": "string", "description": "Legacy název stejného pole jako recipe_key výše — pokud recipe_key chybí, importer translation_group použije jako fallback identitu (s warningem, nikdy tiše). Do budoucna (Krok 4) ponese navíc roli sdíleného jazykově nezávislého identifikátoru napříč jazykovými verzemi TOHOTO receptu. Je to i klíč, přes který se recept dohledává v related_recipes/traditional_dishes.recipe_id, místo aby se spoléhalo na WordPress post ID nebo český slug." },
     "translation_status": { "type": "string", "enum": ["none", "draft", "reviewed", "published"], "description": "Stav (budoucí) lokalizace vůči originálu. Pro obsah, který sám je originálem, nech \"published\" (výchozí)." },
     "title": { "type": "string", "description": "Název receptu v jazyce daném polem locale." },
     "slug": { "type": "string", "description": "URL slug pro TENTO jazyk. Každá jazyková verze může mít vlastní slug (viz item 17 zadání) — pro cross-referenci mezi jazyky použij translation_group, ne slug." },

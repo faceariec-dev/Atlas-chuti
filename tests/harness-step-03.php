@@ -630,9 +630,10 @@ check( '12b. the ingredient dictionary entry now really exists', (bool) Atlas_Ch
 // confirmed as a WARNING (not a hard error) per warnings_for_recipe_refs(), matching
 // the deliberate asymmetry with tags documented in the report (section E).
 $unresolvable = array(
-	'title'            => 'Fixture Soup',
-	'slug'             => 'fixture-soup',
-	'country'          => 'IT',
+	'title'             => 'Fixture Soup',
+	'slug'              => 'fixture-soup',
+	'translation_group' => 'fixture_soup',
+	'country'           => 'IT',
 	'excerpt'          => 'Yet another short fixture perex for the test harness only.',
 	'servings_default' => 2,
 	'prep_minutes'     => 5,
@@ -663,21 +664,164 @@ check( '19. identical reimport never created duplicate recipe posts (still exact
 
 echo "\n=== 5. Legacy compatibility ===\n";
 
-// 20. legacy fixture (no translation_group, no tags, no meal_type/diet/difficulty)
+// 20. legacy fixture: pre-fix shape — identity given via the OLD translation_group
+// field name only (no recipe_key, no tags, no meal_type/diet/difficulty). Since the
+// recipe_key fix, this is the ONLY kind of "identity-less" shape that can still
+// import — resolve_recipe_key() accepts translation_group as a documented,
+// WARNED fallback (see section 8 of the fix brief). A recipe with NEITHER field is
+// a hard error now — that's TEST 1 in the new section below, not this one.
 $legacy = json_decode( file_get_contents( __DIR__ . '/fixtures/step-03-legacy-recipe.json' ), true );
 $NOW    = 'T14';
 $report = $importer->run_import_sync( $legacy, false );
 $row    = row_by_title( $report, 'recipes', 'Legacy Bread' );
-check( '20. legacy recipe shape (no tags/translation_group) imports without a hard error', $row && 'vytvořeno' === $row['status'] );
+check( '20. legacy recipe shape (translation_group but no recipe_key) imports via the fallback, not a hard error', $row && 'vytvořeno' === $row['status'] );
 $legacy_id = find_recipe_id_by_slug( 'legacy-bread' );
-check( '20b. translation_group auto-backfilled from slug (ensure_i18n_meta), matching the documented fallback', 'legacy-bread' === get_post_meta( $legacy_id, 'atlas_translation_group', true ) );
-check( '20c. quality warning surfaces the missing recipe_key rather than silently hiding it', false !== strpos( $row['message'], 'translation_group' ) );
+check( '20b. resolved identity (from the translation_group fallback) is stored as atlas_translation_group, unchanged storage key', 'legacy-bread' === get_post_meta( $legacy_id, 'atlas_translation_group', true ) );
+check( '20c. quality warning names the legacy fallback explicitly, never silent', false !== strpos( $row['message'], 'recipe_key' ) && false !== strpos( $row['message'], 'translation_group' ) );
 
 // 21. read-only validation of a larger payload never mutates the DB (dry-run)
 $post_count_before = count( $DB['posts'] );
 $importer->run_import_sync( array( 'recipes' => array( $base_recipe ) ), true ); // dry-run
 $post_count_after = count( $DB['posts'] );
 check( '21. dry-run never writes (post count unchanged)', $post_count_before === $post_count_after );
+
+echo "\n=== 6. recipe_key hardening (Step 3 fix) ===\n";
+
+// TEST 1 — missing recipe_key (and no translation_group fallback either) -> ERROR.
+$no_key = array(
+	'title'            => 'No Key Recipe',
+	'slug'             => 'no-key-recipe',
+	'country'          => 'IT',
+	'excerpt'          => 'A fixture recipe with no recipe_key and no translation_group at all.',
+	'servings_default' => 2,
+	'prep_minutes'     => 5,
+	'ingredients'      => array( array( 'ingredient_key' => 'pasta', 'display_name' => 'Pasta', 'quantity' => '100', 'unit' => 'g' ) ),
+	'steps'            => array( array( 'order' => 1, 'text' => 'Cook.' ) ),
+);
+$NOW              = 'T17';
+$posts_before     = count( $DB['posts'] );
+$report           = $importer->run_import_sync( array( 'recipes' => array( $no_key ) ), false );
+$row              = row_by_title( $report, 'recipes', 'No Key Recipe' );
+check( 'TEST 1 — missing recipe_key (no fallback) -> chyba', $row && 'chyba' === $row['status'] );
+check( 'TEST 1b — no post was created for the rejected item', count( $DB['posts'] ) === $posts_before );
+
+// TEST 2 — empty / whitespace-only recipe_key -> ERROR.
+foreach ( array( '', '   ' ) as $i => $blank ) {
+	$blank_key            = $no_key;
+	$blank_key['title']   = 'Blank Key Recipe ' . $i;
+	$blank_key['slug']    = 'blank-key-recipe-' . $i;
+	$blank_key['recipe_key'] = $blank;
+	$NOW    = 'T18';
+	$report = $importer->run_import_sync( array( 'recipes' => array( $blank_key ) ), false );
+	$row    = row_by_title( $report, 'recipes', 'Blank Key Recipe ' . $i );
+	check( "TEST 2 — recipe_key " . ( '' === $blank ? '\"\"' : 'whitespace-only' ) . ' -> chyba', $row && 'chyba' === $row['status'] );
+}
+
+// TEST 3 — invalid recipe_key format -> ERROR (several bad shapes).
+foreach ( array( 'Spaghetti Carbonara', 'foo bar', 'foo--bar', '-leading', 'trailing-', 'ÚPLNĚ ŠPATNĚ' ) as $i => $bad_format ) {
+	$bad_key              = $no_key;
+	$bad_key['title']     = 'Bad Format Recipe ' . $i;
+	$bad_key['slug']      = 'bad-format-recipe-' . $i;
+	$bad_key['recipe_key'] = $bad_format;
+	$NOW    = 'T19';
+	$report = $importer->run_import_sync( array( 'recipes' => array( $bad_key ) ), false );
+	$row    = row_by_title( $report, 'recipes', 'Bad Format Recipe ' . $i );
+	check( "TEST 3 — invalid recipe_key format \"$bad_format\" -> chyba", $row && 'chyba' === $row['status'] );
+}
+
+// TEST 4 — duplicate recipe_key within the SAME batch -> ERROR for both.
+$dup_a = array(
+	'title'             => 'Duplicate A',
+	'slug'              => 'duplicate-a',
+	'recipe_key'        => 'dup-key-test',
+	'country'           => 'IT',
+	'excerpt'           => 'First of two fixture recipes sharing one recipe_key on purpose.',
+	'servings_default'  => 2,
+	'prep_minutes'      => 5,
+	'ingredients'       => array( array( 'ingredient_key' => 'pasta', 'display_name' => 'Pasta', 'quantity' => '100', 'unit' => 'g' ) ),
+	'steps'             => array( array( 'order' => 1, 'text' => 'Cook.' ) ),
+);
+$dup_b = $dup_a;
+$dup_b['title'] = 'Duplicate B';
+$dup_b['slug']  = 'duplicate-b';
+$NOW    = 'T20';
+$report = $importer->run_import_sync( array( 'recipes' => array( $dup_a, $dup_b ) ), false );
+$row_a  = row_by_title( $report, 'recipes', 'Duplicate A' );
+$row_b  = row_by_title( $report, 'recipes', 'Duplicate B' );
+check( 'TEST 4 — duplicate recipe_key in same batch -> chyba for BOTH items', $row_a && 'chyba' === $row_a['status'] && $row_b && 'chyba' === $row_b['status'] );
+check( 'TEST 4b — neither duplicate was actually created', 0 === find_recipe_id_by_slug( 'duplicate-a' ) && 0 === find_recipe_id_by_slug( 'duplicate-b' ) );
+
+// Sanity: the SAME recipe_key across two DIFFERENT locales is NOT a duplicate — the
+// multilingual-test-dataset.json sample file in this repo relies on exactly this
+// (same recipe_key, cs-CZ + en) and must keep working once Krok 4 lands.
+$dup_diff_locale        = $dup_a;
+$dup_diff_locale['title'] = 'Duplicate Diff Locale';
+$dup_diff_locale['slug']  = 'duplicate-diff-locale';
+$dup_diff_locale['locale'] = 'en';
+$NOW    = 'T21';
+$report = $importer->run_import_sync( array( 'recipes' => array( $dup_a, $dup_diff_locale ) ), false );
+$row_en = row_by_title( $report, 'recipes', 'Duplicate Diff Locale' );
+// "IT" only exists as a cs-CZ post in this harness, so the "en" item correctly still
+// fails — on an UNRELATED, already-covered rule (country must be resolvable in the
+// item's own locale, TEST 15/item 2 of the original KROK 3 brief) — but the actual
+// thing TEST 4c checks is that it's never rejected for the WRONG reason: the
+// duplicate-recipe_key check must never fire across two different locales.
+check( 'TEST 4c — same recipe_key across two different locales is NOT flagged as a duplicate', $row_en && false === strpos( $row_en['message'], 'opakuje' ) );
+
+// TEST 5 — change title, same recipe_key -> UPDATE, never a new recipe.
+$rk_original = array(
+	'title'             => 'Spaghetti Carbonara',
+	'slug'              => 'spaghetti-carbonara-rk',
+	'recipe_key'        => 'spaghetti_carbonara',
+	'country'           => 'IT',
+	'excerpt'           => 'A fixture recipe used only to test the recipe_key identity rules.',
+	'servings_default'  => 4,
+	'prep_minutes'      => 10,
+	'ingredients'       => array( array( 'ingredient_key' => 'pasta', 'display_name' => 'Pasta', 'quantity' => '400', 'unit' => 'g' ) ),
+	'steps'             => array( array( 'order' => 1, 'text' => 'Boil.' ) ),
+);
+$NOW          = 'T22';
+$importer->run_import_sync( array( 'recipes' => array( $rk_original ) ), false );
+$rk_id        = find_recipe_id_by_slug( 'spaghetti-carbonara-rk' );
+$posts_before = count( array_filter( $DB['posts'], fn( $p ) => 'atlas_recipe' === $p['post_type'] ) );
+
+$rk_renamed          = $rk_original;
+$rk_renamed['title'] = 'Pravá římská Carbonara';
+$NOW    = 'T23';
+$report = $importer->run_import_sync( array( 'recipes' => array( $rk_renamed ) ), false );
+$row    = row_by_title( $report, 'recipes', 'Pravá římská Carbonara' );
+$posts_after = count( array_filter( $DB['posts'], fn( $p ) => 'atlas_recipe' === $p['post_type'] ) );
+check( 'TEST 5 — title change with same recipe_key -> aktualizováno', $row && 'aktualizováno' === $row['status'] );
+check( 'TEST 5b — no new recipe post was created', $posts_after === $posts_before );
+check( 'TEST 5c — same underlying post, new title', get_post_field( 'post_title', $rk_id ) === 'Pravá římská Carbonara' );
+
+// TEST 6 — identical recipe + same recipe_key -> beze změny, post_modified untouched.
+$NOW        = 'T24';
+$mod_before = $DB['posts'][ $rk_id ]['post_modified'];
+$report     = $importer->run_import_sync( array( 'recipes' => array( $rk_renamed ) ), false );
+$row        = row_by_title( $report, 'recipes', 'Pravá římská Carbonara' );
+check( 'TEST 6 — identical reimport with same recipe_key -> beze změny', $row && 'beze změny' === $row['status'] );
+check( 'TEST 6b — post_modified unchanged', $DB['posts'][ $rk_id ]['post_modified'] === $mod_before );
+
+// TEST 7 — valid recipe_key, but translation_group is missing -> WARNING, not error.
+$rk_no_tgroup = array(
+	'title'             => 'Recipe Key Only',
+	'slug'              => 'recipe-key-only',
+	'recipe_key'        => 'recipe_key_only_fixture',
+	'country'           => 'IT',
+	'excerpt'           => 'A fixture recipe with a valid recipe_key but no translation_group at all.',
+	'servings_default'  => 2,
+	'prep_minutes'      => 5,
+	'ingredients'       => array( array( 'ingredient_key' => 'pasta', 'display_name' => 'Pasta', 'quantity' => '100', 'unit' => 'g' ) ),
+	'steps'             => array( array( 'order' => 1, 'text' => 'Cook.' ) ),
+);
+$NOW    = 'T25';
+$report = $importer->run_import_sync( array( 'recipes' => array( $rk_no_tgroup ) ), false );
+$row    = row_by_title( $report, 'recipes', 'Recipe Key Only' );
+check( 'TEST 7 — valid recipe_key + missing translation_group -> vytvořeno (not chyba)', $row && 'vytvořeno' === $row['status'] );
+check( 'TEST 7b — the missing translation_group is a WARNING message, not a blocking error', false !== strpos( $row['message'], 'translation_group' ) );
+$rk_only_id = find_recipe_id_by_slug( 'recipe-key-only' );
+check( 'TEST 7c — recipe_key itself resolved correctly into atlas_translation_group storage', 'recipe-key-only-fixture' === get_post_meta( $rk_only_id, 'atlas_translation_group', true ) );
 
 echo "\n=== Extra: quality warnings never affect unchanged-detection / status ===\n";
 $NOW              = 'T15';
