@@ -656,35 +656,35 @@ class Atlas_Chuti_JSON_Importer {
 			return sanitize_title( ! empty( $item['ingredient_key'] ) ? $item['ingredient_key'] : $slug );
 		}
 		if ( 'atlas_recipe' === $post_type ) {
-			// FIX (recipe_key hardening): a recipe's stable identity is resolve_recipe_key()
-			// — never the title/slug — see that method's docblock. $slug is only a last-
-			// resort fallback for callers that reach this before validate_recipe() has run
-			// (build_planned_index()'s own lighter pre-check); the real write path in
-			// import_recipe() never gets here with a blank/invalid key — that's a hard
-			// error there.
-			return sanitize_title( $this->resolve_recipe_key( $item ) ?: $slug );
+			// FIX (KROK 3B — remove the recipe_key/translation_group import fallback):
+			// a recipe's stable identity comes SOLELY from resolve_recipe_key(), which
+			// itself reads ONLY the `recipe_key` field now — no slug fallback here
+			// either, on the same principle: an identity silently derived from
+			// something else is exactly what this fix removes. Returns '' when
+			// recipe_key is missing/blank; the real write path in import_recipe()
+			// never reaches this with such an item — validate_recipe() has already
+			// turned that into a hard error before stable_key_for() is ever called
+			// there (build_planned_index()'s own lighter pre-check has the same
+			// empty-key guard, see its own code).
+			return sanitize_title( $this->resolve_recipe_key( $item ) );
 		}
 		return sanitize_title( ! empty( $item['translation_group'] ) ? $item['translation_group'] : $slug );
 	}
 
 	/**
-	 * FIX (recipe_key hardening): `recipe_key` is the recipe's real stable technical
-	 * identity — title/original_title/slug are NEVER it (they're redactional and can
-	 * change; see the report's "Stabilní identita receptu" section). `translation_group`
-	 * was this field's original name here and is kept as a documented, WARNED
-	 * fallback (never silent) so already-authored content — the current production
-	 * batch and every sample-data file included — keeps working without being
-	 * rewritten; new content should use `recipe_key` directly. Either way the
-	 * resolved value ends up in the SAME `atlas_translation_group` postmeta key
-	 * real code already reads (passport.js's Kulinářský pas, cross-reference
-	 * resolution) — no storage key was renamed, no other file needed to change.
+	 * FIX (KROK 3B): `recipe_key` — and ONLY `recipe_key` — is a recipe's stable
+	 * technical identity for import purposes. `translation_group` is a conceptually
+	 * DIFFERENT field (the future translation-family identity that will link this
+	 * recipe's locale variants once Krok 4 lands — e.g. recipe_key
+	 * "spaghetti_carbonara" vs. translation_group "recipe_spaghetti_carbonara") and
+	 * must NEVER stand in for a missing/invalid recipe_key: a recipe object with a
+	 * valid translation_group but no recipe_key is STILL a hard validation error,
+	 * with no exception. title/original_title/slug are never it either. There is no
+	 * fallback of any kind left in this method — validate_recipe() is what turns a
+	 * missing/blank recipe_key into an ERROR (see its own docblock).
 	 */
 	private function resolve_recipe_key( $item ) {
-		$key = trim( (string) ( $item['recipe_key'] ?? '' ) );
-		if ( '' !== $key ) {
-			return $key;
-		}
-		return trim( (string) ( $item['translation_group'] ?? '' ) );
+		return trim( (string) ( $item['recipe_key'] ?? '' ) );
 	}
 
 	/**
@@ -1400,12 +1400,13 @@ class Atlas_Chuti_JSON_Importer {
 
 		// FIX: recipe_key is the recipe's hard-required stable technical identity —
 		// missing/empty/whitespace-only, invalid format, or a same-batch collision are
-		// all hard errors, never a quality warning (that was the bug this fix
-		// corrects — see the report's "Stabilní identita receptu" section). Title
-		// changing later must never touch this, and this must never be silently
-		// derived from title/slug in the write path — resolve_recipe_key() only ever
-		// reads recipe_key or, as a documented WARNED fallback (see
-		// quality_warnings_for_recipe()), the legacy translation_group field.
+		// all hard errors, never a quality warning. This holds with NO exception —
+		// including a recipe object that supplies a perfectly valid translation_group
+		// (KROK 3B: translation_group is a conceptually separate field — the future
+		// translation-family link, see resolve_recipe_key()'s docblock — and must
+		// NEVER satisfy this requirement on recipe_key's behalf). Title changing
+		// later must never touch this either, and it must never be silently derived
+		// from title/slug in the write path.
 		$recipe_key = $this->resolve_recipe_key( $item );
 		if ( '' === $recipe_key ) {
 			$errors[] = __( 'recipe_key (stabilní technická identita receptu) chybí — nelze automaticky odvodit z title/slug', 'atlas-chuti' );
@@ -1521,17 +1522,15 @@ class Atlas_Chuti_JSON_Importer {
 	private function quality_warnings_for_recipe( $item ) {
 		$notes = array();
 
-		// FIX: recipe_key itself is now hard-validated in validate_recipe() (missing/
-		// invalid/duplicate all abort the import — never reach this point). What's
-		// left here is purely the legacy-fallback nudge: recipe_key resolved from the
-		// OLD `translation_group` field name rather than being supplied directly, or
-		// (item 8 of the fix brief) translation_group being absent even though a real
-		// recipe_key was — the future multilingual linking role that field still has
-		// is Krok 4 scope, so its absence stays a warning, never an error.
-		if ( empty( $item['recipe_key'] ) && ! empty( $item['translation_group'] ) ) {
-			$notes[] = __( 'recipe_key chybí, dočasně použit fallback z translation_group (legacy pole) – doporučeno doplnit recipe_key přímo', 'atlas-chuti' );
-		} elseif ( empty( $item['translation_group'] ) ) {
-			$notes[] = __( 'chybí translation_group – bez dopadu na identitu receptu dnes, ale bude potřeba pro budoucí CZ/EN provázání (Krok 4)', 'atlas-chuti' );
+		// FIX (KROK 3B): recipe_key itself is hard-validated in validate_recipe() —
+		// missing/invalid/duplicate all abort the import before this method is ever
+		// called, with NO fallback to translation_group (see resolve_recipe_key()'s
+		// docblock). By the time quality_warnings_for_recipe() runs, recipe_key is
+		// already known-good, so the only thing left to warn about here is
+		// translation_group's OWN, separate, still-optional role — the future
+		// translation-family link Krok 4 will use — being absent.
+		if ( empty( $item['translation_group'] ) ) {
+			$notes[] = __( 'chybí translation_group – samostatné pole od recipe_key, bez dopadu na identitu receptu dnes, ale bude potřeba pro budoucí CZ/EN provázání (Krok 4)', 'atlas-chuti' );
 		}
 
 		if ( isset( $item['excerpt'] ) ) {
@@ -1735,13 +1734,20 @@ class Atlas_Chuti_JSON_Importer {
 			$tag_ids = array_values( array_unique( array_filter( array_map( fn( $k ) => $this->resolve_known_tag_term( $k ), (array) $item['tags'] ) ) ) );
 			wp_set_post_terms( $post_id, $tag_ids, 'atlas_recipe_tag', false );
 		}
-		// FIX: apply_i18n_meta() would otherwise re-write atlas_translation_group from
-		// the RAW $item['translation_group'] — clobbering the resolved recipe_key
-		// (possibly a DIFFERENT value, e.g. when recipe_key is present but
-		// translation_group is also separately set) already stored via meta_input
-		// above. $stable_key is already the correctly resolved+sanitized identity, so
-		// this local-copy override keeps both writes in agreement.
-		$item['translation_group'] = $stable_key ?: $slug;
+		// FIX (KROK 3B): recipe_key and translation_group are conceptually SEPARATE
+		// input fields/roles (see resolve_recipe_key()'s docblock) — but today's
+		// storage still shares one meta mechanism (`atlas_translation_group`, the
+		// same key passport.js's Kulinářský pas and cross-reference resolution
+		// already read as the recipe's real identity) rather than splitting into two
+		// meta keys, exactly as the fix brief allows ("i pokud historická
+		// implementace dnes ukládá některá data do stejného meta mechanismu") —
+		// building that separation for real is Krok 4 scope. apply_i18n_meta() would
+		// otherwise write the RAW $item['translation_group'] (its own, possibly
+		// different value) into that same identity meta and clobber the resolved
+		// recipe_key that meta_input above already stored there — this local-copy
+		// override (recipe_key is already known-good by this point, see
+		// validate_recipe()) keeps both writes pointed at the one real identity.
+		$item['translation_group'] = $stable_key;
 		$this->apply_i18n_meta( $post_id, $item );
 
 		// Country tagging happens here (not only in the resolve pass) so a recipe is
