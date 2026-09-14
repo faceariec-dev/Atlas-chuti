@@ -39,7 +39,18 @@ class Atlas_Chuti_I18N {
 
 	const DEFAULT_LOCALE = 'cs-CZ';
 
-	const LOCALIZED_POST_TYPES = array( 'atlas_recipe', 'atlas_country', 'atlas_glossary', 'atlas_ingredient' );
+	// KROK 4: the only two locales this project actually supports. Internal
+	// representation stays this project's existing BCP-47-ish style (cs-CZ / en) —
+	// see normalize_locale()'s docblock for why this is NOT renamed to the KROK 4
+	// brief's own illustrative cs_CZ/en_US spelling.
+	const SUPPORTED_LOCALES = array( 'cs-CZ', 'en' );
+
+	// 'post' added in KROK 4 (item 32 of the brief — standard WordPress posts must be
+	// multilingual-ready for the future Magazín) — Polylang manages 'post'/'page'
+	// natively without any registration filter, this only affects OUR OWN
+	// atlas_locale backfill/query-scoping below, which 'post' didn't participate in
+	// before.
+	const LOCALIZED_POST_TYPES = array( 'atlas_recipe', 'atlas_country', 'atlas_glossary', 'atlas_ingredient', 'post' );
 
 	private static $instance = null;
 
@@ -90,6 +101,41 @@ class Atlas_Chuti_I18N {
 	}
 
 	/**
+	 * KROK 4, item 16 of the brief: normalizes an INPUT locale spelling to our
+	 * canonical internal tag. Accepts our own existing cs-CZ/en form AND the
+	 * WordPress/Polylang-style underscore form (cs_CZ, en_US) the brief's own JSON
+	 * examples use — either spelling in a JSON import resolves to the exact same
+	 * stored value, so "cs_CZ" and "cs-CZ" content can never accidentally end up
+	 * scoped as two different locales. Returns null for anything else (an
+	 * "unsupported locale", per the brief — the caller turns that into a hard
+	 * validation error, see class-json-importer.php's is_valid_locale()).
+	 *
+	 * Why the codebase's OWN internal representation isn't renamed to cs_CZ/en_US
+	 * verbatim: that string is a hardcoded lookup key in MANY places already shipped
+	 * and tested (Atlas_Chuti_Taxonomy_Labels' whole label table, Atlas_Chuti_Units'
+	 * label table, every existing sample-data/production-data JSON file, the whole
+	 * KROK 1-3 test suite) — renaming it would be a wide, purely-cosmetic, real-risk
+	 * change for no functional gain, since Polylang itself is only ever talked to via
+	 * its own 2-letter SLUGS ('cs'/'en', see class-polylang-bridge.php), never via
+	 * this internal tag — so nothing about real Polylang interop actually requires
+	 * the rename. See the report's "Zvolená multilingual architektura" section.
+	 */
+	public static function normalize_locale( $raw ) {
+		$raw = strtolower( trim( (string) $raw ) );
+		$map = array(
+			'cs-cz' => 'cs-CZ',
+			'cs_cz' => 'cs-CZ',
+			'cs'    => 'cs-CZ',
+			'en-us' => 'en',
+			'en_us' => 'en',
+			'en-gb' => 'en',
+			'en_gb' => 'en',
+			'en'    => 'en',
+		);
+		return $map[ $raw ] ?? null;
+	}
+
+	/**
 	 * Backfills atlas_locale/atlas_translation_group/atlas_translation_status on every
 	 * save (admin edit or importer) so the contract holds even for content nobody
 	 * explicitly set these fields on. Never overwrites a value that's already there.
@@ -115,6 +161,16 @@ class Atlas_Chuti_I18N {
 		}
 		if ( 'atlas_ingredient' === $post->post_type && '' === get_post_meta( $post_id, 'atlas_ingredient_key', true ) && $post->post_name ) {
 			update_post_meta( $post_id, 'atlas_ingredient_key', $post->post_name );
+		}
+		// KROK 4: recipe_key is a SEPARATE stable identity from translation_group (see
+		// class-json-importer.php's resolve_recipe_key()/stable_key_for() docblocks) —
+		// the importer always sets atlas_recipe_key explicitly and never reaches this
+		// fallback (a missing/invalid recipe_key is a hard import error); this backfill
+		// exists only for a recipe created/edited directly in wp-admin, which has no
+		// recipe_key UI field yet, so it would otherwise stay permanently blank and
+		// break dedup/Kulinářský pas/future CZ-EN pairing for that post.
+		if ( 'atlas_recipe' === $post->post_type && '' === get_post_meta( $post_id, 'atlas_recipe_key', true ) && $post->post_name ) {
+			update_post_meta( $post_id, 'atlas_recipe_key', $post->post_name );
 		}
 	}
 
@@ -151,6 +207,33 @@ class Atlas_Chuti_I18N {
 				'post_status'    => array( 'publish', 'draft' ),
 				'meta_query'     => array(
 					array( 'key' => 'atlas_iso_code', 'value' => strtoupper( $iso_code ), 'compare' => '=' ),
+					array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ),
+				),
+			)
+		);
+		return $posts ? $posts[0] : null;
+	}
+
+	/**
+	 * KROK 4: resolves a recipe by its recipe_key — the stable, LOCALE-SHARED concept
+	 * identity (e.g. "spaghetti_carbonara" names the SAME dish in both the cs-CZ and
+	 * en posts; recipe_key + locale together identify one specific post), scoped to
+	 * one locale exactly like find_by_translation_group() below, just reading
+	 * atlas_recipe_key instead — recipe_key and translation_group are genuinely
+	 * separate meta keys now (see class-json-importer.php's import_recipe()).
+	 */
+	public static function find_by_recipe_key( $key, $locale = null ) {
+		if ( ! $key ) {
+			return null;
+		}
+		$locale = $locale ?: self::current_locale();
+		$posts  = get_posts(
+			array(
+				'post_type'      => 'atlas_recipe',
+				'posts_per_page' => 1,
+				'post_status'    => array( 'publish', 'draft' ),
+				'meta_query'     => array(
+					array( 'key' => 'atlas_recipe_key', 'value' => $key, 'compare' => '=' ),
 					array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ),
 				),
 			)
@@ -236,7 +319,24 @@ class Atlas_Chuti_I18N {
 			return;
 		}
 
-		$meta_query[] = array( 'key' => 'atlas_locale', 'value' => self::current_locale(), 'compare' => '=' );
+		$locale = self::current_locale();
+		if ( self::DEFAULT_LOCALE === $locale ) {
+			// KROK 4, item 16: legacy content with NO atlas_locale meta at all (it
+			// predates this backfill, or 'post'/'page' content nobody has re-saved
+			// since 'post' joined LOCALIZED_POST_TYPES) is treated as belonging to the
+			// default locale — it must never silently vanish from Czech queries just
+			// because it's missing a meta key that didn't exist yet when it was
+			// created. This OR only applies when querying for the DEFAULT locale; a
+			// query for 'en' still requires an explicit atlas_locale=en match, so
+			// legacy/locale-less content is never mistaken for English content.
+			$meta_query[] = array(
+				'relation' => 'OR',
+				array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' ),
+				array( 'key' => 'atlas_locale', 'compare' => 'NOT EXISTS' ),
+			);
+		} else {
+			$meta_query[] = array( 'key' => 'atlas_locale', 'value' => $locale, 'compare' => '=' );
+		}
 		$query->set( 'meta_query', $meta_query );
 	}
 

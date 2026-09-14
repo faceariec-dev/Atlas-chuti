@@ -39,6 +39,24 @@ class Atlas_Chuti_Register_Meta {
 			$this->register_i18n_fields( $post_type );
 		}
 
+		// KROK 4: recipe_key is atlas_recipe's OWN stable dish-concept identity —
+		// distinct from atlas_translation_group (registered above via
+		// register_i18n_fields(), now a separate, optional field — see
+		// class-json-importer.php's import_recipe()). Recipe-only, unlike the fields
+		// register_i18n_fields() shares across atlas_recipe/atlas_country/atlas_glossary.
+		register_post_meta(
+			'atlas_recipe',
+			'atlas_recipe_key',
+			array(
+				'type'              => 'string',
+				'description'       => 'Stable dish-concept identity shared by every locale of this recipe (e.g. "spaghetti_carbonara").',
+				'single'            => true,
+				'sanitize_callback' => 'sanitize_title',
+				'auth_callback'     => array( $this, 'auth_edit_posts' ),
+				'show_in_rest'      => true,
+			)
+		);
+
 		// Internal linkage fields the importer/meta boxes write directly (not part of
 		// the field registry because they're relationships, not authored content).
 		register_post_meta(

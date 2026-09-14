@@ -48,14 +48,13 @@ function atlas_chuti_placeholder_image( $context = 'recipe' ) {
 
 /**
  * Central map of "system" page paths — country archive, culinary passport, legal
- * pages… (item 20 of this phase's brief). Today every path is the current Czech one
- * (`/zeme/`, `/kulinarsky-pas/`…) via `home_url()`, same as before; the point isn't a
- * behavior change now, it's that hardcoding `home_url('/zeme/')` in a dozen templates
- * is exactly the kind of "unnecessary architectural dependence on Czech paths" that
- * would make a future `atlaschuti.com/countries/` mean editing every one of them.
- * With the paths centralized here (and filterable via `atlas_chuti_system_paths`), a
- * future locale-aware routing layer only has to change one place. English rewrites
- * are NOT activated by this — it stays a plain path lookup until they are.
+ * pages… (item 20 of this phase's brief). This map ALWAYS holds the Czech path —
+ * that part is unchanged. What KROK 4 adds: when the current request is NOT the
+ * default locale, this now tries to resolve the REAL translated WordPress Page
+ * (created via "Atlas chutí → Nastavení stránek", class-page-setup.php) via
+ * Polylang, and only falls back to the Czech URL when no such translation exists
+ * yet or Polylang isn't active — never a broken link, never a guessed English slug.
+ * `atlas_chuti_system_paths` stays filterable exactly as before for the Czech side.
  */
 function atlas_chuti_system_url( $key ) {
 	$paths = apply_filters(
@@ -73,7 +72,23 @@ function atlas_chuti_system_url( $key ) {
 			'terms'              => '/podminky-pouzivani/',
 		)
 	);
-	return home_url( $paths[ $key ] ?? '/' );
+	$path    = $paths[ $key ] ?? '/';
+	$cs_url  = home_url( $path );
+
+	if ( ! class_exists( 'Atlas_Chuti_Polylang_Bridge' )
+		|| ! Atlas_Chuti_Polylang_Bridge::is_active()
+		|| Atlas_Chuti_I18N::DEFAULT_LOCALE === Atlas_Chuti_I18N::current_locale() ) {
+		return $cs_url;
+	}
+
+	$cs_page = get_page_by_path( trim( $path, '/' ) );
+	if ( $cs_page ) {
+		$translated_id = Atlas_Chuti_Polylang_Bridge::get_post_translation_id( $cs_page->ID, Atlas_Chuti_I18N::current_locale() );
+		if ( $translated_id && 'publish' === get_post_status( $translated_id ) ) {
+			return get_permalink( $translated_id );
+		}
+	}
+	return $cs_url;
 }
 
 /**

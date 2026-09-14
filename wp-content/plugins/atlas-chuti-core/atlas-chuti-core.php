@@ -50,6 +50,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
  * Bootstraps all plugin modules on `plugins_loaded` so load order never matters.
  */
 function atlas_chuti_core_init() {
+	Atlas_Chuti_Polylang_Bridge::instance();
 	Atlas_Chuti_I18N::instance();
 	Atlas_Chuti_Post_Types::instance();
 	Atlas_Chuti_Taxonomies::instance();

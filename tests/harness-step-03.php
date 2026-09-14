@@ -392,6 +392,7 @@ $GLOBALS['wpdb'] = new Fake_WPDB();
 // Load the REAL plugin classes (unmodified requires — this is the actual code
 // under test, not a reimplementation of it).
 // =============================================================================
+require $PLUGIN . '/class-polylang-bridge.php';
 require $PLUGIN . '/class-i18n.php';
 require $PLUGIN . '/class-taxonomy-labels.php';
 require $PLUGIN . '/class-units.php';
@@ -402,6 +403,7 @@ require $PLUGIN . '/class-meta-fields.php';
 require $PLUGIN . '/class-json-importer.php';
 
 // Same bootstrap order as atlas-chuti-core.php's real 'plugins_loaded'/'init' path.
+Atlas_Chuti_Polylang_Bridge::instance();
 Atlas_Chuti_I18N::instance();
 Atlas_Chuti_Country_Sync::instance();
 Atlas_Chuti_Ingredient_Sync::instance();

@@ -27,6 +27,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<input type="search" name="s" placeholder="<?php esc_attr_e( 'Hledat…', 'atlas-chuti' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>">
 				</form>
 				<div class="mobile-nav-account">
+					<?php atlas_chuti_language_switcher(); ?>
 					<?php if ( is_user_logged_in() ) : ?>
 						<a class="header-account" href="<?php echo esc_url( admin_url( 'profile.php' ) ); ?>"><?php esc_html_e( 'Můj Atlas', 'atlas-chuti' ); ?></a>
 					<?php else : ?>
@@ -39,6 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</nav>
 
 		<div class="header-tools">
+			<?php atlas_chuti_language_switcher(); ?>
 			<form class="search-box header-search" action="<?php echo esc_url( home_url( '/' ) ); ?>" method="get" role="search">
 				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
 				<input type="search" name="s" placeholder="<?php esc_attr_e( 'Hledat…', 'atlas-chuti' ); ?>" value="<?php echo esc_attr( get_search_query() ); ?>">

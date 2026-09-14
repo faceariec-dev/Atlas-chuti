@@ -42,11 +42,13 @@ while ( have_posts() ) :
 	$total      = atlas_chuti_format_time( get_post_meta( $post_id, 'atlas_total_minutes', true ) );
 	$diff_terms = get_the_terms( $post_id, 'atlas_difficulty' );
 
-	// Keyed by recipe_key (atlas_translation_group), not slug — a stable,
-	// language-independent identifier (pre-existing Kulinářský pas contract, kept
-	// exactly as-is — see assets/js/passport.js).
+	// Keyed by recipe_key (atlas_recipe_key), not slug — a stable,
+	// language-independent identifier shared across CZ/EN (KROK 4: recipe_key and
+	// translation_group are now separate meta keys with separate roles, see
+	// class-json-importer.php's import_recipe() — the Kulinářský pas needs the
+	// dish-concept identity, recipe_key, not the Polylang-cross-check field).
 	$passport_data = array(
-		'recipe_key' => get_post_meta( $post_id, 'atlas_translation_group', true ) ?: get_post_field( 'post_name', $post_id ),
+		'recipe_key' => get_post_meta( $post_id, 'atlas_recipe_key', true ) ?: get_post_field( 'post_name', $post_id ),
 		'slug'       => get_post_field( 'post_name', $post_id ),
 		'title'      => get_the_title(),
 		'country'    => $country ? get_the_title( $country ) : '',

@@ -29,6 +29,50 @@ class Atlas_Chuti_Polylang_Bridge {
 		'en'    => 'en',
 	);
 
+	private static $instance = null;
+
+	public static function instance() {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
+	 * KROK 4, item 7: tells Polylang which of our custom post types/taxonomies are
+	 * translatable — without this, Polylang only manages core 'post'/'page' and an
+	 * admin would have to remember to tick the right boxes in Settings → Languages.
+	 * Registering it in code means it's always correct on a fresh Polylang install.
+	 * These filters are simply never called when Polylang isn't active, so this
+	 * constructor is safe to run unconditionally.
+	 *
+	 * atlas_ingredient (the internal, non-public dictionary) and atlas_country_tax/
+	 * atlas_ingredient_tax (technical taxonomies with exactly ONE shared term per
+	 * ISO code / ingredient_key across every locale — see class-country-sync.php's
+	 * docblock) are deliberately NOT registered here: they already have their own
+	 * cross-locale identity mechanism (ingredient_key/ISO code + locale), and making
+	 * them Polylang-translatable too would create two competing, conflicting ideas
+	 * of what "the same country/ingredient" means.
+	 */
+	private function __construct() {
+		add_filter( 'pll_get_post_types', array( $this, 'register_post_types' ), 10, 2 );
+		add_filter( 'pll_get_taxonomies', array( $this, 'register_taxonomies' ), 10, 2 );
+	}
+
+	public function register_post_types( $post_types, $is_settings = false ) {
+		foreach ( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary' ) as $post_type ) {
+			$post_types[ $post_type ] = $post_type;
+		}
+		return $post_types;
+	}
+
+	public function register_taxonomies( $taxonomies, $is_settings = false ) {
+		foreach ( array( 'atlas_continent', 'atlas_meal_type', 'atlas_difficulty', 'atlas_diet', 'atlas_recipe_tag', 'atlas_glossary_category' ) as $taxonomy ) {
+			$taxonomies[ $taxonomy ] = $taxonomy;
+		}
+		return $taxonomies;
+	}
+
 	public static function is_active() {
 		return function_exists( 'pll_languages_list' ) && function_exists( 'pll_current_language' );
 	}
@@ -76,6 +120,98 @@ class Atlas_Chuti_Polylang_Bridge {
 		if ( count( $by_slug ) > 1 ) {
 			pll_save_post_translations( $by_slug );
 		}
+	}
+
+	/**
+	 * KROK 4, item 6: the translation of $post_id in $target_locale, or 0 when
+	 * Polylang isn't active, the post isn't translatable, or no such translation
+	 * exists yet — never guessed, never fabricated.
+	 */
+	public static function get_post_translation_id( $post_id, $target_locale ) {
+		if ( ! self::is_active() || ! function_exists( 'pll_get_post' ) ) {
+			return 0;
+		}
+		$translated = pll_get_post( $post_id, self::locale_to_slug( $target_locale ) );
+		return $translated ? (int) $translated : 0;
+	}
+
+	/**
+	 * KROK 4, item 6: same idea as get_post_translation_id() but for a taxonomy term.
+	 */
+	public static function get_term_translation_id( $term_id, $target_locale ) {
+		if ( ! self::is_active() || ! function_exists( 'pll_get_term' ) ) {
+			return 0;
+		}
+		$translated = pll_get_term( $term_id, self::locale_to_slug( $target_locale ) );
+		return $translated ? (int) $translated : 0;
+	}
+
+	/**
+	 * KROK 4, item 8: language-switcher data for the CURRENT request — one entry per
+	 * supported locale (Atlas_Chuti_I18N::SUPPORTED_LOCALES), each with whatever real,
+	 * crawlable URL is safe to offer:
+	 *   - the exact translation, when the current singular post/term actually has one
+	 *     published in that locale,
+	 *   - that locale's home page, as a graceful fallback everywhere else (archives,
+	 *     search, home, or a post/term with no translation yet) — never a broken URL,
+	 *     never a fabricated translated page (item 8 of the brief: "nevytvářej broken
+	 *     URL... nevytvářej fake překlad").
+	 * `exact` tells the template whether the link is the precise translation (safe to
+	 * treat as equivalent for hreflang) or the same-locale-home fallback (never used
+	 * for hreflang — see class-seo.php).
+	 */
+	public static function switcher_data() {
+		$items = array();
+		foreach ( Atlas_Chuti_I18N::SUPPORTED_LOCALES as $locale ) {
+			$items[] = array(
+				'locale'      => $locale,
+				'label'       => 'cs-CZ' === $locale ? 'CZ' : 'EN',
+				'is_current'  => $locale === Atlas_Chuti_I18N::current_locale(),
+				'url'         => self::is_active() ? self::url_for_locale( $locale ) : null,
+				'exact'       => self::is_active() && self::has_exact_translation( $locale ),
+			);
+		}
+		return $items;
+	}
+
+	/**
+	 * Real translation URL for the CURRENT queried object in $target_locale, or that
+	 * locale's home page when there isn't one (see switcher_data()'s docblock). Only
+	 * ever called while Polylang is active.
+	 */
+	private static function url_for_locale( $target_locale ) {
+		if ( is_singular() ) {
+			$translated_id = self::get_post_translation_id( get_queried_object_id(), $target_locale );
+			if ( $translated_id && 'publish' === get_post_status( $translated_id ) ) {
+				return get_permalink( $translated_id );
+			}
+		} elseif ( is_tax() || is_category() || is_tag() ) {
+			$term = get_queried_object();
+			if ( $term instanceof WP_Term ) {
+				$translated_id = self::get_term_translation_id( $term->term_id, $target_locale );
+				if ( $translated_id ) {
+					$link = get_term_link( $translated_id, $term->taxonomy );
+					if ( ! is_wp_error( $link ) ) {
+						return $link;
+					}
+				}
+			}
+		}
+		if ( function_exists( 'pll_home_url' ) ) {
+			return pll_home_url( self::locale_to_slug( $target_locale ) );
+		}
+		return home_url( 'en' === $target_locale ? '/en/' : '/' );
+	}
+
+	private static function has_exact_translation( $target_locale ) {
+		if ( is_singular() ) {
+			return (bool) self::get_post_translation_id( get_queried_object_id(), $target_locale );
+		}
+		if ( is_tax() || is_category() || is_tag() ) {
+			$term = get_queried_object();
+			return $term instanceof WP_Term && (bool) self::get_term_translation_id( $term->term_id, $target_locale );
+		}
+		return false;
 	}
 
 	public static function locale_to_slug( $locale ) {

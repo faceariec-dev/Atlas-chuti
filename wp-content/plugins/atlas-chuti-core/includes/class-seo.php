@@ -197,6 +197,7 @@ class Atlas_Chuti_SEO {
 		$title       = $this->get_seo_title();
 		$canonical   = $this->get_canonical_url();
 		$robots      = $this->get_robots_directive();
+		$locale_urls = $this->get_locale_urls();
 
 		printf( '<meta name="description" content="%s">' . "\n", esc_attr( $description ) );
 		if ( $robots ) {
@@ -205,6 +206,7 @@ class Atlas_Chuti_SEO {
 		if ( $canonical ) {
 			printf( '<link rel="canonical" href="%s">' . "\n", esc_url( $canonical ) );
 		}
+		$this->output_hreflang( $locale_urls );
 
 		printf( '<meta property="og:type" content="%s">' . "\n", is_singular( 'atlas_recipe' ) ? 'article' : 'website' );
 		printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $title ) );
@@ -219,6 +221,104 @@ class Atlas_Chuti_SEO {
 			// expect, and is guaranteed registered (see atlas_chuti_setup()).
 			printf( '<meta property="og:image" content="%s">' . "\n", esc_url( get_the_post_thumbnail_url( get_the_ID(), 'atlas-hero' ) ) );
 		}
+		printf( '<meta property="og:locale" content="%s">' . "\n", esc_attr( $this->og_locale_tag( Atlas_Chuti_I18N::current_locale() ) ) );
+		foreach ( $locale_urls as $locale => $url ) {
+			if ( $locale !== Atlas_Chuti_I18N::current_locale() ) {
+				printf( '<meta property="og:locale:alternate" content="%s">' . "\n", esc_attr( $this->og_locale_tag( $locale ) ) );
+			}
+		}
+	}
+
+	/**
+	 * KROK 4, item 17: real translation URLs for the CURRENT singular post/term,
+	 * keyed by our internal locale tag — includes the current locale's own
+	 * canonical URL, plus every OTHER supported locale Polylang confirms an
+	 * actual, published translation for (mirrors
+	 * Atlas_Chuti_Polylang_Bridge::switcher_data()'s "never a fake/guessed
+	 * translation" rule — this is what makes it safe to feed straight into both
+	 * hreflang and og:locale:alternate). Empty array whenever Polylang isn't
+	 * active, the current request isn't a singular post/term, or no real
+	 * translation pair exists yet (the normal case for nearly all of this site
+	 * today) — hreflang/og:locale:alternate are never emitted from a guess.
+	 */
+	private function get_locale_urls() {
+		if ( ! class_exists( 'Atlas_Chuti_Polylang_Bridge' ) || ! Atlas_Chuti_Polylang_Bridge::is_active() ) {
+			return array();
+		}
+		$is_singular_page = is_singular();
+		$is_term_page      = is_tax() || is_category() || is_tag();
+		if ( ! $is_singular_page && ! $is_term_page ) {
+			return array();
+		}
+
+		$current_locale = Atlas_Chuti_I18N::current_locale();
+		$urls            = array( $current_locale => $this->get_canonical_url() );
+
+		foreach ( Atlas_Chuti_I18N::SUPPORTED_LOCALES as $locale ) {
+			if ( $locale === $current_locale ) {
+				continue;
+			}
+			$url = '';
+			if ( $is_singular_page ) {
+				$translated_id = Atlas_Chuti_Polylang_Bridge::get_post_translation_id( get_queried_object_id(), $locale );
+				if ( $translated_id && 'publish' === get_post_status( $translated_id ) ) {
+					$url = get_permalink( $translated_id );
+				}
+			} else {
+				$term = get_queried_object();
+				if ( $term instanceof WP_Term ) {
+					$translated_id = Atlas_Chuti_Polylang_Bridge::get_term_translation_id( $term->term_id, $locale );
+					if ( $translated_id ) {
+						$link = get_term_link( $translated_id, $term->taxonomy );
+						if ( ! is_wp_error( $link ) ) {
+							$url = $link;
+						}
+					}
+				}
+			}
+			if ( $url ) {
+				$urls[ $locale ] = $url;
+			}
+		}
+		// A lone self-entry isn't a real multilingual signal — only return
+		// anything once there's at least one confirmed real alternate.
+		return count( $urls ) > 1 ? $urls : array();
+	}
+
+	/**
+	 * hreflang, reciprocal by construction (both directions come from the same
+	 * Polylang translation relation — see get_locale_urls()) — cs/en for every
+	 * real pair, plus x-default pointing at the default locale's URL (item 17).
+	 * Never emitted for a lone page with no real translation (get_locale_urls()
+	 * already returns empty in that case).
+	 */
+	private function output_hreflang( $locale_urls ) {
+		if ( ! $locale_urls ) {
+			return;
+		}
+		foreach ( $locale_urls as $locale => $url ) {
+			printf(
+				'<link rel="alternate" hreflang="%s" href="%s">' . "\n",
+				esc_attr( Atlas_Chuti_Polylang_Bridge::locale_to_slug( $locale ) ),
+				esc_url( $url )
+			);
+		}
+		if ( isset( $locale_urls[ Atlas_Chuti_I18N::DEFAULT_LOCALE ] ) ) {
+			printf( '<link rel="alternate" hreflang="x-default" href="%s">' . "\n", esc_url( $locale_urls[ Atlas_Chuti_I18N::DEFAULT_LOCALE ] ) );
+		}
+	}
+
+	/**
+	 * Our internal locale tag (cs-CZ/en) translated to the OpenGraph spec's OWN
+	 * convention (cs_CZ/en_US, underscore) — a DIFFERENT convention from ours,
+	 * so this is never a plain string replace.
+	 */
+	private function og_locale_tag( $locale ) {
+		$map = array(
+			'cs-CZ' => 'cs_CZ',
+			'en'    => 'en_US',
+		);
+		return $map[ $locale ] ?? str_replace( '-', '_', $locale );
 	}
 
 	// ---------------------------------------------------------------------
@@ -279,6 +379,11 @@ class Atlas_Chuti_SEO {
 			'name'        => get_the_title( $post_id ),
 			'description' => $this->clean_text( get_post_meta( $post_id, 'atlas_excerpt', true ) ),
 			'url'         => get_permalink( $post_id ),
+			// KROK 4, item 17: optional inLanguage — this post's OWN locale (not the
+			// current request's, so a schema fetched cross-locale is never wrong),
+			// as a plain BCP 47 subtag (Atlas_Chuti_Polylang_Bridge::locale_to_slug()
+			// is a pure lookup, safe to call whether or not Polylang is active).
+			'inLanguage'  => Atlas_Chuti_Polylang_Bridge::locale_to_slug( Atlas_Chuti_I18N::get_locale( $post_id ) ),
 		);
 
 		$this->add_recipe_images( $schema, $post_id );

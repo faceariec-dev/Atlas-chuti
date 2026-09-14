@@ -1,0 +1,70 @@
+{
+  "countries": [
+    {
+      "title": "Itálie",
+      "slug": "italie",
+      "iso_code": "IT",
+      "locale": "cs-CZ",
+      "flag_emoji": "🇮🇹",
+      "continent": "europe",
+      "intro": "Fixture country (CZ) used only by the KROK 4 test harness, not real editorial content."
+    },
+    {
+      "title": "Italy",
+      "slug": "italy",
+      "iso_code": "IT",
+      "locale": "en",
+      "flag_emoji": "🇮🇹",
+      "continent": "europe",
+      "intro": "Fixture country (EN) used only by the KROK 4 test harness, not real editorial content."
+    }
+  ],
+  "recipes": [
+    {
+      "title": "Špagety Carbonara",
+      "slug": "spagety-carbonara",
+      "recipe_key": "spaghetti_carbonara",
+      "translation_group": "recipe_spaghetti_carbonara",
+      "locale": "cs-CZ",
+      "country": "IT",
+      "excerpt": "Fixture recept (CZ) pouze pro testovací sadu KROK 4, nejde o skutečný redakční obsah.",
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "cook_minutes": 15,
+      "difficulty": "easy",
+      "meal_type": ["main-course"],
+      "ingredients": [
+        { "ingredient_key": "pasta", "display_name": "Špagety", "quantity": "400", "unit": "g" },
+        { "ingredient_key": "egg", "display_name": "Vejce", "quantity": "4", "unit": "ks" }
+      ],
+      "steps": [
+        { "order": 1, "text": "Uvařte těstoviny." },
+        { "order": 2, "text": "Smíchejte s vejci a slaninou." }
+      ],
+      "tags": ["traditional"]
+    },
+    {
+      "title": "Spaghetti Carbonara",
+      "slug": "spaghetti-carbonara",
+      "recipe_key": "spaghetti_carbonara",
+      "translation_group": "recipe_spaghetti_carbonara",
+      "locale": "en",
+      "country": "IT",
+      "excerpt": "Fixture recipe (EN) for the KROK 4 test harness only, not real editorial content.",
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "cook_minutes": 15,
+      "difficulty": "easy",
+      "meal_type": ["main-course"],
+      "ingredients": [
+        { "ingredient_key": "pasta", "display_name": "Spaghetti", "quantity": "400", "unit": "g" },
+        { "ingredient_key": "egg", "display_name": "Eggs", "quantity": "4", "unit": "pcs" }
+      ],
+      "steps": [
+        { "order": 1, "text": "Boil the pasta." },
+        { "order": 2, "text": "Mix with eggs and bacon." }
+      ],
+      "tags": ["traditional"]
+    }
+  ]
+}

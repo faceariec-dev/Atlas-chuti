@@ -118,6 +118,49 @@ function atlas_chuti_breadcrumbs() {
 }
 
 /**
+ * CZ | EN language switcher (KROK 4, item 8). Renders NOTHING when Polylang isn't
+ * active — the same "safely inert until the real thing exists" convention already
+ * used for the nav's "brzy" placeholders (KROK 1): with only one real locale
+ * available, a switcher control would have nowhere real to send anyone, so it's
+ * better absent than fake. Once Polylang is active with both languages configured,
+ * this becomes a real, keyboard/screen-reader-usable set of links automatically —
+ * no template change needed.
+ */
+function atlas_chuti_language_switcher() {
+	if ( ! Atlas_Chuti_Polylang_Bridge::is_active() ) {
+		return;
+	}
+	$items = Atlas_Chuti_Polylang_Bridge::switcher_data();
+	if ( count( $items ) < 2 ) {
+		return;
+	}
+	echo '<nav class="lang-switcher" aria-label="' . esc_attr__( 'Přepnout jazyk', 'atlas-chuti' ) . '">';
+	foreach ( $items as $item ) {
+		$label = esc_html( $item['label'] );
+		if ( $item['is_current'] ) {
+			printf( '<span class="lang-switcher-current" aria-current="true">%s</span>', $label );
+			continue;
+		}
+		if ( ! $item['url'] ) {
+			// Polylang active, but this locale has no home URL to offer at all
+			// (misconfigured install) — never render a dead link (item 8 of the brief).
+			continue;
+		}
+		// A real, functioning link either way — item 8 explicitly allows the
+		// "no translation yet -> safe fallback" case to still be a normal, keyboard-
+		// and screen-reader-usable link (never a disabled/fake control); the title
+		// attribute is the only difference, so it's honest about where it leads.
+		printf(
+			'<a class="lang-switcher-link" href="%1$s"%2$s>%3$s</a>',
+			esc_url( $item['url'] ),
+			$item['exact'] ? '' : ' title="' . esc_attr__( 'Překlad této stránky zatím není k dispozici — odkaz vede na úvodní stránku v tomto jazyce.', 'atlas-chuti' ) . '"',
+			$label
+		);
+	}
+	echo '</nav>';
+}
+
+/**
  * Renders the ONE primary navigation (KROK 1, item 5 of the brief, opravný prompt):
  * Recepty (quick-access mega menu), Země, then Magazín/Tipy a triky/Diskuze — future
  * sections not built yet, shown as inert "brzy" placeholders rather than broken

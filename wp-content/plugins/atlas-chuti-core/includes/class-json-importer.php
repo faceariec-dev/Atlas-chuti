@@ -458,15 +458,24 @@ class Atlas_Chuti_JSON_Importer {
 	}
 
 	/**
-	 * The locale to use for THIS import item (item 2/3 of this phase's brief):
-	 * whatever the JSON explicitly says, else cs-CZ. Computed once per item and
-	 * threaded into every lookup/resolution call for that item — never resolved
-	 * implicitly from the current request (an admin import can create English
-	 * content while the site itself is still cs-CZ-only).
+	 * The locale to use for THIS import item (item 2/3 of this phase's brief, hardened
+	 * in KROK 4): whatever the JSON explicitly says — NORMALIZED via
+	 * Atlas_Chuti_I18N::normalize_locale() so "cs_CZ"/"en_US"/"cs-CZ"/"en" all resolve
+	 * to the exact same stored value — else cs-CZ. Computed once per item and threaded
+	 * into every lookup/resolution call for that item — never resolved implicitly from
+	 * the current request (an admin import can create English content while the site
+	 * itself is still cs-CZ-only). validate_recipe()/validate_country()/
+	 * validate_glossary() already turn an UNRECOGNIZED locale into a hard error before
+	 * any of this item's data is written — this fallback only ever applies to an
+	 * item that either omitted `locale` entirely, or already failed validation and
+	 * whose row is never going to reach the write path anyway.
 	 */
 	private function resolve_item_locale( $item ) {
-		if ( ! empty( $item['locale'] ) && $this->is_valid_locale( $item['locale'] ) ) {
-			return $item['locale'];
+		if ( ! empty( $item['locale'] ) ) {
+			$normalized = Atlas_Chuti_I18N::normalize_locale( $item['locale'] );
+			if ( $normalized ) {
+				return $normalized;
+			}
 		}
 		return Atlas_Chuti_I18N::DEFAULT_LOCALE;
 	}
@@ -556,7 +565,12 @@ class Atlas_Chuti_JSON_Importer {
 	 */
 	private function find_existing_recipe( $item, $slug, $stable_key, $primary_country_post_id, $locale ) {
 		if ( $stable_key ) {
-			$post = Atlas_Chuti_I18N::find_by_translation_group( 'atlas_recipe', $stable_key, $locale );
+			// FIX (KROK 4): recipes are looked up by their OWN identity meta
+			// (atlas_recipe_key), never by atlas_translation_group — that field now
+			// plays its separate, optional cross-check role (see
+			// link_recipe_translations()) and must never be able to match/merge two
+			// recipes that only happen to share it.
+			$post = Atlas_Chuti_I18N::find_by_recipe_key( $stable_key, $locale );
 			if ( $post ) {
 				return $post;
 			}
@@ -638,7 +652,17 @@ class Atlas_Chuti_JSON_Importer {
 
 	private function apply_i18n_meta( $post_id, $item ) {
 		if ( ! empty( $item['locale'] ) ) {
-			update_post_meta( $post_id, 'atlas_locale', sanitize_text_field( $item['locale'] ) );
+			// FIX (KROK 4): normalize before writing — the raw value could be "cs_CZ"
+			// (underscore), which would otherwise get stored VERBATIM and then never
+			// again match Atlas_Chuti_I18N::current_locale()'s "cs-CZ" in any
+			// meta_query lookup. This is the single place atlas_locale is written
+			// from item data outside of the already-normalized $locale variable each
+			// import_*() method threads through resolve_item_locale(), so it's the
+			// one spot that needed the same normalization applied explicitly.
+			$normalized = Atlas_Chuti_I18N::normalize_locale( $item['locale'] );
+			if ( $normalized ) {
+				update_post_meta( $post_id, 'atlas_locale', $normalized );
+			}
 		}
 		if ( ! empty( $item['translation_group'] ) ) {
 			update_post_meta( $post_id, 'atlas_translation_group', sanitize_title( $item['translation_group'] ) );
@@ -646,6 +670,56 @@ class Atlas_Chuti_JSON_Importer {
 		if ( ! empty( $item['translation_status'] ) && in_array( $item['translation_status'], self::VALID_TRANSLATION_STATUS, true ) ) {
 			update_post_meta( $post_id, 'atlas_translation_status', $item['translation_status'] );
 		}
+	}
+
+	/**
+	 * KROK 4, item 5: cross-checks Polylang's OWN translation relation for two
+	 * locale variants of the same recipe_key against this importer's
+	 * independently-suppliable translation_group values, and links them via
+	 * Polylang when (and only when) both variants exist AND agree. A recipe_key
+	 * match with DIFFERING translation_group values is never silently resolved —
+	 * "nikdy ho potichu nepřepiš" — it's returned as a warning string for the
+	 * report row instead, for an editor to reconcile by hand. No-op (returns '')
+	 * whenever Polylang isn't active or there's no counterpart in the other
+	 * supported locale yet (the normal case for most of this batch, since Step 4
+	 * intentionally does not create any EN counterparts for the production data).
+	 */
+	private function link_recipe_translations( $recipe_key ) {
+		if ( ! $recipe_key || ! class_exists( 'Atlas_Chuti_Polylang_Bridge' ) || ! Atlas_Chuti_Polylang_Bridge::is_active() ) {
+			return '';
+		}
+		$posts = array();
+		foreach ( Atlas_Chuti_I18N::SUPPORTED_LOCALES as $locale ) {
+			$post = Atlas_Chuti_I18N::find_by_recipe_key( $recipe_key, $locale );
+			if ( $post ) {
+				$posts[ $locale ] = $post;
+			}
+		}
+		if ( count( $posts ) < 2 ) {
+			return '';
+		}
+		$groups = array();
+		foreach ( $posts as $locale => $post ) {
+			$groups[ $locale ] = (string) get_post_meta( $post->ID, 'atlas_translation_group', true );
+		}
+		if ( count( array_unique( array_values( $groups ) ) ) > 1 ) {
+			$pairs = array();
+			foreach ( $groups as $locale => $group ) {
+				$pairs[] = $locale . '=' . ( '' !== $group ? $group : '(prázdné)' );
+			}
+			/* translators: %1$s: recipe_key, %2$s: comma-separated locale=translation_group pairs */
+			return sprintf(
+				__( 'recipe_key "%1$s": translation_group se liší mezi jazykovými verzemi (%2$s) — automatické CZ/EN propojení v Polylang přeskočeno, oprav ručně', 'atlas-chuti' ),
+				$recipe_key,
+				implode( ', ', $pairs )
+			);
+		}
+		$ids = array();
+		foreach ( $posts as $locale => $post ) {
+			$ids[ $locale ] = $post->ID;
+		}
+		Atlas_Chuti_Polylang_Bridge::link_translations( $ids );
+		return '';
 	}
 
 	private function stable_key_for( $post_type, $item, $slug ) {
@@ -717,6 +791,11 @@ class Atlas_Chuti_JSON_Importer {
 			$post = Atlas_Chuti_I18N::find_country_by_iso( $ref, $locale );
 		} elseif ( 'atlas_ingredient' === $post_type ) {
 			$post = Atlas_Chuti_I18N::find_ingredient_by_key( sanitize_title( $ref ), $locale );
+		} elseif ( 'atlas_recipe' === $post_type ) {
+			// FIX (KROK 4): a recipe reference (e.g. related_recipes) resolves by
+			// recipe_key, not translation_group — same reasoning as
+			// find_existing_recipe() above.
+			$post = Atlas_Chuti_I18N::find_by_recipe_key( sanitize_title( $ref ), $locale );
 		} else {
 			$post = Atlas_Chuti_I18N::find_by_translation_group( $post_type, sanitize_title( $ref ), $locale );
 		}
@@ -1149,7 +1228,7 @@ class Atlas_Chuti_JSON_Importer {
 			$errors[] = __( 'status (publish/draft)', 'atlas-chuti' );
 		}
 		if ( ! empty( $item['locale'] ) && ! $this->is_valid_locale( $item['locale'] ) ) {
-			$errors[] = __( 'locale (očekáván BCP 47 tag, např. cs-CZ)', 'atlas-chuti' );
+			$errors[] = __( 'locale (podporováno: cs_CZ / cs-CZ, en_US / en)', 'atlas-chuti' );
 		}
 		if ( isset( $item['population'] ) && is_numeric( $item['population'] ) && (int) $item['population'] < 0 ) {
 			$errors[] = __( 'population (nesmí být záporné)', 'atlas-chuti' );
@@ -1160,8 +1239,15 @@ class Atlas_Chuti_JSON_Importer {
 		return $errors;
 	}
 
+	/**
+	 * KROK 4, item 16: "Podporované: cs_CZ, en_US. Neznámé locale → ERROR." — a
+	 * CLOSED set (only the two locales this project actually ships), not a generic
+	 * BCP-47-shaped regex that would silently accept e.g. "de-DE". Delegates to
+	 * Atlas_Chuti_I18N::normalize_locale(), the single source of truth for which
+	 * spellings are recognized.
+	 */
 	private function is_valid_locale( $locale ) {
-		return (bool) preg_match( '/^[a-z]{2,3}(-[A-Za-z]{2,4})?$/', (string) $locale );
+		return null !== Atlas_Chuti_I18N::normalize_locale( $locale );
 	}
 
 	private function import_country( $item, $dry_run ) {
@@ -1272,6 +1358,7 @@ class Atlas_Chuti_JSON_Importer {
 			update_post_meta( get_post_thumbnail_id( $post_id ), '_wp_attachment_image_alt', sanitize_text_field( $item['featured_image_alt'] ) );
 		}
 		$this->apply_i18n_meta( $post_id, $item );
+		Atlas_Chuti_Polylang_Bridge::assign_language( $post_id, $locale );
 
 		// Step 4: only now, with metadata final, (re-)run the country↔taxonomy sync and
 		// propagate the continent to any recipe already tagged with this country. The
@@ -1296,7 +1383,7 @@ class Atlas_Chuti_JSON_Importer {
 			$errors[] = __( 'status (publish/draft)', 'atlas-chuti' );
 		}
 		if ( ! empty( $item['locale'] ) && ! $this->is_valid_locale( $item['locale'] ) ) {
-			$errors[] = __( 'locale (očekáván BCP 47 tag, např. cs-CZ)', 'atlas-chuti' );
+			$errors[] = __( 'locale (podporováno: cs_CZ / cs-CZ, en_US / en)', 'atlas-chuti' );
 		}
 		if ( ! empty( $item['category'] ) && ! in_array( $item['category'], self::VALID_GLOSSARY_CATEGORY, true ) ) {
 			// Stable keys now (item 18) — e.g. "technique", not "Kuchařské techniky".
@@ -1374,6 +1461,7 @@ class Atlas_Chuti_JSON_Importer {
 			}
 		}
 		$this->apply_i18n_meta( $post_id, $item );
+		Atlas_Chuti_Polylang_Bridge::assign_language( $post_id, $locale );
 
 		return $this->row( $title, $this->status_done( $existing ), 'ok' );
 	}
@@ -1435,7 +1523,7 @@ class Atlas_Chuti_JSON_Importer {
 			$errors[] = sprintf( __( 'difficulty (%s)', 'atlas-chuti' ), implode( '/', self::VALID_DIFFICULTY ) );
 		}
 		if ( ! empty( $item['locale'] ) && ! $this->is_valid_locale( $item['locale'] ) ) {
-			$errors[] = __( 'locale (očekáván BCP 47 tag, např. cs-CZ)', 'atlas-chuti' );
+			$errors[] = __( 'locale (podporováno: cs_CZ / cs-CZ, en_US / en)', 'atlas-chuti' );
 		}
 
 		if ( isset( $item['ingredients'] ) ) {
@@ -1618,9 +1706,15 @@ class Atlas_Chuti_JSON_Importer {
 
 		$unchanged = false;
 		if ( $existing ) {
+			// KROK 4: atlas_recipe_key (the dish-concept identity, shared across CZ/EN)
+			// and atlas_translation_group (the separate, optionally-explicit field
+			// cross-checked against Polylang's own translation relation, see
+			// link_recipe_translations()) are compared independently here — a batch
+			// that only changes one of the two must still be detected as a change.
 			$extra_meta = array(
 				'atlas_locale'            => $locale,
-				'atlas_translation_group' => $stable_key ?: $slug,
+				'atlas_recipe_key'        => $stable_key ?: $slug,
+				'atlas_translation_group' => ! empty( $item['translation_group'] ) ? sanitize_title( $item['translation_group'] ) : ( $stable_key ?: $slug ),
 			);
 			if ( ! empty( $item['translation_status'] ) && in_array( $item['translation_status'], self::VALID_TRANSLATION_STATUS, true ) ) {
 				$extra_meta['atlas_translation_status'] = $item['translation_status'];
@@ -1675,7 +1769,11 @@ class Atlas_Chuti_JSON_Importer {
 		}
 
 		if ( $unchanged ) {
-			return $this->row( $title, $this->status_done( $existing, true ), 'ok', $warnings );
+			// KROK 4: even an unchanged recipe still gets its Polylang translation
+			// relation (re-)checked — e.g. a CZ recipe imported today, then an EN
+			// counterpart imported unchanged next week, should still get linked.
+			$link_warning = $this->link_recipe_translations( $stable_key );
+			return $this->row( $title, $this->status_done( $existing, true ), 'ok', implode( '; ', array_filter( array( $warnings, $link_warning ) ) ) );
 		}
 
 		$post_id = wp_insert_post(
@@ -1687,7 +1785,14 @@ class Atlas_Chuti_JSON_Importer {
 				'post_status' => $item['status'] ?? 'publish',
 				'meta_input'  => array(
 					'atlas_locale'            => $locale,
-					'atlas_translation_group' => $stable_key ?: $slug,
+					'atlas_recipe_key'        => $stable_key ?: $slug,
+					// atlas_translation_group MUST be set here, in meta_input, not only
+					// afterward: class-i18n.php's ensure_i18n_meta() runs synchronously
+					// off the save_post_atlas_recipe hook THIS wp_insert_post() call
+					// fires — if this key were still empty at that point, its OWN
+					// backfill would set it to the post's slug (wrong default) before
+					// any code below ever got a chance to.
+					'atlas_translation_group' => ! empty( $item['translation_group'] ) ? sanitize_title( $item['translation_group'] ) : ( $stable_key ?: $slug ),
 				),
 			),
 			true
@@ -1734,21 +1839,22 @@ class Atlas_Chuti_JSON_Importer {
 			$tag_ids = array_values( array_unique( array_filter( array_map( fn( $k ) => $this->resolve_known_tag_term( $k ), (array) $item['tags'] ) ) ) );
 			wp_set_post_terms( $post_id, $tag_ids, 'atlas_recipe_tag', false );
 		}
-		// FIX (KROK 3B): recipe_key and translation_group are conceptually SEPARATE
-		// input fields/roles (see resolve_recipe_key()'s docblock) — but today's
-		// storage still shares one meta mechanism (`atlas_translation_group`, the
-		// same key passport.js's Kulinářský pas and cross-reference resolution
-		// already read as the recipe's real identity) rather than splitting into two
-		// meta keys, exactly as the fix brief allows ("i pokud historická
-		// implementace dnes ukládá některá data do stejného meta mechanismu") —
-		// building that separation for real is Krok 4 scope. apply_i18n_meta() would
-		// otherwise write the RAW $item['translation_group'] (its own, possibly
-		// different value) into that same identity meta and clobber the resolved
-		// recipe_key that meta_input above already stored there — this local-copy
-		// override (recipe_key is already known-good by this point, see
-		// validate_recipe()) keeps both writes pointed at the one real identity.
-		$item['translation_group'] = $stable_key;
+		// FIX (KROK 4): recipe_key and translation_group are now genuinely SEPARATE
+		// meta keys (see resolve_recipe_key()'s docblock and the brief's own example:
+		// recipe_key "spaghetti_carbonara" vs. translation_group
+		// "recipe_spaghetti_carbonara" — deliberately different values, different
+		// roles). recipe_key is always the resolved, known-good $stable_key
+		// (validate_recipe() already hard-validated it — no fallback, ever); both it
+		// AND translation_group's own explicit-value-else-recipe_key default were
+		// already written above, in meta_input (see that block's own comment for why
+		// it can't be deferred to here). apply_i18n_meta() re-applies the exact same
+		// translation_group value when the item supplies one explicitly (a harmless
+		// no-op write) — its real job on an UPDATE is atlas_translation_status.
+		update_post_meta( $post_id, 'atlas_recipe_key', $stable_key );
 		$this->apply_i18n_meta( $post_id, $item );
+		// KROK 4, item 4: tells Polylang which language this post is in — a no-op
+		// unless Polylang is actually active (see class-polylang-bridge.php).
+		Atlas_Chuti_Polylang_Bridge::assign_language( $post_id, $locale );
 
 		// Country tagging happens here (not only in the resolve pass) so a recipe is
 		// never left without its country tag even for a single-item, non-batched save.
@@ -1776,7 +1882,8 @@ class Atlas_Chuti_JSON_Importer {
 		$sanitized_ingredients = Atlas_Chuti_Meta_Fields::sanitize( 'repeater', $item['ingredients'], $fields['ingredients']['shape'], $fields['ingredients']['types'] ?? array() );
 		Atlas_Chuti_Ingredient_Sync::tag_recipe( $post_id, $sanitized_ingredients, $locale );
 
-		return $this->row( $title, $this->status_done( $existing ), 'ok', $warnings );
+		$link_warning = $this->link_recipe_translations( $stable_key );
+		return $this->row( $title, $this->status_done( $existing ), 'ok', implode( '; ', array_filter( array( $warnings, $link_warning ) ) ) );
 	}
 
 	// -- Pass 2: reference resolution ------------------------------------------
