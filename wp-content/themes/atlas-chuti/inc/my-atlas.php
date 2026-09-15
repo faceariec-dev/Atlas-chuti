@@ -24,7 +24,10 @@ function atlas_chuti_account_section() {
 	// infrastructure this needed (Atlas_Chuti_Discussion::get_user_topics(), same
 	// shape as Krok 5's own get_user_recipe_comments()) already existed, so the
 	// marginal scope here was small enough not to warrant deferring it.
-	$logged_in_sections  = array( 'prehled', 'oblibene', 'uvarene', 'pas', 'hodnoceni', 'komentare', 'fotografie', 'temata', 'nastaveni' );
+	// KROK 8, item 15/21/24: "Kolekce"/"Nákupní seznam"/"Plán jídel" join the same
+	// nav mechanism (audit's own recommendation, see the Step 8 report section G-I)
+	// — ad-exclusion/noindex/privacy boundaries all keep working for free.
+	$logged_in_sections  = array( 'prehled', 'oblibene', 'uvarene', 'pas', 'hodnoceni', 'komentare', 'fotografie', 'temata', 'kolekce', 'nakupni-seznam', 'plan-jidel', 'nastaveni' );
 	$logged_out_sections = array( 'prihlaseni', 'registrace', 'zapomenute-heslo', 'nove-heslo' );
 
 	if ( is_user_logged_in() ) {
@@ -162,6 +165,57 @@ function atlas_chuti_account_photos( $user_id ) {
 	foreach ( $rows as &$row ) {
 		$resolved       = atlas_chuti_resolve_recipe_key( $row['recipe_key'] );
 		$row['post']    = $resolved ? $resolved['post'] : null;
+	}
+	return $rows;
+}
+
+/**
+ * KROK 8, item 15/47: Můj Atlas → Kolekce — each collection annotated with its
+ * already-batch-resolved recipe posts (item 37/47: no N+1 — one
+ * atlas_chuti_resolve_recipe_keys() call per collection's item list, not one
+ * query per recipe).
+ */
+function atlas_chuti_account_collections( $user_id ) {
+	$collections = Atlas_Chuti_Collections::instance()->get_for_user( $user_id );
+	$out         = array();
+	foreach ( $collections as $collection ) {
+		$keys      = Atlas_Chuti_Collections::instance()->get_items( $collection->id );
+		$resolved  = atlas_chuti_resolve_recipe_keys( $keys );
+		$out[]     = array(
+			'collection' => $collection,
+			'recipes'    => array_values( $resolved ),
+		);
+	}
+	return $out;
+}
+
+/**
+ * Item 16/47: the shopping list shows ingredient labels/quantities directly
+ * from its own table — there is no recipe post to resolve for the list itself
+ * (only `source_recipe_key`, kept as a plain reference, is resolved, and only
+ * best-effort for a "z receptu" link — a deleted/unpublished source recipe
+ * must never make the shopping list item itself disappear).
+ */
+function atlas_chuti_account_shopping_list( $user_id ) {
+	$rows          = Atlas_Chuti_Shopping_List::instance()->get_for_user( $user_id );
+	$recipe_keys   = array_filter( wp_list_pluck( $rows, 'source_recipe_key' ) );
+	$resolved_map  = atlas_chuti_resolve_recipe_keys( array_unique( $recipe_keys ) );
+	foreach ( $rows as &$row ) {
+		$row->source_post = isset( $resolved_map[ $row->source_recipe_key ] ) ? $resolved_map[ $row->source_recipe_key ]['post'] : null;
+	}
+	return $rows;
+}
+
+/**
+ * Item 21/47: the current week's plan, one batch-resolve call for every
+ * recipe_key across the whole range (never one lookup per day/slot).
+ */
+function atlas_chuti_account_meal_plan( $user_id, $start_date, $end_date ) {
+	$rows        = Atlas_Chuti_Meal_Plan::instance()->get_for_range( $user_id, $start_date, $end_date );
+	$recipe_keys = array_unique( wp_list_pluck( $rows, 'recipe_key' ) );
+	$resolved_map = atlas_chuti_resolve_recipe_keys( $recipe_keys );
+	foreach ( $rows as &$row ) {
+		$row->recipe_post = isset( $resolved_map[ $row->recipe_key ] ) ? $resolved_map[ $row->recipe_key ]['post'] : null;
 	}
 	return $rows;
 }

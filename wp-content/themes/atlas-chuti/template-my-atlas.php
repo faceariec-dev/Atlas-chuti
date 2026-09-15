@@ -137,6 +137,9 @@ $redirect_to  = isset( $_GET['redirect_to'] ) ? esc_url_raw( wp_unslash( $_GET['
 				'komentare'  => __( 'Moje komentáře', 'atlas-chuti' ),
 				'fotografie' => __( 'Moje fotografie', 'atlas-chuti' ),
 				'temata'     => __( 'Moje témata', 'atlas-chuti' ),
+				'kolekce'        => __( 'Kolekce', 'atlas-chuti' ),
+				'nakupni-seznam' => __( 'Nákupní seznam', 'atlas-chuti' ),
+				'plan-jidel'     => __( 'Plán jídel', 'atlas-chuti' ),
 				'nastaveni'  => __( 'Nastavení účtu', 'atlas-chuti' ),
 			);
 			foreach ( $nav_items as $key => $label ) :
@@ -346,6 +349,143 @@ $redirect_to  = isset( $_GET['redirect_to'] ) ? esc_url_raw( wp_unslash( $_GET['
 						?>
 					</p>
 				<?php endif; ?>
+
+			<?php elseif ( 'kolekce' === $section ) : ?>
+
+				<h2><?php esc_html_e( 'Kolekce', 'atlas-chuti' ); ?></h2>
+				<p class="community-empty"><?php esc_html_e( 'Vaše kolekce jsou soukromé — vidíte je jen vy.', 'atlas-chuti' ); ?></p>
+
+				<form class="collection-form" data-collection-create-form>
+					<label class="screen-reader-text" for="new-collection-title"><?php esc_html_e( 'Název nové kolekce', 'atlas-chuti' ); ?></label>
+					<input type="text" id="new-collection-title" name="title" maxlength="100" required placeholder="<?php esc_attr_e( 'Název nové kolekce', 'atlas-chuti' ); ?>">
+					<button type="submit" class="btn btn-accent"><?php esc_html_e( 'Vytvořit kolekci', 'atlas-chuti' ); ?></button>
+				</form>
+
+				<div class="collection-grid" data-collection-grid>
+					<?php $collections = atlas_chuti_account_collections( get_current_user_id() ); ?>
+					<?php if ( ! $collections ) : ?>
+						<p class="community-empty" data-collection-empty><?php esc_html_e( 'Zatím nemáte žádnou kolekci.', 'atlas-chuti' ); ?></p>
+					<?php else : ?>
+						<?php foreach ( $collections as $entry ) : ?>
+							<div class="collection-card" data-collection-id="<?php echo esc_attr( $entry['collection']->id ); ?>">
+								<h3><?php echo esc_html( $entry['collection']->title ); ?></h3>
+								<p class="my-atlas-comment-status">
+									<?php
+									printf(
+										/* translators: %d: number of recipes */
+										esc_html( _n( '%d recept', '%d receptů', count( $entry['recipes'] ), 'atlas-chuti' ) ),
+										count( $entry['recipes'] )
+									);
+									?>
+								</p>
+								<?php if ( $entry['recipes'] ) : ?>
+									<div class="card-grid card-grid-3" style="margin-top:var(--space-3);">
+										<?php foreach ( $entry['recipes'] as $r ) : ?>
+											<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => $r['post']->ID ) ); ?>
+										<?php endforeach; ?>
+									</div>
+								<?php endif; ?>
+								<button type="button" class="btn btn-outline" data-collection-delete data-collection-id="<?php echo esc_attr( $entry['collection']->id ); ?>" style="margin-top:var(--space-3);"><?php esc_html_e( 'Smazat kolekci', 'atlas-chuti' ); ?></button>
+							</div>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</div>
+
+			<?php elseif ( 'nakupni-seznam' === $section ) : ?>
+
+				<h2><?php esc_html_e( 'Nákupní seznam', 'atlas-chuti' ); ?></h2>
+				<?php $shopping_items = atlas_chuti_account_shopping_list( get_current_user_id() ); ?>
+
+				<div class="shopping-list-groups" data-shopping-list>
+					<?php if ( ! $shopping_items ) : ?>
+						<p class="community-empty" data-shopping-empty><?php esc_html_e( 'Nákupní seznam je prázdný. Přidejte ingredience přímo z receptu.', 'atlas-chuti' ); ?></p>
+					<?php else : ?>
+						<?php foreach ( $shopping_items as $item ) : ?>
+							<div class="shopping-list-item<?php echo $item->checked ? ' is-checked' : ''; ?>" data-shopping-item-id="<?php echo esc_attr( $item->id ); ?>">
+								<label>
+									<input type="checkbox" data-shopping-check <?php checked( $item->checked, 1 ); ?>>
+									<span class="shopping-list-item-label"><?php echo esc_html( $item->display_name ); ?></span>
+								</label>
+								<span class="shopping-list-item-qty"><?php echo esc_html( trim( $item->quantity_text . ' ' . ( $item->unit_key ?: '' ) ) ); ?></span>
+								<button type="button" class="timer-item-btn" data-shopping-remove aria-label="<?php esc_attr_e( 'Odebrat položku', 'atlas-chuti' ); ?>">&times;</button>
+							</div>
+						<?php endforeach; ?>
+					<?php endif; ?>
+				</div>
+
+				<form class="collection-form" data-shopping-add-form>
+					<label class="screen-reader-text" for="new-shopping-item"><?php esc_html_e( 'Nová položka', 'atlas-chuti' ); ?></label>
+					<input type="text" id="new-shopping-item" name="display_name" required placeholder="<?php esc_attr_e( 'Přidat položku', 'atlas-chuti' ); ?>">
+					<input type="text" name="quantity_text" style="max-width:120px;" placeholder="<?php esc_attr_e( 'Množství', 'atlas-chuti' ); ?>">
+					<button type="submit" class="btn btn-accent"><?php esc_html_e( 'Přidat', 'atlas-chuti' ); ?></button>
+				</form>
+				<button type="button" class="btn btn-outline" data-shopping-clear-checked style="margin-top:var(--space-3);"><?php esc_html_e( 'Odebrat odškrtnuté', 'atlas-chuti' ); ?></button>
+
+			<?php elseif ( 'plan-jidel' === $section ) : ?>
+
+				<?php
+				$week_start_param = isset( $_GET['tyden'] ) ? sanitize_text_field( wp_unslash( $_GET['tyden'] ) ) : '';
+				$today            = new DateTime( 'today' );
+				$monday           = clone $today;
+				$monday->modify( 'monday this week' );
+				if ( $week_start_param && preg_match( '/^\d{4}-\d{2}-\d{2}$/', $week_start_param ) ) {
+					$candidate = DateTime::createFromFormat( 'Y-m-d', $week_start_param );
+					if ( $candidate ) {
+						$monday = $candidate;
+					}
+				}
+				$week_end = ( clone $monday )->modify( '+6 days' );
+				$days     = array();
+				for ( $i = 0; $i < 7; $i++ ) {
+					$days[] = ( clone $monday )->modify( "+{$i} days" );
+				}
+				$plan_items  = atlas_chuti_account_meal_plan( get_current_user_id(), $monday->format( 'Y-m-d' ), $week_end->format( 'Y-m-d' ) );
+				$slot_labels = array(
+					'breakfast' => __( 'Snídaně', 'atlas-chuti' ),
+					'lunch'     => __( 'Oběd', 'atlas-chuti' ),
+					'dinner'    => __( 'Večeře', 'atlas-chuti' ),
+					'snack'     => __( 'Svačina', 'atlas-chuti' ),
+				);
+				?>
+				<h2><?php esc_html_e( 'Plán jídel', 'atlas-chuti' ); ?></h2>
+
+				<div class="card-eyebrow" style="justify-content:space-between;margin-bottom:var(--space-4);">
+					<a class="btn btn-outline" href="<?php echo esc_url( add_query_arg( array( 'sekce' => 'plan-jidel', 'tyden' => ( clone $monday )->modify( '-7 days' )->format( 'Y-m-d' ) ), $account_url ) ); ?>">&larr; <?php esc_html_e( 'Předchozí týden', 'atlas-chuti' ); ?></a>
+					<strong><?php echo esc_html( $monday->format( 'd.m.' ) . ' – ' . $week_end->format( 'd.m.Y' ) ); ?></strong>
+					<a class="btn btn-outline" href="<?php echo esc_url( add_query_arg( array( 'sekce' => 'plan-jidel', 'tyden' => ( clone $monday )->modify( '+7 days' )->format( 'Y-m-d' ) ), $account_url ) ); ?>"><?php esc_html_e( 'Další týden', 'atlas-chuti' ); ?> &rarr;</a>
+				</div>
+
+				<div class="meal-plan-week" data-meal-plan-week data-week-start="<?php echo esc_attr( $monday->format( 'Y-m-d' ) ); ?>" data-week-end="<?php echo esc_attr( $week_end->format( 'Y-m-d' ) ); ?>">
+					<?php foreach ( $days as $day ) : ?>
+						<div class="meal-plan-day">
+							<strong><?php echo esc_html( wp_date( 'D j.n.', $day->getTimestamp() ) ); ?></strong>
+							<?php foreach ( $slot_labels as $slot_key => $slot_label ) : ?>
+								<div class="meal-plan-slot"><?php echo esc_html( $slot_label ); ?></div>
+								<?php
+								$day_items = array_filter(
+									$plan_items,
+									function ( $it ) use ( $day, $slot_key ) {
+										return $it->plan_date === $day->format( 'Y-m-d' ) && $it->meal_slot === $slot_key;
+									}
+								);
+								?>
+								<?php foreach ( $day_items as $it ) : ?>
+									<div class="meal-plan-item" data-meal-plan-item-id="<?php echo esc_attr( $it->id ); ?>">
+										<span><?php echo $it->recipe_post ? esc_html( get_the_title( $it->recipe_post ) ) : esc_html( $it->recipe_key ); ?></span>
+										<button type="button" class="timer-item-btn" data-meal-plan-remove aria-label="<?php esc_attr_e( 'Odebrat', 'atlas-chuti' ); ?>">&times;</button>
+									</div>
+								<?php endforeach; ?>
+								<button type="button" class="timer-item-btn" data-meal-plan-add data-date="<?php echo esc_attr( $day->format( 'Y-m-d' ) ); ?>" data-slot="<?php echo esc_attr( $slot_key ); ?>">+ <?php esc_html_e( 'přidat', 'atlas-chuti' ); ?></button>
+							<?php endforeach; ?>
+						</div>
+					<?php endforeach; ?>
+				</div>
+
+				<button type="button" class="btn btn-accent" data-meal-plan-to-shopping data-week-start="<?php echo esc_attr( $monday->format( 'Y-m-d' ) ); ?>" data-week-end="<?php echo esc_attr( $week_end->format( 'Y-m-d' ) ); ?>" style="margin-top:var(--space-5);">
+					<?php esc_html_e( 'Přidat ingredience z plánu do nákupního seznamu', 'atlas-chuti' ); ?>
+				</button>
+
+				<div class="collection-picker-modal no-print" data-meal-plan-picker hidden></div>
 
 			<?php elseif ( 'nastaveni' === $section ) : ?>
 

@@ -68,7 +68,7 @@ $HOOKS      = array();
 $NOW        = '2024-01-01 00:00:00';
 $COMMENTS   = array();
 $NEXT_COMMENT_ID = 1;
-$CONDITIONS = array( 'search' => false, 'category' => false, 'post_type_archive' => '', 'page_template' => '', 'author' => false );
+$CONDITIONS = array( 'search' => false, 'category' => false, 'post_type_archive' => '', 'page_template' => '', 'author' => false, 'singular' => false, 'post_id' => 0 );
 
 function db_post_to_object( $p ) { return (object) $p; }
 function db_term_to_object( $t ) { return (object) $t; }
@@ -190,8 +190,24 @@ function comment_form( $args = array() ) {}
 function is_search() { global $CONDITIONS; return $CONDITIONS['search']; }
 function is_category() { global $CONDITIONS; return $CONDITIONS['category']; }
 function is_post_type_archive( $pt = null ) { global $CONDITIONS; return null === $pt ? (bool) $CONDITIONS['post_type_archive'] : $CONDITIONS['post_type_archive'] === $pt; }
-function is_page_template( $t = null ) { global $CONDITIONS; return null === $t ? (bool) $CONDITIONS['page_template'] : $CONDITIONS['page_template'] === $t; }
+function is_page_template( $t = null ) {
+	global $CONDITIONS;
+	if ( null === $t ) {
+		return (bool) $CONDITIONS['page_template'];
+	}
+	return is_array( $t ) ? in_array( $CONDITIONS['page_template'], $t, true ) : $CONDITIONS['page_template'] === $t;
+}
 function is_author() { global $CONDITIONS; return $CONDITIONS['author']; }
+// KROK 8: class-seo.php's get_robots_directive() now also checks is_singular()
+// (the Cook Mode ?cook=1 noindex branch) — added here purely so this
+// still-unmodified Step 6 harness keeps working against the current shared file.
+function is_singular( $pt = null ) {
+	global $CONDITIONS;
+	if ( ! $CONDITIONS['singular'] ) {
+		return false;
+	}
+	return null === $pt ? true : ( is_array( $pt ) ? in_array( $CONDITIONS['singular'], $pt, true ) : $CONDITIONS['singular'] === $pt );
+}
 function get_query_var( $v ) { return ''; }
 
 // =============================================================================

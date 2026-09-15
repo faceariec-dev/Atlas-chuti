@@ -55,6 +55,17 @@ while ( have_posts() ) :
 		</section>
 	<?php endif; ?>
 
+	<?php
+	// KROK 8, item 26/47: "uvnitř článku" — inside the article flow, not tacked
+	// on before/after it. Renders nothing when the article has no real video
+	// (class-video.php's own has_video() gate).
+	if ( class_exists( 'Atlas_Chuti_Video' ) && Atlas_Chuti_Video::has_video( $post_id ) ) :
+	?>
+		<section class="container-narrow" style="padding:var(--space-6) var(--gutter) 0;">
+			<?php echo Atlas_Chuti_Video::render_embed( $post_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+		</section>
+	<?php endif; ?>
+
 	<section class="container-narrow entry-content" style="padding:var(--space-8) var(--gutter) 0;font-size:16px;line-height:1.7;color:var(--color-text);">
 		<?php the_content(); ?>
 	</section>

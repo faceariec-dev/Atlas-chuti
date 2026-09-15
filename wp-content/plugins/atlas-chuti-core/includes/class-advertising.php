@@ -128,7 +128,19 @@ class Atlas_Chuti_Advertising {
 	 * would extend this one method, not scatter exceptions across templates.
 	 */
 	public function is_ad_free_context() {
-		if ( is_page_template( 'template-my-atlas.php' ) ) {
+		// item 50: "Recommendation landing: může později mít reklamu, ale v Kroku 8
+		// preferuj content utility first" — Co dnes vařit?/Co mám doma? stay ad-free
+		// for now, a deliberate, documented, reversible choice (see the report).
+		if ( is_page_template( array( 'template-my-atlas.php', 'template-co-dnes-varit.php', 'template-co-mam-doma.php' ) ) ) {
+			return true;
+		}
+		// KROK 8, item 5/50: Cook Mode is a utility mode of the SAME recipe URL
+		// (?cook=1, see the Step 8 report section B for why — no separate
+		// route/page template exists to add to the check above) — a direct
+		// load/bookmark/reload of that URL must never render ads server-side,
+		// on top of the JS-side visual coverage the Cook Mode overlay itself
+		// provides once activated without a reload.
+		if ( isset( $_GET['cook'] ) && '1' === $_GET['cook'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only UI-state flag, not a state-changing action.
 			return true;
 		}
 		if ( is_page() ) {

@@ -106,6 +106,63 @@ class Atlas_Chuti_REST_API {
 				'permission_callback' => array( $this, 'require_moderation_capability' ),
 			)
 		);
+
+		// KROK 8, item 40-41: collections/shopping-list/meal-plan CRUD — same
+		// namespace, same require_login()/nonce pattern as every Step 5 route
+		// above, never a parallel API.
+		register_rest_route( self::NAMESPACE_, '/collections', array(
+			array( 'methods' => 'GET', 'callback' => array( $this, 'get_collections' ), 'permission_callback' => array( $this, 'require_login' ) ),
+			array( 'methods' => 'POST', 'callback' => array( $this, 'create_collection' ), 'permission_callback' => array( $this, 'require_login' ) ),
+		) );
+		register_rest_route( self::NAMESPACE_, '/collections/(?P<id>\d+)', array(
+			array( 'methods' => 'POST', 'callback' => array( $this, 'update_collection' ), 'permission_callback' => array( $this, 'require_login' ) ),
+			array( 'methods' => 'DELETE', 'callback' => array( $this, 'delete_collection' ), 'permission_callback' => array( $this, 'require_login' ) ),
+		) );
+		register_rest_route( self::NAMESPACE_, '/collections/(?P<id>\d+)/items', array(
+			'methods' => 'POST', 'callback' => array( $this, 'add_collection_item' ), 'permission_callback' => array( $this, 'require_login' ),
+		) );
+		register_rest_route( self::NAMESPACE_, '/collections/(?P<id>\d+)/items/(?P<recipe_key>[a-z0-9-]+)', array(
+			'methods' => 'DELETE', 'callback' => array( $this, 'remove_collection_item' ), 'permission_callback' => array( $this, 'require_login' ),
+		) );
+
+		register_rest_route( self::NAMESPACE_, '/shopping-list', array(
+			array( 'methods' => 'GET', 'callback' => array( $this, 'get_shopping_list' ), 'permission_callback' => array( $this, 'require_login' ) ),
+			array( 'methods' => 'POST', 'callback' => array( $this, 'add_shopping_item' ), 'permission_callback' => array( $this, 'require_login' ) ),
+		) );
+		register_rest_route( self::NAMESPACE_, '/shopping-list/from-recipe', array(
+			'methods' => 'POST', 'callback' => array( $this, 'add_shopping_from_recipe' ), 'permission_callback' => array( $this, 'require_login' ),
+		) );
+		register_rest_route( self::NAMESPACE_, '/shopping-list/(?P<id>\d+)', array(
+			array( 'methods' => 'POST', 'callback' => array( $this, 'update_shopping_item' ), 'permission_callback' => array( $this, 'require_login' ) ),
+			array( 'methods' => 'DELETE', 'callback' => array( $this, 'delete_shopping_item' ), 'permission_callback' => array( $this, 'require_login' ) ),
+		) );
+		register_rest_route( self::NAMESPACE_, '/shopping-list/clear-checked', array(
+			'methods' => 'POST', 'callback' => array( $this, 'clear_checked_shopping_items' ), 'permission_callback' => array( $this, 'require_login' ),
+		) );
+
+		register_rest_route( self::NAMESPACE_, '/meal-plan', array(
+			array( 'methods' => 'GET', 'callback' => array( $this, 'get_meal_plan' ), 'permission_callback' => array( $this, 'require_login' ) ),
+			array( 'methods' => 'POST', 'callback' => array( $this, 'add_meal_plan_item' ), 'permission_callback' => array( $this, 'require_login' ) ),
+		) );
+		register_rest_route( self::NAMESPACE_, '/meal-plan/(?P<id>\d+)', array(
+			array( 'methods' => 'POST', 'callback' => array( $this, 'update_meal_plan_item' ), 'permission_callback' => array( $this, 'require_login' ) ),
+			array( 'methods' => 'DELETE', 'callback' => array( $this, 'delete_meal_plan_item' ), 'permission_callback' => array( $this, 'require_login' ) ),
+		) );
+		register_rest_route( self::NAMESPACE_, '/meal-plan/add-to-shopping-list', array(
+			'methods' => 'POST', 'callback' => array( $this, 'meal_plan_to_shopping_list' ), 'permission_callback' => array( $this, 'require_login' ),
+		) );
+
+		// item 41: recommendation/finder are public read-only — no account data,
+		// no write, filters validated and results bounded either way.
+		register_rest_route( self::NAMESPACE_, '/recommend', array(
+			'methods' => 'GET', 'callback' => array( $this, 'get_recommendation' ), 'permission_callback' => '__return_true',
+		) );
+		register_rest_route( self::NAMESPACE_, '/ingredients/search', array(
+			'methods' => 'GET', 'callback' => array( $this, 'search_ingredients' ), 'permission_callback' => '__return_true',
+		) );
+		register_rest_route( self::NAMESPACE_, '/ingredients/match', array(
+			'methods' => 'GET', 'callback' => array( $this, 'match_ingredients' ), 'permission_callback' => '__return_true',
+		) );
 	}
 
 	// ---------------------------------------------------------------------
@@ -331,5 +388,250 @@ class Atlas_Chuti_REST_API {
 			return new WP_Error( 'atlas_bad_request', __( 'Neplatná akce.', 'atlas-chuti' ), array( 'status' => 400 ) );
 		}
 		return rest_ensure_response( array( 'ok' => (bool) $ok ) );
+	}
+
+	// ---------------------------------------------------------------------
+	// Collections (KROK 8, item 20-22)
+	// ---------------------------------------------------------------------
+
+	private function wp_error_or( $result, $default_status = 400 ) {
+		if ( is_wp_error( $result ) ) {
+			$status = 'not_owner' === $result->get_error_code() ? 403 : $default_status;
+			$result->add_data( array( 'status' => $status ) );
+		}
+		return $result;
+	}
+
+	public function get_collections( WP_REST_Request $request ) {
+		$rows = Atlas_Chuti_Collections::instance()->get_for_user( get_current_user_id() );
+		return rest_ensure_response( array_map( fn( $r ) => array( 'id' => (int) $r->id, 'title' => $r->title, 'description' => $r->description, 'item_count' => $r->item_count ), $rows ) );
+	}
+
+	public function create_collection( WP_REST_Request $request ) {
+		$id = Atlas_Chuti_Collections::instance()->create( get_current_user_id(), $request->get_param( 'title' ), $request->get_param( 'description' ) );
+		if ( is_wp_error( $id ) ) {
+			return $this->wp_error_or( $id );
+		}
+		return rest_ensure_response( array( 'id' => $id ) );
+	}
+
+	public function update_collection( WP_REST_Request $request ) {
+		$result = Atlas_Chuti_Collections::instance()->update( get_current_user_id(), (int) $request['id'], $request->get_param( 'title' ), $request->get_param( 'description' ) );
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'ok' => true ) );
+	}
+
+	public function delete_collection( WP_REST_Request $request ) {
+		$result = Atlas_Chuti_Collections::instance()->delete( get_current_user_id(), (int) $request['id'] );
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'ok' => true ) );
+	}
+
+	public function add_collection_item( WP_REST_Request $request ) {
+		$recipe_key = sanitize_title( $request->get_param( 'recipe_key' ) );
+		if ( ! $recipe_key || ! $this->subject_exists( Atlas_Chuti_User_State::TYPE_RECIPE, $recipe_key ) ) {
+			return new WP_Error( 'atlas_not_found', __( 'Recept nebyl nalezen.', 'atlas-chuti' ), array( 'status' => 404 ) );
+		}
+		$result = Atlas_Chuti_Collections::instance()->add_item( get_current_user_id(), (int) $request['id'], $recipe_key );
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'ok' => true ) );
+	}
+
+	public function remove_collection_item( WP_REST_Request $request ) {
+		$result = Atlas_Chuti_Collections::instance()->remove_item( get_current_user_id(), (int) $request['id'], sanitize_title( $request['recipe_key'] ) );
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'ok' => true ) );
+	}
+
+	// ---------------------------------------------------------------------
+	// Shopping list (KROK 8, item 23-25)
+	// ---------------------------------------------------------------------
+
+	public function get_shopping_list( WP_REST_Request $request ) {
+		$rows = Atlas_Chuti_Shopping_List::instance()->get_for_user( get_current_user_id() );
+		return rest_ensure_response(
+			array_map(
+				fn( $r ) => array(
+					'id'             => (int) $r->id,
+					'ingredient_key' => $r->ingredient_key,
+					'display_name'   => $r->display_name,
+					'quantity_value' => null !== $r->quantity_value ? (float) $r->quantity_value : null,
+					'quantity_text'  => $r->quantity_text,
+					'unit_key'       => $r->unit_key,
+					'source_recipe_key' => $r->source_recipe_key,
+					'checked'        => (bool) $r->checked,
+				),
+				$rows
+			)
+		);
+	}
+
+	public function add_shopping_item( WP_REST_Request $request ) {
+		$result = Atlas_Chuti_Shopping_List::instance()->add_item(
+			get_current_user_id(),
+			$request->get_param( 'ingredient_key' ),
+			$request->get_param( 'display_name' ),
+			$request->get_param( 'quantity_value' ),
+			$request->get_param( 'quantity_text' ),
+			$request->get_param( 'unit_key' ),
+			$request->get_param( 'source_recipe_key' )
+		);
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'id' => $result ) );
+	}
+
+	public function add_shopping_from_recipe( WP_REST_Request $request ) {
+		$recipe_key = sanitize_title( $request->get_param( 'recipe_key' ) );
+		if ( ! $recipe_key ) {
+			return new WP_Error( 'atlas_bad_request', __( 'Neplatný požadavek.', 'atlas-chuti' ), array( 'status' => 400 ) );
+		}
+		$result = Atlas_Chuti_Shopping_List::instance()->add_from_recipe( get_current_user_id(), $recipe_key, $request->get_param( 'servings' ) );
+		if ( is_wp_error( $result ) ) {
+			return new WP_Error( 'atlas_not_found', __( 'Recept nebyl nalezen.', 'atlas-chuti' ), array( 'status' => 404 ) );
+		}
+		return rest_ensure_response( array( 'added' => $result ) );
+	}
+
+	public function update_shopping_item( WP_REST_Request $request ) {
+		$result = Atlas_Chuti_Shopping_List::instance()->set_checked( get_current_user_id(), (int) $request['id'], (bool) $request->get_param( 'checked' ) );
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'ok' => true ) );
+	}
+
+	public function delete_shopping_item( WP_REST_Request $request ) {
+		$result = Atlas_Chuti_Shopping_List::instance()->remove_item( get_current_user_id(), (int) $request['id'] );
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'ok' => true ) );
+	}
+
+	public function clear_checked_shopping_items( WP_REST_Request $request ) {
+		$removed = Atlas_Chuti_Shopping_List::instance()->clear_checked( get_current_user_id() );
+		return rest_ensure_response( array( 'removed' => $removed ) );
+	}
+
+	// ---------------------------------------------------------------------
+	// Meal planner (KROK 8, item 26-28)
+	// ---------------------------------------------------------------------
+
+	public function get_meal_plan( WP_REST_Request $request ) {
+		$start = sanitize_text_field( (string) $request->get_param( 'start' ) );
+		$end   = sanitize_text_field( (string) $request->get_param( 'end' ) );
+		$rows  = Atlas_Chuti_Meal_Plan::instance()->get_for_range( get_current_user_id(), $start, $end );
+		return rest_ensure_response(
+			array_map(
+				fn( $r ) => array(
+					'id'                => (int) $r->id,
+					'plan_date'         => $r->plan_date,
+					'meal_slot'         => $r->meal_slot,
+					'recipe_key'        => $r->recipe_key,
+					'servings_override' => $r->servings_override ? (int) $r->servings_override : null,
+				),
+				$rows
+			)
+		);
+	}
+
+	public function add_meal_plan_item( WP_REST_Request $request ) {
+		$recipe_key = sanitize_title( $request->get_param( 'recipe_key' ) );
+		if ( ! $recipe_key || ! $this->subject_exists( Atlas_Chuti_User_State::TYPE_RECIPE, $recipe_key ) ) {
+			return new WP_Error( 'atlas_not_found', __( 'Recept nebyl nalezen.', 'atlas-chuti' ), array( 'status' => 404 ) );
+		}
+		$result = Atlas_Chuti_Meal_Plan::instance()->add_item(
+			get_current_user_id(),
+			sanitize_text_field( (string) $request->get_param( 'plan_date' ) ),
+			sanitize_key( (string) $request->get_param( 'meal_slot' ) ),
+			$recipe_key,
+			$request->get_param( 'servings_override' )
+		);
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'id' => $result ) );
+	}
+
+	public function update_meal_plan_item( WP_REST_Request $request ) {
+		$result = Atlas_Chuti_Meal_Plan::instance()->update_item( get_current_user_id(), (int) $request['id'], $request->get_param( 'servings_override' ) );
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'ok' => true ) );
+	}
+
+	public function delete_meal_plan_item( WP_REST_Request $request ) {
+		$result = Atlas_Chuti_Meal_Plan::instance()->remove_item( get_current_user_id(), (int) $request['id'] );
+		if ( is_wp_error( $result ) ) {
+			return $this->wp_error_or( $result );
+		}
+		return rest_ensure_response( array( 'ok' => true ) );
+	}
+
+	public function meal_plan_to_shopping_list( WP_REST_Request $request ) {
+		$start = sanitize_text_field( (string) $request->get_param( 'start' ) );
+		$end   = sanitize_text_field( (string) $request->get_param( 'end' ) );
+		$added = Atlas_Chuti_Meal_Plan::instance()->add_range_to_shopping_list( get_current_user_id(), $start, $end );
+		return rest_ensure_response( array( 'added' => $added ) );
+	}
+
+	// ---------------------------------------------------------------------
+	// Recommendation / ingredient finder (KROK 8, item 13-18) — public, read-only.
+	// ---------------------------------------------------------------------
+
+	public function get_recommendation( WP_REST_Request $request ) {
+		$filters = array();
+		foreach ( array( 'zeme', 'svetadil', 'typ', 'obtiznost', 'dieta', 'cas' ) as $key ) {
+			$val = $request->get_param( $key );
+			if ( $val ) {
+				$filters[ $key ] = sanitize_text_field( (string) $val );
+			}
+		}
+		$result = Atlas_Chuti_Recommendations::instance()->find( $filters );
+		return rest_ensure_response(
+			array(
+				'primary'      => $result['primary'] ? array( 'recipe_key' => get_post_meta( $result['primary']->ID, 'atlas_recipe_key', true ), 'url' => get_permalink( $result['primary'] ), 'title' => get_the_title( $result['primary'] ) ) : null,
+				'alternatives' => array_map( fn( $p ) => array( 'recipe_key' => get_post_meta( $p->ID, 'atlas_recipe_key', true ), 'url' => get_permalink( $p ), 'title' => get_the_title( $p ) ), $result['alternatives'] ),
+				'reason'       => $result['reason'],
+			)
+		);
+	}
+
+	public function search_ingredients( WP_REST_Request $request ) {
+		$results = Atlas_Chuti_Ingredient_Finder::instance()->search_ingredients( (string) $request->get_param( 'q' ) );
+		return rest_ensure_response( $results );
+	}
+
+	public function match_ingredients( WP_REST_Request $request ) {
+		$keys_param = (string) $request->get_param( 'keys' );
+		$keys       = array_filter( array_map( 'sanitize_title', explode( ',', $keys_param ) ) );
+		if ( ! $keys ) {
+			return rest_ensure_response( array() );
+		}
+		$matches = Atlas_Chuti_Ingredient_Finder::instance()->find_matches( $keys );
+		return rest_ensure_response(
+			array_map(
+				fn( $m ) => array(
+					'recipe_key'     => get_post_meta( $m['recipe'] instanceof WP_Post ? $m['recipe']->ID : 0, 'atlas_recipe_key', true ),
+					'url'            => get_permalink( $m['recipe'] ),
+					'title'          => get_the_title( $m['recipe'] ),
+					'matched_count'  => $m['matched_count'],
+					'total_count'    => $m['total_count'],
+					'missing_labels' => $m['missing_labels'],
+				),
+				$matches
+			)
+		);
 	}
 }

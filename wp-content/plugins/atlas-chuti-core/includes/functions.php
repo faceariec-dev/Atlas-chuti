@@ -87,6 +87,13 @@ function atlas_chuti_system_paths() {
 			'pravidla_ugc'       => '/pravidla-ugc/',
 			'autorska_prava'     => '/autorska-prava/',
 			'nastaveni_cookies'  => '/nastaveni-cookies/',
+			// KROK 8, item 12/47: utility routes — same Polylang-aware
+			// system-page mechanism as every other stable route in this map
+			// (never a brittle rewrite hack), CZ path here, `/en/...`
+			// resolved automatically via the translated-page lookup above
+			// once these pages exist in English through "Nastavení stránek".
+			'what_to_cook'       => '/co-dnes-varit/',
+			'what_do_i_have'     => '/co-mam-doma/',
 		)
 	);
 }

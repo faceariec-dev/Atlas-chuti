@@ -72,6 +72,42 @@ function atlas_chuti_enqueue_assets() {
 				'shareCopyPrompt' => __( 'Zkopírujte odkaz:', 'atlas-chuti' ),
 			)
 		);
+
+		// KROK 8, item 1-6/47: timers.js has no dependency, cook-mode.js calls
+		// window.AtlasTimers so it loads after it — both are pure client-side
+		// (no REST, no AtlasChutiUser needed) and degrade to nothing at all when
+		// the page has no #ingredience[data-cook-mode] section with steps.
+		wp_enqueue_script( 'atlas-chuti-timers', ATLAS_THEME_URL . '/assets/js/timers.js', array(), ATLAS_THEME_VERSION, true );
+		wp_enqueue_script( 'atlas-chuti-cook-mode', ATLAS_THEME_URL . '/assets/js/cook-mode.js', array( 'atlas-chuti-timers' ), ATLAS_THEME_VERSION, true );
+		wp_localize_script(
+			'atlas-chuti-cook-mode',
+			'AtlasCookL10n',
+			array(
+				'cookModeLabel'       => __( 'Režim vaření', 'atlas-chuti' ),
+				'close'                => __( 'Zavřít', 'atlas-chuti' ),
+				'previous'             => __( 'Předchozí', 'atlas-chuti' ),
+				'next'                 => __( 'Další', 'atlas-chuti' ),
+				'done'                 => __( 'Hotovo', 'atlas-chuti' ),
+				'ingredients'          => __( 'Ingredience', 'atlas-chuti' ),
+				'setTimer'             => __( 'Nastavit časovač', 'atlas-chuti' ),
+				'stepLabel'            => __( 'Krok', 'atlas-chuti' ),
+				'keepScreenOn'         => __( 'Nezhasínat obrazovku', 'atlas-chuti' ),
+				'wakeLockUnsupported'  => __( 'Tento prohlížeč nepodporuje ponechání obrazovky zapnuté.', 'atlas-chuti' ),
+				/* translators: %1$d: steps completed, %2$d: total steps */
+				'stepsDoneFormat'      => __( 'Hotovo %1$d z %2$d kroků', 'atlas-chuti' ),
+				'timer'                => __( 'Časovač', 'atlas-chuti' ),
+				'timerDoneTitle'       => __( 'Časovač dokončen', 'atlas-chuti' ),
+				'timerDone'            => __( 'Hotovo!', 'atlas-chuti' ),
+				'enableNotifications'  => __( 'Povolit upozornění', 'atlas-chuti' ),
+				'pause'                => __( 'Pauza', 'atlas-chuti' ),
+				'resume'               => __( 'Pokračovat', 'atlas-chuti' ),
+				'removeTimer'          => __( 'Odebrat časovač', 'atlas-chuti' ),
+			)
+		);
+	}
+
+	if ( is_singular( 'atlas_recipe' ) || is_singular( 'post' ) ) {
+		wp_enqueue_script( 'atlas-chuti-video', ATLAS_THEME_URL . '/assets/js/video.js', array(), ATLAS_THEME_VERSION, true );
 	}
 
 	if ( is_singular( 'atlas_recipe' ) || is_singular( 'atlas_country' ) || is_page_template( 'template-passport.php' ) || is_page_template( 'template-my-atlas.php' ) || is_front_page() ) {
@@ -101,6 +137,23 @@ function atlas_chuti_enqueue_assets() {
 
 	if ( is_post_type_archive( 'atlas_recipe' ) ) {
 		wp_enqueue_script( 'atlas-chuti-filters', ATLAS_THEME_URL . '/assets/js/filters.js', array(), ATLAS_THEME_VERSION, true );
+	}
+
+	// KROK 8, item 16-18/47: "Co mám doma?" — the page works fully via plain GET
+	// with no JS at all (see template-co-mam-doma.php); this only progressively
+	// enhances the native <select multiple> into a filter+chips UI.
+	if ( is_page_template( 'template-co-mam-doma.php' ) ) {
+		wp_enqueue_script( 'atlas-chuti-ingredient-finder', ATLAS_THEME_URL . '/assets/js/ingredient-finder.js', array(), ATLAS_THEME_VERSION, true );
+		wp_localize_script(
+			'atlas-chuti-ingredient-finder',
+			'AtlasIngredientFinderL10n',
+			array(
+				'filterLabel'       => __( 'Filtrovat seznam ingrediencí', 'atlas-chuti' ),
+				'filterPlaceholder' => __( 'Hledat ingredienci…', 'atlas-chuti' ),
+				/* translators: %s: ingredient name */
+				'removeFormat'      => __( 'Odebrat %s', 'atlas-chuti' ),
+			)
+		);
 	}
 
 	// KROK 5: the account-aware layer (favorite/cooked toggle, rating widget,
@@ -146,6 +199,31 @@ function atlas_chuti_enqueue_assets() {
 				'passportMergeYes'  => __( 'Přidat do Mého Atlasu', 'atlas-chuti' ),
 				'passportMergeNo'   => __( 'Ne, díky', 'atlas-chuti' ),
 				'passportMerged'    => __( 'Váš Kulinářský pas byl přidán do účtu.', 'atlas-chuti' ),
+			)
+		);
+
+		// KROK 8, item 20-28/47: Collections/Shopping list/Meal planner — depends on
+		// 'atlas-chuti-my-atlas' purely so AtlasChutiUser (localized onto that handle
+		// above) is guaranteed to exist before this file reads it.
+		wp_enqueue_script( 'atlas-chuti-my-atlas-tools', ATLAS_THEME_URL . '/assets/js/my-atlas-tools.js', array( 'atlas-chuti-my-atlas' ), ATLAS_THEME_VERSION, true );
+		wp_localize_script(
+			'atlas-chuti-my-atlas-tools',
+			'AtlasToolsL10n',
+			array(
+				'genericError'          => __( 'Něco se nepovedlo, zkuste to prosím znovu.', 'atlas-chuti' ),
+				'loading'                => __( 'Načítám…', 'atlas-chuti' ),
+				'addToCollection'        => __( 'Přidat do kolekce', 'atlas-chuti' ),
+				'noCollectionsYet'       => __( 'Zatím nemáte žádnou kolekci.', 'atlas-chuti' ),
+				'newCollectionName'      => __( 'Nová kolekce', 'atlas-chuti' ),
+				'create'                 => __( 'Vytvořit', 'atlas-chuti' ),
+				'close'                  => __( 'Zavřít', 'atlas-chuti' ),
+				'addedToCollection'      => __( 'Přidáno do kolekce.', 'atlas-chuti' ),
+				'addedToShoppingList'    => __( 'Přidáno', 'atlas-chuti' ),
+				'confirmDeleteCollection' => __( 'Opravdu smazat tuto kolekci?', 'atlas-chuti' ),
+				'pickRecipe'             => __( 'Vybrat recept', 'atlas-chuti' ),
+				'searchRecipes'          => __( 'Hledat recept podle názvu…', 'atlas-chuti' ),
+				/* translators: %d: number of ingredients added */
+				'addedIngredientsFormat' => __( 'Přidáno %d ingrediencí', 'atlas-chuti' ),
 			)
 		);
 	}

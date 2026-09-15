@@ -1094,6 +1094,14 @@ require $PLUGIN . '/class-photos.php';
 require $PLUGIN . '/class-comments.php';
 require $PLUGIN . '/class-account.php';
 require $PLUGIN . '/class-seo.php';
+// KROK 8: class-privacy.php's export_data()/erase_data() now also reference
+// these three service classes directly — loaded here purely so this
+// still-unmodified Step 5 harness keeps working against the current shared
+// file, exactly like every other cross-step regression run.
+require $PLUGIN . '/class-collections.php';
+require $PLUGIN . '/class-shopping-list.php';
+require $PLUGIN . '/class-meal-plan.php';
+require $PLUGIN . '/class-servings.php';
 require $PLUGIN . '/class-privacy.php';
 require $PLUGIN . '/class-rest-api.php';
 require $PLUGIN . '/functions.php';

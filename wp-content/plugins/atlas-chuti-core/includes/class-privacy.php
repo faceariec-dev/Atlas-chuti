@@ -102,6 +102,47 @@ class Atlas_Chuti_Privacy {
 			);
 		}
 
+		// KROK 8, item 39/49: collections/shopping list/meal plan join the same
+		// exporter — each a foreach over its own service's get_for_user(), same
+		// shape as every group above.
+		foreach ( Atlas_Chuti_Collections::instance()->get_for_user( $user_id ) as $collection ) {
+			$data[] = array(
+				'group_id'    => 'atlas-chuti-collections',
+				'group_label' => __( 'Moje kolekce', 'atlas-chuti' ),
+				'item_id'     => 'atlas-chuti-collection-' . $collection->id,
+				'data'        => array(
+					array( 'name' => __( 'název', 'atlas-chuti' ), 'value' => $collection->title ),
+					array( 'name' => __( 'počet receptů', 'atlas-chuti' ), 'value' => $collection->item_count ),
+					array( 'name' => __( 'aktualizováno', 'atlas-chuti' ), 'value' => $collection->updated_at ),
+				),
+			);
+		}
+
+		foreach ( Atlas_Chuti_Shopping_List::instance()->get_for_user( $user_id ) as $item ) {
+			$data[] = array(
+				'group_id'    => 'atlas-chuti-shopping-list',
+				'group_label' => __( 'Nákupní seznam', 'atlas-chuti' ),
+				'item_id'     => 'atlas-chuti-shopping-' . $item->id,
+				'data'        => array(
+					array( 'name' => __( 'položka', 'atlas-chuti' ), 'value' => $item->display_name ),
+					array( 'name' => __( 'množství', 'atlas-chuti' ), 'value' => trim( $item->quantity_text . ' ' . $item->unit_key ) ),
+				),
+			);
+		}
+
+		foreach ( Atlas_Chuti_Meal_Plan::instance()->get_for_range( $user_id, '1970-01-01', '2999-12-31' ) as $item ) {
+			$data[] = array(
+				'group_id'    => 'atlas-chuti-meal-plan',
+				'group_label' => __( 'Plán jídel', 'atlas-chuti' ),
+				'item_id'     => 'atlas-chuti-meal-plan-' . $item->id,
+				'data'        => array(
+					array( 'name' => __( 'datum', 'atlas-chuti' ), 'value' => $item->plan_date ),
+					array( 'name' => __( 'jídlo', 'atlas-chuti' ), 'value' => $item->meal_slot ),
+					array( 'name' => __( 'recipe_key', 'atlas-chuti' ), 'value' => $item->recipe_key ),
+				),
+			);
+		}
+
 		return array( 'data' => $data, 'done' => true );
 	}
 
@@ -119,6 +160,9 @@ class Atlas_Chuti_Privacy {
 		// row is never left behind).
 		Atlas_Chuti_Ratings::instance()->anonymize_for_deleted_user( $user_id );
 		Atlas_Chuti_Photos::instance()->delete_all_for_user( $user_id );
+		Atlas_Chuti_Collections::instance()->delete_all_for_user( $user_id );
+		Atlas_Chuti_Shopping_List::instance()->delete_all_for_user( $user_id );
+		Atlas_Chuti_Meal_Plan::instance()->delete_all_for_user( $user_id );
 
 		return array(
 			'items_removed'  => true,

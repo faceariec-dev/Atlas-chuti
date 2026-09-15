@@ -208,13 +208,23 @@ class Atlas_Chuti_SEO {
 		if ( is_search() ) {
 			return 'noindex,follow';
 		}
-		if ( is_post_type_archive( 'atlas_recipe' ) && $this->has_active_recipe_filters() ) {
+		// KROK 8, item 4/47: Cook Mode is a state of the same recipe URL
+		// (?cook=1), never its own indexable duplicate — canonical already
+		// self-resolves to the query-string-free permalink (get_canonical_url()
+		// below uses get_permalink(), which never includes the query string), this
+		// just adds the matching noindex.
+		if ( is_singular( 'atlas_recipe' ) && isset( $_GET['cook'] ) && '1' === $_GET['cook'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only UI-state flag.
 			return 'noindex,follow';
 		}
 		// KROK 5, item 36: login/registration/account/password-reset all render
-		// through this ONE page template (see template-my-atlas.php) — never a
-		// browsable landing page, never a public user directory.
-		if ( is_page_template( 'template-my-atlas.php' ) ) {
+		// through ONE page template (template-my-atlas.php) — never a browsable
+		// landing page, never a public user directory. KROK 8, item 19/47: the two
+		// new recommendation/finder utility templates join the same noindex
+		// treatment — dynamic, filter-heavy result pages, not real landing content.
+		if ( is_page_template( array( 'template-my-atlas.php', 'template-co-dnes-varit.php', 'template-co-mam-doma.php' ) ) ) {
+			return 'noindex,follow';
+		}
+		if ( is_post_type_archive( 'atlas_recipe' ) && $this->has_active_recipe_filters() ) {
 			return 'noindex,follow';
 		}
 		// KROK 6, item 34: an empty Magazín category or an empty Diskuze archive
@@ -487,8 +497,25 @@ class Atlas_Chuti_SEO {
 		$this->add_recipe_category( $schema, $post_id );
 		$this->add_recipe_cuisine( $schema, $post_id );
 		$this->add_recipe_aggregate_rating( $schema, $post_id );
+		$this->add_video( $schema, $post_id );
 
 		return $schema;
+	}
+
+	/**
+	 * KROK 8, item 33: nested `video` property, built only from real,
+	 * validated video data (Atlas_Chuti_Video::schema() itself already
+	 * returns null for anything unresolvable/unsupported) — omitted entirely
+	 * when there is no real video, never a placeholder VideoObject.
+	 */
+	private function add_video( &$schema, $post_id ) {
+		if ( ! class_exists( 'Atlas_Chuti_Video' ) ) {
+			return;
+		}
+		$video = Atlas_Chuti_Video::schema( $post_id );
+		if ( $video ) {
+			$schema['video'] = $video;
+		}
 	}
 
 	/**
@@ -625,6 +652,8 @@ class Atlas_Chuti_SEO {
 		if ( $modified ) {
 			$schema['dateModified'] = $modified;
 		}
+
+		$this->add_video( $schema, $post_id );
 
 		return $schema;
 	}

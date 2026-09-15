@@ -146,6 +146,7 @@ abstract class Atlas_Chuti_Meta_Box_Base {
 					'order'          => __( 'Pořadí', 'atlas-chuti' ),
 					'text'           => __( 'Text', 'atlas-chuti' ),
 					'recipe_id'      => __( 'Slug receptu (volitelné)', 'atlas-chuti' ),
+					'duration_minutes' => __( 'Doba trvání kroku v minutách (volitelné, jen číslo)', 'atlas-chuti' ),
 				);
 				return isset( $map[ $f ] ) ? $map[ $f ] : ucfirst( $f );
 			},

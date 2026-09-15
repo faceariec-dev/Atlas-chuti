@@ -49,6 +49,7 @@ class Atlas_Chuti_Register_Meta {
 		}
 
 		$this->register_magazine_relation_fields();
+		$this->register_video_fields();
 
 		// KROK 4: recipe_key is atlas_recipe's OWN stable dish-concept identity —
 		// distinct from atlas_translation_group (registered above via
@@ -129,6 +130,41 @@ class Atlas_Chuti_Register_Meta {
 					),
 				)
 			);
+		}
+	}
+
+	/**
+	 * KROK 8, item 29-31: recipe/article video model — `atlas_video_type` is a
+	 * closed vocabulary (none|youtube|own, enforced in Atlas_Chuti_Video's own
+	 * sanitize path, not here, since register_post_meta()'s sanitize_callback
+	 * has no clean way to reject-vs-coerce an invalid enum value without
+	 * silently corrupting it). No video exists until an editor sets one of
+	 * these — never fabricated (item: "Video zobraz pouze pokud skutečně
+	 * existuje").
+	 */
+	private function register_video_fields() {
+		$fields = array(
+			'atlas_video_type'     => array( 'type' => 'string', 'sanitize_callback' => 'sanitize_key', 'description' => 'none|youtube|own' ),
+			'atlas_video_url'      => array( 'type' => 'string', 'sanitize_callback' => 'esc_url_raw' ),
+			'atlas_video_title'    => array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ),
+			'atlas_video_channel'  => array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ),
+			'atlas_video_language' => array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ),
+		);
+		foreach ( array( 'atlas_recipe', 'post' ) as $post_type ) {
+			foreach ( $fields as $meta_key => $args ) {
+				register_post_meta(
+					$post_type,
+					$meta_key,
+					array(
+						'type'              => $args['type'],
+						'description'       => $args['description'] ?? '',
+						'single'            => true,
+						'sanitize_callback' => $args['sanitize_callback'],
+						'auth_callback'     => array( $this, 'auth_edit_posts' ),
+						'show_in_rest'      => true,
+					)
+				);
+			}
 		}
 	}
 

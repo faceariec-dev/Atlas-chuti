@@ -208,3 +208,99 @@ function shuffle_by_seed( &$array, $seed ) {
 	);
 	mt_srand(); // reseed randomly again for anything else on the request
 }
+
+/**
+ * KROK 8, item 29/47: "Seasonal content hooks" — a real, simple layer using
+ * ONLY the controlled `atlas_recipe_tag` season/occasion keys already seeded
+ * since Step 3 (spring/summer/autumn/winter/christmas — see
+ * class-taxonomy-labels.php), mapped from the current calendar month. No
+ * "AI season engine" (item 29's own explicit prohibition) — just a fixed,
+ * readable month→tag table.
+ */
+function atlas_chuti_current_season_tag() {
+	$month = (int) current_time( 'n' );
+	if ( 12 === $month ) {
+		return 'christmas'; // a real, fixed-month occasion — Easter's floating date is deliberately left alone rather than approximated.
+	}
+	if ( in_array( $month, array( 3, 4, 5 ), true ) ) {
+		return 'spring';
+	}
+	if ( in_array( $month, array( 6, 7, 8 ), true ) ) {
+		return 'summer';
+	}
+	if ( in_array( $month, array( 9, 10, 11 ), true ) ) {
+		return 'autumn';
+	}
+	return 'winter'; // January, February
+}
+
+/**
+ * Real, published recipes tagged with the current season/occasion — empty
+ * when none exist yet, so the homepage block hides itself rather than ever
+ * showing a fabricated pick (same "never invent" rule as every other
+ * homepage section in this file).
+ */
+function atlas_chuti_home_seasonal_recipes( $limit = 3 ) {
+	$term = get_term_by( 'slug', atlas_chuti_current_season_tag(), 'atlas_recipe_tag' );
+	if ( ! $term || is_wp_error( $term ) ) {
+		return array();
+	}
+	return get_posts(
+		array(
+			'post_type'      => 'atlas_recipe',
+			'post_status'    => 'publish',
+			'posts_per_page' => $limit,
+			'tax_query'      => array( array( 'taxonomy' => 'atlas_recipe_tag', 'field' => 'term_id', 'terms' => $term->term_id ) ), // phpcs:ignore WordPress.DB.SlowDBQuery
+		)
+	);
+}
+
+/**
+ * Fills front-page.php's already-existing `atlas_chuti_home_seasonal_pick`
+ * filter (present since KROK 1, unused until now — no template change
+ * needed). Only overrides a null default; leaves any other filter (e.g. a
+ * future manual editor pick) untouched.
+ */
+function atlas_chuti_home_seasonal_pick_filter( $existing ) {
+	if ( null !== $existing ) {
+		return $existing;
+	}
+	$recipes = atlas_chuti_home_seasonal_recipes( 3 );
+	if ( ! $recipes ) {
+		return null;
+	}
+	return array( 'tag' => atlas_chuti_current_season_tag(), 'recipes' => $recipes );
+}
+add_filter( 'atlas_chuti_home_seasonal_pick', 'atlas_chuti_home_seasonal_pick_filter' );
+
+/**
+ * Renders the seasonal block front-page.php's `do_action(
+ * 'atlas_chuti_home_seasonal_block', $seasonal )` already fires — only ever
+ * called when atlas_chuti_home_seasonal_pick_filter() found real recipes.
+ */
+function atlas_chuti_home_seasonal_block_render( $seasonal ) {
+	if ( empty( $seasonal['recipes'] ) ) {
+		return;
+	}
+	$label = class_exists( 'Atlas_Chuti_Taxonomy_Labels' )
+		? Atlas_Chuti_Taxonomy_Labels::label( 'atlas_recipe_tag', $seasonal['tag'], Atlas_Chuti_I18N::current_locale() )
+		: $seasonal['tag'];
+	?>
+	<section class="section bg-sage-tint">
+		<div class="container">
+			<div class="section-head">
+				<div>
+					<span class="kicker"><?php esc_html_e( 'Sezóna', 'atlas-chuti' ); ?></span>
+					<h2><?php echo esc_html( sprintf( /* translators: %s: season/occasion name */ __( '%s na Atlasu', 'atlas-chuti' ), $label ) ); ?></h2>
+				</div>
+			</div>
+			<div class="card-grid card-grid-3">
+				<?php foreach ( $seasonal['recipes'] as $r ) : ?>
+					<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => $r->ID ) ); ?>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+	<?php
+}
+add_action( 'atlas_chuti_home_seasonal_block', 'atlas_chuti_home_seasonal_block_render' );

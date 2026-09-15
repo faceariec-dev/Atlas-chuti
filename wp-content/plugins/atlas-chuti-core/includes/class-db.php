@@ -30,7 +30,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Atlas_Chuti_DB {
 
-	const DB_VERSION     = '1.0.0';
+	// KROK 8: bumped to 1.1.0 — 4 new tables (collections/collection_items/
+	// shopping_list_items/meal_plan_items), same idempotent dbDelta() install()
+	// below just gains 4 more CREATE TABLE statements; existing tables are
+	// untouched (item 38: "normalizovaná data", never one serialized blob).
+	const DB_VERSION     = '1.1.0';
 	const OPTION_VERSION = 'atlas_chuti_db_version';
 
 	private static $instance = null;
@@ -66,6 +70,26 @@ class Atlas_Chuti_DB {
 		return $wpdb->prefix . 'atlas_recipe_photos';
 	}
 
+	public static function table_collections() {
+		global $wpdb;
+		return $wpdb->prefix . 'atlas_collections';
+	}
+
+	public static function table_collection_items() {
+		global $wpdb;
+		return $wpdb->prefix . 'atlas_collection_items';
+	}
+
+	public static function table_shopping_list_items() {
+		global $wpdb;
+		return $wpdb->prefix . 'atlas_shopping_list_items';
+	}
+
+	public static function table_meal_plan_items() {
+		global $wpdb;
+		return $wpdb->prefix . 'atlas_meal_plan_items';
+	}
+
 	public function maybe_upgrade() {
 		if ( get_option( self::OPTION_VERSION ) === self::DB_VERSION ) {
 			return;
@@ -86,6 +110,10 @@ class Atlas_Chuti_DB {
 		$user_state       = self::table_user_state();
 		$ratings          = self::table_ratings();
 		$photos           = self::table_photos();
+		$collections      = self::table_collections();
+		$collection_items = self::table_collection_items();
+		$shopping_list    = self::table_shopping_list_items();
+		$meal_plan        = self::table_meal_plan_items();
 
 		// dbDelta() is whitespace/syntax-picky (two spaces after PRIMARY KEY, each
 		// index on its own line, no inline comments) — see the Codex documentation
@@ -130,6 +158,54 @@ CREATE TABLE {$photos} (
   PRIMARY KEY  (id),
   KEY user_id (user_id),
   KEY recipe_key_status (recipe_key,status)
+) {$charset_collate};
+CREATE TABLE {$collections} (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id BIGINT UNSIGNED NOT NULL,
+  title VARCHAR(191) NOT NULL,
+  description TEXT NULL,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL,
+  PRIMARY KEY  (id),
+  KEY user_id (user_id)
+) {$charset_collate};
+CREATE TABLE {$collection_items} (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  collection_id BIGINT UNSIGNED NOT NULL,
+  recipe_key VARCHAR(191) NOT NULL,
+  sort_order INT UNSIGNED NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL,
+  PRIMARY KEY  (id),
+  UNIQUE KEY collection_recipe (collection_id,recipe_key),
+  KEY collection_id (collection_id)
+) {$charset_collate};
+CREATE TABLE {$shopping_list} (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id BIGINT UNSIGNED NOT NULL,
+  ingredient_key VARCHAR(191) NOT NULL,
+  display_name VARCHAR(191) NOT NULL,
+  quantity_value DECIMAL(10,3) NULL,
+  quantity_text VARCHAR(50) NOT NULL DEFAULT '',
+  unit_key VARCHAR(20) NULL,
+  source_recipe_key VARCHAR(191) NULL,
+  checked TINYINT UNSIGNED NOT NULL DEFAULT 0,
+  created_at DATETIME NOT NULL,
+  updated_at DATETIME NOT NULL,
+  PRIMARY KEY  (id),
+  KEY user_id (user_id),
+  KEY user_ingredient_unit (user_id,ingredient_key,unit_key)
+) {$charset_collate};
+CREATE TABLE {$meal_plan} (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  user_id BIGINT UNSIGNED NOT NULL,
+  plan_date DATE NOT NULL,
+  meal_slot VARCHAR(20) NOT NULL,
+  recipe_key VARCHAR(191) NOT NULL,
+  servings_override SMALLINT UNSIGNED NULL,
+  created_at DATETIME NOT NULL,
+  PRIMARY KEY  (id),
+  UNIQUE KEY user_date_slot_recipe (user_id,plan_date,meal_slot,recipe_key),
+  KEY user_date (user_id,plan_date)
 ) {$charset_collate};";
 
 		dbDelta( $sql );

@@ -189,7 +189,17 @@ function comment_form( $args = array() ) {}
 function is_search() { global $CONDITIONS; return $CONDITIONS['search']; }
 function is_category() { global $CONDITIONS; return $CONDITIONS['category']; }
 function is_post_type_archive( $pt = null ) { global $CONDITIONS; return null === $pt ? (bool) $CONDITIONS['post_type_archive'] : $CONDITIONS['post_type_archive'] === $pt; }
-function is_page_template( $t = null ) { global $CONDITIONS; return null === $t ? (bool) $CONDITIONS['page_template'] : $CONDITIONS['page_template'] === $t; }
+// KROK 8: is_ad_free_context() now also passes an ARRAY of templates (the two
+// new utility pages join template-my-atlas.php) — array support added here
+// purely so this still-unmodified Step 7 harness keeps working against the
+// current shared class-advertising.php file.
+function is_page_template( $t = null ) {
+	global $CONDITIONS;
+	if ( null === $t ) {
+		return (bool) $CONDITIONS['page_template'];
+	}
+	return is_array( $t ) ? in_array( $CONDITIONS['page_template'], $t, true ) : $CONDITIONS['page_template'] === $t;
+}
 function is_author() { global $CONDITIONS; return $CONDITIONS['author']; }
 function is_page() { global $CONDITIONS; return $CONDITIONS['page']; }
 function wp_enqueue_script( $handle, $src = '', $deps = array(), $ver = false, $in_footer = false ) { global $ENQUEUED_SCRIPTS; $ENQUEUED_SCRIPTS[ $handle ] = $src; }

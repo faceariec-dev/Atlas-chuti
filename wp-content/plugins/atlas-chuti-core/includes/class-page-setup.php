@@ -60,6 +60,10 @@ class Atlas_Chuti_Page_Setup {
 			'recepty'                  => array( __( 'Recepty', 'atlas-chuti' ), 'archive' ),
 			'slovnicek'                => array( __( 'Kuchařský slovníček', 'atlas-chuti' ), 'archive' ),
 			'magazin'                  => array( __( 'Magazín', 'atlas-chuti' ), 'template-magazine.php', 'publish' ),
+			// KROK 8, item 12/47: real working utility tools from day one, same
+			// as 'magazin' above — 'publish', not the default draft.
+			'co-dnes-varit'            => array( __( 'Co dnes vařit?', 'atlas-chuti' ), 'template-co-dnes-varit.php', 'publish' ),
+			'co-mam-doma'              => array( __( 'Co mám doma?', 'atlas-chuti' ), 'template-co-mam-doma.php', 'publish' ),
 			'diskuze'                  => array( __( 'Diskuze', 'atlas-chuti' ), 'archive' ),
 			'o-projektu'               => array( __( 'O projektu', 'atlas-chuti' ), null ),
 			'kontakt'                  => array( __( 'Kontakt', 'atlas-chuti' ), null ),

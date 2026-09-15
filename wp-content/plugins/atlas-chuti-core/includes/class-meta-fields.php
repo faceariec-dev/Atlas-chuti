@@ -45,7 +45,14 @@ class Atlas_Chuti_Meta_Fields {
 				'type'     => 'repeater',
 				'label' => __( 'Postup', 'atlas-chuti' ),
 				'required' => true,
-				'shape'    => array( 'order', 'text' ),
+				// KROK 8, item 10: duration_minutes is OPTIONAL and backward-compatible —
+				// a row without it (every recipe imported before this step) sanitizes to
+				// '' via sanitize_repeater_field()'s `$row[$field] ?? null` fallback, same
+				// as any other missing shape key. Cook Mode only offers a "Nastavit
+				// časovač" button when this is a real positive integer — never guessed
+				// from the step text (item 10's own explicit "negeneruj čas z textu
+				// heuristikou").
+				'shape'    => array( 'order', 'text', 'duration_minutes' ),
 			),
 			'tips'             => array( 'type' => 'string_list', 'label' => __( 'Tipy', 'atlas-chuti' ), 'required' => false ),
 			'watch_out'        => array( 'type' => 'textarea', 'label' => __( 'Na co si dát pozor', 'atlas-chuti' ), 'required' => false ),

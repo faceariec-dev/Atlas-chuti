@@ -56,6 +56,13 @@ require_once ATLAS_CHUTI_DIR . 'includes/class-ad-campaign.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-ad-campaign-meta-box.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-advertising.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-advertising-settings.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-collections.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-shopping-list.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-meal-plan.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-recommendations.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-ingredient-finder.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-video.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-video-meta-box.php';
 require_once ATLAS_CHUTI_DIR . 'includes/functions.php';
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -99,6 +106,12 @@ function atlas_chuti_core_init() {
 	Atlas_Chuti_Ad_Campaign_Meta_Box::instance();
 	Atlas_Chuti_Advertising::instance();
 	Atlas_Chuti_Advertising_Settings::instance();
+	Atlas_Chuti_Collections::instance();
+	Atlas_Chuti_Shopping_List::instance();
+	Atlas_Chuti_Meal_Plan::instance();
+	Atlas_Chuti_Recommendations::instance();
+	Atlas_Chuti_Ingredient_Finder::instance();
+	Atlas_Chuti_Video_Meta_Box::instance();
 }
 add_action( 'plugins_loaded', 'atlas_chuti_core_init' );
 

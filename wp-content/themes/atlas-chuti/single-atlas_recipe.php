@@ -59,6 +59,15 @@ while ( have_posts() ) :
 		'url'        => $canonical_url,
 	);
 
+	// KROK 8, item 8/47: checklist/Cook Mode state is keyed by recipe_key +
+	// a content hash of ingredients+steps (never by displayed text, never a
+	// counter that changes on unrelated edits) — so a photo-credit or tip
+	// tweak never wipes a saved checklist, but a real ingredient/step change
+	// does (deliberately — an ingredient inserted mid-list must not leave
+	// stale checkmarks pointing at the wrong row).
+	$cook_mode_version = substr( md5( (string) wp_json_encode( array( $ingredients, $steps ) ) ), 0, 12 );
+	$is_cook_mode       = isset( $_GET['cook'] ) && '1' === $_GET['cook']; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
 	// Below-recipe content (item 13): similar first, then same-cuisine (excluding
 	// whatever similar already showed so the two sections never repeat a recipe),
 	// then a standard-posts magazine preview — each hides itself when empty. Computed
@@ -187,6 +196,20 @@ while ( have_posts() ) :
 			<a class="recipe-action-btn" href="#komentare">
 				<?php esc_html_e( 'Komentáře', 'atlas-chuti' ); ?>
 			</a>
+			<?php if ( $ingredients && $steps ) : ?>
+			<button type="button" class="recipe-action-btn recipe-action-btn-accent" data-cook-mode-trigger data-recipe-title="<?php echo esc_attr( get_the_title() ); ?>">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><polyline points="12,7 12,12 15,14"></polyline></svg>
+				<span class="label"><?php esc_html_e( 'Spustit režim vaření', 'atlas-chuti' ); ?></span>
+			</button>
+			<?php endif; ?>
+			<?php if ( is_user_logged_in() ) : ?>
+			<button type="button" class="recipe-action-btn" data-add-to-shopping-list data-recipe-key="<?php echo esc_attr( $passport_data['recipe_key'] ); ?>" data-servings-source data-servings="<?php echo esc_attr( $servings_default ); ?>">
+				<span class="label"><?php esc_html_e( 'Do nákupního seznamu', 'atlas-chuti' ); ?></span>
+			</button>
+			<button type="button" class="recipe-action-btn" data-add-to-collection-trigger data-recipe-key="<?php echo esc_attr( $passport_data['recipe_key'] ); ?>">
+				<span class="label"><?php esc_html_e( 'Do kolekce', 'atlas-chuti' ); ?></span>
+			</button>
+			<?php endif; ?>
 			<button type="button" class="recipe-action-btn" data-print-trigger>
 				<?php esc_html_e( 'Tisk', 'atlas-chuti' ); ?>
 			</button>
@@ -194,6 +217,8 @@ while ( have_posts() ) :
 				<span class="label"><?php esc_html_e( 'Sdílet', 'atlas-chuti' ); ?></span>
 			</button>
 		</div>
+
+		<div class="collection-picker-modal no-print" data-collection-picker hidden></div>
 
 		<div class="recipe-layout">
 			<div class="recipe-main">
@@ -205,8 +230,18 @@ while ( have_posts() ) :
 				</section>
 				<?php endif; ?>
 
+				<?php
+				// KROK 8, item 26/47: "po úvodu / před relevantní technikou" — right
+				// after the intro, before ingredients/steps. Renders nothing at all
+				// when no real video is attached (class-video.php's own has_video()
+				// gate), never an empty player.
+				if ( class_exists( 'Atlas_Chuti_Video' ) && Atlas_Chuti_Video::has_video( $post_id ) ) {
+					echo Atlas_Chuti_Video::render_embed( $post_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				}
+				?>
+
 				<?php if ( $ingredients || $steps ) : ?>
-				<section id="ingredience">
+				<section id="ingredience" data-cook-mode data-recipe-key="<?php echo esc_attr( $passport_data['recipe_key'] ); ?>" data-recipe-version="<?php echo esc_attr( $cook_mode_version ); ?>" data-recipe-title="<?php echo esc_attr( get_the_title() ); ?>">
 					<div class="recipe-body-grid">
 						<?php if ( $ingredients ) : ?>
 						<div class="ingredient-panel">
@@ -227,7 +262,10 @@ while ( have_posts() ) :
 										$prev_group = $ing['group'];
 									endif;
 									?>
-									<li class="ingredient-row" data-index="<?php echo esc_attr( $i ); ?>">
+									<li class="ingredient-row" data-index="<?php echo esc_attr( $i ); ?>" data-ingredient-key="<?php echo esc_attr( $ing['ingredient_key'] ); ?>">
+										<label class="ingredient-check no-print">
+											<input type="checkbox" data-ingredient-check data-index="<?php echo esc_attr( $i ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Mám: %s', 'atlas-chuti' ), $ing['display_name'] ) ); ?>">
+										</label>
 										<span class="name"><?php echo esc_html( $ing['display_name'] ); ?><?php echo $ing['note'] ? ' <span style="color:var(--color-muted);">(' . esc_html( $ing['note'] ) . ')</span>' : ''; ?></span>
 										<span class="amount"><?php echo esc_html( trim( $ing['quantity'] . ' ' . $ing['unit'] ) ); ?></span>
 									</li>
@@ -242,10 +280,21 @@ while ( have_posts() ) :
 						<div id="postup">
 							<h2 style="font-size:var(--fs-h3);"><?php esc_html_e( 'Postup', 'atlas-chuti' ); ?></h2>
 							<ol class="steps-list">
-								<?php foreach ( $steps as $i => $step ) : ?>
-									<li class="step-row">
+								<?php foreach ( $steps as $i => $step ) : $duration = ! empty( $step['duration_minutes'] ) ? (int) $step['duration_minutes'] : 0; ?>
+									<li class="step-row" data-index="<?php echo esc_attr( $i ); ?>"<?php echo $duration ? ' data-duration="' . esc_attr( $duration ) . '"' : ''; ?>>
 										<span class="step-num" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
 										<p class="step-text"><?php echo esc_html( $step['text'] ); ?></p>
+										<div class="step-controls no-print">
+											<label class="step-check">
+												<input type="checkbox" data-step-check data-index="<?php echo esc_attr( $i ); ?>">
+												<?php esc_html_e( 'Hotovo', 'atlas-chuti' ); ?>
+											</label>
+											<?php if ( $duration ) : ?>
+											<button type="button" class="btn btn-small" data-set-timer data-index="<?php echo esc_attr( $i ); ?>" data-minutes="<?php echo esc_attr( $duration ); ?>" data-label="<?php echo esc_attr( sprintf( __( 'Krok %d', 'atlas-chuti' ), $i + 1 ) ); ?>">
+												<?php esc_html_e( 'Nastavit časovač', 'atlas-chuti' ); ?>
+											</button>
+											<?php endif; ?>
+										</div>
 									</li>
 								<?php endforeach; ?>
 							</ol>
@@ -415,6 +464,18 @@ while ( have_posts() ) :
 		</div>
 		<?php echo Atlas_Chuti_QRCode::svg( $canonical_url, 96 ); ?>
 	</div>
+
+	<?php
+	// KROK 8, item 1-12/47: Cook Mode overlay + timer tray are built entirely
+	// by JS from the already-rendered ingredient/step markup above
+	// (progressive enhancement, no duplicated/hidden markup, no separate
+	// indexable content — see the Step 8 report section B). These are just
+	// the two empty mount points; assets/js/cook-mode.js and
+	// assets/js/timers.js fill them in only when the page actually has a
+	// #ingredience section with steps.
+	?>
+	<div id="atlas-cook-mode-root" class="no-print" hidden></div>
+	<div id="atlas-timer-tray" class="no-print" aria-live="polite" hidden></div>
 
 <?php endwhile; ?>
 
