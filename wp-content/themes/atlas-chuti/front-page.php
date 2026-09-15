@@ -320,21 +320,37 @@ if ( $seasonal ) {
 do_action( 'atlas_chuti_home_after_feed' );
 ?>
 
+<?php
+/**
+ * KROK 5, item 32: this panel no longer presents the Kulinářský pas as its own
+ * standalone product — it now promotes the broader Můj Atlas account (item 33:
+ * oblíbené/uvařené/pas/hodnocení/komentáře), which gets the primary CTA. The
+ * anonymous/localStorage mini-widget (data-passport-widget, unchanged — passport.js
+ * still renders it for a visitor without an account) stays as a smaller element.
+ */
+?>
 <section class="section" data-passport-widget>
 	<div class="container">
 		<div class="dark-panel">
-			<h2><?php esc_html_e( 'Kolik světa už jste ochutnali?', 'atlas-chuti' ); ?></h2>
-			<p><?php esc_html_e( 'Označujte recepty, které jste uvařili, a sledujte, jak vaše kulinářská mapa světa roste.', 'atlas-chuti' ); ?></p>
+			<h2><?php esc_html_e( 'Váš vlastní Atlas chutí', 'atlas-chuti' ); ?></h2>
+			<p><?php esc_html_e( 'Ukládejte oblíbené recepty, označujte uvařené, budujte Kulinářský pas, hodnoťte a komentujte — vše na jednom místě, ve vašem účtu.', 'atlas-chuti' ); ?></p>
 			<div style="margin:var(--space-5) 0 var(--space-3);">
 				<span class="passport-count" data-passport-count>
 					<?php
 					/* translators: %d: number of countries published on the site */
-					echo esc_html( sprintf( __( '0 / %d zemí', 'atlas-chuti' ), $total_countries ) );
+					echo esc_html( sprintf( __( '0 / %d zemí ochutnáno', 'atlas-chuti' ), $total_countries ) );
 					?>
 				</span>
 			</div>
 			<div class="passport-flags" data-passport-flags style="margin-bottom:var(--space-8);"></div>
-			<a class="btn btn-accent" href="<?php echo esc_url( atlas_chuti_system_url( 'passport' ) ); ?>"><?php esc_html_e( 'Otevřít můj kulinářský pas', 'atlas-chuti' ); ?></a>
+			<div style="display:flex;flex-wrap:wrap;gap:var(--space-3);">
+				<?php if ( is_user_logged_in() ) : ?>
+					<a class="btn btn-accent" href="<?php echo esc_url( atlas_chuti_system_url( 'account' ) ); ?>"><?php esc_html_e( 'Otevřít Můj Atlas', 'atlas-chuti' ); ?></a>
+				<?php else : ?>
+					<a class="btn btn-accent" href="<?php echo esc_url( add_query_arg( 'sekce', 'registrace', atlas_chuti_system_url( 'account' ) ) ); ?>"><?php esc_html_e( 'Vytvořit Můj Atlas', 'atlas-chuti' ); ?></a>
+					<a class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;" href="<?php echo esc_url( atlas_chuti_system_url( 'passport' ) ); ?>"><?php esc_html_e( 'Zkusit bez registrace', 'atlas-chuti' ); ?></a>
+				<?php endif; ?>
+			</div>
 		</div>
 	</div>
 </section>

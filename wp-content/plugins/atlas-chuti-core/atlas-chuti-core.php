@@ -40,6 +40,14 @@ require_once ATLAS_CHUTI_DIR . 'includes/class-json-importer.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-admin.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-continent-image.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-page-setup.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-db.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-account.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-user-state.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-ratings.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-comments.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-photos.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-rest-api.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-privacy.php';
 require_once ATLAS_CHUTI_DIR . 'includes/functions.php';
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -68,6 +76,14 @@ function atlas_chuti_core_init() {
 	Atlas_Chuti_Admin::instance();
 	Atlas_Chuti_Continent_Image::instance();
 	Atlas_Chuti_Page_Setup::instance();
+	Atlas_Chuti_DB::instance();
+	Atlas_Chuti_Account::instance();
+	Atlas_Chuti_User_State::instance();
+	Atlas_Chuti_Ratings::instance();
+	Atlas_Chuti_Comments::instance();
+	Atlas_Chuti_Photos::instance();
+	Atlas_Chuti_REST_API::instance();
+	Atlas_Chuti_Privacy::instance();
 }
 add_action( 'plugins_loaded', 'atlas_chuti_core_init' );
 
@@ -77,6 +93,7 @@ add_action( 'plugins_loaded', 'atlas_chuti_core_init' );
 function atlas_chuti_core_activate() {
 	Atlas_Chuti_Post_Types::instance()->register();
 	Atlas_Chuti_Taxonomies::instance()->register();
+	Atlas_Chuti_DB::instance()->install();
 	flush_rewrite_rules();
 }
 register_activation_hook( __FILE__, 'atlas_chuti_core_activate' );

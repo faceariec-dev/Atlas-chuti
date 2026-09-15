@@ -115,6 +115,14 @@ window.AtlasPassport = ( function () {
 		if ( ! btn ) {
 			return;
 		}
+		// KROK 5: a logged-in visitor's "cooked" state is account-backed via REST
+		// (see assets/js/my-atlas.js, which wires this SAME button in that case) —
+		// this module stays the pure anonymous/local mechanism and must not also
+		// attach its own click handler to the same element, which would otherwise
+		// fire both a localStorage toggle AND a REST toggle per click.
+		if ( window.AtlasChutiUser && window.AtlasChutiUser.loggedIn ) {
+			return;
+		}
 		var data = readJSON( btn, 'data-recipe' );
 		if ( ! data ) {
 			return;

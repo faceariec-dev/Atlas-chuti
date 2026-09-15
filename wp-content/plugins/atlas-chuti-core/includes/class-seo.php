@@ -189,6 +189,12 @@ class Atlas_Chuti_SEO {
 		if ( is_post_type_archive( 'atlas_recipe' ) && $this->has_active_recipe_filters() ) {
 			return 'noindex,follow';
 		}
+		// KROK 5, item 36: login/registration/account/password-reset all render
+		// through this ONE page template (see template-my-atlas.php) — never a
+		// browsable landing page, never a public user directory.
+		if ( is_page_template( 'template-my-atlas.php' ) ) {
+			return 'noindex,follow';
+		}
 		return '';
 	}
 
@@ -447,8 +453,35 @@ class Atlas_Chuti_SEO {
 
 		$this->add_recipe_category( $schema, $post_id );
 		$this->add_recipe_cuisine( $schema, $post_id );
+		$this->add_recipe_aggregate_rating( $schema, $post_id );
 
 		return $schema;
+	}
+
+	/**
+	 * KROK 5, items 18/35: aggregateRating from REAL stored votes only (recipe_key,
+	 * shared across every locale variant of this recipe — the schema for the CZ
+	 * post and the EN post of "the same" recipe report the identical aggregate).
+	 * The property is entirely OMITTED when there are zero ratings — never a fake
+	 * seed value, never ratingCount: 0 left in as a placeholder.
+	 */
+	private function add_recipe_aggregate_rating( &$schema, $post_id ) {
+		if ( ! class_exists( 'Atlas_Chuti_Ratings' ) ) {
+			return;
+		}
+		$recipe_key = get_post_meta( $post_id, 'atlas_recipe_key', true );
+		if ( ! $recipe_key ) {
+			return;
+		}
+		$aggregate = Atlas_Chuti_Ratings::instance()->get_aggregate( $recipe_key );
+		if ( $aggregate['count'] < 1 ) {
+			return;
+		}
+		$schema['aggregateRating'] = array(
+			'@type'       => 'AggregateRating',
+			'ratingValue' => $aggregate['average'],
+			'ratingCount' => $aggregate['count'],
+		);
 	}
 
 	/**

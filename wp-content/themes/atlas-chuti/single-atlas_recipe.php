@@ -155,19 +155,38 @@ while ( have_posts() ) :
 		</div>
 
 		<div class="recipe-action-bar no-print">
-			<span class="recipe-action-btn is-soon" aria-disabled="true">
-				<?php esc_html_e( 'Oblíbené', 'atlas-chuti' ); ?> <em class="soon-tag"><?php esc_html_e( 'brzy', 'atlas-chuti' ); ?></em>
-			</span>
-			<button type="button" class="recipe-action-btn" data-passport-recipe-toggle data-recipe='<?php echo esc_attr( wp_json_encode( $passport_data ) ); ?>'>
+			<?php if ( is_user_logged_in() ) : ?>
+				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="recipe-action-form" data-state-form data-subject-type="recipe" data-subject-key="<?php echo esc_attr( $passport_data['recipe_key'] ); ?>" data-state="favorite">
+					<?php wp_nonce_field( 'atlas_state_toggle', 'atlas_state_nonce' ); ?>
+					<input type="hidden" name="action" value="atlas_state_toggle">
+					<input type="hidden" name="subject_type" value="recipe">
+					<input type="hidden" name="subject_key" value="<?php echo esc_attr( $passport_data['recipe_key'] ); ?>">
+					<input type="hidden" name="state" value="favorite">
+					<input type="hidden" name="redirect_to" value="<?php echo esc_url( $canonical_url ); ?>">
+					<!-- KROK 5, item 27: always rendered in the NEUTRAL default state — a page
+					cache must never bake one visitor's favorite status into HTML another
+					visitor could also receive. assets/js/my-atlas.js fetches the real state
+					right after load and updates this button in place. -->
+					<button type="submit" class="recipe-action-btn" data-favorite-btn aria-pressed="false">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1 4.5 2.5C11.5 6 13 5 15 5c3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z"></path></svg>
+						<span class="label"><?php esc_html_e( 'Oblíbené', 'atlas-chuti' ); ?></span>
+					</button>
+				</form>
+			<?php else : ?>
+				<a class="recipe-action-btn" href="<?php echo esc_url( add_query_arg( array( 'sekce' => 'prihlaseni', 'redirect_to' => $canonical_url ), atlas_chuti_system_url( 'account' ) ) ); ?>">
+					<?php esc_html_e( 'Oblíbené', 'atlas-chuti' ); ?>
+				</a>
+			<?php endif; ?>
+			<button type="button" class="recipe-action-btn" data-passport-recipe-toggle data-recipe='<?php echo esc_attr( wp_json_encode( $passport_data ) ); ?>' aria-pressed="false">
 				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="4,13 9,18 20,6"></polyline></svg>
 				<span class="label"><?php esc_html_e( 'Uvařil/a jsem', 'atlas-chuti' ); ?></span>
 			</button>
-			<span class="recipe-action-btn is-soon" aria-disabled="true">
-				<?php esc_html_e( 'Ohodnotit', 'atlas-chuti' ); ?> <em class="soon-tag"><?php esc_html_e( 'brzy', 'atlas-chuti' ); ?></em>
-			</span>
-			<span class="recipe-action-btn is-soon" aria-disabled="true">
-				<?php esc_html_e( 'Komentáře', 'atlas-chuti' ); ?> <em class="soon-tag"><?php esc_html_e( 'brzy', 'atlas-chuti' ); ?></em>
-			</span>
+			<a class="recipe-action-btn" href="#hodnoceni">
+				<?php esc_html_e( 'Ohodnotit', 'atlas-chuti' ); ?>
+			</a>
+			<a class="recipe-action-btn" href="#komentare">
+				<?php esc_html_e( 'Komentáře', 'atlas-chuti' ); ?>
+			</a>
 			<button type="button" class="recipe-action-btn" data-print-trigger>
 				<?php esc_html_e( 'Tisk', 'atlas-chuti' ); ?>
 			</button>

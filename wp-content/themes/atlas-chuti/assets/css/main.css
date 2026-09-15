@@ -801,3 +801,92 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 .text-center { text-align: center; }
 .flex-wrap-gap { display: flex; flex-wrap: wrap; gap: 12px; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* KROK 5 — account, recipe community, Můj Atlas -------------------------------------------- */
+
+/* the <form> wrapping the Oblíbené button must not introduce an extra flex item
+   in the action bar row it sits inside (single-atlas_recipe.php). */
+.recipe-action-form { display: contents; }
+
+.recipe-community { display: flex; flex-direction: column; gap: var(--space-14); margin-top: var(--space-4); }
+.recipe-community-block { border-top: 1px solid var(--color-border); padding-top: var(--space-8); }
+.community-empty { color: var(--color-muted); font-size: 15px; }
+.community-login-prompt { font-size: 15px; color: var(--color-text); }
+
+.rating-summary { display: flex; align-items: baseline; gap: 8px; margin: var(--space-3) 0 var(--space-5); font-size: 15px; }
+.rating-stars-display { color: var(--color-terracotta); font-size: 20px; letter-spacing: 2px; }
+.rating-value { font-weight: 600; color: var(--color-ink); }
+.rating-count, .rating-empty { color: var(--color-muted); }
+.rating-input { border: none; padding: 0; margin: 0; }
+.rating-input legend { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-muted); padding: 0 0 var(--space-3); }
+.rating-stars-input { display: inline-flex; gap: 4px; }
+.rating-star-label { cursor: pointer; }
+.rating-star-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; font-size: 22px; color: var(--color-border); transition: color 0.15s var(--ease), transform 0.1s var(--ease); }
+.rating-star-label:hover .rating-star-btn { color: var(--color-terracotta); }
+.rating-star-label input:checked ~ .rating-star-btn,
+.rating-star-label input:checked + .rating-star-btn { color: var(--color-terracotta); }
+.rating-star-label input:focus-visible + .rating-star-btn { outline: 2px solid var(--color-ink); outline-offset: 2px; border-radius: var(--radius-sm); }
+.rating-status { min-height: 1.2em; font-size: 13px; color: var(--color-muted); margin-top: var(--space-2); }
+
+.ugc-photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6); }
+.ugc-photo { margin: 0; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+.ugc-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+.ugc-photo figcaption { padding: var(--space-2) var(--space-3); font-size: 12px; color: var(--color-muted); }
+.ugc-upload-label { display: block; font-weight: 600; margin-bottom: var(--space-2); }
+.ugc-upload-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+.upload-status { min-height: 1.2em; font-size: 13px; color: var(--color-muted); margin-top: var(--space-2); }
+
+.comment-list { list-style: none; margin: 0 0 var(--space-8); padding: 0; display: flex; flex-direction: column; gap: var(--space-6); }
+.comment-list .children { list-style: none; margin: var(--space-4) 0 0; padding-left: var(--space-8); }
+.comment-list article { display: flex; gap: var(--space-4); }
+.comment-list .avatar { border-radius: 50%; flex-shrink: 0; }
+.comment-list .comment-author { font-weight: 600; color: var(--color-ink); }
+.comment-list .comment-metadata { font-size: 13px; color: var(--color-muted); margin-bottom: 6px; }
+.comment-form p { margin: 0 0 var(--space-4); }
+.comment-form label { display: block; font-weight: 600; margin-bottom: 6px; }
+.comment-form textarea { width: 100%; border: 1.5px solid var(--color-border); border-radius: var(--radius-sm); padding: 12px 14px; font-family: inherit; font-size: 15px; resize: vertical; }
+
+/* Account forms (login/register/reset/settings) --------------------------------------------- */
+.account-form p { margin: 0 0 var(--space-4); }
+.account-form label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+.account-form input[type="text"], .account-form input[type="email"], .account-form input[type="password"] {
+	width: 100%; height: 46px; border: 1.5px solid var(--color-border); border-radius: var(--radius-sm); padding: 0 14px; font-family: inherit; font-size: 15px; color: var(--color-ink);
+}
+.account-form-remember label, .account-form-consent label { display: flex; align-items: flex-start; gap: 8px; font-weight: 400; font-size: 14px; }
+.form-notice { border-radius: var(--radius-sm); padding: 12px 16px; font-size: 14px; margin-bottom: var(--space-5); }
+.form-notice-error { background: #FBEAE8; color: #9A2F23; }
+.form-notice-success { background: var(--bg-sage); color: var(--color-ink); }
+.my-atlas-auth-tabs { display: inline-flex; gap: 4px; background: var(--bg-sage); border-radius: 999px; padding: 4px; margin-bottom: var(--space-8); }
+.my-atlas-auth-tabs .pill { text-decoration: none; display: inline-flex; align-items: center; }
+
+/* Můj Atlas dashboard ------------------------------------------------------------------------ */
+.my-atlas-layout { display: grid; grid-template-columns: 220px 1fr; gap: var(--space-10); align-items: start; }
+.my-atlas-nav { display: flex; flex-direction: column; gap: 2px; position: sticky; top: 96px; }
+.my-atlas-nav-item { padding: 10px 14px; border-radius: var(--radius-sm); font-size: 15px; font-weight: 600; color: var(--color-muted); text-decoration: none; }
+.my-atlas-nav-item:hover { background: var(--bg-cream); color: var(--color-ink); }
+.my-atlas-nav-item.is-active { background: var(--color-ink); color: #fff; }
+.my-atlas-logout { margin-top: var(--space-4); border-top: 1px solid var(--color-border); padding-top: var(--space-4); }
+.my-atlas-content h2 { margin-bottom: var(--space-2); }
+.my-atlas-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+.my-atlas-stat-card { display: flex; flex-direction: column; gap: 6px; background: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-6); text-decoration: none; }
+.my-atlas-stat-value { font-family: var(--font-display); font-size: 40px; font-weight: 600; color: var(--color-ink); }
+.my-atlas-stat-label { font-size: 14px; color: var(--color-muted); font-weight: 600; }
+.my-atlas-table { margin-top: var(--space-4); }
+.my-atlas-table th, .my-atlas-table td { padding: 10px 12px; }
+.my-atlas-comment-list { list-style: none; margin: var(--space-4) 0 0; padding: 0; display: flex; flex-direction: column; gap: var(--space-5); }
+.my-atlas-comment-list li { border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-5); }
+.my-atlas-comment-status { font-size: 12px; color: var(--color-muted); margin-left: 8px; }
+.my-atlas-photo-status { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; margin-top: 2px; }
+.my-atlas-photo-status-pending { color: #9A6B23; }
+.my-atlas-photo-status-approved { color: #2F7A4A; }
+.my-atlas-photo-status-rejected { color: #9A2F23; }
+
+.passport-merge-banner { background: var(--bg-sage); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-8); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); }
+.passport-merge-banner p { margin: 0; flex: 1; min-width: 220px; }
+.passport-merge-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+
+@media (max-width: 900px) {
+	.my-atlas-layout { grid-template-columns: 1fr; }
+	.my-atlas-nav { position: static; flex-direction: row; flex-wrap: wrap; }
+	.my-atlas-stats-grid { grid-template-columns: 1fr; }
+}

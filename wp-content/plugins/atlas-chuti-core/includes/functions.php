@@ -62,6 +62,7 @@ function atlas_chuti_system_url( $key ) {
 		array(
 			'countries'          => '/zeme/',
 			'passport'           => '/kulinarsky-pas/',
+			'account'            => '/muj-atlas/',
 			'about'              => '/o-projektu/',
 			'editorial_process'  => '/jak-vznika-obsah/',
 			'editorial_policy'   => '/redakcni-zasady/',

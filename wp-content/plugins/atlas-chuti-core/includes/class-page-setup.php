@@ -48,6 +48,7 @@ class Atlas_Chuti_Page_Setup {
 		return array(
 			'zeme'                     => array( __( 'Země', 'atlas-chuti' ), 'template-countries.php' ),
 			'kulinarsky-pas'           => array( __( 'Kulinářský pas', 'atlas-chuti' ), 'template-passport.php' ),
+			'muj-atlas'                => array( __( 'Můj Atlas', 'atlas-chuti' ), 'template-my-atlas.php' ),
 			'recepty'                  => array( __( 'Recepty', 'atlas-chuti' ), 'archive' ),
 			'slovnicek'                => array( __( 'Kuchařský slovníček', 'atlas-chuti' ), 'archive' ),
 			'o-projektu'               => array( __( 'O projektu', 'atlas-chuti' ), null ),

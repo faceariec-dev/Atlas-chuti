@@ -39,6 +39,11 @@ function atlas_chuti_setup() {
 	add_image_size( 'atlas-card-tall', 640, 512, true );
 	add_image_size( 'atlas-hero', 1600, 900, true );
 	add_image_size( 'atlas-square', 1200, 1200, true );
+	// KROK 5, item 24: user-submitted recipe photos are NEVER served at their
+	// original as-uploaded size (EXIF/metadata risk — see class-photos.php's
+	// docblock) — only through this generated intermediate size, unscaled crop
+	// so a portrait phone photo isn't force-cropped into a square.
+	add_image_size( 'atlas-ugc', 1200, 1200, false );
 }
 add_action( 'after_setup_theme', 'atlas_chuti_setup' );
 
@@ -65,7 +70,7 @@ function atlas_chuti_enqueue_assets() {
 		);
 	}
 
-	if ( is_singular( 'atlas_recipe' ) || is_singular( 'atlas_country' ) || is_page_template( 'template-passport.php' ) || is_front_page() ) {
+	if ( is_singular( 'atlas_recipe' ) || is_singular( 'atlas_country' ) || is_page_template( 'template-passport.php' ) || is_page_template( 'template-my-atlas.php' ) || is_front_page() ) {
 		wp_enqueue_script( 'atlas-chuti-passport', ATLAS_THEME_URL . '/assets/js/passport.js', array(), ATLAS_THEME_VERSION, true );
 
 		// UI strings passport.js renders client-side (item 17 of the brief: JS text
@@ -85,13 +90,60 @@ function atlas_chuti_enqueue_assets() {
 			)
 		);
 
-		if ( is_page_template( 'template-passport.php' ) || is_front_page() ) {
+		if ( is_page_template( 'template-passport.php' ) || is_front_page() || is_page_template( 'template-my-atlas.php' ) ) {
 			wp_localize_script( 'atlas-chuti-passport', 'AtlasChutiContinents', atlas_chuti_continent_totals() );
 		}
 	}
 
 	if ( is_post_type_archive( 'atlas_recipe' ) ) {
 		wp_enqueue_script( 'atlas-chuti-filters', ATLAS_THEME_URL . '/assets/js/filters.js', array(), ATLAS_THEME_VERSION, true );
+	}
+
+	// KROK 5: the account-aware layer (favorite/cooked toggle, rating widget,
+	// photo upload, Passport localStorage→account merge) — a separate script/
+	// localization object from passport.js's own AtlasPassport (item: passport.js
+	// stays the pure anonymous/local mechanism, see assets/js/passport.js's
+	// docblock) and from AtlasChutiShareL10n, so none of the three ever collide.
+	if ( is_singular( 'atlas_recipe' ) || is_page_template( 'template-my-atlas.php' ) ) {
+		// Depends on passport.js's AtlasPassport (read-only, for the localStorage→
+		// account merge banner and the logged-in branch of the cooked-recipe button)
+		// — both are now enqueued together wherever either page type needs them.
+		wp_enqueue_script( 'atlas-chuti-my-atlas', ATLAS_THEME_URL . '/assets/js/my-atlas.js', array( 'atlas-chuti-passport' ), ATLAS_THEME_VERSION, true );
+		wp_localize_script(
+			'atlas-chuti-my-atlas',
+			'AtlasChutiUser',
+			array(
+				'loggedIn'   => is_user_logged_in(),
+				'restUrl'    => esc_url_raw( rest_url( 'atlas-chuti/v1' ) ),
+				'restNonce'  => wp_create_nonce( 'wp_rest' ),
+				'accountUrl' => atlas_chuti_system_url( 'account' ),
+			)
+		);
+		wp_localize_script(
+			'atlas-chuti-my-atlas',
+			'AtlasChutiInteractionsL10n',
+			array(
+				'favorite'          => __( 'Oblíbené', 'atlas-chuti' ),
+				'favorited'         => __( 'V oblíbených', 'atlas-chuti' ),
+				'loginRequired'     => __( 'Pro tuto akci se prosím přihlaste.', 'atlas-chuti' ),
+				'genericError'      => __( 'Něco se nepovedlo, zkuste to prosím znovu.', 'atlas-chuti' ),
+				'networkError'      => __( 'Zkontrolujte prosím připojení k internetu.', 'atlas-chuti' ),
+				'rateLimited'       => __( 'Příliš mnoho pokusů, zkuste to prosím za chvíli.', 'atlas-chuti' ),
+				'ratingSaved'       => __( 'Děkujeme za hodnocení!', 'atlas-chuti' ),
+				'noRatingsYet'      => __( 'Zatím bez hodnocení', 'atlas-chuti' ),
+				/* translators: %1$s: average rating, %2$d: number of ratings */
+				'ratingSummary'     => __( '%1$s z 5 (%2$d hodnocení)', 'atlas-chuti' ),
+				'uploadRejected'    => __( 'Fotografii se nepodařilo nahrát.', 'atlas-chuti' ),
+				'uploadTooLarge'    => __( 'Fotografie je příliš velká (max. 5 MB).', 'atlas-chuti' ),
+				'uploadBadType'     => __( 'Nepodporovaný typ souboru (JPEG, PNG nebo WebP).', 'atlas-chuti' ),
+				'uploadPending'     => __( 'Fotografie čeká na schválení.', 'atlas-chuti' ),
+				'passportFoundTitle' => __( 'Našli jsme váš dosavadní Kulinářský pas v tomto prohlížeči.', 'atlas-chuti' ),
+				'passportFoundBody' => __( 'Přidat jej do Mého Atlasu?', 'atlas-chuti' ),
+				'passportMergeYes'  => __( 'Přidat do Mého Atlasu', 'atlas-chuti' ),
+				'passportMergeNo'   => __( 'Ne, díky', 'atlas-chuti' ),
+				'passportMerged'    => __( 'Váš Kulinářský pas byl přidán do účtu.', 'atlas-chuti' ),
+			)
+		);
 	}
 }
 add_action( 'wp_enqueue_scripts', 'atlas_chuti_enqueue_assets' );
@@ -139,6 +191,8 @@ require ATLAS_THEME_DIR . '/inc/archive-filters.php';
 require ATLAS_THEME_DIR . '/inc/homepage.php';
 require ATLAS_THEME_DIR . '/inc/customizer.php';
 require ATLAS_THEME_DIR . '/inc/continent-image.php';
+require ATLAS_THEME_DIR . '/inc/my-atlas.php';
+require ATLAS_THEME_DIR . '/inc/recipe-community.php';
 
 /**
  * "Kam dnes za chutí?" (item 18) — picks one random published country and redirects
