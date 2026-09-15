@@ -63,6 +63,15 @@ while ( have_posts() ) :
 		<?php endif; ?>
 	</article>
 
+	<?php
+	// KROK 7, item 14: po hlavním topic contentu, PŘED odpovědi — jednodušší a
+	// méně křehké než umístění mezi reply groups (rozhodnutí zdokumentováno v
+	// reportu, sekce D).
+	?>
+	<div class="container-narrow" style="padding:0 var(--gutter);">
+		<?php atlas_chuti_render_ad_slot( 'discussion_topic_after_content' ); ?>
+	</div>
+
 	<section class="container-narrow" style="padding:0 var(--gutter) var(--space-14);">
 		<h2 style="font-size:var(--fs-h3);"><?php esc_html_e( 'Odpovědi', 'atlas-chuti' ); ?></h2>
 		<?php comments_template(); ?>

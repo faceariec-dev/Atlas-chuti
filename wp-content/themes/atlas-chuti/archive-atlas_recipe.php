@@ -78,9 +78,22 @@ $active  = atlas_chuti_active_filters();
 
 			<?php if ( have_posts() ) : ?>
 				<div class="card-grid card-grid-3">
-					<?php while ( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => get_the_ID() ) ); ?>
-					<?php endwhile; ?>
+					<?php
+					// KROK 7, item 12: one in-feed slot after N real cards — never a
+					// standalone empty "ad card" (render_ad_slot() emits nothing when
+					// there's nothing to show, so an inactive slot never disturbs the
+					// grid at all).
+					$atlas_ad_after_card = 6;
+					$atlas_card_index    = 0;
+					while ( have_posts() ) :
+						the_post();
+						get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => get_the_ID() ) );
+						++$atlas_card_index;
+						if ( $atlas_ad_after_card === $atlas_card_index ) {
+							atlas_chuti_render_ad_slot( 'archive_in_feed' );
+						}
+					endwhile;
+					?>
 				</div>
 				<div class="pagination">
 					<?php

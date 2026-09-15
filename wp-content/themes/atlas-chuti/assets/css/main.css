@@ -890,3 +890,68 @@ select.toolbar-select { appearance: none; background: var(--color-white) url("da
 	.my-atlas-nav { position: static; flex-direction: row; flex-wrap: wrap; }
 	.my-atlas-stats-grid { grid-template-columns: 1fr; }
 }
+
+/* Advertising — ad slots ---------------------------------------------------------------------
+   KROK 7: one shared shape for every rendered slot (Atlas_Chuti_Advertising::render_wrapper()
+   is the only PHP that ever emits `.atlas-ad-slot` markup, so all its CSS lives in exactly one
+   place too). Reserved-size classes exist ONLY so an async/lazy creative can't shift layout
+   (item 21) — a slot that resolves to nothing emits no markup at all (see class-advertising.php),
+   so there is never a permanent empty box to size for. */
+.atlas-ad-slot { position: relative; display: block; margin: var(--space-8) auto; overflow: hidden; border-radius: var(--radius-md); background: var(--bg-cream); }
+.atlas-ad-label { position: absolute; top: 8px; left: 8px; z-index: 1; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-muted); background: rgba(255,255,255,0.85); border-radius: 4px; padding: 2px 8px; }
+.atlas-ad-creative { display: block; width: 100%; height: 100%; }
+.atlas-ad-creative img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.atlas-ad-slot-body { width: 100%; height: 100%; }
+
+/* Reserved-dimension strategy per slot "shape" (item 21) — aspect-ratio keeps the box a
+   consistent size across the whole width range a slot can appear at, so there is no CLS
+   whether the creative arrives instantly (direct campaign, server-rendered) or asynchronously
+   (a future real external-network unit). */
+.atlas-ad-slot--leaderboard { max-width: 970px; aspect-ratio: 970 / 250; }
+@media (max-width: 767px) { .atlas-ad-slot--leaderboard { aspect-ratio: 320 / 100; } }
+.atlas-ad-slot--rectangle { max-width: 300px; aspect-ratio: 300 / 250; }
+.atlas-ad-slot--card { aspect-ratio: 4 / 3; }
+.atlas-ad-slot--debug { aspect-ratio: 970 / 120; max-width: 970px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 2px dashed var(--color-terracotta); background: rgba(200,93,66,0.06); font-family: monospace; font-size: 13px; color: var(--color-terracotta); }
+.atlas-ad-slot--debug code { background: rgba(200,93,66,0.12); padding: 2px 6px; border-radius: 4px; }
+
+/* item 31: mobile is conservative by default — a slot explicitly marked desktop-only (the GATE
+   is the only one today) never renders any box at all below the GATE breakpoint. */
+.atlas-ad-slot--desktop-only { display: none; }
+
+/* GATE — desktop wallpaper --------------------------------------------------------------------
+   KROK 7, item 5-8: two `position: fixed` panels constrained to the space OUTSIDE `.container`'s
+   max-width (var(--container), 1220px) — never inside it, so `.container`'s own width/position
+   can never be affected (item 6) and there is no full-viewport invisible click layer (item 7):
+   each panel's clickable area IS the panel, nothing more.
+
+   Breakpoint reasoning (item 32 asks this to be explicit): `.container` is 1220px plus
+   `var(--gutter-desktop)` (32px) on each side = 1284px of content that must never be crowded.
+   A panel needs ~300px of its own plus a safety margin to read as a real ad, not a sliver — so
+   the GATE only activates once the viewport can give both a full 1284px content column AND two
+   full 300px panels with room to breathe: 1284 + 2×(300+16) ≈ 1916px, rounded to the documented
+   --gate-min-viewport below. Below that, this whole block simply never matches — no JS, no
+   user-agent sniffing (item 5), pure `min-width` media query — and mobile/tablet/narrow-desktop
+   are covered for free by the same rule (item 31: "GATE OFF" is the unstyled default, not a
+   special case). */
+:root { --gate-min-viewport: 1900px; --gate-panel-width: 300px; }
+.atlas-gate { display: none; }
+@media (min-width: 1900px) {
+	.atlas-gate { display: block; }
+	.atlas-gate-panel {
+		position: fixed;
+		top: 0;
+		width: var(--gate-panel-width);
+		height: 100vh;
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-size: cover;
+		z-index: 2; /* well below the sticky header (50), mega-menu (60) and skip-link (999) — see the Step 7 audit for the full z-index inventory */
+	}
+	.atlas-gate-panel--left { left: 0; }
+	.atlas-gate-panel--right { right: 0; }
+	.atlas-gate-panel:focus-visible { box-shadow: var(--focus-ring); }
+}
+
+@media print {
+	.atlas-ad-slot, .atlas-gate { display: none !important; }
+}

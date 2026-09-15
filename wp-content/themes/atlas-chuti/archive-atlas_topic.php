@@ -130,9 +130,20 @@ $error_messages = array(
 	?>
 	<?php if ( $topic_query->have_posts() ) : ?>
 		<div class="atlas-topic-list">
-			<?php while ( $topic_query->have_posts() ) : $topic_query->the_post(); ?>
-				<?php get_template_part( 'template-parts/topic-row', null, array( 'post_id' => get_the_ID() ) ); ?>
-			<?php endwhile; ?>
+			<?php
+			// KROK 7, item 14: umírněné umístění — jeden slot po N tématech, nikdy
+			// mezi každou odpovědí/tématem.
+			$atlas_ad_after_topic = 6;
+			$atlas_topic_index    = 0;
+			while ( $topic_query->have_posts() ) :
+				$topic_query->the_post();
+				get_template_part( 'template-parts/topic-row', null, array( 'post_id' => get_the_ID() ) );
+				++$atlas_topic_index;
+				if ( $atlas_ad_after_topic === $atlas_topic_index ) {
+					atlas_chuti_render_ad_slot( 'discussion_in_feed' );
+				}
+			endwhile;
+			?>
 		</div>
 		<div class="pagination">
 			<?php

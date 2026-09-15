@@ -59,6 +59,16 @@ while ( have_posts() ) :
 		<?php the_content(); ?>
 	</section>
 
+	<?php
+	// KROK 7, item 13: after the article body, never before H1/perex/first
+	// lines (item: "nevkládej do prvních pár řádků článku, nevkládej před
+	// H1/perex") — respects heading/content flow, doesn't dominate over the
+	// editorial content (Discover principle, item 27).
+	?>
+	<div class="container-narrow" style="padding:0 var(--gutter);">
+		<?php atlas_chuti_render_ad_slot( 'magazine_in_content' ); ?>
+	</div>
+
 	<?php if ( $related_recipes || $related_countries || $related_glossary ) : ?>
 		<section class="section bg-blue-tint" style="margin-top:var(--space-10);">
 			<div class="container-narrow">

@@ -100,6 +100,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 	</div>
 
+	<?php if ( function_exists( 'atlas_chuti_render_ad_slot' ) ) : ?>
+		<div class="container"><?php atlas_chuti_render_ad_slot( 'footer_leaderboard' ); ?></div>
+	<?php endif; ?>
+
 	<div class="footer-bottom">
 		<span>© <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php bloginfo( 'name' ); ?></span>
 		<span><?php esc_html_e( 'Ochutnejte svět.', 'atlas-chuti' ); ?></span>

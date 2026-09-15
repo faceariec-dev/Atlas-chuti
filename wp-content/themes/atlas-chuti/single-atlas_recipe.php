@@ -255,6 +255,14 @@ while ( have_posts() ) :
 				</section>
 				<?php endif; ?>
 
+				<?php
+				// KROK 7, item 10: "po smysluplné části receptu" — right after
+				// ingredients+instructions, never between a step/ingredient (item 10's
+				// own explicit prohibition), and only ever rendered at all once an
+				// admin actually turns this slot on (see class-advertising.php).
+				atlas_chuti_render_ad_slot( 'recipe_in_content' );
+				?>
+
 				<?php if ( $tips ) : ?>
 				<section class="bg-sage-tint" style="border-radius:var(--radius-lg);padding:var(--space-6) var(--space-8);margin-top:var(--space-10);">
 					<h2 style="font-size:var(--fs-h3);"><?php esc_html_e( 'Tipy', 'atlas-chuti' ); ?></h2>
@@ -308,6 +316,12 @@ while ( have_posts() ) :
 				// Controlled tag system is Krok 3 scope — this renders nothing until
 				// something is hooked, never an empty box (item 13.3).
 				atlas_chuti_hook_slot( 'atlas_chuti_recipe_tags', 'recipe-tags-hook', $post_id );
+				?>
+
+				<?php
+				// KROK 7, item 10: optional "after content" slot — end of the main
+				// content column, after everything else, before the sidebar closes.
+				atlas_chuti_render_ad_slot( 'recipe_after_content' );
 				?>
 			</div>
 

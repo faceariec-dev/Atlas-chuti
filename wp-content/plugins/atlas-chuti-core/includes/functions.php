@@ -261,3 +261,32 @@ function atlas_chuti_count_recipes_for_country( $country_post_id ) {
 	);
 	return count( $ids );
 }
+
+/**
+ * KROK 7, item 3: the ONE renderer every template calls — "atlas_chuti_render_ad_slot(
+ * 'recipe_sidebar_top' )" is the exact helper the brief itself names. Delegates
+ * straight to Atlas_Chuti_Advertising, which is the only place that decides
+ * what (if anything) a slot key actually resolves to.
+ */
+function atlas_chuti_render_ad_slot( $slot_key ) {
+	if ( ! class_exists( 'Atlas_Chuti_Advertising' ) ) {
+		return;
+	}
+	Atlas_Chuti_Advertising::instance()->render_slot( $slot_key );
+}
+
+/**
+ * KROK 7, item 19: the two explicit hooks the brief names by their exact
+ * function signature ("Připrav explicitní hooks typu: can_load_advertising_provider()
+ * consent_allows_marketing()") — thin global wrappers around the real logic in
+ * Atlas_Chuti_Advertising, so a future CMP integration (or a template that
+ * wants to gate its own non-ad-slot content on the same signal) has one
+ * obvious, stable place to call.
+ */
+function can_load_advertising_provider() {
+	return class_exists( 'Atlas_Chuti_Advertising' ) && Atlas_Chuti_Advertising::instance()->can_load_advertising_provider();
+}
+
+function consent_allows_marketing() {
+	return class_exists( 'Atlas_Chuti_Advertising' ) && Atlas_Chuti_Advertising::instance()->consent_allows_marketing();
+}

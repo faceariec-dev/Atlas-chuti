@@ -28,13 +28,25 @@ $description   = $term instanceof WP_Term ? term_description( $term ) : '';
 <section class="container section" style="padding-top:var(--space-6);">
 	<?php if ( have_posts() ) : ?>
 		<div class="magazine-strip">
-			<?php while ( have_posts() ) : the_post(); ?>
+			<?php
+			// KROK 7, item 13: one in-feed slot after N articles in the category grid.
+			$atlas_ad_after_card = 6;
+			$atlas_card_index    = 0;
+			while ( have_posts() ) :
+				the_post();
+				?>
 				<a class="magazine-item" href="<?php the_permalink(); ?>">
 					<div class="magazine-item-media"><?php echo atlas_chuti_media( get_the_ID(), 'atlas-card', '', 'magazine' ); ?></div>
 					<h3><?php the_title(); ?></h3>
 					<p><?php echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_excerpt() ), 18 ) ); ?></p>
 				</a>
-			<?php endwhile; ?>
+				<?php
+				++$atlas_card_index;
+				if ( $atlas_ad_after_card === $atlas_card_index ) {
+					atlas_chuti_render_ad_slot( 'magazine_archive_in_feed' );
+				}
+			endwhile;
+			?>
 		</div>
 		<div class="pagination">
 			<?php
