@@ -36,6 +36,22 @@ class Atlas_Chuti_Comments {
 		add_action( 'init', array( $this, 'add_comment_support' ), 20 );
 		add_filter( 'comments_open', array( $this, 'require_login_for_recipe_comments' ), 10, 2 );
 		add_filter( 'preprocess_comment', array( $this, 'block_anonymous_recipe_comment' ) );
+		add_filter( 'comments_open', array( $this, 'disable_magazine_comments' ), 10, 2 );
+	}
+
+	/**
+	 * KROK 6, item 33: "preferovaný start = Magazine comments stay OFF" — recipe
+	 * comments (above) and Diskuze (its own separate class-discussion.php) remain
+	 * the site's real community areas; this is a deliberate decision, not an
+	 * oversight, so it's a real filter rather than just "never added comment
+	 * support" (which WordPress's own default_comment_status setting could still
+	 * override for `post` without this).
+	 */
+	public function disable_magazine_comments( $open, $post_id ) {
+		if ( 'post' === get_post_type( $post_id ) ) {
+			return false;
+		}
+		return $open;
 	}
 
 	public function add_comment_support() {

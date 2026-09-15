@@ -56,8 +56,8 @@ function atlas_chuti_placeholder_image( $context = 'recipe' ) {
  * yet or Polylang isn't active — never a broken link, never a guessed English slug.
  * `atlas_chuti_system_paths` stays filterable exactly as before for the Czech side.
  */
-function atlas_chuti_system_url( $key ) {
-	$paths = apply_filters(
+function atlas_chuti_system_paths() {
+	return apply_filters(
 		'atlas_chuti_system_paths',
 		array(
 			'countries'          => '/zeme/',
@@ -71,25 +71,106 @@ function atlas_chuti_system_url( $key ) {
 			'privacy'            => '/ochrana-osobnich-udaju/',
 			'cookies'            => '/cookies/',
 			'terms'              => '/podminky-pouzivani/',
+			// KROK 6, item 4/22: the Magazín LANDING page is a real, stable WordPress
+			// Page (template-magazine.php) — individual article permalinks stay on
+			// WordPress's own default `post` permalink structure instead (item 4's own
+			// "stabilita > kosmeticky perfektní URL" instruction; see the Step 6
+			// report, section B, for why a forced /magazin/{slug}/ prefix would need a
+			// fragile sitewide rewrite this project deliberately avoids).
+			'magazine'           => '/magazin/',
+			'jak_atlas_funguje'  => '/jak-atlas-funguje/',
+			'redakce_autori'     => '/redakce-autori/',
+			'nahlasit_chybu'     => '/nahlasit-chybu/',
+			'faq'                => '/faq/',
+			'pro_media'          => '/pro-media/',
+			'pravidla_komunity'  => '/pravidla-komunity/',
+			'pravidla_ugc'       => '/pravidla-ugc/',
+			'autorska_prava'     => '/autorska-prava/',
+			'nastaveni_cookies'  => '/nastaveni-cookies/',
 		)
 	);
-	$path    = $paths[ $key ] ?? '/';
-	$cs_url  = home_url( $path );
+}
 
-	if ( ! class_exists( 'Atlas_Chuti_Polylang_Bridge' )
-		|| ! Atlas_Chuti_Polylang_Bridge::is_active()
-		|| Atlas_Chuti_I18N::DEFAULT_LOCALE === Atlas_Chuti_I18N::current_locale() ) {
-		return $cs_url;
-	}
+/**
+ * Resolves one system-page key to a [url, published] pair — shared by
+ * atlas_chuti_system_url() (always returns SOME url, unchanged Step 4 behaviour)
+ * and atlas_chuti_system_url_if_ready() below (KROK 6, item 23/26: nav/footer must
+ * never link to a page that isn't actually publicly readable yet).
+ */
+function atlas_chuti_resolve_system_page( $key ) {
+	$paths     = atlas_chuti_system_paths();
+	$path      = $paths[ $key ] ?? '/';
+	$cs_url    = home_url( $path );
+	$cs_page   = get_page_by_path( trim( $path, '/' ) );
+	$published = $cs_page && 'publish' === $cs_page->post_status;
 
-	$cs_page = get_page_by_path( trim( $path, '/' ) );
-	if ( $cs_page ) {
+	if ( $cs_page
+		&& class_exists( 'Atlas_Chuti_Polylang_Bridge' )
+		&& Atlas_Chuti_Polylang_Bridge::is_active()
+		&& Atlas_Chuti_I18N::DEFAULT_LOCALE !== Atlas_Chuti_I18N::current_locale() ) {
 		$translated_id = Atlas_Chuti_Polylang_Bridge::get_post_translation_id( $cs_page->ID, Atlas_Chuti_I18N::current_locale() );
-		if ( $translated_id && 'publish' === get_post_status( $translated_id ) ) {
-			return get_permalink( $translated_id );
+		if ( $translated_id ) {
+			return array(
+				'url'       => get_permalink( $translated_id ),
+				'published' => 'publish' === get_post_status( $translated_id ),
+			);
 		}
 	}
-	return $cs_url;
+	return array( 'url' => $cs_url, 'published' => $published );
+}
+
+function atlas_chuti_system_url( $key ) {
+	return atlas_chuti_resolve_system_page( $key )['url'];
+}
+
+/**
+ * KROK 6, item 23/26: same resolution as atlas_chuti_system_url(), but returns
+ * null instead of a URL when the resolved page isn't actually published yet — so
+ * nav/footer callers can hide the link (or show the existing "brzy" placeholder)
+ * rather than ever pointing at a draft. Once an editor publishes the page, this
+ * starts returning a real URL automatically, no template change needed.
+ */
+function atlas_chuti_system_url_if_ready( $key ) {
+	$resolved = atlas_chuti_resolve_system_page( $key );
+	return $resolved['published'] ? $resolved['url'] : null;
+}
+
+/**
+ * KROK 6, item 4/13: `/diskuze/` (CZ) and `/en/discussions/` (EN) are the
+ * `atlas_topic` CPT's own archive — a real WordPress Page would just compete with
+ * it. get_post_type_archive_link() already resolves to the current request's
+ * locale-correct archive URL once Polylang is managing this post type (see
+ * Atlas_Chuti_Polylang_Bridge::register_post_types()), so no separate path map is
+ * needed here — unlike the Page-backed keys above, this is always "ready" the
+ * moment the plugin is active (it's a real content archive, not a placeholder).
+ */
+function atlas_chuti_discussion_url() {
+	return get_post_type_archive_link( 'atlas_topic' );
+}
+
+/**
+ * KROK 6, item 5/6: resolves one of the Magazín's stable category keys (see
+ * Atlas_Chuti_Magazine::CATEGORIES) to the real, current-locale `category` archive
+ * URL — never a hardcoded CZ-only slug.
+ */
+function atlas_chuti_magazine_category_url( $key, $locale = null ) {
+	if ( ! class_exists( 'Atlas_Chuti_Magazine' ) ) {
+		return '';
+	}
+	$slug = Atlas_Chuti_Magazine::category_slug_for_key( $key, $locale );
+	if ( ! $slug ) {
+		return '';
+	}
+	$term = get_term_by( 'slug', $slug, 'category' );
+	if ( ! $term || is_wp_error( $term ) ) {
+		return '';
+	}
+	$link = get_category_link( $term );
+	return is_wp_error( $link ) ? '' : $link;
+}
+
+function atlas_chuti_magazine_tips_tricks_url( $locale = null ) {
+	return atlas_chuti_magazine_category_url( 'tips_tricks', $locale );
 }
 
 /**
@@ -119,6 +200,23 @@ function atlas_chuti_get_breadcrumbs() {
 	} elseif ( is_tax( 'atlas_continent' ) ) {
 		$crumbs[] = array( 'label' => __( 'Země', 'atlas-chuti' ), 'url' => atlas_chuti_system_url( 'countries' ) );
 		$crumbs[] = array( 'label' => single_term_title( '', false ), 'url' => get_term_link( get_queried_object() ) );
+	} elseif ( is_singular( 'post' ) ) {
+		// KROK 6, item 10: Magazín article — lead through its category so a reader
+		// always has a way back to that category strip, not just to /magazin/.
+		$crumbs[]   = array( 'label' => __( 'Magazín', 'atlas-chuti' ), 'url' => atlas_chuti_system_url( 'magazine' ) );
+		$categories = get_the_category();
+		if ( $categories ) {
+			$crumbs[] = array( 'label' => $categories[0]->name, 'url' => get_category_link( $categories[0] ) );
+		}
+		$crumbs[] = array( 'label' => get_the_title(), 'url' => get_permalink() );
+	} elseif ( is_category() ) {
+		$crumbs[] = array( 'label' => __( 'Magazín', 'atlas-chuti' ), 'url' => atlas_chuti_system_url( 'magazine' ) );
+		$crumbs[] = array( 'label' => single_term_title( '', false ), 'url' => get_term_link( get_queried_object() ) );
+	} elseif ( is_singular( 'atlas_topic' ) ) {
+		$crumbs[] = array( 'label' => __( 'Diskuze', 'atlas-chuti' ), 'url' => atlas_chuti_discussion_url() );
+		$crumbs[] = array( 'label' => get_the_title(), 'url' => get_permalink() );
+	} elseif ( is_post_type_archive( 'atlas_topic' ) ) {
+		$crumbs[] = array( 'label' => __( 'Diskuze', 'atlas-chuti' ), 'url' => atlas_chuti_discussion_url() );
 	} elseif ( is_page() ) {
 		$crumbs[] = array( 'label' => get_the_title(), 'url' => get_permalink() );
 	} elseif ( is_search() ) {

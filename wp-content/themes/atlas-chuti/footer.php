@@ -19,53 +19,80 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="footer-col">
 				<span class="footer-col-title"><?php esc_html_e( 'Objevujte', 'atlas-chuti' ); ?></span>
 				<?php
+				// KROK 6, item 24/29: real, always-reachable destinations (CPT
+				// archives + the now-published /magazin/ page) — no if_ready() gate
+				// needed here, these are never drafts.
+				$tips_url = atlas_chuti_magazine_tips_tricks_url();
 				atlas_chuti_footer_nav(
 					'footer-discover',
 					array(
-						__( 'Země světa', 'atlas-chuti' )          => atlas_chuti_system_url( 'countries' ),
 						__( 'Recepty', 'atlas-chuti' )             => get_post_type_archive_link( 'atlas_recipe' ),
+						__( 'Země světa', 'atlas-chuti' )          => atlas_chuti_system_url( 'countries' ),
+						__( 'Magazín', 'atlas-chuti' )             => atlas_chuti_system_url( 'magazine' ),
+						__( 'Tipy a triky', 'atlas-chuti' )        => $tips_url ?: null,
 						__( 'Kuchařský slovníček', 'atlas-chuti' ) => get_post_type_archive_link( 'atlas_glossary' ),
 					)
 				);
 				?>
 			</div>
 			<div class="footer-col">
-				<span class="footer-col-title"><?php esc_html_e( 'Nástroje', 'atlas-chuti' ); ?></span>
+				<span class="footer-col-title"><?php esc_html_e( 'Komunita', 'atlas-chuti' ); ?></span>
 				<?php
 				atlas_chuti_footer_nav(
-					'footer-tools',
+					'footer-community',
 					array(
+						__( 'Můj Atlas', 'atlas-chuti' )        => atlas_chuti_system_url( 'account' ),
 						__( 'Kulinářský pas', 'atlas-chuti' )   => atlas_chuti_system_url( 'passport' ),
-						__( 'Kulinářské cesty', 'atlas-chuti' ) => null,
-						__( 'Co mám doma?', 'atlas-chuti' )     => null,
+						__( 'Diskuze', 'atlas-chuti' )          => atlas_chuti_discussion_url(),
+						__( 'FAQ', 'atlas-chuti' )              => atlas_chuti_system_url_if_ready( 'faq' ),
+						__( 'Nahlásit chybu', 'atlas-chuti' )   => atlas_chuti_system_url_if_ready( 'nahlasit_chybu' ),
 					)
 				);
 				?>
 			</div>
 			<div class="footer-col">
-				<span class="footer-col-title"><?php esc_html_e( 'O webu', 'atlas-chuti' ); ?></span>
+				<span class="footer-col-title"><?php esc_html_e( 'O Atlasu', 'atlas-chuti' ); ?></span>
 				<?php
+				// KROK 6, item 23/26: these ARE Pages, so they only become real links
+				// once an editor actually publishes them — atlas_chuti_system_url_if_ready()
+				// returns null until then, which atlas_chuti_footer_nav() already
+				// renders as the existing "(brzy)" placeholder, never a draft/broken URL.
 				atlas_chuti_footer_nav(
 					'footer-about',
 					array(
-						__( 'O projektu', 'atlas-chuti' )              => atlas_chuti_system_url( 'about' ),
-						__( 'Jak vzniká obsah', 'atlas-chuti' )        => atlas_chuti_system_url( 'editorial_process' ),
-						__( 'Redakční zásady a zdroje', 'atlas-chuti' ) => atlas_chuti_system_url( 'editorial_policy' ),
-						__( 'Kontakt', 'atlas-chuti' )                 => atlas_chuti_system_url( 'contact' ),
-						__( 'Inzerce / Spolupráce', 'atlas-chuti' )    => atlas_chuti_system_url( 'advertising' ),
+						__( 'O Atlasu chutí', 'atlas-chuti' )      => atlas_chuti_system_url_if_ready( 'about' ),
+						__( 'Jak Atlas funguje', 'atlas-chuti' )   => atlas_chuti_system_url_if_ready( 'jak_atlas_funguje' ),
+						__( 'Redakce a autoři', 'atlas-chuti' )    => atlas_chuti_system_url_if_ready( 'redakce_autori' ),
+						__( 'Jak tvoříme recepty', 'atlas-chuti' ) => atlas_chuti_system_url_if_ready( 'editorial_process' ),
+						__( 'Kontakt', 'atlas-chuti' )             => atlas_chuti_system_url_if_ready( 'contact' ),
 					)
 				);
 				?>
 			</div>
 			<div class="footer-col">
-				<span class="footer-col-title"><?php esc_html_e( 'Informace', 'atlas-chuti' ); ?></span>
+				<span class="footer-col-title"><?php esc_html_e( 'Pro partnery', 'atlas-chuti' ); ?></span>
+				<?php
+				atlas_chuti_footer_nav(
+					'footer-partners',
+					array(
+						__( 'Reklama a spolupráce', 'atlas-chuti' ) => atlas_chuti_system_url_if_ready( 'advertising' ),
+						__( 'Pro média', 'atlas-chuti' )            => atlas_chuti_system_url_if_ready( 'pro_media' ),
+					)
+				);
+				?>
+			</div>
+			<div class="footer-col">
+				<span class="footer-col-title"><?php esc_html_e( 'Právní', 'atlas-chuti' ); ?></span>
 				<?php
 				atlas_chuti_footer_nav(
 					'footer-legal',
 					array(
-						__( 'Ochrana osobních údajů', 'atlas-chuti' ) => atlas_chuti_system_url( 'privacy' ),
-						__( 'Cookies', 'atlas-chuti' )                 => atlas_chuti_system_url( 'cookies' ),
-						__( 'Podmínky používání', 'atlas-chuti' )      => atlas_chuti_system_url( 'terms' ),
+						__( 'Podmínky používání', 'atlas-chuti' )     => atlas_chuti_system_url_if_ready( 'terms' ),
+						__( 'Ochrana osobních údajů', 'atlas-chuti' ) => atlas_chuti_system_url_if_ready( 'privacy' ),
+						__( 'Cookies', 'atlas-chuti' )                => atlas_chuti_system_url_if_ready( 'cookies' ),
+						__( 'Pravidla komunity', 'atlas-chuti' )      => atlas_chuti_system_url_if_ready( 'pravidla_komunity' ),
+						__( 'Autorská práva', 'atlas-chuti' )         => atlas_chuti_system_url_if_ready( 'autorska_prava' ),
+						__( 'Nastavení cookies', 'atlas-chuti' )      => atlas_chuti_system_url_if_ready( 'nastaveni_cookies' ),
 					)
 				);
 				?>

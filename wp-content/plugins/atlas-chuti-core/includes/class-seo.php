@@ -105,6 +105,15 @@ class Atlas_Chuti_SEO {
 				return $this->clean_text( $short );
 			}
 		}
+		// KROK 6, item 11: Magazín article meta description — the real editorial
+		// excerpt (manual excerpt, or WordPress's own auto-generated one), never a
+		// generated-from-nothing placeholder.
+		if ( is_singular( 'post' ) ) {
+			$excerpt = get_the_excerpt( get_the_ID() );
+			if ( $excerpt ) {
+				return $this->clean_text( $excerpt );
+			}
+		}
 		return $this->clean_text( get_bloginfo( 'description' ) );
 	}
 
@@ -149,8 +158,8 @@ class Atlas_Chuti_SEO {
 			return get_post_type_archive_link( 'atlas_recipe' );
 		}
 
-		if ( is_post_type_archive( 'atlas_recipe' ) || is_post_type_archive( 'atlas_glossary' )
-			|| is_tax( 'atlas_continent' ) || is_search() || is_home() || is_front_page() ) {
+		if ( is_post_type_archive( 'atlas_recipe' ) || is_post_type_archive( 'atlas_glossary' ) || is_post_type_archive( 'atlas_topic' )
+			|| is_tax( 'atlas_continent' ) || is_category() || is_search() || is_home() || is_front_page() ) {
 			$paged = max( (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
 			if ( $paged > 1 ) {
 				// get_pagenum_link() is aware of the current archive/search/home
@@ -163,7 +172,20 @@ class Atlas_Chuti_SEO {
 			if ( is_post_type_archive( 'atlas_glossary' ) ) {
 				return get_post_type_archive_link( 'atlas_glossary' );
 			}
+			if ( is_post_type_archive( 'atlas_topic' ) ) {
+				// KROK 6, item 32: Diskuze archive self-canonicalizes exactly like the
+				// recipe/glossary archives above — atlas_chuti_discussion_url() is the
+				// same get_post_type_archive_link() call, kept in one place (functions.php)
+				// so template code and this canonical logic never drift apart.
+				return atlas_chuti_discussion_url();
+			}
 			if ( is_tax( 'atlas_continent' ) ) {
+				$link = get_term_link( get_queried_object() );
+				return is_wp_error( $link ) ? '' : $link;
+			}
+			if ( is_category() ) {
+				// KROK 6, item 11: Magazín category archive (incl. Tipy a triky)
+				// self-canonicalizes the same way every other real archive here does.
 				$link = get_term_link( get_queried_object() );
 				return is_wp_error( $link ) ? '' : $link;
 			}
@@ -195,6 +217,13 @@ class Atlas_Chuti_SEO {
 		if ( is_page_template( 'template-my-atlas.php' ) ) {
 			return 'noindex,follow';
 		}
+		// KROK 6, item 34: an empty Magazín category or an empty Diskuze archive
+		// shows a graceful message to visitors (never fake content) but isn't worth
+		// indexing while there's genuinely nothing on it — becomes indexable again
+		// automatically the moment real content exists, no manual flag to flip.
+		if ( ( is_category() || is_post_type_archive( 'atlas_topic' ) ) && isset( $GLOBALS['wp_query'] ) && 0 === (int) $GLOBALS['wp_query']->found_posts ) {
+			return 'noindex,follow';
+		}
 		return '';
 	}
 
@@ -214,7 +243,7 @@ class Atlas_Chuti_SEO {
 		}
 		$this->output_hreflang( $locale_urls );
 
-		printf( '<meta property="og:type" content="%s">' . "\n", is_singular( 'atlas_recipe' ) ? 'article' : 'website' );
+		printf( '<meta property="og:type" content="%s">' . "\n", is_singular( array( 'atlas_recipe', 'post' ) ) ? 'article' : 'website' );
 		printf( '<meta property="og:title" content="%s">' . "\n", esc_attr( $title ) );
 		printf( '<meta property="og:description" content="%s">' . "\n", esc_attr( $description ) );
 		printf( '<meta property="og:site_name" content="%s">' . "\n", esc_attr( get_bloginfo( 'name' ) ) );
@@ -348,6 +377,10 @@ class Atlas_Chuti_SEO {
 
 		if ( is_singular( 'atlas_recipe' ) ) {
 			$graphs[] = $this->recipe_schema( get_the_ID() );
+		}
+
+		if ( is_singular( 'post' ) ) {
+			$graphs[] = $this->article_schema( get_the_ID() );
 		}
 
 		$breadcrumb = $this->breadcrumb_schema();
@@ -546,6 +579,56 @@ class Atlas_Chuti_SEO {
 		}
 	}
 
+	/**
+	 * KROK 6, item 11: Magazín Article JSON-LD — headline/description/image/author/
+	 * datePublished/dateModified/mainEntityOfPage/inLanguage, built only from real
+	 * post data (title, excerpt, featured image, author display name, WP dates) —
+	 * no ratings/reviews/fabricated fields, mirroring recipe_schema()'s own
+	 * "only what we actually store" rule.
+	 */
+	private function article_schema( $post_id ) {
+		$schema = array(
+			'@type'            => 'Article',
+			'headline'         => get_the_title( $post_id ),
+			'url'              => get_permalink( $post_id ),
+			'mainEntityOfPage' => array( '@type' => 'WebPage', '@id' => get_permalink( $post_id ) ),
+			'inLanguage'       => Atlas_Chuti_Polylang_Bridge::locale_to_slug( Atlas_Chuti_I18N::get_locale( $post_id ) ),
+		);
+
+		$description = $this->clean_text( get_the_excerpt( $post_id ) );
+		if ( $description ) {
+			$schema['description'] = $description;
+		}
+
+		if ( has_post_thumbnail( $post_id ) ) {
+			$src = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'atlas-hero' );
+			if ( $src ) {
+				$schema['image'] = array( $src[0] );
+			}
+		}
+
+		$author_id = (int) get_post_field( 'post_author', $post_id );
+		if ( $author_id ) {
+			$author_name = get_the_author_meta( 'display_name', $author_id );
+			if ( $author_name ) {
+				// Display name only (item 10: never a public author archive URL here —
+				// see is_author() handling in inc/template-tags.php).
+				$schema['author'] = array( '@type' => 'Person', 'name' => $author_name );
+			}
+		}
+
+		$published = get_the_date( 'c', $post_id );
+		if ( $published ) {
+			$schema['datePublished'] = $published;
+		}
+		$modified = get_the_modified_date( 'c', $post_id );
+		if ( $modified ) {
+			$schema['dateModified'] = $modified;
+		}
+
+		return $schema;
+	}
+
 	private function breadcrumb_schema() {
 		if ( is_front_page() ) {
 			return null;
@@ -585,13 +668,19 @@ class Atlas_Chuti_SEO {
 	}
 
 	/**
-	 * Only the public atlas_continent taxonomy belongs in the sitemap. Every
-	 * technical taxonomy (atlas_country_tax, atlas_ingredient_tax, atlas_meal_type,
-	 * atlas_difficulty, atlas_diet, atlas_glossary_category) is already
-	 * `public => false` and excluded by WordPress core by default; this filter just
+	 * atlas_continent and (KROK 6) `category` (the Magazín's own real, indexable
+	 * archive pages — category.php) belong in the sitemap. Every technical taxonomy
+	 * (atlas_country_tax, atlas_ingredient_tax, atlas_meal_type, atlas_difficulty,
+	 * atlas_diet, atlas_glossary_category, atlas_topic_category) is already
+	 * `public => false` and excluded by WordPress core by default — this filter just
 	 * makes that explicit rather than relying only on the taxonomy registration args.
+	 * atlas_topic_category is deliberately NOT added here even though it's this
+	 * project's own taxonomy: it has no dedicated public archive template (Diskuze
+	 * topics are filtered by category via a query var on /diskuze/, the same
+	 * pattern as the recipe archive's own filters), so there is no indexable URL
+	 * for it to point at.
 	 */
 	public function filter_sitemap_taxonomies( $taxonomies ) {
-		return array_intersect_key( $taxonomies, array( 'atlas_continent' => true ) );
+		return array_intersect_key( $taxonomies, array( 'atlas_continent' => true, 'category' => true ) );
 	}
 }

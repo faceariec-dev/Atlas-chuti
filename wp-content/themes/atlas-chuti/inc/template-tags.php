@@ -191,13 +191,19 @@ function atlas_chuti_primary_nav() {
 
 	printf( '<a href="%s">%s</a>', esc_url( atlas_chuti_system_url( 'countries' ) ), esc_html__( 'Země', 'atlas-chuti' ) );
 
-	foreach ( array( __( 'Magazín', 'atlas-chuti' ), __( 'Tipy a triky', 'atlas-chuti' ), __( 'Diskuze', 'atlas-chuti' ) ) as $soon_label ) {
-		printf(
-			'<span class="nav-link is-soon" aria-disabled="true">%s <em class="soon-tag">%s</em></span>',
-			esc_html( $soon_label ),
-			esc_html__( 'brzy', 'atlas-chuti' )
-		);
+	// KROK 6, item 26: these three used to be "brzy" placeholders (KROK 1) — now
+	// that Magazín/Tipy a triky/Diskuze are real, working destinations, they
+	// become real links, never left as "coming soon" past the step that builds
+	// them. Tipy a triky is only rendered if the seeded category term actually
+	// resolved (it always should once Atlas_Chuti_Magazine's seeding has run —
+	// this is just the same "never a broken link" discipline as everywhere else
+	// in this nav, not an expected failure path).
+	printf( '<a href="%s">%s</a>', esc_url( atlas_chuti_system_url( 'magazine' ) ), esc_html__( 'Magazín', 'atlas-chuti' ) );
+	$tips_url = atlas_chuti_magazine_tips_tricks_url();
+	if ( $tips_url ) {
+		printf( '<a href="%s">%s</a>', esc_url( $tips_url ), esc_html__( 'Tipy a triky', 'atlas-chuti' ) );
 	}
+	printf( '<a href="%s">%s</a>', esc_url( atlas_chuti_discussion_url() ), esc_html__( 'Diskuze', 'atlas-chuti' ) );
 
 	echo '<div class="nav-item has-mega">';
 	printf(

@@ -136,6 +136,7 @@ $redirect_to  = isset( $_GET['redirect_to'] ) ? esc_url_raw( wp_unslash( $_GET['
 				'hodnoceni'  => __( 'Moje hodnocení', 'atlas-chuti' ),
 				'komentare'  => __( 'Moje komentáře', 'atlas-chuti' ),
 				'fotografie' => __( 'Moje fotografie', 'atlas-chuti' ),
+				'temata'     => __( 'Moje témata', 'atlas-chuti' ),
 				'nastaveni'  => __( 'Nastavení účtu', 'atlas-chuti' ),
 			);
 			foreach ( $nav_items as $key => $label ) :
@@ -318,6 +319,32 @@ $redirect_to  = isset( $_GET['redirect_to'] ) ? esc_url_raw( wp_unslash( $_GET['
 					</div>
 				<?php else : ?>
 					<p class="community-empty"><?php esc_html_e( 'Zatím jste nenahráli žádnou fotografii.', 'atlas-chuti' ); ?></p>
+				<?php endif; ?>
+
+			<?php elseif ( 'temata' === $section ) : ?>
+
+				<h2><?php esc_html_e( 'Moje témata', 'atlas-chuti' ); ?></h2>
+				<?php $topics = Atlas_Chuti_Discussion::instance()->get_user_topics( get_current_user_id() ); ?>
+				<?php if ( $topics ) : ?>
+					<ul class="my-atlas-comment-list">
+						<?php foreach ( $topics as $topic ) : ?>
+							<li>
+								<a href="<?php echo esc_url( get_permalink( $topic ) ); ?>"><?php echo esc_html( get_the_title( $topic ) ); ?></a>
+								<span class="my-atlas-comment-status"><?php echo 'publish' === $topic->post_status ? esc_html__( 'zveřejněno', 'atlas-chuti' ) : esc_html__( 'čeká na schválení', 'atlas-chuti' ); ?></span>
+								<p><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $topic->post_content ), 30 ) ); ?></p>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php else : ?>
+					<p class="community-empty">
+						<?php
+						printf(
+							/* translators: %s: discussion URL */
+							wp_kses( __( 'Zatím jste nezaložili žádné téma. <a href="%s">Otevřít diskuzi</a>.', 'atlas-chuti' ), array( 'a' => array( 'href' => array() ) ) ),
+							esc_url( atlas_chuti_discussion_url() )
+						);
+						?>
+					</p>
 				<?php endif; ?>
 
 			<?php elseif ( 'nastaveni' === $section ) : ?>

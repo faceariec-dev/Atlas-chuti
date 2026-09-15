@@ -49,8 +49,11 @@ class Atlas_Chuti_I18N {
 	// multilingual-ready for the future Magazín) — Polylang manages 'post'/'page'
 	// natively without any registration filter, this only affects OUR OWN
 	// atlas_locale backfill/query-scoping below, which 'post' didn't participate in
-	// before.
-	const LOCALIZED_POST_TYPES = array( 'atlas_recipe', 'atlas_country', 'atlas_glossary', 'atlas_ingredient', 'post' );
+	// before. 'atlas_topic' added in KROK 6 (Diskuze) — a CZ and an EN topic are
+	// always two independent posts (never "the same topic" the way a recipe_key
+	// pairs CZ/EN), but they still need atlas_locale + the same query-scoping so a
+	// CZ discussion archive never shows an EN topic and vice versa (item 18).
+	const LOCALIZED_POST_TYPES = array( 'atlas_recipe', 'atlas_country', 'atlas_glossary', 'atlas_ingredient', 'post', 'atlas_topic' );
 
 	private static $instance = null;
 

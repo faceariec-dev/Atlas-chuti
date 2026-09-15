@@ -70,6 +70,25 @@ class Atlas_Chuti_Taxonomy_Labels {
 			'equipment'  => array( 'cs-CZ' => 'Nádobí a vybavení', 'en' => 'Equipment' ),
 		),
 
+		// KROK 6, item 16: Diskuze's own closed category catalog — same "one shared
+		// term, locale-resolved label" mechanism as atlas_glossary_category above
+		// (technical taxonomy, not the public, Polylang-paired `category` terms the
+		// Magazín uses — see class-magazine.php's own docblock for why those two
+		// need genuinely different mechanisms). "Nedovol nekontrolované vytváření
+		// kategorií" (item 16) is enforced the same way atlas_recipe_tag already
+		// does it: see the `capabilities` array on this taxonomy's registration in
+		// class-taxonomies.php.
+		'atlas_topic_category'   => array(
+			'co-dnes-varite'  => array( 'cs-CZ' => 'Co dnes vaříte?', 'en' => 'What Are You Cooking?' ),
+			'rady-a-pomoc'    => array( 'cs-CZ' => 'Rady a pomoc', 'en' => 'Help & Advice' ),
+			'peceni'          => array( 'cs-CZ' => 'Pečení', 'en' => 'Baking' ),
+			'ceska-kuchyne'   => array( 'cs-CZ' => 'Česká kuchyně', 'en' => 'Czech Cuisine' ),
+			'kuchyne-sveta'   => array( 'cs-CZ' => 'Kuchyně světa', 'en' => 'World Cuisines' ),
+			'suroviny'        => array( 'cs-CZ' => 'Suroviny', 'en' => 'Ingredients' ),
+			'spotrebice'      => array( 'cs-CZ' => 'Spotřebiče', 'en' => 'Kitchen Equipment' ),
+			'zacatecnici'     => array( 'cs-CZ' => 'Začátečníci', 'en' => 'Beginners' ),
+		),
+
 		// Controlled public recipe tag catalog (KROK 3, item 7) — closed, see the class
 		// docblock above. Grouped by concept only as a reading aid; the taxonomy itself
 		// is flat/non-hierarchical.

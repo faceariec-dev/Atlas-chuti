@@ -10,8 +10,10 @@ $labels  = array(
 	'atlas_recipe'   => __( 'Recept', 'atlas-chuti' ),
 	'atlas_country'  => __( 'Země', 'atlas-chuti' ),
 	'atlas_glossary' => __( 'Slovníček', 'atlas-chuti' ),
+	'post'           => __( 'Magazín', 'atlas-chuti' ),
+	'atlas_topic'    => __( 'Diskuze', 'atlas-chuti' ),
 );
-$total = count( $results['atlas_recipe'] ) + count( $results['atlas_country'] ) + count( $results['atlas_glossary'] );
+$total = array_sum( array_map( 'count', $results ) );
 ?>
 
 <section class="container-medium" style="padding:var(--space-14) var(--gutter) var(--space-5);">
@@ -34,7 +36,7 @@ $total = count( $results['atlas_recipe'] ) + count( $results['atlas_country'] ) 
 
 <section class="container-medium section">
 	<?php if ( $total > 0 ) : ?>
-		<?php foreach ( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary' ) as $type ) : ?>
+		<?php foreach ( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary', 'post', 'atlas_topic' ) as $type ) : ?>
 			<?php foreach ( $results[ $type ] as $post ) : ?>
 				<a class="result-row" href="<?php echo esc_url( get_permalink( $post ) ); ?>">
 					<span class="result-group-label"><?php echo esc_html( $labels[ $type ] ); ?></span>

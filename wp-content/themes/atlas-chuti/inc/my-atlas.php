@@ -20,7 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function atlas_chuti_account_section() {
 	$requested = isset( $_GET['sekce'] ) ? sanitize_key( wp_unslash( $_GET['sekce'] ) ) : '';
-	$logged_in_sections  = array( 'prehled', 'oblibene', 'uvarene', 'pas', 'hodnoceni', 'komentare', 'fotografie', 'nastaveni' );
+	// KROK 6, item 21: "Moje témata" added directly (not deferred) — the resolver
+	// infrastructure this needed (Atlas_Chuti_Discussion::get_user_topics(), same
+	// shape as Krok 5's own get_user_recipe_comments()) already existed, so the
+	// marginal scope here was small enough not to warrant deferring it.
+	$logged_in_sections  = array( 'prehled', 'oblibene', 'uvarene', 'pas', 'hodnoceni', 'komentare', 'fotografie', 'temata', 'nastaveni' );
 	$logged_out_sections = array( 'prihlaseni', 'registrace', 'zapomenute-heslo', 'nove-heslo' );
 
 	if ( is_user_logged_in() ) {

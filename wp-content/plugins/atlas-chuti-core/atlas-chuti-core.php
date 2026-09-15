@@ -48,6 +48,9 @@ require_once ATLAS_CHUTI_DIR . 'includes/class-comments.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-photos.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-rest-api.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-privacy.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-magazine.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-magazine-meta-box.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-discussion.php';
 require_once ATLAS_CHUTI_DIR . 'includes/functions.php';
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
@@ -84,6 +87,9 @@ function atlas_chuti_core_init() {
 	Atlas_Chuti_Photos::instance();
 	Atlas_Chuti_REST_API::instance();
 	Atlas_Chuti_Privacy::instance();
+	Atlas_Chuti_Magazine::instance();
+	Atlas_Chuti_Magazine_Meta_Box::instance();
+	Atlas_Chuti_Discussion::instance();
 }
 add_action( 'plugins_loaded', 'atlas_chuti_core_init' );
 

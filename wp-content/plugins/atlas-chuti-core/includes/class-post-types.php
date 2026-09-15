@@ -27,6 +27,7 @@ class Atlas_Chuti_Post_Types {
 		$this->register_country();
 		$this->register_glossary();
 		$this->register_ingredient();
+		$this->register_topic();
 	}
 
 	private function register_recipe() {
@@ -125,6 +126,46 @@ class Atlas_Chuti_Post_Types {
 				'supports'        => array( 'title', 'revisions' ),
 				'has_archive'     => false,
 				'capability_type' => 'post',
+			)
+		);
+	}
+
+	/**
+	 * KROK 6, items 13-15: Diskuze topics — a lightweight CPT, deliberately separate
+	 * from `atlas_recipe`'s own comments (Krok 5) and from the Magazín's `post`
+	 * (comments stay off there, see class-comments.php). Replies are native WP
+	 * comments on THIS post type (Atlas_Chuti_Discussion wires that up), giving
+	 * Diskuze real moderation/spam/capability handling for free instead of a
+	 * parallel system. `has_archive`/`rewrite` mirror the exact same pattern as
+	 * atlas_recipe's own `/recepty/` + `/recepty/{slug}/` — clean, stable, no rewrite
+	 * hack (item 13's own CZ/EN URL requirement).
+	 */
+	private function register_topic() {
+		register_post_type(
+			'atlas_topic',
+			array(
+				'labels'              => array(
+					'name'          => __( 'Diskuze', 'atlas-chuti' ),
+					'singular_name' => __( 'Téma', 'atlas-chuti' ),
+					'add_new_item'  => __( 'Přidat téma', 'atlas-chuti' ),
+					'edit_item'     => __( 'Upravit téma', 'atlas-chuti' ),
+					'search_items'  => __( 'Hledat témata', 'atlas-chuti' ),
+					'not_found'     => __( 'Žádná témata nenalezena', 'atlas-chuti' ),
+				),
+				'public'              => true,
+				'show_in_rest'        => true,
+				'menu_icon'           => 'dashicons-format-chat',
+				'menu_position'       => 23,
+				'supports'            => array( 'title', 'editor', 'author', 'comments', 'revisions' ),
+				'has_archive'         => 'diskuze',
+				'rewrite'             => array( 'slug' => 'diskuze', 'with_front' => false ),
+				'exclude_from_search' => false,
+				'capability_type'     => 'post',
+				// item 17/36: creating a topic is a controlled server-side flow
+				// (Atlas_Chuti_Discussion::create_topic(), never the default "anyone
+				// with edit_posts" WP editor screen for subscribers, who don't have
+				// edit_posts at all — see the Step 5 report's role model). show_ui
+				// stays true so editors/admins can still moderate in wp-admin.
 			)
 		);
 	}

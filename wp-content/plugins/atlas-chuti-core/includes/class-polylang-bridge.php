@@ -60,14 +60,24 @@ class Atlas_Chuti_Polylang_Bridge {
 	}
 
 	public function register_post_types( $post_types, $is_settings = false ) {
-		foreach ( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary' ) as $post_type ) {
+		// 'post' is NOT listed here (Polylang already manages it natively — see this
+		// class's own docblock). KROK 6: 'atlas_topic' (Diskuze) IS registered — a CZ
+		// and an EN topic are never linked as translations of each other (no
+		// pll_save_post_translations() call for topics, unlike recipes), but Polylang
+		// still needs this filter to let pll_set_post_language() assign either topic
+		// a language at all.
+		foreach ( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary', 'atlas_topic' ) as $post_type ) {
 			$post_types[ $post_type ] = $post_type;
 		}
 		return $post_types;
 	}
 
 	public function register_taxonomies( $taxonomies, $is_settings = false ) {
-		foreach ( array( 'atlas_continent', 'atlas_meal_type', 'atlas_difficulty', 'atlas_diet', 'atlas_recipe_tag', 'atlas_glossary_category' ) as $taxonomy ) {
+		// 'category' is NOT listed here (Polylang already manages core taxonomies
+		// natively, same reasoning as 'post' above). KROK 6: atlas_topic_category is
+		// registered so its terms can be assigned a language / paired like
+		// atlas_glossary_category already is.
+		foreach ( array( 'atlas_continent', 'atlas_meal_type', 'atlas_difficulty', 'atlas_diet', 'atlas_recipe_tag', 'atlas_glossary_category', 'atlas_topic_category' ) as $taxonomy ) {
 			$taxonomies[ $taxonomy ] = $taxonomy;
 		}
 		return $taxonomies;
@@ -119,6 +129,36 @@ class Atlas_Chuti_Polylang_Bridge {
 		}
 		if ( count( $by_slug ) > 1 ) {
 			pll_save_post_translations( $by_slug );
+		}
+	}
+
+	/**
+	 * KROK 6: term equivalents of assign_language()/link_translations() above, for
+	 * seeding the Magazine ("category") and Diskuze (atlas_topic_category)
+	 * controlled term catalogs — unlike a recipe's data-driven translation_group,
+	 * a controlled category's CZ↔EN pairing is a fixed, hardcoded mapping known
+	 * entirely at seed time (see class-magazine.php/class-discussion.php), so it's
+	 * safe to link deterministically right when both terms are created.
+	 */
+	public static function assign_term_language( $term_id, $taxonomy, $locale ) {
+		if ( ! self::is_active() || ! function_exists( 'pll_set_term_language' ) ) {
+			return;
+		}
+		pll_set_term_language( $term_id, self::locale_to_slug( $locale ) );
+	}
+
+	public static function link_term_translations( array $locale_term_map ) {
+		if ( ! self::is_active() || ! function_exists( 'pll_save_term_translations' ) || count( $locale_term_map ) < 2 ) {
+			return;
+		}
+		$by_slug = array();
+		foreach ( $locale_term_map as $locale => $term_id ) {
+			if ( $term_id ) {
+				$by_slug[ self::locale_to_slug( $locale ) ] = (int) $term_id;
+			}
+		}
+		if ( count( $by_slug ) > 1 ) {
+			pll_save_term_translations( $by_slug );
 		}
 	}
 

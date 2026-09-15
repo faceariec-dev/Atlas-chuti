@@ -10,7 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Atlas_Chuti_Search {
 
-	const POST_TYPES = array( 'atlas_recipe', 'atlas_country', 'atlas_glossary' );
+	// KROK 6, item 30: extends search to Magazín articles (`post`) and Diskuze
+	// topics (`atlas_topic`) — forum REPLIES (native WP comments) are never
+	// searched here, only the topic's own title/content, since this whole class
+	// only ever queries wp_posts.
+	const POST_TYPES = array( 'atlas_recipe', 'atlas_country', 'atlas_glossary', 'post', 'atlas_topic' );
 
 	private static $instance = null;
 
@@ -57,6 +61,8 @@ class Atlas_Chuti_Search {
 			'atlas_recipe'   => array(),
 			'atlas_country'  => array(),
 			'atlas_glossary' => array(),
+			'post'           => array(),
+			'atlas_topic'    => array(),
 		);
 
 		if ( '' === $term ) {

@@ -41,8 +41,16 @@ class Atlas_Chuti_Page_Setup {
 	}
 
 	/**
-	 * slug => [label, template|null]. `template` null means "just confirm the CPT
-	 * archive is reachable", not "create a WordPress Page".
+	 * slug => [label, template|null|'archive', publish_status?]. `template` null
+	 * means "just confirm the CPT archive is reachable", not "create a WordPress
+	 * Page"; 'archive' likewise. The optional 4th... 3rd (index 2) element is a
+	 * publish-status override — every existing entry omits it and keeps the
+	 * established "always created as draft" behaviour unchanged (KROK 6 does not
+	 * touch that convention for legal/info pages, see item 23 of the brief); only
+	 * the new `magazin` entry below uses it, because unlike an empty legal
+	 * placeholder it is a real, working feature the moment this step ships (item
+	 * 27: "po Kroku 6 ho napoj na skutečné standard WP posts" — already done, see
+	 * template-magazine.php), not a thin page section 23 is warning against.
 	 */
 	private function expected_pages() {
 		return array(
@@ -51,6 +59,8 @@ class Atlas_Chuti_Page_Setup {
 			'muj-atlas'                => array( __( 'Můj Atlas', 'atlas-chuti' ), 'template-my-atlas.php' ),
 			'recepty'                  => array( __( 'Recepty', 'atlas-chuti' ), 'archive' ),
 			'slovnicek'                => array( __( 'Kuchařský slovníček', 'atlas-chuti' ), 'archive' ),
+			'magazin'                  => array( __( 'Magazín', 'atlas-chuti' ), 'template-magazine.php', 'publish' ),
+			'diskuze'                  => array( __( 'Diskuze', 'atlas-chuti' ), 'archive' ),
 			'o-projektu'               => array( __( 'O projektu', 'atlas-chuti' ), null ),
 			'kontakt'                  => array( __( 'Kontakt', 'atlas-chuti' ), null ),
 			'jak-vznika-obsah'         => array( __( 'Jak vzniká obsah', 'atlas-chuti' ), null ),
@@ -59,6 +69,24 @@ class Atlas_Chuti_Page_Setup {
 			'cookies'                  => array( __( 'Cookies', 'atlas-chuti' ), null ),
 			'podminky-pouzivani'       => array( __( 'Podmínky používání', 'atlas-chuti' ), null ),
 			'inzerce'                  => array( __( 'Inzerce / Spolupráce', 'atlas-chuti' ), null ),
+			// KROK 6, item 22 — new general/legal page structure. Every one of these
+			// is created EMPTY (no post_content) and draft (unless noted otherwise
+			// above) — this checklist only ever prepares a slug + template hook, an
+			// editor still has to write and publish the real copy (item 22's own
+			// "nepiš finální právní texty" instruction). Newsletter and "Staňte se
+			// autorem" from the brief's own product/community group are
+			// deliberately NOT listed here — the brief itself marks both
+			// "(hook only)"/"(budoucí hook)", so no page exists yet to route to; see
+			// the Step 6 report, section N, for that decision.
+			'jak-atlas-funguje'        => array( __( 'Jak Atlas funguje', 'atlas-chuti' ), null ),
+			'redakce-autori'           => array( __( 'Redakce a autoři', 'atlas-chuti' ), null ),
+			'nahlasit-chybu'           => array( __( 'Nahlásit chybu', 'atlas-chuti' ), null ),
+			'faq'                      => array( __( 'FAQ', 'atlas-chuti' ), null ),
+			'pro-media'                => array( __( 'Pro média', 'atlas-chuti' ), null ),
+			'pravidla-komunity'        => array( __( 'Pravidla komunity', 'atlas-chuti' ), null ),
+			'pravidla-ugc'             => array( __( 'Pravidla uživatelského obsahu', 'atlas-chuti' ), null ),
+			'autorska-prava'           => array( __( 'Autorská práva', 'atlas-chuti' ), null ),
+			'nastaveni-cookies'        => array( __( 'Nastavení cookies', 'atlas-chuti' ), null ),
 		);
 	}
 
@@ -84,7 +112,7 @@ class Atlas_Chuti_Page_Setup {
 			<table class="widefat striped" style="max-width:760px;">
 				<thead><tr><th><?php esc_html_e( 'Stránka', 'atlas-chuti' ); ?></th><th><?php esc_html_e( 'URL', 'atlas-chuti' ); ?></th><th><?php esc_html_e( 'Stav', 'atlas-chuti' ); ?></th></tr></thead>
 				<tbody>
-				<?php foreach ( $this->expected_pages() as $slug => list( $label, $template ) ) : ?>
+				<?php foreach ( $this->expected_pages() as $slug => $page_def ) : list( $label, $template ) = $page_def; ?>
 					<?php $status = $this->status_for( $slug, $template ); ?>
 					<tr>
 						<td><?php echo esc_html( $label ); ?></td>
@@ -106,7 +134,12 @@ class Atlas_Chuti_Page_Setup {
 
 	private function status_for( $slug, $template ) {
 		if ( 'archive' === $template ) {
-			$post_type = 'recepty' === $slug ? 'atlas_recipe' : 'atlas_glossary';
+			$archive_post_types = array(
+				'recepty'   => 'atlas_recipe',
+				'slovnicek' => 'atlas_glossary',
+				'diskuze'   => 'atlas_topic',
+			);
+			$post_type = $archive_post_types[ $slug ] ?? 'atlas_recipe';
 			$link      = get_post_type_archive_link( $post_type );
 			return array( 'found' => (bool) $link, 'label' => __( 'archiv obsahového typu', 'atlas-chuti' ) );
 		}
@@ -123,7 +156,9 @@ class Atlas_Chuti_Page_Setup {
 		}
 
 		$created = 0;
-		foreach ( $this->expected_pages() as $slug => list( $label, $template ) ) {
+		foreach ( $this->expected_pages() as $slug => $page_def ) {
+			list( $label, $template ) = $page_def;
+			$status_override           = isset( $page_def[2] ) ? $page_def[2] : 'draft';
 			if ( 'archive' === $template ) {
 				continue; // Nothing to create — it's a CPT archive, not a Page.
 			}
@@ -135,7 +170,7 @@ class Atlas_Chuti_Page_Setup {
 					'post_type'   => 'page',
 					'post_title'  => $label,
 					'post_name'   => $slug,
-					'post_status' => 'draft',
+					'post_status' => $status_override,
 					'post_content' => '',
 				),
 				true

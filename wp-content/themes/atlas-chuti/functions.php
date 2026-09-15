@@ -20,13 +20,17 @@ function atlas_chuti_setup() {
 	add_theme_support( 'responsive-embeds' );
 	add_theme_support( 'automatic-feed-links' );
 
+	// KROK 6, item 24: 5 footer groups (Objevujte/Komunita/O Atlasu/Pro partnery/
+	// Právní) — footer-tools is renamed footer-community (its old items move under
+	// "Komunita" per the brief's own grouping) and footer-partners is new.
 	register_nav_menus(
 		array(
-			'primary' => __( 'Hlavní menu', 'atlas-chuti' ),
-			'footer-discover' => __( 'Footer – Objevujte', 'atlas-chuti' ),
-			'footer-tools'    => __( 'Footer – Nástroje', 'atlas-chuti' ),
-			'footer-about'    => __( 'Footer – O webu', 'atlas-chuti' ),
-			'footer-legal'    => __( 'Footer – Informace', 'atlas-chuti' ),
+			'primary'          => __( 'Hlavní menu', 'atlas-chuti' ),
+			'footer-discover'  => __( 'Footer – Objevujte', 'atlas-chuti' ),
+			'footer-community' => __( 'Footer – Komunita', 'atlas-chuti' ),
+			'footer-about'     => __( 'Footer – O Atlasu', 'atlas-chuti' ),
+			'footer-partners'  => __( 'Footer – Pro partnery', 'atlas-chuti' ),
+			'footer-legal'     => __( 'Footer – Právní', 'atlas-chuti' ),
 		)
 	);
 
@@ -193,6 +197,7 @@ require ATLAS_THEME_DIR . '/inc/customizer.php';
 require ATLAS_THEME_DIR . '/inc/continent-image.php';
 require ATLAS_THEME_DIR . '/inc/my-atlas.php';
 require ATLAS_THEME_DIR . '/inc/recipe-community.php';
+require ATLAS_THEME_DIR . '/inc/magazine.php';
 
 /**
  * "Kam dnes za chutí?" (item 18) — picks one random published country and redirects

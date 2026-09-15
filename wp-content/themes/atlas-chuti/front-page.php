@@ -41,6 +41,14 @@ $glossary_terms  = atlas_chuti_home_glossary_preview( 3 );
 $magazine_posts  = atlas_chuti_home_magazine_posts( 3 );
 $total_countries = atlas_chuti_total_countries();
 $recipe_archive  = get_post_type_archive_link( 'atlas_recipe' );
+
+// KROK 6, item 27/28: both blocks below only ever render with REAL data — no
+// fake cards, no fake "most discussed" — and simply disappear otherwise.
+$tips_tricks_term  = ( $tips_slug = class_exists( 'Atlas_Chuti_Magazine' ) ? Atlas_Chuti_Magazine::tips_tricks_category_slug() : '' ) ? get_term_by( 'slug', $tips_slug, 'category' ) : null;
+$tips_tricks_posts = ( $tips_tricks_term && ! is_wp_error( $tips_tricks_term ) )
+	? get_posts( array( 'post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => 3, 'cat' => $tips_tricks_term->term_id ) )
+	: array();
+$latest_topics = get_posts( array( 'post_type' => 'atlas_topic', 'post_status' => 'publish', 'posts_per_page' => 4 ) );
 ?>
 
 <div class="container home-topline">
@@ -301,6 +309,48 @@ $recipe_archive  = get_post_type_archive_link( 'atlas_recipe' );
 					<h3><?php echo esc_html( get_the_title( $post_item ) ); ?></h3>
 					<p><?php echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_excerpt( $post_item ) ), 18 ) ); ?></p>
 				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php if ( $tips_tricks_posts ) : ?>
+<section class="section">
+	<div class="container">
+		<div class="section-head">
+			<div>
+				<span class="kicker is-saffron"><?php esc_html_e( 'Magazín', 'atlas-chuti' ); ?></span>
+				<h2><?php echo esc_html( $tips_tricks_term->name ); ?></h2>
+			</div>
+			<a class="more-link" href="<?php echo esc_url( get_term_link( $tips_tricks_term ) ); ?>"><?php esc_html_e( 'Zobrazit vše →', 'atlas-chuti' ); ?></a>
+		</div>
+		<div class="magazine-strip">
+			<?php foreach ( $tips_tricks_posts as $post_item ) : ?>
+				<a class="magazine-item" href="<?php echo esc_url( get_permalink( $post_item ) ); ?>">
+					<div class="magazine-item-media"><?php echo atlas_chuti_media( $post_item->ID, 'atlas-card', '', '' ); ?></div>
+					<h3><?php echo esc_html( get_the_title( $post_item ) ); ?></h3>
+					<p><?php echo esc_html( wp_trim_words( wp_strip_all_tags( get_the_excerpt( $post_item ) ), 18 ) ); ?></p>
+				</a>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
+
+<?php if ( $latest_topics ) : ?>
+<section class="section bg-blue-tint">
+	<div class="container">
+		<div class="section-head">
+			<div>
+				<span class="kicker is-blue"><?php esc_html_e( 'Komunita', 'atlas-chuti' ); ?></span>
+				<h2><?php esc_html_e( 'Nová témata v diskuzi', 'atlas-chuti' ); ?></h2>
+			</div>
+			<a class="more-link" href="<?php echo esc_url( atlas_chuti_discussion_url() ); ?>"><?php esc_html_e( 'Otevřít diskuzi →', 'atlas-chuti' ); ?></a>
+		</div>
+		<div class="atlas-topic-list">
+			<?php foreach ( $latest_topics as $topic ) : ?>
+				<?php get_template_part( 'template-parts/topic-row', null, array( 'post_id' => $topic->ID ) ); ?>
 			<?php endforeach; ?>
 		</div>
 	</div>

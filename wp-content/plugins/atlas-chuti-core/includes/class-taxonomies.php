@@ -194,6 +194,33 @@ class Atlas_Chuti_Taxonomies {
 			)
 		);
 
+		// KROK 6, item 16: Diskuze's closed category catalog — same shared-term/
+		// resolved-label mechanism as atlas_glossary_category, and the same
+		// admin-only term-management capabilities as atlas_recipe_tag (a plain
+		// subscriber can never create/rename/delete a category, only pick one of
+		// the seeded set when opening a new topic — see class-discussion.php).
+		register_taxonomy(
+			'atlas_topic_category',
+			array( 'atlas_topic' ),
+			array_merge(
+				$technical_taxonomy_args,
+				array(
+					'labels'       => array(
+						'name'          => __( 'Kategorie diskuze', 'atlas-chuti' ),
+						'singular_name' => __( 'Kategorie', 'atlas-chuti' ),
+					),
+					'hierarchical' => false,
+					'show_ui'      => true,
+					'capabilities' => array(
+						'manage_terms' => 'manage_options',
+						'edit_terms'   => 'manage_options',
+						'delete_terms' => 'manage_options',
+						'assign_terms' => 'edit_posts',
+					),
+				)
+			)
+		);
+
 		$this->maybe_seed_default_terms();
 	}
 
@@ -222,15 +249,18 @@ class Atlas_Chuti_Taxonomies {
 		// skips any key that already has a term), so re-running it for continent/
 		// difficulty/diet/meal_type/glossary_category here is a safe no-op — only the
 		// new atlas_recipe_tag keys actually get created.
-		if ( get_option( 'atlas_chuti_default_terms_seeded_v3' ) ) {
+		// Bumped to _v4 (KROK 6): adding atlas_topic_category wouldn't reach any
+		// install that already ran _v3 — same one-time-reseed mechanism as the _v2→_v3
+		// bump above; seed_terms_from_labels() is idempotent either way.
+		if ( get_option( 'atlas_chuti_default_terms_seeded_v4' ) ) {
 			return;
 		}
 
-		foreach ( array( 'atlas_continent', 'atlas_difficulty', 'atlas_diet', 'atlas_meal_type', 'atlas_recipe_tag', 'atlas_glossary_category' ) as $taxonomy ) {
+		foreach ( array( 'atlas_continent', 'atlas_difficulty', 'atlas_diet', 'atlas_meal_type', 'atlas_recipe_tag', 'atlas_glossary_category', 'atlas_topic_category' ) as $taxonomy ) {
 			$this->seed_terms_from_labels( $taxonomy );
 		}
 
-		update_option( 'atlas_chuti_default_terms_seeded_v3', 1 );
+		update_option( 'atlas_chuti_default_terms_seeded_v4', 1 );
 	}
 
 	private function seed_terms_from_labels( $taxonomy ) {

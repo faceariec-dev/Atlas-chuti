@@ -35,9 +35,20 @@ class Atlas_Chuti_Register_Meta {
 		$this->register_fields_for( 'atlas_glossary', Atlas_Chuti_Meta_Fields::glossary_fields() );
 		$this->register_fields_for( 'atlas_ingredient', Atlas_Chuti_Meta_Fields::ingredient_fields() );
 
-		foreach ( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary' ) as $post_type ) {
+		// KROK 6: 'post' (Magazín) joins the same locale/translation contract 'post'
+		// already gets automatically from Atlas_Chuti_I18N::LOCALIZED_POST_TYPES
+		// (query scoping + atlas_locale/translation_group backfill, since Krok 4) —
+		// this was the one place that backfill wasn't matched by a formal
+		// register_post_meta() call, so REST/Gutenberg never saw the fields. 'atlas_topic'
+		// (Diskuze) gets the same contract for the same reason: a CZ and an EN topic
+		// are just two independent posts, never "the same topic" — but the plain
+		// locale tag + query scoping this shared registration provides is exactly
+		// what item 18 ("Topic má locale") needs.
+		foreach ( array( 'atlas_recipe', 'atlas_country', 'atlas_glossary', 'post', 'atlas_topic' ) as $post_type ) {
 			$this->register_i18n_fields( $post_type );
 		}
+
+		$this->register_magazine_relation_fields();
 
 		// KROK 4: recipe_key is atlas_recipe's OWN stable dish-concept identity —
 		// distinct from atlas_translation_group (registered above via
@@ -85,6 +96,40 @@ class Atlas_Chuti_Register_Meta {
 
 	public function auth_edit_posts() {
 		return current_user_can( 'edit_posts' );
+	}
+
+	/**
+	 * KROK 6, item 7: minimal custom meta for the Magazín — three stable-key
+	 * relation lists, never post IDs (item 8's own instruction: recipe/country/
+	 * glossary crosslinks resolve through Atlas_Chuti_I18N::find_by_recipe_key()/
+	 * find_country_by_iso()/find_by_translation_group(), exactly like every other
+	 * cross-entity relation in this codebase since Krok 3/4).
+	 */
+	private function register_magazine_relation_fields() {
+		foreach (
+			array(
+				'atlas_related_recipe_keys'   => 'Related recipe_key values (stable dish-concept identity), not post IDs.',
+				'atlas_related_country_iso'   => 'Related ISO 3166-1 country codes, not post IDs.',
+				'atlas_related_glossary_keys' => 'Related glossary translation_group keys, not post IDs.',
+			) as $meta_key => $description
+		) {
+			register_post_meta(
+				'post',
+				$meta_key,
+				array(
+					'type'         => 'array',
+					'description'  => $description,
+					'single'       => true,
+					'auth_callback' => array( $this, 'auth_edit_posts' ),
+					'show_in_rest' => array(
+						'schema' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'string' ),
+						),
+					),
+				)
+			);
+		}
 	}
 
 	private function register_i18n_fields( $post_type ) {

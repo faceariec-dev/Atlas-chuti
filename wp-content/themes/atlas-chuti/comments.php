@@ -15,6 +15,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( post_password_required() ) {
 	return;
 }
+
+// KROK 6, item 19: a closed Diskuze topic shows this instead of a reply form even
+// to a logged-in visitor — the server-side guard already lives in
+// class-discussion.php's guard_topic_reply()/require_login_and_open_for_topic_reply(),
+// this is just the matching UI so a closed topic never dangles an unusable form.
+$is_closed_topic = 'atlas_topic' === get_post_type() && class_exists( 'Atlas_Chuti_Discussion' ) && Atlas_Chuti_Discussion::instance()->is_closed( get_the_ID() );
 ?>
 
 <?php if ( have_comments() ) : ?>
@@ -26,12 +32,14 @@ if ( post_password_required() ) {
 	<p class="community-empty"><?php esc_html_e( 'Zatím žádné komentáře. Buďte první!', 'atlas-chuti' ); ?></p>
 <?php endif; ?>
 
-<?php if ( is_user_logged_in() ) : ?>
+<?php if ( $is_closed_topic ) : ?>
+	<p class="community-empty"><?php esc_html_e( 'Toto téma je uzavřené a nepřijímá nové odpovědi.', 'atlas-chuti' ); ?></p>
+<?php elseif ( is_user_logged_in() ) : ?>
 	<?php
 	comment_form(
 		array(
-			'title_reply'        => __( 'Přidat komentář', 'atlas-chuti' ),
-			'label_submit'       => __( 'Odeslat komentář', 'atlas-chuti' ),
+			'title_reply'        => 'atlas_topic' === get_post_type() ? __( 'Přidat odpověď', 'atlas-chuti' ) : __( 'Přidat komentář', 'atlas-chuti' ),
+			'label_submit'       => 'atlas_topic' === get_post_type() ? __( 'Odeslat odpověď', 'atlas-chuti' ) : __( 'Odeslat komentář', 'atlas-chuti' ),
 			'comment_field'      => '<p class="comment-form-comment"><label for="comment" class="screen-reader-text">' . esc_html__( 'Komentář', 'atlas-chuti' ) . '</label><textarea id="comment" name="comment" rows="5" required></textarea></p>',
 		)
 	);
