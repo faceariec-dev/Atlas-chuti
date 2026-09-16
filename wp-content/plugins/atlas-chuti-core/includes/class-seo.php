@@ -114,6 +114,20 @@ class Atlas_Chuti_SEO {
 				return $this->clean_text( $excerpt );
 			}
 		}
+		// KROK 9, item 5: every Diskuze topic was falling through to the generic
+		// site description (audit finding — a duplicate-meta-description risk
+		// across the whole /diskuze/ corpus). The topic's own real first post
+		// (post_content) is real, topic-specific content, never invented.
+		if ( is_singular( 'atlas_topic' ) ) {
+			$excerpt = get_the_excerpt( get_the_ID() );
+			if ( $excerpt ) {
+				return $this->clean_text( $excerpt );
+			}
+			$content = get_post_field( 'post_content', get_the_ID() );
+			if ( $content ) {
+				return wp_trim_words( $this->clean_text( $content ), 30 );
+			}
+		}
 		return $this->clean_text( get_bloginfo( 'description' ) );
 	}
 
@@ -373,11 +387,29 @@ class Atlas_Chuti_SEO {
 	public function output_schema() {
 		$graphs = array();
 
+		$organization = array(
+			'@type' => 'Organization',
+			'@id'   => home_url( '/#organization' ),
+			'name'  => get_bloginfo( 'name' ),
+			'url'   => home_url( '/' ),
+		);
+		// KROK 9, item 17: only a REAL configured logo — never a guessed/
+		// hardcoded image path. has_custom_logo() is false today (none is set
+		// anywhere in this repo, confirmed by audit), so this stays inert until
+		// an admin actually sets one in Customizer — automatic then, no code
+		// change needed.
+		$logo_url = $this->organization_logo_url();
+		if ( $logo_url ) {
+			$organization['logo'] = $logo_url;
+		}
+		$graphs[] = $organization;
+
 		$graphs[] = array(
 			'@type' => 'WebSite',
 			'@id'   => home_url( '/#website' ),
 			'name'  => get_bloginfo( 'name' ),
 			'url'   => home_url( '/' ),
+			'publisher' => array( '@id' => home_url( '/#organization' ) ),
 			'potentialAction' => array(
 				'@type'       => 'SearchAction',
 				'target'      => home_url( '/?s={search_term_string}' ),
@@ -391,6 +423,14 @@ class Atlas_Chuti_SEO {
 
 		if ( is_singular( 'post' ) ) {
 			$graphs[] = $this->article_schema( get_the_ID() );
+		}
+
+		// KROK 9, item 16: Discussion topics are genuinely real UGC Q&A/thread
+		// content (real author, real post_content, real WP core comment count) —
+		// a minimal, valid DiscussionForumPosting is safely groundable, unlike a
+		// half-built schema guessed from thin data.
+		if ( is_singular( 'atlas_topic' ) ) {
+			$graphs[] = $this->discussion_schema( get_the_ID() );
 		}
 
 		$breadcrumb = $this->breadcrumb_schema();
@@ -658,6 +698,68 @@ class Atlas_Chuti_SEO {
 		return $schema;
 	}
 
+	/**
+	 * KROK 9, item 16: minimal, valid DiscussionForumPosting — every field
+	 * comes from a real WP core primitive (post_content, post_author,
+	 * post_date/modified, get_comments_number()). No thin/half-built schema:
+	 * if this project's topic model ever couldn't support these fields for
+	 * real, this method simply wouldn't be called (see the item 16 note in
+	 * the Step 9 report for why the model DOES support it safely).
+	 */
+	private function discussion_schema( $post_id ) {
+		$schema = array(
+			'@type'      => 'DiscussionForumPosting',
+			'headline'   => get_the_title( $post_id ),
+			'url'        => get_permalink( $post_id ),
+			'inLanguage' => Atlas_Chuti_Polylang_Bridge::locale_to_slug( Atlas_Chuti_I18N::get_locale( $post_id ) ),
+		);
+
+		$text = $this->clean_text( get_post_field( 'post_content', $post_id ) );
+		if ( $text ) {
+			$schema['text'] = $text;
+		}
+
+		$author_id = (int) get_post_field( 'post_author', $post_id );
+		if ( $author_id ) {
+			$author_name = get_the_author_meta( 'display_name', $author_id );
+			if ( $author_name ) {
+				$schema['author'] = array( '@type' => 'Person', 'name' => $author_name );
+			}
+		}
+
+		$published = get_the_date( 'c', $post_id );
+		if ( $published ) {
+			$schema['datePublished'] = $published;
+		}
+		$modified = get_the_modified_date( 'c', $post_id );
+		if ( $modified ) {
+			$schema['dateModified'] = $modified;
+		}
+
+		// A real, always-accurate count (including a true zero) — never a
+		// fabricated placeholder, so no "omit at zero" rule applies here the
+		// way it does for AggregateRating (item 21).
+		$schema['interactionStatistic'] = array(
+			'@type'                => 'InteractionCounter',
+			'interactionType'      => 'https://schema.org/CommentAction',
+			'userInteractionCount' => (int) get_comments_number( $post_id ),
+		);
+
+		return $schema;
+	}
+
+	/**
+	 * Real configured Customizer logo only — never a guessed theme asset path.
+	 */
+	private function organization_logo_url() {
+		if ( ! function_exists( 'has_custom_logo' ) || ! has_custom_logo() ) {
+			return '';
+		}
+		$logo_id = get_theme_mod( 'custom_logo' );
+		$src     = $logo_id ? wp_get_attachment_image_src( $logo_id, 'full' ) : false;
+		return $src ? $src[0] : '';
+	}
+
 	private function breadcrumb_schema() {
 		if ( is_front_page() ) {
 			return null;
@@ -693,6 +795,11 @@ class Atlas_Chuti_SEO {
 	 */
 	public function filter_sitemap_post_types( $post_types ) {
 		unset( $post_types['atlas_ingredient'] );
+		// KROK 9, item 41: atlas_ad_campaign (`public => false`, Step 7) is
+		// already excluded by WordPress core sitemap logic on that flag alone —
+		// same defensive-confirmation reasoning as atlas_ingredient above, not a
+		// workaround for an actual leak.
+		unset( $post_types['atlas_ad_campaign'] );
 		return $post_types;
 	}
 

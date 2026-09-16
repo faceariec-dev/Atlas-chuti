@@ -40,6 +40,7 @@ require_once ATLAS_CHUTI_DIR . 'includes/class-json-importer.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-admin.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-continent-image.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-page-setup.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-content-audit.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-db.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-account.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-user-state.php';
@@ -91,6 +92,7 @@ function atlas_chuti_core_init() {
 	Atlas_Chuti_Admin::instance();
 	Atlas_Chuti_Continent_Image::instance();
 	Atlas_Chuti_Page_Setup::instance();
+	Atlas_Chuti_Content_Audit::instance();
 	Atlas_Chuti_DB::instance();
 	Atlas_Chuti_Account::instance();
 	Atlas_Chuti_User_State::instance();
