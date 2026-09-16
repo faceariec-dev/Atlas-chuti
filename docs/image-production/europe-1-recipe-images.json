@@ -10,6 +10,7 @@
         "required_height": 900,
         "country_iso": "PT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -24,6 +25,7 @@
         "required_height": 900,
         "country_iso": "PT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -38,6 +40,7 @@
         "required_height": 900,
         "country_iso": "BG",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -52,6 +55,7 @@
         "required_height": 900,
         "country_iso": "GB",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -66,6 +70,7 @@
         "required_height": 900,
         "country_iso": "PL",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -80,7 +85,8 @@
         "required_height": 900,
         "country_iso": "FR",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -94,6 +100,7 @@
         "required_height": 900,
         "country_iso": "IE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -108,6 +115,7 @@
         "required_height": 900,
         "country_iso": "CZ",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -122,6 +130,7 @@
         "required_height": 900,
         "country_iso": "SK",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -136,6 +145,7 @@
         "required_height": 900,
         "country_iso": "CZ",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -150,6 +160,7 @@
         "required_height": 900,
         "country_iso": "PT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -164,6 +175,7 @@
         "required_height": 900,
         "country_iso": "RS",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -178,6 +190,7 @@
         "required_height": 900,
         "country_iso": "RO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -192,6 +205,7 @@
         "required_height": 900,
         "country_iso": "IE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -206,6 +220,7 @@
         "required_height": 900,
         "country_iso": "FR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -220,6 +235,7 @@
         "required_height": 900,
         "country_iso": "FR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -234,6 +250,7 @@
         "required_height": 900,
         "country_iso": "HR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -248,6 +265,7 @@
         "required_height": 900,
         "country_iso": "ES",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -262,6 +280,7 @@
         "required_height": 900,
         "country_iso": "DE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -276,6 +295,7 @@
         "required_height": 900,
         "country_iso": "SK",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -290,6 +310,7 @@
         "required_height": 900,
         "country_iso": "HU",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -304,6 +325,7 @@
         "required_height": 900,
         "country_iso": "IE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -318,6 +340,7 @@
         "required_height": 900,
         "country_iso": "NO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -332,7 +355,8 @@
         "required_height": 900,
         "country_iso": "GB",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -346,6 +370,7 @@
         "required_height": 900,
         "country_iso": "NO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -360,6 +385,7 @@
         "required_height": 900,
         "country_iso": "NO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -374,6 +400,7 @@
         "required_height": 900,
         "country_iso": "PT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -388,6 +415,7 @@
         "required_height": 900,
         "country_iso": "HR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -402,7 +430,8 @@
         "required_height": 900,
         "country_iso": "ES",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -416,6 +445,7 @@
         "required_height": 900,
         "country_iso": "RS",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -430,6 +460,7 @@
         "required_height": 900,
         "country_iso": "PL",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -444,6 +475,7 @@
         "required_height": 900,
         "country_iso": "SE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -458,7 +490,8 @@
         "required_height": 900,
         "country_iso": "HU",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -472,6 +505,7 @@
         "required_height": 900,
         "country_iso": "HU",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -486,6 +520,7 @@
         "required_height": 900,
         "country_iso": "GR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -500,6 +535,7 @@
         "required_height": 900,
         "country_iso": "SI",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -514,6 +550,7 @@
         "required_height": 900,
         "country_iso": "IE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -528,6 +565,7 @@
         "required_height": 900,
         "country_iso": "IE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -542,6 +580,7 @@
         "required_height": 900,
         "country_iso": "SE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -556,6 +595,7 @@
         "required_height": 900,
         "country_iso": "SI",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -570,6 +610,7 @@
         "required_height": 900,
         "country_iso": "AT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -584,6 +625,7 @@
         "required_height": 900,
         "country_iso": "SE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -598,6 +640,7 @@
         "required_height": 900,
         "country_iso": "SK",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -612,6 +655,7 @@
         "required_height": 900,
         "country_iso": "DE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -626,6 +670,7 @@
         "required_height": 900,
         "country_iso": "BG",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -640,6 +685,7 @@
         "required_height": 900,
         "country_iso": "BG",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -654,6 +700,7 @@
         "required_height": 900,
         "country_iso": "NO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -668,6 +715,7 @@
         "required_height": 900,
         "country_iso": "DE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -682,7 +730,8 @@
         "required_height": 900,
         "country_iso": "SE",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -696,6 +745,7 @@
         "required_height": 900,
         "country_iso": "SI",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -710,6 +760,7 @@
         "required_height": 900,
         "country_iso": "CZ",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -724,6 +775,7 @@
         "required_height": 900,
         "country_iso": "HU",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -738,6 +790,7 @@
         "required_height": 900,
         "country_iso": "IT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -752,6 +805,7 @@
         "required_height": 900,
         "country_iso": "NO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -766,6 +820,7 @@
         "required_height": 900,
         "country_iso": "SK",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -780,6 +835,7 @@
         "required_height": 900,
         "country_iso": "RO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -794,6 +850,7 @@
         "required_height": 900,
         "country_iso": "RO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -808,7 +865,8 @@
         "required_height": 900,
         "country_iso": "GR",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -822,6 +880,7 @@
         "required_height": 900,
         "country_iso": "IT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -836,7 +895,8 @@
         "required_height": 900,
         "country_iso": "ES",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -850,6 +910,7 @@
         "required_height": 900,
         "country_iso": "RO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -864,6 +925,7 @@
         "required_height": 900,
         "country_iso": "HU",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -878,6 +940,7 @@
         "required_height": 900,
         "country_iso": "PT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -892,6 +955,7 @@
         "required_height": 900,
         "country_iso": "HR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -906,6 +970,7 @@
         "required_height": 900,
         "country_iso": "ES",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -920,6 +985,7 @@
         "required_height": 900,
         "country_iso": "HR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -934,7 +1000,8 @@
         "required_height": 900,
         "country_iso": "PL",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -948,6 +1015,7 @@
         "required_height": 900,
         "country_iso": "SK",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -962,7 +1030,8 @@
         "required_height": 900,
         "country_iso": "IT",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -976,6 +1045,7 @@
         "required_height": 900,
         "country_iso": "PL",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -990,6 +1060,7 @@
         "required_height": 900,
         "country_iso": "RS",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1004,6 +1075,7 @@
         "required_height": 900,
         "country_iso": "SI",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1018,6 +1090,7 @@
         "required_height": 900,
         "country_iso": "RS",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1032,6 +1105,7 @@
         "required_height": 900,
         "country_iso": "FR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1046,7 +1120,8 @@
         "required_height": 900,
         "country_iso": "FR",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -1060,6 +1135,7 @@
         "required_height": 900,
         "country_iso": "IT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1074,6 +1150,7 @@
         "required_height": 900,
         "country_iso": "AT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1088,6 +1165,7 @@
         "required_height": 900,
         "country_iso": "RS",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1102,6 +1180,7 @@
         "required_height": 900,
         "country_iso": "RO",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1116,6 +1195,7 @@
         "required_height": 900,
         "country_iso": "DE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1130,6 +1210,7 @@
         "required_height": 900,
         "country_iso": "DE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1144,6 +1225,7 @@
         "required_height": 900,
         "country_iso": "GB",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1158,6 +1240,7 @@
         "required_height": 900,
         "country_iso": "BG",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1172,6 +1255,7 @@
         "required_height": 900,
         "country_iso": "GR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1186,7 +1270,8 @@
         "required_height": 900,
         "country_iso": "IT",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -1200,6 +1285,7 @@
         "required_height": 900,
         "country_iso": "GR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1214,6 +1300,7 @@
         "required_height": 900,
         "country_iso": "GB",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1228,6 +1315,7 @@
         "required_height": 900,
         "country_iso": "SI",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1242,7 +1330,8 @@
         "required_height": 900,
         "country_iso": "CZ",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -1256,6 +1345,7 @@
         "required_height": 900,
         "country_iso": "AT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1270,6 +1360,7 @@
         "required_height": 900,
         "country_iso": "BG",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1284,6 +1375,7 @@
         "required_height": 900,
         "country_iso": "AT",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1298,6 +1390,7 @@
         "required_height": 900,
         "country_iso": "SE",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1312,6 +1405,7 @@
         "required_height": 900,
         "country_iso": "ES",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1326,7 +1420,8 @@
         "required_height": 900,
         "country_iso": "GR",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -1340,6 +1435,7 @@
         "required_height": 900,
         "country_iso": "CZ",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1354,7 +1450,8 @@
         "required_height": 900,
         "country_iso": "AT",
         "status": "TO_CREATE",
-        "world_classic": false,
+        "priority": 1,
+        "world_classic": true,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
     {
@@ -1368,6 +1465,7 @@
         "required_height": 900,
         "country_iso": "GB",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1382,6 +1480,7 @@
         "required_height": 900,
         "country_iso": "HR",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     },
@@ -1396,6 +1495,7 @@
         "required_height": 900,
         "country_iso": "PL",
         "status": "TO_CREATE",
+        "priority": 2,
         "world_classic": false,
         "notes": "No source photo yet — commission per docs/image-production/europe-1-recipe-images.md."
     }

@@ -17,6 +17,10 @@
 
 error_reporting( E_ALL & ~E_DEPRECATED );
 
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', sys_get_temp_dir() . '/atlas-chuti-10e-harness-fakeroot/' ); // only so homepage.php/editorial-curation.php's own top-of-file guard passes for check #14 below.
+}
+
 $ROOT    = dirname( __DIR__ );
 $OUT_DIR = $ROOT . '/docs/image-production';
 $CSV     = $OUT_DIR . '/europe-1-recipe-images.csv';
@@ -131,11 +135,26 @@ check( '12. manifest generation is deterministic (byte-identical CSV+JSON across
 $prod_diff = shell_exec( 'git -C ' . escapeshellarg( $ROOT ) . ' diff --stat -- production-data/ 2>/dev/null' );
 check( '13. production-data/ has zero diff — no image path/reference was added to production content', '' === trim( (string) $prod_diff ) );
 
-// 14. World Classics flags only from real config (filter is empty by
-// design as of this checkpoint — see docs/implementation-reports/
-// checkpoint-10d-en-localization.md section L — so every row must be false).
-$true_world_classic = array_filter( $json_rows, fn( $r ) => true === $r['world_classic'] );
-check( '14. world_classic is true only where the real (currently empty) filter names the recipe_key — 0/100 today', 0 === count( $true_world_classic ) );
+// 14. World Classics flags only from real config. CHECKPOINT 10E.1: the
+// filter (inc/editorial-curation.php) is no longer empty — re-derive the
+// real curated set the same way the generator does (loading the theme's
+// own function, not re-typing the list here) and assert an EXACT match,
+// so this check keeps proving "only from real config" as that config
+// changes over time, the same way it did when the config was empty.
+$GLOBALS['__wc_filters'] = array();
+function add_filter( $tag, $callback, $priority = 10, $accepted_args = 1 ) { $GLOBALS['__wc_filters'][ $tag ][] = $callback; }
+function apply_filters( $tag, $value, ...$args ) {
+	foreach ( $GLOBALS['__wc_filters'][ $tag ] ?? array() as $cb ) { $value = call_user_func( $cb, $value, ...$args ); }
+	return $value;
+}
+function add_action( $t, $c, $p = 10, $a = 1 ) {}
+require_once $ROOT . '/wp-content/themes/atlas-chuti/inc/homepage.php';
+require_once $ROOT . '/wp-content/themes/atlas-chuti/inc/editorial-curation.php';
+$real_world_classics_keys = atlas_chuti_world_classics_recipe_keys();
+$manifest_wc_keys         = array_column( array_filter( $json_rows, fn( $r ) => true === $r['world_classic'] ), 'recipe_key' );
+sort( $real_world_classics_keys );
+sort( $manifest_wc_keys );
+check( '14. world_classic=true in the manifest is EXACTLY the real curated list from inc/editorial-curation.php, nothing more/less', $real_world_classics_keys === $manifest_wc_keys && count( $real_world_classics_keys ) > 0 );
 
 // 15-18: delegated to the existing regression suite, run as separate shell
 // invocations — same convention as every prior harness's own final checks.

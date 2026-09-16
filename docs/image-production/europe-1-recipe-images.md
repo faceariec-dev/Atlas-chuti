@@ -1,9 +1,9 @@
 # Europe 1 — Recipe Image Production Checklist
 
-Checkpoint 10E. One physical image per `recipe_key` **concept** — the CZ and
-EN recipe posts of the same `recipe_key` share ONE file, never two. This
-checklist governs the 100 recipe photos for `production-data/europe-1/` +
-`production-data/europe-1-en/`.
+Checkpoint 10E (curation added in 10E.1). One physical image per
+`recipe_key` **concept** — the CZ and EN recipe posts of the same
+`recipe_key` share ONE file, never two. This checklist governs the 100
+recipe photos for `production-data/europe-1/` + `production-data/europe-1-en/`.
 
 Machine-readable companions: `europe-1-recipe-images.csv`,
 `europe-1-recipe-images.json` (100 rows/objects, same `recipe_key` set).
@@ -14,10 +14,16 @@ Machine-readable companions: `europe-1-recipe-images.csv`,
 - TO_CREATE: 100
 - READY: 0
 - MISSING (duplicate/invalid file already staged): 0
+- World Classics ("Světová klasika" / "World Classics") images: 14
+- Priority 1 (World Classics — homepage lead content): 14
+- Priority 2 (remaining launch recipes): 86
 
 No image file exists anywhere in this repository yet — every row is
 `TO_CREATE` by default until a real, validated photo is staged and the
 manifest is regenerated (`php tools/generate-image-production-manifest.php`).
+Producing the **14 priority-1 (World Classics) images first**
+covers every recipe the CZ and EN homepages actually feature — see
+`inc/editorial-curation.php` for the full curated list.
 
 ## Naming convention
 
