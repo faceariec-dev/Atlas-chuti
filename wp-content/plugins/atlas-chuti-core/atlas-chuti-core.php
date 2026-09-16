@@ -48,6 +48,7 @@ require_once ATLAS_CHUTI_DIR . 'includes/class-user-state.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-ratings.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-comments.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-photos.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-recipe-image-pipeline.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-rest-api.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-privacy.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-magazine.php';

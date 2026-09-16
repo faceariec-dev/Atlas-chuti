@@ -251,6 +251,30 @@ function atlas_chuti_get_recipes_for_country( $country_post_id, $limit = 4 ) {
 }
 
 /**
+ * CHECKPOINT 10C: the localized ALT for a recipe's featured image (brief
+ * items 3/13/14) — default is that post's OWN (already locale-correct,
+ * since CZ and EN are separate posts) title, e.g. "Svíčková na smetaně" on
+ * `.cz`, "Czech beef sirloin in cream sauce" on `.com` for the EN post of
+ * the SAME dish. An explicit override (postmeta `atlas_image_alt_override`
+ * — for the rare photo whose real content needs a more specific caption
+ * than the recipe name) takes precedence when set.
+ *
+ * Deliberately NEVER reads/writes `_wp_attachment_image_alt` (that meta
+ * lives on the ATTACHMENT, which this project shares across every locale
+ * of one recipe_key — see class-recipe-image-pipeline.php — so a single
+ * global value there could never be both the CZ and the EN alt at once).
+ * This is what lets one physical attachment serve every locale's ALT
+ * without duplicating it (brief item 19/20).
+ */
+function atlas_chuti_recipe_image_alt( $post_id ) {
+	$override = get_post_meta( $post_id, Atlas_Chuti_Meta_Fields::meta_key( 'image_alt_override' ), true );
+	if ( $override ) {
+		return $override;
+	}
+	return get_the_title( $post_id );
+}
+
+/**
  * Cheap count (no post objects hydrated) for card badges like "9 receptů".
  */
 function atlas_chuti_count_recipes_for_country( $country_post_id ) {

@@ -79,7 +79,7 @@ $latest_topics = get_posts( array( 'post_type' => 'atlas_topic', 'post_status' =
 					// Eager/high-priority: this is the homepage's LCP element now that the
 					// static hero is gone (item 11 of the brief), so it must never be lazy.
 					if ( has_post_thumbnail( $lead_main ) ) {
-						echo get_the_post_thumbnail( $lead_main, 'atlas-hero', array( 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async' ) );
+						echo get_the_post_thumbnail( $lead_main, 'atlas-hero', array( 'loading' => 'eager', 'fetchpriority' => 'high', 'decoding' => 'async', 'alt' => atlas_chuti_recipe_image_alt( $lead_main->ID ) ) );
 					} else {
 						echo atlas_chuti_fallback_image_html( 'recipe', '', get_the_title( $lead_main ), array( 'loading' => 'eager', 'fetchpriority' => 'high' ) );
 					}

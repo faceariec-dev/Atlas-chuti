@@ -22,6 +22,13 @@ class Atlas_Chuti_Meta_Fields {
 			'original_title'   => array( 'type' => 'text', 'label' => __( 'Originální název', 'atlas-chuti' ), 'required' => false ),
 			'excerpt'          => array( 'type' => 'textarea', 'label' => __( 'Krátký perex', 'atlas-chuti' ), 'required' => true ),
 			'photo_credit'     => array( 'type' => 'text', 'label' => __( 'Zdroj / copyright fotografie', 'atlas-chuti' ), 'required' => false ),
+			// CHECKPOINT 10C, item 13: explicit localized ALT override — the
+			// default ALT is this post's own (already locale-correct) title
+			// (see functions.php's atlas_chuti_recipe_image_alt()); this
+			// field only needs filling in for the rare photo whose actual
+			// visual content needs a more specific caption than the recipe
+			// name itself. Never used to store dimensions/technical text.
+			'image_alt_override' => array( 'type' => 'text', 'label' => __( 'Vlastní ALT text fotografie (nepovinné)', 'atlas-chuti' ), 'required' => false ),
 			'servings_default' => array( 'type' => 'int', 'label' => __( 'Výchozí počet porcí', 'atlas-chuti' ), 'required' => true, 'default' => 4 ),
 			'prep_minutes'     => array( 'type' => 'int', 'label' => __( 'Čas přípravy (min)', 'atlas-chuti' ), 'required' => true ),
 			'cook_minutes'     => array( 'type' => 'int', 'label' => __( 'Čas vaření (min)', 'atlas-chuti' ), 'required' => false, 'default' => 0 ),

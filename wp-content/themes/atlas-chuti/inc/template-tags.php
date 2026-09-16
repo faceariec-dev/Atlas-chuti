@@ -21,6 +21,18 @@ function atlas_chuti_media( $post_id, $size = 'atlas-card', $placeholder_label =
 		$attrs = $eager
 			? array( 'loading' => 'eager', 'fetchpriority' => 'high' )
 			: array( 'loading' => 'lazy' );
+		// CHECKPOINT 10C, items 3/13/14: the SAME physical attachment can be
+		// the featured image of both a CZ and an EN recipe post (see
+		// class-recipe-image-pipeline.php) — its own stored
+		// `_wp_attachment_image_alt` meta can only ever hold ONE value, so
+		// it can never be correct for both locales at once. Passing 'alt'
+		// here overrides that global value with THIS post's own localized
+		// title (or an explicit per-post override), exactly the way
+		// wp_get_attachment_image()/get_the_post_thumbnail() already
+		// support — no attachment duplication needed.
+		if ( 'atlas_recipe' === get_post_type( $post_id ) && function_exists( 'atlas_chuti_recipe_image_alt' ) ) {
+			$attrs['alt'] = atlas_chuti_recipe_image_alt( $post_id );
+		}
 		return get_the_post_thumbnail( $post_id, $size, $attrs );
 	}
 	if ( $fallback_context ) {

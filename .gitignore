@@ -43,3 +43,8 @@ Thumbs.db
 # Dependency directories (if local asset tooling is ever added)
 node_modules/
 vendor/
+
+# CHECKPOINT 10C: regenerable read-only output (image manifests, import
+# reports) — deterministic from DB/source-dir state, never a deliverable
+# to commit. Regenerate with `wp atlas image-manifest` / `wp atlas image-import`.
+/generated/
