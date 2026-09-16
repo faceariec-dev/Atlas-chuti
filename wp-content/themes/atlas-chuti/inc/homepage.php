@@ -304,3 +304,61 @@ function atlas_chuti_home_seasonal_block_render( $seasonal ) {
 	<?php
 }
 add_action( 'atlas_chuti_home_seasonal_block', 'atlas_chuti_home_seasonal_block_render' );
+
+/**
+ * CHECKPOINT 10B: "Světová klasika" (cs-CZ) / "World Classics" (en) — one
+ * shared, redakčně kurátovaný block, deliberately identity-driven rather
+ * than data-driven like atlas_chuti_home_world_picks() above. Per the brief:
+ * "Preferuj stabilní recipe_key[]... Ne display title, ne slug", and
+ * "Stejná concept-level kurace může na CZ homepage renderovat Světová
+ * klasika a na EN World Classics" — one editorial list, two labels.
+ *
+ * The list itself is a filterable array of recipe_key strings (the same
+ * language-neutral identity class-json-importer.php resolves atlas_recipe
+ * references by — see class-i18n.php's find_by_recipe_key()), resolved to
+ * REAL posts in the CURRENT locale only. A recipe_key with no post in the
+ * current locale (e.g. an EN key with no EN translation published yet —
+ * expected for every key today, since no EN content batch exists as of
+ * this checkpoint) is simply skipped — never a fake/placeholder card, the
+ * block just renders with fewer items, or not at all (brief: "žádná fake
+ * card... blok se graceful zmenší/skryje").
+ */
+function atlas_chuti_world_classics_recipe_keys() {
+	/**
+	 * The curated list itself. Empty by default so this checkpoint ships
+	 * inert-safe infrastructure only (no editorial decision is baked in
+	 * here without an explicit, reviewable filter call) — a later step (or
+	 * a site-specific mu-plugin/theme filter) supplies the real, reviewed
+	 * list of iconic-dish recipe_keys once an editor has actually curated
+	 * one. Every value here is a recipe_key exactly as migrated in
+	 * Checkpoint 10A (production-data/europe-1/), never a title or slug.
+	 */
+	return apply_filters( 'atlas_chuti_world_classics_recipe_keys', array() );
+}
+
+/**
+ * Resolves atlas_chuti_world_classics_recipe_keys() to real, published
+ * atlas_recipe posts in the CURRENT locale (Atlas_Chuti_I18N::current_locale(),
+ * which is host-aware since Checkpoint 10B — atlaschuti.cz resolves the CZ
+ * post for each key, atlaschuti.com the EN one, whichever actually exists).
+ * Returns however many were actually found, up to $limit — never pads with
+ * anything invented.
+ */
+function atlas_chuti_home_world_classics( $limit = 6 ) {
+	$keys = atlas_chuti_world_classics_recipe_keys();
+	if ( ! $keys || ! class_exists( 'Atlas_Chuti_I18N' ) ) {
+		return array();
+	}
+	$locale  = Atlas_Chuti_I18N::current_locale();
+	$recipes = array();
+	foreach ( $keys as $key ) {
+		if ( count( $recipes ) >= $limit ) {
+			break;
+		}
+		$post = Atlas_Chuti_I18N::find_by_recipe_key( $key, $locale );
+		if ( $post && 'publish' === $post->post_status ) {
+			$recipes[] = $post;
+		}
+	}
+	return $recipes;
+}

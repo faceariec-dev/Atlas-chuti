@@ -472,6 +472,7 @@ $GLOBALS['wpdb'] = new Fake_WPDB();
 // Load the real, unmodified plugin code.
 // =============================================================================
 require $PLUGIN . '/class-polylang-bridge.php';
+require $PLUGIN . '/class-domain-map.php'; // CHECKPOINT 10B: class-seo.php now calls Atlas_Chuti_Domain_Map::brand_url() for the Organization schema's fixed @id.
 require $PLUGIN . '/class-i18n.php';
 require $PLUGIN . '/class-taxonomy-labels.php';
 require $PLUGIN . '/class-units.php';
@@ -732,7 +733,22 @@ $CONDITIONS['post_id'] = $en_recipe;
 $schema_en = call_private( $seo, 'recipe_schema', $en_recipe );
 check( '44. the EN post of the SAME dish reports inLanguage=en, never cs', 'en' === $schema_en['inLanguage'] );
 
-check( '45. locale scoping for archive queries is untouched by Step 9 (Atlas_Chuti_I18N::scope_query_to_locale(), unchanged since Step 4/verified by that step\'s own harness) — Step 9 made no edits to class-i18n.php', 0 === substr_count( shell_exec( 'git -C ' . escapeshellarg( dirname( __DIR__ ) ) . ' diff --stat -- wp-content/plugins/atlas-chuti-core/includes/class-i18n.php 2>/dev/null' ) ?: '', 'class-i18n.php' ) );
+// CHECKPOINT 10B legitimately edits class-i18n.php (current_locale() becomes
+// host-aware — see class-domain-map.php and the checkpoint-10b report), so
+// this check no longer asserts "zero diff on the file" (that was only ever
+// a proxy for the real invariant, and is now expected to fail on every
+// future checkpoint that touches this file for a good reason). It instead
+// asserts the actual thing Step 9 originally cared about: that
+// scope_query_to_locale() itself — the method that keeps CZ/EN archive
+// queries separated — still exists with its documented per-post-type/
+// meta_query behavior intact, unchanged by whatever else class-i18n.php
+// gained around it.
+$i18n_src = file_get_contents( $PLUGIN . '/class-i18n.php' );
+check(
+	'45. locale scoping for archive queries is behaviorally unchanged (Atlas_Chuti_I18N::scope_query_to_locale() still exists with its Step 4 meta_query contract intact — checked by content, not by a file-never-touched diff, since Checkpoint 10B legitimately extends this file)',
+	false !== strpos( $i18n_src, 'function scope_query_to_locale( $query )' )
+		&& false !== strpos( $i18n_src, "array( 'key' => 'atlas_locale', 'value' => \$locale, 'compare' => '=' )" )
+);
 
 echo "\n=== Group 11: Organization / Discussion schema (3) ===\n";
 

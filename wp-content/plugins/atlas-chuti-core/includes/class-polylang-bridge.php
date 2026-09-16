@@ -237,10 +237,21 @@ class Atlas_Chuti_Polylang_Bridge {
 				}
 			}
 		}
+		// CHECKPOINT 10B: the target architecture is host-per-language
+		// (atlaschuti.cz / atlaschuti.com), not a `/en/` path prefix — see
+		// class-domain-map.php's docblock for why this doesn't lean on
+		// Polylang's own (unverifiable, possibly-Pro-only) domain-mapping
+		// feature either. pll_home_url() is tried first purely as a
+		// best-effort match with however Polylang itself is ALSO configured
+		// (if at all); Domain_Map is the actual source of truth for which
+		// host a locale's home page lives on.
 		if ( function_exists( 'pll_home_url' ) ) {
-			return pll_home_url( self::locale_to_slug( $target_locale ) );
+			$pll_url = pll_home_url( self::locale_to_slug( $target_locale ) );
+			if ( $pll_url ) {
+				return $pll_url;
+			}
 		}
-		return home_url( 'en' === $target_locale ? '/en/' : '/' );
+		return Atlas_Chuti_Domain_Map::home_url_for_locale( $target_locale );
 	}
 
 	private static function has_exact_translation( $target_locale ) {

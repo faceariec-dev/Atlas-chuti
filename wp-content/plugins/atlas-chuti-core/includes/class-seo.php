@@ -350,6 +350,22 @@ class Atlas_Chuti_SEO {
 	 * real pair, plus x-default pointing at the default locale's URL (item 17).
 	 * Never emitted for a lone page with no real translation (get_locale_urls()
 	 * already returns empty in that case).
+	 *
+	 * CHECKPOINT 10B, cross-domain x-default policy: x-default stays pointed at
+	 * Atlas_Chuti_I18N::DEFAULT_LOCALE (cs-CZ), i.e. atlaschuti.cz — no code
+	 * change was needed to keep this, since get_locale_urls() already resolves
+	 * every locale's URL through the now host-aware get_canonical_url()/
+	 * get_permalink() (see class-domain-map.php's `home_url` filter), so this
+	 * line already emits the correct https://atlaschuti.cz/... URL. Deliberately
+	 * NOT switched to atlaschuti.com: DEFAULT_LOCALE is threaded through this
+	 * entire codebase as "the locale with no explicit signal" (scope_query_to_
+	 * locale()'s legacy-content OR-fallback, the importer's locale defaults,
+	 * every pre-10B test fixture) — changing what x-default points at, without
+	 * also redefining DEFAULT_LOCALE itself (a far larger, out-of-scope change
+	 * for this checkpoint), would decouple "the SEO default" from "the actual
+	 * content default" and risk exactly the inconsistency the brief warns
+	 * about ("zdokumentuj a otestuj to konzistentně"). See checkpoint-10b
+	 * report section E for the full rationale and test coverage.
 	 */
 	private function output_hreflang( $locale_urls ) {
 		if ( ! $locale_urls ) {
@@ -387,11 +403,20 @@ class Atlas_Chuti_SEO {
 	public function output_schema() {
 		$graphs = array();
 
+		// CHECKPOINT 10B: the Organization entity is the shared BRAND, one
+		// per site regardless of which of the two domains (atlaschuti.cz /
+		// atlaschuti.com) is serving the current request — its @id/url must
+		// therefore be a FIXED host, never home_url() (which is now
+		// host-aware per class-domain-map.php and would otherwise mint a
+		// second, different "@id" on the other domain, i.e. two
+		// Organizations for one brand). WebSite below stays per-host on
+		// purpose — that legitimately IS two different WebSite entities
+		// (one per domain), both published by this one Organization.
 		$organization = array(
 			'@type' => 'Organization',
-			'@id'   => home_url( '/#organization' ),
+			'@id'   => Atlas_Chuti_Domain_Map::brand_url() . '#organization',
 			'name'  => get_bloginfo( 'name' ),
-			'url'   => home_url( '/' ),
+			'url'   => Atlas_Chuti_Domain_Map::brand_url(),
 		);
 		// KROK 9, item 17: only a REAL configured logo — never a guessed/
 		// hardcoded image path. has_custom_logo() is false today (none is set
@@ -406,10 +431,13 @@ class Atlas_Chuti_SEO {
 
 		$graphs[] = array(
 			'@type' => 'WebSite',
+			// Per-host on purpose (this domain's own WebSite entity) —
+			// home_url() here is correct, unlike the fixed Organization
+			// above.
 			'@id'   => home_url( '/#website' ),
 			'name'  => get_bloginfo( 'name' ),
 			'url'   => home_url( '/' ),
-			'publisher' => array( '@id' => home_url( '/#organization' ) ),
+			'publisher' => array( '@id' => Atlas_Chuti_Domain_Map::brand_url() . '#organization' ),
 			'potentialAction' => array(
 				'@type'       => 'SearchAction',
 				'target'      => home_url( '/?s={search_term_string}' ),

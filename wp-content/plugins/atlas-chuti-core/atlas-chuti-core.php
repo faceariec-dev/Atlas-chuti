@@ -18,6 +18,7 @@ define( 'ATLAS_CHUTI_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ATLAS_CHUTI_URL', plugin_dir_url( __FILE__ ) );
 
 require_once ATLAS_CHUTI_DIR . 'includes/class-polylang-bridge.php';
+require_once ATLAS_CHUTI_DIR . 'includes/class-domain-map.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-i18n.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-taxonomy-labels.php';
 require_once ATLAS_CHUTI_DIR . 'includes/class-units.php';
@@ -75,6 +76,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
  */
 function atlas_chuti_core_init() {
 	Atlas_Chuti_Polylang_Bridge::instance();
+	Atlas_Chuti_Domain_Map::instance();
 	Atlas_Chuti_I18N::instance();
 	Atlas_Chuti_Post_Types::instance();
 	Atlas_Chuti_Taxonomies::instance();

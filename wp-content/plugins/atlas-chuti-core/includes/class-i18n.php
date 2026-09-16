@@ -82,13 +82,26 @@ class Atlas_Chuti_I18N {
 
 	/**
 	 * Single source of truth for "what locale is this request in" (item 5 of this
-	 * phase's brief). Today this is always cs-CZ. When Polylang (or any other
-	 * multilingual plugin wired through a bridge) is active, it takes over here — see
-	 * class-polylang-bridge.php — without any caller of current_locale() needing to
-	 * change. Nothing else in the codebase should invent its own way of asking "what
-	 * language is this".
+	 * phase's brief). CHECKPOINT 10B: the incoming HOST is now the first authority —
+	 * atlaschuti.cz is always cs-CZ, atlaschuti.com is always en, regardless of
+	 * whatever Polylang would otherwise resolve from URL path/query — because the
+	 * target architecture is host-per-language, not path-per-language (see
+	 * class-domain-map.php). This lookup only ever fires for the two EXPLICITLY
+	 * mapped production hosts; every other host (local dev, staging, WP-CLI/test
+	 * context with no HTTP_HOST) returns null and falls straight through to the
+	 * pre-10B behavior below, so this is a zero-regression addition. When Polylang
+	 * (or any other multilingual plugin wired through a bridge) is active and the
+	 * host didn't resolve anything, Polylang takes over here — see
+	 * class-polylang-bridge.php. Nothing else in the codebase should invent its own
+	 * way of asking "what language is this".
 	 */
 	public static function current_locale() {
+		if ( class_exists( 'Atlas_Chuti_Domain_Map' ) ) {
+			$host_locale = Atlas_Chuti_Domain_Map::locale_from_host();
+			if ( $host_locale ) {
+				return $host_locale;
+			}
+		}
 		if ( class_exists( 'Atlas_Chuti_Polylang_Bridge' ) && Atlas_Chuti_Polylang_Bridge::is_active() ) {
 			$locale = Atlas_Chuti_Polylang_Bridge::current_locale();
 			if ( $locale ) {
@@ -96,9 +109,9 @@ class Atlas_Chuti_I18N {
 			}
 		}
 		/**
-		 * Filters the locale used to scope front-end queries and admin lookups when no
-		 * multilingual plugin is active. Lets a future non-Polylang setup (or tests)
-		 * override the default without editing this file.
+		 * Filters the locale used to scope front-end queries and admin lookups when
+		 * neither the host map nor a multilingual plugin resolved one. Lets a
+		 * dev/staging setup (or tests) override the default without editing this file.
 		 */
 		return apply_filters( 'atlas_chuti_current_locale', self::DEFAULT_LOCALE );
 	}

@@ -42,6 +42,14 @@ $magazine_posts  = atlas_chuti_home_magazine_posts( 3 );
 $total_countries = atlas_chuti_total_countries();
 $recipe_archive  = get_post_type_archive_link( 'atlas_recipe' );
 
+// CHECKPOINT 10B: ONE shared homepage template — see the report's section G —
+// with only the editorial PRIORITY (order/prominence) differing by locale/
+// host, never a second template. `$is_en` drives that ordering below; the
+// two section bodies themselves (Czech-cuisine banner, World Classics) are
+// the exact same shared markup regardless of which host renders them.
+$is_en           = 'en' === Atlas_Chuti_I18N::current_locale();
+$world_classics  = atlas_chuti_home_world_classics( 6 );
+
 // KROK 6, item 27/28: both blocks below only ever render with REAL data — no
 // fake cards, no fake "most discussed" — and simply disappear otherwise.
 $tips_tricks_term  = ( $tips_slug = class_exists( 'Atlas_Chuti_Magazine' ) ? Atlas_Chuti_Magazine::tips_tricks_category_slug() : '' ) ? get_term_by( 'slug', $tips_slug, 'category' ) : null;
@@ -171,7 +179,16 @@ $latest_topics = get_posts( array( 'post_type' => 'atlas_topic', 'post_status' =
 	</div>
 </section>
 
-<?php if ( $czech_country && $czech_recipes ) : $czech_main = array_shift( $czech_recipes ); ?>
+<?php
+/**
+ * CHECKPOINT 10B, section G/H/I: the Czech-cuisine banner and the new World
+ * Classics block are IDENTICAL markup regardless of host — only their
+ * relative ORDER changes, via output buffering, so there is exactly one
+ * template and one set of components for both `.cz` and `.com` (brief:
+ * "Nevytvářej dvě paralelní homepage šablony... sdílené komponenty").
+ */
+ob_start();
+if ( $czech_country && $czech_recipes ) : $czech_main = array_shift( $czech_recipes ); ?>
 <section class="section">
 	<div class="container">
 		<div class="featured-banner">
@@ -195,7 +212,43 @@ $latest_topics = get_posts( array( 'post_type' => 'atlas_topic', 'post_status' =
 		</div>
 	</div>
 </section>
-<?php endif; ?>
+<?php endif;
+$czech_block_html = ob_get_clean();
+
+ob_start();
+if ( $world_classics ) : ?>
+<section class="section bg-terracotta-tint">
+	<div class="container">
+		<div class="section-head">
+			<div>
+				<span class="kicker"><?php esc_html_e( 'Redakční výběr', 'atlas-chuti' ); ?></span>
+				<h2><?php echo esc_html( $is_en ? __( 'World Classics', 'atlas-chuti' ) : __( 'Světová klasika', 'atlas-chuti' ) ); ?></h2>
+			</div>
+		</div>
+		<div class="card-grid card-grid-3">
+			<?php foreach ( $world_classics as $wc_recipe ) : ?>
+				<?php get_template_part( 'template-parts/recipe-card', null, array( 'post_id' => $wc_recipe->ID ) ); ?>
+			<?php endforeach; ?>
+		</div>
+	</div>
+</section>
+<?php endif;
+$world_classics_block_html = ob_get_clean();
+
+/**
+ * Editorial priority split (brief items G/H/I): `.cz` is Czech-first —
+ * Česká kuchyně banner before Světová klasika. `.com` is global-first —
+ * World Classics is the approved main curated block and renders BEFORE the
+ * Czech banner (which stays visible, per "neschovávej", just not first).
+ */
+if ( $is_en ) {
+	echo $world_classics_block_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already-escaped template output captured via ob_start() above.
+	echo $czech_block_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already-escaped template output captured via ob_start() above.
+} else {
+	echo $czech_block_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already-escaped template output captured via ob_start() above.
+	echo $world_classics_block_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already-escaped template output captured via ob_start() above.
+}
+?>
 
 <?php if ( $world_picks['dominant_country'] && $world_picks['dominant_recipe'] ) : $wd = $world_picks; ?>
 <section class="section bg-sage-tint">
