@@ -67,9 +67,9 @@
   ],
   "recipes": [
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "wiener-schnitzel",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_wiener-schnitzel", "recipe_key": "wiener-schnitzel",
       "title": "Vídeňský řízek", "slug": "vidensky-rizek", "original_title": "Wiener Schnitzel", "country": "AT",
-      "excerpt": "Tence vyklepaný telecí řízek v křupavém trojobalu, smažený dozlatova – klasika vídeňské kuchyně.",
+      "excerpt": "Vídeňský řízek je tence vyklepaný telecí plátek v křupavém trojobalu, smažený na másle dozlatova. Za pravý se přitom považuje jedině telecí verze, vepřová se správně označuje jako řízek po vídeňsku, ne jako originál. Během smažení je dobré pánví jemně pohupovat, horký tuk pak nadzvedne obal a vytvoří charakteristické zvlnění, které je poznávacím znamením správně usmaženého řízku. Obal se navíc nesmí prsty přitisknout k masu, jinak k němu přilne a po usmažení se neoddělí ve vzdušné vrstvě. Symbolem vídeňské kuchyně je už od devatenáctého století.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Pravý Wiener Schnitzel je vždy z telecího masa – z vepřového jde o „řízek po vídeňsku“, ne o originál. Trojobal se navíc nesmí přitisknout, aby po usmažení nadýchaně zvlnil.",
@@ -101,9 +101,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "tafelspitz",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_tafelspitz", "recipe_key": "tafelspitz",
       "title": "Tafelspitz", "slug": "tafelspitz", "country": "AT",
-      "excerpt": "Pomalu vařené hovězí z kvalitního vývaru, podávané s jablkovo-křenovou a pažitkovou omáčkou.",
+      "excerpt": "Tafelspitz je vídeňské jídlo o dvou částech – kvalitní hovězí vývar a v něm pomalu vařené maso, které se po uvaření krájí proti vláknům. Na talíři ho doplňují dvě kontrastní omáčky, jablkovo-křenová a jemná pažitková se zakysanou smetanou. Opálená neloupaná cibule přidaná do vývaru mu dá zlatavou barvu bez jakéhokoliv dalšího přídavku. Jde o klasické jídlo vídeňské měšťanské kuchyně, které měl podle dobových zpráv velmi v oblibě i rakouský císař František Josef I., a dodnes patří k reprezentativním pokrmům rakouské kuchyně.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 150, "total_minutes": 170,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Tafelspitz je jídlo o dvou částech – vlastní vývar a v něm pomalu uvařené maso, které se krájí proti vláknům a podává hned se dvěma kontrastními omáčkami.",
@@ -140,9 +140,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "kaiserschmarrn",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_kaiserschmarrn", "recipe_key": "kaiserschmarrn",
       "title": "Kaiserschmarrn", "slug": "kaiserschmarrn", "country": "AT",
-      "excerpt": "Trhaná nadýchaná omeleta s rozinkami, karamelizovaná na pánvi a posypaná moučkovým cukrem.",
+      "excerpt": "Kaiserschmarrn je trhaná nadýchaná omeleta s rozinkami, na pánvi se nejdřív upeče podobně jako silnější palačinka a pak se ještě horká roztrhá na nepravidelné kousky, které se dosmaží do karamelového zezlátnutí. Bílky je potřeba vmíchávat do těsta jemně zespoda nahoru, aby si dezert udržel vzdušnost a nezplihl. Na talíři se podává horký, posypaný moučkovým cukrem. Podle legendy se pekl pro rakouského císaře Františka Josefa I., odtud pochází i „císařské“ jméno v názvu, a dodnes patří k nejoblíbenějším rakouským sladkým jídlům.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 15, "total_minutes": 30,
       "difficulty": "medium", "meal_type": ["dessert"], "diet": ["vegetarian"],
       "about": "Kaiserschmarrn se peče jako silnější palačinka, ale ještě za tepla se na pánvi natrhá na kousky a dosmaží do karamelového zezlátnutí.",
@@ -178,9 +178,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "sachertorte",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_sachertorte", "recipe_key": "sachertorte",
       "title": "Sachertorte", "slug": "sachertorte", "country": "AT",
-      "excerpt": "Hutný čokoládový dort s meruňkovou náplní a čokoládovou polevou, klasika vídeňského hotelu Sacher.",
+      "excerpt": "Sachertorte je hutný čokoládový dort s vrstvou meruňkové marmelády a lesklou čokoládovou polevou, spojovaný s vídeňským hotelem Sacher. Originální recept zůstává tajemstvím, princip je ale známý – málo nadýchaný, kompaktní piškot, meruňková marmeláda a poleva z hořké čokolády. Po polití je dobré dort nechat odpočinout přes noc, chuť i struktura se druhý den ještě zlepší a poleva se pořádně usadí. Vytvořil ho v roce 1832 Franz Sacher, tehdy ještě jako učeň, pro vídeňský knížecí dvůr, a jméno si dort nese dodnes.",
       "servings_default": 12, "prep_minutes": 40, "cook_minutes": 50, "total_minutes": 90,
       "difficulty": "hard", "meal_type": ["dessert"], "diet": ["vegetarian"],
       "about": "Originální recept zůstává tajný, ale princip je známý: hutný, málo nadýchaný piškot, vrstva meruňkové marmelády a lesklá čokoládová poleva.",
@@ -214,9 +214,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "tiroler-knodel",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_tiroler-knodel", "recipe_key": "tiroler-knodel",
       "title": "Tyrolské knedlíky", "slug": "tyrolske-knedliky", "original_title": "Tiroler Knödel", "country": "AT",
-      "excerpt": "Slané knedlíky ze staršího pečiva a slaniny, tradiční způsob, jak v horách nic nepřijde nazmar.",
+      "excerpt": "Tyrolské knedlíky jsou slané knedlíky ze staršího pečiva a slaniny, tradiční alpský způsob, jak nic nepřijde nazmar. Čím starší a sušší veky nebo rohlíky se použijí, tím lépe nasáknou vejce s mlékem a knedlíky lépe drží tvar při vaření. Do hmoty patří i osmažená cibule, uzená slanina a petrželka pro barvu i chuť. Pokud se knedlíky při vaření přesto rozpadají, pomůže přidat do hmoty ještě trochu mouky. Jsou typické pro celou alpskou oblast a v Tyrolsku patří k základním jídlům horských chalup, sýrová varianta se dělá s kostičkami horského sýra.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 20, "total_minutes": 40,
       "difficulty": "easy", "meal_type": ["side-dish", "main-course"], "diet": [],
       "about": "Knedlíky vznikly jako způsob, jak zpracovat starší pečivo – čím starší a sušší veky, tím lépe nasáknou vejce a mléko a lépe drží tvar.",
@@ -249,9 +249,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "gulyas",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_gulyas", "recipe_key": "gulyas",
       "title": "Gulyás", "slug": "gulyas", "country": "HU",
-      "excerpt": "Hovězí polévka s bramborami a mletou paprikou, ze které vzniklo slovo „guláš“ ve většině evropských jazyků.",
+      "excerpt": "Gulyás je hovězí polévka s bramborami a výraznou mletou paprikou, ze které vzniklo slovo guláš používané dnes ve většině evropských jazyků. Skutečný maďarský gulyás je totiž řidší, polévková varianta, husté dušené maso se v Maďarsku označuje jiným slovem, pörkölt. Papriku je nutné přidávat vždy mimo plamen, protože na horkém tuku během chvilky zhořkne a zkazí celou chuť polévky. Vznikl jako jídlo maďarských pastevců, gulyás totiž znamená pasák dobytka, kteří ho vařili venku v kotlíku nad ohněm. Hustší verze bez brambor se nazývá pörkölt.",
       "servings_default": 6, "prep_minutes": 20, "cook_minutes": 90, "total_minutes": 110,
       "difficulty": "medium", "meal_type": ["soup"], "diet": [],
       "about": "Pravý maďarský gulyás je polévka, ne husté dušené maso – to se v Maďarsku nazývá pörkölt. Chuť stojí hlavně na kvalitní mleté paprice přidané mimo plamen.",
@@ -287,9 +287,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "paprikas-csirke",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_paprikas-csirke", "recipe_key": "paprikas-csirke",
       "title": "Paprikás csirke", "slug": "paprikas-csirke", "country": "HU",
-      "excerpt": "Kuřecí maso dušené na paprikové omáčce se zakysanou smetanou, podávané s malými vaječnými haluškami.",
+      "excerpt": "Paprikás csirke je kuřecí maso dušené na paprikové omáčce se zakysanou smetanou, podávané s malými vaječnými haluškami. Ve srovnání s gulyášem je hustší a smetanovější, i tady rozhoduje kvalitní sladká paprika přidaná mimo plamen, zakysanou smetanu je navíc potřeba nejdřív rozmíchat s moukou, jinak se v horké omáčce srazí. Patří k nejrozšířenějším maďarským nedělním jídlům a snadno se dá připravit i ve větší porci pro celou rodinu. Haluškové těstoviny se dělají z mouky a vajec a strhávají se přímo do vroucí vody, takže celé jídlo vznikne z jedné pánve a jednoho hrnce.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 45, "total_minutes": 65,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Paprikáš je hustší a smetanovější příbuzný gulyáše – klíčová je znovu kvalitní sladká paprika přidaná mimo plamen a zakysaná smetana zjemněná trochou mouky, aby se v horké omáčce nesrazila.",
@@ -325,9 +325,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "langos",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_langos", "recipe_key": "langos",
       "title": "Lángos", "slug": "langos", "country": "HU",
-      "excerpt": "Smažené kynuté těsto potřené česnekovou vodou, se zakysanou smetanou a strouhaným sýrem – klasika maďarských trhů a koupališť.",
+      "excerpt": "Lángos je smažené kynuté těsto potřené česnekovou vodou, se zakysanou smetanou a strouhaným sýrem, klasika maďarských trhů, poutí a koupališť. Základem je jednoduché kynuté těsto z mouky, droždí, mléka a brambor, které se smaží plovoucí na oleji dozlatova. Nejdůležitější je pořádně rozpálený olej a rychlé smažení, jinak těsto nasákne tuk místo toho, aby zůstalo lehké a křupavé po okrajích. Podává se horký, ihned po vytažení z oleje, kdy je česneková vůně nejvýraznější a sýr se ještě rozpouští.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["appetizer", "bakery"], "diet": ["vegetarian"],
       "about": "Základ lángose je jednoduché kynuté těsto, které se smaží plovoucí na oleji dozlatova – nejdůležitější je horký olej a rychlé smažení, aby těsto nenasáklo tuk.",
@@ -361,9 +361,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "halaszle",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_halaszle", "recipe_key": "halaszle",
       "title": "Halászlé", "slug": "halaszle", "country": "HU",
-      "excerpt": "Pálivá rybí polévka z říčních ryb a hodně papriky, typická pro oblasti kolem Dunaje a Tisy.",
+      "excerpt": "Halászlé je pálivá rybí polévka ze sladkovodních ryb a velkého množství mleté papriky, typická pro oblasti podél Dunaje a Tisy. Název znamená doslova rybářská polévka a tradičně se vařila přímo na břehu řeky z čerstvého úlovku, s hodně paprikou a téměř žádnou další zeleninou. Rybí kusy je dobré do polévky vkládat až do přecezeného vývaru, jinak se drobné kosti dostanou až na talíř. Má kořeny v tradici rybářů podél obou řek a v různých regionech Maďarska se vaří v mírně odlišných verzích podle místního zvyku.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 40, "total_minutes": 60,
       "difficulty": "medium", "meal_type": ["soup"], "diet": [],
       "about": "Halászlé je doslova „rybářská polévka“ – tradičně se vařila přímo na břehu řeky z čerstvého úlovku, hodně papriky a téměř žádné jiné zeleniny.",
@@ -394,9 +394,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "dobos-torta",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_dobos-torta", "recipe_key": "dobos-torta",
       "title": "Dobos torta", "slug": "dobos-torta", "country": "HU",
-      "excerpt": "Vrstvený piškotový dort prokládaný čokoládovým krémem, s charakteristickým křupavým karamelovým vrškem.",
+      "excerpt": "Dobos torta je vrstvený piškotový dort prokládaný čokoládovým krémem, s charakteristickým křupavým karamelovým vrškem, který se před podáváním rozlomí na trojúhelníky a naskládá do vějíře. Karamel rychle tuhne, proto je potřeba řezy na poslední plát naznačit ihned, dokud je ještě teplý a poddajný. Vytvořil ho v roce 1885 budapešťský cukrář József Dobos, jehož karamelový vrchol měl tehdy sloužit i jako přirozený konzervant prodlužující trvanlivost dortu. Dodnes patří k nejznámějším maďarským cukrářským výrobkům.",
       "servings_default": 12, "prep_minutes": 60, "cook_minutes": 40, "total_minutes": 100,
       "difficulty": "hard", "meal_type": ["dessert"], "diet": ["vegetarian"],
       "about": "Typickým znakem Dobos torty je tenký karamelový plát navrchu, který se před podáváním rozlomí na trojúhelníky a naskládá do vějíře.",
@@ -430,10 +430,10 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "spaghetti-carbonara",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_spaghetti-carbonara", "recipe_key": "spaghetti-carbonara",
       "title": "Spaghetti Carbonara", "slug": "spaghetti-carbonara", "original_title": "Spaghetti alla Carbonara", "country": "IT",
       "related_countries": [],
-      "excerpt": "Římská klasika ze čtyř surovin: vejce, guanciale, pecorino a pepř.",
+      "excerpt": "Spaghetti Carbonara je římská klasika postavená jen na čtyřech surovinách – vejcích, guanciale, pecorinu a černém pepři. Kouzlo spočívá v emulzi vajec a sýra, která díky teplu z právě uvařených těstovin zhoustne do hebké omáčky úplně bez smetany. Vejce se proto vždy míchají mimo přímý plamen, jinak by se srazila a omáčka by zůstala hrudkovitá místo hedvábné. Tradiční carbonara smetanu nikdy neobsahuje, přestože se to v mnoha zahraničních verzích tvrdí. V dnešní podobě se v Římě prosadila v polovině dvacátého století a dostupnější variantu nabízí náhrada guanciale za pancettu.",
       "servings_default": 4, "prep_minutes": 10, "cook_minutes": 15, "total_minutes": 25,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Kouzlo carbonary je v emulzi vajec a sýra, která díky teplu z těstovin zhoustne do hebké omáčky – bez smetany.",
@@ -464,9 +464,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "pizza-margherita",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_pizza-margherita", "recipe_key": "pizza-margherita",
       "title": "Pizza Margherita", "slug": "pizza-margherita", "country": "IT",
-      "excerpt": "Tenké kynuté těsto, rajčata, mozzarella a bazalka – neapolská pizza v barvách italské vlajky.",
+      "excerpt": "Pizza Margherita spojuje tenké kynuté těsto, rajčata, mozzarellu a bazalku v barvách italské vlajky. Je to nejjednodušší italská pizza, a právě proto nejnáročnější na kvalitu surovin – potřebuje zralá rajčata, dobrou mozzarellu a co nejvyšší teplotu trouby, aby se okraj těsta rychle nafoukl a zůstal uvnitř měkký. Mozzarellu je dobré před pečením pořádně okapat, přebytečná voda by jinak těsto rozmočila. Podle legendy vznikla v roce 1889 na počest italské královny Margherity, jejíž barvy toppingu prý odkazují právě na národní vlajku.",
       "servings_default": 4, "prep_minutes": 30, "cook_minutes": 15, "total_minutes": 45,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": ["vegetarian"],
       "about": "Margherita je nejjednodušší italská pizza, a právě proto nejnáročnější na kvalitu surovin – zralá rajčata, dobrá mozzarella a co nejvyšší teplota trouby.",
@@ -499,9 +499,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "risotto-alla-milanese",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_risotto-alla-milanese", "recipe_key": "risotto-alla-milanese",
       "title": "Risotto alla Milanese", "slug": "risotto-alla-milanese", "country": "IT",
-      "excerpt": "Krémové šafránové rizoto z Lombardie, tradiční příloha k dušenému ossobuku.",
+      "excerpt": "Risotto alla Milanese je krémové šafránové rizoto z Lombardie, tradiční příloha k dušenému ossobuku. Dobré rizoto nepotřebuje žádnou smetanu, krémovost mu dodá jen postupné přilévání vývaru a průběžné míchání, které z rýže Arborio postupně uvolní škrob. Vývar se proto nikdy nepřidává najednou, ale po malých dávkách, aby rýže nikdy nebyla úplně zaplavená. Šafrán mu dává charakteristickou zlatou barvu a jemně kořeněnou vůni. Tradičně se podává jako příloha k dušenému telecímu kolínku ossobuco, se kterým sdílí i svůj lombardský původ.",
       "servings_default": 4, "prep_minutes": 10, "cook_minutes": 25, "total_minutes": 35,
       "difficulty": "medium", "meal_type": ["side-dish"], "diet": ["vegetarian"],
       "about": "Dobré rizoto nepotřebuje smetanu – krémovost dodá jen postupné přiléváním vývaru a průběžné míchání, které z rýže uvolní škrob.",
@@ -535,9 +535,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "lasagne-alla-bolognese",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_lasagne-alla-bolognese", "recipe_key": "lasagne-alla-bolognese",
       "title": "Lasagne alla Bolognese", "slug": "lasagne-alla-bolognese", "country": "IT",
-      "excerpt": "Vrstvené těstoviny s masovým ragú, bešamelem a parmazánem, zapečené dozlatova.",
+      "excerpt": "Lasagne alla Bolognese jsou vrstvené těstoviny s masovým ragú, bešamelem a parmazánem, zapečené v troubě dozlatova. Základem dobrých lasagní je ragú, které se musí dusit dlouho a pomalu na mírném ohni – jakákoliv zkratka u masové omáčky je na výsledné chuti nejvíc poznat. Vrstvy těstovin, ragú a bešamelu se skládají postupně na sebe, poslední vrstva se posype parmazánem a zapeče do zlatava. Pocházejí z Boloně a patří k nejznámějším a nejvíc exportovaným jídlům italské kuchyně vůbec.",
       "servings_default": 6, "prep_minutes": 40, "cook_minutes": 90, "total_minutes": 130,
       "difficulty": "hard", "meal_type": ["main-course"], "diet": [],
       "about": "Základ dobrých lasagní je ragú, které se musí dusit dlouho a pomalu – zkratky u masové omáčky poznat na chuti nejvíc.",
@@ -578,9 +578,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "ossobuco-alla-milanese",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_ossobuco-alla-milanese", "recipe_key": "ossobuco-alla-milanese",
       "title": "Ossobuco alla Milanese", "slug": "ossobuco-alla-milanese", "country": "IT",
-      "excerpt": "Telecí kolínko dušené na víně a zelenině, podávané s gremolatou z citronové kůry, česneku a petrželky.",
+      "excerpt": "Ossobuco alla Milanese je telecí kolínko dušené na víně a kořenové zelenině, podávané s gremolatou z citronové kůry, česneku a petrželky. Název znamená doslova dutá kost, protože morek uvnitř kolínka je tradičně považován za pochoutku a jí se speciální lžičkou přímo z kosti. Gremolata se přidává až na talíři, čerstvá citronová kůra a česnek dodají jídlu svěžest, která by se dlouhým dušením jinak ztratila. Pochází z Lombardie a tradičně se podává společně se šafránovým rizotem, se kterým sdílí i region původu.",
       "servings_default": 4, "prep_minutes": 25, "cook_minutes": 120, "total_minutes": 145,
       "difficulty": "hard", "meal_type": ["main-course"], "diet": [],
       "about": "Ossobuco znamená doslova „dutá kost“ – morek uvnitř kolínka je tradičně považovaný za pochoutku a jí se speciální lžičkou.",
@@ -618,9 +618,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "boeuf-bourguignon",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_boeuf-bourguignon", "recipe_key": "boeuf-bourguignon",
       "title": "Hovězí po burgundsku", "slug": "hovezi-po-burgundsku", "original_title": "Bœuf bourguignon", "country": "FR",
-      "excerpt": "Hovězí dušené na červeném víně se slaninou, žampiony a cibulkou – francouzský venkovský klasik z Burgundska.",
+      "excerpt": "Hovězí po burgundsku je maso dušené na červeném víně se slaninou, žampiony a cibulkou, francouzský venkovský klasik z Burgundska. Vzniklo jako způsob, jak dlouhým pomalým dušením na víně změkčit levnější a tužší kusy hovězího masa, dnes patří k nejznámějším jídlům celé francouzské kuchyně. Na vaření je dobré použít víno, které byste klidně vypili i tak, jeho chuť se totiž v omáčce hodně zkoncentruje a nekvalitní víno by pokrm jen zhoršilo. Pochází z Burgundska, kraje proslulého červeným vínem, kterým se maso tradičně dusí dodnes.",
       "servings_default": 6, "prep_minutes": 30, "cook_minutes": 150, "total_minutes": 180,
       "difficulty": "hard", "meal_type": ["main-course"], "diet": [],
       "about": "Bœuf bourguignon vznikl jako způsob, jak dlouhým dušením na víně změkčit levnější kusy hovězího – dnes patří k nejznámějším jídlům francouzské kuchyně vůbec.",
@@ -658,9 +658,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "coq-au-vin",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_coq-au-vin", "recipe_key": "coq-au-vin",
       "title": "Kohout na víně", "slug": "kohout-na-vine", "original_title": "Coq au vin", "country": "FR",
-      "excerpt": "Kuře dušené na červeném víně se slaninou a žampiony, klasika francouzské venkovské kuchyně.",
+      "excerpt": "Kohout na víně je kuře dušené na červeném víně se slaninou a žampiony, klasika francouzské venkovské kuchyně. Podobně jako hovězí po burgundsku vznikl jako způsob, jak dlouhým dušením na víně zjemnit tužší maso staršího kohouta, dnes se ale stejně běžně připravuje i z obyčejného kuřete. Slaninu je dobré nejdřív orestovat samostatně a přidat zpět až na konci, zůstane pak křupavější a nerozvaří se v omáčce. Je to tradiční jídlo francouzského venkova, nejčastěji spojované s Burgundskem, kde se vaří na místní červené víno.",
       "servings_default": 4, "prep_minutes": 25, "cook_minutes": 75, "total_minutes": 100,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Coq au vin vznikl podobně jako bœuf bourguignon – jako způsob, jak dušením na víně změkčit tužší maso staršího kohouta. Dnes se vaří i z běžného kuřete.",
@@ -697,9 +697,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "ratatouille",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_ratatouille", "recipe_key": "ratatouille",
       "title": "Ratatouille", "slug": "ratatouille", "country": "FR",
-      "excerpt": "Dušená provensálská zelenina – lilek, cuketa, paprika a rajčata – provoněná tymiánem a olivovým olejem.",
+      "excerpt": "Ratatouille je dušená provensálská zelenina – lilek, cuketa, paprika a rajčata – provoněná tymiánem, bazalkou a olivovým olejem. Chuťově nejlíp vynikne v létě, kdy jsou lilek, cuketa a rajčata naplno zralé, mimo sezónu je rozumnější použít kvalitní konzervovaná rajčata než nedozrálou čerstvou zeleninu. Zeleninu je dobré krájet na podobně velké kostky, uvaří se pak rovnoměrně a žádná nezůstane buď rozvařená, nebo tvrdá. Pochází z Provence, kde původně bývalo jídlem venkovské a chudší kuchyně z letního přebytku zeleniny, dá se připravit i zapékaná na tenké plátky v troubě.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 40, "total_minutes": 60,
       "difficulty": "easy", "meal_type": ["side-dish", "main-course"], "diet": ["vegetarian"],
       "about": "Ratatouille je nejlepší v sezóně, kdy jsou lilek, cuketa a rajčata skutečně zralé – v zimě raději sáhněte po kvalitní konzervě rajčat.",
@@ -733,9 +733,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "quiche-lorraine",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_quiche-lorraine", "recipe_key": "quiche-lorraine",
       "title": "Quiche Lorraine", "slug": "quiche-lorraine", "country": "FR",
-      "excerpt": "Slaný koláč s křehkým těstem, slaninou a vaječnou náplní se smetanou, klasika z Lotrinska.",
+      "excerpt": "Quiche Lorraine je slaný koláč s křehkým těstem, slaninou a vaječnou náplní se smetanou, klasika z francouzského Lotrinska. Pravá verze se obejde bez sýra, drží ji pohromadě jen křehké těsto, slanina a hebká vaječná náplň z vajec a smetany dochucená muškátovým oříškem. Těsto je dobré před plněním předpéct naslepo, zabráníte tak podmáčenému dnu koláče po zalití tekutou náplní. Pochází z francouzského Lotrinska neboli Lorraine a patří k nejznámějším francouzským slaným koláčům vůbec.",
       "servings_default": 6, "prep_minutes": 25, "cook_minutes": 40, "total_minutes": 65,
       "difficulty": "medium", "meal_type": ["appetizer", "main-course"], "diet": [],
       "about": "Pravá quiche Lorraine se obejde bez sýra – jen křehké těsto, slanina a hebká vaječná náplň, kterou drží pohromadě jen smetana a vejce.",
@@ -769,9 +769,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "crepes",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_crepes", "recipe_key": "crepes",
       "title": "Crêpes", "slug": "crepes", "country": "FR",
-      "excerpt": "Tenké francouzské palačinky, slané i sladké, podle toho, čím je naplníte.",
+      "excerpt": "Crêpes jsou tenké francouzské palačinky, slané i sladké podle toho, čím je naplníte. Od klasické palačinky se liší hlavně tenkostí – těsto musí být řídké a pánev pořádně rozehřátá, aby se rovnoměrně rozlilo po celém dně a upeklo do křehka. Před smažením je dobré nechat těsto chvíli odpočinout, lepek se uvolní a výsledné placky budou křehčí. Pocházejí z Bretaně, kde se tradičně dělaly z pohankové mouky jako slaný pokrm zvaný galette, plněný šunkou, sýrem a vejcem.",
       "servings_default": 4, "prep_minutes": 10, "cook_minutes": 20, "total_minutes": 30,
       "difficulty": "easy", "meal_type": ["dessert", "breakfast"], "diet": ["vegetarian"],
       "about": "Rozdíl mezi crêpes a klasickou palačinkou je hlavně v tenkosti – těsto musí být řídké a pánev pořádně rozehřátá, aby těsto rovnoměrně rozlilo po celém dně.",

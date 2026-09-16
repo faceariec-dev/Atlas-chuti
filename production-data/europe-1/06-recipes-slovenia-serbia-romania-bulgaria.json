@@ -54,9 +54,9 @@
   ],
   "recipes": [
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "jota",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_jota", "recipe_key": "jota",
       "title": "Jota", "slug": "jota", "country": "SI",
-      "excerpt": "Hutná polévka z kysaného zelí, fazolí a brambor s uzeným masem, typická pro slovinský venkov.",
+      "excerpt": "Jota je jedna z nejstarších slovinských polévek, rozšířená hlavně v přímořských a krasových oblastech země. Zelí, fazole a brambory se v ní spojily už v dobách, kdy bylo maso vzácné a lidé se museli spoléhat hlavně na luštěniny. Podobně jako kapustnica chutná lépe druhý den, kdy se chutě zelí a fazolí propojí a polévka získá plnější chuť. Jednoduché suroviny z venkovské kuchyně z ní dělají typické zimní jídlo slovinského venkova, které přežilo dodnes beze změny.",
       "servings_default": 6, "prep_minutes": 20, "cook_minutes": 90, "total_minutes": 110,
       "difficulty": "medium", "meal_type": ["soup"], "diet": [],
       "about": "Jota je jedna z nejstarších slovinských polévek – kombinace kysaného zelí, fazolí a brambor pochází z doby, kdy bylo maso vzácností a jídlo se stavělo hlavně na luštěninách.",
@@ -90,9 +90,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "kranjska-klobasa",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_kranjska-klobasa", "recipe_key": "kranjska-klobasa",
       "title": "Kranjská klobása", "slug": "kranjska-klobasa", "country": "SI",
-      "excerpt": "Chráněná slovinská klobása z vepřového masa a slaniny, uzená a podávaná s hořčicí a křenem.",
+      "excerpt": "Kranjská klobása pochází z regionu Kranjska a je jedním z nejvýznamnějších slovinských gastronomických symbolů. Od roku 2015 nese chráněné zeměpisné označení EU, díky tomu z ní i doma snadno uvaříte plnohodnotný hlavní chod, aniž byste ji sami museli udit. Voda při vaření klobás nesmí prudce vřít, prudký var by kůži roztrhl a klobása by ztratila šťávu i chuť. Právě ochranné označení a přísný postup výroby dělají z kranjské klobásy jeden z nejznámějších slovinských exportních produktů.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 20, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Kranjská klobása má od roku 2015 chráněné zeměpisné označení EU – doma z ní proto snadno připravíte hlavní chod, i když ji sami neuzíte.",
@@ -119,9 +119,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "struklji",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_struklji", "recipe_key": "struklji",
       "title": "Štrukli", "slug": "strukli", "country": "SI",
-      "excerpt": "Slovinské taštičky plněné tvarohem, vařené i pečené se zakysanou smetanou.",
+      "excerpt": "Štrukli patří k typickým slovinským jídlům a v různých regionech země je najdete slané i sladké, s plněním, které se liší kraj od kraje. Tahle varianta vsází na jednoduchou tvarohovou náplň, hodí se jako sladká příloha, ale klidně obstojí i jako lehký dezert po hlavním jídle. Náplň je dobré příliš neslaďit, jemně nasládlá chuť lépe vynikne s kyselejší zakysanou smetanou podávanou k hotovým štrukli. Rozmanitost náplní napříč regiony patří k tomu, co dělá štrukli tak typickým slovinským pokrmem, a jednoduchá tvarohová verze je z nich přitom jednou z nejdostupnějších na běžné vaření doma.",
       "servings_default": 6, "prep_minutes": 40, "cook_minutes": 30, "total_minutes": 70,
       "difficulty": "medium", "meal_type": ["side-dish", "dessert"], "diet": ["vegetarian"],
       "about": "Štrukli jsou v různých slovinských regionech slané i sladké – tahle verze je jednoduchá tvarohová, vhodná jako sladká příloha i lehký dezert.",
@@ -154,9 +154,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "potica",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_potica", "recipe_key": "potica",
       "title": "Potica", "slug": "potica", "country": "SI",
-      "excerpt": "Slavnostní kynutý závin s ořechovou náplní, symbol slovinských svátků.",
+      "excerpt": "Potica je tradiční slovinský sváteční závin, pečený hlavně o Vánocích a Velikonocích, s desítkami regionálních variant náplně. Tradičně se peče ve zvláštní kulaté formě s dírkou uprostřed, díky které se náplň rovnoměrně rozloží po celém závinu, vedle ní ale existují i klasické podlouhlé verze. Bílky vmíchané do ořechové náplně jí dodají vzdušnost a zabrání tomu, aby po upečení vytekla ven z těsta. Náplň lze doplnit i hrstí rozinek, což je jedna z běžných obměn tohoto svátečního pečiva.",
       "servings_default": 12, "prep_minutes": 60, "cook_minutes": 50, "total_minutes": 110,
       "difficulty": "hard", "meal_type": ["dessert", "bakery"], "diet": ["vegetarian"],
       "about": "Potica se peče do zvláštní kulaté formy s dírkou uprostřed, aby se náplň rovnoměrně rozprostřela po celém závinu – existují ale i klasické podlouhlé verze.",
@@ -194,9 +194,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "idrijski-zlikrofi",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_idrijski-zlikrofi", "recipe_key": "idrijski-zlikrofi",
       "title": "Idrijski žlikrofi", "slug": "idrijski-zlikrofi", "country": "SI",
-      "excerpt": "Malé plněné taštičky z hornického města Idrija, tradičně podávané s masovou omáčko nebo jen máslem.",
+      "excerpt": "Žlikrofi pocházejí z hornického města Idrija a mají chráněné zeměpisné označení EU jako jedna z regionálních slovinských specialit. Poznat je lze podle typického kloboukového tvaru, kterým se odlišují od ostatních plněných taštiček, jejich výroba je poměrně náročná, ale požívá ochrany jako regionální specialita. Na tvarování žlikrofů se nevyplácí šetřit čas, charakteristický klobouček vzniká přeložením dvou rohů přes sebe a musí se dělat pečlivě. Právě náročné ruční tvarování a chráněný původ z Idrije dělají ze žlikrofů jednu z nejpracnějších slovinských specialit vůbec.",
       "servings_default": 4, "prep_minutes": 45, "cook_minutes": 15, "total_minutes": 60,
       "difficulty": "hard", "meal_type": ["main-course", "appetizer"], "diet": [],
       "about": "Žlikrofi mají charakteristický kloboukový tvar, kterým se odlišují od jiných plněných taštiček – jejich příprava je poměrně pracná, ale chráněná jako regionální specialita.",
@@ -229,9 +229,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "cevapi",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_cevapi", "recipe_key": "cevapi",
       "title": "Ćevapi", "slug": "cevapi", "country": "RS",
-      "excerpt": "Grilované válečky z mletého masa podávané s cibulí, ajvarem a chlebem lepinja.",
+      "excerpt": "Ćevapi jsou rozšířené po celém Balkánu, každá země i region má mírně odlišnou velikost i poměr masa v grilovaných váleččcích. Rozhodující je správný poměr druhů masa, teprve kombinace hovězího s vepřovým nebo jehněčím dodá šťavnatost, jakou samotné libové maso nikdy nemá. Masovou směs je proto dobré dlouho hníst a nechat odpočinout, právě to jí dá typickou hutnou, lepivou strukturu potřebnou pro grilování. Rozšíření napříč celým Balkánem z ćevapi dělá jedno z nejznámějších jídel regionu.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Dobré ćevapi stojí na poměru masa – kombinace hovězího a vepřového (nebo jehněčího) dává šťavnatost, kterou samotné libové maso nemá.",
@@ -262,9 +262,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "pljeskavica",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_pljeskavica", "recipe_key": "pljeskavica",
       "title": "Pljeskavica", "slug": "pljeskavica", "country": "RS",
-      "excerpt": "Velký grilovaný masový plátek plněný sýrem, srbská obdoba hamburgeru podávaná v placce lepinja.",
+      "excerpt": "Pljeskavica je jedno z nejpopulárnějších srbských grilovaných jídel, jméno odkazuje na plochý, „plácnutý“ tvar masa. Od ćevapi ji odlišuje hlavně tvar, namísto malých válečků jde o jediný velký plochý plátek masa, který bývá uprostřed naplněný sýrem nebo kajmakem. Plátek je dobré před grilováním nechat chvíli odpočinout v lednici, lépe pak drží tvar a nerozpadá se na roštu. Plnění sýrem uprostřed je typickým znakem, který pljeskavicu odlišuje od ostatních balkánských grilovaných jídel, a dělá z ní vydatnější jednoporcové jídlo než klasické ćevapi.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Pljeskavica se od ćevapi liší tvarem – místo malých válečků jde o jeden velký plochý plátek, často plněný sýrem nebo kajmakem přímo uprostřed.",
@@ -296,9 +296,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "sarma",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_sarma", "recipe_key": "sarma",
       "title": "Sarma", "slug": "sarma", "country": "RS",
-      "excerpt": "Zelné závitky plněné masem a rýží, dušené v hrnci – tradiční srbské vánoční jídlo.",
+      "excerpt": "Sarma se v různých obměnách vaří po celém Balkáně i střední Evropě, v Srbsku patří neodmyslitelně k vánočnímu stolu. K plnění se na Balkáně tradičně používají listy kysaného, ne čerstvého zelí, což dá závitkům typickou nakyslou chuť, tu v Polsku nebo Německu naopak zajišťuje až přidaná rajčatová omáčka. Na dno hrnce je dobré vždy dát vrstvu masa nebo slaniny, zabráníte tak přichycení závitků a přidáte jídlu na chuti. Právě použití kysaného zelí dělá ze srbské sarmy odlišnou variantu od jejích severních příbuzných.",
       "servings_default": 6, "prep_minutes": 45, "cook_minutes": 90, "total_minutes": 135,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Sarma se na Balkáně tradičně vaří z listů kysaného zelí, ne z čerstvého – to dodá závitkům nakyslou chuť, kterou v Polsku nebo Německu naopak přidává rajčatová omáčka.",
@@ -331,9 +331,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "gibanica",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_gibanica", "recipe_key": "gibanica",
       "title": "Gibanica", "slug": "gibanica", "country": "RS",
-      "excerpt": "Vrstvený koláč z listového těsta se sýrem a vejci, oblíbená srbská snídaně nebo svačina.",
+      "excerpt": "Gibanica je jedno z nejrozšířenějších srbských pekařských jídel, běžně se jí k snídani i jako svačina. Listy filo těsta se při přípravě volně pomačkají do zvlněných vrstev a zalijí vaječno-sýrovou směsí, od pohybu při mačkání je odvozený i samotný název, ze slovesa „gibati“, tedy hýbat. Listy těsta se nesmí mačkat příliš nahusto, vaječná směs se musí dostat mezi všechny vrstvy, aby bylo jídlo šťavnaté. Jednoduchost přípravy a dostupnost surovin z gibanice dělají oblíbené každodenní jídlo srbských domácností.",
       "servings_default": 6, "prep_minutes": 20, "cook_minutes": 35, "total_minutes": 55,
       "difficulty": "easy", "meal_type": ["bakery", "breakfast"], "diet": ["vegetarian"],
       "about": "Gibanica se připravuje pomačkáním listů filo těsta do zvlněných vrstev, které se pak zalijí vaječno-sýrovou směsí – odtud i název, odvozený od slova „gibati“, tedy hýbat.",
@@ -363,9 +363,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "prebranac",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_prebranac", "recipe_key": "prebranac",
       "title": "Prebranac", "slug": "prebranac", "country": "RS",
-      "excerpt": "Pečené fazole s hodně cibule, oblíbený srbský postní pokrm, který se obejde bez masa.",
+      "excerpt": "Prebranac je oblíbené postní jídlo v Srbsku, tradičně se připravuje během pravoslavných půstů, kdy se nejí maso. Základem je velké množství cibule pomalu karamelizované dozlatova, ta fazolím vtiskne sladkou hloubku chuti a maso vůbec nechybí. Cibuli se nevyplácí spěchat, čím pomaleji zkaramelizuje, tím sladší a hlubší chuť fazolím nakonec dodá při dušení v troubě. Díky bezmasému základu a syté chuti karamelizované cibule zůstává prebranac dodnes oblíbeným postním jídlem po celý rok, nejen v období půstu.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 90, "total_minutes": 110,
       "difficulty": "easy", "meal_type": ["side-dish", "main-course"], "diet": ["vegetarian"],
       "about": "Prebranac stojí na velkém množství pomalu karamelizované cibule, která fazolím dodá sladkou hloubku bez potřeby přidávat maso.",
@@ -395,9 +395,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "sarmale",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_sarmale", "recipe_key": "sarmale",
       "title": "Sarmale", "slug": "sarmale", "country": "RO",
-      "excerpt": "Rumunská verze zelných závitků plněných masem a rýží, podávaná se zakysanou smetanou a kukuřičnou kaší.",
+      "excerpt": "Sarmale patří k nejtypičtějším rumunským jídlům a neodmyslitelně patří na sváteční, zejména vánoční stůl po celé zemi. V Rumunsku se objevují na stole snad při každé sváteční příležitosti, malé závitky se dusí pomalu a dlouho, dokud listy zcela nezměknou a maso uvnitř se rozpadne. Vyplácí se je vařit ve větším množství, druhý den po odležení chutnají ještě lépe než čerstvě uvařené. Pomalé dušení a sváteční charakter dělají ze sarmale jedno z nejvýznamnějších rumunských tradičních jídel na celoroční jídelníček.",
       "servings_default": 6, "prep_minutes": 45, "cook_minutes": 100, "total_minutes": 145,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Sarmale se v Rumunsku podávají téměř na každé svátky – malé závitky se dusí dlouho a pomalu, dokud kysané listy zcela nezměknou.",
@@ -431,9 +431,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "mamaliga",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_mamaliga", "recipe_key": "mamaliga",
       "title": "Mămăligă", "slug": "mamaliga", "country": "RO",
-      "excerpt": "Hutná kukuřičná kaše, tradiční rumunská příloha místo chleba nebo brambor.",
+      "excerpt": "Mămăligă je tradiční rumunský základ jídelníčku, historicky nahrazovala chléb v chudších venkovských domácnostech. Tradičně se krájela nití místo nožem, nožem by se totiž hutná kukuřičná kaše jen mazala a nedala by se pěkně naporcovat. Podává se samotná, se sýrem i se zakysanou smetanou, kukuřičnou mouku je při vaření potřeba vždy sypat pomalu za stálého míchání, jinak vzniknou hrudky, které se už těžko rozmíchají. Horkou kaši lze prokládat i vrstvami strouhaného sýra podobně jako u polenty.",
       "servings_default": 4, "prep_minutes": 5, "cook_minutes": 25, "total_minutes": 30,
       "difficulty": "easy", "meal_type": ["side-dish"], "diet": ["vegetarian"],
       "about": "Mămăligă se tradičně krájela nití místo nožem – nožem by se hutná kaše jen mazala. Podává se samotná, se sýrem i zakysanou smetanou.",
@@ -462,9 +462,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "mici",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_mici", "recipe_key": "mici",
       "title": "Mici", "slug": "mici", "country": "RO",
-      "excerpt": "Grilované válečky z mletého masa bez střívka, ochucené česnekem a kmínem.",
+      "excerpt": "Mici jsou jedno z nejoblíbenějších rumunských grilovaných jídel, tradičně spojené s letními oslavami a piknikem. Podle legendy za jejich vznikem stojí náhoda, bukurešťskému hostinskému prý jednou došla střívka na klobásy, a tak maso jednoduše natvaroval do válečků a grilovat je rovnou bez nich. Masovou směs je dobré nechat odpočinout co nejdéle, lepivější struktura zabrání tomu, aby se mici na grilu rozpadly na jednotlivé kousky. Jednoduchý tvar bez střívka zůstal dodnes charakteristickým znakem tohoto rumunského grilovaného pokrmu, oblíbeného na letních grilovačkách po celé zemi.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Podle legendy vznikly mici, když bukurešťskému hostinskému došla střívka na klobásy – maso proto jen zformoval do válečků a grilovat je bez nich.",
@@ -496,9 +496,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "ciorba-de-burta",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_ciorba-de-burta", "recipe_key": "ciorba-de-burta",
       "title": "Ciorbă de burtă", "slug": "ciorba-de-burta", "country": "RO",
-      "excerpt": "Kyselá rumunská dršťková polévka zahuštěná zakysanou smetanou a dochucená česnekem a octem.",
+      "excerpt": "Ciorbă de burtă má kořeny v osmanské kuchyni a dnes patří k nejtypičtějším rumunským polévkám. Poznávacím znamením je výrazná kyselost, kterou si každý přidává sám, česnekovo-octová zálivka se totiž nalévá až přímo do talíře, nikdy ne do hrnce. Zálivku z česneku a octa je proto dobré vždy servírovat zvlášť, síla kyselosti a česneku je totiž hodně individuální a liší se strávník od strávníka. Samostatné servírování zálivky dává každému strávníkovi možnost upravit si polévku přesně podle vlastní chuti, a to je i důvod, proč se tato polévka tak snadno přizpůsobí každému.",
       "servings_default": 4, "prep_minutes": 30, "cook_minutes": 120, "total_minutes": 150,
       "difficulty": "hard", "meal_type": ["soup"], "diet": [],
       "about": "Ciorbă de burtă je typická svou výraznou kyselostí – česnekovo-octová zálivka se do polévky vždy přidává až na talíři, aby si každý dochutil podle sebe.",
@@ -533,9 +533,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "papanasi",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_papanasi", "recipe_key": "papanasi",
       "title": "Papanași", "slug": "papanasi", "country": "RO",
-      "excerpt": "Smažené tvarohové knedlíky podávané se zakysanou smetanou a ovocnou marmeládou.",
+      "excerpt": "Papanași jsou jeden z nejoblíbenějších rumunských dezertů, jejich jméno souvisí s bájnou postavou z rumunského folkloru. Připravují se většinou smažené, jen výjimečně vařené, ale vždy je pozná stejná kombinace tvarohového těsta s vrstvou zakysané smetany a ovocné marmelády navrchu. Smažit je potřeba na mírnějším ohni, na příliš horkém oleji papanași rychle zhnědnou zvenku, ale uvnitř zůstanou syrové a nedopečené. Kombinace tvarohového těsta se smetanou a marmeládou z papanași dělá jeden z nejoblíbenějších rumunských dezertů vůbec, oblíbený po celé zemi.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
       "difficulty": "medium", "meal_type": ["dessert"], "diet": ["vegetarian"],
       "about": "Papanași se tradičně smaží, výjimečně i vaří – vždy je ale charakterizuje kombinace tvarohového těsta, zakysané smetany a ovocné marmelády navrchu.",
@@ -569,9 +569,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "shopska-salata",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_shopska-salata", "recipe_key": "shopska-salata",
       "title": "Šopský salát", "slug": "sopsky-salat", "original_title": "Shopska salata", "country": "BG",
-      "excerpt": "Rajčatový salát s okurkou, paprikou a hodně strouhaného sýru sirene navrchu.",
+      "excerpt": "Šopský salát je pojmenovaný po oblasti Šopluk kolem Sofie a dnes je považovaný za bulharské národní jídlo. Tradičně se podává jako předkrm, který otevírá chuť před hlavním jídlem, na stole bulharských restaurací i domácností. Sýr je dobré nastrouhat hrubě a hojně, množství sýra je pro šopský salát typické a nevyplácí se na něm šetřit. Bohaté množství strouhaného sýra navrchu patří k tomu, co šopský salát nejvíc odlišuje od jiných balkánských salátů.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 0, "total_minutes": 15,
       "difficulty": "easy", "meal_type": ["salad"], "diet": ["vegetarian"],
       "about": "Šopský salát je pojmenovaný po oblasti Šopluk kolem Sofie a tradičně se podává jako předkrm, který otevírá chuť před hlavním jídlem.",
@@ -602,9 +602,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "banitsa",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_banitsa", "recipe_key": "banitsa",
       "title": "Banica", "slug": "banica", "original_title": "Banitsa", "country": "BG",
-      "excerpt": "Listové těsto plněné sýrem a vejci, klasická bulharská snídaně nebo svátečně podávané pečivo.",
+      "excerpt": "Banica je jedno z nejstarších a nejrozšířenějších bulharských jídel, běžně se podává na Vánoce se schovanými drobnými štěstíčky uvnitř. Blízce příbuzná je srbské gibanici a řecké spanakopitě, princip je stejný, listy filo těsta se volně zmačkají do záhybů a přelijí vaječno-sýrovou směsí. Chutná nejlépe vlahá, proto je dobré ji po vytažení z trouby nechat aspoň 10 minut odpočinout, než se naporcuje. Sváteční schovávání štěstíčků uvnitř dělá z banicy oblíbenou součást bulharských vánočních tradic.",
       "servings_default": 6, "prep_minutes": 20, "cook_minutes": 35, "total_minutes": 55,
       "difficulty": "easy", "meal_type": ["bakery", "breakfast"], "diet": ["vegetarian"],
       "about": "Banica je bulharská příbuzná srbské gibanice a řecké spanakopity – listy filo těsta se zmačkají do volných záhybů a zalijí vaječno-sýrovou směsí.",
@@ -634,9 +634,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "tarator",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_tarator", "recipe_key": "tarator",
       "title": "Tarator", "slug": "tarator", "country": "BG",
-      "excerpt": "Studená jogurtová polévka s okurkou, česnekem, kopem a vlašskými ořechy – bulharské osvěžení na horké dny.",
+      "excerpt": "Tarator je typická bulharská letní polévka, jejíž základ, husté kysané mléko, je spojený s bulharskou tradicí výroby jogurtu. Funguje trochu jako tekutá verze tzatziki, hustý bulharský jogurt se rozředí vodou a dochutí okurkou, česnekem a ořechy, které dodají křupavost. Podávat by se měl pořádně vychlazený, ideálně v horkém letním dni jako první chod před hlavním jídlem, kdy nejlépe osvěží. Kombinace jogurtu, okurky a ořechů z tarataru dělá osvěžující bulharskou obdobu studených jogurtových polévek, typickou pro nejteplejší letní měsíce.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 0, "total_minutes": 15,
       "difficulty": "easy", "meal_type": ["soup"], "diet": ["vegetarian"],
       "about": "Tarator je studená obdoba tzatziki v podobě polévky – hustý bulharský jogurt zředěný vodou, s okurkou, česnekem a ořechy pro křupavost.",
@@ -667,9 +667,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "kavarma",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_kavarma", "recipe_key": "kavarma",
       "title": "Kavarma", "slug": "kavarma", "country": "BG",
-      "excerpt": "Pomalu dušené maso se zeleninou a kořením, tradičně servírované přímo v hliněné misce.",
+      "excerpt": "Kavarma je jedno z nejtradičnějších bulharských jídel, jméno je odvozené z tureckého výrazu pro pomalu dušené maso. Tradiční přípravou i servírováním jsou malé hliněné misky, ve kterých se maso dopeče a dlouho po vytažení z trouby si udrží teplo. Pokud jsou hliněné misky k dispozici, je dobré v nich kavarmu rovnou zapékat, protože udrží teplo dlouho po vyndání z trouby. Podávání přímo v hliněné misce patří k tomu, co dává kavarmě její typický rustikální charakter.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 60, "total_minutes": 80,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Kavarma se tradičně peče a podává v malých hliněných miskách, ve kterých maso dodusí a udrží teplo dlouho po vytažení z trouby.",
@@ -701,9 +701,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "kebapche",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_kebapche", "recipe_key": "kebapche",
       "title": "Kebapče", "slug": "kebapce", "original_title": "Kebapche", "country": "BG",
-      "excerpt": "Grilované protáhlé masové válečky ochucené kmínem a černým pepřem, bulharská obdoba ćevapi.",
+      "excerpt": "Kebapče je jedno z nejpopulárnějších bulharských grilovaných jídel, blízké příbuzné srbského ćevapi. Od svého srbského příbuzného se pozná podle větší velikosti a výraznějšího koření, kmín a černý pepř tu hrají mnohem důležitější roli. Grilovací rošt je dobré lehce potřít olejem, maso se pak nebude lepit a lépe se bude obracet během celého grilování. Výraznější koření kmínem a pepřem patří k tomu, co kebapče nejvíc odlišuje od jeho srbského příbuzného ćevapi.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Kebapče se od ćevapi liší hlavně větší velikostí a výraznějším kořením – kmín a černý pepř tu hrají větší roli než u srbské verze.",

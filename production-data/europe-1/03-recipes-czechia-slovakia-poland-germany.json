@@ -59,9 +59,9 @@
   ],
   "recipes": [
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "svickova",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_svickova", "recipe_key": "svickova",
       "title": "Svíčková na smetaně", "slug": "svickova-na-smetane", "country": "CZ",
-      "excerpt": "Hovězí maso ve smetanové omáčce z kořenové zeleniny s houskovým knedlíkem, brusinkami a citronem – nejznámější česká neděle na talíři.",
+      "excerpt": "Svíčková na smetaně je nedělní oběd, který v české kuchyni nemá konkurenci. Hovězí maso se nejprve dlouho marinuje s kořenovou zeleninou, pak se pomalu dusí doměkka a zelenina se nakonec rozmixuje a protře do hladké smetanové omáčky beze stopy kousků. Na talíři ji doplňuje nadýchaný houskový knedlík, který omáčku nasává, lžička brusinkového kompotu pro sladkokyselou tečku a plátek citronu. Recept patří mezi klasiky české měšťanské kuchyně devatenáctého století a dodnes je tím, co si Češi nejčastěji představí pod pojmem tradiční nedělní oběd.",
       "servings_default": 6, "prep_minutes": 40, "cook_minutes": 150, "total_minutes": 190,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Svíčková stojí na dvou věcech: dlouho marinované a dušené hovězí a jemně protřená kořenová omáčka, ve které nesmí jít poznat, z čeho přesně je – jen že je hladká a smetanová.",
@@ -105,9 +105,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "vepro-knedlo-zelo",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_vepro-knedlo-zelo", "recipe_key": "vepro-knedlo-zelo",
       "title": "Vepřo knedlo zelo", "slug": "vepro-knedlo-zelo", "country": "CZ",
-      "excerpt": "Pečené vepřové plec s křupavou kůrčičkou, houskový knedlík a dušené zelí – trojice, která definuje nedělní oběd po česku.",
+      "excerpt": "Vepřo knedlo zelo spojuje na jednom talíři tři samostatné části, které teprve dohromady dávají smysl. Vepřová plec se peče s česnekem a kmínem do šťavnata a s křupavou kůrčičkou, houskový knedlík se krájí nití, aby zůstal nadýchaný a nasál šťávu z pečeně, a mírně nakyslé dušené zelí celé jídlo odlehčí. Kombinace se v Čechách ustálila v devatenáctém století a od té doby platí za nejtypičtější národní oběd vůbec. Zelí lze připravit i z kysaného základu, pak se vynechává ocet a přidá špetka cukru navíc.",
       "servings_default": 6, "prep_minutes": 30, "cook_minutes": 120, "total_minutes": 150,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Tři samostatné části, které dohromady fungují jako jedno jídlo: šťavnatá pečeně, nadýchaný knedlík nasávající šťávu a mírně nakyslé zelí, které celé jídlo odlehčí.",
@@ -149,9 +149,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "kulajda",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_kulajda", "recipe_key": "kulajda",
       "title": "Kulajda", "slug": "kulajda", "country": "CZ",
-      "excerpt": "Krémová bramborová polévka na houbách, nakysaná octem a dozdobená ztraceným vejcem a koprem.",
+      "excerpt": "Kulajda je jihočeská krémová polévka, která stojí na jasném kontrastu – sladká zakysaná smetana proti výrazně kyselému octu, oba prvky musí být v rovnováze. Základ tvoří brambory a sušené houby, dochucené bobkovým listem a novým kořením, na talíři ji pak zdobí ztracené vejce a čerstvý kopr. Kdysi šlo o typické jídlo chudších jihočeských domácností, kde bylo maso vzácností a polévka na houbách a smetaně dokázala nasytit celou rodinu. V sezóně lze sušené houby bez potíží nahradit čerstvými hříbky nebo žampiony.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 30, "total_minutes": 45,
       "difficulty": "easy", "meal_type": ["soup"], "diet": ["vegetarian"],
       "about": "Kulajda je typická jihočeská polévka, jejíž chuť stojí na kontrastu sladké smetany a ostré kyselosti octa – obojí musí být v rovnováze.",
@@ -186,9 +186,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "bramboraky",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_bramboraky", "recipe_key": "bramboraky",
       "title": "Bramboráky", "slug": "bramboraky", "country": "CZ",
-      "excerpt": "Smažené bramborové placky s majoránkou a česnekem, křupavé po okrajích a měkké uprostřed.",
+      "excerpt": "Bramboráky jsou smažené bramborové placky, u kterých rozhoduje poměr nastrouhaných brambor a mouky – těsto má být hutné, ale nesmí být gumové, a majoránka s česnekem v něm nesmí chybět. Smaží se na pořádně rozehřátém oleji, jinak placky nasají tuk místo toho, aby zkřupavěly po okrajích a zůstaly měkké uprostřed. Vznikly z potřeby využít levné a dostupné brambory a dnes fungují stejně dobře jako svačina i jako příloha k masitým jídlům. Do těsta lze přidat i najemno nakrájenou uzenou krkovičku pro výraznější chuť.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 20, "total_minutes": 40,
       "difficulty": "easy", "meal_type": ["side-dish", "appetizer"], "diet": ["vegetarian"],
       "about": "Dobrý bramborák stojí na správném poměru nastrouhaných brambor a mouky – těsto musí být hutné, ale ne gumové, a majoránka nesmí chybět.",
@@ -221,9 +221,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "buchty",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_buchty", "recipe_key": "buchty",
       "title": "České buchty", "slug": "ceske-buchty", "country": "CZ",
-      "excerpt": "Kynuté pečivo plněné tvarohem nebo povidly, pečené v plechu bok po boku, aby se navzájem měkce lepily.",
+      "excerpt": "České buchty jsou kynuté pečivo plněné tvarohem nebo švestkovými povidly, které se pečou na plechu těsně vedle sebe, aby se boky navzájem podusily do měkka. Základem je jemné kynuté těsto z mouky, mléka a droždí, po upečení se buchty ještě posypou moučkovým cukrem. Tradičně se pekly na velký plech pro celou rodinu jako nedělní pečivo, a přestože příprava těsta zabere čas, výsledek vydrží čerstvý několik dní. Tvarohovou nebo povidlovou náplň lze nahradit i mletým mákem smíchaným s cukrem a troškou horkého mléka.",
       "servings_default": 12, "prep_minutes": 40, "cook_minutes": 25, "total_minutes": 65,
       "difficulty": "medium", "meal_type": ["dessert", "bakery"], "diet": ["vegetarian"],
       "about": "Buchty jsou postavené na jemném kynutém těstě, které se plní tvarohem nebo povidly a peče na plechu tak blízko u sebe, že se boky navzájem podusí do měkka.",
@@ -262,9 +262,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "bryndzove-halusky",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_bryndzove-halusky", "recipe_key": "bryndzove-halusky",
       "title": "Bryndzové halušky", "slug": "bryndzove-halusky", "country": "SK",
-      "excerpt": "Bramborové noky zapracované do slané ovčí bryndze a posypané opečenou slaninou – slovenské národní jídlo.",
+      "excerpt": "Bryndzové halušky jsou slovenské národní jídlo postavené na dvou surovinách – bramborových nocích a ovčí bryndzi. Základ tvoří jednoduché bramborové noky, výslednou chuť ale nejvíc určuje použitá bryndza, ostřejší a slanější sýr dá pokrmu mnohem plnější chuť. Bryndzi je dobré vždy trochu rozředit vodou z vaření halušek, jinak zůstane hrudkovitá a nerozprostře se rovnoměrně po talíři. Nakonec se vše posype osmaženou uzenou slaninou. Pocházejí z horských oblastí severního Slovenska, kde se odedávna chovaly ovce a vyráběla bryndza, a místo slaniny je lze podávat i s osmaženým kysaným zelím.",
       "servings_default": 4, "prep_minutes": 25, "cook_minutes": 15, "total_minutes": 40,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Halušky jsou v jádru jednoduché bramborové noky, ale celé jídlo stojí a padá s kvalitou bryndze – čím výraznější a slanější, tím lepší výsledek.",
@@ -295,9 +295,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "kapustnica",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_kapustnica", "recipe_key": "kapustnica",
       "title": "Kapustnica", "slug": "kapustnica", "country": "SK",
-      "excerpt": "Sytá vánoční polévka z kysaného zelí, uzeného masa a sušených hub, typická pro slovenský štědrovečerní stůl.",
+      "excerpt": "Kapustnica je sytá slovenská polévka, kterou hospodyně vaří spíš na svátek než na všední den – tradičně patří ke štědrovečernímu stolu. Základ tvoří kysané zelí a uzené maso, chuť dál prohlubují sušené houby, sladká paprika a sušené švestky, které dodávají jemnou sladkost proti kyselosti zelí. Aby všechny chutě stihly provázat, potřebuje aspoň hodinu pomalého vaření, a druhý den po odležení chutná ještě lépe. V různých regionech Slovenska se recept mírně liší, švestky lze bez obav vynechat, polévka pak bude výrazněji kyselá.",
       "servings_default": 6, "prep_minutes": 20, "cook_minutes": 60, "total_minutes": 80,
       "difficulty": "medium", "meal_type": ["soup"], "diet": [],
       "about": "Kapustnica je jedna z mála polévek, která se vaří spíš na svátek než na všední den – kysané zelí a uzené maso jí dávají hloubku, kterou musí dohnat aspoň hodina vaření.",
@@ -334,9 +334,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "lokse",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_lokse", "recipe_key": "lokse",
       "title": "Lokše", "slug": "lokse", "country": "SK",
-      "excerpt": "Tenké bramborové placky pečené nasucho na plotně, slané i sladké podle toho, čím je naplníte.",
+      "excerpt": "Lokše jsou tenké bramborové placky z východního Slovenska, které se na rozdíl od bramboráků nesmaží na oleji, ale pečou nasucho na rozpálené plotně nebo pánvi. Výsledkem je tenký, pružný placek podobný tortille, který se plní podle chuti buď slaně zelím, nebo sladce mákem. Brambory je potřeba lisovat, dokud jsou ještě horké, protože ve vychladlém stavu se hůř zpracovávají a těsto je pak lepivější. Sladká varianta plněná mákem s cukrem a máslem se podává jako jednoduchý dezert po hlavním jídle.",
       "servings_default": 4, "prep_minutes": 25, "cook_minutes": 20, "total_minutes": 45,
       "difficulty": "easy", "meal_type": ["side-dish", "bakery"], "diet": ["vegetarian"],
       "about": "Lokše se od bramboráků liší tím, že se nesmaží na oleji, ale pečou nasucho na rozpálené plotně nebo pánvi – výsledek je tenký, pružný placek podobný tortille.",
@@ -364,9 +364,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "pirohy-bryndza",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_pirohy-bryndza", "recipe_key": "pirohy-bryndza",
       "title": "Pirohy s bryndzou", "slug": "pirohy-s-bryndzou", "country": "SK",
-      "excerpt": "Vařené taštičky plněné bramborem a bryndzí, podávané s osmaženou cibulkou a slaninou.",
+      "excerpt": "Pirohy s bryndzou jsou slovenské taštičky, které se na rozdíl od jiných verzí vaří, nikoli smaží – náplň z bramboru a bryndze tak po uvaření zůstává krémová a jemně slaná. Okraje těstových taštiček je potřeba pořádně stisknout prsty nebo vidličkou, jinak se náplň při vaření rozvaří ven do vody. Na talíři je doplňuje osmažená cibulka a křupavá uzená slanina. Pirohy patří k jídlům sdíleným napříč střední a východní Evropou, slovenská verze s bryndzí je typická hlavně pro severní regiony země a náplň lze obohatit i o osmažené kysané zelí.",
       "servings_default": 4, "prep_minutes": 40, "cook_minutes": 15, "total_minutes": 55,
       "difficulty": "medium", "meal_type": ["appetizer", "main-course"], "diet": [],
       "about": "Slovenské pirohy jsou vařené, ne smažené – náplň z bramboru a bryndze zůstane po uvaření krémová a jemně slaná.",
@@ -399,9 +399,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "demikat",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_demikat", "recipe_key": "demikat",
       "title": "Demikát", "slug": "demikat", "country": "SK",
-      "excerpt": "Bramborová polévka se sušenými houbami a zakysanou smetanou, prostá horská klasika z rychlých surovin.",
+      "excerpt": "Demikát je jednoduchá pastýřská polévka slovenských a rusínských horských oblastí, uvařená z toho, co bylo zrovna po ruce – z brambor, sušených hub a trochy zakysané smetany. Přesto společně vytvoří hutnou a hřejivou chuť, která zasytí i po dlouhém dni venku. Smetanu je potřeba vždy nejdřív rozšlehat s moukou, jinak by se v horké polévce srazila a zůstala hrudkovitá. Kmín a majoránka dodávají polévce charakteristickou horskou vůni. Recept dokazuje, že nejlepší jídla někdy vznikají z toho nejmenšího počtu surovin.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 30, "total_minutes": 45,
       "difficulty": "easy", "meal_type": ["soup"], "diet": ["vegetarian"],
       "about": "Demikát je jednoduchá pastýřská polévka – jen brambory, houby a trochu smetany, které společně vytvoří hutnou, hřejivou chuť.",
@@ -435,10 +435,10 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "pierogi-ruskie",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_pierogi-ruskie", "recipe_key": "pierogi-ruskie",
       "title": "Pierogi ruskie", "slug": "pierogi-ruskie", "country": "PL",
       "original_title": "Pierogi ruskie",
-      "excerpt": "Vařené polské taštičky plněné bramborem a tvarohem, podávané s osmaženou cibulkou.",
+      "excerpt": "Pierogi ruskie jsou vařené polské taštičky s náplní z brambor a tvarohu, které se navzdory názvu nevztahují k Rusku – odkazují na historickou oblast Rusi na dnešní západní Ukrajině, odkud náplň pochází. Po uvaření je lze ještě krátce opéct na pánvi na másle, díky čemuž získají křupavější povrch a zajímavější kontrast textur. Podávají se klasicky s osmaženou cibulkou. Dnes patří k nejznámějším polským jídlům vůbec a bramborovo-tvarohová náplň se dá bez potíží nahradit i dušeným mletým masem s cibulí.",
       "servings_default": 4, "prep_minutes": 45, "cook_minutes": 15, "total_minutes": 60,
       "difficulty": "medium", "meal_type": ["appetizer", "main-course"], "diet": [],
       "about": "Navzdory názvu nemají pierogi ruskie s Ruskem nic společného – jméno odkazuje na historickou oblast Rusi na dnešní západní Ukrajině, odkud náplň z bramboru a tvarohu pochází.",
@@ -471,9 +471,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "bigos",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_bigos", "recipe_key": "bigos",
       "title": "Bigos", "slug": "bigos", "country": "PL",
-      "excerpt": "Loveký guláš z kysaného a bílého zelí, uzeného masa a klobásy, který čím déle vaří a odpočívá, tím lépe chutná.",
+      "excerpt": "Bigos je polský loveký guláš z kysaného i bílého zelí, uzeného masa a klobásy, tradičně se připravuje ve velkém množství najednou. Opakovaným ohříváním totiž chuť jen sílí, proto ho zkušené hospodyně nikdy nepodávají hned po uvaření, ale až po pár dnech odležení. Základ zelí doplňují sušené houby, sušené švestky pro nenápadnou sladkost a trochu červeného vína. Je považován za jedno z polských národních jídel s kořeny ve šlechtické i lovecké kuchyni a lze ho obohatit i zvěřinou nebo více druhy uzenin podle toho, co je zrovna po ruce.",
       "servings_default": 6, "prep_minutes": 30, "cook_minutes": 120, "total_minutes": 150,
       "difficulty": "hard", "meal_type": ["main-course"], "diet": [],
       "about": "Bigos se v Polsku vaří ve velkém a klidně i několik dní dopředu – jeho chuť se opakovaným ohříváním jen prohlubuje.",
@@ -512,9 +512,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "zurek",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_zurek", "recipe_key": "zurek",
       "title": "Żurek", "slug": "zurek", "country": "PL",
-      "excerpt": "Kysaná žitná polévka s klobásou, bramborami a vejcem, často podávaná ve vydlabaném bochníku chleba.",
+      "excerpt": "Żurek je jedna z nejstarších polských polévek, jejíž typicky nakyslou chuť tradičně dává týden kvasící žitný zákvas. Doma se dá tato chuť rychle napodobit kombinací octa a trochy nálevu z kysaného zelí, výsledek se výrazně přiblíží originálu. K zákvasu se přidává uzená klobása, brambory a natvrdo vařené vejce, na talíři nechybí ani křen. Někdy se żurek podává přímo ve vydlabaném bochníku chleba, který zdvojnásobí hodování. Kysaný základ podobný chuti mívají i sousední kuchyně, například český kyselo, a existuje i bílá varianta bez klobásy jako postní jídlo.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 35, "total_minutes": 55,
       "difficulty": "medium", "meal_type": ["soup"], "diet": [],
       "about": "Žurek je typický svou lehce nakyslou chutí, kterou tradičně dává týden kvasící žitný zákvas – doma jde chuť rychle napodobit trochou octa a syrovátky.",
@@ -552,10 +552,10 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "golabki",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_golabki", "recipe_key": "golabki",
       "title": "Gołąbki", "slug": "golabki", "country": "PL",
       "original_title": "Gołąbki",
-      "excerpt": "Zelné závitky plněné masem a rýží, dušené v rajčatové omáčce do měkka.",
+      "excerpt": "Gołąbki v překladu znamenají holoubci – zavinuté listy zelí prý svým tvarem skutečně připomínají ptáčky na talíři. Náplň z mletého masa a rýže se po zabalení do zelných listů pomalu dodusí v rajčatové omáčce doměkka, takže maso zůstává šťavnaté a rýže dobře provařená. Tlustý středový žeber listu je dobré před balením opatrně seříznout nožem, list se pak mnohem lépe balí a nepraská. Plněné zelné závitky se v různých podobách vaří napříč celou střední a východní Evropou, v Polsku patří ke klasice nedělního oběda a bez masa fungují i jako postní verze s houbami a zeleninou.",
       "servings_default": 4, "prep_minutes": 40, "cook_minutes": 50, "total_minutes": 90,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Gołąbki doslova znamená „holoubci“ – zavinuté listy zelí prý svým tvarem připomínají ptáčky. Náplň z masa a rýže se v omáčce pomalu dodusí.",
@@ -590,9 +590,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "placki-ziemniaczane",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_placki-ziemniaczane", "recipe_key": "placki-ziemniaczane",
       "title": "Placki ziemniaczane", "slug": "placki-ziemniaczane", "country": "PL",
-      "excerpt": "Polské smažené bramborové placky, blízká obdoba českých bramboráků, podávané s cukrem nebo zakysanou smetanou.",
+      "excerpt": "Placki ziemniaczane jsou polské smažené bramborové placky, blízká obdoba českých bramboráků, které jsou v Polsku rozšířené po celé zemi. Hlavní rozdíl oproti bramborákům je ve způsobu servírování, podávají se totiž stejně často s cukrem jako sladká tečka, jindy zase slané se zakysanou smetanou. Nastrouhané brambory je před smažením potřeba pořádně vymačkat od přebytečné vody, jinak by se placky rozmočily a nezkřupavěly. Patří k nejběžnějším bramborovým jídlům v celé zemi a sladká i slaná varianta se dají snadno střídat podle nálady.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 20, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["side-dish"], "diet": ["vegetarian"],
       "about": "Na rozdíl od českých bramboráků se placki ziemniaczane často podávají i jako sladké jídlo, posypané cukrem, nebo naopak slané se zakysanou smetanou.",
@@ -624,10 +624,10 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "sauerbraten",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_sauerbraten", "recipe_key": "sauerbraten",
       "title": "Sauerbraten", "slug": "sauerbraten", "country": "DE",
       "original_title": "Sauerbraten",
-      "excerpt": "Několik dní marinované hovězí dušené doměkka v nakyslé omáčce z kořenové zeleniny a octa.",
+      "excerpt": "Sauerbraten je německé jídlo, které je oslavou trpělivosti – hovězí maso se marinuje klidně i čtyři až pět dní, díky čemuž pořádně zkřehne a získá charakteristickou nakyslou chuť, kterou nic jiného nenahradí. Marináda z červeného vína, octu a kořenové zeleniny musí maso zcela zakrývat, aby marinovalo rovnoměrně ze všech stran. Po dušení se zjemní perníkem a trochou cukru do sametové konzistence. Patří mezi nejstarší německá masová jídla, kdy marináda historicky sloužila i jako způsob konzervace masa, a místo perníku lze omáčku dosladit i hrstí rozinek.",
       "servings_default": 6, "prep_minutes": 40, "cook_minutes": 180, "total_minutes": 220,
       "difficulty": "hard", "meal_type": ["main-course"], "diet": [],
       "about": "Sauerbraten je oslavou trpělivosti – maso se marinuje klidně i pět dní, díky čemuž zkřehne a získá charakteristickou nakyslou chuť, kterou nic jiného nenahradí.",
@@ -667,10 +667,10 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "schweinshaxe",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_schweinshaxe", "recipe_key": "schweinshaxe",
       "title": "Schweinshaxe", "slug": "schweinshaxe", "country": "DE",
       "original_title": "Schweinshaxe",
-      "excerpt": "Pečené vepřové koleno s křupavou kůrčičkou, klasika bavorských hostinců.",
+      "excerpt": "Schweinshaxe je pečené vepřové koleno s křupavou kůrčičkou, klasika bavorských hostinců podávaná tradičně k pivu. Tajemství spočívá v kůži – před pečením se musí naříznout a dostatečně dlouho péct, aby zkřupavěla do sklovité křehkosti, která pod zuby praská. Naříznout se má až po osušení masa, protože suchý povrch zkřupavatí spolehlivěji než vlhký. K masu patří jednoduchá zelenina a vývar, ve kterém se koleno předtím dusí doměkka. Je to typická bavorská a durynská specialita, která na stole hostinců přežívá po celá desetiletí beze změny.",
       "servings_default": 2, "prep_minutes": 20, "cook_minutes": 120, "total_minutes": 140,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Tajemství správné schweinshaxe je v kůži – musí se před pečením naříznout a dostatečně dlouho péct, aby zkřupavěla do skla podobné křehkosti.",
@@ -702,10 +702,10 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "currywurst",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_currywurst", "recipe_key": "currywurst",
       "title": "Currywurst", "slug": "currywurst", "country": "DE",
       "original_title": "Currywurst",
-      "excerpt": "Grilovaná klobása nakrájená na kolečka a politá kečupovo-kari omáčkou – klasika berlínské pouliční kuchyně.",
+      "excerpt": "Currywurst je klasika berlínské pouliční kuchyně – grilovaná klobása nakrájená na kolečka a přelitá omáčkou z kečupu, worcesterské omáčky a kari koření. Podle legendy ji v roce 1949 vynalezla berlínská hostinská Herta Heuwerová, když tyto suroviny smíchala pro dělníky hledající rychlé a levné jídlo. Omáčku je dobré připravit dopředu ve větším množství, protože v lednici vydrží i několik dní a chuťově se jen zlepšuje. V Berlíně se často používají párky bez střívka, které dají jídlu měkčí strukturu, a dodnes jde o nejrozšířenější německý street food vůbec.",
       "servings_default": 4, "prep_minutes": 10, "cook_minutes": 20, "total_minutes": 30,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Currywurst vznikl v poválečném Berlíně jako rychlé, levné jídlo pro dělníky a dodnes patří k nejrozšířenějšímu německému street foodu.",
@@ -736,10 +736,10 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "kartoffelpuffer",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_kartoffelpuffer", "recipe_key": "kartoffelpuffer",
       "title": "Kartoffelpuffer", "slug": "kartoffelpuffer", "country": "DE",
       "original_title": "Kartoffelpuffer",
-      "excerpt": "Německé smažené bramborové placky, tradičně podávané s jablečným kompotem.",
+      "excerpt": "Kartoffelpuffer jsou německé smažené bramborové placky, hlavní rozdíl oproti českým bramborákům je v přílohách, ke kterým se podávají – sladký jablečný kompot je tu stejně běžný jako zakysaná smetana. Nejlépe fungují smažené na menší a tenčí kousky, které rychleji a rovnoměrněji propečou dozlatova. Jsou rozšířené po celém Německu a v různých regionech nesou i různá jména, například Reibekuchen na Porýní. Jednoduchá surovinová základna z brambor, cibule a vajec z nich dělá spolehlivou přílohu i rychlou večeři.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 20, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["side-dish"], "diet": ["vegetarian"],
       "about": "Kartoffelpuffer se od bramboráků liší hlavně tím, s čím se podávají – sladký jablečný kompot k nim patří stejně přirozeně jako zakysaná smetana.",
@@ -770,10 +770,10 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "konigsberger-klopse",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_konigsberger-klopse", "recipe_key": "konigsberger-klopse",
       "title": "Königsberger Klopse", "slug": "konigsberger-klopse", "country": "DE",
       "original_title": "Königsberger Klopse",
-      "excerpt": "Masové koule ve světlé kaparové omáčce, klasika bývalého pruského Königsbergu.",
+      "excerpt": "Königsberger Klopse jsou masové koule ve světlé kaparové omáčce, klasika bývalého pruského města Königsberg, dnešního Kaliningradu. Na rozdíl od většiny masových kuliček se nesmaží, ale jemně vaří přímo ve vývaru, díky čemuž zůstávají křehké a šťavnaté uvnitř. Vývar z vaření koulí je základem následné omáčky a nese většinu chuti, proto se nikdy nevylévá. Omáčka se zjemní máslem, moukou, kapary a špetkou citronu pro svěží tečku na konci. Patří ke klasikám severoněmecké kuchyně a jméno si i dnes nese podle města, ve kterém vznikla.",
       "servings_default": 4, "prep_minutes": 25, "cook_minutes": 30, "total_minutes": 55,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Na rozdíl od většiny masových kuliček se königsberger klopse nesmaží, ale jemně vaří ve vývaru – zůstávají tak křehké a šťavnaté.",

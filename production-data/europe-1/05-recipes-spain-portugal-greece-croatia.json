@@ -66,9 +66,9 @@
   ],
   "recipes": [
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "paella-valenciana",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_paella-valenciana", "recipe_key": "paella-valenciana",
       "title": "Paella Valenciana", "slug": "paella-valenciana", "country": "ES",
-      "excerpt": "Šafránová rýže s kuřecím, králičím a fazolemi, vařená na široké mělké pánvi z Valencie.",
+      "excerpt": "Do tradiční valencijské verze se mořské plody nedávají, ty patří spíš do pobřežních variant zvaných paella de marisco. Základem jsou maso, fazole a rýže, kterou po přidání vývaru už nikdy nemícháte, jen tak se na dně vytvoří žádaná křupavá vrstva socarrat. Pochází z okolí Valencie, kde se vařila na venkovních ohních z toho, co bylo po ruce – drůbeže, králíka a fazolí z okolních polí. Bílé fazole lze doplnit i zelenými fazolovými lusky, základní princip nemíchané rýže ale zůstává vždy stejný.",
       "servings_default": 6, "prep_minutes": 25, "cook_minutes": 45, "total_minutes": 70,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Pravá valencijská paella tradičně neobsahuje mořské plody – ty patří spíš do pobřežních variant. Základ tvoří maso, fazole a rýže, která se nikdy nemíchá, ať se na dně vytvoří křupavá vrstva socarrat.",
@@ -102,9 +102,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "tortilla-espanola",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_tortilla-espanola", "recipe_key": "tortilla-espanola",
       "title": "Tortilla Española", "slug": "tortilla-espanola", "country": "ES",
-      "excerpt": "Hutná omeleta z brambor a cibule, smažená pomalu na oleji a poté zapečená z obou stran do zlatova.",
+      "excerpt": "Tortilla española je španělská bramborová omeleta, jedno z nejrozšířenějších španělských jídel, podávaná jako tapas i jako plnohodnotný chod. Tajemství spočívá v pomalém smažení brambor ve větším množství oleje, téměř jako při konfitování, jedině tak zůstanou uvnitř měkké a jemné místo křupavé. Obracení usnadní plochý talíř – tortillu na něj sklopte z pánve a poté ji z talíře zase vraťte zpět, aby se propekla i z druhé strany. Jednoduchost surovin je zároveň důvodem, proč se toto jídlo natolik rozšířilo po celém Španělsku.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 30, "total_minutes": 50,
       "difficulty": "medium", "meal_type": ["appetizer", "main-course"], "diet": ["vegetarian"],
       "about": "Klíč k dobré tortille je pomalu smažit brambory v hodně oleje, skoro jako by se konfitovaly – jen tak zůstanou měkké a jemné, ne křupavé.",
@@ -133,9 +133,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "gazpacho",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_gazpacho", "recipe_key": "gazpacho",
       "title": "Gazpacho", "slug": "gazpacho", "country": "ES",
-      "excerpt": "Studená andaluská polévka z rozmixovaných rajčat, papriky, okurky a olivového oleje.",
+      "excerpt": "Gazpacho je studená andaluská polévka, u které se vůbec nevaří, celá vznikne rozmixováním syrové zeleniny, takže kvalita a zralost rajčat je pro výslednou chuť naprosto zásadní. Pochází z Andalusie, kde vzniklo jako osvěžující jídlo pro horké letní dny na venkovských polích. Nejlépe chutná pořádně vychlazené, klidně ho lze nechat v lednici přes noc, aby se chutě spojily a polévka byla příjemně studená i po naservírování. Právě jednoduchost přípravy bez vaření z něj dělá typické letní jídlo jižního Španělska.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 0, "total_minutes": 15,
       "difficulty": "easy", "meal_type": ["soup"], "diet": ["vegetarian"],
       "about": "Gazpacho se nevaří – celá polévka vzniká jen rozmixováním syrové zeleniny, proto tak záleží na tom, aby byla rajčata opravdu zralá.",
@@ -166,9 +166,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "patatas-bravas",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_patatas-bravas", "recipe_key": "patatas-bravas",
       "title": "Patatas bravas", "slug": "patatas-bravas", "country": "ES",
-      "excerpt": "Smažené bramborové kostky s pálivou rajčatovou omáčkou a česnekovým aioli, klasika španělských tapas barů.",
+      "excerpt": "Patatas bravas jsou smažené brambory politá pálivou omáčkou a jemným česnekovým aioli, patří k nejrozšířenějším tapas po celém Španělsku. Slovo bravas znamená „divoké“ a odkazuje právě na pálivost omáčky, jejíž recept se region od regionu liší. Při přípravě aioli je potřeba olej přilévat za stálého mixování opravdu pomalu, jinak se emulze nespojí a omáčka se srazí. Díky jednoduchosti surovin – brambory, olej, paprika a česnek – se toto jídlo stalo standardní součástí španělských tapas barů.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 30, "total_minutes": 45,
       "difficulty": "easy", "meal_type": ["appetizer", "side-dish"], "diet": ["vegetarian"],
       "about": "Bravas znamená „divoké“ – odkazuje na pálivost omáčky, která se na smažené brambory lije spolu s jemným česnekovým aioli.",
@@ -201,9 +201,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "croquetas-de-jamon",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_croquetas-de-jamon", "recipe_key": "croquetas-de-jamon",
       "title": "Croquetas de jamón", "slug": "croquetas-de-jamon", "country": "ES",
-      "excerpt": "Smažené krokety s krémovou bešamelovou náplní plnou najemno nakrájené šunky.",
+      "excerpt": "Croquetas de jamón jsou smažené krokety s hutnou bešamelovou náplní a šunkou uvnitř, patří k nejoblíbenějším španělským tapas. Základem je hustá bešamelová hmota, kterou je potřeba před tvarováním pořádně vychladit, jinak se krokety při smažení rozpadnou. Hmotu je proto dobré nechat klidně vychladit přes noc, čím tužší je, tím lépe se tvaruje a méně se při smažení rozpadá. Kromě šunkové náplně existují i houbové nebo kuřecí varianty, princip hutné vychlazené bešamelové hmoty ale zůstává stejný.",
       "servings_default": 4, "prep_minutes": 30, "cook_minutes": 20, "total_minutes": 50,
       "difficulty": "medium", "meal_type": ["appetizer"], "diet": [],
       "about": "Základem croquetas je hustá bešamelová hmota, která musí před tvarováním pořádně vychladit – jinak se krokety při smažení rozpadnou.",
@@ -238,9 +238,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "bacalhau-a-bras",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_bacalhau-a-bras", "recipe_key": "bacalhau-a-bras",
       "title": "Bacalhau à Brás", "slug": "bacalhau-a-bras", "country": "PT",
-      "excerpt": "Strouhaná sušená treska zapečená s bramborovými hranolky, vejci a olivami.",
+      "excerpt": "Bacalhau à Brás patří k nejoblíbenějším portugalským způsobům přípravy sušené tresky, rozstřepené kousky ryby se tu spojí s křehkými bramborovými nudličkami a rozšlehanými vejci do jedné měkké, hutné směsi. Pochází z Lisabonu a patří mezi stovky portugalských receptů na sušenou tresku, které se v zemi tradičně připravují. Tresku je potřeba odmáčet dostatečně dlouho a vodu při tom několikrát vyměnit, jinak zůstane jídlo nepříjemně slané. Jednoduchá kombinace tresky, brambor a vajec z něj dělá jedno z nejrozšířenějších portugalských domácích jídel.",
       "servings_default": 4, "prep_minutes": 30, "cook_minutes": 25, "total_minutes": 55,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Bacalhau à Brás je jeden z nejoblíbenějších způsobů úpravy sušené tresky – rozstřepené kousky se spojí s křehkými bramborovými nudličkami a vejci do měkké, hutné směsi.",
@@ -273,9 +273,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "caldo-verde",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_caldo-verde", "recipe_key": "caldo-verde",
       "title": "Caldo verde", "slug": "caldo-verde", "country": "PT",
-      "excerpt": "Jednoduchá zelná polévka s bramborovou základnou a plátky uzené klobásy chouriço.",
+      "excerpt": "Caldo verde je jednoduchá venkovská polévka ze severního Portugalska, patří k nejrozšířenějším portugalským polévkám vůbec. Postup je jednoduchý, bramborový vývar se nejdřív rozmixuje do hladka a teprve pak se do něj přidá tence nakrájený kadeřávek, díky tomu zůstane svěže zelený a nerozvaří se. Kadeřávek je potřeba krájet co nejtenčeji, v tradiční verzi jsou nudličky téměř průsvitné, což polévce dává i její charakteristický vzhled. Jednoduchá kombinace brambor a zelené kapusty z ní dělá typické venkovské jídlo severního Portugalska.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 30, "total_minutes": 45,
       "difficulty": "easy", "meal_type": ["soup"], "diet": [],
       "about": "Caldo verde je jednoduchá venkovská polévka – bramborový základ se rozmixuje dohladka a teprve pak se do něj vrátí tence nakrájený kadeřávek, aby zůstal svěže zelený.",
@@ -306,9 +306,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "pasteis-de-nata",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_pasteis-de-nata", "recipe_key": "pasteis-de-nata",
       "title": "Pastéis de nata", "slug": "pasteis-de-nata", "country": "PT",
-      "excerpt": "Křehké košíčky z listového těsta s vaječným krémem, tradičně dopečené do skvrnitě karamelizovaného povrchu.",
+      "excerpt": "Pastéis de nata jsou malé portugalské koláčky s krémovou náplní v křehkém listovém těstě, vznikly v klášterní cukrárně u kláštera Jerónimos v Lisabonu. Dnešní nejznámější recept střeží lisabonská cukrárna Pastéis de Belém, která ho vaří podle původní klášterní tradice. Nezbytností je přitom vysoko rozpálená trouba, díky které se krém místy až připálí do tmavých skvrn – právě ty dodávají koláčkům typickou karamelovou chuť. Tmavé skvrny na povrchu jsou tedy žádaným znakem správně upečeného koláčku, ne chybou přípravy.",
       "servings_default": 12, "prep_minutes": 30, "cook_minutes": 20, "total_minutes": 50,
       "difficulty": "medium", "meal_type": ["dessert"], "diet": ["vegetarian"],
       "about": "Klíč k pravému pastel de nata je vysoká teplota trouby – krém se musí místy až spálit do tmavých skvrn, které dají dezertu charakteristickou karamelovou chuť.",
@@ -340,9 +340,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "arroz-de-marisco",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_arroz-de-marisco", "recipe_key": "arroz-de-marisco",
       "title": "Arroz de marisco", "slug": "arroz-de-marisco", "country": "PT",
-      "excerpt": "Šťavnatá rýže na mořský způsob s krevetami, slávkami a rajčatovým základem.",
+      "excerpt": "Arroz de marisco je typické jídlo portugalského pobřeží, které se vaří z čerstvého denního úlovku mořských plodů. Na rozdíl od španělské paelly zůstává vždy šťavnaté, skoro jako hustší polévka, rýže se tu na rozdíl od paelly nikdy nesmaží dosucha. Slávky, které se po uvaření neotevřely, je potřeba vyřadit, nejsou vhodné ke konzumaci a mohly by pokrmu uškodit. Právě šťavnatost a bohatství mořských plodů dělá z tohoto jídla jednu z nejoblíbenějších portugalských pobřežních specialit.",
       "servings_default": 4, "prep_minutes": 25, "cook_minutes": 30, "total_minutes": 55,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Na rozdíl od španělské paelly zůstává arroz de marisco vždy šťavnaté, skoro jako hustší polévka – rýže se nikdy nesmaží dosucha.",
@@ -377,9 +377,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "francesinha",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_francesinha", "recipe_key": "francesinha",
       "title": "Francesinha", "slug": "francesinha", "country": "PT",
-      "excerpt": "Vydatný sendvič s masem, šunkou a sýrem, zalitý horkou pivně-rajčatovou omáčkou.",
+      "excerpt": "Francesinha, doslova „malá Francouzka“, je vydatný sendvič se svéráznou pivní omáčkou, vznikla v 50. letech 20. století v Portu. Vytvořil ji Portugalec, který se vrátil z Francie inspirovaný tamním croque monsieur, jen ho pojal mnohem vydatněji a doplnil místní omáčkou. Sýr musí sendvič zakrývat úplně, i po stranách, jinak se maso pod ním při zapékání vysuší a ztratí šťavnatost. Z jednoduché inspirace francouzským sendvičem se tak stalo jedno z nejtypičtějších jídel města Porto.",
       "servings_default": 2, "prep_minutes": 20, "cook_minutes": 25, "total_minutes": 45,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Francesinha (doslova „malá Francouzka“) vznikla jako místní pojetí francouzského croque monsieur – jen mnohem vydatnější a se svéráznou pivní omáčkou.",
@@ -413,9 +413,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "moussaka",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_moussaka", "recipe_key": "moussaka",
       "title": "Moussaka", "slug": "moussaka", "country": "GR",
-      "excerpt": "Vrstvený zapékaný lilek s mletým masem v rajčatové omáčce a krémovým bešamelem navrchu.",
+      "excerpt": "Moussaka je řecká zapékaná specialita, kterou lze přirovnat k lasagním, jen místo těstovin se tu střídají vrstvy opečeného lilku, masové omáčky výrazně provoněné skořicí a hustého bešamelu. Existuje v mnoha balkánských a blízkovýchodních obměnách, dnešní řeckou podobu s bešamelem jí ve 20. letech 20. století dal kuchař Nikolaos Tselementes. Krájí se mnohem lépe, když trochu vychladne, rovnou z trouby se totiž snadno rozpadá a vrstvy se mísí dohromady. Kombinace lilku, masa a bešamelu z ní dělá jedno z nejznámějších řeckých jídel vůbec.",
       "servings_default": 6, "prep_minutes": 40, "cook_minutes": 60, "total_minutes": 100,
       "difficulty": "hard", "meal_type": ["main-course"], "diet": [],
       "about": "Moussaka je řecká odpověď na lasagne – místo těstovin ale vrství opečený lilek, masovou omáčku s hodně skořice a hustý bešamel.",
@@ -454,9 +454,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "souvlaki",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_souvlaki", "recipe_key": "souvlaki",
       "title": "Souvlaki", "slug": "souvlaki", "country": "GR",
-      "excerpt": "Grilované vepřové špízy marinované v citronu a oregánu, podávané v pita chlebu s tzatziki.",
+      "excerpt": "Souvlaki je řecké maso grilované na špejli, rychlý oběd i večerní jídlo zároveň, patří k nejstarším řeckým jídlům – zmínky o grilovaném mase na špejli se objevují už ve starověkém Řecku. Klíčem k dobré přípravě je nenechat maso přemarinovat, citron by ho jinak rozvařil a zbavil šťavnatosti. Dřevěné špejle je dobré před napichováním namočit do vody, aby na grilu nehořely a maso se rovnoměrně propeklo. Vepřové maso lze nahradit i kuřecími stehny, princip rychlého grilování na špejli zůstává stejný.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 15, "total_minutes": 35,
       "difficulty": "easy", "meal_type": ["main-course"], "diet": [],
       "about": "Souvlaki je řecký rychlý oběd i večerní jídlo z grilu zároveň – klíčem je nenechat maso přemarinovat, citron by ho jinak rozvařil.",
@@ -489,9 +489,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "tzatziki",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_tzatziki", "recipe_key": "tzatziki",
       "title": "Tzatziki", "slug": "tzatziki", "country": "GR",
-      "excerpt": "Chladivá jogurtová omáčka s okurkou, česnekem a koprem, nezbytný doplněk k souvlaki i grilovanému masu.",
+      "excerpt": "Tzatziki je studená řecká omáčka z jogurtu a okurky, má kořeny v osmanské a blízkovýchodní kuchyni a v Řecku patří dnes k nejrozšířenějším studeným omáčkám. Nejdůležitější krok je pořádně zbavit okurku šťávy, jinak výsledná omáčka zůstane vodnatá a rychle se oddělí od jogurtu. Okurku je proto potřeba vždy pořádně vymačkat, přebytečná voda je nejčastější důvod, proč tzatziki nedrží hutnou konzistenci. Podává se studené jako příloha k masu z grilu i jako samostatná pomazánka k pečivu.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 0, "total_minutes": 15,
       "difficulty": "easy", "meal_type": ["side-dish", "sauce"], "diet": ["vegetarian"],
       "about": "Základ dobrého tzatziki je pořádně zbavit okurku vody – jinak omáčka zůstane řídká a rychle se srazí s jogurtem.",
@@ -520,9 +520,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "spanakopita",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_spanakopita", "recipe_key": "spanakopita",
       "title": "Spanakopita", "slug": "spanakopita", "country": "GR",
-      "excerpt": "Křehký koláč z listového těsta filo se špenátovou a fetovou náplní.",
+      "excerpt": "Spanakopita je řecký slaný koláč z tenkého filo těsta plněný špenátem, patří k nejrozšířenějším řeckým slaným koláčům a v různých obměnách se vaří po celé zemi. Práce s filo těstem vyžaduje rychlost, listy jsou extrémně tenké a bleskově vysychají, proto se ty, se kterými se zrovna nepracuje, musí přikrývat vlhkou utěrkou. Bez zakrytí se totiž těsto láme a stává se nepoužitelným ještě předtím, než se stihne naplnit a upéct. Křehkost tenkého těsta je zároveň tím, co dělá spanakopitu tak typickou pro řeckou kuchyni.",
       "servings_default": 6, "prep_minutes": 30, "cook_minutes": 40, "total_minutes": 70,
       "difficulty": "medium", "meal_type": ["appetizer", "bakery"], "diet": ["vegetarian"],
       "about": "Filo těsto je velmi tenké a rychle vysychá – při práci s ním je proto potřeba pracovat rychle a přikrývat vlhkou utěrkou.",
@@ -555,9 +555,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "horiatiki",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_horiatiki", "recipe_key": "horiatiki",
       "title": "Řecký salát", "slug": "recky-salat", "original_title": "Horiatiki", "country": "GR",
-      "excerpt": "Rajčata, okurka, cibule, olivy a plát fety, jen zakápnuté olivovým olejem – bez jediného lístku salátu.",
+      "excerpt": "Horiatiki, doslova „vesnický salát“, je nejrozšířenější řecký salát a mimo Řecko se stal synonymem pro „řecký salát“ obecně. Autentická podoba se bez listového salátu obejde úplně, tvoří ji jen zelenina, olivy a nahoře položený celý plát fety, nikdy ne nadrobená. Fetu je proto potřeba nechat celou, právě celý plát navrchu je typickým znakem pravého horiatiki a odlišuje ho od zahraničních napodobenin. Jednoduchost surovin – rajčata, okurka, cibule, olivy a feta – z něj dělá typický letní salát řeckého venkova.",
       "servings_default": 4, "prep_minutes": 15, "cook_minutes": 0, "total_minutes": 15,
       "difficulty": "easy", "meal_type": ["salad"], "diet": ["vegetarian"],
       "about": "Pravý řecký salát (horiatiki, doslova „vesnický“) se nedělá s listovým salátem – jen se zeleninou, olivami a celým plátem fety navrchu.",
@@ -589,9 +589,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "pasticada",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_pasticada", "recipe_key": "pasticada",
       "title": "Pašticada", "slug": "pasticada", "country": "HR",
-      "excerpt": "Dalmatské hovězí dušené na víně, kořenové zelenině a švestkových povidlech, tradičně podávané s domácími těstovinami.",
+      "excerpt": "Pašticada je slavnostní jídlo dalmatského pobřeží, tradičně se vařila na svatby a významné rodinné oslavy, kdy se na stůl podávalo dušené hovězí maso s bohatou omáčkou. Maso se tradičně nechává v marinádě odpočívat klidně i dva dny předem, aby stihlo nabrat hloubku chuti ještě dřív, než se vůbec dostane do hrnce. Delší marinování octem dodá masu typickou nakyslou hloubku, proto se nevyplácí ho vynechávat ani při nedostatku času na přípravu. Díky dlouhé přípravě a slavnostnímu charakteru zůstává pašticada dodnes spojena především se sváteční tabulí dalmatských rodin.",
       "servings_default": 6, "prep_minutes": 40, "cook_minutes": 180, "total_minutes": 220,
       "difficulty": "hard", "meal_type": ["main-course"], "diet": [],
       "about": "Pašticada je slavnostní dalmatské jídlo, které se tradičně nechává marinovat i dva dny předem, aby maso získalo hloubku chuti dřív, než se vůbec začne dusit.",
@@ -628,9 +628,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "crni-rizot",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_crni-rizot", "recipe_key": "crni-rizot",
       "title": "Černé rizoto", "slug": "cerne-rizoto", "original_title": "Crni rižot", "country": "HR",
-      "excerpt": "Rizoto se sépiemi a jejich inkoustem, klasika chorvatského jaderského pobřeží.",
+      "excerpt": "Crni rižot je chorvatské černé rizoto se sépiemi, typické jídlo chorvatského pobřeží a ostrovů, kde se sépie a jejich inkoust běžně používají v místní kuchyni. Právě sépiový inkoust je tím, co mu dá nejen typickou černou barvu, ale i jemně slanou, výrazně mořskou chuť, kterou žádná jiná surovina nenahradí. Před přidáním do rýže je dobré inkoust nejdřív rozpustit v troše teplého vývaru, rovnou v rýži by se hůř rozprostřel a barva by nebyla rovnoměrná. Výsledná syté černá barva je tak typickým poznávacím znakem tohoto pokrmu.",
       "servings_default": 4, "prep_minutes": 20, "cook_minutes": 30, "total_minutes": 50,
       "difficulty": "medium", "meal_type": ["main-course"], "diet": [],
       "about": "Sépiový inkoust dodá rizotu nejen charakteristickou černou barvu, ale i jemně slanou, mořskou chuť, která se ničím jiným nedá napodobit.",
@@ -666,9 +666,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "peka",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_peka", "recipe_key": "peka",
       "title": "Peka", "slug": "peka", "country": "HR",
-      "excerpt": "Maso a brambory pomalu pečené pod litinovým zvonovým poklopem přímo v žáru ohniště.",
+      "excerpt": "Peka je tradiční způsob přípravy jídla na chorvatském pobřeží a ostrovech používaný už po staletí, stejným slovem se označuje i samotný litinový poklop ve tvaru zvonu, jehož zasypáním žhavým popelem se pod ním maso a zelenina pomalu propečou. Bez peka poklopu lze podobný efekt, i když pomaleji, docílit i pečením v troubě přikryté alobalem při nízké teplotě. Místo jehněčího se pod pekou tradičně připravuje i chobotnice, princip pomalého pečení pod žhavým popelem zůstává stejný. Pomalé, rovnoměrné pečení je tím, co dává jídlům pod pekou jejich typickou šťavnatost.",
       "servings_default": 6, "prep_minutes": 30, "cook_minutes": 150, "total_minutes": 180,
       "difficulty": "hard", "meal_type": ["main-course"], "diet": [],
       "about": "Peka je zároveň název jídla i litinového poklopu ve tvaru zvonu, pod kterým se maso a zelenina pomalu pečou zavalené žhavým popelem.",
@@ -701,9 +701,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "zagorski-strukli",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_zagorski-strukli", "recipe_key": "zagorski-strukli",
       "title": "Zagorski štrukli", "slug": "zagorski-strukli", "country": "HR",
-      "excerpt": "Plněné taštičky s tvarohovou náplní ze severního Zagorje, vařené i pečené se smetanou.",
+      "excerpt": "Štrukli pocházejí z regionu Hrvatsko zagorje na severu Chorvatska a existují v desítkách slaných i sladkých obměn, mohou být vařené i zapečené. Tvarohová náplň zůstává napříč všemi variantami vždy základem, kolem kterého se tenké těsto vytahuje do plátů. Těsto se snáz vytahuje do tenka, pokud ho po vypracování necháte déle odpočinout přikryté, jinak se trhá a špatně se s ním pracuje. Náplň lze osladit a podávat i jako dezert s cukrem, což ukazuje na všestrannost tohoto tradičního pokrmu.",
       "servings_default": 6, "prep_minutes": 40, "cook_minutes": 30, "total_minutes": 70,
       "difficulty": "medium", "meal_type": ["side-dish", "dessert"], "diet": ["vegetarian"],
       "about": "Štrukli mohou být slané i sladké, vařené i zapečené – region Zagorje má na ně desítky variant, ale tvarohová náplň zůstává vždy základem.",
@@ -735,9 +735,9 @@
       "status": "publish"
     },
     {
-      "locale": "cs-CZ", "translation_status": "published", "translation_group": "fritule",
+      "locale": "cs-CZ", "translation_status": "published", "translation_group": "recipe_fritule", "recipe_key": "fritule",
       "title": "Fritule", "slug": "fritule", "country": "HR",
-      "excerpt": "Malé kynuté kobližky s rozinkami a citronovou kůrou, tradiční vánoční a karnevalová pochoutka.",
+      "excerpt": "Fritule jsou malé chorvatské kynuté koblihy, v Chorvatsku se tradičně smaží na Vánoce a v období karnevalu, recept se region od regionu mírně liší. Díky malé velikosti sousta se osmaží rychle a zůstanou uvnitř nadýchané, zvenku jen jemně zlatavé. Kousky těsta je dobré nabírat vždy stejně velké, propečou se pak rovnoměrně a nebudou uvnitř syrové. Do těsta lze přidat i hrst rozinek namočených v rumu, což je jedna z nejrozšířenějších obměn tohoto svátečního pokrmu.",
       "servings_default": 6, "prep_minutes": 20, "cook_minutes": 20, "total_minutes": 40,
       "difficulty": "easy", "meal_type": ["dessert"], "diet": ["vegetarian"],
       "about": "Fritule jsou v podstatě malé kynuté koblihy – díky velikosti sousta se osmaží rychle a zůstanou uvnitř nadýchané.",
