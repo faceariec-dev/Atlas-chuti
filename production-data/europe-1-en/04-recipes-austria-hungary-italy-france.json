@@ -1,0 +1,3405 @@
+{
+  "ingredients": [
+    {
+      "ingredient_key": "onion",
+      "locale": "en",
+      "title": "Onion",
+      "slug": "onion",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "garlic",
+      "locale": "en",
+      "title": "Garlic",
+      "slug": "garlic",
+      "aliases": [
+        "garlic clove",
+        "garlic cloves"
+      ],
+      "default_unit": "clove"
+    },
+    {
+      "ingredient_key": "carrot",
+      "locale": "en",
+      "title": "Carrot",
+      "slug": "carrot",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "celery-root",
+      "locale": "en",
+      "title": "Celery root",
+      "slug": "celery-root",
+      "aliases": [
+        "celeriac"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "parsley",
+      "locale": "en",
+      "title": "Parsley",
+      "slug": "parsley",
+      "aliases": [
+        "flat-leaf parsley"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "bay-leaf",
+      "locale": "en",
+      "title": "Bay leaf",
+      "slug": "bay-leaf",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "allspice",
+      "locale": "en",
+      "title": "Allspice berries",
+      "slug": "allspice-berries",
+      "aliases": [
+        "whole allspice"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "black-pepper",
+      "locale": "en",
+      "title": "Black pepper",
+      "slug": "black-pepper",
+      "aliases": [
+        "pepper"
+      ],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "salt",
+      "locale": "en",
+      "title": "Salt",
+      "slug": "salt",
+      "aliases": [],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "sugar",
+      "locale": "en",
+      "title": "Granulated sugar",
+      "slug": "granulated-sugar",
+      "aliases": [
+        "sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "butter",
+      "locale": "en",
+      "title": "Butter",
+      "slug": "butter",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "flour",
+      "locale": "en",
+      "title": "All-purpose flour",
+      "slug": "all-purpose-flour",
+      "aliases": [
+        "plain flour"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cream",
+      "locale": "en",
+      "title": "Whipping cream (33%)",
+      "slug": "whipping-cream-33",
+      "aliases": [
+        "heavy cream"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "sour-cream",
+      "locale": "en",
+      "title": "Sour cream",
+      "slug": "sour-cream",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "lemon",
+      "locale": "en",
+      "title": "Lemon",
+      "slug": "lemon",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "milk",
+      "locale": "en",
+      "title": "Milk",
+      "slug": "milk",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "egg",
+      "locale": "en",
+      "title": "Egg",
+      "slug": "egg",
+      "aliases": [
+        "eggs"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "yeast",
+      "locale": "en",
+      "title": "Yeast",
+      "slug": "yeast",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "caraway-seed",
+      "locale": "en",
+      "title": "Caraway seeds",
+      "slug": "caraway-seeds",
+      "aliases": [
+        "whole caraway"
+      ],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "rice",
+      "locale": "en",
+      "title": "Rice",
+      "slug": "rice",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "oil",
+      "locale": "en",
+      "title": "Vegetable oil",
+      "slug": "vegetable-oil",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "paprika-powder",
+      "locale": "en",
+      "title": "Sweet paprika (ground)",
+      "slug": "sweet-paprika-ground",
+      "aliases": [
+        "ground paprika"
+      ],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "red-wine",
+      "locale": "en",
+      "title": "Red wine",
+      "slug": "red-wine",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "beef-stock",
+      "locale": "en",
+      "title": "Beef stock",
+      "slug": "beef-stock",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "potato",
+      "locale": "en",
+      "title": "Potatoes",
+      "slug": "potatoes",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "smoked-bacon",
+      "locale": "en",
+      "title": "Smoked bacon",
+      "slug": "smoked-bacon",
+      "aliases": [
+        "bacon"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "bread-roll",
+      "locale": "en",
+      "title": "Stale bread rolls or baguette",
+      "slug": "stale-bread-rolls-or-baguette",
+      "aliases": [
+        "day-old rolls"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "horseradish",
+      "locale": "en",
+      "title": "Horseradish",
+      "slug": "horseradish",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "powdered-sugar",
+      "locale": "en",
+      "title": "Powdered sugar",
+      "slug": "powdered-sugar",
+      "aliases": [
+        "icing sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "vanilla-sugar",
+      "locale": "en",
+      "title": "Vanilla sugar",
+      "slug": "vanilla-sugar",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "beef",
+      "locale": "en",
+      "title": "Beef",
+      "slug": "beef",
+      "aliases": [
+        "beef shank",
+        "beef brisket"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "tomato",
+      "locale": "en",
+      "title": "Tomato",
+      "slug": "tomato",
+      "aliases": [
+        "tomatoes"
+      ],
+      "default_unit": "ks"
+    },
+    {
+      "ingredient_key": "crushed-tomato",
+      "locale": "en",
+      "title": "Crushed tomatoes (canned)",
+      "slug": "crushed-tomatoes-canned",
+      "aliases": [
+        "passata"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "guanciale",
+      "locale": "en",
+      "title": "Guanciale",
+      "slug": "guanciale",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "pasta-spaghetti",
+      "locale": "en",
+      "title": "Spaghetti",
+      "slug": "spaghetti",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "pecorino-romano",
+      "locale": "en",
+      "title": "Pecorino Romano",
+      "slug": "pecorino-romano",
+      "aliases": [
+        "pecorino"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "veal",
+      "locale": "en",
+      "title": "Veal (for schnitzel)",
+      "slug": "veal-for-schnitzel",
+      "aliases": [
+        "veal cutlet"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "veal-shank",
+      "locale": "en",
+      "title": "Veal shank (for osso buco)",
+      "slug": "veal-shank-for-osso-buco",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "breadcrumbs",
+      "locale": "en",
+      "title": "Breadcrumbs",
+      "slug": "breadcrumbs",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "parmigiano-reggiano",
+      "locale": "en",
+      "title": "Parmigiano Reggiano",
+      "slug": "parmigiano-reggiano",
+      "aliases": [
+        "parmesan"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "mozzarella",
+      "locale": "en",
+      "title": "Mozzarella",
+      "slug": "mozzarella",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "basil",
+      "locale": "en",
+      "title": "Basil",
+      "slug": "basil",
+      "aliases": [
+        "fresh basil"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "olive-oil",
+      "locale": "en",
+      "title": "Olive oil",
+      "slug": "olive-oil",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "saffron",
+      "locale": "en",
+      "title": "Saffron",
+      "slug": "saffron",
+      "aliases": [],
+      "default_unit": "pinch"
+    },
+    {
+      "ingredient_key": "white-wine",
+      "locale": "en",
+      "title": "White wine",
+      "slug": "white-wine",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "arborio-rice",
+      "locale": "en",
+      "title": "Arborio rice",
+      "slug": "arborio-rice",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "nutmeg",
+      "locale": "en",
+      "title": "Nutmeg",
+      "slug": "nutmeg",
+      "aliases": [],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "lasagne-sheets",
+      "locale": "en",
+      "title": "Lasagne sheets",
+      "slug": "lasagne-sheets",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "ground-meat-mixed",
+      "locale": "en",
+      "title": "Mixed ground meat (pork and beef)",
+      "slug": "mixed-ground-meat-pork-and-beef",
+      "aliases": [
+        "ground beef and pork"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "chicken",
+      "locale": "en",
+      "title": "Chicken",
+      "slug": "chicken",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "bell-pepper",
+      "locale": "en",
+      "title": "Bell pepper",
+      "slug": "bell-pepper",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "grated-cheese",
+      "locale": "en",
+      "title": "Grated cheese",
+      "slug": "grated-cheese",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "freshwater-fish",
+      "locale": "en",
+      "title": "Freshwater fish (carp)",
+      "slug": "freshwater-fish-carp",
+      "aliases": [
+        "carp"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "apple",
+      "locale": "en",
+      "title": "Apple",
+      "slug": "apple",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "chives",
+      "locale": "en",
+      "title": "Chives",
+      "slug": "chives",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "raisins",
+      "locale": "en",
+      "title": "Raisins",
+      "slug": "raisins",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "rum",
+      "locale": "en",
+      "title": "Rum",
+      "slug": "rum",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "dark-chocolate",
+      "locale": "en",
+      "title": "Dark chocolate",
+      "slug": "dark-chocolate",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "apricot-jam",
+      "locale": "en",
+      "title": "Apricot jam",
+      "slug": "apricot-jam",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "leek",
+      "locale": "en",
+      "title": "Leek",
+      "slug": "leek",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "mushroom",
+      "locale": "en",
+      "title": "Mushrooms",
+      "slug": "mushrooms",
+      "aliases": [
+        "fresh mushrooms"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "thyme",
+      "locale": "en",
+      "title": "Thyme",
+      "slug": "thyme",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "eggplant",
+      "locale": "en",
+      "title": "Eggplant",
+      "slug": "eggplant",
+      "aliases": [
+        "aubergine"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "zucchini",
+      "locale": "en",
+      "title": "Zucchini",
+      "slug": "zucchini",
+      "aliases": [
+        "courgette"
+      ],
+      "default_unit": "pcs"
+    }
+  ],
+  "recipes": [
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_wiener-schnitzel",
+      "recipe_key": "wiener-schnitzel",
+      "title": "Wiener Schnitzel (Viennese Breaded Veal Cutlet)",
+      "slug": "wiener-schnitzel-viennese-veal-cutlet",
+      "country": "AT",
+      "excerpt": "Wiener Schnitzel is a thin, pounded veal cutlet in a crisp, three-step breading, fried in butter until golden. Only the veal version counts as the real thing — a pork cutlet made the same way is correctly called a \"Schnitzel Viennese style,\" not the original. While frying, gently shake the pan; the hot fat lifts the crust and creates the characteristic ripple that marks a properly fried schnitzel. Never press the crust onto the meat with your fingers, or it will stick and fail to separate into an airy layer once cooked. It has been a symbol of Viennese cuisine since the 19th century.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "A true Wiener Schnitzel is always made from veal — the pork version is correctly called \"Schnitzel Viennese style,\" not the original. The breading must never be pressed on, so it puffs into an airy ripple once fried.",
+      "ingredients": [
+        {
+          "ingredient_key": "veal",
+          "display_name": "Veal cutlets",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "pounded thin",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "100",
+          "unit": "g",
+          "note": "for coating",
+          "group": "Breading"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "beaten",
+          "group": "Breading"
+        },
+        {
+          "ingredient_key": "breadcrumbs",
+          "display_name": "Breadcrumbs",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Breading"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "150",
+          "unit": "g",
+          "note": "or lard, for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "sliced, to serve",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Pound the cutlets lightly to about 5 mm thick and season both sides with salt."
+        },
+        {
+          "order": 2,
+          "text": "Coat in flour, then beaten egg, then breadcrumbs; don't press the crust on, just pat it gently in place."
+        },
+        {
+          "order": 3,
+          "text": "Heat enough butter or lard in a pan so the schnitzel floats at least halfway up its height."
+        },
+        {
+          "order": 4,
+          "text": "Fry 2–3 minutes per side until golden, gently shaking the pan while frying so the crust ripples."
+        },
+        {
+          "order": 5,
+          "text": "Let the cooked schnitzels drain on paper towels."
+        },
+        {
+          "order": 6,
+          "text": "Serve with potato salad or boiled potatoes and a slice of lemon."
+        }
+      ],
+      "tips": [
+        "Gently shake the pan while frying — the hot fat lifts the crust and creates the characteristic ripple."
+      ],
+      "watch_out": "Never press the breading onto the meat with your fingers, or it will stick and fail to separate into an airy layer once fried.",
+      "variants": [
+        {
+          "name": "Pork schnitzel",
+          "note": "Made from pork leg — traditionally not called a true Wiener Schnitzel."
+        }
+      ],
+      "origin_history": "Wiener Schnitzel has been a symbol of Viennese cuisine since the 19th century, though similar breaded cutlets appear in other European culinary traditions too.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Wiener Schnitzel – Classic Austrian Veal Cutlet | Atlas Chuti",
+      "meta_description": "Authentic Wiener Schnitzel: thin veal cutlets in a crisp golden breading, fried in butter.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_tafelspitz",
+      "recipe_key": "tafelspitz",
+      "title": "Tafelspitz (Viennese Boiled Beef)",
+      "slug": "tafelspitz-viennese-boiled-beef",
+      "country": "AT",
+      "excerpt": "Tafelspitz is a two-part Viennese dish — a rich beef broth and beef slowly simmered in it, sliced against the grain once cooked. On the plate it's served with two contrasting sauces, an apple-horseradish sauce and a delicate chive sauce with sour cream. A whole, unpeeled onion seared in a dry pan and added to the broth gives it a golden color without any other addition. It is a classic of Viennese middle-class cooking, reportedly a favorite of Austrian Emperor Franz Joseph I according to accounts of the time, and it remains one of Austria's signature dishes today.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 150,
+      "total_minutes": 170,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Tafelspitz is a dish in two parts — the broth itself, and beef slowly simmered in it, sliced against the grain and served immediately with two contrasting sauces.",
+      "ingredients": [
+        {
+          "ingredient_key": "beef",
+          "display_name": "Beef rump",
+          "quantity": "1.2",
+          "unit": "kg",
+          "note": "whole",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrots",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "celery-root",
+          "display_name": "Celery root",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "leek",
+          "display_name": "Leek",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "unpeeled, seared dry",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "allspice",
+          "display_name": "Allspice",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "apple",
+          "display_name": "Apple",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "grated",
+          "group": "Apple-horseradish sauce"
+        },
+        {
+          "ingredient_key": "horseradish",
+          "display_name": "Horseradish",
+          "quantity": "3",
+          "unit": "tbsp",
+          "note": "grated",
+          "group": "Apple-horseradish sauce"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Chive sauce"
+        },
+        {
+          "ingredient_key": "chives",
+          "display_name": "Chives",
+          "quantity": "20",
+          "unit": "g",
+          "note": "chopped",
+          "group": "Chive sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sear the onion cut-side down in a dry pan until the cut side browns — this gives the broth both color and flavor."
+        },
+        {
+          "order": 2,
+          "text": "Put the meat in a pot with the vegetables, onion, and spices, cover with water, and bring to a boil."
+        },
+        {
+          "order": 3,
+          "text": "Skim the foam from the surface and simmer over low heat for 2–2.5 hours until tender."
+        },
+        {
+          "order": 4,
+          "text": "For the apple-horseradish sauce, mix the grated apple with the horseradish and a little lemon juice."
+        },
+        {
+          "order": 5,
+          "text": "For the chive sauce, mix the sour cream with the chopped chives and season with salt."
+        },
+        {
+          "order": 6,
+          "text": "Slice the cooked meat against the grain and serve in a little broth with both sauces and the boiled vegetables from the broth."
+        }
+      ],
+      "tips": [
+        "A whole, unpeeled onion seared dry in the pan gives the broth a golden color without adding anything else."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Tafelspitz is a classic of Viennese middle-class cooking, reportedly a great favorite of Austrian Emperor Franz Joseph I.",
+      "related_glossary": [
+        "poaching"
+      ],
+      "related_recipes": [],
+      "seo_title": "Tafelspitz – Austrian Boiled Beef Recipe | Atlas Chuti",
+      "meta_description": "Tafelspitz recipe: slowly simmered beef with apple-horseradish sauce and chive sauce.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kaiserschmarrn",
+      "recipe_key": "kaiserschmarrn",
+      "title": "Kaiserschmarrn (Austrian Shredded Pancake)",
+      "slug": "kaiserschmarrn-austrian-shredded-pancake",
+      "country": "AT",
+      "excerpt": "Kaiserschmarrn is a fluffy, torn pancake with raisins — first cooked in the pan like a thicker pancake, then torn into irregular pieces while still hot and finished until caramelized and golden. The egg whites need to be folded in gently from the bottom up, so the batter stays airy and doesn't fall flat. It's served hot on the plate, dusted with powdered sugar. According to legend it was baked for Austrian Emperor Franz Joseph I, which is where the \"imperial\" in its name comes from, and it remains one of Austria's most popular sweet dishes today.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 15,
+      "total_minutes": 30,
+      "difficulty": "medium",
+      "meal_type": [
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Kaiserschmarrn is cooked like a thicker pancake, but while still hot in the pan it's torn into pieces and finished until caramelized and golden.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "200",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "250",
+          "unit": "ml",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "yolks and whites separated",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "40",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "vanilla-sugar",
+          "display_name": "Vanilla sugar",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "raisins",
+          "display_name": "Raisins",
+          "quantity": "50",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "rum",
+          "display_name": "Rum",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "for soaking the raisins, optional",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "powdered-sugar",
+          "display_name": "Powdered sugar",
+          "quantity": "20",
+          "unit": "g",
+          "note": "for dusting",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Soak the raisins in rum or warm water to soften them."
+        },
+        {
+          "order": 2,
+          "text": "Whisk the flour, milk, egg yolks, sugar, vanilla sugar, and salt into a smooth batter."
+        },
+        {
+          "order": 3,
+          "text": "Whip the egg whites to stiff peaks and fold them gently into the batter."
+        },
+        {
+          "order": 4,
+          "text": "Fry a thicker pancake in butter, scattering the drained raisins over one side."
+        },
+        {
+          "order": 5,
+          "text": "Once the underside is golden, tear the batter in the pan into irregular pieces using two forks."
+        },
+        {
+          "order": 6,
+          "text": "Finish frying, turning occasionally, until the pieces are golden and caramelized."
+        },
+        {
+          "order": 7,
+          "text": "Serve hot, dusted with powdered sugar, traditionally with apple or plum compote."
+        }
+      ],
+      "tips": [
+        "Always fold the egg whites in gently from the bottom up — this is what keeps Kaiserschmarrn airy."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "According to legend, Kaiserschmarrn was baked for Austrian Emperor Franz Joseph I, which is where the \"imperial\" (Kaiser) in its name comes from.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Kaiserschmarrn – Austrian Shredded Pancake Recipe | Atlas Chuti",
+      "meta_description": "Kaiserschmarrn recipe: a fluffy torn pancake with raisins and powdered sugar.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_sachertorte",
+      "recipe_key": "sachertorte",
+      "title": "Sachertorte (Original Viennese Chocolate Cake)",
+      "slug": "sachertorte-viennese-chocolate-cake",
+      "country": "AT",
+      "excerpt": "Sachertorte is a dense chocolate cake layered with apricot jam under a glossy chocolate glaze, associated with the Hotel Sacher in Vienna. The original recipe remains a secret, but the principle is well known: a dense, not-too-airy sponge, apricot jam, and a bittersweet chocolate glaze. Once glazed, it's best to let the cake rest overnight — the flavor and texture improve the next day and the glaze sets properly. It was created in 1832 by Franz Sacher, then still an apprentice, for the Viennese royal court, and the cake still carries his name today.",
+      "servings_default": 12,
+      "prep_minutes": 40,
+      "cook_minutes": 50,
+      "total_minutes": 90,
+      "difficulty": "hard",
+      "meal_type": [
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "The original recipe stays secret, but the principle is well known: a dense, not-too-airy sponge, a layer of apricot jam, and a glossy chocolate glaze.",
+      "ingredients": [
+        {
+          "ingredient_key": "dark-chocolate",
+          "display_name": "Dark chocolate",
+          "quantity": "200",
+          "unit": "g",
+          "note": "melted, for the batter",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "150",
+          "unit": "g",
+          "note": "softened",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "6",
+          "unit": "pcs",
+          "note": "yolks and whites separated",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "apricot-jam",
+          "display_name": "Apricot jam",
+          "quantity": "200",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "dark-chocolate",
+          "display_name": "Dark chocolate",
+          "quantity": "150",
+          "unit": "g",
+          "note": "for the glaze",
+          "group": "Glaze"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "for the glaze",
+          "group": "Glaze"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Beat the butter with half the sugar until fluffy, then gradually mix in the egg yolks and the cooled, melted chocolate."
+        },
+        {
+          "order": 2,
+          "text": "Whip the egg whites with the remaining sugar to stiff peaks and fold in alternately with the flour."
+        },
+        {
+          "order": 3,
+          "text": "Pour the batter into a greased springform pan and bake at 170°C (340°F) for about 45–50 minutes."
+        },
+        {
+          "order": 4,
+          "text": "Once cooled, slice the sponge horizontally into two layers and spread with warmed apricot jam, then put the layers back together."
+        },
+        {
+          "order": 5,
+          "text": "Coat the whole cake, including the sides, with the remaining jam and let it dry."
+        },
+        {
+          "order": 6,
+          "text": "Melt the chocolate with the cream into a smooth glaze and pour it evenly over the cake."
+        },
+        {
+          "order": 7,
+          "text": "Let the glaze set at room temperature, ideally for several hours, before slicing."
+        }
+      ],
+      "tips": [
+        "Let the cake rest overnight after glazing — the flavor and texture improve further the next day."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Sachertorte was created in 1832 by Franz Sacher, then still an apprentice, for the Viennese royal court. The recipe is still associated with the Hotel Sacher in Vienna today.",
+      "related_glossary": [
+        "springform-pan"
+      ],
+      "related_recipes": [],
+      "seo_title": "Sachertorte – Original Viennese Chocolate Cake | Atlas Chuti",
+      "meta_description": "Sachertorte recipe: a chocolate cake with apricot filling and chocolate glaze.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_tiroler-knodel",
+      "recipe_key": "tiroler-knodel",
+      "title": "Tyrolean Bread Dumplings (Tiroler Knödel)",
+      "slug": "tyrolean-bread-dumplings",
+      "country": "AT",
+      "excerpt": "Tyrolean dumplings are savory dumplings made from stale bread and bacon, a traditional Alpine way of letting nothing go to waste. The older and drier the bread rolls used, the better they soak up the egg and milk, and the better the dumplings hold their shape while cooking. The mixture also includes fried onion, smoked bacon, and parsley for both color and flavor. If the dumplings still fall apart while cooking, adding a little more flour to the mixture helps. They're typical across the whole Alpine region, and in Tyrol they're a staple of mountain-hut cooking; a cheese version is made with cubes of mountain cheese.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 20,
+      "total_minutes": 40,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish",
+        "main-course"
+      ],
+      "diet": [],
+      "about": "These dumplings started as a way to use up stale bread — the older and drier the rolls, the better they soak up the egg and milk, and the better they hold their shape.",
+      "ingredients": [
+        {
+          "ingredient_key": "bread-roll",
+          "display_name": "Stale bread rolls",
+          "quantity": "6",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "250",
+          "unit": "ml",
+          "note": "lukewarm",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon",
+          "quantity": "100",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "parsley",
+          "display_name": "Parsley",
+          "quantity": "10",
+          "unit": "g",
+          "note": "chopped",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "1",
+          "unit": "l",
+          "note": "for cooking and serving",
+          "group": "Cooking"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Cube the bread and pour over lukewarm milk beaten with the eggs; let it soak for 15 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Fry the bacon and onion until golden and mix into the soaked bread along with the parsley and flour."
+        },
+        {
+          "order": 3,
+          "text": "Shape the mixture into dumplings with damp hands."
+        },
+        {
+          "order": 4,
+          "text": "Cook in gently simmering broth or salted water for about 15–20 minutes."
+        },
+        {
+          "order": 5,
+          "text": "Serve in hot broth as a soup, or as a side dish with braised cabbage."
+        }
+      ],
+      "tips": [
+        "If the dumplings fall apart while cooking, add a little more flour to the mixture."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Cheese dumplings",
+          "note": "Cubes of mountain cheese can be added to the mixture."
+        }
+      ],
+      "origin_history": "Dumplings made from stale bread are typical across the whole Alpine region, and in Tyrol they're a staple of mountain-hut cooking.",
+      "related_glossary": [],
+      "related_recipes": [
+        "vepro-knedlo-zelo"
+      ],
+      "seo_title": "Tyrolean Bread Dumplings (Tiroler Knödel) – Austrian Recipe | Atlas Chuti",
+      "meta_description": "Tyrolean dumplings recipe: savory dumplings made from stale bread and bacon.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_gulyas",
+      "recipe_key": "gulyas",
+      "title": "Hungarian Goulash Soup (Gulyás)",
+      "slug": "hungarian-goulash-soup",
+      "country": "HU",
+      "excerpt": "Gulyás is a beef and potato soup with plenty of ground paprika — the dish that gave rise to the word \"goulash,\" now used across most European languages. Real Hungarian gulyás is actually the thinner, soup-like version; the thick braised-meat version has its own name in Hungarian, pörkölt. The paprika must always be added off the heat, since it turns bitter within moments in hot fat and ruins the whole soup's flavor. It originated as a dish of Hungarian cattle herders — gulyás literally means \"cattle herder\" — who cooked it outdoors in a kettle over an open fire. A thicker version without potatoes is called pörkölt.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 90,
+      "total_minutes": 110,
+      "difficulty": "medium",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [],
+      "about": "True Hungarian gulyás is a soup, not a thick braise — that's called pörkölt in Hungary. The flavor rests mainly on good ground paprika added off the heat.",
+      "ingredients": [
+        {
+          "ingredient_key": "beef",
+          "display_name": "Beef for goulash",
+          "quantity": "700",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell pepper",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomato",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "400",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "caraway-seed",
+          "display_name": "Whole caraway seed",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "1.5",
+          "unit": "l",
+          "note": "or water",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the onion in oil until translucent, add the beef, and sear on all sides."
+        },
+        {
+          "order": 2,
+          "text": "Take the pan off the heat, stir in the paprika so it doesn't burn, and add a splash of broth right away."
+        },
+        {
+          "order": 3,
+          "text": "Add the garlic, bell pepper, tomato, and caraway, and cook for 5 minutes."
+        },
+        {
+          "order": 4,
+          "text": "Pour in the remaining broth and simmer over low heat for about 1 hour, until the meat is tender."
+        },
+        {
+          "order": 5,
+          "text": "Add the potatoes and cook for another 20–25 minutes until tender."
+        },
+        {
+          "order": 6,
+          "text": "Season with salt and serve hot, ideally with a slice of bread."
+        }
+      ],
+      "tips": [
+        "Always add the paprika off the heat — it turns bitter within moments in hot fat."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Pörkölt",
+          "note": "A thicker version without potatoes and with less liquid is called pörkölt in Hungary."
+        }
+      ],
+      "origin_history": "Gulyás originated as a dish of Hungarian cattle herders (gulyás means \"cattle herder\") cooked outdoors in a kettle over an open fire.",
+      "related_glossary": [
+        "paprika-spice"
+      ],
+      "related_recipes": [],
+      "seo_title": "Gulyás – Traditional Hungarian Goulash Soup | Atlas Chuti",
+      "meta_description": "Hungarian gulyás recipe: a beef and potato soup with ground paprika.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_paprikas-csirke",
+      "recipe_key": "paprikas-csirke",
+      "title": "Chicken Paprikash (Paprikás Csirke)",
+      "slug": "chicken-paprikash",
+      "country": "HU",
+      "excerpt": "Paprikás csirke is chicken braised in a paprika sauce with sour cream, served with small egg dumplings. Compared to gulyás it's thicker and creamier, and again the result hinges on good sweet paprika added off the heat; the sour cream needs to be whisked with flour first, or it will curdle in the hot sauce. It's one of the most common Hungarian Sunday dishes and easy to scale up for a whole family. The dumplings are made from flour and eggs and dropped straight into boiling water, so the whole meal comes together from one pan and one pot.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 45,
+      "total_minutes": 65,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Paprikash is a thicker, creamier relative of gulyás — again good sweet paprika added off the heat is key, along with sour cream whisked with a little flour so it doesn't curdle in the hot sauce.",
+      "ingredients": [
+        {
+          "ingredient_key": "chicken",
+          "display_name": "Chicken thighs",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "boneless, cut into pieces",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell pepper",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomato",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "to temper the cream",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "200",
+          "unit": "g",
+          "note": "for the dumplings",
+          "group": "Dumplings (halušky)"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "for the dumplings",
+          "group": "Dumplings (halušky)"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the onion in oil until translucent, add the chicken, and sear on all sides."
+        },
+        {
+          "order": 2,
+          "text": "Take off the heat, stir in the paprika, and add a splash of water right away so it doesn't burn."
+        },
+        {
+          "order": 3,
+          "text": "Add the bell pepper and tomato and simmer covered over low heat for 30–35 minutes until tender."
+        },
+        {
+          "order": 4,
+          "text": "For the dumplings, mix a thick batter from flour, eggs, and a pinch of salt and drop spoonfuls into boiling salted water; cook until they float."
+        },
+        {
+          "order": 5,
+          "text": "Whisk the sour cream with the flour, stir into the sauce, and bring briefly to a simmer to thicken."
+        },
+        {
+          "order": 6,
+          "text": "Season with salt and serve with the egg dumplings."
+        }
+      ],
+      "tips": [
+        "Always whisk the sour cream with flour first — otherwise it will curdle in the hot sauce."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Paprikás csirke is one of the most common Hungarian Sunday dishes, a close relative of gulyás but thicker and creamier.",
+      "related_glossary": [
+        "paprika-spice"
+      ],
+      "related_recipes": [
+        "gulyas"
+      ],
+      "seo_title": "Chicken Paprikash (Paprikás Csirke) – Hungarian Recipe | Atlas Chuti",
+      "meta_description": "Hungarian chicken paprikash recipe: chicken in paprika sauce with sour cream.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_langos",
+      "recipe_key": "langos",
+      "title": "Lángos (Hungarian Fried Dough)",
+      "slug": "langos-hungarian-fried-dough",
+      "country": "HU",
+      "excerpt": "Lángos is fried yeasted dough brushed with garlic water and topped with sour cream and grated cheese, a classic at Hungarian markets, fairs, and swimming pools. It's based on a simple yeasted dough made from flour, yeast, milk, and potato, deep-fried floating in oil until golden. The most important thing is properly hot oil and quick frying, or the dough will soak up fat instead of staying light and crisp at the edges. It's served hot, straight out of the oil, when the garlic aroma is strongest and the cheese is still melting.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "appetizer",
+        "bakery"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "The base of lángos is a simple yeasted dough, deep-fried floating in oil until golden — properly hot oil and quick frying are essential, or the dough soaks up fat instead of staying light.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "yeast",
+          "display_name": "Fresh yeast",
+          "quantity": "20",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "lukewarm",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "150",
+          "unit": "g",
+          "note": "boiled, mashed",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "500",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "4",
+          "unit": "clove",
+          "note": "crushed into water",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "grated-cheese",
+          "display_name": "Grated cheese",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Dissolve the yeast in lukewarm milk with a teaspoon of sugar and let stand for 10 minutes until foamy."
+        },
+        {
+          "order": 2,
+          "text": "Mix with the flour, mashed potato, and salt, knead into a soft dough, and let rise for 45 minutes."
+        },
+        {
+          "order": 3,
+          "text": "Divide the dough into pieces and stretch out into flat discs by hand."
+        },
+        {
+          "order": 4,
+          "text": "Fry in hot oil until golden on both sides, about 1–2 minutes per side."
+        },
+        {
+          "order": 5,
+          "text": "Brush the hot lángos with garlic water and top with sour cream and grated cheese."
+        },
+        {
+          "order": 6,
+          "text": "Serve immediately, while still warm and crisp."
+        }
+      ],
+      "tips": [
+        "The oil must be properly hot — otherwise the dough soaks up fat instead of turning quickly golden and crisp."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Lángos is a typical Hungarian street food, today most often associated with markets, fairs, and swimming pools.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Lángos – Hungarian Fried Dough Recipe | Atlas Chuti",
+      "meta_description": "Hungarian lángos recipe: fried dough with sour cream, garlic, and cheese.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_halaszle",
+      "recipe_key": "halaszle",
+      "title": "Halászlé (Hungarian Fisherman's Soup)",
+      "slug": "halaszle-hungarian-fishermans-soup",
+      "country": "HU",
+      "excerpt": "Halászlé is a fiery freshwater fish soup with a generous amount of ground paprika, typical along the Danube and Tisza rivers. The name literally means \"fisherman's soup,\" and it was traditionally cooked right on the riverbank from the fresh catch, with plenty of paprika and almost no other vegetables. It's best to add the fish pieces to the strained broth only once it's ready, or small bones will end up in the finished bowl. It has roots in the fishing traditions along both rivers, and different regions of Hungary cook slightly different versions depending on local custom.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 40,
+      "total_minutes": 60,
+      "difficulty": "medium",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [],
+      "about": "Simmering the fish itself for too long in the broth is what leaves bones in the finished soup — keeping the fish out until the broth is strained and ready avoids that entirely.",
+      "ingredients": [
+        {
+          "ingredient_key": "freshwater-fish",
+          "display_name": "Freshwater fish (carp, pike-perch)",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "cleaned, cut into pieces",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell pepper",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomato",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "3",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the onion in oil until translucent."
+        },
+        {
+          "order": 2,
+          "text": "Take off the heat, stir in the paprika, and add water right away so it doesn't burn."
+        },
+        {
+          "order": 3,
+          "text": "Add the bell pepper, tomato, and the fish head or trimmings, and cook for 20 minutes as a base — then strain the broth."
+        },
+        {
+          "order": 4,
+          "text": "Add the portioned fish pieces to the strained broth and simmer over low heat for another 15–20 minutes so the fish doesn't overcook."
+        },
+        {
+          "order": 5,
+          "text": "Season with salt, add more paprika if needed, and serve hot with bread."
+        }
+      ],
+      "tips": [
+        "Add the fish pieces to the soup only once the broth is strained, or small bones will end up in the bowl."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Halászlé has roots in the fishing traditions along the Danube and Tisza rivers, and different regions of Hungary cook slightly different versions.",
+      "related_glossary": [
+        "paprika-spice"
+      ],
+      "related_recipes": [],
+      "seo_title": "Halászlé – Hungarian Fish Soup Recipe | Atlas Chuti",
+      "meta_description": "Halászlé recipe: a fiery Hungarian freshwater fish soup with paprika.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_dobos-torta",
+      "recipe_key": "dobos-torta",
+      "title": "Dobos Torte (Hungarian Caramel-Topped Layer Cake)",
+      "slug": "dobos-torte-hungarian-caramel-cake",
+      "country": "HU",
+      "excerpt": "Dobos torte is a layered sponge cake filled with chocolate buttercream, topped with a signature crisp caramel layer that's broken into triangles and arranged in a fan before serving. Caramel sets quickly, so the cutting lines for the final layer need to be marked immediately while it's still warm and pliable. It was created in 1885 by Budapest confectioner József Dobos, whose caramel top was originally meant to work as a natural preservative that extended the cake's shelf life. It remains one of Hungary's best-known confections today.",
+      "servings_default": 12,
+      "prep_minutes": 60,
+      "cook_minutes": 40,
+      "total_minutes": 100,
+      "difficulty": "hard",
+      "meal_type": [
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "The signature feature of Dobos torte is the thin caramel layer on top, which is broken into triangles and arranged in a fan before serving.",
+      "ingredients": [
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "6",
+          "unit": "pcs",
+          "note": "",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "150",
+          "unit": "g",
+          "note": "for the sponge",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "250",
+          "unit": "g",
+          "note": "softened, for the buttercream",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "150",
+          "unit": "g",
+          "note": "for the buttercream",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "dark-chocolate",
+          "display_name": "Dark chocolate",
+          "quantity": "150",
+          "unit": "g",
+          "note": "melted",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "for the buttercream",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "100",
+          "unit": "g",
+          "note": "for the caramel",
+          "group": "Caramel"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Whisk the eggs with the sugar into a thick foam and gently fold in the flour."
+        },
+        {
+          "order": 2,
+          "text": "Spread the batter onto baking-paper-lined trays in thin layers (six in total) and bake at 200°C (390°F) for 5–6 minutes each."
+        },
+        {
+          "order": 3,
+          "text": "For the buttercream, beat the butter with the sugar until fluffy, mix in the cooled melted chocolate and eggs, and warm briefly over a water bath until thickened."
+        },
+        {
+          "order": 4,
+          "text": "Layer five of the sponge sheets with the buttercream, saving the last sheet for the caramel."
+        },
+        {
+          "order": 5,
+          "text": "Melt the sugar in a pan into a light caramel and quickly brush it onto the last sheet while it's still hot; mark cutting lines for the wedges."
+        },
+        {
+          "order": 6,
+          "text": "Coat the sides of the cake with the remaining buttercream and chill for at least 2 hours to set."
+        },
+        {
+          "order": 7,
+          "text": "Break the caramel sheet along the marked lines and arrange the pieces on top of the cake in a fan."
+        }
+      ],
+      "tips": [
+        "Caramel sets quickly — mark the cutting lines on the final layer immediately, while it's still warm and pliable."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Dobos torte was created in 1885 by Budapest confectioner József Dobos; the caramel top was originally meant to work as a natural preservative.",
+      "related_glossary": [
+        "springform-pan"
+      ],
+      "related_recipes": [],
+      "seo_title": "Dobos Torte – Hungarian Layer Cake with Caramel | Atlas Chuti",
+      "meta_description": "Dobos torte recipe: a layered sponge cake with chocolate buttercream and caramel.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_spaghetti-carbonara",
+      "recipe_key": "spaghetti-carbonara",
+      "title": "Spaghetti Carbonara",
+      "slug": "spaghetti-carbonara",
+      "country": "IT",
+      "excerpt": "Spaghetti Carbonara is a Roman classic built on just four ingredients — eggs, guanciale, pecorino, and black pepper. The magic lies in an emulsion of egg and cheese that thickens into a silky sauce using only the heat of the just-cooked pasta, with no cream involved at all. The eggs must always be mixed off direct heat, or they'll scramble and leave the sauce lumpy instead of silky. Traditional carbonara never contains cream, despite what many versions abroad claim. It became established in Rome in its current form in the mid-20th century, and swapping guanciale for pancetta offers a more accessible variation.",
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "cook_minutes": 15,
+      "total_minutes": 25,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "The magic of carbonara is in the emulsion of egg and cheese, which thickens into a silky sauce using the heat of the pasta alone — no cream involved.",
+      "ingredients": [
+        {
+          "ingredient_key": "pasta-spaghetti",
+          "display_name": "Spaghetti",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "guanciale",
+          "display_name": "Guanciale",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "4",
+          "unit": "ks",
+          "note": "",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "pecorino-romano",
+          "display_name": "Pecorino Romano",
+          "quantity": "80",
+          "unit": "g",
+          "note": "grated",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "",
+          "note": "to taste",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "",
+          "note": "for the water",
+          "group": "Main"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Cook the spaghetti in generously salted water until al dente. Reserve a cup of the cooking water."
+        },
+        {
+          "order": 2,
+          "text": "Cube the guanciale and fry gently until translucent."
+        },
+        {
+          "order": 3,
+          "text": "Whisk the eggs with the grated pecorino and pepper."
+        },
+        {
+          "order": 4,
+          "text": "Toss the cooked pasta with the guanciale off the heat."
+        },
+        {
+          "order": 5,
+          "text": "Stir in the egg mixture and a little cooking water to form a silky sauce."
+        },
+        {
+          "order": 6,
+          "text": "Serve immediately with extra pecorino and pepper."
+        }
+      ],
+      "tips": [
+        "Always mix the eggs off direct heat, or they will scramble."
+      ],
+      "watch_out": "Traditional carbonara never contains cream.",
+      "variants": [
+        {
+          "name": "With pancetta",
+          "note": "A more accessible variation with a similar result."
+        }
+      ],
+      "origin_history": "Carbonara became established in Rome in its current form in the mid-20th century.",
+      "related_glossary": [
+        "al-dente",
+        "emulsion"
+      ],
+      "related_recipes": [
+        "risotto-alla-milanese"
+      ],
+      "seo_title": "Spaghetti Carbonara – Classic Italian Recipe | Atlas Chuti",
+      "meta_description": "Authentic Roman spaghetti carbonara from four ingredients. Step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_pizza-margherita",
+      "recipe_key": "pizza-margherita",
+      "title": "Pizza Margherita",
+      "slug": "pizza-margherita",
+      "country": "IT",
+      "excerpt": "Pizza Margherita combines thin yeasted dough, tomatoes, mozzarella, and basil in the colors of the Italian flag. It's the simplest Italian pizza, and precisely because of that the most demanding when it comes to ingredient quality — it needs ripe tomatoes, good mozzarella, and as hot an oven as possible so the crust puffs up quickly while staying soft inside. It's worth draining the mozzarella well before baking, since excess water would otherwise make the dough soggy. According to legend it was created in 1889 in honor of Italian Queen Margherita, whose topping colors are said to reference the national flag.",
+      "servings_default": 4,
+      "prep_minutes": 30,
+      "cook_minutes": 15,
+      "total_minutes": 45,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Margherita is the simplest Italian pizza, and precisely because of that the most demanding on ingredient quality — ripe tomatoes, good mozzarella, and as hot an oven as possible.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "500",
+          "unit": "g",
+          "note": "ideally type 00",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "yeast",
+          "display_name": "Fresh yeast",
+          "quantity": "10",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "10",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "1",
+          "unit": "clove",
+          "note": "crushed, optional",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "mozzarella",
+          "display_name": "Mozzarella",
+          "quantity": "250",
+          "unit": "g",
+          "note": "drained, sliced",
+          "group": "Topping"
+        },
+        {
+          "ingredient_key": "basil",
+          "display_name": "Basil",
+          "quantity": "10",
+          "unit": "g",
+          "note": "fresh leaves",
+          "group": "Topping"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Dissolve the yeast in lukewarm water, mix with the flour, salt, and olive oil, and knead into a smooth dough. Let rise for 2 hours."
+        },
+        {
+          "order": 2,
+          "text": "Preheat the oven to its highest setting with a baking tray or pizza stone inside."
+        },
+        {
+          "order": 3,
+          "text": "Divide the dough into 2–4 pieces and stretch out by hand into thin rounds."
+        },
+        {
+          "order": 4,
+          "text": "Spread with the crushed tomatoes mixed with the crushed garlic."
+        },
+        {
+          "order": 5,
+          "text": "Top with mozzarella slices and bake for 8–12 minutes until the crust browns and the cheese melts."
+        },
+        {
+          "order": 6,
+          "text": "Scatter with fresh basil and drizzle with olive oil before serving."
+        }
+      ],
+      "tips": [
+        "Drain the mozzarella well before baking — excess water would make the pizza soggy."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "According to legend, pizza Margherita was created in 1889 in honor of Italian Queen Margherita, whose topping colors are said to reference the Italian flag.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Pizza Margherita – Classic Italian Recipe | Atlas Chuti",
+      "meta_description": "Authentic pizza Margherita recipe: thin crust, tomatoes, mozzarella, and basil.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_risotto-alla-milanese",
+      "recipe_key": "risotto-alla-milanese",
+      "title": "Risotto alla Milanese (Milanese Saffron Risotto)",
+      "slug": "risotto-alla-milanese",
+      "country": "IT",
+      "excerpt": "Risotto alla Milanese is a creamy saffron risotto from Lombardy, the traditional accompaniment to braised ossobuco. A good risotto needs no cream at all — its creaminess comes purely from gradually adding broth and constant stirring, which slowly releases the starch from the Arborio rice. The broth is never added all at once, but in small amounts, so the rice is never fully submerged. Saffron gives it its distinctive golden color and delicately spiced aroma. It's traditionally served alongside braised veal ossobuco, with which it also shares its Lombard origin.",
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "cook_minutes": 25,
+      "total_minutes": 35,
+      "difficulty": "medium",
+      "meal_type": [
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Saffron threads dissolved in a spoonful of broth halfway through cooking are what give the rice its glow — added too early, the color and aroma fade before the rice is even done.",
+      "ingredients": [
+        {
+          "ingredient_key": "arborio-rice",
+          "display_name": "Arborio rice",
+          "quantity": "320",
+          "unit": "g",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "white-wine",
+          "display_name": "White wine",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "1.2",
+          "unit": "l",
+          "note": "hot",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "saffron",
+          "display_name": "Saffron",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "threads",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "parmigiano-reggiano",
+          "display_name": "Parmigiano Reggiano",
+          "quantity": "60",
+          "unit": "g",
+          "note": "grated",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Risotto"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the onion in half the butter until translucent."
+        },
+        {
+          "order": 2,
+          "text": "Add the rice and, stirring constantly, let it turn translucent at the edges for about a minute."
+        },
+        {
+          "order": 3,
+          "text": "Pour in the wine and let it evaporate."
+        },
+        {
+          "order": 4,
+          "text": "Gradually add the hot broth a ladleful at a time, stirring constantly, always waiting until the previous addition is absorbed."
+        },
+        {
+          "order": 5,
+          "text": "Halfway through cooking, add the saffron dissolved in a spoonful of broth."
+        },
+        {
+          "order": 6,
+          "text": "Cook for about 18–20 minutes, until the rice is tender but still has a slight bite."
+        },
+        {
+          "order": 7,
+          "text": "Remove from the heat, stir in the remaining butter and parmesan, and let it rest for 2 minutes before serving."
+        }
+      ],
+      "tips": [
+        "Add the broth gradually and never fully submerge the rice — it's exactly this slow addition and stirring that makes risotto creamy."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Risotto alla Milanese comes from Lombardy and is traditionally served alongside braised veal ossobuco.",
+      "related_glossary": [
+        "al-dente",
+        "soffritto",
+        "saffron",
+        "arborio-rice"
+      ],
+      "related_recipes": [
+        "ossobuco-alla-milanese"
+      ],
+      "seo_title": "Risotto alla Milanese – Italian Saffron Risotto | Atlas Chuti",
+      "meta_description": "Risotto alla Milanese recipe: creamy saffron risotto from Lombardy.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_lasagne-alla-bolognese",
+      "recipe_key": "lasagne-alla-bolognese",
+      "title": "Lasagne alla Bolognese",
+      "slug": "lasagne-alla-bolognese",
+      "country": "IT",
+      "excerpt": "Lasagne alla Bolognese layers pasta sheets with a meaty ragù and béchamel, topped with parmesan and baked until golden. The foundation of good lasagne is the ragù, which needs to simmer long and slow over low heat — any shortcut on the meat sauce shows the most in the final flavor. Layers of pasta, ragù, and béchamel are stacked in sequence, with the top layer finished with parmesan and baked until golden. It comes from Bologna and is one of the most famous and most widely exported dishes in all of Italian cuisine.",
+      "servings_default": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 90,
+      "total_minutes": 130,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "The dish gets its structure from three components built one at a time — ragù, béchamel, and pasta — layered only once each is ready on its own.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Ragù"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Ragù"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrot",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Ragù"
+        },
+        {
+          "ingredient_key": "celery-root",
+          "display_name": "Celery root",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "a small piece",
+          "group": "Ragù"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "500",
+          "unit": "ml",
+          "note": "",
+          "group": "Ragù"
+        },
+        {
+          "ingredient_key": "red-wine",
+          "display_name": "Red wine",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Ragù"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Ragù"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Ragù"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "60",
+          "unit": "g",
+          "note": "for the béchamel",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "60",
+          "unit": "g",
+          "note": "for the béchamel",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "700",
+          "unit": "ml",
+          "note": "for the béchamel",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "nutmeg",
+          "display_name": "Nutmeg",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "lasagne-sheets",
+          "display_name": "Lasagne sheets",
+          "quantity": "300",
+          "unit": "g",
+          "note": "",
+          "group": "Assembly"
+        },
+        {
+          "ingredient_key": "parmigiano-reggiano",
+          "display_name": "Parmigiano Reggiano",
+          "quantity": "100",
+          "unit": "g",
+          "note": "grated",
+          "group": "Assembly"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Ragù"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Finely chop the onion, carrot, and celery root and sauté in olive oil until translucent (soffritto)."
+        },
+        {
+          "order": 2,
+          "text": "Add the ground meat and brown well, then pour in the wine and let it evaporate."
+        },
+        {
+          "order": 3,
+          "text": "Add the crushed tomatoes and milk, season with salt, and simmer over low heat for at least 1 hour, ideally longer."
+        },
+        {
+          "order": 4,
+          "text": "For the béchamel, melt the butter, whisk in the flour, and gradually add the milk while stirring; cook until thickened and season with nutmeg."
+        },
+        {
+          "order": 5,
+          "text": "In a baking dish, layer the lasagne sheets, ragù, béchamel, and parmesan, repeating, finishing the top layer with béchamel and parmesan."
+        },
+        {
+          "order": 6,
+          "text": "Bake at 190°C (375°F) covered with foil for 25 minutes, then uncovered for another 15–20 minutes until golden."
+        },
+        {
+          "order": 7,
+          "text": "Let the lasagne rest for at least 10 minutes before slicing."
+        }
+      ],
+      "tips": [
+        "Cook the ragù as long as possible over low heat — the slower it simmers, the deeper the flavor it develops."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Lasagne alla Bolognese comes from Bologna and is one of the most famous and most widely exported dishes of Italian cuisine.",
+      "related_glossary": [
+        "soffritto",
+        "parmigiano-reggiano"
+      ],
+      "related_recipes": [],
+      "seo_title": "Lasagne alla Bolognese – Italian Recipe | Atlas Chuti",
+      "meta_description": "Lasagne alla Bolognese recipe: meaty ragù, béchamel, and parmesan.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_ossobuco-alla-milanese",
+      "recipe_key": "ossobuco-alla-milanese",
+      "title": "Ossobuco alla Milanese (Braised Veal Shank)",
+      "slug": "ossobuco-alla-milanese",
+      "country": "IT",
+      "excerpt": "Ossobuco alla Milanese is veal shank braised in wine and root vegetables, served with gremolata made from lemon zest, garlic, and parsley. The name literally means \"hollow bone,\" since the marrow inside the shank is traditionally considered a delicacy and eaten straight from the bone with a small spoon. The gremolata is added only at the table — fresh lemon zest and garlic bring a freshness that long braising would otherwise cook away. It comes from Lombardy and is traditionally served together with saffron risotto, with which it also shares its region of origin.",
+      "servings_default": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 120,
+      "total_minutes": 145,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Ossobuco literally means \"hollow bone\" — the marrow inside the shank is traditionally considered a delicacy, eaten with a small spoon straight from the bone.",
+      "ingredients": [
+        {
+          "ingredient_key": "veal-shank",
+          "display_name": "Veal shanks",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "60",
+          "unit": "g",
+          "note": "for coating",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrot",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "celery-root",
+          "display_name": "Celery root",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "a small piece",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "white-wine",
+          "display_name": "White wine",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "3",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "for the gremolata",
+          "group": "Gremolata"
+        },
+        {
+          "ingredient_key": "parsley",
+          "display_name": "Parsley",
+          "quantity": "15",
+          "unit": "g",
+          "note": "for the gremolata",
+          "group": "Gremolata"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "zest, for the gremolata",
+          "group": "Gremolata"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Meat"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Season the shanks with salt, coat in flour, and sear on all sides in olive oil until golden; remove."
+        },
+        {
+          "order": 2,
+          "text": "In the same pot, sauté the finely chopped onion, carrot, and celery root."
+        },
+        {
+          "order": 3,
+          "text": "Return the meat to the pot, add the wine, and let the alcohol evaporate."
+        },
+        {
+          "order": 4,
+          "text": "Add the crushed tomatoes and broth, cover, and braise over low heat for 1.5–2 hours until tender."
+        },
+        {
+          "order": 5,
+          "text": "For the gremolata, finely chop the garlic, parsley, and lemon zest and mix together."
+        },
+        {
+          "order": 6,
+          "text": "Scatter the finished ossobuco with fresh gremolata and serve with risotto alla Milanese."
+        }
+      ],
+      "tips": [
+        "Add the gremolata only at the table — fresh lemon zest and garlic bring a freshness that long braising would otherwise cook away."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Ossobuco alla Milanese comes from Lombardy and is traditionally served together with saffron risotto.",
+      "related_glossary": [
+        "braising"
+      ],
+      "related_recipes": [
+        "risotto-alla-milanese"
+      ],
+      "seo_title": "Ossobuco alla Milanese – Italian Braised Veal Shank | Atlas Chuti",
+      "meta_description": "Ossobuco alla Milanese recipe: braised veal shank with gremolata.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_boeuf-bourguignon",
+      "recipe_key": "boeuf-bourguignon",
+      "title": "Beef Bourguignon (Bœuf Bourguignon)",
+      "slug": "beef-bourguignon",
+      "country": "FR",
+      "excerpt": "Beef bourguignon is beef braised in red wine with bacon, mushrooms, and pearl onions, a rustic French classic from Burgundy. It began as a way to tenderize cheaper, tougher cuts of beef through long, slow braising in wine, and it's now one of the best-known dishes in all of French cuisine. It's worth cooking with a wine you'd happily drink on its own, since its flavor concentrates a great deal in the sauce, and a poor wine would only make the dish worse. It comes from Burgundy, a region famous for its red wine, which is still traditionally used to braise the meat.",
+      "servings_default": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 150,
+      "total_minutes": 180,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Bœuf bourguignon began as a way to tenderize cheaper cuts of beef through long braising in wine — it's now one of the best-known dishes in French cuisine.",
+      "ingredients": [
+        {
+          "ingredient_key": "beef",
+          "display_name": "Beef for stewing",
+          "quantity": "1.2",
+          "unit": "kg",
+          "note": "cubed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Bacon",
+          "quantity": "150",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Pearl onions",
+          "quantity": "12",
+          "unit": "pcs",
+          "note": "small, whole",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrots",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "3",
+          "unit": "clove",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "mushroom",
+          "display_name": "Mushrooms",
+          "quantity": "300",
+          "unit": "g",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "red-wine",
+          "display_name": "Red wine",
+          "quantity": "750",
+          "unit": "ml",
+          "note": "ideally Burgundy",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "40",
+          "unit": "g",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "thyme",
+          "display_name": "Thyme",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "30",
+          "unit": "g",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Meat"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the bacon until crisp, remove, and in the same fat sear the patted-dry beef on all sides until browned."
+        },
+        {
+          "order": 2,
+          "text": "Add the flour and cook briefly, then pour in the wine and broth."
+        },
+        {
+          "order": 3,
+          "text": "Return the bacon, add the crushed garlic, carrots, bay leaf, and thyme, and braise covered over low heat for 2 hours."
+        },
+        {
+          "order": 4,
+          "text": "Sauté the pearl onions and mushrooms in butter until golden and add to the meat for the final 30 minutes of braising."
+        },
+        {
+          "order": 5,
+          "text": "Season with salt and reduce the sauce further if needed."
+        },
+        {
+          "order": 6,
+          "text": "Serve with boiled potatoes, pasta, or fresh bread."
+        }
+      ],
+      "tips": [
+        "Cook with a wine you'd happily drink on its own — its flavor concentrates a great deal in the sauce."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Bœuf bourguignon comes from Burgundy, a region famous for its red wine, which is still traditionally used to braise the meat.",
+      "related_glossary": [
+        "braising",
+        "reduction"
+      ],
+      "related_recipes": [
+        "coq-au-vin",
+        "svickova"
+      ],
+      "seo_title": "Beef Bourguignon (Bœuf Bourguignon) – French Recipe | Atlas Chuti",
+      "meta_description": "Beef bourguignon recipe: beef braised in red wine with bacon and mushrooms.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_coq-au-vin",
+      "recipe_key": "coq-au-vin",
+      "title": "Coq au Vin (Chicken Braised in Red Wine)",
+      "slug": "coq-au-vin",
+      "country": "FR",
+      "excerpt": "Coq au vin is chicken braised in red wine with bacon and mushrooms, a classic of French country cooking. Like beef bourguignon, it began as a way to tenderize the tougher meat of an older rooster through long braising in wine, though today it's just as commonly made with ordinary chicken. It's best to fry the bacon separately first and add it back in at the end, so it stays crisp instead of turning soft in the sauce. It's a traditional dish of the French countryside, most often associated with Burgundy, where it's cooked with the local red wine.",
+      "servings_default": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 75,
+      "total_minutes": 100,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Coq au vin began much like bœuf bourguignon — as a way to tenderize the tougher meat of an older rooster through braising in wine. Today it's just as commonly made with ordinary chicken.",
+      "ingredients": [
+        {
+          "ingredient_key": "chicken",
+          "display_name": "Chicken thighs",
+          "quantity": "1.2",
+          "unit": "kg",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Bacon",
+          "quantity": "150",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "3",
+          "unit": "clove",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "mushroom",
+          "display_name": "Mushrooms",
+          "quantity": "250",
+          "unit": "g",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "red-wine",
+          "display_name": "Red wine",
+          "quantity": "500",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "30",
+          "unit": "g",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "thyme",
+          "display_name": "Thyme",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "30",
+          "unit": "g",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Meat"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the bacon until crisp, remove, and in the same fat sear the chicken thighs on both sides until golden."
+        },
+        {
+          "order": 2,
+          "text": "Add the onion and garlic, sauté briefly, then stir in the flour."
+        },
+        {
+          "order": 3,
+          "text": "Pour in the wine and broth, add the bay leaf and thyme, and braise covered for 45 minutes."
+        },
+        {
+          "order": 4,
+          "text": "Sauté the mushrooms in butter until golden and add to the meat for the final 15 minutes of braising."
+        },
+        {
+          "order": 5,
+          "text": "Return the bacon, season with salt, and reduce the sauce further if needed."
+        },
+        {
+          "order": 6,
+          "text": "Serve with boiled potatoes or a baguette."
+        }
+      ],
+      "tips": [
+        "Always fry the bacon separately first and add it back in at the end — it stays crisper that way."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Coq au vin is a traditional dish of the French countryside, most often associated with Burgundy, where it's cooked with the local red wine.",
+      "related_glossary": [
+        "braising",
+        "reduction"
+      ],
+      "related_recipes": [
+        "boeuf-bourguignon"
+      ],
+      "seo_title": "Coq au Vin – French Recipe for Chicken in Red Wine | Atlas Chuti",
+      "meta_description": "Coq au vin recipe: chicken braised in red wine with bacon and mushrooms.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_ratatouille",
+      "recipe_key": "ratatouille",
+      "title": "Ratatouille (Provençal Stewed Vegetables)",
+      "slug": "ratatouille",
+      "country": "FR",
+      "excerpt": "Ratatouille is stewed Provençal vegetables — eggplant, zucchini, bell pepper, and tomatoes — scented with thyme, basil, and olive oil. It tastes best in summer, when the eggplant, zucchini, and tomatoes are fully ripe; outside the season it's better to use good canned tomatoes than underripe fresh vegetables. It's worth cutting the vegetables into similarly sized cubes, so everything cooks evenly and nothing ends up either mushy or hard. It comes from Provence, where it was originally a rustic, humbler dish made from the summer vegetable surplus, and it can also be baked in thin layers in the oven.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 40,
+      "total_minutes": 60,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish",
+        "main-course"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Ratatouille is at its best in season, when the eggplant, zucchini, and tomatoes are truly ripe — in winter, reach for good canned tomatoes instead.",
+      "ingredients": [
+        {
+          "ingredient_key": "eggplant",
+          "display_name": "Eggplant",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "zucchini",
+          "display_name": "Zucchini",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell peppers",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomatoes",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "3",
+          "unit": "clove",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "60",
+          "unit": "ml",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "thyme",
+          "display_name": "Thyme",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "basil",
+          "display_name": "Basil",
+          "quantity": "10",
+          "unit": "g",
+          "note": "to garnish",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "",
+          "group": "Vegetables"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion and garlic in olive oil until translucent."
+        },
+        {
+          "order": 2,
+          "text": "Add the eggplant and zucchini and sauté for 5 minutes."
+        },
+        {
+          "order": 3,
+          "text": "Stir in the bell pepper, tomatoes, and thyme, season with salt, and simmer covered over low heat for 30–35 minutes, stirring occasionally."
+        },
+        {
+          "order": 4,
+          "text": "Uncover and let any excess liquid reduce for another 5–10 minutes."
+        },
+        {
+          "order": 5,
+          "text": "Serve warm or at room temperature, scattered with fresh basil."
+        }
+      ],
+      "tips": [
+        "Cut the vegetables into similarly sized cubes — they'll cook evenly and none will end up mushy or hard."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Baked version",
+          "note": "The vegetables can be sliced thin and layered in a baking dish instead of stewed."
+        }
+      ],
+      "origin_history": "Ratatouille comes from Provence, where it was originally a rustic, humbler dish made from the summer vegetable surplus.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Ratatouille – Provençal Stewed Vegetables Recipe | Atlas Chuti",
+      "meta_description": "Ratatouille recipe: stewed Provençal vegetables with thyme and olive oil.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_quiche-lorraine",
+      "recipe_key": "quiche-lorraine",
+      "title": "Quiche Lorraine (French Bacon and Egg Tart)",
+      "slug": "quiche-lorraine",
+      "country": "FR",
+      "excerpt": "Quiche Lorraine is a savory tart with a crisp pastry crust, bacon, and a creamy egg filling, a classic from France's Lorraine region. The authentic version goes without cheese entirely — it's held together by nothing more than the crisp pastry, bacon, and a silky filling of eggs and cream seasoned with nutmeg. It's worth blind-baking the crust before filling it, to avoid a soggy bottom once the liquid filling goes in. It comes from Lorraine in northeastern France and is one of the best-known savory tarts in all of French cooking.",
+      "servings_default": 6,
+      "prep_minutes": 25,
+      "cook_minutes": 40,
+      "total_minutes": 65,
+      "difficulty": "medium",
+      "meal_type": [
+        "appetizer",
+        "main-course"
+      ],
+      "diet": [],
+      "about": "An authentic Quiche Lorraine goes without cheese — just crisp pastry, bacon, and a silky egg filling held together by nothing more than cream and eggs.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "250",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "125",
+          "unit": "g",
+          "note": "cold",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "for the pastry",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Bacon",
+          "quantity": "200",
+          "unit": "g",
+          "note": "cut into strips",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "for the filling",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "nutmeg",
+          "display_name": "Nutmeg",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Quickly work the flour, cold butter, egg, and salt into a short pastry, wrap, and chill for 30 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Roll out the pastry and line a greased tart pan, prick with a fork, and blind-bake for 10 minutes at 200°C (390°F)."
+        },
+        {
+          "order": 3,
+          "text": "Briefly fry the bacon and scatter it over the pre-baked crust."
+        },
+        {
+          "order": 4,
+          "text": "Whisk the eggs with the cream, nutmeg, and pepper and pour over the bacon."
+        },
+        {
+          "order": 5,
+          "text": "Bake at 180°C (350°F) for about 25–30 minutes, until the filling sets and the top turns golden."
+        },
+        {
+          "order": 6,
+          "text": "Let cool slightly and serve warm or at room temperature with a salad."
+        }
+      ],
+      "tips": [
+        "Blind-bake the crust before filling it — this prevents a soggy bottom."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Quiche Lorraine comes from the Lorraine region of France and is one of the best-known French savory tarts.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Quiche Lorraine – French Savory Tart Recipe | Atlas Chuti",
+      "meta_description": "Quiche Lorraine recipe: crisp pastry, bacon, and a creamy egg filling.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_crepes",
+      "recipe_key": "crepes",
+      "title": "Crêpes (French Thin Pancakes)",
+      "slug": "crepes-french-thin-pancakes",
+      "country": "FR",
+      "excerpt": "Crêpes are thin French pancakes, savory or sweet depending on what you fill them with. What sets them apart from an ordinary pancake is mainly their thinness — the batter needs to be quite runny and the pan properly hot, so it spreads evenly across the whole surface and cooks up delicate and lightly crisp. It's worth letting the batter rest for a while before frying, which relaxes the gluten and leaves the finished crêpes more tender. They come from Brittany, where they were traditionally made with buckwheat flour as a savory dish called galette, filled with ham, cheese, and egg.",
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "cook_minutes": 20,
+      "total_minutes": 30,
+      "difficulty": "easy",
+      "meal_type": [
+        "dessert",
+        "breakfast"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Fillings range from a simple dusting of sugar and lemon to fully savory galettes stuffed with ham, cheese, and egg — the same thin batter works either way.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "250",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "500",
+          "unit": "ml",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "melted",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "rum",
+          "display_name": "Rum",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "optional",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "20",
+          "unit": "g",
+          "note": "for frying",
+          "group": "For frying"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Mix the flour with the eggs and a pinch of salt, gradually whisking in the milk so the batter has no lumps."
+        },
+        {
+          "order": 2,
+          "text": "Stir in the melted butter, sugar, and optionally the rum, and let the batter rest for 20 minutes."
+        },
+        {
+          "order": 3,
+          "text": "Pour a thin layer of batter onto a hot, butter-greased pan and tilt the pan to spread it evenly."
+        },
+        {
+          "order": 4,
+          "text": "Fry for about a minute per side, until the edges start to turn golden and release from the pan."
+        },
+        {
+          "order": 5,
+          "text": "Serve with sugar and lemon, jam, chocolate, or savory with ham and cheese."
+        }
+      ],
+      "tips": [
+        "Let the batter rest before frying — the gluten relaxes and the crêpes turn out more tender."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Savory crêpes (galettes)",
+          "note": "Made with buckwheat flour, filled with ham, cheese, and egg."
+        }
+      ],
+      "origin_history": "Crêpes come from Brittany, where they were traditionally made with buckwheat flour as a savory dish called galette.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Crêpes – French Thin Pancakes Recipe | Atlas Chuti",
+      "meta_description": "French crêpes recipe: thin pancakes, savory or sweet.",
+      "status": "publish"
+    }
+  ]
+}

@@ -1,0 +1,871 @@
+{
+  "glossary": [
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "al-dente",
+      "title": "Al dente",
+      "slug": "al-dente",
+      "category": "technique",
+      "short_definition": "The doneness of pasta or rice cooked \"to the bite,\" still offering a little resistance.",
+      "detailed": "Al dente literally means \"to the tooth.\" Taste about a minute before the package time is up — pasta should offer a slight resistance, never be soft to the point of falling apart.",
+      "origin_country": "IT",
+      "related_recipes": [
+        "spaghetti-carbonara",
+        "risotto-alla-milanese"
+      ],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "soffritto",
+      "title": "Soffritto",
+      "slug": "soffritto",
+      "category": "technique",
+      "short_definition": "The base of many Italian dishes: onion, carrot, and celery, slowly sautéed together.",
+      "detailed": "The three vegetables are finely diced and slowly sautéed in oil or butter until translucent — the base of countless Italian sauces, risottos, and stocks.",
+      "origin_country": "IT",
+      "related_recipes": [
+        "risotto-alla-milanese",
+        "lasagne-alla-bolognese"
+      ],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "blanching",
+      "title": "Blanching",
+      "slug": "blanching",
+      "category": "technique",
+      "short_definition": "Briefly scalding vegetables or fruit in boiling water, then cooling them quickly in an ice bath.",
+      "detailed": "Vegetables are briefly boiled to keep their color and crunch, then plunged straight into ice water to stop the cooking. Also used for peeling tomatoes.",
+      "usage": "Rajčata, mandle, zelené fazolky, brokolice před dalším zpracováním.",
+      "related_recipes": [],
+      "related_countries": [],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "poaching",
+      "title": "Poaching",
+      "slug": "poaching",
+      "category": "technique",
+      "short_definition": "Gentle cooking in hot but not boiling liquid, usually water, stock, or milk.",
+      "detailed": "The temperature is held just below boiling, so the ingredient — most often fish, eggs, or fruit — cooks gently without falling apart.",
+      "usage": "Ztracené vejce, ryba ve vývaru, hruška v koření a víně.",
+      "related_recipes": [
+        "fiskesuppe"
+      ],
+      "related_countries": [
+        "NO"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "confit",
+      "title": "Confit",
+      "slug": "confit",
+      "category": "technique",
+      "short_definition": "Slow cooking an ingredient submerged in fat or oil at a low temperature.",
+      "detailed": "Originally a way of preserving meat (most often duck) in its own fat; today the technique is also used for vegetables or garlic confited in olive oil.",
+      "origin_country": "FR",
+      "related_recipes": [],
+      "related_countries": [
+        "FR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "reduction",
+      "title": "Reduction",
+      "slug": "reduction",
+      "category": "technique",
+      "short_definition": "Thickening a sauce or stock by simmering off liquid over gentle heat.",
+      "detailed": "Longer simmering evaporates some of the water, concentrating the flavor and thickening the sauce without needing to add a roux or starch.",
+      "related_recipes": [
+        "boeuf-bourguignon",
+        "coq-au-vin"
+      ],
+      "related_countries": [
+        "FR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "sauteing",
+      "title": "Sautéing",
+      "slug": "sautéing",
+      "category": "technique",
+      "short_definition": "Quick cooking in fat over high heat, with constant stirring or tossing.",
+      "detailed": "Ingredients are cooked in a small amount of fat in a very hot pan so they stay juicy inside while lightly browning on the surface.",
+      "related_recipes": [],
+      "related_countries": [],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "gratin",
+      "title": "Gratin",
+      "slug": "gratin",
+      "category": "technique",
+      "short_definition": "Browning a dish under the broiler or in the oven until it forms a crisp golden crust.",
+      "detailed": "A dish topped with cheese, breadcrumbs, or béchamel is finished under top heat until a crisp crust forms on the surface.",
+      "origin_country": "FR",
+      "related_recipes": [
+        "moussaka"
+      ],
+      "related_countries": [
+        "FR",
+        "GR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "flambe",
+      "title": "Flambé",
+      "slug": "flambé",
+      "category": "technique",
+      "short_definition": "Igniting alcohol added to a hot dish, burning off the spirit and leaving only the flavor.",
+      "detailed": "Alcohol (brandy, rum, wine) is added to a hot pan and carefully lit — the flame burns off quickly, leaving the dish a concentrated flavor without a sharp alcoholic edge.",
+      "origin_country": "FR",
+      "related_recipes": [],
+      "related_countries": [
+        "FR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "emulsion",
+      "title": "Emulsion",
+      "slug": "emulsion",
+      "category": "technique",
+      "short_definition": "The blending of two otherwise unmixable liquids, such as oil and water, into one smooth mixture.",
+      "detailed": "Formed by dispersing one liquid into another through vigorous whisking, often with egg yolk as the emulsifier — mayonnaise and carbonara's sauce are classic examples.",
+      "related_recipes": [
+        "spaghetti-carbonara"
+      ],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "julienne",
+      "title": "Julienne",
+      "slug": "julienne",
+      "category": "technique",
+      "short_definition": "Cutting vegetables into thin, evenly sized matchsticks.",
+      "detailed": "Vegetables are cut into thin slices and then into thin strips a few centimeters long — used mainly for garnish and quick sautéing.",
+      "related_recipes": [],
+      "related_countries": [],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "grilling",
+      "title": "Grilling",
+      "slug": "grilling",
+      "category": "technique",
+      "short_definition": "Cooking meat or vegetables directly over glowing charcoal or on a hot grate.",
+      "detailed": "High, direct heat gives food its characteristic charred crust and smoky flavor — a key technique in both Balkan and Greek cooking.",
+      "related_recipes": [
+        "cevapi",
+        "souvlaki",
+        "pljeskavica"
+      ],
+      "related_countries": [
+        "RS",
+        "GR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "braising",
+      "title": "Braising",
+      "slug": "braising",
+      "category": "technique",
+      "short_definition": "Slow-cooking meat or vegetables in a small amount of liquid under a lid.",
+      "detailed": "The ingredient is first browned, then slowly simmered tender over gentle heat in liquid — stock, wine, or beer. An ideal technique for tougher cuts of meat.",
+      "related_recipes": [
+        "sauerbraten",
+        "bigos",
+        "pasticada"
+      ],
+      "related_countries": [
+        "DE",
+        "PL",
+        "HR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "marinating",
+      "title": "Marinating",
+      "slug": "marinating",
+      "category": "technique",
+      "short_definition": "Soaking meat or vegetables in a seasoned liquid before cooking.",
+      "detailed": "A marinade (usually vinegar-, wine-, or yogurt-based) tenderizes meat and builds flavor before cooking even begins — for some recipes, it takes several days.",
+      "related_recipes": [
+        "svickova",
+        "sauerbraten"
+      ],
+      "related_countries": [
+        "CZ",
+        "DE"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "proofing",
+      "title": "Proofing",
+      "slug": "proofing",
+      "category": "technique",
+      "short_definition": "Letting yeasted dough rest in a warm spot until it rises.",
+      "detailed": "Yeast or sourdough starter releases carbon dioxide, which makes the dough rise. The dough rests in a warm place under a towel, usually once or even twice.",
+      "related_recipes": [
+        "buchty",
+        "potica",
+        "kanelbullar"
+      ],
+      "related_countries": [
+        "CZ",
+        "SI",
+        "SE"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "roux",
+      "title": "Roux",
+      "slug": "roux",
+      "category": "technique",
+      "short_definition": "A thickener made from flour toasted in fat, the base of many Central European sauces and soups.",
+      "detailed": "Flour is toasted in butter or lard, stirred constantly, until pale or golden, then thinned with liquid — the darker the roux, the more pronounced its nutty flavor.",
+      "related_recipes": [
+        "svickova",
+        "kulajda"
+      ],
+      "related_countries": [
+        "CZ"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "pancetta",
+      "title": "Pancetta",
+      "slug": "pancetta",
+      "category": "ingredient",
+      "short_definition": "Italian unsmoked bacon cured in salt and spices, dry-aged.",
+      "detailed": "Unlike English bacon, pancetta is never smoked — it's simply salted, seasoned, and left to age. Sold sliced or rolled.",
+      "origin_country": "IT",
+      "substitute": "Uzená slanina nebo pancetta v nouzi nahradí guanciale, chuť je ale méně výrazná.",
+      "related_recipes": [
+        "spaghetti-carbonara"
+      ],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "parmigiano-reggiano",
+      "title": "Parmigiano Reggiano",
+      "slug": "parmigiano-reggiano",
+      "category": "ingredient",
+      "short_definition": "A hard aged cheese made from cow's milk, a protected Italian product with a long tradition.",
+      "detailed": "It ages for at least 12 months, often much longer, and only cheese made in a precisely defined area of northern Italy may carry the name.",
+      "origin_country": "IT",
+      "related_recipes": [
+        "risotto-alla-milanese",
+        "lasagne-alla-bolognese"
+      ],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "arborio-rice",
+      "title": "Arborio rice",
+      "slug": "arborio-rice",
+      "category": "ingredient",
+      "short_definition": "A round-grain Italian rice high in starch, the base of risotto.",
+      "detailed": "As it cooks, it releases starch that thickens risotto to a creamy consistency without any cream being added.",
+      "origin_country": "IT",
+      "related_recipes": [
+        "risotto-alla-milanese"
+      ],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "chorizo",
+      "title": "Chorizo",
+      "slug": "chorizo",
+      "category": "ingredient",
+      "short_definition": "A Spanish smoked sausage seasoned with paprika, sold both fresh and cured.",
+      "detailed": "Smoked ground paprika (pimentón) gives the sausage its signature red color and smoky flavor. Used fresh in cooking as well as sliced as a cured meat.",
+      "origin_country": "ES",
+      "related_recipes": [
+        "paella-valenciana"
+      ],
+      "related_countries": [
+        "ES"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "jamon-serrano",
+      "title": "Jamón serrano",
+      "slug": "jamón-serrano",
+      "category": "ingredient",
+      "short_definition": "Spanish dry-cured ham aged in mountain regions, sliced paper-thin.",
+      "detailed": "A pork leg is first salted, then aged for months to years in dry mountain air. Served raw, sliced thin.",
+      "origin_country": "ES",
+      "related_recipes": [],
+      "related_countries": [
+        "ES"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "bacalhau",
+      "title": "Bacalhau (dried salt cod)",
+      "slug": "bacalhau-dried-salt-cod",
+      "category": "ingredient",
+      "short_definition": "Cod preserved with salt and dried, a staple of Portuguese cuisine.",
+      "detailed": "Before cooking it must be soaked in cold water for several days to remove the excess salt. Portugal has hundreds of recipes built around it.",
+      "origin_country": "PT",
+      "related_recipes": [
+        "bacalhau-a-bras"
+      ],
+      "related_countries": [
+        "PT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "feta",
+      "title": "Feta",
+      "slug": "feta",
+      "category": "ingredient",
+      "short_definition": "A salty Greek cheese made from sheep's or goat's milk, aged in brine.",
+      "detailed": "Under EU protected-designation rules, feta may only come from Greece. It crumbles but doesn't melt away, which makes it ideal for both salads and baking.",
+      "origin_country": "GR",
+      "related_recipes": [
+        "spanakopita",
+        "horiatiki"
+      ],
+      "related_countries": [
+        "GR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "bryndza",
+      "title": "Bryndza",
+      "slug": "bryndza",
+      "category": "ingredient",
+      "short_definition": "A salty Slovak cheese made from sheep's milk, with a sharp, tangy flavor.",
+      "detailed": "Made by blending curdled sheep's-milk cheese with salt into a soft, spreadable consistency. The base of bryndzové halušky and pirohy alike.",
+      "origin_country": "SK",
+      "related_recipes": [
+        "bryndzove-halusky",
+        "pirohy-bryndza"
+      ],
+      "related_countries": [
+        "SK"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "creme-fraiche",
+      "title": "Crème fraîche",
+      "slug": "crème-fraîche",
+      "category": "ingredient",
+      "short_definition": "A cultured cream with a higher fat content and a mildly tangy flavor.",
+      "detailed": "Unlike regular sour cream, it can take higher heat without curdling, which makes it well suited to hot sauces.",
+      "origin_country": "FR",
+      "substitute": "Hustá zakysaná smetana s vyšším podílem tuku.",
+      "related_recipes": [],
+      "related_countries": [
+        "FR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "dijon-mustard",
+      "title": "Dijon mustard",
+      "slug": "dijon-mustard",
+      "category": "ingredient",
+      "short_definition": "A smooth French mustard made from mustard seeds and white wine, without vinegar.",
+      "detailed": "Made from black or brown mustard seed and white wine or must, which makes it milder and less sharp than a classic vinegar-based mustard.",
+      "origin_country": "FR",
+      "related_recipes": [],
+      "related_countries": [
+        "FR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "polenta",
+      "title": "Polenta",
+      "slug": "polenta",
+      "category": "ingredient",
+      "short_definition": "A cornmeal porridge made from coarse ground corn, Italy's counterpart to Romanian mămăligă.",
+      "detailed": "Made by slowly stirring cornmeal into boiling salted water or stock until it thickens. Served soft, or set firm and grilled.",
+      "origin_country": "IT",
+      "related_recipes": [
+        "mamaliga"
+      ],
+      "related_countries": [
+        "IT",
+        "RO"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "saffron",
+      "title": "Saffron",
+      "slug": "saffron",
+      "category": "ingredient",
+      "short_definition": "The world's most expensive spice, the dried stigmas of the saffron crocus, deep golden in color.",
+      "detailed": "A single gram of saffron requires hand-picking stigmas from dozens of flowers. Gives rice and sauces a characteristic golden color and a faintly bitter flavor.",
+      "related_recipes": [
+        "paella-valenciana",
+        "risotto-alla-milanese"
+      ],
+      "related_countries": [
+        "ES",
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "capers",
+      "title": "Capers",
+      "slug": "capers",
+      "category": "ingredient",
+      "short_definition": "The pickled buds of the caper bush, a salty, sour addition to sauces and salads.",
+      "detailed": "Picked while still closed buds and cured in vinegar or salt. A small amount adds a pronounced salty tang to a dish.",
+      "related_recipes": [],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "prosciutto",
+      "title": "Prosciutto",
+      "slug": "prosciutto",
+      "category": "ingredient",
+      "short_definition": "Italian dry-cured ham, the best known being prosciutto di Parma.",
+      "detailed": "A pork leg is salted and left to age for at least a year. Served raw, sliced thin, often with melon or figs.",
+      "origin_country": "IT",
+      "related_recipes": [],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "paprika-spice",
+      "title": "Ground paprika",
+      "slug": "ground-paprika",
+      "category": "ingredient",
+      "short_definition": "Dried, ground paprika, the essential spice of Hungarian cooking — both sweet and hot.",
+      "detailed": "The best ground paprika comes from around the towns of Kalocsa and Szeged. It's always added off the heat, or it turns slightly bitter.",
+      "origin_country": "HU",
+      "related_recipes": [
+        "gulyas",
+        "paprikas-csirke"
+      ],
+      "related_countries": [
+        "HU"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "olive-oil",
+      "title": "Olive oil",
+      "slug": "olive-oil",
+      "category": "ingredient",
+      "short_definition": "The essential fat of Mediterranean cooking, pressed from ripe olives.",
+      "detailed": "The best is extra virgin olive oil from the first cold pressing — it has the most pronounced flavor and the lowest acidity.",
+      "related_recipes": [
+        "gazpacho",
+        "horiatiki"
+      ],
+      "related_countries": [
+        "IT",
+        "ES",
+        "GR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "bulgarian-yogurt",
+      "title": "Bulgarian yogurt",
+      "slug": "bulgarian-yogurt",
+      "category": "ingredient",
+      "short_definition": "A thick cultured milk with a pronounced tang, linked to the bacterium Lactobacillus bulgaricus.",
+      "detailed": "The lactic-fermentation bacterium used to make it is named directly after Bulgaria, where a Bulgarian microbiologist first described it in the early 20th century.",
+      "origin_country": "BG",
+      "related_recipes": [
+        "tarator"
+      ],
+      "related_countries": [
+        "BG"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "antipasto",
+      "title": "Antipasto",
+      "slug": "antipasto",
+      "category": "gastronomy",
+      "short_definition": "An Italian cold starter served before the main course — cured meats, cheeses, vegetables.",
+      "detailed": "Literally \"before the meal.\" Typically a plate of prosciutto, olives, marinated vegetables, and a bit of cheese to open the appetite.",
+      "origin_country": "IT",
+      "related_recipes": [],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "aperitivo",
+      "title": "Aperitivo",
+      "slug": "aperitivo",
+      "category": "gastronomy",
+      "short_definition": "The Italian ritual of a pre-dinner drink with light snacks.",
+      "detailed": "Usually between 6 and 8 p.m., when Italians have a light alcoholic drink (an Aperol Spritz, say) with small bites to wake up the appetite before dinner.",
+      "origin_country": "IT",
+      "related_recipes": [],
+      "related_countries": [
+        "IT"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "digestif",
+      "title": "Digestif",
+      "slug": "digestif",
+      "category": "gastronomy",
+      "short_definition": "An alcoholic drink served after a meal, said to aid digestion.",
+      "detailed": "Usually a stronger spirit — an herbal liqueur, brandy, or grappa — served in a small glass at the end of a meal.",
+      "related_recipes": [],
+      "related_countries": [],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "tapas",
+      "title": "Tapas",
+      "slug": "tapas",
+      "category": "gastronomy",
+      "short_definition": "Small Spanish dishes meant for sharing, usually served with wine or beer.",
+      "detailed": "From simple olives to elaborate hot dishes — several kinds of tapas are ordered at once and shared around the table.",
+      "origin_country": "ES",
+      "related_recipes": [
+        "tortilla-espanola",
+        "patatas-bravas",
+        "croquetas-de-jamon"
+      ],
+      "related_countries": [
+        "ES"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "meze",
+      "title": "Meze",
+      "slug": "meze",
+      "category": "gastronomy",
+      "short_definition": "A shared spread of small cold and hot starters, typical of Greece and the Balkans.",
+      "detailed": "Similar to tapas, it's a way of eating — several small dishes arrive at the table at once, and everyone shares from them together.",
+      "origin_country": "GR",
+      "related_recipes": [
+        "tzatziki"
+      ],
+      "related_countries": [
+        "GR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "terroir",
+      "title": "Terroir",
+      "slug": "terroir",
+      "category": "gastronomy",
+      "short_definition": "The sum of a place's soil, climate, and tradition, which stamps a characteristic flavor onto wine and food.",
+      "detailed": "A term from French winemaking, now also applied to ingredients in general — the same variety grown elsewhere tastes different.",
+      "origin_country": "FR",
+      "related_recipes": [],
+      "related_countries": [
+        "FR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "pdo-pgi",
+      "title": "Protected Designation of Origin (PDO/PGI)",
+      "slug": "protected-designation-of-origin-pdo/pgi",
+      "category": "gastronomy",
+      "short_definition": "An EU system that protects a food name tied to a specific region and traditional method of production.",
+      "detailed": "Marked with the abbreviations PDO (Protected Designation of Origin) and PGI (Protected Geographical Indication) — Parmigiano Reggiano or kranjska klobasa, for instance, may only carry their name if made to the specified recipe and in the specified place.",
+      "related_recipes": [
+        "kranjska-klobasa"
+      ],
+      "related_countries": [],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "fika",
+      "title": "Fika",
+      "slug": "fika",
+      "category": "gastronomy",
+      "short_definition": "The Swedish ritual of an afternoon coffee break with something sweet, usually a cinnamon bun.",
+      "detailed": "Fika isn't just a snack but a social pause — at Swedish workplaces it's often even a fixed part of the daily schedule.",
+      "origin_country": "SE",
+      "related_recipes": [
+        "kanelbullar"
+      ],
+      "related_countries": [
+        "SE"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "mise-en-place",
+      "title": "Mise en place",
+      "slug": "mise-en-place",
+      "category": "gastronomy",
+      "short_definition": "Prepping and laying out every ingredient and tool in advance, before cooking begins.",
+      "detailed": "Literally \"put in place.\" A basic rule of professional kitchens — everything chopped, measured, and set out in bowls so the cooking itself runs smoothly.",
+      "origin_country": "FR",
+      "related_recipes": [],
+      "related_countries": [
+        "FR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "degustation",
+      "title": "Degustation",
+      "slug": "degustation",
+      "category": "gastronomy",
+      "short_definition": "A tasting of a larger number of smaller portions of food or wine to assess flavor.",
+      "detailed": "In restaurants, a degustation menu is made up of several small courses so a guest tastes as wide a range of the kitchen's flavors as possible.",
+      "related_recipes": [],
+      "related_countries": [],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "smorgasbord",
+      "title": "Smörgåsbord",
+      "slug": "smörgåsbord",
+      "category": "gastronomy",
+      "short_definition": "The Swedish style of dining as a lavish cold-and-hot buffet.",
+      "detailed": "Traditionally eaten in a set order — from fish, through cold meats, to hot dishes and cheese at the end.",
+      "origin_country": "SE",
+      "related_recipes": [
+        "gravlax"
+      ],
+      "related_countries": [
+        "SE"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "paellera",
+      "title": "Paellera",
+      "slug": "paellera",
+      "category": "equipment",
+      "short_definition": "A wide, shallow two-handled pan traditionally used to cook paella.",
+      "detailed": "Its large diameter and shallow depth mean the rice cooks in a thin layer, letting the prized crispy socarrat layer form on the bottom.",
+      "origin_country": "ES",
+      "related_recipes": [
+        "paella-valenciana"
+      ],
+      "related_countries": [
+        "ES"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "mandoline",
+      "title": "Mandoline",
+      "slug": "mandoline",
+      "category": "equipment",
+      "short_definition": "A kitchen slicing tool for thin, even slices or strips of vegetables.",
+      "detailed": "Lets you cut vegetables into thin, even slices quickly — something a hand knife can rarely match for precision.",
+      "related_recipes": [],
+      "related_countries": [],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "mortar-and-pestle",
+      "title": "Mortar and pestle",
+      "slug": "mortar-and-pestle",
+      "category": "equipment",
+      "short_definition": "A bowl and pounder for crushing spices, garlic, or herbs.",
+      "detailed": "Crushing, rather than chopping, releases more of an ingredient's oils and flavor — tzatziki or pesto are traditionally made this way.",
+      "related_recipes": [
+        "tzatziki"
+      ],
+      "related_countries": [
+        "GR"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "dutch-oven",
+      "title": "Dutch oven",
+      "slug": "dutch-oven",
+      "category": "equipment",
+      "short_definition": "A heavy cast-iron pot with a lid, ideal for long braising on the stovetop or in the oven.",
+      "detailed": "Thick walls hold a steady temperature through long braising, so the food never scorches and softens evenly.",
+      "related_recipes": [
+        "irish-stew",
+        "dublin-coddle"
+      ],
+      "related_countries": [
+        "IE"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "kitchen-thermometer",
+      "title": "Kitchen thermometer",
+      "slug": "kitchen-thermometer",
+      "category": "equipment",
+      "short_definition": "A tool for measuring the internal temperature of meat to hit the exact doneness.",
+      "detailed": "Especially with large cuts like beef Wellington, an insta-read thermometer is the only reliable way to hit the target doneness.",
+      "related_recipes": [
+        "beef-wellington"
+      ],
+      "related_countries": [
+        "GB"
+      ],
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "springform-pan",
+      "title": "Springform pan",
+      "slug": "springform-pan",
+      "category": "equipment",
+      "short_definition": "A round baking pan with a side latch that opens after baking for easy release of the cake.",
+      "detailed": "Indispensable for moist or layered cakes like Sachertorte or Dobos torta, which would be nearly impossible to turn out whole from a regular pan.",
+      "related_recipes": [
+        "sachertorte",
+        "dobos-torta"
+      ],
+      "related_countries": [
+        "AT",
+        "HU"
+      ],
+      "status": "publish"
+    }
+  ]
+}

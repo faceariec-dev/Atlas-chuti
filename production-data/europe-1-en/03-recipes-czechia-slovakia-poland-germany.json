@@ -1,0 +1,3473 @@
+{
+  "ingredients": [
+    {
+      "ingredient_key": "beef",
+      "locale": "en",
+      "title": "Beef",
+      "slug": "beef",
+      "aliases": [
+        "beef shank",
+        "beef brisket"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "pork",
+      "locale": "en",
+      "title": "Pork",
+      "slug": "pork",
+      "aliases": [
+        "pork shoulder"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "pork-knuckle",
+      "locale": "en",
+      "title": "Pork knuckle",
+      "slug": "pork-knuckle",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "ground-meat-mixed",
+      "locale": "en",
+      "title": "Mixed ground meat (pork and beef)",
+      "slug": "mixed-ground-meat-pork-and-beef",
+      "aliases": [
+        "ground beef and pork"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "onion",
+      "locale": "en",
+      "title": "Onion",
+      "slug": "onion",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "garlic",
+      "locale": "en",
+      "title": "Garlic",
+      "slug": "garlic",
+      "aliases": [
+        "garlic clove",
+        "garlic cloves"
+      ],
+      "default_unit": "clove"
+    },
+    {
+      "ingredient_key": "carrot",
+      "locale": "en",
+      "title": "Carrot",
+      "slug": "carrot",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "celery-root",
+      "locale": "en",
+      "title": "Celery root",
+      "slug": "celery-root",
+      "aliases": [
+        "celeriac"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "parsley-root",
+      "locale": "en",
+      "title": "Parsley root",
+      "slug": "parsley-root",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "parsley",
+      "locale": "en",
+      "title": "Parsley",
+      "slug": "parsley",
+      "aliases": [
+        "flat-leaf parsley"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "bay-leaf",
+      "locale": "en",
+      "title": "Bay leaf",
+      "slug": "bay-leaf",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "allspice",
+      "locale": "en",
+      "title": "Allspice berries",
+      "slug": "allspice-berries",
+      "aliases": [
+        "whole allspice"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "black-pepper",
+      "locale": "en",
+      "title": "Black pepper",
+      "slug": "black-pepper",
+      "aliases": [
+        "pepper"
+      ],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "salt",
+      "locale": "en",
+      "title": "Salt",
+      "slug": "salt",
+      "aliases": [],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "sugar",
+      "locale": "en",
+      "title": "Granulated sugar",
+      "slug": "granulated-sugar",
+      "aliases": [
+        "sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "butter",
+      "locale": "en",
+      "title": "Butter",
+      "slug": "butter",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "flour",
+      "locale": "en",
+      "title": "All-purpose flour",
+      "slug": "all-purpose-flour",
+      "aliases": [
+        "plain flour"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cream",
+      "locale": "en",
+      "title": "Whipping cream (33%)",
+      "slug": "whipping-cream-33",
+      "aliases": [
+        "heavy cream"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "sour-cream",
+      "locale": "en",
+      "title": "Sour cream",
+      "slug": "sour-cream",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "vinegar",
+      "locale": "en",
+      "title": "Vinegar",
+      "slug": "vinegar",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "lemon",
+      "locale": "en",
+      "title": "Lemon",
+      "slug": "lemon",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "cranberry-sauce",
+      "locale": "en",
+      "title": "Cranberry sauce",
+      "slug": "cranberry-sauce",
+      "aliases": [
+        "cranberries"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "bread-roll",
+      "locale": "en",
+      "title": "Stale bread rolls or baguette",
+      "slug": "stale-bread-rolls-or-baguette",
+      "aliases": [
+        "day-old rolls"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "milk",
+      "locale": "en",
+      "title": "Milk",
+      "slug": "milk",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "egg",
+      "locale": "en",
+      "title": "Egg",
+      "slug": "egg",
+      "aliases": [
+        "eggs"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "yeast",
+      "locale": "en",
+      "title": "Yeast",
+      "slug": "yeast",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "caraway-seed",
+      "locale": "en",
+      "title": "Caraway seeds",
+      "slug": "caraway-seeds",
+      "aliases": [
+        "whole caraway"
+      ],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "marjoram",
+      "locale": "en",
+      "title": "Dried marjoram",
+      "slug": "dried-marjoram",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "white-cabbage",
+      "locale": "en",
+      "title": "White cabbage",
+      "slug": "white-cabbage",
+      "aliases": [
+        "cabbage"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "sauerkraut",
+      "locale": "en",
+      "title": "Sauerkraut",
+      "slug": "sauerkraut",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "curd-cheese",
+      "locale": "en",
+      "title": "Curd cheese (tvaroh)",
+      "slug": "curd-cheese-tvaroh",
+      "aliases": [
+        "quark"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "plum-jam",
+      "locale": "en",
+      "title": "Plum jam",
+      "slug": "plum-jam",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "vanilla-sugar",
+      "locale": "en",
+      "title": "Vanilla sugar",
+      "slug": "vanilla-sugar",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "powdered-sugar",
+      "locale": "en",
+      "title": "Powdered sugar",
+      "slug": "powdered-sugar",
+      "aliases": [
+        "icing sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "dried-mushroom",
+      "locale": "en",
+      "title": "Dried mushrooms",
+      "slug": "dried-mushrooms",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "smoked-bacon",
+      "locale": "en",
+      "title": "Smoked bacon",
+      "slug": "smoked-bacon",
+      "aliases": [
+        "bacon"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "bryndza",
+      "locale": "en",
+      "title": "Bryndza (sheep's milk cheese)",
+      "slug": "bryndza-sheep-s-milk-cheese",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "rye-flour",
+      "locale": "en",
+      "title": "Rye flour",
+      "slug": "rye-flour",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "horseradish",
+      "locale": "en",
+      "title": "Horseradish",
+      "slug": "horseradish",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "rice",
+      "locale": "en",
+      "title": "Rice",
+      "slug": "rice",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "crushed-tomato",
+      "locale": "en",
+      "title": "Crushed tomatoes (canned)",
+      "slug": "crushed-tomatoes-canned",
+      "aliases": [
+        "passata"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "smoked-sausage",
+      "locale": "en",
+      "title": "Smoked sausage",
+      "slug": "smoked-sausage",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "dried-plum",
+      "locale": "en",
+      "title": "Dried plums",
+      "slug": "dried-plums",
+      "aliases": [
+        "prunes"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "tomato-paste",
+      "locale": "en",
+      "title": "Tomato paste",
+      "slug": "tomato-paste",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "red-wine",
+      "locale": "en",
+      "title": "Red wine",
+      "slug": "red-wine",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "oil",
+      "locale": "en",
+      "title": "Vegetable oil",
+      "slug": "vegetable-oil",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "paprika-powder",
+      "locale": "en",
+      "title": "Sweet paprika (ground)",
+      "slug": "sweet-paprika-ground",
+      "aliases": [
+        "ground paprika"
+      ],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "ketchup",
+      "locale": "en",
+      "title": "Ketchup",
+      "slug": "ketchup",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "curry-powder",
+      "locale": "en",
+      "title": "Curry powder",
+      "slug": "curry-powder",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "applesauce",
+      "locale": "en",
+      "title": "Applesauce",
+      "slug": "applesauce",
+      "aliases": [
+        "stewed apple"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "juniper-berries",
+      "locale": "en",
+      "title": "Juniper berries",
+      "slug": "juniper-berries",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "clove-spice",
+      "locale": "en",
+      "title": "Cloves",
+      "slug": "cloves",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "gingerbread",
+      "locale": "en",
+      "title": "Gingerbread (grated)",
+      "slug": "gingerbread-grated",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "capers",
+      "locale": "en",
+      "title": "Capers",
+      "slug": "capers",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "beef-stock",
+      "locale": "en",
+      "title": "Beef stock",
+      "slug": "beef-stock",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "potato",
+      "locale": "en",
+      "title": "Potatoes",
+      "slug": "potatoes",
+      "aliases": [],
+      "default_unit": "g"
+    }
+  ],
+  "recipes": [
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_svickova",
+      "recipe_key": "svickova",
+      "title": "Czech Beef Sirloin in Cream Sauce (Svíčková)",
+      "slug": "czech-beef-sirloin-in-cream-sauce",
+      "country": "CZ",
+      "excerpt": "Svíčková is the Sunday lunch Czech cuisine is best known for. Beef is marinated for a day or two, then braised slowly with root vegetables until tender. The vegetables and braising liquid are blended smooth and strained into a velvety cream sauce with no trace of chunks. On the plate it's finished with a fluffy bread dumpling to soak up the sauce, a spoonful of cranberry compote for a sweet-tart note, and a slice of lemon. The recipe is a classic of 19th-century Czech middle-class cooking and remains the dish most Czechs picture when they think of a traditional Sunday roast.",
+      "servings_default": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 150,
+      "total_minutes": 190,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Svíčková comes down to two things: long-marinated, slow-braised beef, and a finely strained root-vegetable sauce that shouldn't let you guess exactly what's in it — only that it's smooth and creamy.",
+      "ingredients": [
+        {
+          "ingredient_key": "beef",
+          "display_name": "Beef round or brisket",
+          "quantity": "1.2",
+          "unit": "kg",
+          "note": "whole, tied with kitchen string",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrot",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "sliced into rounds",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "celery-root",
+          "display_name": "Celery root",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "diced",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "parsley-root",
+          "display_name": "Parsley root",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon",
+          "quantity": "50",
+          "unit": "g",
+          "note": "diced, for larding the meat",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "allspice",
+          "display_name": "Allspice berries",
+          "quantity": "6",
+          "unit": "pcs",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "whole",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "for the marinade",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "40",
+          "unit": "g",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "250",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "juice, to finish",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "cranberry-sauce",
+          "display_name": "Cranberry compote",
+          "quantity": "100",
+          "unit": "g",
+          "note": "",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipped cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "whipped, for serving",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Lard the meat with strips of bacon, salt it, and marinate in the fridge for at least 12 hours, ideally 2 days, together with the chopped vegetables, vinegar, bay leaf, allspice, and pepper."
+        },
+        {
+          "order": 2,
+          "text": "Remove the meat, put the vegetables and marinade into a roasting pan, set the meat on top, and sear it on the stovetop on all sides."
+        },
+        {
+          "order": 3,
+          "text": "Add enough water to almost cover the vegetables, cover, and braise over low heat for 2–3 hours until tender, topping up with water as needed."
+        },
+        {
+          "order": 4,
+          "text": "Remove the cooked meat and wrap it in foil to keep it from drying out. Blend the vegetables and broth until smooth and pass through a sieve."
+        },
+        {
+          "order": 5,
+          "text": "Make a pale roux from the butter and flour, stir in the strained vegetable sauce, add the cream, sugar, and salt, and simmer briefly."
+        },
+        {
+          "order": 6,
+          "text": "Season the sauce with lemon juice, slice the meat, and warm it through in the sauce."
+        },
+        {
+          "order": 7,
+          "text": "Serve with a bread dumpling, cranberry compote, whipped cream, and a slice of lemon."
+        }
+      ],
+      "tips": [
+        "Marinating is a shortcut: the longer the meat marinates, the more tender and flavorful it will be once cooked."
+      ],
+      "watch_out": "The sauce must be perfectly smooth with no vegetable lumps — always purée or blend it and pass it through a sieve.",
+      "variants": [
+        {
+          "name": "Without bacon",
+          "note": "You can skip larding the meat with bacon; just season it well with salt instead."
+        }
+      ],
+      "origin_history": "Svíčková na smetaně is a classic of 19th-century Czech middle-class cooking and remains a typical Sunday lunch today.",
+      "related_glossary": [
+        "marinating",
+        "roux"
+      ],
+      "related_recipes": [
+        "vepro-knedlo-zelo"
+      ],
+      "seo_title": "Svíčková – Classic Czech Beef in Cream Sauce | Atlas Chuti",
+      "meta_description": "Traditional svíčková step by step: marinated beef, a silky root-vegetable sauce, bread dumpling, and cranberries.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_vepro-knedlo-zelo",
+      "recipe_key": "vepro-knedlo-zelo",
+      "title": "Czech Roast Pork with Dumpling and Sauerkraut (Vepřo Knedlo Zelo)",
+      "slug": "czech-roast-pork-with-dumpling-and-sauerkraut",
+      "country": "CZ",
+      "excerpt": "Vepřo knedlo zelo brings together three separate parts that work as one dish: juicy roast pork, a fluffy bread-and-yeast dumpling that soaks up the meat juices, and lightly tangy cabbage that lightens the whole plate. The pork shoulder is rubbed with garlic, caraway, and salt, then slow-roasted until tender. The dumpling is a yeasted dough studded with cubes of stale bread, boiled in a roll and sliced with thread rather than a knife to keep its airy texture. This combination settled into its now-familiar form in the 19th century and remains the dish most closely tied to a classic Czech Sunday lunch.",
+      "servings_default": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 120,
+      "total_minutes": 150,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Three separate parts that work together as one dish: juicy roast meat, a fluffy dumpling that soaks up the pan juices, and lightly tangy cabbage that lightens the whole plate.",
+      "ingredients": [
+        {
+          "ingredient_key": "pork",
+          "display_name": "Pork shoulder",
+          "quantity": "1.3",
+          "unit": "kg",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "4",
+          "unit": "clove",
+          "note": "crushed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "caraway-seed",
+          "display_name": "Caraway seeds",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "for the roasting juices",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "white-cabbage",
+          "display_name": "White cabbage",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "shredded",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "caraway-seed",
+          "display_name": "Caraway seeds",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "bread-roll",
+          "display_name": "Stale bread rolls or baguette",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "cut into cubes",
+          "group": "Dumpling"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dumpling"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "250",
+          "unit": "ml",
+          "note": "lukewarm",
+          "group": "Dumpling"
+        },
+        {
+          "ingredient_key": "yeast",
+          "display_name": "Yeast",
+          "quantity": "20",
+          "unit": "g",
+          "note": "fresh",
+          "group": "Dumpling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dumpling"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dumpling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Rub the meat with a mixture of crushed garlic, caraway, and salt, and let it rest for at least an hour."
+        },
+        {
+          "order": 2,
+          "text": "Put the meat into a roasting pan on a bed of sliced onion, add a little water, and roast for 1.5–2 hours at 320°F (160°C), basting and turning as needed."
+        },
+        {
+          "order": 3,
+          "text": "For the dumpling, dissolve the yeast in lukewarm milk with a teaspoon of sugar, add the flour, egg, and salt, and work into a smooth dough. Let rise for 40 minutes, then fold in the bread cubes."
+        },
+        {
+          "order": 4,
+          "text": "Shape the dough into 2 logs, wrap in foil, and boil in salted water for about 20 minutes, turning halfway through."
+        },
+        {
+          "order": 5,
+          "text": "Sauté the cabbage with the onion, add a little water, then the caraway, sugar, and vinegar, and braise until tender, about 20 minutes."
+        },
+        {
+          "order": 6,
+          "text": "For the last 15 minutes of roasting, raise the oven temperature to 400°F (200°C) so the skin crisps up."
+        },
+        {
+          "order": 7,
+          "text": "Slice the dumpling with thread, not a knife, so it doesn't compress, and serve with the meat, cabbage, and pan juices."
+        }
+      ],
+      "tips": [
+        "Slightly stale bread works better in the dumpling than fresh — it soaks up more liquid and the dumpling holds together instead of turning mushy."
+      ],
+      "watch_out": "The dumpling should only ever be sliced with thread or string, never a knife — a knife would compress it and it would lose its airy texture.",
+      "variants": [
+        {
+          "name": "With sauerkraut",
+          "note": "Sauerkraut can be used instead of white cabbage; in that case skip the vinegar and add a little extra sugar."
+        }
+      ],
+      "origin_history": "The combination of roast meat, dumpling, and cabbage settled into its familiar form in the Czech lands in the 19th century and is still considered the most typical Czech national dish.",
+      "related_glossary": [
+        "proofing"
+      ],
+      "related_recipes": [
+        "svickova"
+      ],
+      "seo_title": "Vepřo Knedlo Zelo – Czech Roast Pork, Dumpling & Cabbage | Atlas Chuti",
+      "meta_description": "The classic Czech Sunday roast: pork shoulder, a fluffy bread dumpling, and tangy braised cabbage.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kulajda",
+      "recipe_key": "kulajda",
+      "title": "Kulajda (South Bohemian Sour Cream and Mushroom Soup)",
+      "slug": "kulajda-sour-cream-mushroom-soup",
+      "country": "CZ",
+      "excerpt": "Kulajda is a South Bohemian soup whose flavor rests on the contrast between sweet cream and sharp vinegar — both need to be in balance. Dried mushrooms and potatoes simmer together, then get thickened with a pale roux and enriched with sour cream. A poached egg is added to each bowl just before serving, and the soup is finished with fresh dill. It grew out of poorer households in southern Bohemia, where meat was scarce and a mushroom-and-cream soup made a satisfying meal on its own. The vinegar should be added gradually and tasted as you go, since kulajda ought to be noticeably tangy, never sharp.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 30,
+      "total_minutes": 45,
+      "difficulty": "easy",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Add the vinegar gradually and taste as you go — the soup should read as tangy, never sharp, and that balance is what the whole dish hinges on. When mushrooms are in season, dried ones can be swapped for fresh porcini or button mushrooms.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "400",
+          "unit": "g",
+          "note": "diced",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "dried-mushroom",
+          "display_name": "Dried mushrooms",
+          "quantity": "20",
+          "unit": "g",
+          "note": "soaked",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "30",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "30",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "to taste",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "allspice",
+          "display_name": "Allspice berries",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "for poaching",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Chop the soaked mushrooms and simmer them in water with the bay leaf and allspice for about 15 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Add the potatoes and cook until tender."
+        },
+        {
+          "order": 3,
+          "text": "Make a pale roux from the butter and flour, thin it with a little of the soup, and stir it back into the pot."
+        },
+        {
+          "order": 4,
+          "text": "Add the sour cream, bring briefly to a simmer, and season with vinegar and salt."
+        },
+        {
+          "order": 5,
+          "text": "Crack the eggs one at a time into gently simmering salted water with a splash of vinegar and poach for 3 minutes."
+        },
+        {
+          "order": 6,
+          "text": "Ladle the soup into bowls, top each with a poached egg, and sprinkle with dill."
+        }
+      ],
+      "tips": [
+        "Add the vinegar gradually and taste as you go — kulajda should be noticeably tangy, but never sharp."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "With fresh mushrooms",
+          "note": "In season, dried mushrooms can be replaced with fresh porcini or button mushrooms."
+        }
+      ],
+      "origin_history": "Kulajda comes from South Bohemia, where this mushroom-and-cream soup was cooked mainly in poorer households, where meat was scarce.",
+      "related_glossary": [
+        "roux",
+        "poaching"
+      ],
+      "related_recipes": [],
+      "seo_title": "Kulajda – South Bohemian Sour Cream Mushroom Soup | Atlas Chuti",
+      "meta_description": "Traditional Czech kulajda: potatoes and dried mushrooms in a tangy sour cream broth with a poached egg.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_bramboraky",
+      "recipe_key": "bramboraky",
+      "title": "Bramboráky (Czech Potato Pancakes)",
+      "slug": "bramboraky-czech-potato-pancakes",
+      "country": "CZ",
+      "excerpt": "A good bramborák depends on the right balance of grated potato and flour — the batter needs to be thick but not rubbery, and marjoram is non-negotiable. Garlic and egg bind the mixture, which is fried in hot oil until golden and crisp on both sides. The dish grew out of the need to make the most of cheap, plentiful potatoes, and it remains a popular snack or side to this day. The oil needs to be properly hot before frying, or the pancakes soak it up and turn greasy instead of crisp.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 20,
+      "total_minutes": 40,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish",
+        "appetizer"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "If the batter turns out too thin, another spoonful of flour fixes it — a loose batter just spreads and runs in the pan instead of holding its shape. Finely diced smoked pork neck is a common addition to the mixture.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "peeled, finely grated",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "3",
+          "unit": "clove",
+          "note": "crushed",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "100",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "50",
+          "unit": "ml",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "marjoram",
+          "display_name": "Dried marjoram",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "For frying"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Lightly squeeze the grated potatoes to remove excess water, but leave them moist."
+        },
+        {
+          "order": 2,
+          "text": "Add the garlic, eggs, milk, flour, marjoram, salt, and pepper and mix into a thick, spoonable batter."
+        },
+        {
+          "order": 3,
+          "text": "Heat the oil in a pan and drop in spoonfuls of batter, flattening them slightly."
+        },
+        {
+          "order": 4,
+          "text": "Fry 3–4 minutes per side until golden and crisp."
+        },
+        {
+          "order": 5,
+          "text": "Drain the fried pancakes on paper towels and serve warm."
+        }
+      ],
+      "tips": [
+        "If the batter is too runny, add another spoonful of flour — otherwise the pancakes will spread and run in the pan."
+      ],
+      "watch_out": "The oil needs to be properly hot, or the pancakes will soak up the fat and turn greasy instead of crisp.",
+      "variants": [
+        {
+          "name": "With smoked meat",
+          "note": "Finely diced smoked pork neck can be added to the batter."
+        }
+      ],
+      "origin_history": "Bramboráky grew out of the need to make the most of cheap, plentiful potatoes, and remain a popular snack and side dish today.",
+      "related_glossary": [],
+      "related_recipes": [
+        "placki-ziemniaczane"
+      ],
+      "seo_title": "Bramboráky – Traditional Czech Potato Pancakes | Atlas Chuti",
+      "meta_description": "Crispy Czech potato pancakes with garlic and marjoram, fried golden brown.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_buchty",
+      "recipe_key": "buchty",
+      "title": "Czech Sweet Buns (Buchty)",
+      "slug": "czech-sweet-buns-buchty",
+      "country": "CZ",
+      "excerpt": "Buchty are built on a soft yeasted dough, filled with curd cheese or plum jam, and baked on a tray packed so closely together that their sides steam soft against each other. The dough is enriched with butter and egg and left to rise twice, once before filling and once after shaping. Traditionally they were baked on one large tray for the whole family at once, a classic Czech Sunday bake. Fresh from the oven they're brushed with melted butter, and once cooled, dusted with powdered sugar.",
+      "servings_default": 12,
+      "prep_minutes": 40,
+      "cook_minutes": 25,
+      "total_minutes": 65,
+      "difficulty": "medium",
+      "meal_type": [
+        "dessert",
+        "bakery"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "A poppy-seed filling is just as traditional as curd cheese or jam — ground poppy seed mixed with sugar and a little hot milk stands in for either.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "250",
+          "unit": "ml",
+          "note": "lukewarm",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "yeast",
+          "display_name": "Yeast",
+          "quantity": "25",
+          "unit": "g",
+          "note": "fresh",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "80",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "80",
+          "unit": "g",
+          "note": "melted",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "vanilla-sugar",
+          "display_name": "Vanilla sugar",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "a pinch",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "curd-cheese",
+          "display_name": "Curd cheese",
+          "quantity": "300",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "60",
+          "unit": "g",
+          "note": "for the filling",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "plum-jam",
+          "display_name": "Plum jam",
+          "quantity": "200",
+          "unit": "g",
+          "note": "alternative filling",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "30",
+          "unit": "g",
+          "note": "for brushing",
+          "group": "Finishing"
+        },
+        {
+          "ingredient_key": "powdered-sugar",
+          "display_name": "Powdered sugar",
+          "quantity": "30",
+          "unit": "g",
+          "note": "for dusting",
+          "group": "Finishing"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Make a starter from the milk, yeast, and a spoonful of sugar and let it froth for 10 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Mix in the flour, remaining sugar, eggs, melted butter, vanilla sugar, and salt, and work into a smooth dough. Let rise for 45 minutes."
+        },
+        {
+          "order": 3,
+          "text": "Mix the curd cheese with sugar for the filling."
+        },
+        {
+          "order": 4,
+          "text": "Divide the dough into pieces, place a spoonful of curd or jam filling in each, and shape into balls."
+        },
+        {
+          "order": 5,
+          "text": "Arrange the buns on a greased tray packed closely together and let rise again for 20 minutes."
+        },
+        {
+          "order": 6,
+          "text": "Bake at 350°F (180°C) for about 20–25 minutes until golden."
+        },
+        {
+          "order": 7,
+          "text": "Brush hot with melted butter, and once cooled, dust with powdered sugar."
+        }
+      ],
+      "tips": [
+        "Arrange the buns really close together on the tray — that's exactly what keeps their sides soft and moist."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Poppy seed",
+          "note": "The filling can be replaced with ground poppy seed mixed with sugar and a little hot milk."
+        }
+      ],
+      "origin_history": "Buchty are a classic Czech Sunday bake, traditionally baked on one large tray for the whole family at once.",
+      "related_glossary": [
+        "proofing"
+      ],
+      "related_recipes": [],
+      "seo_title": "Buchty – Traditional Czech Sweet Yeasted Buns | Atlas Chuti",
+      "meta_description": "Soft Czech yeasted buns filled with curd cheese or plum jam, baked close together on a tray.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_bryndzove-halusky",
+      "recipe_key": "bryndzove-halusky",
+      "title": "Bryndzové Halušky (Slovak Potato Dumplings with Sheep's Cheese)",
+      "slug": "bryndzove-halusky",
+      "country": "SK",
+      "excerpt": "At heart, halušky are simple potato dumplings, but the whole dish rises or falls on the quality of the bryndza — the sharper and saltier the cheese, the better the result. Grated potato is worked into a thick batter with flour and egg, then dropped straight into boiling water to form small dumplings. Once cooked, they're tossed with bryndza loosened with a little of the cooking water, and finished with crisp-fried bacon and its rendered fat. The dish comes from the mountain regions of northern Slovakia, where sheep have long been raised and bryndza made.",
+      "servings_default": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 15,
+      "total_minutes": 40,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Instead of bacon, the dumplings are sometimes served with fried sauerkraut — a lighter but still traditional way to finish the dish.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "peeled, finely grated",
+          "group": "Dumplings (halušky)"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "300",
+          "unit": "g",
+          "note": "",
+          "group": "Dumplings (halušky)"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dumplings (halušky)"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dumplings (halušky)"
+        },
+        {
+          "ingredient_key": "bryndza",
+          "display_name": "Bryndza cheese",
+          "quantity": "250",
+          "unit": "g",
+          "note": "",
+          "group": "Finishing"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon",
+          "quantity": "150",
+          "unit": "g",
+          "note": "diced",
+          "group": "Finishing"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Mix the grated potatoes with the flour, egg, and salt into a thick batter."
+        },
+        {
+          "order": 2,
+          "text": "Press the batter through a grater or a dumpling board straight into a pot of boiling salted water to form small dumplings."
+        },
+        {
+          "order": 3,
+          "text": "Once the dumplings float to the surface, cook for another 2 minutes, then drain, setting aside a little of the water for the bryndza."
+        },
+        {
+          "order": 4,
+          "text": "Fry the bacon until crisp in its own fat."
+        },
+        {
+          "order": 5,
+          "text": "Loosen the bryndza with a little of the hot dumpling water to a creamy consistency and stir it into the hot dumplings."
+        },
+        {
+          "order": 6,
+          "text": "Serve immediately, topped with the fried bacon and its rendered fat."
+        }
+      ],
+      "tips": [
+        "Always loosen the bryndza with a little of the halušky cooking water — otherwise it stays lumpy and won't coat the dumplings evenly."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "With sauerkraut",
+          "note": "Instead of bacon, the dumplings can be served with fried sauerkraut."
+        }
+      ],
+      "origin_history": "Bryndzové halušky come from the mountain regions of northern Slovakia, where sheep have long been raised and bryndza made.",
+      "related_glossary": [
+        "bryndza"
+      ],
+      "related_recipes": [
+        "pirohy-bryndza"
+      ],
+      "seo_title": "Bryndzové Halušky – Slovak Potato Dumplings with Bryndza | Atlas Chuti",
+      "meta_description": "Slovakia's national dish: potato dumplings tossed with sheep's-milk bryndza and crisp bacon.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kapustnica",
+      "recipe_key": "kapustnica",
+      "title": "Kapustnica (Slovak Sauerkraut and Smoked Meat Soup)",
+      "slug": "kapustnica-sauerkraut-soup",
+      "country": "SK",
+      "excerpt": "Kapustnica is one of the few soups cooked more for a holiday than an ordinary day — sauerkraut and smoked meat give it a depth of flavor that needs at least an hour of simmering to catch up to. Onion and garlic are sautéed until glassy, paprika is stirred in off the heat, and sauerkraut, smoked sausage, dried mushrooms, and dried plums simmer together until the flavors meld. The plums add a subtle sweetness that balances the sourness of the kraut. It's a traditional dish of the Slovak Christmas Eve table, and like many braises, it tastes even better the next day.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 60,
+      "total_minutes": 80,
+      "difficulty": "medium",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [],
+      "about": "Leaving out the dried plums is a common variation — without them, the soup turns out noticeably more sour, missing the subtle sweetness that balances the kraut.",
+      "ingredients": [
+        {
+          "ingredient_key": "sauerkraut",
+          "display_name": "Sauerkraut",
+          "quantity": "600",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "smoked-sausage",
+          "display_name": "Smoked sausage",
+          "quantity": "300",
+          "unit": "g",
+          "note": "sliced into rounds",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "dried-mushroom",
+          "display_name": "Dried mushrooms",
+          "quantity": "20",
+          "unit": "g",
+          "note": "soaked and chopped",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "caraway-seed",
+          "display_name": "Caraway seeds",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "allspice",
+          "display_name": "Allspice berries",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "dried-plum",
+          "display_name": "Dried plums",
+          "quantity": "80",
+          "unit": "g",
+          "note": "optional",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "to serve",
+          "group": "Finishing"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion and garlic in oil until glassy, remove from the heat, and stir in the paprika so it doesn't turn bitter."
+        },
+        {
+          "order": 2,
+          "text": "Add the sauerkraut and the mushrooms with their soaking liquid, and top up with water."
+        },
+        {
+          "order": 3,
+          "text": "Add the sausage, bay leaf, allspice, and caraway, and simmer over low heat for 45–60 minutes."
+        },
+        {
+          "order": 4,
+          "text": "Halfway through cooking, add the dried plums, which give the soup a gentle sweetness."
+        },
+        {
+          "order": 5,
+          "text": "Season with salt, and with more paprika or a little sugar if the kraut is too sour."
+        },
+        {
+          "order": 6,
+          "text": "Serve with a spoonful of sour cream and a piece of bread."
+        }
+      ],
+      "tips": [
+        "Kapustnica tastes even better the next day, once it's had time to sit — feel free to cook it a day ahead."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Without dried plums",
+          "note": "The plums can be left out; the soup will then taste noticeably more sour."
+        }
+      ],
+      "origin_history": "Kapustnica is a traditional dish of the Slovak Christmas Eve table; the recipe varies slightly from region to region.",
+      "related_glossary": [
+        "braising"
+      ],
+      "related_recipes": [],
+      "seo_title": "Kapustnica – Slovak Sauerkraut and Smoked Meat Soup | Atlas Chuti",
+      "meta_description": "A festive Slovak Christmas soup of sauerkraut, smoked sausage, dried mushrooms, and plums.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_lokse",
+      "recipe_key": "lokse",
+      "title": "Lokše (Slovak Potato Flatbread)",
+      "slug": "lokse-potato-flatbread",
+      "country": "SK",
+      "excerpt": "Lokše differ from potato pancakes in that they're never fried in oil — instead they're baked dry on a hot griddle or pan, which gives a thin, pliable flatbread closer to a tortilla than a pancake. Boiled potatoes are riced while still hot and worked with flour and salt into a smooth dough, then rolled thin and cooked briefly on each side. They come from eastern Slovakia, where they were traditionally filled with cabbage or poppy seed depending on whether the meal was savory or sweet. Riced while hot, the potatoes are far easier to work than once they've cooled.",
+      "servings_default": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 20,
+      "total_minutes": 45,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish",
+        "bakery"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "A sweet version, filled with poppy seed, sugar, and butter, is served as a dessert rather than a savory side.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "800",
+          "unit": "g",
+          "note": "boiled in their skins, peeled",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "200",
+          "unit": "g",
+          "note": "plus a little extra for dusting",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "melted, for brushing",
+          "group": "Finishing"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Pass the boiled potatoes through a ricer while still warm."
+        },
+        {
+          "order": 2,
+          "text": "Work in the flour and salt and quickly bring together into a smooth, not-too-firm dough."
+        },
+        {
+          "order": 3,
+          "text": "Divide the dough into pieces and roll out thin into rounds on a floured surface."
+        },
+        {
+          "order": 4,
+          "text": "Cook dry on a hot griddle or pan for about 1–2 minutes per side, until brown spots appear."
+        },
+        {
+          "order": 5,
+          "text": "Brush the finished lokše with melted butter and serve warm, plain or filled."
+        }
+      ],
+      "tips": [
+        "Rice the potatoes while they're still hot — once cooled, they're harder to work and the dough turns sticky."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Sweet lokše",
+          "note": "Filled with poppy seed, sugar, and butter, they're served as a dessert."
+        }
+      ],
+      "origin_history": "Lokše come from eastern Slovakia and were traditionally filled with cabbage or poppy seed, depending on whether the dish was savory or sweet.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Lokše – Traditional Slovak Potato Flatbread | Atlas Chuti",
+      "meta_description": "Thin Slovak potato flatbread baked dry on a griddle, served plain or filled.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_pirohy-bryndza",
+      "recipe_key": "pirohy-bryndza",
+      "title": "Slovak Pirohy with Bryndza Cheese",
+      "slug": "slovak-pirohy-with-bryndza",
+      "country": "SK",
+      "excerpt": "Slovak pirohy are boiled, not fried — a filling of potato and bryndza stays creamy and gently salty once cooked. The dough is rolled thin, cut into rounds, filled, and folded into half-moons, with the edges pressed firmly closed so the filling doesn't escape during boiling. Once they float to the surface, they're drained and topped with onion and bacon fried until golden. Pirohy are shared across Central and Eastern Europe, and this bryndza-filled version is typical of Slovakia's northern regions.",
+      "servings_default": 4,
+      "prep_minutes": 40,
+      "cook_minutes": 15,
+      "total_minutes": 55,
+      "difficulty": "medium",
+      "meal_type": [
+        "appetizer",
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Press the edges firmly closed with your fingers or a fork before boiling, or the filling escapes into the water. A version topped with fried sauerkraut alongside the onion and bacon is common too.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "300",
+          "unit": "g",
+          "note": "boiled and mashed",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "bryndza",
+          "display_name": "Bryndza cheese",
+          "quantity": "200",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon",
+          "quantity": "100",
+          "unit": "g",
+          "note": "diced",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Work the flour, egg, oil, salt, and lukewarm water into a smooth, elastic dough. Cover and let rest for 20 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Mix the potatoes with the bryndza into a smooth filling."
+        },
+        {
+          "order": 3,
+          "text": "Roll the dough thin and cut out rounds; place a teaspoon of filling on each, fold into a half-moon, and press the edges firmly closed."
+        },
+        {
+          "order": 4,
+          "text": "Boil in gently simmering salted water for about 4–5 minutes, until the pirohy float to the surface."
+        },
+        {
+          "order": 5,
+          "text": "Meanwhile, fry the bacon and onion until golden."
+        },
+        {
+          "order": 6,
+          "text": "Drain the pirohy and serve topped with the bacon-and-onion mixture and its rendered fat."
+        }
+      ],
+      "tips": [
+        "Press the edges of the pirohy firmly with your fingers or a fork — otherwise the filling will boil out during cooking."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "With sauerkraut",
+          "note": "The potato-and-bryndza filling can be topped with fried sauerkraut as well."
+        }
+      ],
+      "origin_history": "Pirohy are shared across Central and Eastern Europe; the Slovak version filled with bryndza is typical of the northern regions.",
+      "related_glossary": [
+        "bryndza"
+      ],
+      "related_recipes": [
+        "bryndzove-halusky",
+        "pierogi-ruskie"
+      ],
+      "seo_title": "Pirohy with Bryndza – Traditional Slovak Dumplings | Atlas Chuti",
+      "meta_description": "Boiled Slovak dumplings filled with potato and bryndza cheese, topped with fried bacon and onion.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_demikat",
+      "recipe_key": "demikat",
+      "title": "Demikát (Slovak Potato and Mushroom Soup)",
+      "slug": "demikat-potato-mushroom-soup",
+      "country": "SK",
+      "excerpt": "Demikát is a simple shepherd's soup — just potatoes, mushrooms, and a little cream, which together build a rich, warming flavor. Dried mushrooms and diced potato simmer with onion, garlic, caraway, and marjoram until tender, then the soup is thickened with sour cream whisked smooth with flour. It comes from the mountain regions of Slovakia and neighboring Rusyn communities, cooked from whatever was on hand. Whisking the cream with flour first keeps it from curdling once it hits the hot soup.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 30,
+      "total_minutes": 45,
+      "difficulty": "easy",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Despite its short ingredient list, real depth builds once the caraway and marjoram have had time to simmer through the mushrooms and potato.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "500",
+          "unit": "g",
+          "note": "diced",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "dried-mushroom",
+          "display_name": "Dried mushrooms",
+          "quantity": "20",
+          "unit": "g",
+          "note": "soaked",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "caraway-seed",
+          "display_name": "Caraway seeds",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "marjoram",
+          "display_name": "Dried marjoram",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "20",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion and garlic in a little fat until glassy."
+        },
+        {
+          "order": 2,
+          "text": "Add the potatoes, the mushrooms with their soaking water, the caraway and marjoram, and top up with water to cover everything."
+        },
+        {
+          "order": 3,
+          "text": "Simmer over low heat for about 20 minutes, until the potatoes are tender."
+        },
+        {
+          "order": 4,
+          "text": "Whisk the sour cream with the flour, stir it into the soup, and simmer briefly to thicken."
+        },
+        {
+          "order": 5,
+          "text": "Season with salt and pepper and serve hot, ideally with a slice of bread."
+        }
+      ],
+      "tips": [
+        "Always whisk the cream with the flour first — otherwise it will curdle once it hits the hot soup."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Demikát is a typical simple soup of the Slovak and Rusyn mountain regions, cooked from whatever was on hand.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Demikát – Slovak Potato and Mushroom Soup | Atlas Chuti",
+      "meta_description": "A simple, warming Slovak mountain soup of potatoes, dried mushrooms, and sour cream.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_pierogi-ruskie",
+      "recipe_key": "pierogi-ruskie",
+      "title": "Pierogi Ruskie (Polish Potato and Curd Cheese Dumplings)",
+      "slug": "pierogi-ruskie",
+      "country": "PL",
+      "excerpt": "Despite the name, pierogi ruskie have nothing to do with Russia — the name refers to the historical region of Ruthenia in what's now western Ukraine, where the potato-and-curd-cheese filling comes from. The dough is rolled thin, cut into rounds, filled with a mixture of mashed potato, curd cheese, and sautéed onion, and sealed into half-moons. Once boiled, they're finished with more onion fried golden in butter. They're one of Poland's best-known dishes today, and boiled pierogi can also be pan-fried briefly afterward for a crisper surface.",
+      "servings_default": 4,
+      "prep_minutes": 45,
+      "cook_minutes": 15,
+      "total_minutes": 60,
+      "difficulty": "medium",
+      "meal_type": [
+        "appetizer",
+        "main-course"
+      ],
+      "diet": [],
+      "about": "The potato-and-cheese filling is easily swapped for braised ground meat and onion, a variation found alongside the classic version.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "400",
+          "unit": "g",
+          "note": "boiled and mashed",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "curd-cheese",
+          "display_name": "Curd cheese",
+          "quantity": "250",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "1 for the filling, 1 to serve",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "for frying the onion",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Work the flour, egg, oil, salt, and lukewarm water into a smooth dough and let rest for 20 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Finely chop one onion and sauté until glassy; mix with the mashed potato and curd cheese, then salt and pepper."
+        },
+        {
+          "order": 3,
+          "text": "Roll the dough thin, cut out rounds, fill, and seal the edges firmly into half-moons."
+        },
+        {
+          "order": 4,
+          "text": "Boil in salted water for 4–5 minutes from when they float to the surface."
+        },
+        {
+          "order": 5,
+          "text": "Fry the second onion in butter until golden."
+        },
+        {
+          "order": 6,
+          "text": "Serve the pierogi drizzled with butter and topped with the fried onion."
+        }
+      ],
+      "tips": [
+        "Boiled pierogi can also be briefly pan-fried in butter afterward — it gives them a crisper surface."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "With meat",
+          "note": "The filling can be replaced with braised ground meat and onion."
+        }
+      ],
+      "origin_history": "Pierogi ruskie come from the historical region of Ruthenia in what's now western Ukraine and are today one of Poland's best-known dishes.",
+      "related_glossary": [],
+      "related_recipes": [
+        "pirohy-bryndza"
+      ],
+      "seo_title": "Pierogi Ruskie – Polish Potato and Curd Cheese Dumplings | Atlas Chuti",
+      "meta_description": "Poland's best-known pierogi, filled with potato, curd cheese, and fried onion.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_bigos",
+      "recipe_key": "bigos",
+      "title": "Bigos (Polish Hunter's Stew)",
+      "slug": "bigos-polish-hunters-stew",
+      "country": "PL",
+      "excerpt": "Bigos is a Polish hunter's stew of sauerkraut and fresh cabbage, cooked with pork, smoked bacon, and smoked sausage, sweetened by dried plums and deepened with tomato paste and a splash of red wine. It's traditionally cooked in large batches and reheated over several days, since its flavor only deepens with each reheating. Considered one of Poland's national dishes, it has roots in both noble and hunting-camp cooking, and can be extended with game or additional cured meats depending on what's on hand. Give it at least an hour and a half of slow braising, then let it sit overnight before serving for the best flavor.",
+      "servings_default": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 120,
+      "total_minutes": 150,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Bigos is traditionally cooked in large batches in Poland and reheated over several days — its flavor only deepens each time.",
+      "ingredients": [
+        {
+          "ingredient_key": "sauerkraut",
+          "display_name": "Sauerkraut",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "white-cabbage",
+          "display_name": "White cabbage",
+          "quantity": "400",
+          "unit": "g",
+          "note": "shredded",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "pork",
+          "display_name": "Pork",
+          "quantity": "400",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon",
+          "quantity": "150",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "smoked-sausage",
+          "display_name": "Smoked sausage",
+          "quantity": "250",
+          "unit": "g",
+          "note": "sliced into rounds",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "dried-mushroom",
+          "display_name": "Dried mushrooms",
+          "quantity": "20",
+          "unit": "g",
+          "note": "soaked",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "dried-plum",
+          "display_name": "Dried plums",
+          "quantity": "100",
+          "unit": "g",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "tomato-paste",
+          "display_name": "Tomato paste",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "allspice",
+          "display_name": "Allspice berries",
+          "quantity": "5",
+          "unit": "pcs",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "red-wine",
+          "display_name": "Red wine",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "optional",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Spices"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Rinse the sauerkraut and fresh cabbage and simmer them separately until tender, then drain."
+        },
+        {
+          "order": 2,
+          "text": "Brown the pork and bacon in fat until golden, remove, and sauté the onion in the same fat."
+        },
+        {
+          "order": 3,
+          "text": "Layer the cabbage, meat, mushrooms, sausage, and plums in a large pot, and add the tomato paste, bay leaf, and allspice."
+        },
+        {
+          "order": 4,
+          "text": "Add the wine or a little water, cover, and braise over low heat for at least 1.5 hours, stirring occasionally."
+        },
+        {
+          "order": 5,
+          "text": "Uncover and let reduce for another 30 minutes, until the bigos thickens."
+        },
+        {
+          "order": 6,
+          "text": "Season with salt and pepper — ideally let it sit overnight and reheat before serving."
+        }
+      ],
+      "tips": [
+        "Feel free to cook bigos a day ahead — after sitting and being reheated, it tastes noticeably better."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Hunter's bigos",
+          "note": "Can be extended with game or several kinds of cured meat, depending on what's on hand."
+        }
+      ],
+      "origin_history": "Bigos is considered one of Poland's national dishes, with roots in both noble and hunting-camp cooking.",
+      "related_glossary": [
+        "braising"
+      ],
+      "related_recipes": [],
+      "seo_title": "Bigos – Traditional Polish Hunter's Stew | Atlas Chuti",
+      "meta_description": "Poland's hearty national stew of sauerkraut, cabbage, and several kinds of meat.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_zurek",
+      "recipe_key": "zurek",
+      "title": "Żurek (Polish Sour Rye Soup)",
+      "slug": "zurek-polish-sour-rye-soup",
+      "country": "PL",
+      "excerpt": "Żurek is known for its gently sour flavor, traditionally built by a week-long fermenting rye starter — at home, the taste can be approximated quickly with a little vinegar and sauerkraut brine. Smoked sausage, potatoes, onion, and marjoram simmer in the base, then the fermented starter is stirred in and simmered until the soup thickens slightly. It's one of Poland's oldest soups, and the same sour base, in different forms, also appears in neighboring countries, such as Czech kyselo. It's traditionally served with halves of hard-boiled egg, sometimes in a hollowed-out loaf of bread.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "total_minutes": 55,
+      "difficulty": "medium",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [],
+      "about": "A meatless \"white żurek,\" made with just egg and potatoes and no sausage, is a common version, especially during Lenten fasting.",
+      "ingredients": [
+        {
+          "ingredient_key": "rye-flour",
+          "display_name": "Rye flour",
+          "quantity": "100",
+          "unit": "g",
+          "note": "for a quick starter",
+          "group": "Starter (zákvas)"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "for the starter",
+          "group": "Starter (zákvas)"
+        },
+        {
+          "ingredient_key": "smoked-sausage",
+          "display_name": "Smoked sausage",
+          "quantity": "300",
+          "unit": "g",
+          "note": "sliced into rounds",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "400",
+          "unit": "g",
+          "note": "diced",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "marjoram",
+          "display_name": "Dried marjoram",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "allspice",
+          "display_name": "Allspice berries",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "to sharpen the sourness",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "hard-boiled",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "horseradish",
+          "display_name": "Horseradish",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "optional, to taste",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Mix the rye flour with lukewarm water and crushed garlic into a thin batter and let it ferment in a warm place for at least 2 days (a traditional starter), or use a store-bought żurek starter for a quicker version."
+        },
+        {
+          "order": 2,
+          "text": "Sauté the onion, add the sausage, and brown briefly."
+        },
+        {
+          "order": 3,
+          "text": "Add water or stock, the potatoes, bay leaf, allspice, and marjoram, and simmer for 20 minutes."
+        },
+        {
+          "order": 4,
+          "text": "Stir in the starter and simmer another 10 minutes, until the soup thickens slightly."
+        },
+        {
+          "order": 5,
+          "text": "Season with vinegar, horseradish, and salt, then finish by stirring in the sour cream."
+        },
+        {
+          "order": 6,
+          "text": "Serve with halves of hard-boiled egg, optionally in a hollowed-out loaf of bread."
+        }
+      ],
+      "tips": [
+        "Without a homemade starter, season the soup with a combination of vinegar and a little sauerkraut brine — it gets you remarkably close to the real flavor."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "White żurek",
+          "note": "Made without sausage, just egg and potatoes, as a meatless version."
+        }
+      ],
+      "origin_history": "Żurek is one of Poland's oldest soups; its sour base appears, in various forms, in neighboring countries too, such as Czech kyselo.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Żurek – Traditional Polish Sour Rye Soup | Atlas Chuti",
+      "meta_description": "Poland's tangy sour rye soup with smoked sausage, potatoes, and a hard-boiled egg.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_golabki",
+      "recipe_key": "golabki",
+      "title": "Gołąbki (Polish Stuffed Cabbage Rolls)",
+      "slug": "golabki-polish-stuffed-cabbage-rolls",
+      "country": "PL",
+      "excerpt": "Gołąbki literally means \"little pigeons\" — the rolled cabbage leaves are said to resemble small birds in shape. Leaves are briefly boiled to soften, then wrapped tightly around a filling of ground meat and part-cooked rice. Nestled together in a pot, they're covered in crushed tomatoes and braised slowly until tender, with the sauce thickened at the end if needed. Stuffed cabbage rolls in various forms are cooked across Central and Eastern Europe, and in Poland, under the name gołąbki, they're a classic of Sunday lunch.",
+      "servings_default": 4,
+      "prep_minutes": 40,
+      "cook_minutes": 50,
+      "total_minutes": 90,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Trimming away the thick center rib of each cabbage leaf with a knife makes it far easier to roll without tearing.",
+      "ingredients": [
+        {
+          "ingredient_key": "white-cabbage",
+          "display_name": "White cabbage",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "whole head, for the leaves",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "rice",
+          "display_name": "Rice",
+          "quantity": "150",
+          "unit": "g",
+          "note": "part-cooked",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Mixed ground meat",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "500",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "to thicken",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Briefly boil the whole cabbage head in salted water to soften the leaves, then carefully separate them."
+        },
+        {
+          "order": 2,
+          "text": "Sauté the onion until glassy and mix with the ground meat, part-cooked rice, egg, salt, and pepper."
+        },
+        {
+          "order": 3,
+          "text": "Place a spoonful of filling on each leaf and roll up tightly into a parcel."
+        },
+        {
+          "order": 4,
+          "text": "Arrange the rolls in a roasting pan or pot, cover with the crushed tomatoes, and add a little water."
+        },
+        {
+          "order": 5,
+          "text": "Cover and braise over low heat for 45–50 minutes until tender."
+        },
+        {
+          "order": 6,
+          "text": "If needed, thicken the sauce with a spoonful of flour whisked into cold water and simmer briefly."
+        }
+      ],
+      "tips": [
+        "Carefully trim away the thick center rib of each cabbage leaf with a knife — the leaf then rolls up much more easily."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Meatless",
+          "note": "The filling can be made from just rice, mushrooms, and vegetables as a meatless version."
+        }
+      ],
+      "origin_history": "Stuffed cabbage rolls in various forms are cooked across Central and Eastern Europe; in Poland, under the name gołąbki, they're a classic Sunday lunch.",
+      "related_glossary": [],
+      "related_recipes": [
+        "sarma",
+        "sarmale"
+      ],
+      "seo_title": "Gołąbki – Polish Stuffed Cabbage Rolls | Atlas Chuti",
+      "meta_description": "Cabbage leaves rolled around meat and rice, braised in tomato sauce — a Polish Sunday classic.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_placki-ziemniaczane",
+      "recipe_key": "placki-ziemniaczane",
+      "title": "Placki Ziemniaczane (Polish Potato Pancakes)",
+      "slug": "placki-ziemniaczane",
+      "country": "PL",
+      "excerpt": "Unlike Czech bramboráky, placki ziemniaczane are often served as a sweet dish too — dusted with sugar, or, just as commonly, savory with a dollop of sour cream. Grated potato and onion are squeezed of excess liquid, mixed with egg and flour into a thick batter, and fried in hot oil until golden on both sides. They're found across the whole of Poland and count among the country's most common potato dishes. The grated potatoes need a good squeeze first, or the excess water will make the batter too wet to crisp up properly.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 20,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "The grated onion mixed into the batter is what gives placki ziemniaczane their more savory edge compared to a plain potato pancake.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "peeled, grated",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "grated",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "80",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "to serve",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Lightly squeeze the grated potato and onion to remove excess liquid."
+        },
+        {
+          "order": 2,
+          "text": "Add the eggs, flour, salt, and pepper and mix into a thicker batter."
+        },
+        {
+          "order": 3,
+          "text": "Fry spoonfuls of batter in hot oil until golden on both sides, about 3–4 minutes per side."
+        },
+        {
+          "order": 4,
+          "text": "Drain the fried pancakes on paper towels."
+        },
+        {
+          "order": 5,
+          "text": "Serve with sour cream, or with sugar for a sweet version."
+        }
+      ],
+      "tips": [
+        "Squeeze the grated potatoes well — excess water would make the pancakes soggy and keep them from crisping up."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Sweet version",
+          "note": "Serve dusted with sugar instead of sour cream."
+        }
+      ],
+      "origin_history": "Placki ziemniaczane are found across the whole of Poland and count among the country's most common potato dishes.",
+      "related_glossary": [],
+      "related_recipes": [
+        "bramboraky"
+      ],
+      "seo_title": "Placki Ziemniaczane – Polish Potato Pancakes | Atlas Chuti",
+      "meta_description": "Crispy Polish potato pancakes, served savory with sour cream or sweet with sugar.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_sauerbraten",
+      "recipe_key": "sauerbraten",
+      "title": "Sauerbraten (German Marinated Pot Roast)",
+      "slug": "sauerbraten-german-pot-roast",
+      "country": "DE",
+      "excerpt": "Sauerbraten is a celebration of patience — the beef marinates for up to five days, which tenderizes it and gives it a distinctive tangy flavor nothing else replicates. A whole cut of beef sits fully submerged in a cooked-and-cooled marinade of red wine, vinegar, root vegetables, and warm spices, then is seared and braised for hours until fall-apart tender. The sauce is finished by blending in the braised vegetables and thickening with grated gingerbread, which adds a subtle spiced sweetness. It's one of Germany's oldest meat dishes, and the marinade historically doubled as a way of preserving the meat.",
+      "servings_default": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 180,
+      "total_minutes": 220,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "The meat needs to stay fully submerged in the marinade throughout, or it won't cure evenly all the way through. Some versions swap the gingerbread for a handful of raisins to thicken and sweeten the sauce instead.",
+      "ingredients": [
+        {
+          "ingredient_key": "beef",
+          "display_name": "Beef round",
+          "quantity": "1.5",
+          "unit": "kg",
+          "note": "whole",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "red-wine",
+          "display_name": "Red wine",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "for the marinade",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "for the marinade",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrot",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "celery-root",
+          "display_name": "Celery root",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "juniper-berries",
+          "display_name": "Juniper berries",
+          "quantity": "6",
+          "unit": "pcs",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "clove-spice",
+          "display_name": "Cloves",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "whole",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "for searing",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "gingerbread",
+          "display_name": "Gingerbread",
+          "quantity": "60",
+          "unit": "g",
+          "note": "grated, to thicken",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Roughly chop the vegetables and bring them to a boil with the wine, vinegar, and spices, then let cool."
+        },
+        {
+          "order": 2,
+          "text": "Submerge the meat fully in the cooled marinade and marinate in the fridge for 3–5 days, turning daily."
+        },
+        {
+          "order": 3,
+          "text": "Remove the meat and pat dry; strain the marinade and vegetables, and set the liquid aside."
+        },
+        {
+          "order": 4,
+          "text": "Sear the meat on all sides in oil until browned, add the vegetables from the marinade, and pour in the strained marinade."
+        },
+        {
+          "order": 5,
+          "text": "Cover and braise over low heat for 2.5–3 hours, until tender."
+        },
+        {
+          "order": 6,
+          "text": "Remove the meat, blend the sauce, thicken it with the grated gingerbread, and season with sugar and salt."
+        },
+        {
+          "order": 7,
+          "text": "Slice the meat and serve topped with the sauce, traditionally with a potato dumpling or noodles."
+        }
+      ],
+      "tips": [
+        "Marinating longer — 4 to 5 days is fine — makes the biggest difference. Don't skimp on the time."
+      ],
+      "watch_out": "The marinade must fully cover the meat, or it won't marinate evenly.",
+      "variants": [
+        {
+          "name": "With raisins",
+          "note": "Instead of gingerbread, the sauce can be thickened and sweetened with a handful of raisins."
+        }
+      ],
+      "origin_history": "Sauerbraten is one of Germany's oldest meat dishes; historically, the marinade also served as a way of preserving the meat.",
+      "related_glossary": [
+        "marinating",
+        "braising"
+      ],
+      "related_recipes": [
+        "svickova"
+      ],
+      "seo_title": "Sauerbraten – Traditional German Marinated Pot Roast | Atlas Chuti",
+      "meta_description": "Slow-marinated German beef, braised until tender in a tangy, gingerbread-thickened sauce.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_schweinshaxe",
+      "recipe_key": "schweinshaxe",
+      "title": "Schweinshaxe (German Roasted Pork Knuckle)",
+      "slug": "schweinshaxe-roasted-pork-knuckle",
+      "country": "DE",
+      "excerpt": "The secret to a good schweinshaxe is the skin — it needs to be scored before roasting and given enough time in the oven to turn glass-crisp. The knuckles are rubbed with garlic, caraway, and salt, then roasted low and covered over a bed of onion and carrot with a splash of stock, before the heat is raised at the end to crackle the skin. It's a specialty of Bavaria and Thuringia, traditionally served in beer halls. Score the skin only after patting the meat dry — a dry surface crisps far better than a damp one.",
+      "servings_default": 2,
+      "prep_minutes": 20,
+      "cook_minutes": 120,
+      "total_minutes": 140,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Two-stage roasting makes the difference: a long, slow bake first keeps the meat moist, and a final blast of high heat is what turns the scored skin properly crackling.",
+      "ingredients": [
+        {
+          "ingredient_key": "pork-knuckle",
+          "display_name": "Pork knuckle",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "4",
+          "unit": "clove",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "caraway-seed",
+          "display_name": "Caraway seeds",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Roasting juices"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrot",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Roasting juices"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Stock",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "beef or pork",
+          "group": "Roasting juices"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Score the skin on the knuckles in a crosshatch pattern with a sharp knife, then rub the meat with crushed garlic, caraway, and salt."
+        },
+        {
+          "order": 2,
+          "text": "Put the chopped onion and carrot in a roasting pan, set the knuckles on top, and add the stock."
+        },
+        {
+          "order": 3,
+          "text": "Roast covered with foil at 350°F (180°C) for about 1.5 hours."
+        },
+        {
+          "order": 4,
+          "text": "Uncover, raise the heat to 425°F (220°C), and roast for another 30–40 minutes, until the skin crackles."
+        },
+        {
+          "order": 5,
+          "text": "Baste the knuckles occasionally with the pan juices during the last stretch of roasting."
+        },
+        {
+          "order": 6,
+          "text": "Serve with a potato dumpling or braised cabbage and the pan juices."
+        }
+      ],
+      "tips": [
+        "Score the skin only after patting the meat dry — a dry surface crisps up far better than a damp one."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Schweinshaxe is a typical Bavarian and Thuringian specialty, traditionally served in beer halls.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Schweinshaxe – Traditional German Roasted Pork Knuckle | Atlas Chuti",
+      "meta_description": "Bavarian roasted pork knuckle with crackling skin, served with dumpling or braised cabbage.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_currywurst",
+      "recipe_key": "currywurst",
+      "title": "Currywurst (Berlin Sausage with Curry Ketchup)",
+      "slug": "currywurst-berlin-curry-sausage",
+      "country": "DE",
+      "excerpt": "Currywurst began in postwar Berlin as fast, cheap food for laborers, and it remains one of Germany's most widespread street foods today. A grilled sausage is sliced into rounds and drenched in a quick ketchup-based sauce seasoned with curry powder and paprika, then dusted with a little more curry on top. According to legend, it was invented in 1949 by Berlin food-stall owner Herta Heuwer, who mixed ketchup, Worcestershire sauce, and curry powder. The sauce keeps well and can easily be made in a larger batch ahead of time.",
+      "servings_default": 4,
+      "prep_minutes": 10,
+      "cook_minutes": 20,
+      "total_minutes": 30,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "In Berlin, the sausage is often served without its casing for a softer bite — a common variation on the classic version.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Grilling sausages",
+          "quantity": "8",
+          "unit": "pcs",
+          "note": "coarse pork sausages",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "ketchup",
+          "display_name": "Ketchup",
+          "quantity": "250",
+          "unit": "g",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "curry-powder",
+          "display_name": "Curry powder",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "plus a little extra for dusting",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion in oil until glassy."
+        },
+        {
+          "order": 2,
+          "text": "Add the ketchup, curry powder, and paprika, and simmer for 5 minutes over low heat to let the flavors combine."
+        },
+        {
+          "order": 3,
+          "text": "Grill or pan-fry the sausages until golden on all sides."
+        },
+        {
+          "order": 4,
+          "text": "Slice the cooked sausages into rounds."
+        },
+        {
+          "order": 5,
+          "text": "Pour over the hot curry sauce and dust lightly with more curry powder."
+        },
+        {
+          "order": 6,
+          "text": "Serve with fries or a piece of bread."
+        }
+      ],
+      "tips": [
+        "Feel free to make a bigger batch of the sauce ahead of time — it keeps in the fridge for several days."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Without casing",
+          "note": "In Berlin, sausages without casing are often used for a softer texture."
+        }
+      ],
+      "origin_history": "According to legend, currywurst was invented in 1949 by Berlin food-stall owner Herta Heuwer, who mixed ketchup, Worcestershire sauce, and curry powder.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Currywurst – Classic Berlin Curry Sausage | Atlas Chuti",
+      "meta_description": "Berlin's iconic street food: grilled sausage sliced and drenched in curry-ketchup sauce.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kartoffelpuffer",
+      "recipe_key": "kartoffelpuffer",
+      "title": "Kartoffelpuffer (German Potato Pancakes)",
+      "slug": "kartoffelpuffer-german-potato-pancakes",
+      "country": "DE",
+      "excerpt": "Kartoffelpuffer differ from Czech bramboráky mainly in what they're served with — sweet applesauce is just as common a pairing as sour cream. Grated potato and onion are squeezed dry, mixed with egg and flour, and fried in hot oil in smaller, thinner rounds so they cook through quickly and evenly. They're found across all of Germany and carry different regional names, such as Reibekuchen along the Rhine. Frying them smaller and thinner than a standard potato pancake is what gives them their characteristically even, golden crust.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 20,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Kartoffelpuffer differ from Czech potato pancakes mainly in what they're served with — sweet applesauce is just as natural a pairing as sour cream.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "peeled, grated",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "grated",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "applesauce",
+          "display_name": "Applesauce",
+          "quantity": "200",
+          "unit": "g",
+          "note": "to serve",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Squeeze the grated potato and onion well to remove excess water."
+        },
+        {
+          "order": 2,
+          "text": "Add the eggs, flour, and salt and mix into a thicker batter."
+        },
+        {
+          "order": 3,
+          "text": "Fry spoonfuls of batter in hot oil until golden on both sides, about 3–4 minutes per side."
+        },
+        {
+          "order": 4,
+          "text": "Drain the fried pancakes on paper towels."
+        },
+        {
+          "order": 5,
+          "text": "Serve warm with applesauce."
+        }
+      ],
+      "tips": [
+        "Fry the pancakes smaller and thinner — they brown faster and more evenly all the way through."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Kartoffelpuffer are found across all of Germany and carry different regional names, such as Reibekuchen along the Rhine.",
+      "related_glossary": [],
+      "related_recipes": [
+        "bramboraky",
+        "placki-ziemniaczane"
+      ],
+      "seo_title": "Kartoffelpuffer – Traditional German Potato Pancakes | Atlas Chuti",
+      "meta_description": "Golden German potato pancakes, traditionally served with applesauce.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_konigsberger-klopse",
+      "recipe_key": "konigsberger-klopse",
+      "title": "Königsberger Klopse (German Meatballs in Caper Sauce)",
+      "slug": "konigsberger-klopse-meatballs-caper-sauce",
+      "country": "DE",
+      "excerpt": "Unlike most meatballs, Königsberger Klopse aren't fried at all — they're gently poached in stock, which keeps them tender and juicy. A mix of ground meat, milk-soaked bread, onion, and egg is shaped into balls and simmered until just cooked through, then the poaching stock becomes the base for a pale roux sauce finished with capers, cream, and lemon juice. They come from the former Prussian city of Königsberg, now Kaliningrad, and are a classic of northern German cooking. Don't discard the poaching stock — it's the backbone of the sauce and carries most of the flavor.",
+      "servings_default": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 30,
+      "total_minutes": 55,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Capers and a good squeeze of lemon juice at the end give the cream sauce its sharp, savory edge, balancing the mildness of the poached meatballs.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Mixed ground meat",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "bread-roll",
+          "display_name": "Stale bread rolls or baguette",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "soaked in milk",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Dumplings"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Stock",
+          "quantity": "800",
+          "unit": "ml",
+          "note": "for poaching the meatballs",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Broth"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "All-purpose flour",
+          "quantity": "40",
+          "unit": "g",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "capers",
+          "display_name": "Capers",
+          "quantity": "3",
+          "unit": "tbsp",
+          "note": "with a little of their brine",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "juice, to finish",
+          "group": "Sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Soak the bread in milk and mash it, then mix with the ground meat, onion, egg, and salt into a smooth mixture."
+        },
+        {
+          "order": 2,
+          "text": "Shape the mixture into balls and drop them into gently simmering stock with the bay leaf."
+        },
+        {
+          "order": 3,
+          "text": "Simmer over low heat for 15–20 minutes, until the meatballs are firm and cooked through."
+        },
+        {
+          "order": 4,
+          "text": "Remove the meatballs, strain the stock, and measure out about 2 cups (500 ml) for the sauce."
+        },
+        {
+          "order": 5,
+          "text": "Make a pale roux from the butter and flour, pour in the stock, and simmer until it thickens."
+        },
+        {
+          "order": 6,
+          "text": "Stir in the capers, cream, and lemon juice, and simmer briefly."
+        },
+        {
+          "order": 7,
+          "text": "Return the meatballs to the sauce, warm through, and serve with mashed or boiled potatoes."
+        }
+      ],
+      "tips": [
+        "Don't pour out the stock the meatballs poach in — it's the base of the sauce and carries most of the flavor."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Königsberger Klopse come from the former Prussian city of Königsberg, now Kaliningrad, and are a classic of northern German cooking.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Königsberger Klopse – German Meatballs in Caper Sauce | Atlas Chuti",
+      "meta_description": "Tender poached German meatballs in a creamy caper sauce, a northern German classic.",
+      "status": "publish"
+    }
+  ]
+}

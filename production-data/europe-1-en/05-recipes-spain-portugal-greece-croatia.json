@@ -1,0 +1,3183 @@
+{
+  "ingredients": [
+    {
+      "ingredient_key": "onion",
+      "locale": "en",
+      "title": "Onion",
+      "slug": "onion",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "garlic",
+      "locale": "en",
+      "title": "Garlic",
+      "slug": "garlic",
+      "aliases": [
+        "garlic clove",
+        "garlic cloves"
+      ],
+      "default_unit": "clove"
+    },
+    {
+      "ingredient_key": "olive-oil",
+      "locale": "en",
+      "title": "Olive oil",
+      "slug": "olive-oil",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "tomato",
+      "locale": "en",
+      "title": "Tomato",
+      "slug": "tomato",
+      "aliases": [
+        "tomatoes"
+      ],
+      "default_unit": "ks"
+    },
+    {
+      "ingredient_key": "crushed-tomato",
+      "locale": "en",
+      "title": "Crushed tomatoes (canned)",
+      "slug": "crushed-tomatoes-canned",
+      "aliases": [
+        "passata"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "potato",
+      "locale": "en",
+      "title": "Potatoes",
+      "slug": "potatoes",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "egg",
+      "locale": "en",
+      "title": "Egg",
+      "slug": "egg",
+      "aliases": [
+        "eggs"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "flour",
+      "locale": "en",
+      "title": "All-purpose flour",
+      "slug": "all-purpose-flour",
+      "aliases": [
+        "plain flour"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "butter",
+      "locale": "en",
+      "title": "Butter",
+      "slug": "butter",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "milk",
+      "locale": "en",
+      "title": "Milk",
+      "slug": "milk",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "salt",
+      "locale": "en",
+      "title": "Salt",
+      "slug": "salt",
+      "aliases": [],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "black-pepper",
+      "locale": "en",
+      "title": "Black pepper",
+      "slug": "black-pepper",
+      "aliases": [
+        "pepper"
+      ],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "bay-leaf",
+      "locale": "en",
+      "title": "Bay leaf",
+      "slug": "bay-leaf",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "rice",
+      "locale": "en",
+      "title": "Rice",
+      "slug": "rice",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "white-wine",
+      "locale": "en",
+      "title": "White wine",
+      "slug": "white-wine",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "red-wine",
+      "locale": "en",
+      "title": "Red wine",
+      "slug": "red-wine",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "beef",
+      "locale": "en",
+      "title": "Beef",
+      "slug": "beef",
+      "aliases": [
+        "beef shank",
+        "beef brisket"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "beef-stock",
+      "locale": "en",
+      "title": "Beef stock",
+      "slug": "beef-stock",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "sugar",
+      "locale": "en",
+      "title": "Granulated sugar",
+      "slug": "granulated-sugar",
+      "aliases": [
+        "sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "parsley",
+      "locale": "en",
+      "title": "Parsley",
+      "slug": "parsley",
+      "aliases": [
+        "flat-leaf parsley"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "lemon",
+      "locale": "en",
+      "title": "Lemon",
+      "slug": "lemon",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "bell-pepper",
+      "locale": "en",
+      "title": "Bell pepper",
+      "slug": "bell-pepper",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "smoked-bacon",
+      "locale": "en",
+      "title": "Smoked bacon",
+      "slug": "smoked-bacon",
+      "aliases": [
+        "bacon"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "smoked-sausage",
+      "locale": "en",
+      "title": "Smoked sausage",
+      "slug": "smoked-sausage",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cream",
+      "locale": "en",
+      "title": "Whipping cream (33%)",
+      "slug": "whipping-cream-33",
+      "aliases": [
+        "heavy cream"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "sour-cream",
+      "locale": "en",
+      "title": "Sour cream",
+      "slug": "sour-cream",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "vanilla-sugar",
+      "locale": "en",
+      "title": "Vanilla sugar",
+      "slug": "vanilla-sugar",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "powdered-sugar",
+      "locale": "en",
+      "title": "Powdered sugar",
+      "slug": "powdered-sugar",
+      "aliases": [
+        "icing sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "yeast",
+      "locale": "en",
+      "title": "Yeast",
+      "slug": "yeast",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "curd-cheese",
+      "locale": "en",
+      "title": "Curd cheese (tvaroh)",
+      "slug": "curd-cheese-tvaroh",
+      "aliases": [
+        "quark"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "dried-plum",
+      "locale": "en",
+      "title": "Dried plums",
+      "slug": "dried-plums",
+      "aliases": [
+        "prunes"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "carrot",
+      "locale": "en",
+      "title": "Carrot",
+      "slug": "carrot",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "celery-root",
+      "locale": "en",
+      "title": "Celery root",
+      "slug": "celery-root",
+      "aliases": [
+        "celeriac"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "chicken",
+      "locale": "en",
+      "title": "Chicken",
+      "slug": "chicken",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "pork",
+      "locale": "en",
+      "title": "Pork",
+      "slug": "pork",
+      "aliases": [
+        "pork shoulder"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "shrimp",
+      "locale": "en",
+      "title": "Shrimp",
+      "slug": "shrimp",
+      "aliases": [
+        "prawns"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "rabbit",
+      "locale": "en",
+      "title": "Rabbit",
+      "slug": "rabbit",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "white-beans",
+      "locale": "en",
+      "title": "White beans",
+      "slug": "white-beans",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "rosemary",
+      "locale": "en",
+      "title": "Rosemary",
+      "slug": "rosemary",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "chorizo",
+      "locale": "en",
+      "title": "Chorizo",
+      "slug": "chorizo",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "bacalhau",
+      "locale": "en",
+      "title": "Bacalhau (dried salt cod)",
+      "slug": "bacalhau-dried-salt-cod",
+      "aliases": [
+        "salt cod"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "kale",
+      "locale": "en",
+      "title": "Kale (or collard greens)",
+      "slug": "kale-or-collard-greens",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cinnamon",
+      "locale": "en",
+      "title": "Cinnamon",
+      "slug": "cinnamon",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "phyllo-dough",
+      "locale": "en",
+      "title": "Phyllo dough",
+      "slug": "phyllo-dough",
+      "aliases": [
+        "filo pastry"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cornstarch",
+      "locale": "en",
+      "title": "Cornstarch",
+      "slug": "cornstarch",
+      "aliases": [],
+      "default_unit": "tbsp"
+    },
+    {
+      "ingredient_key": "mussel",
+      "locale": "en",
+      "title": "Mussels",
+      "slug": "mussels",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "squid",
+      "locale": "en",
+      "title": "Squid or cuttlefish",
+      "slug": "squid-or-cuttlefish",
+      "aliases": [
+        "calamari"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cuttlefish-ink",
+      "locale": "en",
+      "title": "Cuttlefish ink",
+      "slug": "cuttlefish-ink",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "ham",
+      "locale": "en",
+      "title": "Cooked ham",
+      "slug": "cooked-ham",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cheese-slice",
+      "locale": "en",
+      "title": "Cheese (Emmental or Edam)",
+      "slug": "cheese-emmental-or-edam",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "beer",
+      "locale": "en",
+      "title": "Beer",
+      "slug": "beer",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "feta",
+      "locale": "en",
+      "title": "Feta cheese",
+      "slug": "feta-cheese",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cucumber",
+      "locale": "en",
+      "title": "Cucumber",
+      "slug": "cucumber",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "greek-yogurt",
+      "locale": "en",
+      "title": "Greek yogurt",
+      "slug": "greek-yogurt",
+      "aliases": [
+        "plain yogurt"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "spinach",
+      "locale": "en",
+      "title": "Spinach",
+      "slug": "spinach",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "eggplant",
+      "locale": "en",
+      "title": "Eggplant",
+      "slug": "eggplant",
+      "aliases": [
+        "aubergine"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "oregano",
+      "locale": "en",
+      "title": "Dried oregano",
+      "slug": "dried-oregano",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "olives",
+      "locale": "en",
+      "title": "Olives",
+      "slug": "olives",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "lamb",
+      "locale": "en",
+      "title": "Lamb",
+      "slug": "lamb",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "pita-bread",
+      "locale": "en",
+      "title": "Pita bread",
+      "slug": "pita-bread",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "brandy",
+      "locale": "en",
+      "title": "Brandy (or rakija)",
+      "slug": "brandy-or-rakija",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "vinegar",
+      "locale": "en",
+      "title": "Vinegar",
+      "slug": "vinegar",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "nutmeg",
+      "locale": "en",
+      "title": "Nutmeg",
+      "slug": "nutmeg",
+      "aliases": [],
+      "default_unit": ""
+    }
+  ],
+  "recipes": [
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_paella-valenciana",
+      "recipe_key": "paella-valenciana",
+      "title": "Paella Valenciana",
+      "slug": "paella-valenciana",
+      "country": "ES",
+      "excerpt": "Seafood has no place in the traditional Valencian version — that belongs in the coastal variations called paella de marisco. The base is meat, beans, and rice, and once the broth goes in you never stir again, which is exactly what lets the prized crisp layer, socarrat, form on the bottom. It comes from the countryside around Valencia, where it was cooked over open fires from whatever was on hand — poultry, rabbit, and beans from the surrounding fields. White beans can be supplemented with green beans as well, but the core principle of unstirred rice always stays the same.",
+      "servings_default": 6,
+      "prep_minutes": 25,
+      "cook_minutes": 45,
+      "total_minutes": 70,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "A true Valencian paella traditionally contains no seafood — that belongs in the coastal variations. The base is meat, beans, and rice, which is never stirred, so a crisp socarrat layer forms on the bottom.",
+      "ingredients": [
+        {
+          "ingredient_key": "chicken",
+          "display_name": "Chicken",
+          "quantity": "500",
+          "unit": "g",
+          "note": "cut into pieces",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "rabbit",
+          "display_name": "Rabbit",
+          "quantity": "400",
+          "unit": "g",
+          "note": "cut into pieces, optional",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "white-beans",
+          "display_name": "White beans",
+          "quantity": "200",
+          "unit": "g",
+          "note": "cooked",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomato",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "grated",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "rice",
+          "display_name": "Rice",
+          "quantity": "400",
+          "unit": "g",
+          "note": "round-grain",
+          "group": "Rice"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "1",
+          "unit": "l",
+          "note": "chicken or vegetable",
+          "group": "Rice"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "80",
+          "unit": "ml",
+          "note": "",
+          "group": "Rice"
+        },
+        {
+          "ingredient_key": "rosemary",
+          "display_name": "Rosemary",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Spices"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Heat the olive oil in a paella pan or wide skillet and brown the chicken and rabbit until golden."
+        },
+        {
+          "order": 2,
+          "text": "Add the grated tomato and cook until the juices reduce."
+        },
+        {
+          "order": 3,
+          "text": "Add the beans and rice, and stir briefly so the fat coats the grains."
+        },
+        {
+          "order": 4,
+          "text": "Pour in the hot broth, add the rosemary, season with salt, and give it one last stir."
+        },
+        {
+          "order": 5,
+          "text": "Cook over medium heat without stirring for about 18–20 minutes, until the rice has absorbed the liquid."
+        },
+        {
+          "order": 6,
+          "text": "In the last minutes, raise the heat so a crisp socarrat layer forms on the bottom, then let it rest for 5 minutes."
+        }
+      ],
+      "tips": [
+        "Never stir the rice once the broth is added — that's exactly what lets the prized crisp socarrat layer form on the bottom."
+      ],
+      "watch_out": "A true paella Valenciana contains no seafood — that belongs in the coastal paella de marisco variations.",
+      "variants": [
+        {
+          "name": "With green beans",
+          "note": "White beans can be supplemented with green bean pods."
+        }
+      ],
+      "origin_history": "Paella comes from the countryside around Valencia, where it was cooked over open fires from whatever was on hand — poultry, rabbit, and beans from the surrounding fields.",
+      "related_glossary": [
+        "saffron",
+        "paellera"
+      ],
+      "related_recipes": [],
+      "seo_title": "Paella Valenciana – Original Spanish Recipe | Atlas Chuti",
+      "meta_description": "Paella Valenciana recipe: saffron rice with chicken, rabbit, and beans.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_tortilla-espanola",
+      "recipe_key": "tortilla-espanola",
+      "title": "Tortilla Española (Spanish Potato Omelet)",
+      "slug": "tortilla-espanola-spanish-potato-omelet",
+      "country": "ES",
+      "excerpt": "Tortilla española is a Spanish potato omelet, one of the most common Spanish dishes, served both as tapas and as a full course. The secret lies in slowly frying the potatoes in a generous amount of oil, almost like confit, which is the only way they stay soft and tender inside instead of crisp. A flat plate makes flipping easier — slide the tortilla onto it from the pan, then slide it back off the plate into the pan so the other side cooks through too. The simplicity of the ingredients is also exactly why this dish became so widespread across all of Spain.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 30,
+      "total_minutes": 50,
+      "difficulty": "medium",
+      "meal_type": [
+        "appetizer",
+        "main-course"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "The key to a good tortilla is frying the potatoes slowly in plenty of oil, almost as if confit — that's the only way they stay soft and tender instead of crisp.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "800",
+          "unit": "g",
+          "note": "thinly sliced",
+          "group": "Tortilla"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "thinly sliced",
+          "group": "Tortilla"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "Tortilla"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "6",
+          "unit": "pcs",
+          "note": "",
+          "group": "Tortilla"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Tortilla"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the potatoes and onion in plenty of oil over low heat for 20–25 minutes, until the potatoes are tender but not browned."
+        },
+        {
+          "order": 2,
+          "text": "Drain off the excess oil and mix the drained potatoes and onion with the beaten eggs; season with salt."
+        },
+        {
+          "order": 3,
+          "text": "Heat a little oil in a pan and pour in the mixture; fry over low heat for about 5 minutes, until the bottom sets."
+        },
+        {
+          "order": 4,
+          "text": "Flip the tortilla using a plate or lid and finish cooking the other side for another 4–5 minutes."
+        },
+        {
+          "order": 5,
+          "text": "Let it cool slightly and cut into pieces; serve warm or at room temperature."
+        }
+      ],
+      "tips": [
+        "A flat plate makes flipping easier — slide the tortilla onto it from the pan, then slide it back into the pan."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Tortilla Española is one of the most common Spanish dishes, served both as tapas and as a full course.",
+      "related_glossary": [
+        "tapas"
+      ],
+      "related_recipes": [],
+      "seo_title": "Tortilla Española – Spanish Potato Omelet Recipe | Atlas Chuti",
+      "meta_description": "Tortilla Española recipe: a dense Spanish potato omelet, a tapas classic.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_gazpacho",
+      "recipe_key": "gazpacho",
+      "title": "Gazpacho",
+      "slug": "gazpacho",
+      "country": "ES",
+      "excerpt": "Gazpacho is a cold Andalusian soup that isn't cooked at all — the whole thing comes together just by blending raw vegetables, which makes the quality and ripeness of the tomatoes absolutely essential to the final flavor. It comes from Andalusia, where it began as a refreshing dish for hot summer days on the region's farms. It tastes best thoroughly chilled, and can happily sit in the fridge overnight so the flavors come together and the soup stays pleasantly cold once served. That simplicity — no cooking at all — is exactly what makes it a defining summer dish of southern Spain.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 0,
+      "total_minutes": 15,
+      "difficulty": "easy",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Gazpacho isn't cooked at all — the whole soup comes together just by blending raw vegetables, which is why it matters so much that the tomatoes are truly ripe.",
+      "ingredients": [
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "ripe",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "cucumber",
+          "display_name": "Cucumber",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "peeled",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell pepper",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "1",
+          "unit": "clove",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "80",
+          "unit": "ml",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "wine vinegar",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Roughly chop the vegetables."
+        },
+        {
+          "order": 2,
+          "text": "Blend everything smooth with the olive oil, vinegar, and salt."
+        },
+        {
+          "order": 3,
+          "text": "Adjust the consistency with a little cold water if needed."
+        },
+        {
+          "order": 4,
+          "text": "Strain through a sieve if you want a completely smooth soup."
+        },
+        {
+          "order": 5,
+          "text": "Chill in the fridge for at least 2 hours and serve cold, optionally topped with diced vegetables."
+        }
+      ],
+      "tips": [
+        "Gazpacho tastes best thoroughly chilled — it can happily sit in the fridge overnight."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Gazpacho comes from Andalusia, where it began as a refreshing dish for hot summer days on the region's farms.",
+      "related_glossary": [
+        "olive-oil"
+      ],
+      "related_recipes": [],
+      "seo_title": "Gazpacho – Cold Andalusian Soup Recipe | Atlas Chuti",
+      "meta_description": "Gazpacho recipe: a cold tomato soup with cucumber and bell pepper.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_patatas-bravas",
+      "recipe_key": "patatas-bravas",
+      "title": "Patatas Bravas",
+      "slug": "patatas-bravas",
+      "country": "ES",
+      "excerpt": "Patatas bravas is fried potatoes drizzled with a spicy sauce and a delicate garlic aioli, one of the most common tapas found across all of Spain. The word \"bravas\" means \"wild\" and refers to exactly that spiciness, with the sauce recipe varying from region to region. When making the aioli, the oil needs to be added really slowly while blending constantly, or the emulsion won't come together and the sauce will split. Thanks to the simplicity of its ingredients — potatoes, oil, paprika, and garlic — this dish has become a standard fixture of Spanish tapas bars.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 30,
+      "total_minutes": 45,
+      "difficulty": "easy",
+      "meal_type": [
+        "appetizer",
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "\"Bravas\" means \"wild\" — it refers to the spiciness of the sauce that gets poured over the fried potatoes alongside a delicate garlic aioli.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "800",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Potatoes"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "Potatoes"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Bravas sauce"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Bravas sauce"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Bravas sauce"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "1",
+          "unit": "clove",
+          "note": "for the aioli",
+          "group": "Aioli"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "for the aioli",
+          "group": "Aioli"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "for the aioli",
+          "group": "Aioli"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Potatoes"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the potatoes in oil until crisp and golden; season with salt."
+        },
+        {
+          "order": 2,
+          "text": "For the bravas sauce, briefly sauté the crushed garlic, add the crushed tomatoes and vinegar, and simmer for 10 minutes."
+        },
+        {
+          "order": 3,
+          "text": "Blend until smooth."
+        },
+        {
+          "order": 4,
+          "text": "For the aioli, blend the egg with the crushed garlic, and while blending constantly, drizzle in the olive oil in a thin stream until it thickens."
+        },
+        {
+          "order": 5,
+          "text": "Drizzle the fried potatoes with both sauces and serve immediately."
+        }
+      ],
+      "tips": [
+        "When blending the aioli, add the oil really slowly and steadily — otherwise the emulsion won't come together."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Patatas bravas is one of the most common tapas across all of Spain, with the sauce recipe varying from region to region.",
+      "related_glossary": [
+        "tapas",
+        "emulsion"
+      ],
+      "related_recipes": [],
+      "seo_title": "Patatas Bravas – Spanish Spicy Potatoes Recipe | Atlas Chuti",
+      "meta_description": "Patatas bravas recipe: fried potatoes with spicy sauce and aioli.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_croquetas-de-jamon",
+      "recipe_key": "croquetas-de-jamon",
+      "title": "Croquetas de Jamón (Spanish Ham Croquettes)",
+      "slug": "croquetas-de-jamon-spanish-ham-croquettes",
+      "country": "ES",
+      "excerpt": "Croquetas de jamón are fried croquettes with a dense béchamel filling and ham inside, one of the most popular Spanish tapas. The base is a thick béchamel mixture that needs to chill thoroughly before shaping, or the croquettes will fall apart while frying. It's best to let the mixture chill overnight — the firmer it is, the easier it is to shape and the less it breaks apart during frying. Besides the ham filling there are also mushroom and chicken versions, but the principle of a dense, chilled béchamel base always stays the same.",
+      "servings_default": 4,
+      "prep_minutes": 30,
+      "cook_minutes": 20,
+      "total_minutes": 50,
+      "difficulty": "medium",
+      "meal_type": [
+        "appetizer"
+      ],
+      "diet": [],
+      "about": "The base of croquetas is a dense béchamel mixture that must chill thoroughly before shaping — otherwise the croquettes fall apart while frying.",
+      "ingredients": [
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "500",
+          "unit": "ml",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "ham",
+          "display_name": "Cooked ham",
+          "quantity": "150",
+          "unit": "g",
+          "note": "finely chopped",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "nutmeg",
+          "display_name": "Nutmeg",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "80",
+          "unit": "g",
+          "note": "for coating",
+          "group": "Coating"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "beaten",
+          "group": "Coating"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion in butter until translucent, stir in the flour, and cook briefly."
+        },
+        {
+          "order": 2,
+          "text": "Gradually whisk in the milk, stirring constantly, until a thick béchamel forms."
+        },
+        {
+          "order": 3,
+          "text": "Add the ham and nutmeg, season with salt, and chill the mixture in the fridge for at least 3 hours, ideally overnight."
+        },
+        {
+          "order": 4,
+          "text": "With wet hands, shape the chilled mixture into logs and coat in flour, egg, and breadcrumbs."
+        },
+        {
+          "order": 5,
+          "text": "Fry in hot oil until golden, about 2–3 minutes."
+        },
+        {
+          "order": 6,
+          "text": "Drain on paper towels and serve warm."
+        }
+      ],
+      "tips": [
+        "Let the croquette mixture chill overnight if you can — the firmer it is, the easier it is to shape and the less it falls apart during frying."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Croquetas are one of the most popular Spanish tapas; the ham filling is the most common, though mushroom and chicken versions exist too.",
+      "related_glossary": [
+        "tapas"
+      ],
+      "related_recipes": [],
+      "seo_title": "Croquetas de Jamón – Spanish Ham Croquettes | Atlas Chuti",
+      "meta_description": "Croquetas de jamón recipe: fried croquettes with a ham béchamel filling.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_bacalhau-a-bras",
+      "recipe_key": "bacalhau-a-bras",
+      "title": "Bacalhau à Brás (Portuguese Shredded Salt Cod)",
+      "slug": "bacalhau-a-bras-shredded-salt-cod",
+      "country": "PT",
+      "excerpt": "Bacalhau à Brás is one of the most popular Portuguese ways of preparing salt cod, where shredded flakes of fish come together with crisp potato matchsticks and beaten eggs into one soft, hearty mixture. It comes from Lisbon and is one of hundreds of Portuguese salt cod recipes traditionally made across the country. The cod needs to be soaked long enough, with the water changed several times, or the dish will end up unpleasantly salty. The simple combination of cod, potatoes, and eggs makes it one of the most common Portuguese home-cooked dishes.",
+      "servings_default": 4,
+      "prep_minutes": 30,
+      "cook_minutes": 25,
+      "total_minutes": 55,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Bacalhau à Brás is one of the most popular ways of preparing salt cod — shredded flakes come together with crisp potato matchsticks and eggs into a soft, hearty mixture.",
+      "ingredients": [
+        {
+          "ingredient_key": "bacalhau",
+          "display_name": "Bacalhau (salt cod)",
+          "quantity": "500",
+          "unit": "g",
+          "note": "soaked and shredded",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "500",
+          "unit": "g",
+          "note": "cut into thin matchsticks",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "sliced",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "5",
+          "unit": "pcs",
+          "note": "beaten",
+          "group": "Main"
+        },
+        {
+          "ingredient_key": "olives",
+          "display_name": "Olives",
+          "quantity": "50",
+          "unit": "g",
+          "note": "to garnish",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "parsley",
+          "display_name": "Parsley",
+          "quantity": "10",
+          "unit": "g",
+          "note": "chopped",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Soak the cod according to the package instructions (usually 24–48 hours, changing the water regularly), then shred it into flakes."
+        },
+        {
+          "order": 2,
+          "text": "Cut the potatoes into thin matchsticks and fry until crisp, or roast them in the oven for a lighter version."
+        },
+        {
+          "order": 3,
+          "text": "Sauté the onion and garlic in olive oil until translucent, add the cod, and cook briefly."
+        },
+        {
+          "order": 4,
+          "text": "Add the fried potato matchsticks and mix together."
+        },
+        {
+          "order": 5,
+          "text": "Pour in the beaten eggs and, stirring over low heat, let them set softly, as with scrambled eggs."
+        },
+        {
+          "order": 6,
+          "text": "Serve scattered with olives and parsley."
+        }
+      ],
+      "tips": [
+        "Soak the cod long enough and change the water several times — otherwise the dish ends up unpleasantly salty."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Bacalhau à Brás comes from Lisbon and is one of hundreds of Portuguese salt cod recipes.",
+      "related_glossary": [
+        "bacalhau"
+      ],
+      "related_recipes": [],
+      "seo_title": "Bacalhau à Brás – Portuguese Salt Cod Recipe | Atlas Chuti",
+      "meta_description": "Bacalhau à Brás recipe: shredded salt cod with crisp potatoes and eggs.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_caldo-verde",
+      "recipe_key": "caldo-verde",
+      "title": "Caldo Verde (Portuguese Kale Soup)",
+      "slug": "caldo-verde-portuguese-kale-soup",
+      "country": "PT",
+      "excerpt": "Caldo verde is a simple rustic soup from northern Portugal, one of the most common Portuguese soups of all. The method is simple — the potato broth is first blended smooth, and only then is the thinly sliced kale added, which is what keeps it vividly green and prevents it from overcooking. The kale needs to be sliced as thin as possible; in the traditional version the shreds are nearly translucent, which also gives the soup its characteristic look. The simple combination of potatoes and green kale makes it a typical rustic dish of northern Portugal.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 30,
+      "total_minutes": 45,
+      "difficulty": "easy",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [],
+      "about": "Caldo verde is a simple rustic soup — the potato base is blended smooth first, and only then does the thinly sliced kale go back in, so it stays vividly green.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "600",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "kale",
+          "display_name": "Kale",
+          "quantity": "200",
+          "unit": "g",
+          "note": "sliced into thin ribbons",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "smoked-sausage",
+          "display_name": "Smoked sausage (chouriço)",
+          "quantity": "200",
+          "unit": "g",
+          "note": "sliced into rounds",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "40",
+          "unit": "ml",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Cook the potatoes, onion, and garlic in salted water until tender, about 20 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Blend smooth together with the cooking water."
+        },
+        {
+          "order": 3,
+          "text": "Return to the heat, add the sausage, and simmer for 5 minutes."
+        },
+        {
+          "order": 4,
+          "text": "Add the kale, sliced as thin as possible, and cook for another 3–4 minutes until tender."
+        },
+        {
+          "order": 5,
+          "text": "Season with salt and serve with a drizzle of olive oil on top."
+        }
+      ],
+      "tips": [
+        "Slice the kale as thin as possible — in the traditional version the shreds are nearly translucent."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Caldo verde comes from northern Portugal and is one of the most common Portuguese soups of all.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Caldo Verde – Portuguese Kale Soup Recipe | Atlas Chuti",
+      "meta_description": "Caldo verde recipe: potato soup with kale and smoked sausage.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_pasteis-de-nata",
+      "recipe_key": "pasteis-de-nata",
+      "title": "Pastéis de Nata (Portuguese Custard Tarts)",
+      "slug": "pasteis-de-nata-portuguese-custard-tarts",
+      "country": "PT",
+      "excerpt": "Pastéis de nata are small Portuguese custard tarts in crisp puff pastry, created in a monastery bakery by the Jerónimos Monastery in Lisbon. Today's best-known recipe is guarded by the Lisbon bakery Pastéis de Belém, which still makes them following the original monastery tradition. A very hot oven is essential, since it's what lets the custard scorch into dark spots in places — and those spots are exactly what gives the tarts their signature caramelized flavor. Those dark spots on the surface are a sought-after sign of a properly baked tart, not a mistake in preparation.",
+      "servings_default": 12,
+      "prep_minutes": 30,
+      "cook_minutes": 20,
+      "total_minutes": 50,
+      "difficulty": "medium",
+      "meal_type": [
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "The key to an authentic pastel de nata is a very hot oven — the custard needs to scorch into dark spots in places, which is what gives the dessert its signature caramelized flavor.",
+      "ingredients": [
+        {
+          "ingredient_key": "phyllo-dough",
+          "display_name": "Puff pastry",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "ready-made, rolled out",
+          "group": "Pastry shells"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "cornstarch",
+          "display_name": "Cornstarch",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg yolks",
+          "quantity": "6",
+          "unit": "pcs",
+          "note": "",
+          "group": "Buttercream"
+        },
+        {
+          "ingredient_key": "cinnamon",
+          "display_name": "Cinnamon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "stick, optional",
+          "group": "Buttercream"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Roll the puff pastry into a log, slice into rounds, and press each round into a muffin tin so it forms a thin shell."
+        },
+        {
+          "order": 2,
+          "text": "Bring the milk, cream, sugar, and cinnamon to a boil."
+        },
+        {
+          "order": 3,
+          "text": "Dissolve the cornstarch in a little cold milk and stir into the hot mixture; simmer briefly until thickened."
+        },
+        {
+          "order": 4,
+          "text": "Once slightly cooled, whisk in the egg yolks and strain the custard."
+        },
+        {
+          "order": 5,
+          "text": "Fill the shells about three-quarters full with custard and bake at 250°C (480°F), or your oven's maximum, for 12–15 minutes, until the surface browns almost to black in places."
+        },
+        {
+          "order": 6,
+          "text": "Let cool slightly and serve dusted with cinnamon."
+        }
+      ],
+      "tips": [
+        "Don't be afraid of a very hot oven — dark spots on the surface are a sought-after sign of an authentic pastel de nata, not a mistake."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Pastéis de nata were created in a monastery bakery by the Jerónimos Monastery in Lisbon; today's best-known recipe is guarded by the bakery Pastéis de Belém.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Pastéis de Nata – Portuguese Custard Tart Recipe | Atlas Chuti",
+      "meta_description": "Pastéis de nata recipe: crisp tarts with caramelized custard filling.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_arroz-de-marisco",
+      "recipe_key": "arroz-de-marisco",
+      "title": "Arroz de Marisco (Portuguese Seafood Rice)",
+      "slug": "arroz-de-marisco-portuguese-seafood-rice",
+      "country": "PT",
+      "excerpt": "Arroz de marisco is a signature dish of the Portuguese coast, cooked from the fresh daily catch of seafood. Unlike Spanish paella, it always stays juicy, almost like a thicker soup — unlike paella, the rice here is never fried dry. Any mussels that don't open after cooking need to be discarded, since they're not safe to eat and could spoil the dish. It's exactly that juiciness and abundance of seafood that makes this dish one of the most beloved specialties of the Portuguese coast.",
+      "servings_default": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 30,
+      "total_minutes": 55,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Unlike Spanish paella, arroz de marisco always stays juicy, almost like a thicker soup — the rice here is never fried dry.",
+      "ingredients": [
+        {
+          "ingredient_key": "shrimp",
+          "display_name": "Shrimp",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Seafood"
+        },
+        {
+          "ingredient_key": "mussel",
+          "display_name": "Mussels",
+          "quantity": "400",
+          "unit": "g",
+          "note": "cleaned",
+          "group": "Seafood"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Base"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "3",
+          "unit": "clove",
+          "note": "",
+          "group": "Base"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "",
+          "group": "Base"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "60",
+          "unit": "ml",
+          "note": "",
+          "group": "Base"
+        },
+        {
+          "ingredient_key": "rice",
+          "display_name": "Rice",
+          "quantity": "300",
+          "unit": "g",
+          "note": "round-grain",
+          "group": "Rice"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Fish or vegetable broth",
+          "quantity": "1",
+          "unit": "l",
+          "note": "",
+          "group": "Rice"
+        },
+        {
+          "ingredient_key": "parsley",
+          "display_name": "Parsley",
+          "quantity": "15",
+          "unit": "g",
+          "note": "chopped",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Base"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion and garlic in olive oil until translucent."
+        },
+        {
+          "order": 2,
+          "text": "Add the crushed tomatoes and cook for 10 minutes until thickened."
+        },
+        {
+          "order": 3,
+          "text": "Stir in the rice, pour in the hot broth, and cook over low heat for about 12 minutes."
+        },
+        {
+          "order": 4,
+          "text": "Add the mussels and cook until they open, about 5 minutes."
+        },
+        {
+          "order": 5,
+          "text": "Add the shrimp and cook for another 3–4 minutes, until they turn pink."
+        },
+        {
+          "order": 6,
+          "text": "Season with salt, scatter with parsley, and serve immediately — the dish should stay juicy, not dry."
+        }
+      ],
+      "tips": [
+        "Discard any mussels that don't open after cooking — they aren't safe to eat."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Arroz de marisco is a signature dish of the Portuguese coast, cooked from the fresh daily catch.",
+      "related_glossary": [],
+      "related_recipes": [
+        "paella-valenciana"
+      ],
+      "seo_title": "Arroz de Marisco – Portuguese Seafood Rice | Atlas Chuti",
+      "meta_description": "Arroz de marisco recipe: juicy rice with shrimp and mussels.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_francesinha",
+      "recipe_key": "francesinha",
+      "title": "Francesinha (Porto Sandwich in Beer Sauce)",
+      "slug": "francesinha-porto-sandwich-beer-sauce",
+      "country": "PT",
+      "excerpt": "Francesinha, literally \"little Frenchwoman,\" is a hearty sandwich with a distinctive beer sauce, created in the 1950s in Porto. It was invented by a Portuguese man who returned from France inspired by the local croque monsieur, but made it far heartier and topped it with a local sauce. The cheese needs to cover the sandwich completely, sides included, or the meat underneath will dry out while baking and lose its juiciness. What started as a simple take on a French sandwich became one of the most distinctive dishes of the city of Porto.",
+      "servings_default": 2,
+      "prep_minutes": 20,
+      "cook_minutes": 25,
+      "total_minutes": 45,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Francesinha (literally \"little Frenchwoman\") began as a local take on the French croque monsieur — just far heartier and finished with a distinctive beer sauce.",
+      "ingredients": [
+        {
+          "ingredient_key": "beef",
+          "display_name": "Beef steak",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "thin slices",
+          "group": "Sandwich"
+        },
+        {
+          "ingredient_key": "smoked-sausage",
+          "display_name": "Smoked sausage (linguiça)",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Sandwich"
+        },
+        {
+          "ingredient_key": "ham",
+          "display_name": "Cooked ham",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "slices",
+          "group": "Sandwich"
+        },
+        {
+          "ingredient_key": "cheese-slice",
+          "display_name": "Cheese",
+          "quantity": "6",
+          "unit": "pcs",
+          "note": "slices",
+          "group": "Sandwich"
+        },
+        {
+          "ingredient_key": "beer",
+          "display_name": "Beer",
+          "quantity": "250",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "for thickening",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "20",
+          "unit": "g",
+          "note": "for toasting the bread",
+          "group": "Sandwich"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Pan-fry the steaks and sausage until golden."
+        },
+        {
+          "order": 2,
+          "text": "For the beer sauce, sauté the garlic, add the beer and crushed tomatoes, simmer for 10 minutes, and thicken with flour mixed into water."
+        },
+        {
+          "order": 3,
+          "text": "Lightly toast the bread in butter."
+        },
+        {
+          "order": 4,
+          "text": "Layer the meat, sausage, and ham between two slices of bread, then top with cheese."
+        },
+        {
+          "order": 5,
+          "text": "Bake or broil until the cheese has completely melted."
+        },
+        {
+          "order": 6,
+          "text": "Pour over the hot beer sauce and serve immediately, traditionally with fries."
+        }
+      ],
+      "tips": [
+        "The cheese must cover the sandwich completely, sides included — otherwise the meat underneath dries out while baking."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Francesinha was created in the 1950s in Porto by a Portuguese man who returned from France inspired by croque monsieur.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Francesinha – Porto Sandwich Recipe | Atlas Chuti",
+      "meta_description": "Francesinha recipe: a hearty sandwich with meat, ham, and cheese in beer sauce.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_moussaka",
+      "recipe_key": "moussaka",
+      "title": "Moussaka",
+      "slug": "moussaka",
+      "country": "GR",
+      "excerpt": "Moussaka is a baked Greek specialty comparable to lasagne, except that instead of pasta it layers fried eggplant, a meat sauce heavily scented with cinnamon, and a thick béchamel. It exists in many Balkan and Middle Eastern variations, and it was chef Nikolaos Tselementes who gave it today's Greek form with béchamel in the 1920s. It slices far more cleanly once it has cooled a little, since straight out of the oven it tends to fall apart and the layers mix together. The combination of eggplant, meat, and béchamel makes it one of the best-known Greek dishes of all.",
+      "servings_default": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 60,
+      "total_minutes": 100,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Moussaka is Greece's answer to lasagne — instead of pasta, it layers fried eggplant, a meat sauce heavy on cinnamon, and a thick béchamel.",
+      "ingredients": [
+        {
+          "ingredient_key": "eggplant",
+          "display_name": "Eggplant",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "sliced",
+          "group": "Eggplant"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "for frying the eggplant",
+          "group": "Eggplant"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Meat sauce"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Meat sauce"
+        },
+        {
+          "ingredient_key": "beef",
+          "display_name": "Ground beef",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Meat sauce"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "",
+          "group": "Meat sauce"
+        },
+        {
+          "ingredient_key": "cinnamon",
+          "display_name": "Cinnamon",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Meat sauce"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "60",
+          "unit": "g",
+          "note": "for the béchamel",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "60",
+          "unit": "g",
+          "note": "for the béchamel",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "700",
+          "unit": "ml",
+          "note": "for the béchamel",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "nutmeg",
+          "display_name": "Nutmeg",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "for the béchamel",
+          "group": "Béchamel"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Salt the eggplant slices and let sit for 20 minutes, then pat dry and fry in olive oil until golden on both sides."
+        },
+        {
+          "order": 2,
+          "text": "Sauté the onion and garlic until translucent, add the ground beef, and brown well."
+        },
+        {
+          "order": 3,
+          "text": "Add the crushed tomatoes and cinnamon, season with salt, and simmer for 20 minutes."
+        },
+        {
+          "order": 4,
+          "text": "For the béchamel, melt the butter, whisk in the flour, and gradually add the milk while stirring; cook until thickened, season with nutmeg, remove from heat, and stir in the eggs."
+        },
+        {
+          "order": 5,
+          "text": "In a baking dish, layer the eggplant and meat sauce, then pour the béchamel over the top."
+        },
+        {
+          "order": 6,
+          "text": "Bake at 180°C (350°F) for 35–40 minutes, until the surface turns golden."
+        },
+        {
+          "order": 7,
+          "text": "Let rest for at least 15 minutes before slicing, so the layers settle."
+        }
+      ],
+      "tips": [
+        "Moussaka slices far more cleanly once it has cooled a little — straight out of the oven it tends to fall apart."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Moussaka exists in many Balkan and Middle Eastern variations; chef Nikolaos Tselementes gave it today's Greek form with béchamel in the 1920s.",
+      "related_glossary": [
+        "gratin"
+      ],
+      "related_recipes": [],
+      "seo_title": "Moussaka – Traditional Greek Recipe | Atlas Chuti",
+      "meta_description": "Moussaka recipe: layered baked eggplant with ground meat and béchamel.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_souvlaki",
+      "recipe_key": "souvlaki",
+      "title": "Souvlaki (Greek Grilled Skewers)",
+      "slug": "souvlaki-greek-grilled-skewers",
+      "country": "GR",
+      "excerpt": "Souvlaki is Greek meat grilled on a skewer, a quick lunch and an evening meal in one, and one of the oldest Greek dishes — mentions of meat grilled on skewers appear as far back as ancient Greece. The key to making it well is not to over-marinate the meat, since the lemon would otherwise break it down and rob it of its juiciness. Wooden skewers are worth soaking in water before threading, so they don't burn on the grill and the meat cooks evenly. Pork can also be swapped for chicken thighs, with the principle of quick skewer-grilling staying the same.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Chicken thighs stand in well for pork when needed, with the same quick marinate-and-grill method carrying through either way.",
+      "ingredients": [
+        {
+          "ingredient_key": "pork",
+          "display_name": "Pork leg",
+          "quantity": "700",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "60",
+          "unit": "ml",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "juice",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "oregano",
+          "display_name": "Dried oregano",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "pita-bread",
+          "display_name": "Pita bread",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "",
+          "group": "To serve"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "sliced",
+          "group": "To serve"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomato",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "sliced",
+          "group": "To serve"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Mix the meat with the olive oil, lemon juice, crushed garlic, oregano, and salt, and marinate for at least 1 hour."
+        },
+        {
+          "order": 2,
+          "text": "Thread the meat onto wooden or metal skewers."
+        },
+        {
+          "order": 3,
+          "text": "Grill on a hot grill or grill pan for 10–12 minutes, turning regularly."
+        },
+        {
+          "order": 4,
+          "text": "Briefly warm the pita bread on the grill or in the oven."
+        },
+        {
+          "order": 5,
+          "text": "Serve in the pita with sliced onion, tomato, and tzatziki."
+        }
+      ],
+      "tips": [
+        "Soak wooden skewers in water before threading — they won't burn on the grill and the meat cooks evenly."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Chicken souvlaki",
+          "note": "Pork can be replaced with chicken thighs."
+        }
+      ],
+      "origin_history": "Souvlaki is one of the oldest Greek dishes; mentions of meat grilled on skewers appear as far back as ancient Greece.",
+      "related_glossary": [
+        "grilling",
+        "meze"
+      ],
+      "related_recipes": [
+        "tzatziki"
+      ],
+      "seo_title": "Souvlaki – Greek Grilled Skewers Recipe | Atlas Chuti",
+      "meta_description": "Souvlaki recipe: grilled pork skewers with tzatziki in pita bread.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_tzatziki",
+      "recipe_key": "tzatziki",
+      "title": "Tzatziki",
+      "slug": "tzatziki",
+      "country": "GR",
+      "excerpt": "Tzatziki is a cold Greek sauce made from yogurt and cucumber, with roots in Ottoman and Middle Eastern cooking, and today it's one of the most common cold sauces in Greece. The most important step is thoroughly draining the cucumber, or the finished sauce will stay watery and quickly separate from the yogurt. The cucumber always needs a good squeeze — excess water is the most common reason tzatziki fails to hold a thick consistency. It's served cold, both as an accompaniment to grilled meat and as a standalone dip for bread.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 0,
+      "total_minutes": 15,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish",
+        "sauce"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "The key to good tzatziki is thoroughly draining the cucumber — otherwise the sauce stays watery and quickly separates from the yogurt.",
+      "ingredients": [
+        {
+          "ingredient_key": "greek-yogurt",
+          "display_name": "Greek yogurt",
+          "quantity": "400",
+          "unit": "g",
+          "note": "thick, full-fat",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "cucumber",
+          "display_name": "Cucumber",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "grated",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "crushed",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "juice",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Grate the cucumber, salt it, and let it sit for 10 minutes, then squeeze it thoroughly dry in a clean kitchen towel."
+        },
+        {
+          "order": 2,
+          "text": "Mix the yogurt with the cucumber, crushed garlic, olive oil, and lemon juice."
+        },
+        {
+          "order": 3,
+          "text": "Season with salt and chill for at least 30 minutes so the flavors come together."
+        },
+        {
+          "order": 4,
+          "text": "Serve chilled as an accompaniment to grilled meat or as a dip."
+        }
+      ],
+      "tips": [
+        "Always squeeze the cucumber well — excess water is the most common reason tzatziki turns out thin."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Tzatziki has roots in Ottoman and Middle Eastern cooking, and today it's one of the most common cold sauces in Greece.",
+      "related_glossary": [
+        "meze",
+        "mortar-and-pestle"
+      ],
+      "related_recipes": [
+        "souvlaki"
+      ],
+      "seo_title": "Tzatziki – Greek Yogurt Sauce Recipe | Atlas Chuti",
+      "meta_description": "Tzatziki recipe: a cooling yogurt sauce with cucumber and garlic.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_spanakopita",
+      "recipe_key": "spanakopita",
+      "title": "Spanakopita (Greek Spinach Pie)",
+      "slug": "spanakopita-greek-spinach-pie",
+      "country": "GR",
+      "excerpt": "Spanakopita is a Greek savory pie made from thin phyllo pastry filled with spinach, one of the most common Greek savory pies, cooked in many variations across the country. Working with phyllo pastry demands speed — the sheets are extremely thin and dry out almost instantly, so any sheets not currently in use need to be covered with a damp towel. Without covering, the pastry cracks and becomes unusable before it can even be filled and baked. That fragility of the thin pastry is also exactly what makes spanakopita so distinctive within Greek cuisine.",
+      "servings_default": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 40,
+      "total_minutes": 70,
+      "difficulty": "medium",
+      "meal_type": [
+        "appetizer",
+        "bakery"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Phyllo pastry is very thin and dries out fast — working with it demands speed and keeping unused sheets covered with a damp towel.",
+      "ingredients": [
+        {
+          "ingredient_key": "spinach",
+          "display_name": "Spinach",
+          "quantity": "800",
+          "unit": "g",
+          "note": "fresh or frozen",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "feta",
+          "display_name": "Feta",
+          "quantity": "250",
+          "unit": "g",
+          "note": "crumbled",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "part for the filling, part for brushing the pastry",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "phyllo-dough",
+          "display_name": "Phyllo pastry",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion in oil until translucent, add the spinach, and cook until wilted and released of its water, then squeeze it out well."
+        },
+        {
+          "order": 2,
+          "text": "Mix with the cheese, eggs, salt, and pepper."
+        },
+        {
+          "order": 3,
+          "text": "Line a baking dish with several sheets of phyllo pastry, brushing each with olive oil."
+        },
+        {
+          "order": 4,
+          "text": "Spread the filling and cover with more layers of phyllo, again brushing each with oil."
+        },
+        {
+          "order": 5,
+          "text": "Score the surface into squares with a knife and bake at 180°C (350°F) for about 35–40 minutes until golden."
+        },
+        {
+          "order": 6,
+          "text": "Let cool slightly and cut along the scored lines."
+        }
+      ],
+      "tips": [
+        "Always keep phyllo pastry covered with a damp towel while you aren't working with it — it dries out and cracks quickly."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Spanakopita is one of the most common Greek savory pies and is cooked in many variations across the country.",
+      "related_glossary": [
+        "feta"
+      ],
+      "related_recipes": [],
+      "seo_title": "Spanakopita – Greek Spinach Pie Recipe | Atlas Chuti",
+      "meta_description": "Spanakopita recipe: a crisp pie with spinach and feta in phyllo pastry.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_horiatiki",
+      "recipe_key": "horiatiki",
+      "title": "Greek Salad (Horiatiki)",
+      "slug": "greek-salad-horiatiki",
+      "country": "GR",
+      "excerpt": "Horiatiki, literally \"village salad,\" is the most common Greek salad, and outside Greece it became synonymous with \"Greek salad\" in general. The authentic version goes entirely without lettuce — it's just vegetables, olives, and a whole slab of feta placed on top, never crumbled. The feta needs to stay whole; that whole slab on top is exactly the hallmark of a true horiatiki and sets it apart from imitations found abroad. The simplicity of its ingredients — tomatoes, cucumber, onion, olives, and feta — makes it a typical summer salad of the Greek countryside.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 0,
+      "total_minutes": 15,
+      "difficulty": "easy",
+      "meal_type": [
+        "salad"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "A true Greek salad (horiatiki, literally \"village salad\") isn't made with lettuce — just vegetables, olives, and a whole slab of feta on top.",
+      "ingredients": [
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomatoes",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "cut into chunks",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "cucumber",
+          "display_name": "Cucumber",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "cut into chunks",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "thinly sliced",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell pepper",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "sliced into rings",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "olives",
+          "display_name": "Olives",
+          "quantity": "80",
+          "unit": "g",
+          "note": "black",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "feta",
+          "display_name": "Feta",
+          "quantity": "200",
+          "unit": "g",
+          "note": "whole, in one slab",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "60",
+          "unit": "ml",
+          "note": "",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "oregano",
+          "display_name": "Dried oregano",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Salad"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Cut the tomatoes, cucumber, onion, and bell pepper into larger pieces and combine in a bowl."
+        },
+        {
+          "order": 2,
+          "text": "Add the olives and toss."
+        },
+        {
+          "order": 3,
+          "text": "Place the whole slab of feta on top."
+        },
+        {
+          "order": 4,
+          "text": "Drizzle with olive oil and sprinkle with oregano."
+        },
+        {
+          "order": 5,
+          "text": "Serve with fresh bread to soak up the remaining oil."
+        }
+      ],
+      "tips": [
+        "Don't crumble the feta beforehand — a whole slab on top is the hallmark of a true horiatiki."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Horiatiki, literally \"village salad,\" is the most common Greek salad, and outside Greece it became synonymous with \"Greek salad\" in general.",
+      "related_glossary": [
+        "feta",
+        "olive-oil"
+      ],
+      "related_recipes": [],
+      "seo_title": "Greek Salad (Horiatiki) – Traditional Recipe | Atlas Chuti",
+      "meta_description": "Authentic Greek salad recipe: tomatoes, cucumber, olives, and a slab of feta.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_pasticada",
+      "recipe_key": "pasticada",
+      "title": "Pašticada (Dalmatian Braised Beef)",
+      "slug": "pasticada-dalmatian-braised-beef",
+      "country": "HR",
+      "excerpt": "Pašticada is a festive dish of the Dalmatian coast, traditionally cooked for weddings and major family celebrations, when braised beef in a rich sauce would be brought to the table. The meat is traditionally left to rest in its marinade for as long as two days beforehand, so it can build depth of flavor well before it ever reaches the pot. Marinating it longer in vinegar gives the meat its characteristic tangy depth, which is why it's worth not skipping even when time is short. Thanks to its lengthy preparation and festive character, pašticada remains linked above all to the celebratory table of Dalmatian families today.",
+      "servings_default": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 180,
+      "total_minutes": 220,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Pašticada is a festive Dalmatian dish traditionally marinated for as long as two days beforehand, so the meat can build depth of flavor before it's even braised.",
+      "ingredients": [
+        {
+          "ingredient_key": "beef",
+          "display_name": "Beef rump",
+          "quantity": "1.5",
+          "unit": "kg",
+          "note": "whole",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Bacon",
+          "quantity": "80",
+          "unit": "g",
+          "note": "for larding the meat",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "wine vinegar, for the marinade",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrot",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "celery-root",
+          "display_name": "Celery root",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "4",
+          "unit": "clove",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomato",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "red-wine",
+          "display_name": "Red wine",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "dried-plum",
+          "display_name": "Dried plums",
+          "quantity": "100",
+          "unit": "g",
+          "note": "or plum jam",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Lard the meat with the bacon and garlic and marinate for 24 hours in vinegar with a little water and sliced onion."
+        },
+        {
+          "order": 2,
+          "text": "Pat the meat dry, sear on all sides until golden, and remove."
+        },
+        {
+          "order": 3,
+          "text": "In the same pot, sauté the vegetables, return the meat, add the wine, tomatoes, bay leaf, and plums."
+        },
+        {
+          "order": 4,
+          "text": "Braise covered over low heat for 2.5–3 hours until tender."
+        },
+        {
+          "order": 5,
+          "text": "Remove the meat, blend the sauce until smooth, and reduce further if needed."
+        },
+        {
+          "order": 6,
+          "text": "Slice the meat and serve in the sauce, traditionally with homemade pasta or gnocchi."
+        }
+      ],
+      "tips": [
+        "Longer marinating in vinegar gives the meat its characteristic tangy depth — don't skip it even when time is short."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Pašticada is a festive dish of the Dalmatian coast, traditionally cooked for weddings and major family celebrations.",
+      "related_glossary": [
+        "braising",
+        "marinating"
+      ],
+      "related_recipes": [
+        "sauerbraten"
+      ],
+      "seo_title": "Pašticada – Dalmatian Braised Beef Recipe | Atlas Chuti",
+      "meta_description": "Pašticada recipe: Dalmatian beef braised in wine with prunes.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_crni-rizot",
+      "recipe_key": "crni-rizot",
+      "title": "Croatian Black Risotto (Crni Rižot)",
+      "slug": "croatian-black-risotto",
+      "country": "HR",
+      "excerpt": "Crni rižot is a Croatian black risotto made with cuttlefish, a signature dish of the Croatian coast and islands, where cuttlefish and their ink are a common part of local cooking. It's the cuttlefish ink that gives it not just its distinctive black color but also a subtly salty, distinctly briny flavor that no other ingredient can replace. Before it goes into the rice, it's worth dissolving the ink in a little warm broth first, since stirring it straight into the rice would spread it less evenly and leave the color uneven. The resulting deep black color is the dish's characteristic hallmark.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 30,
+      "total_minutes": 50,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Cuttlefish ink gives the risotto not just its signature black color but also a subtly salty, briny flavor that nothing else can imitate.",
+      "ingredients": [
+        {
+          "ingredient_key": "squid",
+          "display_name": "Cuttlefish",
+          "quantity": "500",
+          "unit": "g",
+          "note": "cleaned, sliced into rings",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "cuttlefish-ink",
+          "display_name": "Cuttlefish ink",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "sachets",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "3",
+          "unit": "clove",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomato",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "white-wine",
+          "display_name": "White wine",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "rice",
+          "display_name": "Rice",
+          "quantity": "320",
+          "unit": "g",
+          "note": "round-grain",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Fish broth",
+          "quantity": "1",
+          "unit": "l",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "60",
+          "unit": "ml",
+          "note": "",
+          "group": "Risotto"
+        },
+        {
+          "ingredient_key": "parsley",
+          "display_name": "Parsley",
+          "quantity": "10",
+          "unit": "g",
+          "note": "to garnish",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Risotto"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion and garlic in olive oil until translucent."
+        },
+        {
+          "order": 2,
+          "text": "Add the cuttlefish and cook briefly."
+        },
+        {
+          "order": 3,
+          "text": "Stir in the tomato, add the wine, and let it evaporate."
+        },
+        {
+          "order": 4,
+          "text": "Add the rice, stir briefly, then pour in the hot broth with the dissolved cuttlefish ink."
+        },
+        {
+          "order": 5,
+          "text": "Cook over low heat, stirring occasionally, for about 18–20 minutes, until the rice is tender but still has a bite."
+        },
+        {
+          "order": 6,
+          "text": "Season with salt, scatter with parsley, and serve."
+        }
+      ],
+      "tips": [
+        "Dissolve the cuttlefish ink in a little warm broth first — stirring it straight into the rice spreads it less evenly."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Crni rižot is a signature dish of the Croatian coast and islands, where cuttlefish and their ink are a common part of local cooking.",
+      "related_glossary": [
+        "al-dente"
+      ],
+      "related_recipes": [
+        "risotto-alla-milanese"
+      ],
+      "seo_title": "Croatian Black Risotto (Crni Rižot) Recipe | Atlas Chuti",
+      "meta_description": "Black risotto recipe with cuttlefish and cuttlefish ink.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_peka",
+      "recipe_key": "peka",
+      "title": "Peka (Croatian Under-the-Bell Roast)",
+      "slug": "peka-croatian-under-the-bell-roast",
+      "country": "HR",
+      "excerpt": "Peka is a traditional cooking method used for centuries along the Croatian coast and islands, and the same word also names the bell-shaped cast-iron lid itself, under which meat and vegetables slowly roast once it's buried in hot embers. Without a peka lid, a similar (if slower) effect can be achieved by baking in the oven covered with foil at a low temperature. Octopus is traditionally cooked under the peka too, in place of lamb, with the principle of slow roasting under hot ash staying the same. That slow, even roasting is exactly what gives dishes cooked under the peka their characteristic juiciness.",
+      "servings_default": 6,
+      "prep_minutes": 30,
+      "cook_minutes": 150,
+      "total_minutes": 180,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Peka is both the name of the dish and of the bell-shaped cast-iron lid under which meat and vegetables slowly roast, buried in hot embers.",
+      "ingredients": [
+        {
+          "ingredient_key": "lamb",
+          "display_name": "Lamb",
+          "quantity": "1.5",
+          "unit": "kg",
+          "note": "bone-in pieces",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "cut into larger pieces",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "quartered",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell peppers",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "cut into pieces",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "6",
+          "unit": "clove",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "rosemary",
+          "display_name": "Rosemary",
+          "quantity": "2",
+          "unit": "tsp",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "white-wine",
+          "display_name": "White wine",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Spices"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Arrange the meat and vegetables in a large, shallow roasting pan and toss with the olive oil, rosemary, garlic, salt, and wine."
+        },
+        {
+          "order": 2,
+          "text": "Let a fire burn down to hot embers."
+        },
+        {
+          "order": 3,
+          "text": "Cover the pan with the peka lid and bury it in hot embers and coals on all sides."
+        },
+        {
+          "order": 4,
+          "text": "Roast for 2.5–3 hours, refreshing the embers and coals halfway through so the heat doesn't fade."
+        },
+        {
+          "order": 5,
+          "text": "Carefully remove the lid, check that everything is cooked through, and serve straight from the pan."
+        }
+      ],
+      "tips": [
+        "Without a peka lid, a similar (if slower) effect can be achieved by baking in the oven covered with foil at low temperature."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Octopus under the peka",
+          "note": "Octopus is traditionally cooked under the peka too, in place of lamb."
+        }
+      ],
+      "origin_history": "Peka is a traditional cooking method used for centuries along the Croatian coast and islands.",
+      "related_glossary": [
+        "braising",
+        "grilling"
+      ],
+      "related_recipes": [],
+      "seo_title": "Peka – Croatian Roast Under the Bell Lid | Atlas Chuti",
+      "meta_description": "Peka recipe: lamb and potatoes slow-roasted under hot embers.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_zagorski-strukli",
+      "recipe_key": "zagorski-strukli",
+      "title": "Zagorski Štrukli (Croatian Cottage Cheese Rolls)",
+      "slug": "zagorski-strukli-croatian-cottage-cheese-rolls",
+      "country": "HR",
+      "excerpt": "Štrukli come from the Hrvatsko Zagorje region in northern Croatia and exist in dozens of savory and sweet variations, either boiled or baked. A cottage cheese filling remains the constant across all versions, wrapped in thin dough stretched out into sheets. The dough stretches more easily into a thin sheet if you let it rest a little longer, covered, after kneading; otherwise it tears and becomes difficult to work with. The filling can also be sweetened and served as a dessert with sugar, which shows just how versatile this traditional dish really is.",
+      "servings_default": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 30,
+      "total_minutes": 70,
+      "difficulty": "medium",
+      "meal_type": [
+        "side-dish",
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Štrukli can be savory or sweet, boiled or baked — the Zagorje region has dozens of variations, but a cottage cheese filling always stays the constant.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "curd-cheese",
+          "display_name": "Cottage cheese",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "for the filling",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "for the filling and for topping",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "60",
+          "unit": "g",
+          "note": "melted",
+          "group": "Finishing"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Knead the flour, egg, oil, salt, and lukewarm water into a smooth, elastic dough and let rest for 30 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Mix the cottage cheese with the eggs and part of the sour cream to make the filling."
+        },
+        {
+          "order": 3,
+          "text": "Stretch the dough out by hand into a large thin sheet, spread with the filling, and roll into a log."
+        },
+        {
+          "order": 4,
+          "text": "Cut the log into shorter pieces and cook in boiling salted water for 15 minutes, or arrange them in a baking dish."
+        },
+        {
+          "order": 5,
+          "text": "Pour over the remaining sour cream and butter and bake at 180°C (350°F) for 20 minutes until golden."
+        }
+      ],
+      "tips": [
+        "The dough stretches more easily into a thin sheet if you let it rest a little longer, covered, after kneading."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Sweet štrukli",
+          "note": "The filling can be sweetened and served as a dessert with sugar."
+        }
+      ],
+      "origin_history": "Štrukli come from the Hrvatsko Zagorje region in northern Croatia and exist in dozens of savory and sweet variations.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Zagorski Štrukli – Croatian Cottage Cheese Rolls | Atlas Chuti",
+      "meta_description": "Zagorski štrukli recipe: rolls filled with cottage cheese, baked with sour cream.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_fritule",
+      "recipe_key": "fritule",
+      "title": "Fritule (Croatian Fried Doughnuts)",
+      "slug": "fritule-croatian-fried-doughnuts",
+      "country": "HR",
+      "excerpt": "Fritule are small Croatian yeasted doughnuts, traditionally fried at Christmas and during Carnival season across Croatia, with the recipe varying slightly from region to region. Thanks to their small size, each bite fries quickly and stays fluffy inside while turning only lightly golden outside. It's worth scooping the pieces of dough to a consistent size, so they cook through evenly and don't stay raw in the center. A handful of raisins soaked in rum can also be added to the dough, one of the most common variations on this festive treat.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 20,
+      "total_minutes": 40,
+      "difficulty": "easy",
+      "meal_type": [
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "A handful of rum-soaked raisins folded into the batter is one of the most common ways to dress up this simple fried dough.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "300",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "lukewarm",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "yeast",
+          "display_name": "Fresh yeast",
+          "quantity": "15",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "50",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "zest",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "brandy",
+          "display_name": "Rakija or rum",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "optional",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Vegetable oil",
+          "quantity": "500",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "powdered-sugar",
+          "display_name": "Powdered sugar",
+          "quantity": "30",
+          "unit": "g",
+          "note": "for dusting",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Dissolve the yeast in lukewarm milk with a teaspoon of sugar and let stand for 10 minutes until foamy."
+        },
+        {
+          "order": 2,
+          "text": "Mix with the flour, eggs, sugar, lemon zest, and rakija, work into a looser batter, and let rise for 45 minutes."
+        },
+        {
+          "order": 3,
+          "text": "Scoop small pieces of the batter with a spoon and drop them into hot oil."
+        },
+        {
+          "order": 4,
+          "text": "Fry for 2–3 minutes, turning occasionally, until golden on all sides."
+        },
+        {
+          "order": 5,
+          "text": "Drain on paper towels and dust with powdered sugar while still warm."
+        }
+      ],
+      "tips": [
+        "Scoop the pieces of dough to a consistent size — they'll cook through evenly and won't stay raw in the center."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "With raisins",
+          "note": "A handful of raisins soaked in rum can be added to the dough."
+        }
+      ],
+      "origin_history": "Fritule are traditionally fried in Croatia at Christmas and during Carnival season, with the recipe varying slightly by region.",
+      "related_glossary": [
+        "proofing"
+      ],
+      "related_recipes": [],
+      "seo_title": "Fritule – Croatian Fried Doughnuts Recipe | Atlas Chuti",
+      "meta_description": "Fritule recipe: small yeasted doughnuts with lemon zest.",
+      "status": "publish"
+    }
+  ]
+}

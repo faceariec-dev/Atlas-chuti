@@ -1,0 +1,2887 @@
+{
+  "ingredients": [
+    {
+      "ingredient_key": "onion",
+      "locale": "en",
+      "title": "Onion",
+      "slug": "onion",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "garlic",
+      "locale": "en",
+      "title": "Garlic",
+      "slug": "garlic",
+      "aliases": [
+        "garlic clove",
+        "garlic cloves"
+      ],
+      "default_unit": "clove"
+    },
+    {
+      "ingredient_key": "salt",
+      "locale": "en",
+      "title": "Salt",
+      "slug": "salt",
+      "aliases": [],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "black-pepper",
+      "locale": "en",
+      "title": "Black pepper",
+      "slug": "black-pepper",
+      "aliases": [
+        "pepper"
+      ],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "bay-leaf",
+      "locale": "en",
+      "title": "Bay leaf",
+      "slug": "bay-leaf",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "allspice",
+      "locale": "en",
+      "title": "Allspice berries",
+      "slug": "allspice-berries",
+      "aliases": [
+        "whole allspice"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "carrot",
+      "locale": "en",
+      "title": "Carrot",
+      "slug": "carrot",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "potato",
+      "locale": "en",
+      "title": "Potatoes",
+      "slug": "potatoes",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "egg",
+      "locale": "en",
+      "title": "Egg",
+      "slug": "egg",
+      "aliases": [
+        "eggs"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "flour",
+      "locale": "en",
+      "title": "All-purpose flour",
+      "slug": "all-purpose-flour",
+      "aliases": [
+        "plain flour"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "butter",
+      "locale": "en",
+      "title": "Butter",
+      "slug": "butter",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "milk",
+      "locale": "en",
+      "title": "Milk",
+      "slug": "milk",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "oil",
+      "locale": "en",
+      "title": "Vegetable oil",
+      "slug": "vegetable-oil",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "olive-oil",
+      "locale": "en",
+      "title": "Olive oil",
+      "slug": "olive-oil",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "sour-cream",
+      "locale": "en",
+      "title": "Sour cream",
+      "slug": "sour-cream",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "cream",
+      "locale": "en",
+      "title": "Whipping cream (33%)",
+      "slug": "whipping-cream-33",
+      "aliases": [
+        "heavy cream"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "paprika-powder",
+      "locale": "en",
+      "title": "Sweet paprika (ground)",
+      "slug": "sweet-paprika-ground",
+      "aliases": [
+        "ground paprika"
+      ],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "white-cabbage",
+      "locale": "en",
+      "title": "White cabbage",
+      "slug": "white-cabbage",
+      "aliases": [
+        "cabbage"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "sauerkraut",
+      "locale": "en",
+      "title": "Sauerkraut",
+      "slug": "sauerkraut",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "curd-cheese",
+      "locale": "en",
+      "title": "Curd cheese (tvaroh)",
+      "slug": "curd-cheese-tvaroh",
+      "aliases": [
+        "quark"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "yeast",
+      "locale": "en",
+      "title": "Yeast",
+      "slug": "yeast",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "sugar",
+      "locale": "en",
+      "title": "Granulated sugar",
+      "slug": "granulated-sugar",
+      "aliases": [
+        "sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "powdered-sugar",
+      "locale": "en",
+      "title": "Powdered sugar",
+      "slug": "powdered-sugar",
+      "aliases": [
+        "icing sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "vanilla-sugar",
+      "locale": "en",
+      "title": "Vanilla sugar",
+      "slug": "vanilla-sugar",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "smoked-bacon",
+      "locale": "en",
+      "title": "Smoked bacon",
+      "slug": "smoked-bacon",
+      "aliases": [
+        "bacon"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "smoked-sausage",
+      "locale": "en",
+      "title": "Smoked sausage",
+      "slug": "smoked-sausage",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "rice",
+      "locale": "en",
+      "title": "Rice",
+      "slug": "rice",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "tomato",
+      "locale": "en",
+      "title": "Tomato",
+      "slug": "tomato",
+      "aliases": [
+        "tomatoes"
+      ],
+      "default_unit": "ks"
+    },
+    {
+      "ingredient_key": "crushed-tomato",
+      "locale": "en",
+      "title": "Crushed tomatoes (canned)",
+      "slug": "crushed-tomatoes-canned",
+      "aliases": [
+        "passata"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "bell-pepper",
+      "locale": "en",
+      "title": "Bell pepper",
+      "slug": "bell-pepper",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "beef-stock",
+      "locale": "en",
+      "title": "Beef stock",
+      "slug": "beef-stock",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "ground-meat-mixed",
+      "locale": "en",
+      "title": "Mixed ground meat (pork and beef)",
+      "slug": "mixed-ground-meat-pork-and-beef",
+      "aliases": [
+        "ground beef and pork"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "pork",
+      "locale": "en",
+      "title": "Pork",
+      "slug": "pork",
+      "aliases": [
+        "pork shoulder"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "beef",
+      "locale": "en",
+      "title": "Beef",
+      "slug": "beef",
+      "aliases": [
+        "beef shank",
+        "beef brisket"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "feta",
+      "locale": "en",
+      "title": "Feta cheese",
+      "slug": "feta-cheese",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cucumber",
+      "locale": "en",
+      "title": "Cucumber",
+      "slug": "cucumber",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "phyllo-dough",
+      "locale": "en",
+      "title": "Phyllo dough",
+      "slug": "phyllo-dough",
+      "aliases": [
+        "filo pastry"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "white-beans",
+      "locale": "en",
+      "title": "White beans",
+      "slug": "white-beans",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "dried-plum",
+      "locale": "en",
+      "title": "Dried plums",
+      "slug": "dried-plums",
+      "aliases": [
+        "prunes"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "vinegar",
+      "locale": "en",
+      "title": "Vinegar",
+      "slug": "vinegar",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "caraway-seed",
+      "locale": "en",
+      "title": "Caraway seeds",
+      "slug": "caraway-seeds",
+      "aliases": [
+        "whole caraway"
+      ],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "kranjska-sausage",
+      "locale": "en",
+      "title": "Kranjska sausage",
+      "slug": "kranjska-sausage",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "dill",
+      "locale": "en",
+      "title": "Dill",
+      "slug": "dill",
+      "aliases": [
+        "fresh dill"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "walnuts",
+      "locale": "en",
+      "title": "Walnuts",
+      "slug": "walnuts",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "honey",
+      "locale": "en",
+      "title": "Honey",
+      "slug": "honey",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cornmeal",
+      "locale": "en",
+      "title": "Coarse cornmeal",
+      "slug": "coarse-cornmeal",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "ajvar",
+      "locale": "en",
+      "title": "Ajvar (roasted pepper spread)",
+      "slug": "ajvar-roasted-pepper-spread",
+      "aliases": [
+        "roasted pepper relish"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "kajmak",
+      "locale": "en",
+      "title": "Kajmak (Balkan clotted cream)",
+      "slug": "kajmak-balkan-clotted-cream",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "tripe",
+      "locale": "en",
+      "title": "Beef tripe",
+      "slug": "beef-tripe",
+      "aliases": [
+        "tripe"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "semolina",
+      "locale": "en",
+      "title": "Semolina",
+      "slug": "semolina",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "bulgarian-yogurt",
+      "locale": "en",
+      "title": "Bulgarian yogurt",
+      "slug": "bulgarian-yogurt",
+      "aliases": [
+        "thick plain yogurt"
+      ],
+      "default_unit": "g"
+    }
+  ],
+  "recipes": [
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_jota",
+      "recipe_key": "jota",
+      "title": "Jota (Slovenian Sauerkraut and Bean Soup)",
+      "slug": "jota-slovenian-sauerkraut-bean-soup",
+      "country": "SI",
+      "excerpt": "Jota is one of the oldest Slovenian soups, common mainly in the country's coastal and karst regions. Cabbage, beans, and potatoes came together in it back in times when meat was scarce and people had to rely mostly on legumes. Like kapustnica, it tastes better the next day, once the flavors of cabbage and beans have come together and the soup gains a fuller flavor. Its simple, rustic ingredients make it a typical winter dish of the Slovenian countryside, one that has survived unchanged to this day.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 90,
+      "total_minutes": 110,
+      "difficulty": "medium",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [],
+      "about": "Jota is one of the oldest Slovenian soups — the combination of sauerkraut, beans, and potatoes comes from a time when meat was scarce and meals were built mainly around legumes.",
+      "ingredients": [
+        {
+          "ingredient_key": "sauerkraut",
+          "display_name": "Sauerkraut",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "white-beans",
+          "display_name": "White beans",
+          "quantity": "250",
+          "unit": "g",
+          "note": "pre-cooked",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "400",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon or ribs",
+          "quantity": "250",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "3",
+          "unit": "clove",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "20",
+          "unit": "g",
+          "note": "for thickening",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Cook the smoked meat in water with the bay leaf for about 40 minutes, until tender."
+        },
+        {
+          "order": 2,
+          "text": "Add the sauerkraut, beans, and potatoes and cook for another 30 minutes."
+        },
+        {
+          "order": 3,
+          "text": "Crush the garlic and sauté with a little fat, paprika, and flour to make a light roux."
+        },
+        {
+          "order": 4,
+          "text": "Stir the roux into the soup and simmer for another 10 minutes to thicken."
+        },
+        {
+          "order": 5,
+          "text": "Remove the meat, cut it into pieces, return it to the soup, and season with salt."
+        },
+        {
+          "order": 6,
+          "text": "Serve hot, ideally after resting overnight."
+        }
+      ],
+      "tips": [
+        "Jota, like kapustnica, tastes better the next day, once the flavors of cabbage and beans have come together."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Jota is a traditional Slovenian soup, common mainly in the country's coastal and karst regions.",
+      "related_glossary": [],
+      "related_recipes": [
+        "kapustnica"
+      ],
+      "seo_title": "Jota – Slovenian Sauerkraut Soup Recipe | Atlas Chuti",
+      "meta_description": "Jota recipe: hearty Slovenian soup with sauerkraut, beans, and potatoes.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kranjska-klobasa",
+      "recipe_key": "kranjska-klobasa",
+      "title": "Kranjska Klobasa (Carniolan Sausage)",
+      "slug": "kranjska-klobasa-carniolan-sausage",
+      "country": "SI",
+      "excerpt": "Kranjska klobasa comes from the Kranjska region and is one of Slovenia's most significant culinary symbols. Since 2015 it has held EU Protected Geographical Indication status, which means you can easily turn it into a full main course at home without smoking it yourself. The water it's cooked in must never boil hard, since a rapid boil would split the skin and the sausage would lose both its juices and its flavor. It's exactly that protected status and strict production method that makes Kranjska klobasa one of Slovenia's best-known export products.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 20,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Kranjska klobasa has held EU Protected Geographical Indication status since 2015 — at home, it easily becomes a full main course even without smoking it yourself.",
+      "ingredients": [
+        {
+          "ingredient_key": "kranjska-sausage",
+          "display_name": "Kranjska sausage",
+          "quantity": "8",
+          "unit": "pcs",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Cooking"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "600",
+          "unit": "g",
+          "note": "to serve",
+          "group": "Side dish"
+        },
+        {
+          "ingredient_key": "sauerkraut",
+          "display_name": "Sauerkraut",
+          "quantity": "400",
+          "unit": "g",
+          "note": "to serve",
+          "group": "Side dish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Put the sausages in a pot with water and the bay leaf and bring to a gentle simmer."
+        },
+        {
+          "order": 2,
+          "text": "Cook over very low heat (the water must never boil hard) for about 15–20 minutes, so the sausages don't split."
+        },
+        {
+          "order": 3,
+          "text": "Meanwhile, boil the potatoes and warm the sauerkraut in a separate pot."
+        },
+        {
+          "order": 4,
+          "text": "Remove the sausages from the water and serve with the potatoes, sauerkraut, mustard, and horseradish."
+        }
+      ],
+      "tips": [
+        "The water for cooking the sausages must never boil hard — a rapid boil would split the skin and the sausage would lose its juices."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Kranjska klobasa comes from the Kranjska region and is one of Slovenia's most significant culinary symbols.",
+      "related_glossary": [
+        "pdo-pgi"
+      ],
+      "related_recipes": [],
+      "seo_title": "Kranjska Klobasa – Slovenian Sausage Recipe | Atlas Chuti",
+      "meta_description": "Kranjska klobasa recipe: boiled Carniolan sausage with potatoes and sauerkraut.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_struklji",
+      "recipe_key": "struklji",
+      "title": "Štruklji (Slovenian Cottage Cheese Rolls)",
+      "slug": "struklji-slovenian-cottage-cheese-rolls",
+      "country": "SI",
+      "excerpt": "Štruklji are a typical Slovenian dish found across the country in both savory and sweet versions, with the filling varying from region to region. This version relies on a simple cottage cheese filling and works well as a sweet side dish, but it also holds up as a light dessert after a main course. It's best not to sweeten the filling too much, since its gentle sweetness comes through better alongside the tangier sour cream served with the finished štruklji. The variety of fillings across regions is part of what makes štruklji distinctively Slovenian, and this cottage cheese version remains one of the most accessible for everyday cooking.",
+      "servings_default": 6,
+      "prep_minutes": 40,
+      "cook_minutes": 30,
+      "total_minutes": 70,
+      "difficulty": "medium",
+      "meal_type": [
+        "side-dish",
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Štruklji can be savory or sweet depending on the Slovenian region — this version is a simple cottage cheese one, suited both as a sweet side dish and a light dessert.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "curd-cheese",
+          "display_name": "Cottage cheese",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "for the filling",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "to pour over",
+          "group": "Finishing"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "melted",
+          "group": "Finishing"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Knead the flour, egg, oil, salt, and lukewarm water into a smooth, elastic dough and let rest for 30 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Mix the cottage cheese with the eggs and sugar to make the filling."
+        },
+        {
+          "order": 3,
+          "text": "Stretch the dough out into a thin sheet, spread with the filling, and roll into a log."
+        },
+        {
+          "order": 4,
+          "text": "Cut the log into shorter pieces and cook in boiling salted water for about 15 minutes."
+        },
+        {
+          "order": 5,
+          "text": "Arrange the cooked štruklji in a baking dish, pour over the sour cream mixed with butter, and bake briefly at 180°C (350°F) for 10 minutes."
+        }
+      ],
+      "tips": [
+        "Don't sweeten the filling too much — its gentle sweetness comes through better with tangier sour cream served alongside."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Štruklji are a typical Slovenian dish and exist in dozens of regional filling variations.",
+      "related_glossary": [],
+      "related_recipes": [
+        "zagorski-strukli"
+      ],
+      "seo_title": "Štruklji – Slovenian Cottage Cheese Rolls | Atlas Chuti",
+      "meta_description": "Slovenian štruklji recipe: rolls filled with cottage cheese and sour cream.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_potica",
+      "recipe_key": "potica",
+      "title": "Potica (Slovenian Nut Roll)",
+      "slug": "potica-slovenian-nut-roll",
+      "country": "SI",
+      "excerpt": "Potica is a traditional Slovenian festive roll, baked mainly for Christmas and Easter, with dozens of regional filling variations. It's traditionally baked in a special round pan with a hole in the center, which lets the filling spread evenly through the whole roll, though classic elongated versions exist too. Egg whites folded into the walnut filling give it airiness and keep it from leaking out of the dough once baked. The filling can also be supplemented with a handful of raisins, one of the common variations on this festive baked good.",
+      "servings_default": 12,
+      "prep_minutes": 60,
+      "cook_minutes": 50,
+      "total_minutes": 110,
+      "difficulty": "hard",
+      "meal_type": [
+        "dessert",
+        "bakery"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Potica is baked in a distinctive round pan with a hole in the center, so the filling spreads evenly through the whole roll — though classic elongated versions exist too.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "lukewarm",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "yeast",
+          "display_name": "Fresh yeast",
+          "quantity": "25",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "80",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "100",
+          "unit": "g",
+          "note": "melted",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "vanilla-sugar",
+          "display_name": "Vanilla sugar",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "walnuts",
+          "display_name": "Walnuts",
+          "quantity": "400",
+          "unit": "g",
+          "note": "ground",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "hot, for the filling",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "honey",
+          "display_name": "Honey",
+          "quantity": "3",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "100",
+          "unit": "g",
+          "note": "for the filling",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "whites, for the filling",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Make a starter from the milk, yeast, and a spoonful of sugar and let it activate."
+        },
+        {
+          "order": 2,
+          "text": "Mix with the flour, sugar, eggs, melted butter, and vanilla sugar, work into a smooth dough, and let rise for an hour."
+        },
+        {
+          "order": 3,
+          "text": "For the filling, pour the hot milk over the ground walnuts, add the honey and sugar, and let cool slightly."
+        },
+        {
+          "order": 4,
+          "text": "Whip the egg whites to stiff peaks and fold into the walnut filling."
+        },
+        {
+          "order": 5,
+          "text": "Roll the dough out into a large thin rectangle, spread with the filling, and roll into a log."
+        },
+        {
+          "order": 6,
+          "text": "Place in a greased pan and let rise for 30 minutes."
+        },
+        {
+          "order": 7,
+          "text": "Bake at 170°C (340°F) for about 45–50 minutes, covering with foil if needed so the top doesn't burn."
+        }
+      ],
+      "tips": [
+        "Egg whites folded into the walnut filling give it airiness and keep it from leaking out of the dough once baked."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "With raisins",
+          "note": "The filling can be supplemented with a handful of raisins."
+        }
+      ],
+      "origin_history": "Potica is a traditional Slovenian festive roll, baked mainly for Christmas and Easter, with dozens of regional filling variations.",
+      "related_glossary": [
+        "proofing"
+      ],
+      "related_recipes": [],
+      "seo_title": "Potica – Slovenian Walnut Roll Recipe | Atlas Chuti",
+      "meta_description": "Potica recipe: a festive Slovenian yeasted roll with walnut filling.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_idrijski-zlikrofi",
+      "recipe_key": "idrijski-zlikrofi",
+      "title": "Idrijski Žlikrofi (Slovenian Hat-Shaped Dumplings)",
+      "slug": "idrijski-zlikrofi-hat-shaped-dumplings",
+      "country": "SI",
+      "excerpt": "Žlikrofi come from the mining town of Idrija and hold EU Protected Geographical Indication status as one of Slovenia's regional specialties. They're recognizable by their distinctive hat shape, which sets them apart from other filled dumplings; making them is fairly labor-intensive, but that's part of what earns them protection as a regional specialty. It's worth not rushing the shaping — the characteristic little hat comes from folding two corners over each other, and it has to be done carefully. That painstaking hand-shaping and protected Idrija origin make žlikrofi one of the most labor-intensive Slovenian specialties of all.",
+      "servings_default": 4,
+      "prep_minutes": 45,
+      "cook_minutes": 15,
+      "total_minutes": 60,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course",
+        "appetizer"
+      ],
+      "diet": [],
+      "about": "Žlikrofi have a distinctive hat shape that sets them apart from other filled dumplings — they're fairly labor-intensive to make, but protected as a regional specialty.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "300",
+          "unit": "g",
+          "note": "boiled and mashed",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon",
+          "quantity": "80",
+          "unit": "g",
+          "note": "finely chopped, fried",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped, fried",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "to serve",
+          "group": "Finishing"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Knead the flour, eggs, oil, salt, and water into a smooth dough and let rest for 30 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Mix the potatoes with the fried bacon and onion to make the filling, and season with salt."
+        },
+        {
+          "order": 3,
+          "text": "Roll the dough out thin, cut into small squares, place a bit of filling in the center of each, and fold into a triangle."
+        },
+        {
+          "order": 4,
+          "text": "Fold two corners of the triangle together and press to form the characteristic hat shape of žlikrofi."
+        },
+        {
+          "order": 5,
+          "text": "Cook in boiling salted water for 4–5 minutes after they float to the surface."
+        },
+        {
+          "order": 6,
+          "text": "Serve drizzled with melted butter, traditionally with a lamb sauce as well."
+        }
+      ],
+      "tips": [
+        "Don't rush the shaping — the characteristic little hat comes from carefully folding two corners over each other."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Žlikrofi come from the mining town of Idrija and hold EU Protected Geographical Indication status.",
+      "related_glossary": [
+        "pdo-pgi"
+      ],
+      "related_recipes": [
+        "pierogi-ruskie"
+      ],
+      "seo_title": "Idrijski Žlikrofi – Slovenian Filled Dumplings | Atlas Chuti",
+      "meta_description": "Idrijski žlikrofi recipe: Slovenian dumplings filled with potato and bacon.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_cevapi",
+      "recipe_key": "cevapi",
+      "title": "Ćevapi (Balkan Grilled Meat Rolls)",
+      "slug": "cevapi-balkan-grilled-meat-rolls",
+      "country": "RS",
+      "excerpt": "Ćevapi are found all across the Balkans, with every country and region using a slightly different size and meat ratio for the grilled rolls. What matters most is getting the ratio of meats right — it's the combination of beef with pork or lamb that gives the juiciness that lean meat alone never has. The meat mixture is worth kneading well and letting rest, since that's exactly what gives it the dense, sticky texture it needs for grilling. Their spread across the entire Balkans makes ćevapi one of the region's best-known dishes.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Good ćevapi depend on the ratio of meats — combining beef with pork (or lamb) gives a juiciness that lean meat alone never has.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat (beef and pork)",
+          "quantity": "600",
+          "unit": "g",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "crushed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "to serve",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "ajvar",
+          "display_name": "Ajvar",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "kajmak",
+          "display_name": "Kajmak",
+          "quantity": "100",
+          "unit": "g",
+          "note": "optional",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Knead the ground meat with the crushed garlic, salt, and pepper until the mixture thickens and becomes sticky."
+        },
+        {
+          "order": 2,
+          "text": "Let rest in the fridge for at least 2 hours, ideally overnight."
+        },
+        {
+          "order": 3,
+          "text": "With damp hands, shape into small elongated rolls."
+        },
+        {
+          "order": 4,
+          "text": "Grill on a hot grill or grill pan for 8–10 minutes, turning regularly."
+        },
+        {
+          "order": 5,
+          "text": "Serve with chopped onion, ajvar, kajmak, and lepinja flatbread or pita."
+        }
+      ],
+      "tips": [
+        "Knead the meat mixture well and let it rest — that's what gives it the dense, sticky texture it needs for grilling."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Ćevapi are found all across the Balkans, with every country and region using a slightly different size and meat ratio.",
+      "related_glossary": [
+        "grilling"
+      ],
+      "related_recipes": [
+        "pljeskavica"
+      ],
+      "seo_title": "Ćevapi – Balkan Grilled Meat Rolls Recipe | Atlas Chuti",
+      "meta_description": "Ćevapi recipe: grilled meat rolls with onion and ajvar.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_pljeskavica",
+      "recipe_key": "pljeskavica",
+      "title": "Pljeskavica (Serbian Grilled Meat Patty)",
+      "slug": "pljeskavica-serbian-grilled-meat-patty",
+      "country": "RS",
+      "excerpt": "Pljeskavica is one of the most popular Serbian grilled dishes, its name referring to the flat, \"slapped\" shape of the meat. What sets it apart from ćevapi is mainly its shape — instead of small rolls, it's a single large flat patty, often stuffed in the center with cheese or kajmak. It's worth letting the patty rest briefly in the fridge before grilling, since it then holds its shape better and doesn't fall apart on the grate. Its cheese-stuffed center is a defining feature that sets pljeskavica apart from other Balkan grilled dishes and makes it a heartier single-portion meal than classic ćevapi.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Pljeskavica differs from ćevapi in shape — instead of small rolls, it's one large flat patty, often stuffed with cheese or kajmak right in the center.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat (beef and pork)",
+          "quantity": "800",
+          "unit": "g",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "grated",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "kajmak",
+          "display_name": "Kajmak",
+          "quantity": "150",
+          "unit": "g",
+          "note": "filling, optional",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "to serve",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "ajvar",
+          "display_name": "Ajvar",
+          "quantity": "100",
+          "unit": "g",
+          "note": "",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Knead the ground meat with the grated onion, garlic, paprika, and salt until the mixture thickens."
+        },
+        {
+          "order": 2,
+          "text": "Divide into 4 portions and shape each into a flat patty."
+        },
+        {
+          "order": 3,
+          "text": "If stuffing with kajmak, shape the patty into two thinner layers, place the kajmak in the center, and seal the edges."
+        },
+        {
+          "order": 4,
+          "text": "Grill on a hot grill for 4–5 minutes per side."
+        },
+        {
+          "order": 5,
+          "text": "Serve in lepinja flatbread with onion and ajvar."
+        }
+      ],
+      "tips": [
+        "Let the patty rest briefly in the fridge before grilling — it holds its shape better."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Pljeskavica is one of the most popular Serbian grilled dishes; its name refers to the flat, \"slapped\" shape of the meat.",
+      "related_glossary": [
+        "grilling"
+      ],
+      "related_recipes": [
+        "cevapi"
+      ],
+      "seo_title": "Pljeskavica – Serbian Grilled Meat Patty Recipe | Atlas Chuti",
+      "meta_description": "Pljeskavica recipe: grilled meat patty stuffed with kajmak.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_sarma",
+      "recipe_key": "sarma",
+      "title": "Sarma (Serbian Stuffed Cabbage Rolls)",
+      "slug": "sarma-serbian-stuffed-cabbage-rolls",
+      "country": "RS",
+      "excerpt": "Sarma is cooked in different variations across the Balkans and Central Europe, and in Serbia it's inseparable from the Christmas table. In the Balkans, the rolls are traditionally made with sauerkraut leaves rather than fresh cabbage, giving them their characteristic tangy flavor, whereas in Poland or Germany that tang instead comes from an added tomato sauce. It's worth always putting a layer of meat or bacon on the bottom of the pot — this keeps the rolls from sticking and adds flavor to the dish. It's exactly this use of sauerkraut that sets Serbian sarma apart from its northern relatives.",
+      "servings_default": 6,
+      "prep_minutes": 45,
+      "cook_minutes": 90,
+      "total_minutes": 135,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "In the Balkans, sarma is traditionally made with sauerkraut leaves rather than fresh cabbage — that's what gives the rolls their tangy flavor, whereas in Poland or Germany that tang comes from an added tomato sauce instead.",
+      "ingredients": [
+        {
+          "ingredient_key": "sauerkraut",
+          "display_name": "Sauerkraut (whole leaves)",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "leaves separated from the head",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "rice",
+          "display_name": "Rice",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon or ribs",
+          "quantity": "200",
+          "unit": "g",
+          "note": "for the bottom of the pot",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion, then mix with the raw ground meat, rice, paprika, and salt."
+        },
+        {
+          "order": 2,
+          "text": "Place a spoonful of filling in each sauerkraut leaf and wrap into a roll."
+        },
+        {
+          "order": 3,
+          "text": "Line the bottom of the pot with the bacon or ribs, then arrange the rolls on top."
+        },
+        {
+          "order": 4,
+          "text": "Add enough water to almost cover the rolls, and add the bay leaf."
+        },
+        {
+          "order": 5,
+          "text": "Braise covered over low heat for 1.5 hours until tender."
+        },
+        {
+          "order": 6,
+          "text": "Serve hot, traditionally with mashed potatoes or on its own."
+        }
+      ],
+      "tips": [
+        "Always put a layer of meat or bacon on the bottom of the pot — this keeps the rolls from sticking and adds flavor to the dish."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Sarma is cooked in different variations across the Balkans and Central Europe, and in Serbia it's inseparable from the Christmas table.",
+      "related_glossary": [],
+      "related_recipes": [
+        "golabki",
+        "sarmale"
+      ],
+      "seo_title": "Sarma – Serbian Stuffed Cabbage Rolls Recipe | Atlas Chuti",
+      "meta_description": "Sarma recipe: cabbage rolls filled with meat and rice, braised in a pot.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_gibanica",
+      "recipe_key": "gibanica",
+      "title": "Gibanica (Serbian Cheese Pastry)",
+      "slug": "gibanica-serbian-cheese-pastry",
+      "country": "RS",
+      "excerpt": "Gibanica is one of the most common Serbian baked dishes, commonly eaten for breakfast as well as a snack. Sheets of phyllo pastry are loosely crumpled into rippled layers and poured over with an egg-and-cheese mixture during preparation — the dish's very name comes from that crumpling motion, from the verb \"gibati,\" meaning to move or shake. The pastry sheets shouldn't be crumpled too tightly, since the egg mixture needs to reach between all the layers for the dish to stay juicy. The simplicity of preparation and easy availability of its ingredients make gibanica a beloved everyday dish in Serbian households.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "total_minutes": 55,
+      "difficulty": "easy",
+      "meal_type": [
+        "bakery",
+        "breakfast"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Gibanica is made by crumpling sheets of phyllo pastry into rippled layers, then pouring an egg-and-cheese mixture over them — the name itself comes from the word \"gibati,\" meaning to move.",
+      "ingredients": [
+        {
+          "ingredient_key": "phyllo-dough",
+          "display_name": "Phyllo pastry",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "feta",
+          "display_name": "Feta or white cheese",
+          "quantity": "300",
+          "unit": "g",
+          "note": "crumbled",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "5",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "80",
+          "unit": "ml",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Beat the eggs with the sour cream, oil, and salt, then add the crumbled cheese."
+        },
+        {
+          "order": 2,
+          "text": "Crumple the phyllo sheets individually into loose folds and arrange them in a greased baking dish."
+        },
+        {
+          "order": 3,
+          "text": "Pour the egg mixture evenly over the pastry so it seeps between the folds."
+        },
+        {
+          "order": 4,
+          "text": "Bake at 180°C (350°F) for 30–35 minutes, until the top turns golden and the filling sets."
+        },
+        {
+          "order": 5,
+          "text": "Let cool slightly and cut into squares."
+        }
+      ],
+      "tips": [
+        "Don't crumple the pastry sheets too tightly — the egg mixture needs to reach between all the layers."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Gibanica is one of the most common Serbian baked dishes, commonly eaten for breakfast as well as a snack.",
+      "related_glossary": [],
+      "related_recipes": [
+        "banitsa"
+      ],
+      "seo_title": "Gibanica – Serbian Cheese Pastry Recipe | Atlas Chuti",
+      "meta_description": "Gibanica recipe: layered phyllo pastry with cheese and eggs.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_prebranac",
+      "recipe_key": "prebranac",
+      "title": "Prebranac (Serbian Baked Beans)",
+      "slug": "prebranac-serbian-baked-beans",
+      "country": "RS",
+      "excerpt": "Prebranac is a popular fasting dish in Serbia, traditionally cooked during Orthodox fasting periods when meat isn't eaten. Its base is a large amount of onion, slowly caramelized until golden, which gives the beans a sweet depth of flavor without any meat at all. It's worth not rushing the onion — the more slowly it caramelizes, the sweeter and deeper the flavor it ultimately gives the beans while baking in the oven. Thanks to its meatless base and the rich flavor of caramelized onion, prebranac remains a beloved fasting dish year-round, not just during the fasting season.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 90,
+      "total_minutes": 110,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish",
+        "main-course"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Prebranac rests on a large amount of slowly caramelized onion, which gives the beans a sweet depth of flavor without needing to add any meat.",
+      "ingredients": [
+        {
+          "ingredient_key": "white-beans",
+          "display_name": "White beans",
+          "quantity": "400",
+          "unit": "g",
+          "note": "pre-cooked",
+          "group": "Beans"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "sliced",
+          "group": "Beans"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Beans"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Beans"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Beans"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Beans"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Fry the onion slowly in oil over low heat for 20–25 minutes, until caramelized to a deep golden color."
+        },
+        {
+          "order": 2,
+          "text": "Mix half the onion with the cooked beans, paprika, and bay leaf in a baking dish."
+        },
+        {
+          "order": 3,
+          "text": "Add a little of the bean cooking water and season with salt."
+        },
+        {
+          "order": 4,
+          "text": "Spread the remaining caramelized onion on top."
+        },
+        {
+          "order": 5,
+          "text": "Bake at 180°C (350°F) for 40–45 minutes, until the top browns and the liquid thickens."
+        }
+      ],
+      "tips": [
+        "Don't rush the onion — the more slowly it caramelizes, the sweeter and deeper the flavor it gives the beans."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Prebranac is a popular fasting dish in Serbia, traditionally cooked during Orthodox fasting periods when meat isn't eaten.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Prebranac – Serbian Baked Beans Recipe | Atlas Chuti",
+      "meta_description": "Prebranac recipe: baked beans with caramelized onion.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_sarmale",
+      "recipe_key": "sarmale",
+      "title": "Sarmale (Romanian Stuffed Cabbage Rolls)",
+      "slug": "sarmale-romanian-stuffed-cabbage-rolls",
+      "country": "RO",
+      "excerpt": "Sarmale is one of the most typical Romanian dishes and is inseparable from the festive table, especially at Christmas, all across the country. It appears on the table for nearly every celebration in Romania — the small rolls braise slowly and for a long time, until the leaves are completely tender and the meat inside falls apart. It's worth cooking a large batch, since they taste even better the next day than freshly made. That slow braising and festive character make sarmale one of Romania's most significant traditional dishes for the whole year's menu, not just the holidays.",
+      "servings_default": 6,
+      "prep_minutes": 45,
+      "cook_minutes": 100,
+      "total_minutes": 145,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Sarmale appears on the table for nearly every Romanian celebration — the small rolls braise slowly and for a long time, until the sauerkraut leaves are completely tender.",
+      "ingredients": [
+        {
+          "ingredient_key": "sauerkraut",
+          "display_name": "Sauerkraut (whole leaves)",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "leaves separated from the head",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "rice",
+          "display_name": "Rice",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "dill",
+          "display_name": "Dill",
+          "quantity": "10",
+          "unit": "g",
+          "note": "chopped",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Smoked bacon",
+          "quantity": "150",
+          "unit": "g",
+          "note": "for the bottom of the pot",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "crushed-tomato",
+          "display_name": "Crushed tomatoes",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "to serve",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion, then mix with the raw ground meat, rice, dill, and salt."
+        },
+        {
+          "order": 2,
+          "text": "Place a spoonful of filling in each sauerkraut leaf and wrap into a small roll."
+        },
+        {
+          "order": 3,
+          "text": "Line the bottom of the pot with the bacon, arrange the rolls on top, pour over the crushed tomatoes, and add water."
+        },
+        {
+          "order": 4,
+          "text": "Add the bay leaf and braise covered over low heat for about 1.5 hours until tender."
+        },
+        {
+          "order": 5,
+          "text": "Serve hot with a spoonful of sour cream and mămăligă cornmeal porridge."
+        }
+      ],
+      "tips": [
+        "It's worth cooking sarmale in a large batch — they taste even better the next day than freshly made."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Sarmale is one of the most typical Romanian dishes and is inseparable from the festive table, especially at Christmas.",
+      "related_glossary": [],
+      "related_recipes": [
+        "sarma",
+        "golabki"
+      ],
+      "seo_title": "Sarmale – Romanian Stuffed Cabbage Rolls | Atlas Chuti",
+      "meta_description": "Sarmale recipe: Romanian cabbage rolls filled with meat and rice.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_mamaliga",
+      "recipe_key": "mamaliga",
+      "title": "Mămăligă (Romanian Cornmeal Porridge)",
+      "slug": "mamaliga-romanian-cornmeal-porridge",
+      "country": "RO",
+      "excerpt": "Mămăligă is a staple of the traditional Romanian diet, historically standing in for bread in poorer rural households. It was traditionally cut with a length of thread rather than a knife, since a knife would just smear the dense cornmeal porridge rather than cutting it cleanly. It's served on its own, with cheese, or with sour cream, and the cornmeal always needs to be added slowly while stirring constantly while cooking, or lumps will form that are hard to work out afterward. The hot porridge can also be layered with grated cheese, much like polenta.",
+      "servings_default": 4,
+      "prep_minutes": 5,
+      "cook_minutes": 25,
+      "total_minutes": 30,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Mămăligă was traditionally cut with a length of thread rather than a knife — a knife would just smear the dense porridge. It's served on its own, with cheese, or with sour cream.",
+      "ingredients": [
+        {
+          "ingredient_key": "cornmeal",
+          "display_name": "Coarse cornmeal",
+          "quantity": "250",
+          "unit": "g",
+          "note": "",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "",
+          "group": "Finishing"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "to serve",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Bring 1 liter of salted water to a boil in a pot."
+        },
+        {
+          "order": 2,
+          "text": "Whisking constantly, slowly pour in the cornmeal so no lumps form."
+        },
+        {
+          "order": 3,
+          "text": "Cook over low heat, stirring occasionally, for about 20–25 minutes, until thick and pulling away from the sides of the pot."
+        },
+        {
+          "order": 4,
+          "text": "Stir in the butter."
+        },
+        {
+          "order": 5,
+          "text": "Turn the porridge out onto a board, let it firm up slightly, and cut it with thread."
+        },
+        {
+          "order": 6,
+          "text": "Serve with sour cream or as a side to meat dishes."
+        }
+      ],
+      "tips": [
+        "Always add the cornmeal slowly while stirring constantly — otherwise lumps form that are hard to work out."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "With cheese",
+          "note": "The hot porridge can be layered with grated cheese, much like polenta."
+        }
+      ],
+      "origin_history": "Mămăligă is a staple of the traditional Romanian diet, historically standing in for bread in poorer rural households.",
+      "related_glossary": [
+        "polenta"
+      ],
+      "related_recipes": [
+        "sarmale"
+      ],
+      "seo_title": "Mămăligă – Romanian Cornmeal Porridge Recipe | Atlas Chuti",
+      "meta_description": "Mămăligă recipe: traditional Romanian cornmeal porridge.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_mici",
+      "recipe_key": "mici",
+      "title": "Mici (Romanian Grilled Meat Rolls)",
+      "slug": "mici-romanian-grilled-meat-rolls",
+      "country": "RO",
+      "excerpt": "Mici are one of the most popular Romanian grilled dishes, traditionally associated with summer celebrations and picnics. According to legend, they came about by accident — a Bucharest innkeeper supposedly once ran out of sausage casings, so he simply shaped the meat into rolls and grilled them without any casing at all. It's worth letting the meat mixture rest as long as possible, since a stickier texture keeps the mici from falling apart into individual pieces on the grill. That simple, casing-free shape remains the defining feature of this Romanian grilled dish, a favorite at summer barbecues across the country.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Letting the mixture rest longer builds a stickier texture that's exactly what keeps mici from breaking apart into loose pieces once they hit the grill.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat (beef and pork)",
+          "quantity": "600",
+          "unit": "g",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "5",
+          "unit": "clove",
+          "note": "crushed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "caraway-seed",
+          "display_name": "Whole caraway seed",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaf",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "ground",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "cold, for mixing into the meat",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Knead the ground meat with the crushed garlic, caraway, ground bay leaf, salt, and pepper."
+        },
+        {
+          "order": 2,
+          "text": "While kneading, gradually add the cold broth until the mixture thickens and becomes sticky."
+        },
+        {
+          "order": 3,
+          "text": "Let rest in the fridge for at least 3 hours, ideally overnight."
+        },
+        {
+          "order": 4,
+          "text": "With damp hands, shape into small elongated rolls without any casing."
+        },
+        {
+          "order": 5,
+          "text": "Grill on a hot grill for 10–12 minutes, turning regularly."
+        },
+        {
+          "order": 6,
+          "text": "Serve with mustard and fresh bread."
+        }
+      ],
+      "tips": [
+        "Let the meat mixture rest as long as possible — a stickier texture keeps the mici from falling apart on the grill."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Mici are one of the most popular Romanian grilled dishes, traditionally associated with summer celebrations and picnics.",
+      "related_glossary": [
+        "grilling"
+      ],
+      "related_recipes": [
+        "cevapi"
+      ],
+      "seo_title": "Mici – Romanian Grilled Meat Rolls Recipe | Atlas Chuti",
+      "meta_description": "Mici recipe: Romanian grilled meat rolls without casing.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_ciorba-de-burta",
+      "recipe_key": "ciorba-de-burta",
+      "title": "Ciorbă de Burtă (Romanian Tripe Soup)",
+      "slug": "ciorba-de-burta-romanian-tripe-soup",
+      "country": "RO",
+      "excerpt": "Ciorbă de burtă has roots in Ottoman cooking and today counts among the most typical Romanian soups. Its hallmark is a pronounced sourness that everyone adjusts themselves, since the garlic-and-vinegar dressing is poured directly onto the plate, never into the pot. It's worth always serving the garlic-and-vinegar dressing separately, since how much sourness and garlic each person wants varies a lot from one diner to the next. Serving the dressing separately lets every diner adjust the soup exactly to their own taste, which is also why this soup adapts so easily to everyone.",
+      "servings_default": 4,
+      "prep_minutes": 30,
+      "cook_minutes": 120,
+      "total_minutes": 150,
+      "difficulty": "hard",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [],
+      "about": "Ciorbă de burtă is known for its pronounced sourness — the garlic-and-vinegar dressing always goes onto the plate, never into the pot, so everyone can season to taste.",
+      "ingredients": [
+        {
+          "ingredient_key": "tripe",
+          "display_name": "Beef tripe",
+          "quantity": "800",
+          "unit": "g",
+          "note": "cleaned",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrots",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "30",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg yolks",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "4",
+          "unit": "clove",
+          "note": "crushed, for the dressing",
+          "group": "Dressing"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "3",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Dressing"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Wash the tripe thoroughly and cook in salted water with the carrots, onion, and bay leaf for about 2 hours, until tender."
+        },
+        {
+          "order": 2,
+          "text": "Remove the tripe, cut into thin strips, and return to the broth."
+        },
+        {
+          "order": 3,
+          "text": "Mix the flour with a little broth and stir into the soup to thicken slightly."
+        },
+        {
+          "order": 4,
+          "text": "Whisk the sour cream with the egg yolks, stir into the soup off the heat, and warm gently."
+        },
+        {
+          "order": 5,
+          "text": "Mix the crushed garlic with the vinegar to make the dressing."
+        },
+        {
+          "order": 6,
+          "text": "Serve hot, with everyone adding the garlic-and-vinegar dressing to their own bowl to taste."
+        }
+      ],
+      "tips": [
+        "Always serve the garlic-and-vinegar dressing separately — how much sourness and garlic each person wants varies a lot."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Ciorbă de burtă has roots in Ottoman cooking and today counts among the most typical Romanian soups.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Ciorbă de Burtă – Romanian Tripe Soup Recipe | Atlas Chuti",
+      "meta_description": "Ciorbă de burtă recipe: a tangy Romanian tripe soup.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_papanasi",
+      "recipe_key": "papanasi",
+      "title": "Papanași (Romanian Cottage Cheese Doughnuts)",
+      "slug": "papanasi-romanian-cottage-cheese-doughnuts",
+      "country": "RO",
+      "excerpt": "Papanași are one of the most beloved Romanian desserts, their name tied to a legendary figure from Romanian folklore. They're usually fried, only rarely boiled, but they're always recognizable by the same combination of cottage cheese dough topped with a layer of sour cream and fruit jam. They need to be fried over moderate heat, since on oil that's too hot papanași quickly brown on the outside while staying raw and underbaked inside. The combination of cottage cheese dough with sour cream and jam makes papanași one of the most beloved Romanian desserts of all, popular across the whole country.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "medium",
+      "meal_type": [
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Papanași are traditionally fried, only rarely boiled — but always defined by the combination of cottage cheese dough with sour cream and fruit jam on top.",
+      "ingredients": [
+        {
+          "ingredient_key": "curd-cheese",
+          "display_name": "Cottage cheese",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "semolina",
+          "display_name": "Semolina",
+          "quantity": "80",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "100",
+          "unit": "g",
+          "note": "plus a little extra for coating",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "vanilla-sugar",
+          "display_name": "Vanilla sugar",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "sour-cream",
+          "display_name": "Sour cream",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "to serve",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Fruit jam",
+          "quantity": "150",
+          "unit": "g",
+          "note": "to serve",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Mix the cottage cheese with the eggs, semolina, flour, sugar, and vanilla sugar into a dense dough."
+        },
+        {
+          "order": 2,
+          "text": "Shape the dough into flat doughnuts with a hole in the center, plus small balls."
+        },
+        {
+          "order": 3,
+          "text": "Coat lightly in flour."
+        },
+        {
+          "order": 4,
+          "text": "Fry in hot oil over moderate heat for 3–4 minutes per side, so they cook through inside too."
+        },
+        {
+          "order": 5,
+          "text": "Drain on paper towels."
+        },
+        {
+          "order": 6,
+          "text": "Serve with sour cream and fruit jam on top."
+        }
+      ],
+      "tips": [
+        "Fry over moderate heat — on oil that's too hot, papanași quickly brown outside while staying raw inside."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Papanași are one of the most beloved Romanian desserts, their name tied to a legendary figure from Romanian folklore.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Papanași – Romanian Cottage Cheese Doughnuts | Atlas Chuti",
+      "meta_description": "Papanași recipe: fried cottage cheese doughnuts with sour cream and jam.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_shopska-salata",
+      "recipe_key": "shopska-salata",
+      "title": "Shopska Salad (Shopska Salata)",
+      "slug": "shopska-salad",
+      "country": "BG",
+      "excerpt": "Shopska salad is named after the Shopluk region around Sofia and is today considered Bulgaria's national dish. It's traditionally served as a starter, meant to open the appetite before the main course, both in Bulgarian restaurants and at home. The cheese is best grated coarsely and generously, since a generous amount of cheese is typical for shopska salad and shouldn't be skimped on. That generous layer of grated cheese on top is exactly what sets shopska salad apart most from other Balkan salads.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 0,
+      "total_minutes": 15,
+      "difficulty": "easy",
+      "meal_type": [
+        "salad"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Shopska salad is named after the Shopluk region around Sofia and is traditionally served as a starter that opens the appetite before the main course.",
+      "ingredients": [
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomatoes",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "cucumber",
+          "display_name": "Cucumber",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell pepper",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "thinly sliced",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Vegetable oil",
+          "quantity": "40",
+          "unit": "ml",
+          "note": "",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "vinegar",
+          "display_name": "Vinegar",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "optional",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "feta",
+          "display_name": "Sirene cheese (or feta)",
+          "quantity": "200",
+          "unit": "g",
+          "note": "grated",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Cut the tomatoes, cucumber, bell pepper, and onion into cubes and combine in a bowl."
+        },
+        {
+          "order": 2,
+          "text": "Drizzle with oil, and vinegar if using, and toss gently."
+        },
+        {
+          "order": 3,
+          "text": "Divide the salad onto plates."
+        },
+        {
+          "order": 4,
+          "text": "Grate the sirene cheese generously over the whole surface of the salad."
+        },
+        {
+          "order": 5,
+          "text": "Serve with fresh bread; the cheese is usually stirred into the salad just before eating."
+        }
+      ],
+      "tips": [
+        "Grate the cheese coarsely and generously — a generous amount of cheese is typical for shopska salad, so don't skimp on it."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Shopska salad is named after the Shopluk region around Sofia and is today considered Bulgaria's national dish.",
+      "related_glossary": [],
+      "related_recipes": [
+        "horiatiki"
+      ],
+      "seo_title": "Shopska Salad – Bulgarian Recipe | Atlas Chuti",
+      "meta_description": "Shopska salad recipe: tomatoes, cucumber, bell pepper, and grated sirene cheese.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_banitsa",
+      "recipe_key": "banitsa",
+      "title": "Banitsa (Bulgarian Cheese Pastry)",
+      "slug": "banitsa-bulgarian-cheese-pastry",
+      "country": "BG",
+      "excerpt": "Banitsa is one of the oldest and most common Bulgarian dishes, commonly served at Christmas with small paper fortunes hidden inside. It's closely related to Serbian gibanica and Greek spanakopita, sharing the same principle — sheets of phyllo pastry are loosely crumpled into folds and poured over with an egg-and-cheese mixture. It tastes best lukewarm, so it's worth letting it rest for at least 10 minutes after coming out of the oven before slicing. That festive tradition of hiding fortunes inside makes banitsa a beloved part of Bulgarian Christmas customs.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "total_minutes": 55,
+      "difficulty": "easy",
+      "meal_type": [
+        "bakery",
+        "breakfast"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Banitsa is Bulgaria's relative of Serbian gibanica and Greek spanakopita — sheets of phyllo pastry are crumpled into loose folds and poured over with an egg-and-cheese mixture.",
+      "ingredients": [
+        {
+          "ingredient_key": "phyllo-dough",
+          "display_name": "Phyllo pastry",
+          "quantity": "400",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "feta",
+          "display_name": "Sirene cheese (or feta)",
+          "quantity": "300",
+          "unit": "g",
+          "note": "crumbled",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "5",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "bulgarian-yogurt",
+          "display_name": "Bulgarian yogurt",
+          "quantity": "200",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "80",
+          "unit": "ml",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Beat the eggs with the yogurt, oil, and salt, then add the crumbled cheese."
+        },
+        {
+          "order": 2,
+          "text": "Crumple the phyllo sheets individually into loose folds and arrange them in a greased baking dish."
+        },
+        {
+          "order": 3,
+          "text": "Pour the egg-and-cheese mixture over evenly so it seeps between the folds."
+        },
+        {
+          "order": 4,
+          "text": "Bake at 180°C (350°F) for 30–35 minutes, until the top turns golden."
+        },
+        {
+          "order": 5,
+          "text": "Let cool slightly and serve warm."
+        }
+      ],
+      "tips": [
+        "Banitsa tastes best lukewarm — let it rest for at least 10 minutes after coming out of the oven."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Banitsa is one of the oldest and most common Bulgarian dishes, commonly served at Christmas with small paper fortunes hidden inside.",
+      "related_glossary": [],
+      "related_recipes": [
+        "gibanica",
+        "spanakopita"
+      ],
+      "seo_title": "Banitsa – Bulgarian Cheese Pastry Recipe | Atlas Chuti",
+      "meta_description": "Banitsa recipe: Bulgarian phyllo pastry with cheese and eggs.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_tarator",
+      "recipe_key": "tarator",
+      "title": "Tarator (Bulgarian Cold Yogurt Soup)",
+      "slug": "tarator-bulgarian-cold-yogurt-soup",
+      "country": "BG",
+      "excerpt": "Tarator is a classic Bulgarian summer soup, its base of thick cultured milk tied to Bulgaria's own tradition of yogurt-making. It works a bit like a liquid version of tzatziki — thick Bulgarian yogurt is thinned with water and seasoned with cucumber, garlic, and walnuts, which add crunch. It should be served thoroughly chilled, ideally on a hot summer day as a first course before the main meal, when it's most refreshing. The combination of yogurt, cucumber, and walnuts makes tarator a refreshing Bulgarian take on cold yogurt soups, typical of the hottest summer months.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 0,
+      "total_minutes": 15,
+      "difficulty": "easy",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Tarator is a cold version of tzatziki turned into a soup — thick Bulgarian yogurt thinned with water, with cucumber, garlic, and walnuts for crunch.",
+      "ingredients": [
+        {
+          "ingredient_key": "bulgarian-yogurt",
+          "display_name": "Bulgarian yogurt",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "cucumber",
+          "display_name": "Cucumber",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "grated or cubed",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "crushed",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "dill",
+          "display_name": "Dill",
+          "quantity": "15",
+          "unit": "g",
+          "note": "chopped",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "walnuts",
+          "display_name": "Walnuts",
+          "quantity": "40",
+          "unit": "g",
+          "note": "chopped",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "olive-oil",
+          "display_name": "Olive oil",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Whisk the yogurt with a little cold water to the consistency of a thicker soup."
+        },
+        {
+          "order": 2,
+          "text": "Add the grated cucumber, crushed garlic, dill, and olive oil."
+        },
+        {
+          "order": 3,
+          "text": "Season with salt and stir."
+        },
+        {
+          "order": 4,
+          "text": "Chill in the fridge for at least 30 minutes."
+        },
+        {
+          "order": 5,
+          "text": "Scatter with chopped walnuts before serving."
+        }
+      ],
+      "tips": [
+        "Serve tarator thoroughly chilled, ideally on a hot summer day as a first course."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Tarator is a classic Bulgarian summer soup, its base of thick cultured milk tied to Bulgaria's own tradition of yogurt-making.",
+      "related_glossary": [
+        "bulgarian-yogurt"
+      ],
+      "related_recipes": [
+        "tzatziki"
+      ],
+      "seo_title": "Tarator – Bulgarian Cold Yogurt Soup Recipe | Atlas Chuti",
+      "meta_description": "Tarator recipe: cold Bulgarian soup with yogurt, cucumber, and walnuts.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kavarma",
+      "recipe_key": "kavarma",
+      "title": "Kavarma (Bulgarian Braised Meat)",
+      "slug": "kavarma-bulgarian-braised-meat",
+      "country": "BG",
+      "excerpt": "Kavarma is one of the most traditional Bulgarian dishes, its name derived from the Turkish word for slowly braised meat. It's traditionally both cooked and served in small clay pots, which finish the meat in the oven and keep it warm long after coming out. If clay pots are available, it's worth braising the kavarma directly in them, since they hold heat for a long time after being taken out of the oven. Serving it straight from the clay pot is part of what gives kavarma its distinctly rustic character.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 60,
+      "total_minutes": 80,
+      "difficulty": "medium",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "The meat is seared hard before the vegetables and paprika ever go in, which is what gives kavarma its rounded, savory base before the long braise in the oven.",
+      "ingredients": [
+        {
+          "ingredient_key": "pork",
+          "display_name": "Pork",
+          "quantity": "700",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "bell-pepper",
+          "display_name": "Bell peppers",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "tomato",
+          "display_name": "Tomato",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "3",
+          "unit": "clove",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "paprika-powder",
+          "display_name": "Sweet paprika",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "60",
+          "unit": "ml",
+          "note": "",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Spices"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sear the meat in oil on all sides until golden."
+        },
+        {
+          "order": 2,
+          "text": "Add the onion and bell pepper and cook for another 5 minutes."
+        },
+        {
+          "order": 3,
+          "text": "Stir in the paprika, garlic, and tomatoes, and add a splash of water."
+        },
+        {
+          "order": 4,
+          "text": "Transfer to a clay or baking dish, cover, and braise in the oven at 180°C (350°F) for 45–50 minutes until tender."
+        },
+        {
+          "order": 5,
+          "text": "Serve straight from the dish, traditionally with bread."
+        }
+      ],
+      "tips": [
+        "If you have clay pots, braise the kavarma directly in them — they hold heat for a long time after coming out of the oven."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Kavarma is one of the most traditional Bulgarian dishes, its name derived from the Turkish word for slowly braised meat.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Kavarma – Bulgarian Braised Meat Recipe | Atlas Chuti",
+      "meta_description": "Kavarma recipe: slowly braised pork with vegetables.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kebapche",
+      "recipe_key": "kebapche",
+      "title": "Kebapche (Bulgarian Grilled Meat Rolls)",
+      "slug": "kebapche-bulgarian-grilled-meat-rolls",
+      "country": "BG",
+      "excerpt": "Kebapche is one of the most popular Bulgarian grilled dishes, a close relative of Serbian ćevapi. It's distinguished from its Serbian relative by its larger size and bolder seasoning, with caraway and black pepper playing a much bigger role. It's worth lightly oiling the grill grate, since the meat won't stick and will be easier to turn throughout grilling. That bolder seasoning with caraway and pepper is exactly what sets kebapche apart most from its Serbian relative, ćevapi.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Kebapche differs from ćevapi mainly in its larger size and bolder seasoning — caraway and black pepper play a bigger role here than in the Serbian version.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat (beef and pork)",
+          "quantity": "600",
+          "unit": "g",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "crushed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "caraway-seed",
+          "display_name": "Whole caraway seed",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "ground",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "for oiling the grill",
+          "group": "Grilling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Knead the ground meat with the garlic, caraway, pepper, and salt until the mixture thickens."
+        },
+        {
+          "order": 2,
+          "text": "Let rest in the fridge for at least 2 hours."
+        },
+        {
+          "order": 3,
+          "text": "With damp hands, shape into elongated rolls, somewhat larger than ćevapi."
+        },
+        {
+          "order": 4,
+          "text": "Grill on a hot, oiled grill for 10–12 minutes, turning regularly."
+        },
+        {
+          "order": 5,
+          "text": "Serve with fresh bread, onion, and shopska salad."
+        }
+      ],
+      "tips": [
+        "Lightly oil the grill grate — the meat won't stick and will be easier to turn."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Kebapche is one of the most popular Bulgarian grilled dishes, a close relative of Serbian ćevapi.",
+      "related_glossary": [
+        "grilling"
+      ],
+      "related_recipes": [
+        "cevapi"
+      ],
+      "seo_title": "Kebapche – Bulgarian Grilled Meat Rolls | Atlas Chuti",
+      "meta_description": "Kebapche recipe: Bulgarian grilled meat rolls with caraway.",
+      "status": "publish"
+    }
+  ]
+}

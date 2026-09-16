@@ -1,0 +1,1696 @@
+{
+  "countries": [
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Czechia",
+      "slug": "czechia",
+      "name_cs": "Česko",
+      "name_en": "Czechia",
+      "iso_code": "CZ",
+      "flag_emoji": "🇨🇿",
+      "continent": "europe",
+      "capital": "Prague",
+      "languages": [
+        "Czech"
+      ],
+      "currency": "Czech koruna (CZK)",
+      "area_km2": 78871,
+      "population": 10900000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Czech cuisine is built on rich sauces, dumplings, and pork — food meant to carry you through a long workday, not just look good in a photo.",
+      "taste_intro": "Plenty of bread and potato dumplings, plenty of creamy, spiced sauces, and beer as a natural part of the table, not an exception.",
+      "typical_ingredients": [
+        "Pork",
+        "Beef",
+        "Bread dumpling",
+        "Potatoes",
+        "Cabbage",
+        "Caraway",
+        "Marjoram",
+        "Cream"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Czech Beef Sirloin in Cream Sauce (Svíčková)",
+          "note": "Beef with root vegetables in a creamy sauce, served with a bread dumpling.",
+          "recipe_id": "svickova"
+        },
+        {
+          "name": "Czech Roast Pork with Dumpling and Sauerkraut (Vepřo Knedlo Zelo)",
+          "note": "Roast pork, dumpling, and cabbage — a classic Sunday lunch.",
+          "recipe_id": "vepro-knedlo-zelo"
+        },
+        {
+          "name": "Tomato sauce with beef",
+          "note": "A sweet-and-sour tomato sauce with beef, a favorite with kids.",
+          "recipe_id": ""
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Czech Beef Sirloin in Cream Sauce (Svíčková)",
+          "note": "The best-known Czech sauce — root vegetables, cream, and a bread dumpling."
+        },
+        {
+          "name": "Czech Roast Pork with Dumpling and Sauerkraut (Vepřo Knedlo Zelo)",
+          "note": "A Sunday classic: roast pork, dumpling, and cabbage."
+        },
+        {
+          "name": "Kulajda (South Bohemian Sour Cream and Mushroom Soup)",
+          "note": "A tangy creamy soup with potatoes, mushrooms, and egg."
+        },
+        {
+          "name": "Bramboráky (Czech Potato Pancakes)",
+          "note": "Fried potato pancakes with marjoram and garlic."
+        },
+        {
+          "name": "Czech Sweet Buns",
+          "note": "Yeasted pastry filled with curd cheese, poppy seed, or plum jam."
+        }
+      ],
+      "fun_facts": [
+        "Czechia is one of the countries with the highest beer consumption per capita in the world, and beer is commonly drunk with lunch too.",
+        "The word \"knedlík\" has no exact English equivalent — the closest is \"dumpling,\" but the bread dumpling is unique in its texture."
+      ],
+      "related_glossary": [
+        "roux",
+        "marinating"
+      ],
+      "related_countries": [
+        "SK",
+        "AT"
+      ],
+      "seo_title": "Czechia — Czech cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Czech cuisine: svíčková, roast pork with dumpling and cabbage, kulajda, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Slovakia",
+      "slug": "slovakia",
+      "name_cs": "Slovensko",
+      "name_en": "Slovakia",
+      "iso_code": "SK",
+      "flag_emoji": "🇸🇰",
+      "continent": "europe",
+      "capital": "Bratislava",
+      "languages": [
+        "Slovak"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 49035,
+      "population": 5420000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Slovak cuisine grows out of mountains and pastures — bryndza cheese, potatoes, and cabbage come together into a hearty, warming kitchen.",
+      "taste_intro": "Salty sheep's-milk bryndza, smoked meat, and sauerkraut — Slovak food is bold and never apologizes for being filling.",
+      "typical_ingredients": [
+        "Bryndza cheese",
+        "Potatoes",
+        "Cabbage",
+        "Smoked meat",
+        "Onion",
+        "Bacon"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Bryndzové Halušky (Slovak Potato Dumplings with Sheep's Cheese)",
+          "note": "Potato dumplings with sheep's-milk bryndza and bacon — Slovakia's national dish.",
+          "recipe_id": "bryndzove-halusky"
+        },
+        {
+          "name": "Kapustnica (Slovak Sauerkraut and Smoked Meat Soup)",
+          "note": "A Christmas cabbage soup with smoked meat and dried mushrooms.",
+          "recipe_id": "kapustnica"
+        },
+        {
+          "name": "Segedin goulash",
+          "note": "Pork with sauerkraut and sour cream, popular with neighboring countries too.",
+          "recipe_id": ""
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Bryndzové Halušky (Slovak Potato Dumplings with Sheep's Cheese)",
+          "note": "Potato dumplings with bryndza cheese and fried bacon."
+        },
+        {
+          "name": "Kapustnica (Slovak Sauerkraut and Smoked Meat Soup)",
+          "note": "Sauerkraut soup with sausage and mushrooms."
+        },
+        {
+          "name": "Lokše (Slovak Potato Flatbread)",
+          "note": "Thin potato flatbreads, savory or sweet."
+        },
+        {
+          "name": "Pirohy with bryndza",
+          "note": "Boiled dumplings filled with bryndza cheese and potato."
+        },
+        {
+          "name": "Demikát (Slovak Potato and Mushroom Soup)",
+          "note": "Potato soup with dried mushrooms and cream."
+        }
+      ],
+      "fun_facts": [
+        "Bryndzové halušky are officially protected as a traditional Slovak specialty product under the EU's protection scheme.",
+        "Bryndza is traditionally made from sheep's milk and matures only in the mountain regions of northern Slovakia."
+      ],
+      "related_glossary": [
+        "bryndza"
+      ],
+      "related_countries": [
+        "CZ",
+        "HU"
+      ],
+      "seo_title": "Slovakia — Slovak cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Slovak cuisine: bryndzové halušky, kapustnica, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Poland",
+      "slug": "poland",
+      "name_cs": "Polsko",
+      "name_en": "Poland",
+      "iso_code": "PL",
+      "flag_emoji": "🇵🇱",
+      "continent": "europe",
+      "capital": "Warsaw",
+      "languages": [
+        "Polish"
+      ],
+      "currency": "Polish złoty (PLN)",
+      "area_km2": 312696,
+      "population": 36500000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Polish cuisine combines sauerkraut, mushrooms, and yeasted dough into food built for long winters and family Sundays.",
+      "taste_intro": "Tanginess and smokiness run through almost everything in Polish cooking, from żurek to bigos, which only gets better the longer it simmers.",
+      "typical_ingredients": [
+        "Cabbage",
+        "Potatoes",
+        "Mushrooms",
+        "Curd cheese",
+        "Rye flour",
+        "Smoked meat"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Pierogi Ruskie (Polish Potato and Curd Cheese Dumplings)",
+          "note": "Dumplings filled with potato and curd cheese, served with fried onion.",
+          "recipe_id": "pierogi-ruskie"
+        },
+        {
+          "name": "Bigos (Polish Hunter's Stew)",
+          "note": "A hunter's stew of sauerkraut and several kinds of meat.",
+          "recipe_id": "bigos"
+        },
+        {
+          "name": "Żurek (Polish Sour Rye Soup)",
+          "note": "A sour rye soup with sausage and egg.",
+          "recipe_id": "zurek"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Pierogi Ruskie (Polish Potato and Curd Cheese Dumplings)",
+          "note": "Boiled dumplings with potato, curd cheese, and fried onion."
+        },
+        {
+          "name": "Bigos (Polish Hunter's Stew)",
+          "note": "A rich stew of sauerkraut and meat, best on the second day."
+        },
+        {
+          "name": "Żurek (Polish Sour Rye Soup)",
+          "note": "A sour soup often served in a hollowed-out loaf of bread."
+        },
+        {
+          "name": "Gołąbki (Polish Stuffed Cabbage Rolls)",
+          "note": "Cabbage rolls filled with meat and rice in tomato sauce."
+        },
+        {
+          "name": "Placki Ziemniaczane (Polish Potato Pancakes)",
+          "note": "Fried potato pancakes, similar to Czech bramboráky."
+        }
+      ],
+      "fun_facts": [
+        "Bigos is traditionally cooked in large batches in Polish households and reheated for days — it's said to only get better with time.",
+        "Żurek is often served in a hollowed-out loaf of bread instead of a bowl."
+      ],
+      "related_glossary": [
+        "braising"
+      ],
+      "related_countries": [
+        "CZ",
+        "DE"
+      ],
+      "seo_title": "Poland — Polish cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Polish cuisine: pierogi, bigos, żurek, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Germany",
+      "slug": "germany",
+      "name_cs": "Německo",
+      "name_en": "Germany",
+      "iso_code": "DE",
+      "flag_emoji": "🇩🇪",
+      "continent": "europe",
+      "capital": "Berlin",
+      "languages": [
+        "German"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 357588,
+      "population": 83600000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "German cuisine varies widely by region, but a love of meat, potatoes, and a good sauce runs through all of it.",
+      "taste_intro": "Tangy meat in a rich sauce, crackling pork skin, curry spice on a quick street-food classic — Germany does both the Sunday roast and street food equally well.",
+      "typical_ingredients": [
+        "Pork",
+        "Potatoes",
+        "Cabbage",
+        "Mustard",
+        "Caraway",
+        "Bay leaf"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Sauerbraten (German Marinated Pot Roast)",
+          "note": "Beef marinated for several days, then braised until tender.",
+          "recipe_id": "sauerbraten"
+        },
+        {
+          "name": "Schweinshaxe (German Roasted Pork Knuckle)",
+          "note": "Roasted pork knuckle with crackling skin.",
+          "recipe_id": "schweinshaxe"
+        },
+        {
+          "name": "Currywurst (Berlin Sausage with Curry Ketchup)",
+          "note": "Grilled sausage with a ketchup-curry sauce, a Berlin street classic.",
+          "recipe_id": "currywurst"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Sauerbraten (German Marinated Pot Roast)",
+          "note": "Marinated beef braised in a tangy root-vegetable sauce."
+        },
+        {
+          "name": "Schweinshaxe (German Roasted Pork Knuckle)",
+          "note": "Roasted pork knuckle served with beer and a dumpling."
+        },
+        {
+          "name": "Currywurst (Berlin Sausage with Curry Ketchup)",
+          "note": "Grilled sausage with curry-ketchup sauce."
+        },
+        {
+          "name": "Kartoffelpuffer (German Potato Pancakes)",
+          "note": "Fried potato pancakes, usually served with applesauce."
+        },
+        {
+          "name": "Königsberger Klopse (German Meatballs in Caper Sauce)",
+          "note": "Meatballs in a white caper sauce."
+        }
+      ],
+      "fun_facts": [
+        "Germany has more than 1,500 types of sausage, and over 70 million currywursts are eaten in Berlin alone every year.",
+        "Sauerbraten is traditionally marinated for up to a week — recipes vary widely from region to region."
+      ],
+      "related_glossary": [
+        "braising",
+        "roux"
+      ],
+      "related_countries": [
+        "AT",
+        "PL"
+      ],
+      "seo_title": "Germany — German cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover German cuisine: sauerbraten, schweinshaxe, currywurst, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Austria",
+      "slug": "austria",
+      "name_cs": "Rakousko",
+      "name_en": "Austria",
+      "iso_code": "AT",
+      "flag_emoji": "🇦🇹",
+      "continent": "europe",
+      "capital": "Vienna",
+      "languages": [
+        "German"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 83879,
+      "population": 9200000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Austrian cuisine combines Viennese elegance with Alpine heartiness — from the fried schnitzel to sweet Sunday dumplings.",
+      "taste_intro": "Crispy fried meat, broth-based soups with meat, and an endless range of desserts — Austria takes dessert as seriously as the main course.",
+      "typical_ingredients": [
+        "Veal",
+        "Beef",
+        "Butter",
+        "Flour",
+        "Apples",
+        "Apricots"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Wiener Schnitzel (Viennese Breaded Veal Cutlet)",
+          "note": "Breaded fried veal cutlet, a classic of Viennese cuisine.",
+          "recipe_id": "wiener-schnitzel"
+        },
+        {
+          "name": "Tafelspitz (Viennese Boiled Beef)",
+          "note": "Boiled beef from broth with apple and chive horseradish.",
+          "recipe_id": "tafelspitz"
+        },
+        {
+          "name": "Sachertorte (Original Viennese Chocolate Cake)",
+          "note": "A chocolate cake with apricot filling from Vienna's Hotel Sacher.",
+          "recipe_id": "sachertorte"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Wiener Schnitzel",
+          "note": "Breaded fried veal cutlet with a slice of lemon."
+        },
+        {
+          "name": "Tafelspitz (Viennese Boiled Beef)",
+          "note": "Boiled beef from a quality broth with horseradish sauce."
+        },
+        {
+          "name": "Kaiserschmarrn (Austrian Shredded Pancake)",
+          "note": "A torn sweet omelet with raisins and powdered sugar."
+        },
+        {
+          "name": "Sachertorte (Original Viennese Chocolate Cake)",
+          "note": "A dense chocolate cake with an apricot layer."
+        },
+        {
+          "name": "Tyrolean dumplings",
+          "note": "Savory dumplings made from stale bread and bacon."
+        }
+      ],
+      "fun_facts": [
+        "The original Sachertorte recipe is still kept secret, and a legal dispute over the \"true\" version ran between Viennese pastry shops for decades.",
+        "By tradition, a real Wiener Schnitzel is always veal — made with pork, it's a \"schnitzel Viennese style,\" not a true Wiener Schnitzel."
+      ],
+      "related_glossary": [
+        "springform-pan"
+      ],
+      "related_countries": [
+        "DE",
+        "HU"
+      ],
+      "seo_title": "Austria — Austrian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Austrian cuisine: Wiener Schnitzel, Tafelspitz, Sachertorte, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Hungary",
+      "slug": "hungary",
+      "name_cs": "Maďarsko",
+      "name_en": "Hungary",
+      "iso_code": "HU",
+      "flag_emoji": "🇭🇺",
+      "continent": "europe",
+      "capital": "Budapest",
+      "languages": [
+        "Hungarian"
+      ],
+      "currency": "Hungarian forint (HUF)",
+      "area_km2": 93028,
+      "population": 9540000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Hungarian cuisine is built on paprika — ground, sweet, and hot — which colors soups, sauces, and braised meats a deep red.",
+      "taste_intro": "Smoky sweet paprika, onion, and lard form the base of nearly every Hungarian dish, from goulash soup to chicken paprikash.",
+      "typical_ingredients": [
+        "Ground paprika",
+        "Onion",
+        "Lard",
+        "Pork",
+        "Chicken",
+        "Sour cream"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Hungarian Goulash Soup (Gulyás)",
+          "note": "A beef soup with potatoes and ground paprika — the origin of the word \"goulash.\"",
+          "recipe_id": "gulyas"
+        },
+        {
+          "name": "Chicken Paprikash (Paprikás Csirke)",
+          "note": "Chicken in a creamy paprika sauce with dumplings.",
+          "recipe_id": "paprikas-csirke"
+        },
+        {
+          "name": "Lángos (Hungarian Fried Dough)",
+          "note": "Fried yeasted dough with garlic, sour cream, and cheese.",
+          "recipe_id": "langos"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Hungarian Goulash Soup (Gulyás)",
+          "note": "A beef soup with paprika, potatoes, and caraway."
+        },
+        {
+          "name": "Chicken Paprikash (Paprikás Csirke)",
+          "note": "Chicken in a paprika sauce with sour cream."
+        },
+        {
+          "name": "Lángos (Hungarian Fried Dough)",
+          "note": "Fried dough with garlic water, sour cream, and cheese."
+        },
+        {
+          "name": "Halászlé (Hungarian Fisherman's Soup)",
+          "note": "A fiery fish soup made with carp, typical along the Danube and Tisza."
+        },
+        {
+          "name": "Dobos Torte (Hungarian Caramel-Topped Layer Cake)",
+          "note": "A layered sponge cake with a caramel top."
+        }
+      ],
+      "fun_facts": [
+        "Hungarian distinguishes \"gulyás\" (a soup) from \"pörkölt\" (a thicker braised meat dish) — what many other countries call goulash is usually pörkölt in Hungary.",
+        "Sweet paprika is grown mainly around the towns of Kalocsa and Szeged, both of which hold protected designation-of-origin status."
+      ],
+      "related_glossary": [
+        "paprika-spice",
+        "springform-pan"
+      ],
+      "related_countries": [
+        "AT",
+        "RO"
+      ],
+      "seo_title": "Hungary — Hungarian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Hungarian cuisine: gulyás, chicken paprikash, lángos, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Italy",
+      "slug": "italy",
+      "name_cs": "Itálie",
+      "name_en": "Italy",
+      "iso_code": "IT",
+      "flag_emoji": "🇮🇹",
+      "continent": "europe",
+      "capital": "Rome",
+      "languages": [
+        "Italian"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 301340,
+      "population": 58940000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Italian cuisine rests on simplicity and the quality of its ingredients, not on complicated technique.",
+      "taste_intro": "Few ingredients, but the best you can find — ripe tomatoes, good olive oil, fresh herbs.",
+      "typical_ingredients": [
+        "Tomatoes",
+        "Olive oil",
+        "Basil",
+        "Parmesan",
+        "Pasta",
+        "Rice"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Pizza Margherita",
+          "note": "Thin dough, tomatoes, mozzarella, and basil — in the colors of the Italian flag.",
+          "recipe_id": "pizza-margherita"
+        },
+        {
+          "name": "Spaghetti Carbonara",
+          "note": "Eggs, guanciale, and pecorino — no cream.",
+          "recipe_id": "spaghetti-carbonara"
+        },
+        {
+          "name": "Risotto alla Milanese (Milanese Saffron Risotto)",
+          "note": "Saffron risotto, the traditional side to ossobuco.",
+          "recipe_id": "risotto-alla-milanese"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Spaghetti Carbonara",
+          "note": "A Roman classic of just four ingredients: egg, guanciale, pecorino, and pepper."
+        },
+        {
+          "name": "Pizza Margherita",
+          "note": "Neapolitan pizza with tomatoes, mozzarella, and basil."
+        },
+        {
+          "name": "Risotto alla Milanese (Milanese Saffron Risotto)",
+          "note": "Creamy saffron risotto from Lombardy."
+        },
+        {
+          "name": "Lasagne alla Bolognese",
+          "note": "Layered pasta with meat ragù and béchamel."
+        },
+        {
+          "name": "Ossobuco alla Milanese (Braised Veal Shank)",
+          "note": "Braised veal shank with gremolata."
+        }
+      ],
+      "fun_facts": [
+        "\"Al dente\" literally means \"to the tooth\" — pasta is never cooked until mushy.",
+        "Under AVPN certification, a true Neapolitan pizza may only use a limited set of approved ingredients and must be baked in a wood-fired oven."
+      ],
+      "related_glossary": [
+        "al-dente",
+        "pancetta",
+        "parmigiano-reggiano"
+      ],
+      "related_countries": [
+        "FR",
+        "ES"
+      ],
+      "seo_title": "Italy — Italian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Italian cuisine: typical ingredients, traditional dishes, and tried-and-tested recipes.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "France",
+      "slug": "france",
+      "name_cs": "Francie",
+      "name_en": "France",
+      "iso_code": "FR",
+      "flag_emoji": "🇫🇷",
+      "continent": "europe",
+      "capital": "Paris",
+      "languages": [
+        "French"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 551695,
+      "population": 68600000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "French cuisine gave the world its foundational cooking techniques — and yet, at heart, it remains rural, built on braised meat and good wine.",
+      "taste_intro": "Butter, wine, and long braising — French classics never rush, flavor builds slowly, layer by layer.",
+      "typical_ingredients": [
+        "Butter",
+        "Wine",
+        "Shallot",
+        "Thyme",
+        "Cream",
+        "Mustard"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Beef Bourguignon (Bœuf Bourguignon)",
+          "note": "Beef braised in red wine with mushrooms and bacon.",
+          "recipe_id": "boeuf-bourguignon"
+        },
+        {
+          "name": "Ratatouille (Provençal Stewed Vegetables)",
+          "note": "Braised vegetables from Provence — eggplant, zucchini, pepper, tomato.",
+          "recipe_id": "ratatouille"
+        },
+        {
+          "name": "Quiche Lorraine (French Bacon and Egg Tart)",
+          "note": "A savory tart with bacon, egg, and cream.",
+          "recipe_id": "quiche-lorraine"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Bœuf bourguignon",
+          "note": "Beef braised in red wine, Burgundy style."
+        },
+        {
+          "name": "Coq au vin",
+          "note": "Rooster (or chicken) braised in wine with mushrooms and bacon."
+        },
+        {
+          "name": "Ratatouille (Provençal Stewed Vegetables)",
+          "note": "Braised Provençal vegetables."
+        },
+        {
+          "name": "Quiche Lorraine (French Bacon and Egg Tart)",
+          "note": "A savory tart with bacon and egg custard."
+        },
+        {
+          "name": "Crêpes (French Thin Pancakes)",
+          "note": "Thin pancakes, savory or sweet."
+        }
+      ],
+      "fun_facts": [
+        "French gastronomy is inscribed on UNESCO's Intangible Cultural Heritage list as an entire social ritual of dining.",
+        "Bœuf bourguignon began as food for Burgundy's winemakers — tougher cuts of beef tenderized by long braising in the local wine."
+      ],
+      "related_glossary": [
+        "creme-fraiche",
+        "dijon-mustard",
+        "terroir"
+      ],
+      "related_countries": [
+        "IT",
+        "ES"
+      ],
+      "seo_title": "France — French cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover French cuisine: bœuf bourguignon, ratatouille, quiche Lorraine, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Spain",
+      "slug": "spain",
+      "name_cs": "Španělsko",
+      "name_en": "Spain",
+      "iso_code": "ES",
+      "flag_emoji": "🇪🇸",
+      "continent": "europe",
+      "capital": "Madrid",
+      "languages": [
+        "Spanish"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 505990,
+      "population": 49100000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Spanish cuisine is a cuisine of sharing — small tapas plates, large pans of paella, all enjoyed at a table with family and friends.",
+      "taste_intro": "Saffron, garlic, olive oil, and fresh seafood — salty and briny on the coast, heartier inland, with cured meats and legumes.",
+      "typical_ingredients": [
+        "Olive oil",
+        "Garlic",
+        "Saffron",
+        "Tomatoes",
+        "Chorizo",
+        "Rice"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Paella Valenciana",
+          "note": "Saffron rice with chicken, rabbit, and beans from Valencia.",
+          "recipe_id": "paella-valenciana"
+        },
+        {
+          "name": "Tortilla Española (Spanish Potato Omelet)",
+          "note": "A dense omelet of potato and onion.",
+          "recipe_id": "tortilla-espanola"
+        },
+        {
+          "name": "Gazpacho",
+          "note": "A cold tomato soup from Andalusia.",
+          "recipe_id": "gazpacho"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Paella Valenciana",
+          "note": "Saffron rice with meat and beans, cooked in a wide pan."
+        },
+        {
+          "name": "Tortilla Española (Spanish Potato Omelet)",
+          "note": "A dense potato omelet, a tapas classic."
+        },
+        {
+          "name": "Gazpacho",
+          "note": "A cold tomato soup, refreshing in the summer heat."
+        },
+        {
+          "name": "Patatas Bravas",
+          "note": "Fried potatoes with a spicy tomato sauce and aioli."
+        },
+        {
+          "name": "Croquetas de Jamón (Spanish Ham Croquettes)",
+          "note": "Fried croquettes with a ham béchamel filling."
+        }
+      ],
+      "fun_facts": [
+        "A true Paella Valenciana traditionally contains no seafood — that belongs to coastal variants like paella de marisco.",
+        "The word \"tapas\" likely comes from the custom of covering a glass of wine with a slice of bread or ham to keep insects out."
+      ],
+      "related_glossary": [
+        "saffron",
+        "paellera",
+        "tapas"
+      ],
+      "related_countries": [
+        "FR",
+        "IT",
+        "PT"
+      ],
+      "seo_title": "Spain — Spanish cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Spanish cuisine: paella, tortilla Española, gazpacho, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Portugal",
+      "slug": "portugal",
+      "name_cs": "Portugalsko",
+      "name_en": "Portugal",
+      "iso_code": "PT",
+      "flag_emoji": "🇵🇹",
+      "continent": "europe",
+      "capital": "Lisbon",
+      "languages": [
+        "Portuguese"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 92212,
+      "population": 10750000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Portuguese cuisine belongs to the sea — cod, sardines, and shellfish, rounded out with olive oil and fresh herbs.",
+      "taste_intro": "Dried salt cod (bacalhau) is so central that people say there's a recipe for every day of the year — a salty, smoky flavor nothing else replaces.",
+      "typical_ingredients": [
+        "Dried salt cod",
+        "Olive oil",
+        "Onion",
+        "Potatoes",
+        "Kale",
+        "Eggs"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Bacalhau à Brás (Portuguese Shredded Salt Cod)",
+          "note": "Shredded salt cod with matchstick fries and eggs.",
+          "recipe_id": "bacalhau-a-bras"
+        },
+        {
+          "name": "Caldo Verde (Portuguese Kale Soup)",
+          "note": "A kale soup with chouriço sausage.",
+          "recipe_id": "caldo-verde"
+        },
+        {
+          "name": "Pastéis de Nata (Portuguese Custard Tarts)",
+          "note": "Crisp pastry cups with an egg custard filling.",
+          "recipe_id": "pasteis-de-nata"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Bacalhau à Brás (Portuguese Shredded Salt Cod)",
+          "note": "Shredded salt cod baked with matchstick fries and eggs."
+        },
+        {
+          "name": "Caldo Verde (Portuguese Kale Soup)",
+          "note": "A kale soup with sausage, typical of the north."
+        },
+        {
+          "name": "Pastéis de Nata (Portuguese Custard Tarts)",
+          "note": "Crisp pastry cups with caramelized egg custard."
+        },
+        {
+          "name": "Arroz de Marisco (Portuguese Seafood Rice)",
+          "note": "Seafood rice with shrimp and mussels."
+        },
+        {
+          "name": "Francesinha (Porto Sandwich in Beer Sauce)",
+          "note": "A hearty meat-and-cheese sandwich covered in a beer sauce."
+        }
+      ],
+      "fun_facts": [
+        "It's said that Portugal has more than a thousand different recipes for dried salt cod (bacalhau).",
+        "Pastéis de nata are traditionally baked in Lisbon to a strictly guarded recipe from the Pastéis de Belém monastery bakery."
+      ],
+      "related_glossary": [
+        "bacalhau"
+      ],
+      "related_countries": [
+        "ES"
+      ],
+      "seo_title": "Portugal — Portuguese cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Portuguese cuisine: bacalhau, caldo verde, pastéis de nata, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Greece",
+      "slug": "greece",
+      "name_cs": "Řecko",
+      "name_en": "Greece",
+      "iso_code": "GR",
+      "flag_emoji": "🇬🇷",
+      "continent": "europe",
+      "capital": "Athens",
+      "languages": [
+        "Greek"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 131957,
+      "population": 10410000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Greek cuisine forms the foundation of what we now call the Mediterranean diet — olive oil, vegetables, lamb, and plenty of shared plates.",
+      "taste_intro": "Lemon, oregano, and olive oil turn up in nearly every other dish, alongside salty feta and cooling yogurt-based tzatziki against the summer heat.",
+      "typical_ingredients": [
+        "Olive oil",
+        "Feta",
+        "Lemon",
+        "Oregano",
+        "Lamb",
+        "Eggplant"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Moussaka",
+          "note": "Baked eggplant with ground meat and béchamel.",
+          "recipe_id": "moussaka"
+        },
+        {
+          "name": "Souvlaki (Greek Grilled Skewers)",
+          "note": "Grilled meat skewers served in pita bread.",
+          "recipe_id": "souvlaki"
+        },
+        {
+          "name": "Tzatziki",
+          "note": "A yogurt sauce with cucumber and garlic.",
+          "recipe_id": "tzatziki"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Moussaka",
+          "note": "Layered baked eggplant with meat and béchamel."
+        },
+        {
+          "name": "Souvlaki (Greek Grilled Skewers)",
+          "note": "Grilled meat skewers with pita bread and tzatziki."
+        },
+        {
+          "name": "Tzatziki",
+          "note": "A cooling yogurt sauce with cucumber and garlic."
+        },
+        {
+          "name": "Spanakopita (Greek Spinach Pie)",
+          "note": "A crisp spinach-and-feta pie in phyllo pastry."
+        },
+        {
+          "name": "Greek salad",
+          "note": "Tomato, cucumber, feta, and olives, without a dressing."
+        }
+      ],
+      "fun_facts": [
+        "A true Greek salad (horiatiki) is traditionally made without lettuce — just tomato, cucumber, onion, olives, and a slab of feta.",
+        "Under EU protected-designation rules, feta may only come from Greece and must be made from sheep's or goat's milk."
+      ],
+      "related_glossary": [
+        "feta",
+        "meze"
+      ],
+      "related_countries": [
+        "IT",
+        "HR"
+      ],
+      "seo_title": "Greece — Greek cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Greek cuisine: moussaka, souvlaki, tzatziki, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Croatia",
+      "slug": "croatia",
+      "name_cs": "Chorvatsko",
+      "name_en": "Croatia",
+      "iso_code": "HR",
+      "flag_emoji": "🇭🇷",
+      "continent": "europe",
+      "capital": "Zagreb",
+      "languages": [
+        "Croatian"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 56594,
+      "population": 3870000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Croatian cuisine has two faces: Mediterranean on the coast, with fish and olive oil, and Central European inland, with meat and dumplings.",
+      "taste_intro": "Olive oil, garlic, and fresh fish rule the Adriatic coast, while braised meat, cabbage, and stuffed dishes dominate inland — both share a taste for slow cooking.",
+      "typical_ingredients": [
+        "Olive oil",
+        "Fish",
+        "Beef",
+        "Cabbage",
+        "Garlic",
+        "Wine"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Pašticada (Dalmatian Braised Beef)",
+          "note": "Beef braised in wine with prunes and spices, from Split and Dalmatia.",
+          "recipe_id": "pasticada"
+        },
+        {
+          "name": "Croatian Black Risotto (Crni Rižot)",
+          "note": "Black risotto with cuttlefish and their ink.",
+          "recipe_id": "crni-rizot"
+        },
+        {
+          "name": "Peka (Croatian Under-the-Bell Roast)",
+          "note": "Meat and vegetables slow-roasted under a bell-shaped lid in embers.",
+          "recipe_id": "peka"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Pašticada (Dalmatian Braised Beef)",
+          "note": "Dalmatian beef braised in wine, traditionally with prune jam."
+        },
+        {
+          "name": "Crni rižot",
+          "note": "Black cuttlefish risotto from the Croatian coast."
+        },
+        {
+          "name": "Peka (Croatian Under-the-Bell Roast)",
+          "note": "Meat and vegetables slow-roasted under the peka lid."
+        },
+        {
+          "name": "Zagorski Štrukli (Croatian Cottage Cheese Rolls)",
+          "note": "Cheese-filled dumplings from the northern Zagorje region."
+        },
+        {
+          "name": "Fritule (Croatian Fried Doughnuts)",
+          "note": "Small yeasted doughnuts with raisins and lemon zest."
+        }
+      ],
+      "fun_facts": [
+        "\"Peka\" is both the name of the dish and of the cast-iron lid under which meat and vegetables are slow-roasted in the embers.",
+        "Pašticada is traditionally marinated up to two days in advance, which gives it its depth of flavor."
+      ],
+      "related_glossary": [
+        "braising",
+        "grilling"
+      ],
+      "related_countries": [
+        "SI",
+        "IT"
+      ],
+      "seo_title": "Croatia — Croatian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Croatian cuisine: pašticada, crni rižot, peka, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Slovenia",
+      "slug": "slovenia",
+      "name_cs": "Slovinsko",
+      "name_en": "Slovenia",
+      "iso_code": "SI",
+      "flag_emoji": "🇸🇮",
+      "continent": "europe",
+      "capital": "Ljubljana",
+      "languages": [
+        "Slovenian"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 20273,
+      "population": 2130000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Slovenian cuisine is small but varied — Alpine, Mediterranean, and Pannonian traditions all meet within one small country.",
+      "taste_intro": "Plenty of yeasted dough filled sweet and savory, alongside cabbage, potatoes, and, in the mountains, smoked meat — a cozy, rural flavor.",
+      "typical_ingredients": [
+        "Cabbage",
+        "Potatoes",
+        "Buckwheat",
+        "Walnuts",
+        "Curd cheese",
+        "Bacon"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Jota (Slovenian Sauerkraut and Bean Soup)",
+          "note": "A hearty soup of cabbage, beans, and potatoes with smoked meat.",
+          "recipe_id": "jota"
+        },
+        {
+          "name": "Kranjska Klobasa (Carniolan Sausage)",
+          "note": "A protected Slovenian sausage, a symbol of the national cuisine.",
+          "recipe_id": "kranjska-klobasa"
+        },
+        {
+          "name": "Potica (Slovenian Nut Roll)",
+          "note": "A festive yeasted roll filled with walnuts.",
+          "recipe_id": "potica"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Jota (Slovenian Sauerkraut and Bean Soup)",
+          "note": "A hearty cabbage-and-bean soup with smoked meat."
+        },
+        {
+          "name": "Kranjska klobasa",
+          "note": "A protected Slovenian sausage served with mustard and horseradish."
+        },
+        {
+          "name": "Štruklji (Slovenian Cottage Cheese Rolls)",
+          "note": "Boiled or baked dumplings with a curd-cheese filling."
+        },
+        {
+          "name": "Potica (Slovenian Nut Roll)",
+          "note": "A festive walnut roll, a symbol of Slovenian holidays."
+        },
+        {
+          "name": "Idrijski Žlikrofi (Slovenian Hat-Shaped Dumplings)",
+          "note": "Small filled dumplings from the mining town of Idrija."
+        }
+      ],
+      "fun_facts": [
+        "Kranjska klobasa has held EU protected geographical status since 2015 — only sausage made to the exact recipe may carry the name.",
+        "Potica comes in dozens of regional filling variations, from walnut to herb to honey."
+      ],
+      "related_glossary": [
+        "proofing"
+      ],
+      "related_countries": [
+        "HR",
+        "AT"
+      ],
+      "seo_title": "Slovenia — Slovenian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Slovenian cuisine: jota, kranjska klobasa, potica, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Serbia",
+      "slug": "serbia",
+      "name_cs": "Srbsko",
+      "name_en": "Serbia",
+      "iso_code": "RS",
+      "flag_emoji": "🇷🇸",
+      "continent": "europe",
+      "capital": "Belgrade",
+      "languages": [
+        "Serbian"
+      ],
+      "currency": "Serbian dinar (RSD)",
+      "area_km2": 88361,
+      "population": 6590000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Serbian cuisine is a cuisine of the grill and the family feast — grilled meat, stuffed vegetables, and sweet layered pastries to finish.",
+      "taste_intro": "Grilled ground meat with onion and fresh bread is Serbia's take on fast food, alongside cabbage stuffed with meat and rice for Sunday.",
+      "typical_ingredients": [
+        "Ground meat",
+        "Onion",
+        "Cabbage",
+        "Peppers",
+        "Beans",
+        "Cheese"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Ćevapi (Balkan Grilled Meat Rolls)",
+          "note": "Grilled ground-meat rolls, served with onion and lepinja flatbread.",
+          "recipe_id": "cevapi"
+        },
+        {
+          "name": "Pljeskavica (Serbian Grilled Meat Patty)",
+          "note": "A large grilled meat patty, Serbia's take on the hamburger.",
+          "recipe_id": "pljeskavica"
+        },
+        {
+          "name": "Sarma (Serbian Stuffed Cabbage Rolls)",
+          "note": "Cabbage rolls filled with meat and rice, a traditional Christmas dish.",
+          "recipe_id": "sarma"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Ćevapi (Balkan Grilled Meat Rolls)",
+          "note": "Grilled ground-meat rolls with onion and ajvar."
+        },
+        {
+          "name": "Pljeskavica (Serbian Grilled Meat Patty)",
+          "note": "A grilled meat patty filled with cheese, served in lepinja flatbread."
+        },
+        {
+          "name": "Sarma (Serbian Stuffed Cabbage Rolls)",
+          "note": "Cabbage rolls filled with meat and rice, braised in a pot."
+        },
+        {
+          "name": "Gibanica (Serbian Cheese Pastry)",
+          "note": "A layered pastry with cheese and eggs."
+        },
+        {
+          "name": "Prebranac (Serbian Baked Beans)",
+          "note": "Baked beans with plenty of onion, a popular Lenten dish."
+        }
+      ],
+      "fun_facts": [
+        "Ćevapi take a slightly different shape and size across the Balkans, but it's always the same family of dish.",
+        "Serbian families traditionally make sarma in large batches for Christmas and New Year, enough to last several days."
+      ],
+      "related_glossary": [
+        "grilling"
+      ],
+      "related_countries": [
+        "HR",
+        "BG"
+      ],
+      "seo_title": "Serbia — Serbian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Serbian cuisine: ćevapi, pljeskavica, sarma, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Romania",
+      "slug": "romania",
+      "name_cs": "Rumunsko",
+      "name_en": "Romania",
+      "iso_code": "RO",
+      "flag_emoji": "🇷🇴",
+      "continent": "europe",
+      "capital": "Bucharest",
+      "languages": [
+        "Romanian"
+      ],
+      "currency": "Romanian leu (RON)",
+      "area_km2": 238397,
+      "population": 19040000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Romanian cuisine draws on Balkan, Slavic, and Hungarian influences — the result is a kitchen full of stuffed vegetables, cornmeal porridge, and braised meat.",
+      "taste_intro": "Cornmeal porridge (mămăligă) stands in for both bread and potatoes, meat comes with plenty of dill and sour cream, and sweet curd-cheese dumplings round things off.",
+      "typical_ingredients": [
+        "Cornmeal",
+        "Cabbage",
+        "Pork",
+        "Dill",
+        "Sour cream",
+        "Curd cheese"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Sarmale (Romanian Stuffed Cabbage Rolls)",
+          "note": "Cabbage rolls filled with meat and rice, Romania's version of sarma.",
+          "recipe_id": "sarmale"
+        },
+        {
+          "name": "Mămăligă (Romanian Cornmeal Porridge)",
+          "note": "Cornmeal porridge, a traditional stand-in for bread.",
+          "recipe_id": "mamaliga"
+        },
+        {
+          "name": "Mici (Romanian Grilled Meat Rolls)",
+          "note": "Grilled ground-meat rolls made without casing.",
+          "recipe_id": "mici"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Sarmale (Romanian Stuffed Cabbage Rolls)",
+          "note": "Cabbage rolls filled with meat and rice, served with sour cream."
+        },
+        {
+          "name": "Mămăligă (Romanian Cornmeal Porridge)",
+          "note": "Cornmeal porridge, often with cheese and sour cream."
+        },
+        {
+          "name": "Mici (Romanian Grilled Meat Rolls)",
+          "note": "Grilled ground-meat rolls with mustard and bread."
+        },
+        {
+          "name": "Ciorbă de Burtă (Romanian Tripe Soup)",
+          "note": "A sour tripe soup with sour cream and garlic."
+        },
+        {
+          "name": "Papanași (Romanian Cottage Cheese Doughnuts)",
+          "note": "Fried curd-cheese dumplings with jam and sour cream."
+        }
+      ],
+      "fun_facts": [
+        "Mămăligă was traditionally sliced with thread instead of a knife, and in leaner times it stood in for bread on the rural table.",
+        "Mici are grilled without a casing — legend has it they were invented when a Bucharest innkeeper ran out of sausage casing and simply shaped the meat into rolls."
+      ],
+      "related_glossary": [
+        "polenta"
+      ],
+      "related_countries": [
+        "BG",
+        "HU"
+      ],
+      "seo_title": "Romania — Romanian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Romanian cuisine: sarmale, mămăligă, mici, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Bulgaria",
+      "slug": "bulgaria",
+      "name_cs": "Bulharsko",
+      "name_en": "Bulgaria",
+      "iso_code": "BG",
+      "flag_emoji": "🇧🇬",
+      "continent": "europe",
+      "capital": "Sofia",
+      "languages": [
+        "Bulgarian"
+      ],
+      "currency": "Bulgarian lev (BGN)",
+      "area_km2": 110879,
+      "population": 6440000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Bulgarian cuisine is known for its vegetable salads, grilled meat, and yogurt — still made in the country according to old tradition.",
+      "taste_intro": "Fresh vegetables, sirene cheese, and plenty of grilled meat, all rounded out with the cultured milk on which Bulgaria has built its reputation.",
+      "typical_ingredients": [
+        "Tomatoes",
+        "Peppers",
+        "Sirene cheese",
+        "Yogurt",
+        "Ground meat",
+        "Onion"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Shopska Salad (Shopska Salata)",
+          "note": "A tomato salad with cucumber, pepper, and grated sirene cheese.",
+          "recipe_id": "shopska-salata"
+        },
+        {
+          "name": "Banitsa (Bulgarian Cheese Pastry)",
+          "note": "Phyllo pastry filled with cheese and eggs, a classic Bulgarian breakfast.",
+          "recipe_id": "banitsa"
+        },
+        {
+          "name": "Kavarma (Bulgarian Braised Meat)",
+          "note": "Braised meat with vegetables in a clay dish.",
+          "recipe_id": "kavarma"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Shopska salad",
+          "note": "Tomato, cucumber, pepper, and grated sirene cheese."
+        },
+        {
+          "name": "Banitsa",
+          "note": "Phyllo pastry with an egg-and-cheese filling."
+        },
+        {
+          "name": "Tarator (Bulgarian Cold Yogurt Soup)",
+          "note": "A cold yogurt soup with cucumber and dill."
+        },
+        {
+          "name": "Kavarma (Bulgarian Braised Meat)",
+          "note": "Slow-braised meat with vegetables and spices."
+        },
+        {
+          "name": "Kebapche",
+          "note": "Grilled, elongated ground-meat rolls."
+        }
+      ],
+      "fun_facts": [
+        "Bulgarian yogurt is linked to the bacterium Lactobacillus bulgaricus, named directly after the country where it was first described.",
+        "Shopska salad is named after the Šopluk region around Sofia and is traditionally served as a starter before the main course."
+      ],
+      "related_glossary": [
+        "bulgarian-yogurt"
+      ],
+      "related_countries": [
+        "RS",
+        "RO",
+        "GR"
+      ],
+      "seo_title": "Bulgaria — Bulgarian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Bulgarian cuisine: shopska salad, banitsa, kavarma, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "United Kingdom",
+      "slug": "united-kingdom",
+      "name_cs": "Velká Británie",
+      "name_en": "United Kingdom",
+      "iso_code": "GB",
+      "flag_emoji": "🇬🇧",
+      "continent": "europe",
+      "capital": "London",
+      "languages": [
+        "English"
+      ],
+      "currency": "British pound (GBP)",
+      "area_km2": 243610,
+      "population": 69100000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "British cuisine is the cuisine of the Sunday roast and fried food from the sea — simple, hearty, with a generous sauce on top.",
+      "taste_intro": "Crispy fried fish, a juicy roast with gravy, and a hot pudding with syrup to finish — British food is comforting, not showy.",
+      "typical_ingredients": [
+        "Potatoes",
+        "Beef",
+        "Cod",
+        "Butter",
+        "Flour",
+        "Treacle"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Fish and Chips",
+          "note": "Battered fried fish with chips, a classic from the English coast.",
+          "recipe_id": "fish-and-chips"
+        },
+        {
+          "name": "Beef Wellington",
+          "note": "Beef tenderloin in puff pastry with mushroom duxelles.",
+          "recipe_id": "beef-wellington"
+        },
+        {
+          "name": "Yorkshire Pudding",
+          "note": "A puffed batter bake, traditional with the Sunday roast.",
+          "recipe_id": "yorkshire-pudding"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Fish and Chips",
+          "note": "Battered fried fish with crispy chips."
+        },
+        {
+          "name": "Shepherd's pie",
+          "note": "Baked ground meat under a layer of mashed potato."
+        },
+        {
+          "name": "Beef Wellington",
+          "note": "Beef tenderloin in puff pastry with mushroom duxelles."
+        },
+        {
+          "name": "Yorkshire Pudding",
+          "note": "A puffed batter bake served with the Sunday roast."
+        },
+        {
+          "name": "Sticky Toffee Pudding",
+          "note": "A moist date sponge in toffee sauce."
+        }
+      ],
+      "fun_facts": [
+        "Fish and chips spread across Britain in the 19th century as cheap, quick food for workers in port and industrial towns.",
+        "Yorkshire pudding is traditionally baked in a very hot oven for exactly this reason: to puff up into its airy, domed shape."
+      ],
+      "related_glossary": [
+        "kitchen-thermometer"
+      ],
+      "related_countries": [
+        "IE"
+      ],
+      "seo_title": "United Kingdom — British cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover British cuisine: fish and chips, beef Wellington, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Ireland",
+      "slug": "ireland",
+      "name_cs": "Irsko",
+      "name_en": "Ireland",
+      "iso_code": "IE",
+      "flag_emoji": "🇮🇪",
+      "continent": "europe",
+      "capital": "Dublin",
+      "languages": [
+        "Irish",
+        "English"
+      ],
+      "currency": "Euro (€)",
+      "area_km2": 70273,
+      "population": 5440000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Irish cuisine comes from what grows well in a damp, cool climate — potatoes, cabbage, and lamb make food for cold days.",
+      "taste_intro": "Meat braised with root vegetables, mashed potato mixed with cabbage, and a quick soda bread without yeast — Irish cooking is rural and simple.",
+      "typical_ingredients": [
+        "Potatoes",
+        "Lamb",
+        "Cabbage",
+        "Bacon",
+        "Onion",
+        "Rye flour"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Irish Stew",
+          "note": "Lamb braised with potatoes and root vegetables.",
+          "recipe_id": "irish-stew"
+        },
+        {
+          "name": "Colcannon",
+          "note": "Mashed potato with kale or cabbage and butter.",
+          "recipe_id": "colcannon"
+        },
+        {
+          "name": "Irish Soda Bread",
+          "note": "A quick bread leavened with baking soda instead of yeast.",
+          "recipe_id": "irish-soda-bread"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Irish stew",
+          "note": "Lamb braised with potatoes and root vegetables."
+        },
+        {
+          "name": "Colcannon",
+          "note": "Mashed potato with cabbage, butter, and chives."
+        },
+        {
+          "name": "Irish soda bread",
+          "note": "A quick rustic bread made without yeast."
+        },
+        {
+          "name": "Boxty (Irish Potato Pancakes)",
+          "note": "Potato pancakes made from both boiled and raw potato."
+        },
+        {
+          "name": "Dublin Coddle",
+          "note": "Braised sausages with bacon and potatoes."
+        }
+      ],
+      "fun_facts": [
+        "Irish soda bread has been baked without yeast since the mid-19th century, when baking soda arrived in Ireland as an affordable leavening agent.",
+        "Colcannon was traditionally served on Halloween, when small coins or a ring were hidden inside for good luck."
+      ],
+      "related_glossary": [
+        "dutch-oven"
+      ],
+      "related_countries": [
+        "GB"
+      ],
+      "seo_title": "Ireland — Irish cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Irish cuisine: Irish stew, colcannon, soda bread, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Sweden",
+      "slug": "sweden",
+      "name_cs": "Švédsko",
+      "name_en": "Sweden",
+      "iso_code": "SE",
+      "flag_emoji": "🇸🇪",
+      "continent": "europe",
+      "capital": "Stockholm",
+      "languages": [
+        "Swedish"
+      ],
+      "currency": "Swedish krona (SEK)",
+      "area_km2": 450295,
+      "population": 10590000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Swedish cuisine lives on potatoes, fish, and foraged berries — simple Nordic food rounded out by the ritual of an afternoon coffee break and a cinnamon bun.",
+      "taste_intro": "Lightly sweet, seasoned with lingonberries and dill, with a salty edge from cured salmon — Swedish food is balanced and calm, never fiery.",
+      "typical_ingredients": [
+        "Potatoes",
+        "Salmon",
+        "Dill",
+        "Lingonberries",
+        "Cinnamon",
+        "Cream"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Swedish Meatballs (Köttbullar)",
+          "note": "Meatballs with mashed potato and lingonberry sauce.",
+          "recipe_id": "kottbullar"
+        },
+        {
+          "name": "Gravlax (Cured Salmon)",
+          "note": "Salmon cured in salt, sugar, and dill.",
+          "recipe_id": "gravlax"
+        },
+        {
+          "name": "Kanelbullar (Swedish Cinnamon Buns)",
+          "note": "Yeasted buns with a cinnamon filling, a symbol of Swedish fika.",
+          "recipe_id": "kanelbullar"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Swedish meatballs",
+          "note": "Köttbullar with mashed potato and lingonberries."
+        },
+        {
+          "name": "Gravlax (Cured Salmon)",
+          "note": "Salmon cured in salt, sugar, and dill."
+        },
+        {
+          "name": "Janssons frestelse",
+          "note": "Baked potatoes with anchovies and cream."
+        },
+        {
+          "name": "Kanelbullar",
+          "note": "Cinnamon buns for the afternoon fika."
+        },
+        {
+          "name": "Toast Skagen (Swedish Shrimp Toast)",
+          "note": "Toast with a shrimp salad and fish roe."
+        }
+      ],
+      "fun_facts": [
+        "The Swedish \"fika\" — an afternoon break for coffee and something sweet — is so deeply rooted it's treated almost as a social obligation.",
+        "Köttbullar became famous outside Sweden largely thanks to the furniture chain IKEA's cafeterias, though the traditional recipe is much older."
+      ],
+      "related_glossary": [
+        "fika",
+        "smorgasbord"
+      ],
+      "related_countries": [
+        "NO"
+      ],
+      "seo_title": "Sweden — Swedish cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Swedish cuisine: köttbullar, gravlax, kanelbullar, and more traditional recipes step by step.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "title": "Norway",
+      "slug": "norway",
+      "name_cs": "Norsko",
+      "name_en": "Norway",
+      "iso_code": "NO",
+      "flag_emoji": "🇳🇴",
+      "continent": "europe",
+      "capital": "Oslo",
+      "languages": [
+        "Norwegian"
+      ],
+      "currency": "Norwegian krone (NOK)",
+      "area_km2": 323802,
+      "population": 5580000,
+      "population_year": 2024,
+      "facts_source": "Worldometer.info (odhad na základě dat OSN), zaokrouhleno",
+      "facts_updated": "2025-01-01",
+      "intro": "Norwegian cuisine belongs to the sea and the mountains — fish, lamb, and potatoes form the backbone of a country with a long coastline and a short summer.",
+      "taste_intro": "Fresh and preserved fish, lamb with cabbage, and plenty of potatoes — Norwegian food is simple and doesn't hide its harsher climate.",
+      "typical_ingredients": [
+        "Fish",
+        "Lamb",
+        "Potatoes",
+        "Cabbage",
+        "Dill",
+        "Rye flour"
+      ],
+      "traditional_dishes": [
+        {
+          "name": "Fårikål (Norwegian Lamb and Cabbage Stew)",
+          "note": "Lamb braised with cabbage and whole peppercorns, Norway's national dish.",
+          "recipe_id": "farikal"
+        },
+        {
+          "name": "Norwegian Fish Soup (Fiskesuppe)",
+          "note": "A creamy fish soup with vegetables.",
+          "recipe_id": "fiskesuppe"
+        },
+        {
+          "name": "Lefse (Norwegian Potato Flatbread)",
+          "note": "Thin potato flatbread, traditional at Christmas.",
+          "recipe_id": "lefse"
+        }
+      ],
+      "must_try": [
+        {
+          "name": "Fårikål (Norwegian Lamb and Cabbage Stew)",
+          "note": "Lamb braised with cabbage and whole peppercorns."
+        },
+        {
+          "name": "Norwegian fish soup",
+          "note": "A creamy soup made with salmon or cod and vegetables."
+        },
+        {
+          "name": "Norwegian meat cakes",
+          "note": "Kjøttkaker with brown gravy and mashed potato."
+        },
+        {
+          "name": "Lefse (Norwegian Potato Flatbread)",
+          "note": "Thin potato flatbread with butter and sugar."
+        },
+        {
+          "name": "Fiskekaker (Norwegian Fish Cakes)",
+          "note": "Fish cakes made from cod or haddock."
+        }
+      ],
+      "fun_facts": [
+        "Fårikål has been officially declared Norway's national dish since 2019, and it even has its own \"fårikål day\" at the end of September.",
+        "Lefse is traditionally baked on a special round griddle and, at Christmas, filled with butter, sugar, or cinnamon."
+      ],
+      "related_glossary": [
+        "poaching"
+      ],
+      "related_countries": [
+        "SE"
+      ],
+      "seo_title": "Norway — Norwegian cuisine, recipes, and traditional dishes | Atlas Chuti",
+      "meta_description": "Discover Norwegian cuisine: fårikål, fish soup, lefse, and more traditional recipes step by step.",
+      "status": "publish"
+    }
+  ]
+}

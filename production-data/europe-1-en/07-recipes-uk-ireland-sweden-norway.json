@@ -1,0 +1,2898 @@
+{
+  "ingredients": [
+    {
+      "ingredient_key": "onion",
+      "locale": "en",
+      "title": "Onion",
+      "slug": "onion",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "garlic",
+      "locale": "en",
+      "title": "Garlic",
+      "slug": "garlic",
+      "aliases": [
+        "garlic clove",
+        "garlic cloves"
+      ],
+      "default_unit": "clove"
+    },
+    {
+      "ingredient_key": "potato",
+      "locale": "en",
+      "title": "Potatoes",
+      "slug": "potatoes",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "egg",
+      "locale": "en",
+      "title": "Egg",
+      "slug": "egg",
+      "aliases": [
+        "eggs"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "flour",
+      "locale": "en",
+      "title": "All-purpose flour",
+      "slug": "all-purpose-flour",
+      "aliases": [
+        "plain flour"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "butter",
+      "locale": "en",
+      "title": "Butter",
+      "slug": "butter",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "milk",
+      "locale": "en",
+      "title": "Milk",
+      "slug": "milk",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "salt",
+      "locale": "en",
+      "title": "Salt",
+      "slug": "salt",
+      "aliases": [],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "black-pepper",
+      "locale": "en",
+      "title": "Black pepper",
+      "slug": "black-pepper",
+      "aliases": [
+        "pepper"
+      ],
+      "default_unit": ""
+    },
+    {
+      "ingredient_key": "bay-leaf",
+      "locale": "en",
+      "title": "Bay leaf",
+      "slug": "bay-leaf",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "allspice",
+      "locale": "en",
+      "title": "Allspice berries",
+      "slug": "allspice-berries",
+      "aliases": [
+        "whole allspice"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "oil",
+      "locale": "en",
+      "title": "Vegetable oil",
+      "slug": "vegetable-oil",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "cream",
+      "locale": "en",
+      "title": "Whipping cream (33%)",
+      "slug": "whipping-cream-33",
+      "aliases": [
+        "heavy cream"
+      ],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "sugar",
+      "locale": "en",
+      "title": "Granulated sugar",
+      "slug": "granulated-sugar",
+      "aliases": [
+        "sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "powdered-sugar",
+      "locale": "en",
+      "title": "Powdered sugar",
+      "slug": "powdered-sugar",
+      "aliases": [
+        "icing sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "vanilla-sugar",
+      "locale": "en",
+      "title": "Vanilla sugar",
+      "slug": "vanilla-sugar",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "beef",
+      "locale": "en",
+      "title": "Beef",
+      "slug": "beef",
+      "aliases": [
+        "beef shank",
+        "beef brisket"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "beef-stock",
+      "locale": "en",
+      "title": "Beef stock",
+      "slug": "beef-stock",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "lamb",
+      "locale": "en",
+      "title": "Lamb",
+      "slug": "lamb",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "carrot",
+      "locale": "en",
+      "title": "Carrot",
+      "slug": "carrot",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "celery-root",
+      "locale": "en",
+      "title": "Celery root",
+      "slug": "celery-root",
+      "aliases": [
+        "celeriac"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "parsley",
+      "locale": "en",
+      "title": "Parsley",
+      "slug": "parsley",
+      "aliases": [
+        "flat-leaf parsley"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "lemon",
+      "locale": "en",
+      "title": "Lemon",
+      "slug": "lemon",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "breadcrumbs",
+      "locale": "en",
+      "title": "Breadcrumbs",
+      "slug": "breadcrumbs",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "ground-meat-mixed",
+      "locale": "en",
+      "title": "Mixed ground meat (pork and beef)",
+      "slug": "mixed-ground-meat-pork-and-beef",
+      "aliases": [
+        "ground beef and pork"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "grated-cheese",
+      "locale": "en",
+      "title": "Grated cheese",
+      "slug": "grated-cheese",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "white-cabbage",
+      "locale": "en",
+      "title": "White cabbage",
+      "slug": "white-cabbage",
+      "aliases": [
+        "cabbage"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "kale",
+      "locale": "en",
+      "title": "Kale (or collard greens)",
+      "slug": "kale-or-collard-greens",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "dill",
+      "locale": "en",
+      "title": "Dill",
+      "slug": "dill",
+      "aliases": [
+        "fresh dill"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "smoked-bacon",
+      "locale": "en",
+      "title": "Smoked bacon",
+      "slug": "smoked-bacon",
+      "aliases": [
+        "bacon"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "yeast",
+      "locale": "en",
+      "title": "Yeast",
+      "slug": "yeast",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "cinnamon",
+      "locale": "en",
+      "title": "Cinnamon",
+      "slug": "cinnamon",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "shrimp",
+      "locale": "en",
+      "title": "Shrimp",
+      "slug": "shrimp",
+      "aliases": [
+        "prawns"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "mustard",
+      "locale": "en",
+      "title": "Mustard",
+      "slug": "mustard",
+      "aliases": [],
+      "default_unit": "tbsp"
+    },
+    {
+      "ingredient_key": "worcestershire-sauce",
+      "locale": "en",
+      "title": "Worcestershire sauce",
+      "slug": "worcestershire-sauce",
+      "aliases": [],
+      "default_unit": "tbsp"
+    },
+    {
+      "ingredient_key": "salmon",
+      "locale": "en",
+      "title": "Salmon",
+      "slug": "salmon",
+      "aliases": [
+        "salmon fillet"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "white-fish",
+      "locale": "en",
+      "title": "White fish (cod)",
+      "slug": "white-fish-cod",
+      "aliases": [
+        "cod"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "anchovy",
+      "locale": "en",
+      "title": "Anchovies (Swedish sprats)",
+      "slug": "anchovies-swedish-sprats",
+      "aliases": [
+        "pickled sprats"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "baking-soda",
+      "locale": "en",
+      "title": "Baking soda",
+      "slug": "baking-soda",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "buttermilk",
+      "locale": "en",
+      "title": "Buttermilk",
+      "slug": "buttermilk",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "cardamom",
+      "locale": "en",
+      "title": "Ground cardamom",
+      "slug": "ground-cardamom",
+      "aliases": [],
+      "default_unit": "tsp"
+    },
+    {
+      "ingredient_key": "dates",
+      "locale": "en",
+      "title": "Dates",
+      "slug": "dates",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "brown-sugar",
+      "locale": "en",
+      "title": "Brown sugar",
+      "slug": "brown-sugar",
+      "aliases": [
+        "cane sugar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "puff-pastry",
+      "locale": "en",
+      "title": "Puff pastry",
+      "slug": "puff-pastry",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "prosciutto",
+      "locale": "en",
+      "title": "Prosciutto (cured ham)",
+      "slug": "prosciutto-cured-ham",
+      "aliases": [
+        "Parma ham"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "pork-sausage",
+      "locale": "en",
+      "title": "Pork sausages",
+      "slug": "pork-sausages",
+      "aliases": [],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "mayonnaise",
+      "locale": "en",
+      "title": "Mayonnaise",
+      "slug": "mayonnaise",
+      "aliases": [],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "toast-bread",
+      "locale": "en",
+      "title": "Toast bread",
+      "slug": "toast-bread",
+      "aliases": [
+        "sliced bread"
+      ],
+      "default_unit": "pcs"
+    },
+    {
+      "ingredient_key": "fish-roe",
+      "locale": "en",
+      "title": "Fish roe",
+      "slug": "fish-roe",
+      "aliases": [
+        "caviar"
+      ],
+      "default_unit": "g"
+    },
+    {
+      "ingredient_key": "potato-starch",
+      "locale": "en",
+      "title": "Potato starch",
+      "slug": "potato-starch",
+      "aliases": [],
+      "default_unit": "tbsp"
+    },
+    {
+      "ingredient_key": "fish-stock",
+      "locale": "en",
+      "title": "Fish stock",
+      "slug": "fish-stock",
+      "aliases": [],
+      "default_unit": "ml"
+    },
+    {
+      "ingredient_key": "nutmeg",
+      "locale": "en",
+      "title": "Nutmeg",
+      "slug": "nutmeg",
+      "aliases": [],
+      "default_unit": ""
+    }
+  ],
+  "recipes": [
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_fish-and-chips",
+      "recipe_key": "fish-and-chips",
+      "title": "Fish and Chips",
+      "slug": "fish-and-chips",
+      "country": "GB",
+      "excerpt": "Fish and chips is the British classic of battered fried fish with chips, which spread across Britain in the 19th century as cheap, fast food for workers in port and industrial towns. Cold, carbonated beer is behind the crisp batter — its bubbles create a light, airy structure once fried. The batter is best made just before frying, since the colder and fresher it is, the crispier the final result. That simplicity and speed of preparation still make fish and chips a beloved British takeaway dish today.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 25,
+      "total_minutes": 45,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "The secret to a crisp batter is cold, carbonated beer — its bubbles create a light, airy structure once fried.",
+      "ingredients": [
+        {
+          "ingredient_key": "white-fish",
+          "display_name": "White fish (cod)",
+          "quantity": "600",
+          "unit": "g",
+          "note": "fillets",
+          "group": "Fish"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "200",
+          "unit": "g",
+          "note": "plus a little extra for coating",
+          "group": "Batter"
+        },
+        {
+          "ingredient_key": "baking-soda",
+          "display_name": "Baking soda",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Batter"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Batter"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "800",
+          "unit": "g",
+          "note": "cut into chips",
+          "group": "Chips"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "1",
+          "unit": "l",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "to serve",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Cut the potatoes into chips, fry at a lower temperature until golden, and drain."
+        },
+        {
+          "order": 2,
+          "text": "Whisk the flour, baking soda, salt, and cold beer or sparkling water into a thin batter."
+        },
+        {
+          "order": 3,
+          "text": "Pat the fish fillets dry, lightly coat in flour, then dip into the batter."
+        },
+        {
+          "order": 4,
+          "text": "Fry in hot oil for 5–6 minutes, until the batter turns golden and crisp."
+        },
+        {
+          "order": 5,
+          "text": "Fry the chips once more briefly at a higher temperature to crisp them up."
+        },
+        {
+          "order": 6,
+          "text": "Serve together with the chips and a slice of lemon."
+        }
+      ],
+      "tips": [
+        "Make the batter just before frying — the colder and fresher it is, the crispier the final result."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Fish and chips spread across Britain in the 19th century as cheap, fast food for workers in port and industrial towns.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Fish and Chips – British Fried Fish Recipe | Atlas Chuti",
+      "meta_description": "Fish and chips recipe: battered fried fish with crispy chips.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_shepherds-pie",
+      "recipe_key": "shepherds-pie",
+      "title": "Shepherd's Pie",
+      "slug": "shepherds-pie",
+      "country": "GB",
+      "excerpt": "Shepherd's pie is a baked mashed-potato topped meat pie, born as a way to use up leftover roast meat together with mashed potato, typical of the British and Irish countryside. Only the lamb version is considered authentic — the beef version is correctly called cottage pie, though today both names are commonly used interchangeably. It's worth scoring the top of the mash with a fork before baking, which creates ridges that brown beautifully during baking. Whatever meat is used, the basic principle of a baked pie topped with a layer of mash stays the same.",
+      "servings_default": 6,
+      "prep_minutes": 25,
+      "cook_minutes": 50,
+      "total_minutes": 75,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "A true shepherd's pie is made with lamb — with beef, it's technically a cottage pie, even though the names are commonly used interchangeably today.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground lamb or beef",
+          "quantity": "600",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrots",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "cubed",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "worcestershire-sauce",
+          "display_name": "Worcestershire sauce",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "300",
+          "unit": "ml",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "for the mash",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "grated-cheese",
+          "display_name": "Grated cheese",
+          "quantity": "80",
+          "unit": "g",
+          "note": "optional, for topping",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Filling"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion, carrot, and garlic in oil, add the ground meat, and brown well."
+        },
+        {
+          "order": 2,
+          "text": "Stir in the flour, Worcestershire sauce, and broth, season with salt, and simmer for 20 minutes until the sauce thickens."
+        },
+        {
+          "order": 3,
+          "text": "Boil the potatoes until tender and mash with the butter and milk into a smooth purée."
+        },
+        {
+          "order": 4,
+          "text": "Transfer the meat filling to a baking dish and spread the mash evenly on top."
+        },
+        {
+          "order": 5,
+          "text": "Score the surface with a fork in a pattern, and scatter with cheese if using."
+        },
+        {
+          "order": 6,
+          "text": "Bake at 200°C (390°F) for 20–25 minutes until the top turns golden."
+        }
+      ],
+      "tips": [
+        "Score the top of the mash with a fork — it creates ridges that brown beautifully during baking."
+      ],
+      "watch_out": "",
+      "variants": [
+        {
+          "name": "Cottage pie",
+          "note": "Made with beef instead of lamb."
+        }
+      ],
+      "origin_history": "Shepherd's pie was born as a way to use up leftover roast meat together with mashed potato, typical of the British and Irish countryside.",
+      "related_glossary": [
+        "gratin"
+      ],
+      "related_recipes": [],
+      "seo_title": "Shepherd's Pie – British Recipe | Atlas Chuti",
+      "meta_description": "Shepherd's pie recipe: braised meat under a layer of mashed potato.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_beef-wellington",
+      "recipe_key": "beef-wellington",
+      "title": "Beef Wellington",
+      "slug": "beef-wellington",
+      "country": "GB",
+      "excerpt": "Beef Wellington is beef tenderloin wrapped in puff pastry with a mushroom duxelles, associated with the Duke of Wellington, though the exact origin of the name remains unclear. A layer of prosciutto wrapping the meat is essential — it acts as a barrier that keeps the moist duxelles from soaking through and making the puff pastry soggy. The duxelles must be completely cooled and free of moisture before wrapping, or it will make the pastry soggy and it won't turn out crisp. It's always worth checking the meat's internal temperature with a thermometer, since that's the only way to hit the desired doneness without cutting into the roast unnecessarily.",
+      "servings_default": 6,
+      "prep_minutes": 45,
+      "cook_minutes": 40,
+      "total_minutes": 85,
+      "difficulty": "hard",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "The key to a good Wellington is a layer of prosciutto that wraps the meat and keeps the moist duxelles from soaking through the puff pastry.",
+      "ingredients": [
+        {
+          "ingredient_key": "beef",
+          "display_name": "Beef tenderloin",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "whole, center-cut",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "mustard",
+          "display_name": "Mustard",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "prosciutto",
+          "display_name": "Prosciutto",
+          "quantity": "150",
+          "unit": "g",
+          "note": "thin slices",
+          "group": "Wrapping"
+        },
+        {
+          "ingredient_key": "puff-pastry",
+          "display_name": "Puff pastry",
+          "quantity": "500",
+          "unit": "g",
+          "note": "ready-made",
+          "group": "Wrapping"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "for brushing",
+          "group": "Wrapping"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "for the duxelles",
+          "group": "Duxelles"
+        },
+        {
+          "ingredient_key": "garlic",
+          "display_name": "Garlic",
+          "quantity": "2",
+          "unit": "clove",
+          "note": "",
+          "group": "Duxelles"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Season the meat with salt and pepper and sear quickly on all sides in a very hot pan, then brush with mustard and let cool."
+        },
+        {
+          "order": 2,
+          "text": "Finely chop the mushrooms with the onion and garlic and dry-fry until all the liquid evaporates (the duxelles)."
+        },
+        {
+          "order": 3,
+          "text": "Lay the prosciutto slices out on plastic wrap, spread with the cooled duxelles, place the meat in the center, and wrap tightly into a log; chill for 20 minutes."
+        },
+        {
+          "order": 4,
+          "text": "Wrap the meat log in rolled-out puff pastry, seal the edges, and brush with beaten egg."
+        },
+        {
+          "order": 5,
+          "text": "Bake at 200°C (390°F) for about 35–40 minutes, until the pastry is golden and the meat reaches the desired internal temperature."
+        },
+        {
+          "order": 6,
+          "text": "Let rest for 10 minutes before slicing."
+        }
+      ],
+      "tips": [
+        "The duxelles must be completely cooled and free of moisture before wrapping, or it will make the puff pastry soggy."
+      ],
+      "watch_out": "Always check the meat's internal temperature with a thermometer — that's the only way to hit the desired doneness without cutting into the roast.",
+      "variants": [],
+      "origin_history": "Beef Wellington is associated with the Duke of Wellington, though the exact origin of the name remains unclear.",
+      "related_glossary": [
+        "kitchen-thermometer"
+      ],
+      "related_recipes": [],
+      "seo_title": "Beef Wellington – British Recipe | Atlas Chuti",
+      "meta_description": "Beef Wellington recipe: tenderloin in puff pastry with mushroom duxelles.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_yorkshire-pudding",
+      "recipe_key": "yorkshire-pudding",
+      "title": "Yorkshire Pudding",
+      "slug": "yorkshire-pudding",
+      "country": "GB",
+      "excerpt": "Yorkshire pudding is a light, airy pudding made from batter baked in hot fat, coming from northern England, where it was traditionally baked under the spit to catch the dripping fat from the roast. A good rise is guaranteed by properly hot fat in the tins before the batter goes in — cold batter meeting hot fat is what makes it leap upward. The oven needs to stay closed and unopened while baking until the puddings are done, since a sudden loss of heat would make them sink back down. It's traditionally served as part of a Sunday roast dinner alongside the meat and gravy.",
+      "servings_default": 6,
+      "prep_minutes": 10,
+      "cook_minutes": 25,
+      "total_minutes": 35,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Named for catching the dripping fat beneath a roasting joint on a spit, the pudding was originally more about not wasting fat than about a side dish in its own right.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "a pinch",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "60",
+          "unit": "ml",
+          "note": "or fat drippings from the roast",
+          "group": "Baking"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Whisk the flour, eggs, milk, and salt into a smooth, thin batter and let rest for 30 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Pour a little oil into muffin tins and place in an oven preheated to 220°C (430°F) until the oil is very hot."
+        },
+        {
+          "order": 3,
+          "text": "Quickly pull out the hot tins and immediately pour in the batter, filling about halfway."
+        },
+        {
+          "order": 4,
+          "text": "Return to the oven right away and bake for 20–25 minutes without opening the door."
+        },
+        {
+          "order": 5,
+          "text": "Serve immediately, hot, traditionally with a Sunday roast and gravy."
+        }
+      ],
+      "tips": [
+        "Don't open the oven for even a moment until the puddings are done — a sudden loss of heat will make them sink back down."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Yorkshire pudding comes from northern England, where it was traditionally baked under the spit to catch the dripping fat from the roast.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Yorkshire Pudding – British Recipe | Atlas Chuti",
+      "meta_description": "Yorkshire pudding recipe: light baked batter for a Sunday roast.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_sticky-toffee-pudding",
+      "recipe_key": "sticky-toffee-pudding",
+      "title": "Sticky Toffee Pudding",
+      "slug": "sticky-toffee-pudding",
+      "country": "GB",
+      "excerpt": "Sticky toffee pudding is a moist British sponge dessert drenched in toffee sauce, whose modern form dates to the second half of the 20th century. Blended dates are the secret to its moistness and natural sweetness, which is what keeps the sponge soft long after it's cooled. It's worth poking the sponge with a skewer before pouring on the sauce, so the sauce reaches deeper inside and the dessert turns out even juicier. It's exactly the combination of date sponge and toffee sauce that makes it one of the most beloved British warm desserts.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 35,
+      "total_minutes": 55,
+      "difficulty": "medium",
+      "meal_type": [
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Blended dates give the sponge its characteristic moistness and natural sweetness, which is what keeps the pudding soft even after it's cooled.",
+      "ingredients": [
+        {
+          "ingredient_key": "dates",
+          "display_name": "Dates",
+          "quantity": "200",
+          "unit": "g",
+          "note": "pitted",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "baking-soda",
+          "display_name": "Baking soda",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "80",
+          "unit": "g",
+          "note": "softened",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "brown-sugar",
+          "display_name": "Brown sugar",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Eggs",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "200",
+          "unit": "g",
+          "note": "",
+          "group": "Sponge"
+        },
+        {
+          "ingredient_key": "brown-sugar",
+          "display_name": "Brown sugar",
+          "quantity": "150",
+          "unit": "g",
+          "note": "for the sauce",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "100",
+          "unit": "g",
+          "note": "for the sauce",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "for the sauce",
+          "group": "Sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Pour hot water over the dates with the baking soda and let soften for 10 minutes, then blend."
+        },
+        {
+          "order": 2,
+          "text": "Beat the butter with the sugar until fluffy, then mix in the eggs and date purée."
+        },
+        {
+          "order": 3,
+          "text": "Gently fold in the flour and pour the batter into a greased baking dish."
+        },
+        {
+          "order": 4,
+          "text": "Bake at 180°C (350°F) for 30–35 minutes, until a skewer comes out clean."
+        },
+        {
+          "order": 5,
+          "text": "For the sauce, melt the sugar with the butter, add the cream, and simmer for 3–4 minutes, stirring constantly, until thickened."
+        },
+        {
+          "order": 6,
+          "text": "While the sponge is still warm, poke it and pour over part of the hot sauce; serve the rest on the side."
+        }
+      ],
+      "tips": [
+        "Poke the sponge with a skewer before pouring on the sauce — the sauce reaches deeper inside and the dessert turns out juicier."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Sticky toffee pudding is a beloved British dessert whose modern form dates to the second half of the 20th century.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Sticky Toffee Pudding – British Recipe | Atlas Chuti",
+      "meta_description": "Sticky toffee pudding recipe: date sponge with toffee sauce.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_irish-stew",
+      "recipe_key": "irish-stew",
+      "title": "Irish Stew",
+      "slug": "irish-stew",
+      "country": "IE",
+      "excerpt": "Irish stew is braised lamb with potatoes, onion, and carrot, one of Ireland's oldest dishes, traditionally cooked from whatever a rural household had on hand. It's deliberately simple, without unnecessary seasoning, so the flavor of the ingredients themselves can come through without distraction. It should be cooked slowly over low heat, since lamb over too high a flame tends to toughen rather than become tender. The simplicity of its ingredients and slow braising still make Irish stew a typical rustic dish found all across Ireland.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 120,
+      "total_minutes": 140,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Irish stew is deliberately simple — lamb, potatoes, onion, and carrot, without unnecessary seasoning, so the flavor of the ingredients themselves comes through.",
+      "ingredients": [
+        {
+          "ingredient_key": "lamb",
+          "display_name": "Lamb",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "cubed, bone-in",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "800",
+          "unit": "g",
+          "note": "cut into larger pieces",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrots",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "bay-leaf",
+          "display_name": "Bay leaves",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "800",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "parsley",
+          "display_name": "Parsley",
+          "quantity": "15",
+          "unit": "g",
+          "note": "to garnish",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Braising"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Season the meat with salt and sear in oil on all sides until golden."
+        },
+        {
+          "order": 2,
+          "text": "Add the onion and sauté briefly."
+        },
+        {
+          "order": 3,
+          "text": "Pour in the broth, add the bay leaf, and braise covered over low heat for 1 hour."
+        },
+        {
+          "order": 4,
+          "text": "Add the potatoes and carrots and braise for another 45–60 minutes, until everything is tender and the sauce thickens."
+        },
+        {
+          "order": 5,
+          "text": "Season with salt and serve hot, scattered with fresh parsley."
+        }
+      ],
+      "tips": [
+        "Cook the stew slowly over low heat — lamb over too high a flame tends to toughen rather than become tender."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Irish stew is one of Ireland's oldest dishes, traditionally cooked from whatever a rural household had on hand.",
+      "related_glossary": [
+        "dutch-oven"
+      ],
+      "related_recipes": [],
+      "seo_title": "Irish Stew – Traditional Irish Recipe | Atlas Chuti",
+      "meta_description": "Irish stew recipe: braised lamb with potatoes and root vegetables.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_colcannon",
+      "recipe_key": "colcannon",
+      "title": "Colcannon",
+      "slug": "colcannon",
+      "country": "IE",
+      "excerpt": "Colcannon is Irish mashed potato with kale or cabbage, a traditional Irish side historically tied to autumn holidays and the kale harvest. At Halloween, small coins or a ring were once traditionally hidden inside it, and whoever found one while eating was said to be blessed with luck for the coming year. A well is left in the center of the plate with a knob of butter, which slowly melts into the hot mash — the traditional way of serving it. That tie to autumn holidays and the kale harvest makes colcannon a typical seasonal Irish dish.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 25,
+      "total_minutes": 40,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Colcannon was traditionally served at Halloween, when small coins or a ring were hidden inside the mash — whoever found one was said to be blessed with luck for the whole year.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "kale",
+          "display_name": "Kale (or cabbage)",
+          "quantity": "300",
+          "unit": "g",
+          "note": "chopped",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "80",
+          "unit": "g",
+          "note": "",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Mash"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Mash"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Boil the potatoes until tender and mash."
+        },
+        {
+          "order": 2,
+          "text": "Briefly cook the kale or cabbage until tender and chop finely."
+        },
+        {
+          "order": 3,
+          "text": "Sauté the onion in butter until translucent."
+        },
+        {
+          "order": 4,
+          "text": "Combine everything with the mashed potato, add the milk, and mix to a creamy consistency."
+        },
+        {
+          "order": 5,
+          "text": "Season with salt and pepper and serve with a knob of butter in the center."
+        }
+      ],
+      "tips": [
+        "Leave a well in the center of the plate with a knob of butter, which slowly melts into the hot mash — the traditional way of serving it."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Colcannon is a traditional Irish side, historically tied to autumn holidays and the kale harvest.",
+      "related_glossary": [],
+      "related_recipes": [
+        "bramboraky"
+      ],
+      "seo_title": "Colcannon – Irish Mashed Potato with Kale | Atlas Chuti",
+      "meta_description": "Colcannon recipe: mashed potato with kale and butter.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_irish-soda-bread",
+      "recipe_key": "irish-soda-bread",
+      "title": "Irish Soda Bread",
+      "slug": "irish-soda-bread",
+      "country": "IE",
+      "excerpt": "Irish soda bread is a quick bread leavened with baking soda instead of yeast, baked since the mid-19th century. It spread once baking soda became available in Irish shops as a cheap, easily accessible leavener, and it remains the fastest way to bake fresh bread without any rising time. The dough should be worked for as short a time as possible, since over-kneading would make the bread dense and it would lose its characteristic lightness. That speed of preparation without needing to let it rise is exactly what still makes it a beloved homemade bread today.",
+      "servings_default": 8,
+      "prep_minutes": 10,
+      "cook_minutes": 40,
+      "total_minutes": 50,
+      "difficulty": "easy",
+      "meal_type": [
+        "bakery"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Soda bread spread in Ireland once baking soda became available as an accessible leavener — it remains the fastest way to bake fresh bread without any rising time.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "450",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "baking-soda",
+          "display_name": "Baking soda",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "buttermilk",
+          "display_name": "Buttermilk",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "",
+          "group": "Dough"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Mix the flour with the baking soda and salt."
+        },
+        {
+          "order": 2,
+          "text": "Gradually pour in the buttermilk and quickly work by hand into a soft, slightly sticky dough — don't overmix."
+        },
+        {
+          "order": 3,
+          "text": "Shape the dough into a round loaf and place on a floured baking sheet."
+        },
+        {
+          "order": 4,
+          "text": "Score a cross into the top with a sharp knife, so the heat penetrates through more evenly."
+        },
+        {
+          "order": 5,
+          "text": "Bake at 200°C (390°F) for 35–40 minutes, until the loaf sounds hollow when tapped on the bottom."
+        }
+      ],
+      "tips": [
+        "Work the dough for as short a time as possible — over-kneading will make the bread dense."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Irish soda bread has been baked since the mid-19th century, once baking soda reached Irish households as a cheap leavener.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Irish Soda Bread – Traditional Recipe | Atlas Chuti",
+      "meta_description": "Irish soda bread recipe: quick bread made without yeast.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_boxty",
+      "recipe_key": "boxty",
+      "title": "Boxty (Irish Potato Pancakes)",
+      "slug": "boxty-irish-potato-pancakes",
+      "country": "IE",
+      "excerpt": "Boxty is an Irish potato pancake that combines raw grated potato with mashed cooked potato, resulting in a denser, moister batter than a classic potato pancake. It comes from the north of Ireland, and there's even a folk rhyme celebrating this potato pancake. The raw grated potato needs to be squeezed well, since excess water would thin the batter and the pancakes would fall apart while frying. Combining raw and cooked potato in a single batter makes boxty a distinct variation on the potato pancake within Europe as a whole.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 20,
+      "total_minutes": 40,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Boxty combines raw grated potato with mashed cooked potato — the resulting pancake is denser and moister than a classic potato pancake.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Raw potatoes",
+          "quantity": "400",
+          "unit": "g",
+          "note": "grated",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Boiled potatoes",
+          "quantity": "300",
+          "unit": "g",
+          "note": "mashed",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "buttermilk",
+          "display_name": "Buttermilk",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "baking-soda",
+          "display_name": "Baking soda",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "for frying",
+          "group": "For frying"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Squeeze the excess water out of the grated raw potato."
+        },
+        {
+          "order": 2,
+          "text": "Mix with the mashed potato, flour, buttermilk, baking soda, and salt into a thicker batter."
+        },
+        {
+          "order": 3,
+          "text": "Heat the butter in a pan and drop in spoonfuls of batter to form pancakes."
+        },
+        {
+          "order": 4,
+          "text": "Fry for 3–4 minutes per side until golden."
+        },
+        {
+          "order": 5,
+          "text": "Serve warm, on their own or with butter."
+        }
+      ],
+      "tips": [
+        "Squeeze the raw grated potato well — excess water would thin the batter and the pancakes would fall apart while frying."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Boxty comes from the north of Ireland, and there's even a folk rhyme celebrating this potato pancake.",
+      "related_glossary": [],
+      "related_recipes": [
+        "bramboraky",
+        "placki-ziemniaczane"
+      ],
+      "seo_title": "Boxty – Irish Potato Pancake Recipe | Atlas Chuti",
+      "meta_description": "Boxty recipe: Irish potato pancakes made from raw and cooked potato.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_dublin-coddle",
+      "recipe_key": "dublin-coddle",
+      "title": "Dublin Coddle",
+      "slug": "dublin-coddle",
+      "country": "IE",
+      "excerpt": "Dublin coddle is a braised dish of sausages, bacon, potatoes, and onion, a traditional Dublin dish historically tied to Saturday night after a week of work. It began as a way to use up whatever leftovers were on hand on a Saturday evening, braising with potatoes and onion to use up sausages and bacon left over from Sunday lunch. It's worth briefly browning the sausages and bacon before braising, which gives the dish more flavor than braising them raw. That simplicity of cooking from leftovers still makes coddle a typical Dublin home-cooked dish today.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 60,
+      "total_minutes": 75,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Coddle is a dish made from whatever was on hand on a Saturday evening — leftover sausages and bacon from Sunday lunch simply braised with potatoes and onion.",
+      "ingredients": [
+        {
+          "ingredient_key": "pork-sausage",
+          "display_name": "Pork sausages",
+          "quantity": "8",
+          "unit": "pcs",
+          "note": "",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "smoked-bacon",
+          "display_name": "Bacon",
+          "quantity": "200",
+          "unit": "g",
+          "note": "cubed",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "800",
+          "unit": "g",
+          "note": "sliced",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "3",
+          "unit": "pcs",
+          "note": "sliced",
+          "group": "Vegetables"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "500",
+          "unit": "ml",
+          "note": "",
+          "group": "Braising"
+        },
+        {
+          "ingredient_key": "parsley",
+          "display_name": "Parsley",
+          "quantity": "10",
+          "unit": "g",
+          "note": "to garnish",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Braising"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Briefly brown the sausages and bacon in a pan until golden."
+        },
+        {
+          "order": 2,
+          "text": "Layer the potatoes, onion, bacon, and sausages in a pot."
+        },
+        {
+          "order": 3,
+          "text": "Pour in the broth, season with pepper, and bring to a boil."
+        },
+        {
+          "order": 4,
+          "text": "Braise covered over low heat for about 1 hour, until the potatoes are tender."
+        },
+        {
+          "order": 5,
+          "text": "Serve hot, scattered with parsley, traditionally with a slice of bread."
+        }
+      ],
+      "tips": [
+        "Briefly brown the sausages and bacon before braising — it gives the dish more flavor than braising them raw."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Dublin coddle is a traditional Dublin dish, historically tied to Saturday night after a week of work.",
+      "related_glossary": [
+        "dutch-oven"
+      ],
+      "related_recipes": [],
+      "seo_title": "Dublin Coddle – Irish Recipe | Atlas Chuti",
+      "meta_description": "Dublin coddle recipe: braised sausages with bacon, onion, and potatoes.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kottbullar",
+      "recipe_key": "kottbullar",
+      "title": "Swedish Meatballs (Köttbullar)",
+      "slug": "swedish-meatballs-kottbullar",
+      "country": "SE",
+      "excerpt": "Köttbullar are Swedish meatballs in brown gravy, one of Sweden's best-known dishes, with the recipe passed down through generations in Swedish homes. Outside Sweden, people mostly associate them with the furniture retailer IKEA's cafeterias, though the recipe has circulated in families for far longer than that global fame has existed. It's worth making the meatballs as small and evenly sized as possible, since they then cook through faster and more evenly while frying. The gap between what tourists know from the cafeteria and what's cooked at home mainly comes down to the years a recipe has already been passed down in a particular family.",
+      "servings_default": 4,
+      "prep_minutes": 25,
+      "cook_minutes": 25,
+      "total_minutes": 50,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Swedish meatballs became famous outside Sweden mainly through the furniture retailer IKEA's cafeterias, but the traditional home recipe is much older.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat (beef and pork)",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Meatballs"
+        },
+        {
+          "ingredient_key": "breadcrumbs",
+          "display_name": "Breadcrumbs",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Meatballs"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Meatballs"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely chopped",
+          "group": "Meatballs"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Meatballs"
+        },
+        {
+          "ingredient_key": "nutmeg",
+          "display_name": "Nutmeg",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Meatballs"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "60",
+          "unit": "g",
+          "note": "for the sauce",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "40",
+          "unit": "g",
+          "note": "for the sauce",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "for the sauce",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "for the sauce",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Meatballs"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Soak the breadcrumbs in milk and let sit for 5 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Mix with the ground meat, onion, egg, nutmeg, and salt, and combine until smooth."
+        },
+        {
+          "order": 3,
+          "text": "With damp hands, shape into small meatballs."
+        },
+        {
+          "order": 4,
+          "text": "Brown them in butter on all sides and remove."
+        },
+        {
+          "order": 5,
+          "text": "In the same pan, stir in the flour, pour in the broth and cream, and simmer until thickened."
+        },
+        {
+          "order": 6,
+          "text": "Return the meatballs to the sauce and warm through; serve with mashed potatoes and lingonberries."
+        }
+      ],
+      "tips": [
+        "Make the meatballs as small and evenly sized as possible — they cook through faster and more evenly."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Swedish meatballs are one of Sweden's best-known dishes, with the recipe passed down through generations in Swedish homes.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Swedish Meatballs (Köttbullar) Recipe | Atlas Chuti",
+      "meta_description": "Swedish meatball recipe: meatballs in a creamy sauce with lingonberries.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_gravlax",
+      "recipe_key": "gravlax",
+      "title": "Gravlax (Cured Salmon)",
+      "slug": "gravlax-cured-salmon",
+      "country": "SE",
+      "excerpt": "Gravlax is salmon cured in salt, sugar, and dill, with roots in an old Scandinavian method of preserving fish by burying it in salt and sand, while today's version without burying is much more recent. It's neither cooked nor smoked — the salmon simply cures in salt, sugar, and dill, which is exactly why it keeps its delicate, almost raw texture. It's worth weighting the fish during curing, since the pressure helps push out excess liquid evenly and speeds up curing the meat. Only fresh fish intended for raw consumption should be used for gravlax, since anything else carries a health risk.",
+      "servings_default": 8,
+      "prep_minutes": 20,
+      "cook_minutes": 0,
+      "total_minutes": 20,
+      "difficulty": "medium",
+      "meal_type": [
+        "appetizer"
+      ],
+      "diet": [],
+      "about": "Health and freshness matter more here than with almost any other preparation, since the fish is never cooked or smoked, only cured.",
+      "ingredients": [
+        {
+          "ingredient_key": "salmon",
+          "display_name": "Salmon",
+          "quantity": "800",
+          "unit": "g",
+          "note": "fresh fillet, skin on",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Coarse salt",
+          "quantity": "80",
+          "unit": "g",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "60",
+          "unit": "g",
+          "note": "",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "dill",
+          "display_name": "Dill",
+          "quantity": "50",
+          "unit": "g",
+          "note": "fresh, chopped",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "coarsely crushed",
+          "group": "Marinade"
+        },
+        {
+          "ingredient_key": "mustard",
+          "display_name": "Mustard",
+          "quantity": "3",
+          "unit": "tbsp",
+          "note": "for the dill sauce",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "for the sauce",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "oil",
+          "display_name": "Vegetable oil",
+          "quantity": "80",
+          "unit": "ml",
+          "note": "for the sauce",
+          "group": "Sauce"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Mix the salt, sugar, and pepper and rub evenly over both sides of the fish fillet."
+        },
+        {
+          "order": 2,
+          "text": "Coat the fillet in chopped dill."
+        },
+        {
+          "order": 3,
+          "text": "Wrap tightly in plastic wrap, place on a tray with a weight on top, and refrigerate for 48 hours, turning once a day."
+        },
+        {
+          "order": 4,
+          "text": "Rinse the fish to remove excess salt and sugar and pat dry."
+        },
+        {
+          "order": 5,
+          "text": "Slice into thin diagonal pieces."
+        },
+        {
+          "order": 6,
+          "text": "For the dill sauce, mix the mustard with the sugar and, whisking constantly, drizzle in the oil, then stir in chopped dill at the end."
+        }
+      ],
+      "tips": [
+        "Weight the fish while curing — the pressure helps push out excess liquid evenly and speeds up the process."
+      ],
+      "watch_out": "Only use fresh fish intended for raw consumption for gravlax.",
+      "variants": [],
+      "origin_history": "Gravlax has roots in an old Scandinavian method of preserving fish by burying it in salt and sand; today's version without burying is much more recent.",
+      "related_glossary": [
+        "smorgasbord"
+      ],
+      "related_recipes": [],
+      "seo_title": "Gravlax – Swedish Cured Salmon Recipe | Atlas Chuti",
+      "meta_description": "Gravlax recipe: salmon cured in salt, sugar, and dill.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_janssons-frestelse",
+      "recipe_key": "janssons-frestelse",
+      "title": "Jansson's Temptation (Janssons Frestelse)",
+      "slug": "janssons-temptation",
+      "country": "SE",
+      "excerpt": "Jansson's Temptation is a baked potato dish with anchovies and cream, a classic course on the Swedish Christmas table known as julbord. Swedish \"ansjovis\" are actually pickled sprats, not Italian anchovies, and they give the dish a delicately salty, caramelized flavor. The brine from the anchovies shouldn't be poured away — it's worth adding it to the cream, since it gives the dish a deeper salty flavor while baking. The dish's name is linked to a character from an early-20th-century advertisement, though its exact origin remains unclear.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 45,
+      "total_minutes": 65,
+      "difficulty": "easy",
+      "meal_type": [
+        "side-dish"
+      ],
+      "diet": [],
+      "about": "The dish's mysterious name is tied to a character from an early-20th-century Swedish advertisement, though which one exactly has been lost to time.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "cut into thin matchsticks",
+          "group": "Baking dish"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "thinly sliced",
+          "group": "Baking dish"
+        },
+        {
+          "ingredient_key": "anchovy",
+          "display_name": "Swedish anchovies (sprats)",
+          "quantity": "150",
+          "unit": "g",
+          "note": "with a little of their brine",
+          "group": "Baking dish"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "",
+          "group": "Baking dish"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "",
+          "group": "Baking dish"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Baking dish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion in butter until translucent."
+        },
+        {
+          "order": 2,
+          "text": "In a baking dish, layer the potatoes, onion, and anchovies, and season with pepper."
+        },
+        {
+          "order": 3,
+          "text": "Pour in the cream so everything is almost covered."
+        },
+        {
+          "order": 4,
+          "text": "Dot the top with pieces of butter."
+        },
+        {
+          "order": 5,
+          "text": "Bake at 200°C (390°F) for 40–45 minutes, until the potatoes are tender and the top turns golden."
+        }
+      ],
+      "tips": [
+        "Don't pour away the brine from the anchovies — add it to the cream, it gives the dish a deeper salty flavor."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Jansson's Temptation is a classic course on the Swedish Christmas table (julbord); its name is linked to a character from an early-20th-century advertisement.",
+      "related_glossary": [
+        "smorgasbord"
+      ],
+      "related_recipes": [],
+      "seo_title": "Jansson's Temptation – Swedish Baked Potato Recipe | Atlas Chuti",
+      "meta_description": "Jansson's Temptation recipe: baked potatoes with sprats and cream.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kanelbullar",
+      "recipe_key": "kanelbullar",
+      "title": "Kanelbullar (Swedish Cinnamon Buns)",
+      "slug": "kanelbullar-swedish-cinnamon-buns",
+      "country": "SE",
+      "excerpt": "Kanelbullar are Swedish cinnamon buns scented with cardamom, inseparably tied to the Swedish ritual of fika and even celebrated with their own Swedish holiday on October 4th. Cardamom isn't limited to just the cinnamon filling — it's also worked directly into the dough, and it's exactly that spice that gives this Swedish pastry its distinctive aroma. It's worth letting the butter for the filling soften thoroughly, since it then spreads more easily over the whole rolled-out surface of the dough. That dedicated holiday and tie to the fika ritual make kanelbullar one of Sweden's most significant pastries of all.",
+      "servings_default": 16,
+      "prep_minutes": 40,
+      "cook_minutes": 15,
+      "total_minutes": 55,
+      "difficulty": "medium",
+      "meal_type": [
+        "bakery",
+        "dessert"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Kanelbullar are traditionally leavened with cardamom right in the dough, not just in the cinnamon filling — it's exactly that cardamom that gives this Swedish pastry its distinctive aroma.",
+      "ingredients": [
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "500",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "lukewarm",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "yeast",
+          "display_name": "Fresh yeast",
+          "quantity": "25",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "sugar",
+          "display_name": "Sugar",
+          "quantity": "80",
+          "unit": "g",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "100",
+          "unit": "g",
+          "note": "softened",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "cardamom",
+          "display_name": "Ground cardamom",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "80",
+          "unit": "g",
+          "note": "softened, for the filling",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "brown-sugar",
+          "display_name": "Brown sugar",
+          "quantity": "80",
+          "unit": "g",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "cinnamon",
+          "display_name": "Cinnamon",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Filling"
+        },
+        {
+          "ingredient_key": "egg",
+          "display_name": "Egg",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "for brushing",
+          "group": "Finishing"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Make a starter from the milk, yeast, and a spoonful of sugar and let it activate."
+        },
+        {
+          "order": 2,
+          "text": "Mix with the flour, sugar, butter, and cardamom and work into a smooth dough; let rise for an hour."
+        },
+        {
+          "order": 3,
+          "text": "Roll the dough into a rectangle and spread with the softened butter mixed with brown sugar and cinnamon."
+        },
+        {
+          "order": 4,
+          "text": "Roll into a log, slice into rounds, and flatten each slightly."
+        },
+        {
+          "order": 5,
+          "text": "Arrange on a baking sheet, let rise for 30 minutes, and brush with beaten egg."
+        },
+        {
+          "order": 6,
+          "text": "Bake at 200°C (390°F) for 12–15 minutes until golden."
+        }
+      ],
+      "tips": [
+        "Let the butter for the filling soften thoroughly — it spreads more easily over the whole rolled-out dough."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Kanelbullar are inseparably tied to the Swedish ritual of fika and even have their own Swedish holiday on October 4th.",
+      "related_glossary": [
+        "fika",
+        "proofing"
+      ],
+      "related_recipes": [],
+      "seo_title": "Kanelbullar – Swedish Cinnamon Buns Recipe | Atlas Chuti",
+      "meta_description": "Kanelbullar recipe: Swedish yeasted buns with a cinnamon filling.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_toast-skagen",
+      "recipe_key": "toast-skagen",
+      "title": "Toast Skagen (Swedish Shrimp Toast)",
+      "slug": "toast-skagen-swedish-shrimp-toast",
+      "country": "SE",
+      "excerpt": "Toast Skagen is a Swedish appetizer of shrimp salad on toasted bread, created in the mid-20th century and named after the Danish port town of Skagen, source of the high-quality shrimp it uses. Though it's a simple dish, it feels elegant, and success mainly comes down to the quality of the shrimp and not skimping on plenty of fresh dill. The shrimp salad is best mixed just before serving, since it shouldn't sit long with the mayonnaise if it's to stay fresh and not turn watery. The name, referencing the Danish town, points to the origin of the highest-quality shrimp used in the recipe.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 5,
+      "total_minutes": 20,
+      "difficulty": "easy",
+      "meal_type": [
+        "appetizer"
+      ],
+      "diet": [],
+      "about": "It only takes a few minutes to put together, which is part of why it works so well as a starter before a bigger main course.",
+      "ingredients": [
+        {
+          "ingredient_key": "shrimp",
+          "display_name": "Shrimp",
+          "quantity": "400",
+          "unit": "g",
+          "note": "cooked and peeled",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "mayonnaise",
+          "display_name": "Mayonnaise",
+          "quantity": "150",
+          "unit": "g",
+          "note": "",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "dill",
+          "display_name": "Dill",
+          "quantity": "20",
+          "unit": "g",
+          "note": "chopped",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "lemon",
+          "display_name": "Lemon",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "juice and zest",
+          "group": "Salad"
+        },
+        {
+          "ingredient_key": "toast-bread",
+          "display_name": "Toast bread",
+          "quantity": "4",
+          "unit": "pcs",
+          "note": "",
+          "group": "To serve"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "20",
+          "unit": "g",
+          "note": "for toasting the bread",
+          "group": "To serve"
+        },
+        {
+          "ingredient_key": "fish-roe",
+          "display_name": "Fish roe",
+          "quantity": "40",
+          "unit": "g",
+          "note": "optional, to garnish",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Roughly chop the shrimp and mix with the mayonnaise, dill, lemon juice, and zest."
+        },
+        {
+          "order": 2,
+          "text": "Season with salt and pepper."
+        },
+        {
+          "order": 3,
+          "text": "Toast the bread in butter until golden."
+        },
+        {
+          "order": 4,
+          "text": "Spread the shrimp salad onto the warm toast."
+        },
+        {
+          "order": 5,
+          "text": "Garnish with a spoonful of fish roe and a sprig of dill; serve immediately."
+        }
+      ],
+      "tips": [
+        "Mix the shrimp salad just before serving — it shouldn't sit long with the mayonnaise if it's to stay fresh."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Toast Skagen was created in the mid-20th century and is named after the Danish port town of Skagen, source of high-quality shrimp.",
+      "related_glossary": [],
+      "related_recipes": [],
+      "seo_title": "Toast Skagen – Swedish Shrimp Toast Recipe | Atlas Chuti",
+      "meta_description": "Toast Skagen recipe: shrimp salad with dill on toasted bread.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_farikal",
+      "recipe_key": "farikal",
+      "title": "Fårikål (Norwegian Lamb and Cabbage Stew)",
+      "slug": "farikal-norwegian-lamb-cabbage-stew",
+      "country": "NO",
+      "excerpt": "Fårikål is lamb braised with cabbage and whole peppercorns, a traditional autumn Norwegian dish made from freshly slaughtered lamb, with its own official \"fårikål day\" since 2019. It gets by on just three ingredients — lamb, cabbage, and whole peppercorns — and yet has held official status as Norway's national dish since 2019. The whole peppercorns should never be blended or ground, since their gradual release of flavor during long braising is exactly what makes fårikål distinctive and irreplaceable. The simplicity of just three ingredients makes it a symbol of Norwegian autumn cooking.",
+      "servings_default": 6,
+      "prep_minutes": 20,
+      "cook_minutes": 120,
+      "total_minutes": 140,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Fårikål has just three main ingredients — lamb, cabbage, and whole peppercorns — and yet has been officially celebrated as Norway's national dish since 2019.",
+      "ingredients": [
+        {
+          "ingredient_key": "lamb",
+          "display_name": "Lamb",
+          "quantity": "1.2",
+          "unit": "kg",
+          "note": "bone-in pieces",
+          "group": "Meat"
+        },
+        {
+          "ingredient_key": "white-cabbage",
+          "display_name": "White cabbage",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "cut into large pieces",
+          "group": "Cabbage"
+        },
+        {
+          "ingredient_key": "black-pepper",
+          "display_name": "Black pepper",
+          "quantity": "1",
+          "unit": "tbsp",
+          "note": "whole",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "for thickening",
+          "group": "Spices"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Spices"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "In a large pot, layer the meat and cabbage, salting and scattering whole peppercorns over each layer."
+        },
+        {
+          "order": 2,
+          "text": "Sprinkle the top layer with flour."
+        },
+        {
+          "order": 3,
+          "text": "Add water to about halfway up the contents of the pot."
+        },
+        {
+          "order": 4,
+          "text": "Bring to a boil, then braise covered over low heat for 2 hours, until the meat is tender."
+        },
+        {
+          "order": 5,
+          "text": "Serve with boiled potatoes."
+        }
+      ],
+      "tips": [
+        "Never blend or grind the whole peppercorns — their gradual release of flavor during long braising is what makes fårikål distinctive."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Fårikål is a traditional autumn dish made from freshly slaughtered lamb, with its own official \"fårikål day\" since 2019.",
+      "related_glossary": [
+        "braising"
+      ],
+      "related_recipes": [],
+      "seo_title": "Fårikål – Norway's National Dish Recipe | Atlas Chuti",
+      "meta_description": "Fårikål recipe: lamb braised with cabbage and whole peppercorns.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_fiskesuppe",
+      "recipe_key": "fiskesuppe",
+      "title": "Norwegian Fish Soup (Fiskesuppe)",
+      "slug": "norwegian-fish-soup-fiskesuppe",
+      "country": "NO",
+      "excerpt": "Fiskesuppe is a simple Norwegian fish soup, a traditional dish of the Norwegian coast, where fresh fish is available all year round. What stands out most is the freshness of the fish — the higher the quality of fish used, the less seasoning it actually needs. The fish needs to go into the soup only at the very end and cook just briefly, since overcooked fish falls apart and loses its structure. The year-round availability of fresh fish is what makes fiskesuppe a typical everyday dish of the Norwegian coast.",
+      "servings_default": 4,
+      "prep_minutes": 15,
+      "cook_minutes": 30,
+      "total_minutes": 45,
+      "difficulty": "easy",
+      "meal_type": [
+        "soup"
+      ],
+      "diet": [],
+      "about": "Fiskesuppe is a simple soup where the freshness of the fish stands out most — the higher the quality of fish, the less seasoning it needs.",
+      "ingredients": [
+        {
+          "ingredient_key": "white-fish",
+          "display_name": "White fish (cod)",
+          "quantity": "300",
+          "unit": "g",
+          "note": "cut into pieces",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "salmon",
+          "display_name": "Salmon",
+          "quantity": "200",
+          "unit": "g",
+          "note": "cut into pieces",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "carrot",
+          "display_name": "Carrots",
+          "quantity": "2",
+          "unit": "pcs",
+          "note": "sliced into rounds",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "celery-root",
+          "display_name": "Celery root",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "a small piece",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "fish-stock",
+          "display_name": "Fish broth",
+          "quantity": "1",
+          "unit": "l",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "200",
+          "unit": "ml",
+          "note": "",
+          "group": "Soup"
+        },
+        {
+          "ingredient_key": "dill",
+          "display_name": "Dill",
+          "quantity": "15",
+          "unit": "g",
+          "note": "to garnish",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Soup"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Sauté the onion, carrots, and celery root in butter or oil until tender."
+        },
+        {
+          "order": 2,
+          "text": "Pour in the fish broth and cook for 10 minutes, until the vegetables are tender."
+        },
+        {
+          "order": 3,
+          "text": "Add the cream and bring to a gentle simmer."
+        },
+        {
+          "order": 4,
+          "text": "Add the pieces of fish and cook over low heat for 6–8 minutes, until cooked through."
+        },
+        {
+          "order": 5,
+          "text": "Season with salt and serve scattered with fresh dill."
+        }
+      ],
+      "tips": [
+        "Add the fish to the soup only at the very end and cook it just briefly — overcooked fish falls apart and loses its structure."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Fiskesuppe is a traditional dish of the Norwegian coast, where fresh fish is available all year round.",
+      "related_glossary": [
+        "poaching"
+      ],
+      "related_recipes": [],
+      "seo_title": "Norwegian Fish Soup (Fiskesuppe) Recipe | Atlas Chuti",
+      "meta_description": "Norwegian fish soup recipe with salmon and cod.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_kjottkaker",
+      "recipe_key": "kjottkaker",
+      "title": "Norwegian Meat Patties (Kjøttkaker)",
+      "slug": "norwegian-meat-patties-kjottkaker",
+      "country": "NO",
+      "excerpt": "Kjøttkaker are Norwegian meat patties in brown gravy, one of Norway's most common dishes, traditionally cooked as a Sunday lunch. Compared to Swedish köttbullar, they're noticeably larger and flatter, more like patties than balls, and come to the table with a bolder brown gravy. It's worth letting the meat mixture rest briefly with the potato starch, since the patties then hold their shape better while frying. The difference in size and shape from Swedish köttbullar is exactly what sets kjøttkaker apart most from their Swedish relative.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 25,
+      "total_minutes": 45,
+      "difficulty": "easy",
+      "meal_type": [
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Unlike Swedish köttbullar, Norwegian kjøttkaker are larger and flatter, more like patties than balls, and are served with a bolder brown gravy.",
+      "ingredients": [
+        {
+          "ingredient_key": "ground-meat-mixed",
+          "display_name": "Ground meat (beef and pork)",
+          "quantity": "600",
+          "unit": "g",
+          "note": "",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "potato-starch",
+          "display_name": "Potato starch",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "grated",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "nutmeg",
+          "display_name": "Nutmeg",
+          "quantity": "1",
+          "unit": "pinch",
+          "note": "",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "for frying",
+          "group": "For frying"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "30",
+          "unit": "g",
+          "note": "for the gravy",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "beef-stock",
+          "display_name": "Broth",
+          "quantity": "400",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "",
+          "group": "Sauce"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "podle chuti",
+          "unit": "to_taste",
+          "note": "to taste",
+          "group": "Patties"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Mix the ground meat with the potato starch and milk and let sit for 10 minutes."
+        },
+        {
+          "order": 2,
+          "text": "Add the onion, nutmeg, and salt and mix until smooth."
+        },
+        {
+          "order": 3,
+          "text": "With damp hands, shape into flat patties."
+        },
+        {
+          "order": 4,
+          "text": "Fry in butter for 3–4 minutes per side until golden, then remove."
+        },
+        {
+          "order": 5,
+          "text": "Stir the flour into the pan drippings, pour in the broth and cream, and simmer until thickened."
+        },
+        {
+          "order": 6,
+          "text": "Return the patties to the gravy and warm through; serve with mashed potatoes."
+        }
+      ],
+      "tips": [
+        "Let the meat mixture rest briefly with the potato starch — the patties hold their shape better while frying."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Kjøttkaker are one of Norway's most common dishes, traditionally cooked as a Sunday lunch.",
+      "related_glossary": [],
+      "related_recipes": [
+        "kottbullar"
+      ],
+      "seo_title": "Norwegian Meat Patties (Kjøttkaker) Recipe | Atlas Chuti",
+      "meta_description": "Kjøttkaker recipe: Norwegian meat patties in brown gravy.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_lefse",
+      "recipe_key": "lefse",
+      "title": "Lefse (Norwegian Potato Flatbread)",
+      "slug": "lefse-norwegian-potato-flatbread",
+      "country": "NO",
+      "excerpt": "Lefse is a thin Norwegian flatbread cooked dry on a griddle, a traditional Norwegian Christmas bake, with similar flatbreads cooked in variations elsewhere across Scandinavia too. In method it resembles Slovak lokše, cooked dry on a hot griddle, and at Christmas it's traditionally filled with butter, sugar, or cinnamon. It's worth chilling the dough thoroughly before rolling out, since warm dough is harder to shape and holds its form less well when rolled thin. Its resemblance to Slovak lokše shows how similar dry-griddled flatbreads developed independently across different parts of Europe.",
+      "servings_default": 8,
+      "prep_minutes": 30,
+      "cook_minutes": 25,
+      "total_minutes": 55,
+      "difficulty": "medium",
+      "meal_type": [
+        "bakery",
+        "side-dish"
+      ],
+      "diet": [
+        "vegetarian"
+      ],
+      "about": "Chilling the dough thoroughly before rolling it out is what keeps lefse thin and manageable — warm dough tears rather than stretching evenly.",
+      "ingredients": [
+        {
+          "ingredient_key": "potato",
+          "display_name": "Potatoes",
+          "quantity": "1",
+          "unit": "kg",
+          "note": "boiled, mashed",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "flour",
+          "display_name": "Plain flour",
+          "quantity": "250",
+          "unit": "g",
+          "note": "plus a little extra for the board",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "60",
+          "unit": "g",
+          "note": "softened",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "80",
+          "unit": "ml",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Dough"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "for brushing",
+          "group": "To garnish"
+        },
+        {
+          "ingredient_key": "cinnamon",
+          "display_name": "Cinnamon",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "optional, for dusting",
+          "group": "To garnish"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Press the still-warm boiled potatoes through a ricer and mix with the butter, cream, and salt."
+        },
+        {
+          "order": 2,
+          "text": "Stir in the flour and quickly work into a smooth dough; chill in the fridge for at least an hour."
+        },
+        {
+          "order": 3,
+          "text": "Divide the dough into pieces and roll out as thin as possible into rounds on a floured board."
+        },
+        {
+          "order": 4,
+          "text": "Cook on a dry, hot griddle or pan for 1–2 minutes per side, until brown spots appear."
+        },
+        {
+          "order": 5,
+          "text": "Brush the finished lefse with butter, dust with cinnamon if using, and serve warm or rolled up."
+        }
+      ],
+      "tips": [
+        "Chill the dough thoroughly before rolling out — warm dough is harder to shape and holds its form less well."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Lefse is a traditional Norwegian Christmas bake; similar flatbreads are cooked in variations elsewhere across Scandinavia too.",
+      "related_glossary": [],
+      "related_recipes": [
+        "lokse"
+      ],
+      "seo_title": "Lefse – Norwegian Potato Flatbread Recipe | Atlas Chuti",
+      "meta_description": "Lefse recipe: thin Norwegian potato flatbread cooked dry on a griddle.",
+      "status": "publish"
+    },
+    {
+      "locale": "en",
+      "translation_status": "published",
+      "translation_group": "recipe_fiskekaker",
+      "recipe_key": "fiskekaker",
+      "title": "Fiskekaker (Norwegian Fish Cakes)",
+      "slug": "fiskekaker-norwegian-fish-cakes",
+      "country": "NO",
+      "excerpt": "Fiskekaker are Norwegian fish cakes, a traditional Norwegian dish commonly available ready-made in every Norwegian grocery store. The best fiskekaker are recognizable by their almost airy, delicate texture, achieved by blending the fish very finely and gradually working in cold cream. The milk and cream need to be added cold and gradually, or the mixture won't come together and the cakes will turn out watery and crumbly. Being commonly available ready-made in stores makes fiskekaker one of the most everyday Norwegian dishes.",
+      "servings_default": 4,
+      "prep_minutes": 20,
+      "cook_minutes": 15,
+      "total_minutes": 35,
+      "difficulty": "medium",
+      "meal_type": [
+        "appetizer",
+        "main-course"
+      ],
+      "diet": [],
+      "about": "Ready-made fiskekaker sold in stores rarely match the texture of a batch mixed and blended fresh at home.",
+      "ingredients": [
+        {
+          "ingredient_key": "white-fish",
+          "display_name": "White fish (cod)",
+          "quantity": "600",
+          "unit": "g",
+          "note": "cleaned, boneless",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "potato-starch",
+          "display_name": "Potato starch",
+          "quantity": "2",
+          "unit": "tbsp",
+          "note": "",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "milk",
+          "display_name": "Milk",
+          "quantity": "150",
+          "unit": "ml",
+          "note": "cold",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "cream",
+          "display_name": "Whipping cream",
+          "quantity": "100",
+          "unit": "ml",
+          "note": "cold",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "onion",
+          "display_name": "Onion",
+          "quantity": "1",
+          "unit": "pcs",
+          "note": "finely grated",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "salt",
+          "display_name": "Salt",
+          "quantity": "1",
+          "unit": "tsp",
+          "note": "",
+          "group": "Patties"
+        },
+        {
+          "ingredient_key": "butter",
+          "display_name": "Butter",
+          "quantity": "40",
+          "unit": "g",
+          "note": "for frying",
+          "group": "For frying"
+        }
+      ],
+      "steps": [
+        {
+          "order": 1,
+          "text": "Blend the fish with the salt and potato starch into a smooth paste."
+        },
+        {
+          "order": 2,
+          "text": "While blending constantly, gradually add the cold milk and cream, until the mixture thickens and lightens."
+        },
+        {
+          "order": 3,
+          "text": "Stir in the grated onion."
+        },
+        {
+          "order": 4,
+          "text": "With a wet spoon, shape oval cakes directly into hot butter in a pan."
+        },
+        {
+          "order": 5,
+          "text": "Fry for 3–4 minutes per side until golden, until cooked through inside too."
+        },
+        {
+          "order": 6,
+          "text": "Serve with boiled potatoes and a cream or caper sauce."
+        }
+      ],
+      "tips": [
+        "Add the milk and cream cold and gradually — otherwise the mixture won't come together and the cakes will turn out watery."
+      ],
+      "watch_out": "",
+      "variants": [],
+      "origin_history": "Fiskekaker are a traditional Norwegian dish, commonly available ready-made in every Norwegian grocery store.",
+      "related_glossary": [],
+      "related_recipes": [
+        "konigsberger-klopse"
+      ],
+      "seo_title": "Fiskekaker – Norwegian Fish Cakes Recipe | Atlas Chuti",
+      "meta_description": "Fiskekaker recipe: delicate Norwegian fish cakes.",
+      "status": "publish"
+    }
+  ]
+}
