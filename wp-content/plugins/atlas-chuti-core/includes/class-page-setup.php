@@ -94,6 +94,92 @@ class Atlas_Chuti_Page_Setup {
 		);
 	}
 
+	/**
+	 * Programmatic, idempotent page bootstrap shared by wp-admin and WP-CLI.
+	 *
+	 * Safe by default: with $write=false nothing is written. Archive entries are
+	 * reported but never created as Pages. Existing Pages are never modified.
+	 *
+	 * @param bool $write Whether missing Pages should actually be created.
+	 * @return array
+	 */
+	public function bootstrap_pages( $write = false ) {
+		$rows = array();
+
+		foreach ( $this->expected_pages() as $slug => $page_def ) {
+			list( $label, $template ) = $page_def;
+			$status_override = isset( $page_def[2] ) ? $page_def[2] : 'draft';
+
+			if ( 'archive' === $template ) {
+				$rows[] = array(
+					'slug'    => $slug,
+					'title'   => $label,
+					'status'  => 'skipped',
+					'message' => __( 'CPT archiv — WordPress Page se nevytváří.', 'atlas-chuti' ),
+				);
+				continue;
+			}
+
+			$existing = get_page_by_path( $slug );
+			if ( $existing ) {
+				$rows[] = array(
+					'slug'    => $slug,
+					'title'   => $label,
+					'status'  => 'existing',
+					'message' => sprintf( 'ID %d', (int) $existing->ID ),
+				);
+				continue;
+			}
+
+			if ( ! $write ) {
+				$rows[] = array(
+					'slug'    => $slug,
+					'title'   => $label,
+					'status'  => 'skipped',
+					'message' => __( 'Dry-run: stránka by byla vytvořena.', 'atlas-chuti' ),
+				);
+				continue;
+			}
+
+			$page_id = wp_insert_post(
+				array(
+					'post_type'    => 'page',
+					'post_title'   => $label,
+					'post_name'    => $slug,
+					'post_status'  => $status_override,
+					'post_content' => '',
+				),
+				true
+			);
+
+			if ( is_wp_error( $page_id ) ) {
+				$rows[] = array(
+					'slug'    => $slug,
+					'title'   => $label,
+					'status'  => 'error',
+					'message' => $page_id->get_error_message(),
+				);
+				continue;
+			}
+
+			if ( $template ) {
+				update_post_meta( $page_id, '_wp_page_template', $template );
+			}
+
+			$rows[] = array(
+				'slug'    => $slug,
+				'title'   => $label,
+				'status'  => 'created',
+				'message' => sprintf( 'ID %d', (int) $page_id ),
+			);
+		}
+
+		return array(
+			'write' => (bool) $write,
+			'rows'  => $rows,
+		);
+	}
+
 	public function render_page() {
 		if ( ! current_user_can( self::CAPABILITY ) ) {
 			wp_die( esc_html__( 'Nemáte oprávnění.', 'atlas-chuti' ) );
@@ -159,33 +245,12 @@ class Atlas_Chuti_Page_Setup {
 			wp_die( esc_html__( 'Neplatný požadavek.', 'atlas-chuti' ) );
 		}
 
+		$report  = $this->bootstrap_pages( true );
 		$created = 0;
-		foreach ( $this->expected_pages() as $slug => $page_def ) {
-			list( $label, $template ) = $page_def;
-			$status_override           = isset( $page_def[2] ) ? $page_def[2] : 'draft';
-			if ( 'archive' === $template ) {
-				continue; // Nothing to create — it's a CPT archive, not a Page.
+		foreach ( $report['rows'] as $row ) {
+			if ( 'created' === $row['status'] ) {
+				++$created;
 			}
-			if ( get_page_by_path( $slug ) ) {
-				continue; // Idempotent: already exists, never duplicated.
-			}
-			$page_id = wp_insert_post(
-				array(
-					'post_type'   => 'page',
-					'post_title'  => $label,
-					'post_name'   => $slug,
-					'post_status' => $status_override,
-					'post_content' => '',
-				),
-				true
-			);
-			if ( is_wp_error( $page_id ) ) {
-				continue;
-			}
-			if ( $template ) {
-				update_post_meta( $page_id, '_wp_page_template', $template );
-			}
-			++$created;
 		}
 
 		set_transient( 'atlas_chuti_page_setup_result_' . get_current_user_id(), $created, MINUTE_IN_SECONDS );

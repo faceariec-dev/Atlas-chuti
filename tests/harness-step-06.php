@@ -891,5 +891,22 @@ $faq_page = get_page_by_path( 'faq' );
 wp_insert_post( array( 'ID' => $faq_page->ID, 'post_status' => 'publish' ) );
 check( '36. the SAME page, once published, resolves to a real URL automatically — no template change needed, matching the "footer is locale/publish-aware" requirement', null !== atlas_chuti_system_url_if_ready( 'faq' ) );
 
+$bootstrap_slug = 'co-dnes-varit';
+$existing_tool  = get_page_by_path( $bootstrap_slug );
+check( '37. bootstrap_pages(false) is read-only — a missing working system Page stays missing', ! $existing_tool && ( $page_setup->bootstrap_pages( false ) && ! get_page_by_path( $bootstrap_slug ) ) );
+
+$bootstrap_write = $page_setup->bootstrap_pages( true );
+$tool_page       = get_page_by_path( $bootstrap_slug );
+$about_page      = get_page_by_path( 'o-projektu' );
+check( '38. bootstrap_pages(true) creates the working Co dnes vařit Page as published with its required template', $tool_page && 'publish' === $tool_page->post_status && 'template-co-dnes-varit.php' === get_post_meta( $tool_page->ID, '_wp_page_template', true ) );
+check( '39. bootstrap_pages(true) preserves the established draft-by-default rule for informational Pages', $about_page && 'draft' === $about_page->post_status );
+
+global $DB;
+$page_count_before_repeat = count( array_filter( $DB['posts'], fn( $p ) => 'page' === $p['post_type'] ) );
+$bootstrap_repeat         = $page_setup->bootstrap_pages( true );
+$page_count_after_repeat  = count( array_filter( $DB['posts'], fn( $p ) => 'page' === $p['post_type'] ) );
+$repeat_created           = array_filter( $bootstrap_repeat['rows'], fn( $row ) => 'created' === $row['status'] );
+check( '40. repeated bootstrap_pages(true) is idempotent — no Page duplicates and no newly-created rows', $page_count_before_repeat === $page_count_after_repeat && 0 === count( $repeat_created ) );
+
 echo "\n--- $TOTAL checks, $FAIL failing ---\n";
 exit( $FAIL > 0 ? 1 : 0 );

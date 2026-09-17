@@ -45,13 +45,71 @@ class Atlas_Chuti_CLI {
 		$importer = Atlas_Chuti_JSON_Importer::instance();
 		$report   = $importer->run_import_sync( $data, $dry_run );
 
+		$error_count = 0;
 		foreach ( $report['groups'] as $type => $rows ) {
 			foreach ( $rows as $row ) {
 				WP_CLI::log( sprintf( '[%s] %s — %s %s', $type, $row['title'], $row['status'], $row['message'] ? '(' . $row['message'] . ')' : '' ) );
+				if ( 'error' === ( $row['css'] ?? '' ) ) {
+					++$error_count;
+				}
 			}
 		}
 
+		if ( $error_count > 0 ) {
+			WP_CLI::error( sprintf( 'Import skončil s %d chybami.', $error_count ) );
+		}
+
 		WP_CLI::success( $dry_run ? __( 'Dry-run dokončen.', 'atlas-chuti' ) : __( 'Import dokončen.', 'atlas-chuti' ) );
+	}
+
+	/**
+	 * Checks or creates the standard Atlas system Pages.
+	 *
+	 * Without --write this command is always read-only.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--write]
+	 * : Actually create missing Pages. Existing Pages are never modified.
+	 *
+	 * ## EXAMPLES
+	 *
+	 *     wp atlas bootstrap-pages
+	 *     wp atlas bootstrap-pages --write
+	 *
+	 * @subcommand bootstrap-pages
+	 * @when after_wp_load
+	 */
+	public function bootstrap_pages( $args, $assoc_args ) {
+		$write  = isset( $assoc_args['write'] );
+		$report = Atlas_Chuti_Page_Setup::instance()->bootstrap_pages( $write );
+		$errors = 0;
+
+		foreach ( $report['rows'] as $row ) {
+			WP_CLI::log(
+				sprintf(
+					'[%s] /%s/ — %s%s',
+					strtoupper( $row['status'] ),
+					$row['slug'],
+					$row['title'],
+					$row['message'] ? ' (' . $row['message'] . ')' : ''
+				)
+			);
+
+			if ( 'error' === $row['status'] ) {
+				++$errors;
+			}
+		}
+
+		if ( $errors > 0 ) {
+			WP_CLI::error( sprintf( 'Bootstrap skončil s %d chybami.', $errors ) );
+		}
+
+		WP_CLI::success(
+			$write
+				? __( 'Bootstrap stránek dokončen.', 'atlas-chuti' )
+				: __( 'Dry-run bootstrapu dokončen. Nic nebylo zapsáno; pro zápis použijte --write.', 'atlas-chuti' )
+		);
 	}
 
 	/**
